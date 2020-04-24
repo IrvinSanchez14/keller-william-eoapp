@@ -1,9 +1,9 @@
 import { exampleInitialState, examplesActions } from './example';
 
 export const initialState: any = {
-	...exampleInitialState,
+  ...exampleInitialState,
 };
 
 export const Actions: any = {
-	...examplesActions,
+  ...examplesActions,
 };
