@@ -1,7 +1,7 @@
 export interface IAppState {
-	Example: number;
+  Example: number;
 }
 
 export default class AppState implements IAppState {
-	Example: number;
+  Example: number;
 }

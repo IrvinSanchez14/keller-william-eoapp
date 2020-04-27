@@ -1,20 +1,20 @@
 export interface IFormInterface {
-	click: number;
+  click: number;
 }
 
 const example: IFormInterface = {
-	click: 0,
+  click: 0,
 };
 
 export const exampleInitialState = {
-	example,
+  example,
 };
 
 export const examplesActions: any = {
-	EXAMPLE_ACTION_CONTEXT: (state: any, action: any) => {
-		return {
-			...state,
-			Example: action.payload,
-		};
-	},
+  EXAMPLE_ACTION_CONTEXT: (state: any, action: any) => {
+    return {
+      ...state,
+      Example: action.payload,
+    };
+  },
 };
