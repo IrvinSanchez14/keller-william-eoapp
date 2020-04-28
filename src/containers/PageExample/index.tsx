@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppContext } from 'src/store';
 import { exampleContext } from 'src/store/actions/example';
+import Layout from 'src/components/Layout';
 
 export default function PageExample(): JSX.Element {
   const { state, dispatch } = useAppContext();
@@ -16,9 +17,7 @@ export default function PageExample(): JSX.Element {
 
   return (
     <div>
-      <h1>Irvin Example</h1>
-      <button onClick={() => changeState()}>Click Me!</button>
-      {state.Example}
+      <Layout />
     </div>
   );
 }
