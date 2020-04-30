@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="329px" height="156px" viewBox="0 0 329 156" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Rectangle</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="19.8627673%" y1="37.6377102%" x2="73.1404194%" y2="80.8852168%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#564CDC" offset="100%"></stop>
+        </linearGradient>
+        <path d="M0,50 C-3.38176876e-15,22.3857625 22.3857625,5.07265313e-15 50,0 L277,0 C304.614237,-5.07265313e-15 327,22.3857625 327,50 L327,71 C327,98.6142375 304.614237,121 277,121 L32,121 L0,153 L0,50 Z" id="path-2"></path>
+        <filter x="-0.5%" y="-1.0%" width="101.5%" height="103.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="2" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coach-interstitial-04" transform="translate(-830.000000, -154.000000)">
+            <g id="chat-bubble" transform="translate(832.000000, 154.000000)">
+                <g id="Rectangle-2" transform="translate(163.500000, 76.500000) scale(-1, 1) translate(-163.500000, -76.500000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Elements/Carrier Logo/Small / Berkshire</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Elements/Carrier-Logo/Small-/-Berkshire" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Mask" fill="#C69617" fill-rule="nonzero" cx="20" cy="20" r="20"></circle>
+        <g id="Group-2" transform="translate(8.000000, 11.000000)" fill="#FFFFFF">
+            <polygon id="Rectangle" points="0 2.44067797 7.92682927 2.44067797 25 18 17.0731707 18"></polygon>
+            <ellipse id="Oval" cx="12.5" cy="2.13559322" rx="2.13414634" ry="2.13559322"></ellipse>
+            <polygon id="Rectangle" transform="translate(12.500000, 10.220339) scale(-1, 1) translate(-12.500000, -10.220339) " points="0 2.44067797 7.92682927 2.44067797 25 18 17.0731707 18"></polygon>
+        </g>
+    </g>
+</svg>

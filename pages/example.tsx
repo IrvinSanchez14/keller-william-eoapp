@@ -1,10 +1,12 @@
+import React from 'react';
 import Head from 'next/head';
 
 import HomePageEO from 'src/containers/HomePageEO';
+import App from 'src';
 
 export default function Example(): JSX.Element {
   return (
-    <div>
+    <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -28,7 +30,7 @@ export default function Example(): JSX.Element {
           id="font-awesome-5-kit-css"
         />
       </Head>
-      <HomePageEO />
+      <App />
     </div>
   );
 }

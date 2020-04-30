@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="68px" viewBox="0 0 42 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 26</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.4081 1 23.2591 1 23.2591 1.8748 0.4081 1.8748"></polygon>
+        <polygon id="path-3" points="0 69 41.744 69 41.744 1 0 1"></polygon>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-Q7" transform="translate(-834.000000, -443.000000)">
+            <g id="card" transform="translate(90.000000, 115.000000)">
+                <g id="right-side" transform="translate(690.000000, 52.000000)">
+                    <g id="propane" transform="translate(0.000000, 213.000000)">
+                        <g id="Group-26" transform="translate(54.000000, 62.000000)">
+                            <g id="Group-3" transform="translate(12.000000, 1.000200)">
+                                <polyline id="Fill-1" fill="#FFFFFF" points="17.246 9.366 17.246 0.591 0.428 0.591 0.428 9.366"></polyline>
+                                <polyline id="Stroke-2" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="17.246 9.366 17.246 0.591 0.428 0.591 0.428 9.366"></polyline>
+                            </g>
+                            <g id="Group-25" transform="translate(0.000000, 0.000200)">
+                                <path d="M0.4198,59.3093 L0.4198,19.5763 C0.4198,14.4313 4.5908,10.2603 9.7348,10.2603 L32.0538,10.2603 C37.1988,10.2603 41.3688,14.4313 41.3688,19.5763 L41.3688,59.3093 C41.3688,64.4543 37.1988,68.6243 32.0538,68.6243 L9.7348,68.6243 C4.5908,68.6243 0.4198,64.4543 0.4198,59.3093" id="Fill-4" fill="#FFFFFF"></path>
+                                <path d="M0.4198,59.3093 L0.4198,19.5763 C0.4198,14.4313 4.5908,10.2603 9.7348,10.2603 L32.0538,10.2603 C37.1988,10.2603 41.3688,14.4313 41.3688,19.5763 L41.3688,59.3093 C41.3688,64.4543 37.1988,68.6243 32.0538,68.6243 L9.7348,68.6243 C4.5908,68.6243 0.4198,64.4543 0.4198,59.3093 Z" id="Stroke-6" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <g id="Group-11" transform="translate(20.000000, 5.000000)">
+                                    <line x1="0.8944" y1="5.2605" x2="0.8944" y2="0.9655" id="Fill-8" fill="#FFFFFF"></line>
+                                    <line x1="0.8944" y1="5.2605" x2="0.8944" y2="0.9655" id="Stroke-10" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></line>
+                                </g>
+                                <g id="Group-15" transform="translate(16.000000, 5.000000)">
+                                    <line x1="0.329" y1="0.5681" x2="9.371" y2="0.5681" id="Fill-12" fill="#FFFFFF"></line>
+                                    <line x1="0.329" y1="0.5681" x2="9.371" y2="0.5681" id="Stroke-14" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></line>
+                                </g>
+                                <g id="Group-19" transform="translate(9.000000, 0.000000)">
+                                    <mask id="mask-2" fill="white">
+                                        <use xlink:href="#path-1"></use>
+                                    </mask>
+                                    <g id="Clip-17"></g>
+                                    <line x1="0.4081" y1="1.3748" x2="23.2591" y2="1.3748" id="Fill-16" fill="#FFFFFF" mask="url(#mask-2)"></line>
+                                    <line x1="0.4081" y1="1.3748" x2="23.2591" y2="1.3748" id="Stroke-18" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)"></line>
+                                </g>
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <g id="Clip-21"></g>
+                                <polygon id="Fill-20" fill="#FFDF2A" mask="url(#mask-4)" points="0.375 54.998 41.324 54.998 41.324 23.888 0.375 23.888"></polygon>
+                                <polygon id="Stroke-22" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="0.375 54.998 41.324 54.998 41.324 23.888 0.375 23.888"></polygon>
+                                <path d="M19.1669,31.5935 C19.1669,31.5935 19.4429,34.3585 18.1849,36.2265 C17.4269,37.3525 17.1309,37.4925 16.4829,38.3765 C15.8489,39.2435 14.4389,40.8475 14.6199,42.9985 C14.8129,45.3075 16.6529,46.6755 16.9309,46.8745 C17.2489,47.1045 18.5599,47.8925 20.3049,47.9195 C19.1589,47.9165 18.2309,46.9885 18.2309,45.8415 C18.2309,44.6945 19.1619,43.7645 20.3099,43.7645 C21.4569,43.7645 22.3869,44.6945 22.3869,45.8415 C22.3869,46.9885 21.4589,47.9165 20.3129,47.9195 C20.4029,47.9205 20.4919,47.9215 20.5839,47.9185 C23.7809,47.8165 25.4559,44.9455 25.5359,44.7875 C28.1559,39.5815 19.1669,31.5935 19.1669,31.5935" id="Fill-23" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                                <path d="M19.1669,31.5935 C19.1669,31.5935 19.4429,34.3585 18.1849,36.2265 C17.4269,37.3525 17.1309,37.4925 16.4829,38.3765 C15.8489,39.2435 14.4389,40.8475 14.6199,42.9985 C14.8129,45.3075 16.6529,46.6755 16.9309,46.8745 C17.2489,47.1045 18.5599,47.8925 20.3049,47.9195 C19.1589,47.9165 18.2309,46.9885 18.2309,45.8415 C18.2309,44.6945 19.1619,43.7645 20.3099,43.7645 C21.4569,43.7645 22.3869,44.6945 22.3869,45.8415 C22.3869,46.9885 21.4589,47.9165 20.3129,47.9195 C20.4029,47.9205 20.4919,47.9215 20.5839,47.9185 C23.7809,47.8165 25.4559,44.9455 25.5359,44.7875 C28.1559,39.5815 19.1669,31.5935 19.1669,31.5935 Z" id="Stroke-24" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

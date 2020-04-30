@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="82px" height="68px" viewBox="0 0 82 68" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 40</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 68 81.634 68 81.634 0.111 0 0.111"></polygon>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-Q7" transform="translate(-814.000000, -655.000000)">
+            <g id="card" transform="translate(90.000000, 115.000000)">
+                <g id="right-side" transform="translate(690.000000, 52.000000)">
+                    <g id="diesel" transform="translate(0.000000, 426.000000)">
+                        <g id="Group-40" transform="translate(34.000000, 61.000000)">
+                            <polygon id="Fill-1" fill="#FFFFFF" points="4.085 63.803 77.55 63.803 77.55 7.906 4.085 7.906"></polygon>
+                            <polygon id="Stroke-2" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="4.085 63.803 77.55 63.803 77.55 7.906 4.085 7.906"></polygon>
+                            <g id="Group-39" transform="translate(0.000000, 0.889000)">
+                                <path d="M52.9161,16.1028 L53.2451,16.1028 C54.1181,16.1028 54.8261,16.8108 54.8261,17.6838 L54.8261,32.0238 C54.8261,32.8968 54.1181,33.6048 53.2451,33.6048 L52.9161,33.6048 C52.0431,33.6048 51.3351,32.8968 51.3351,32.0238 L51.3351,17.6838 C51.3351,16.8108 52.0431,16.1028 52.9161,16.1028" id="Fill-3" fill="#E6E6E6"></path>
+                                <path d="M52.9161,16.1028 L53.2451,16.1028 C54.1181,16.1028 54.8261,16.8108 54.8261,17.6838 L54.8261,32.0238 C54.8261,32.8968 54.1181,33.6048 53.2451,33.6048 L52.9161,33.6048 C52.0431,33.6048 51.3351,32.8968 51.3351,32.0238 L51.3351,17.6838 C51.3351,16.8108 52.0431,16.1028 52.9161,16.1028 Z" id="Stroke-5" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M29.2227,16.1028 L29.5517,16.1028 C30.4247,16.1028 31.1327,16.8108 31.1327,17.6838 L31.1327,32.0238 C31.1327,32.8968 30.4247,33.6048 29.5517,33.6048 L29.2227,33.6048 C28.3497,33.6048 27.6417,32.8968 27.6417,32.0238 L27.6417,17.6838 C27.6417,16.8108 28.3497,16.1028 29.2227,16.1028" id="Fill-7" fill="#E6E6E6"></path>
+                                <path d="M29.2227,16.1028 L29.5517,16.1028 C30.4247,16.1028 31.1327,16.8108 31.1327,17.6838 L31.1327,32.0238 C31.1327,32.8968 30.4247,33.6048 29.5517,33.6048 L29.2227,33.6048 C28.3497,33.6048 27.6417,32.8968 27.6417,32.0238 L27.6417,17.6838 C27.6417,16.8108 28.3497,16.1028 29.2227,16.1028 Z" id="Stroke-9" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="Clip-12"></g>
+                                <polygon id="Fill-11" fill="#E6E6E6" mask="url(#mask-2)" points="8.251 7.017 13.314 7.017 13.314 0.486 8.251 0.486"></polygon>
+                                <polygon id="Stroke-13" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="8.251 7.017 13.314 7.017 13.314 0.486 8.251 0.486"></polygon>
+                                <polygon id="Fill-14" fill="#E6E6E6" mask="url(#mask-2)" points="35.7296 3.7512 44.1756 3.7512 45.9056 3.7512 45.9056 7.0172 35.7296 7.0172"></polygon>
+                                <polygon id="Stroke-15" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="35.7296 3.7512 44.1756 3.7512 45.9056 3.7512 45.9056 7.0172 35.7296 7.0172"></polygon>
+                                <polygon id="Fill-16" fill="#E6E6E6" mask="url(#mask-2)" points="2.048 26.253 4.085 26.253 4.085 16.077 2.048 16.077"></polygon>
+                                <polygon id="Stroke-17" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="2.048 26.253 4.085 26.253 4.085 16.077 2.048 16.077"></polygon>
+                                <polygon id="Fill-18" fill="#E6E6E6" mask="url(#mask-2)" points="2.048 52.537 4.085 52.537 4.085 42.362 2.048 42.362"></polygon>
+                                <polygon id="Stroke-19" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="2.048 52.537 4.085 52.537 4.085 42.362 2.048 42.362"></polygon>
+                                <polygon id="Fill-20" fill="#E6E6E6" mask="url(#mask-2)" points="68.32 7.017 73.383 7.017 73.383 0.486 68.32 0.486"></polygon>
+                                <polygon id="Stroke-21" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="68.32 7.017 73.383 7.017 73.383 0.486 68.32 0.486"></polygon>
+                                <polyline id="Stroke-22" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="4.085 62.9143 4.085 67.6253 0.375 67.6253"></polyline>
+                                <polyline id="Stroke-23" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-2)" points="77.5499 62.9143 77.5499 67.6253 81.2589 67.6253"></polyline>
+                                <g id="Group-26" mask="url(#mask-2)">
+                                    <g transform="translate(43.000000, 3.000000)">
+                                        <line x1="1.2091" y1="4.0168" x2="1.2091" y2="0.7508" id="Fill-24" stroke="none" fill="#E6E6E6" fill-rule="evenodd"></line>
+                                        <line x1="1.2091" y1="4.0168" x2="1.2091" y2="0.7508" id="Stroke-25" stroke="#7A7A7A" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+                                    </g>
+                                </g>
+                                <g id="Group-29" mask="url(#mask-2)">
+                                    <g transform="translate(42.000000, 3.000000)">
+                                        <line x1="0.5128" y1="4.0168" x2="0.5128" y2="0.7508" id="Fill-27" stroke="none" fill="#E6E6E6" fill-rule="evenodd"></line>
+                                        <line x1="0.5128" y1="4.0168" x2="0.5128" y2="0.7508" id="Stroke-28" stroke="#7A7A7A" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+                                    </g>
+                                </g>
+                                <g id="Group-32" mask="url(#mask-2)">
+                                    <g transform="translate(40.000000, 3.000000)">
+                                        <line x1="0.8175" y1="4.0168" x2="0.8175" y2="0.7508" id="Fill-30" stroke="none" fill="#E6E6E6" fill-rule="evenodd"></line>
+                                        <line x1="0.8175" y1="4.0168" x2="0.8175" y2="0.7508" id="Stroke-31" stroke="#7A7A7A" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+                                    </g>
+                                </g>
+                                <g id="Group-35" mask="url(#mask-2)">
+                                    <g transform="translate(38.000000, 3.000000)">
+                                        <line x1="1.1212" y1="4.0168" x2="1.1212" y2="0.7508" id="Fill-33" stroke="none" fill="#E6E6E6" fill-rule="evenodd"></line>
+                                        <line x1="1.1212" y1="4.0168" x2="1.1212" y2="0.7508" id="Stroke-34" stroke="#7A7A7A" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+                                    </g>
+                                </g>
+                                <g id="Group-38" mask="url(#mask-2)">
+                                    <g transform="translate(36.000000, 3.000000)">
+                                        <line x1="1.4259" y1="4.0168" x2="1.4259" y2="0.7508" id="Fill-36" stroke="none" fill="#E6E6E6" fill-rule="evenodd"></line>
+                                        <line x1="1.4259" y1="4.0168" x2="1.4259" y2="0.7508" id="Stroke-37" stroke="#7A7A7A" stroke-width="0.75" fill="none" stroke-linecap="round" stroke-linejoin="round"></line>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

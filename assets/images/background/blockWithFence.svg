@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="625px" height="329px" viewBox="0 0 625 329" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>confirmation-footer-illo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0 329 625 329 625 0 0 0"></polygon>
+        <polygon id="path-3" points="0 329 625 329 625 0 0 0"></polygon>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75">
+        <g id="KW-text-confirmation-lemonade-paid" transform="translate(-3.000000, -1491.000000)">
+            <g id="bg-graphics" transform="translate(3.500000, 1491.000000)">
+                <g id="confirmation-footer-illo" transform="translate(312.500000, 164.500000) scale(-1, 1) translate(-312.500000, -164.500000) ">
+                    <polygon id="Fill-1" fill="#E6E6E6" points="496.5 296.5 368.5 312.5 368.5 288.5 496.5 288.5"></polygon>
+                    <polygon id="Fill-2" fill="#E6E6E6" points="368.5 96.5 360.5 88.5 432.5 16.5 496.5 80.5 496.5 96.5 432.5 32.5"></polygon>
+                    <polyline id="Fill-3" fill="#E6E6E6" points="264.5 72.5 264.5 56.5 248.5 56.5 248.5 88.5"></polyline>
+                    <polyline id="Fill-4" fill="#E6E6E6" points="520.5 40.5 520.5 24.5 504.5 24.5 504.5 56.5"></polyline>
+                    <polygon id="Fill-5" fill="#E6E6E6" points="392.5 192.5 424.5 192.5 424.5 144.5 392.5 144.5"></polygon>
+                    <polygon id="Fill-6" fill="#E6E6E6" points="392.5 272.5 424.5 272.5 424.5 224.5 392.5 224.5"></polygon>
+                    <polygon id="Fill-7" fill="#E6E6E6" points="440.5 192.5 472.5 192.5 472.5 144.5 440.5 144.5"></polygon>
+                    <polygon id="Fill-8" fill="#FFFFFF" points="264.5 208.5 344.5 208.5 344.5 160.5 264.5 160.5"></polygon>
+                    <polygon id="Fill-9" fill="#FFFFFF" points="520.5 176.5 600.5 176.5 600.5 128.5 520.5 128.5"></polygon>
+                    <polygon id="Fill-10" fill="#E6E6E6" points="384.5 280.5 432.5 280.5 432.5 272.5 384.5 272.5"></polygon>
+                    <polygon id="Fill-11" fill="#FFFFFF" points="440.5 296.5 488.5 296.5 488.5 288.5 440.5 288.5"></polygon>
+                    <g id="Group-38">
+                        <path d="M240.5,328.5 L624.5,280.5 L624.5,320.5 C624.5,324.918 620.918,328.5 616.5,328.5 L240.5,328.5 Z" id="Fill-12" fill="#F2F2F2"></path>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-15"></g>
+                        <path d="M520.5,256.5 L552.5,256.5 L552.5,208.5 L520.5,208.5 L520.5,256.5 Z M624.5,272.5 L624.5,80.5 L560.5,16.5 L496.5,80.5 L496.5,272.5 L624.5,272.5 Z" id="Fill-14" fill="#E6E6E6" mask="url(#mask-2)"></path>
+                        <path d="M264.5,288.5 L296.5,288.5 L296.5,240.5 L264.5,240.5 L264.5,288.5 Z M368.5,304.5 L368.5,112.5 L304.5,48.5 L240.5,112.5 L240.5,304.5 L368.5,304.5 Z" id="Fill-16" fill="#E6E6E6" mask="url(#mask-2)"></path>
+                        <polygon id="Fill-17" fill="#FFFFFF" mask="url(#mask-2)" points="496.5 296.5 432.5 304.5 432.5 296.5"></polygon>
+                        <polygon id="Fill-18" fill="#E6E6E6" mask="url(#mask-2)" points="312.5 312.5 360.5 312.5 360.5 304.5 312.5 304.5"></polygon>
+                        <polygon id="Fill-19" fill="#E6E6E6" mask="url(#mask-2)" points="368.5 312.5 304.5 320.5 304.5 312.5"></polygon>
+                        <polygon id="Fill-20" fill="#E6E6E6" mask="url(#mask-2)" points="568.5 280.5 616.5 280.5 616.5 272.5 568.5 272.5"></polygon>
+                        <polygon id="Fill-21" fill="#E6E6E6" mask="url(#mask-2)" points="624.5 280.5 560.5 288.5 560.5 280.5"></polygon>
+                        <polygon id="Fill-22" fill="#FFFFFF" mask="url(#mask-2)" points="264.5 208.5 344.5 208.5 344.5 160.5 264.5 160.5"></polygon>
+                        <polygon id="Fill-23" fill="#FFFFFF" mask="url(#mask-2)" points="520.5 176.5 600.5 176.5 600.5 128.5 520.5 128.5"></polygon>
+                        <polygon id="Fill-24" fill="#E6E6E6" mask="url(#mask-2)" points="384.5 200.5 480.5 200.5 480.5 192.5 384.5 192.5"></polygon>
+                        <polygon id="Fill-25" fill="#E6E6E6" mask="url(#mask-2)" points="400.5 128.5 464.5 128.5 464.5 120.5 400.5 120.5"></polygon>
+                        <polygon id="Fill-26" fill="#FFFFFF" mask="url(#mask-2)" points="256.5 216.5 352.5 216.5 352.5 208.5 256.5 208.5"></polygon>
+                        <polygon id="Fill-27" fill="#FFFFFF" mask="url(#mask-2)" points="272.5 144.5 336.5 144.5 336.5 136.5 272.5 136.5"></polygon>
+                        <polygon id="Fill-28" fill="#FFFFFF" mask="url(#mask-2)" points="528.5 112.5 592.5 112.5 592.5 104.5 528.5 104.5"></polygon>
+                        <polygon id="Fill-29" fill="#FFFFFF" mask="url(#mask-2)" points="256.5 296.5 304.5 296.5 304.5 288.5 256.5 288.5"></polygon>
+                        <polygon id="Fill-30" fill="#FFFFFF" mask="url(#mask-2)" points="512.5 184.5 608.5 184.5 608.5 176.5 512.5 176.5"></polygon>
+                        <polygon id="Fill-31" fill="#FFFFFF" mask="url(#mask-2)" points="512.5 264.5 560.5 264.5 560.5 256.5 512.5 256.5"></polygon>
+                        <polygon id="Fill-32" fill="#E6E6E6" mask="url(#mask-2)" points="456.5 120.5 408.5 120.5 408.5 88.5 432.5 64.5 456.5 88.5"></polygon>
+                        <polygon id="Fill-33" fill="#FFFFFF" mask="url(#mask-2)" points="328.5 136.5 280.5 136.5 280.5 104.5 304.5 80.5 328.5 104.5"></polygon>
+                        <polygon id="Fill-34" fill="#FFFFFF" mask="url(#mask-2)" points="584.5 104.5 536.5 104.5 536.5 72.5 560.5 48.5 584.5 72.5"></polygon>
+                        <polygon id="Fill-35" fill="#FFFFFF" mask="url(#mask-2)" points="576.5 272.5 608.5 272.5 608.5 208.5 576.5 208.5"></polygon>
+                        <polygon id="Fill-36" fill="#FFFFFF" mask="url(#mask-2)" points="320.5 304.5 352.5 304.5 352.5 240.5 320.5 240.5"></polygon>
+                        <polygon id="Fill-37" fill="#E6E6E6" mask="url(#mask-2)" points="448.5 288.5 480.5 288.5 480.5 224.5 448.5 224.5"></polygon>
+                    </g>
+                    <polyline id="Stroke-39" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="64.5 328.5 64.5 240.5 104.5 200.5 144.5 240.5 144.5 320.5"></polyline>
+                    <line x1="144.5" y1="240.5" x2="144.5" y2="232.5" id="Stroke-41" stroke="#E6E6FF" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-42" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="112.5 320.5 112.5 304.5 128.5 304.5 128.5 320.5"></polyline>
+                    <polyline id="Stroke-43" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="80.5 328.5 80.5 304.5 96.5 304.5 96.5 328.5"></polyline>
+                    <polygon id="Stroke-45" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="80.5 288.5 128.5 288.5 128.5 256.5 80.5 256.5"></polygon>
+                    <g id="Group-359">
+                        <path d="M96.5,232.5 C96.5,228.082 100.082,224.5 104.5,224.5 C108.918,224.5 112.5,228.082 112.5,232.5 C112.5,236.918 108.918,240.5 104.5,240.5 C100.082,240.5 96.5,236.918 96.5,232.5 Z" id="Stroke-46" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <polyline id="Stroke-48" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="144.5 320.5 144.5 232.5 184.5 192.5 224.5 232.5 224.5 328.5"></polyline>
+                        <polyline id="Stroke-50" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="140.5 228.5 184.5 184.5 224.5 224.5"></polyline>
+                        <line x1="224.5" y1="232.5" x2="224.5" y2="224.5" id="Stroke-52" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round"></line>
+                        <polyline id="Stroke-54" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="192.5 322.0996 192.5 296.4996 208.5 296.4996 208.5 320.4996"></polyline>
+                        <polyline id="Stroke-56" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" points="160.5 320.5 160.5 296.5 176.5 296.5 176.5 320.5"></polyline>
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-59"></g>
+                        <polygon id="Stroke-58" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="160.5 280.5 208.5 280.5 208.5 248.5 160.5 248.5"></polygon>
+                        <path d="M176.5,224.5 C176.5,220.082 180.082,216.5 184.5,216.5 C188.918,216.5 192.5,220.082 192.5,224.5 C192.5,228.918 188.918,232.5 184.5,232.5 C180.082,232.5 176.5,228.918 176.5,224.5 Z" id="Stroke-60" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></path>
+                        <polyline id="Stroke-61" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="224.5 328.5 224.5 224.5 240.5 208.5"></polyline>
+                        <line x1="240.5" y1="200.5" x2="220.5" y2="220.5" id="Stroke-62" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-63" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 288.5 384.5 288.5 384.5 280.5 368.5 280.5"></polygon>
+                        <polygon id="Stroke-64" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 272.5 384.5 272.5 384.5 264.5 368.5 264.5"></polygon>
+                        <polygon id="Stroke-65" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 256.5 384.5 256.5 384.5 248.5 368.5 248.5"></polygon>
+                        <polygon id="Stroke-66" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 264.5 392.5 264.5 392.5 256.5 376.5 256.5"></polygon>
+                        <polygon id="Stroke-67" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 240.5 384.5 240.5 384.5 232.5 368.5 232.5"></polygon>
+                        <polygon id="Stroke-68" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 248.5 392.5 248.5 392.5 240.5 376.5 240.5"></polygon>
+                        <polygon id="Stroke-69" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 232.5 392.5 232.5 392.5 224.5 376.5 224.5"></polygon>
+                        <polygon id="Stroke-70" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 224.5 384.5 224.5 384.5 216.5 368.5 216.5"></polygon>
+                        <polygon id="Stroke-71" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 224.5 400.5 224.5 400.5 216.5 384.5 216.5"></polygon>
+                        <polygon id="Stroke-72" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="400.5 224.5 416.5 224.5 416.5 216.5 400.5 216.5"></polygon>
+                        <polygon id="Stroke-73" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 224.5 432.5 224.5 432.5 216.5 416.5 216.5"></polygon>
+                        <polygon id="Stroke-74" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 224.5 448.5 224.5 448.5 216.5 432.5 216.5"></polygon>
+                        <polygon id="Stroke-75" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 240.5 448.5 240.5 448.5 232.5 432.5 232.5"></polygon>
+                        <polygon id="Stroke-76" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 256.5 448.5 256.5 448.5 248.5 432.5 248.5"></polygon>
+                        <polygon id="Stroke-77" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 272.5 448.5 272.5 448.5 264.5 432.5 264.5"></polygon>
+                        <polygon id="Stroke-78" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 264.5 440.5 264.5 440.5 256.5 424.5 256.5"></polygon>
+                        <polygon id="Stroke-79" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 248.5 440.5 248.5 440.5 240.5 424.5 240.5"></polygon>
+                        <polygon id="Stroke-80" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 232.5 440.5 232.5 440.5 224.5 424.5 224.5"></polygon>
+                        <polygon id="Stroke-81" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="448.5 224.5 464.5 224.5 464.5 216.5 448.5 216.5"></polygon>
+                        <polygon id="Stroke-82" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 224.5 480.5 224.5 480.5 216.5 464.5 216.5"></polygon>
+                        <polygon id="Stroke-83" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 224.5 496.5 224.5 496.5 216.5 480.5 216.5"></polygon>
+                        <polygon id="Stroke-84" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 216.5 392.5 216.5 392.5 208.5 376.5 208.5"></polygon>
+                        <polygon id="Stroke-85" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 216.5 408.5 216.5 408.5 208.5 392.5 208.5"></polygon>
+                        <polygon id="Stroke-86" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="408.5 216.5 424.5 216.5 424.5 208.5 408.5 208.5"></polygon>
+                        <polygon id="Stroke-87" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 216.5 440.5 216.5 440.5 208.5 424.5 208.5"></polygon>
+                        <polygon id="Stroke-88" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="440.5 216.5 456.5 216.5 456.5 208.5 440.5 208.5"></polygon>
+                        <polygon id="Stroke-89" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 216.5 472.5 216.5 472.5 208.5 456.5 208.5"></polygon>
+                        <polygon id="Stroke-90" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 216.5 488.5 216.5 488.5 208.5 472.5 208.5"></polygon>
+                        <polygon id="Stroke-91" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 208.5 384.5 208.5 384.5 200.5 368.5 200.5"></polygon>
+                        <polygon id="Stroke-92" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 208.5 400.5 208.5 400.5 200.5 384.5 200.5"></polygon>
+                        <polygon id="Stroke-93" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="400.5 208.5 416.5 208.5 416.5 200.5 400.5 200.5"></polygon>
+                        <polygon id="Stroke-94" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 208.5 432.5 208.5 432.5 200.5 416.5 200.5"></polygon>
+                        <polygon id="Stroke-95" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 208.5 448.5 208.5 448.5 200.5 432.5 200.5"></polygon>
+                        <polygon id="Stroke-96" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="448.5 208.5 464.5 208.5 464.5 200.5 448.5 200.5"></polygon>
+                        <polygon id="Stroke-97" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 208.5 480.5 208.5 480.5 200.5 464.5 200.5"></polygon>
+                        <polygon id="Stroke-98" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 208.5 496.5 208.5 496.5 200.5 480.5 200.5"></polygon>
+                        <polygon id="Stroke-99" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 192.5 496.5 192.5 496.5 184.5 480.5 184.5"></polygon>
+                        <polygon id="Stroke-100" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 184.5 488.5 184.5 488.5 176.5 472.5 176.5"></polygon>
+                        <polygon id="Stroke-101" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 168.5 488.5 168.5 488.5 160.5 472.5 160.5"></polygon>
+                        <polygon id="Stroke-102" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 152.5 488.5 152.5 488.5 144.5 472.5 144.5"></polygon>
+                        <polygon id="Stroke-103" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 176.5 496.5 176.5 496.5 168.5 480.5 168.5"></polygon>
+                        <polygon id="Stroke-104" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 160.5 496.5 160.5 496.5 152.5 480.5 152.5"></polygon>
+                        <polygon id="Stroke-105" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 192.5 384.5 192.5 384.5 184.5 368.5 184.5"></polygon>
+                        <polygon id="Stroke-106" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 184.5 392.5 184.5 392.5 176.5 376.5 176.5"></polygon>
+                        <polygon id="Stroke-107" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 168.5 392.5 168.5 392.5 160.5 376.5 160.5"></polygon>
+                        <polygon id="Stroke-108" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 152.5 392.5 152.5 392.5 144.5 376.5 144.5"></polygon>
+                        <polygon id="Stroke-109" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 136.5 392.5 136.5 392.5 128.5 376.5 128.5"></polygon>
+                        <polygon id="Stroke-110" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 136.5 408.5 136.5 408.5 128.5 392.5 128.5"></polygon>
+                        <polygon id="Stroke-111" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="408.5 136.5 424.5 136.5 424.5 128.5 408.5 128.5"></polygon>
+                        <polygon id="Stroke-112" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 136.5 440.5 136.5 440.5 128.5 424.5 128.5"></polygon>
+                        <polygon id="Stroke-113" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 152.5 440.5 152.5 440.5 144.5 424.5 144.5"></polygon>
+                        <polygon id="Stroke-114" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 168.5 440.5 168.5 440.5 160.5 424.5 160.5"></polygon>
+                        <polygon id="Stroke-115" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 184.5 440.5 184.5 440.5 176.5 424.5 176.5"></polygon>
+                        <polygon id="Stroke-116" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="440.5 136.5 456.5 136.5 456.5 128.5 440.5 128.5"></polygon>
+                        <polygon id="Stroke-117" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 136.5 472.5 136.5 472.5 128.5 456.5 128.5"></polygon>
+                        <polygon id="Stroke-118" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 136.5 488.5 136.5 488.5 128.5 472.5 128.5"></polygon>
+                        <polygon id="Stroke-119" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 128.5 400.5 128.5 400.5 120.5 384.5 120.5"></polygon>
+                        <polygon id="Stroke-120" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 128.5 480.5 128.5 480.5 120.5 464.5 120.5"></polygon>
+                        <polygon id="Stroke-121" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 128.5 496.5 128.5 496.5 120.5 480.5 120.5"></polygon>
+                        <polygon id="Stroke-122" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 120.5 472.5 120.5 472.5 112.5 456.5 112.5"></polygon>
+                        <polygon id="Stroke-123" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 120.5 488.5 120.5 488.5 112.5 472.5 112.5"></polygon>
+                        <polygon id="Stroke-124" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 112.5 480.5 112.5 480.5 104.5 464.5 104.5"></polygon>
+                        <polygon id="Stroke-125" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 104.5 472.5 104.5 472.5 96.5 456.5 96.5"></polygon>
+                        <polygon id="Stroke-126" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="472.5 104.5 488.5 104.5 488.5 96.5 472.5 96.5"></polygon>
+                        <polygon id="Stroke-127" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 96.5 496.5 96.5 496.5 88.5 480.5 88.5"></polygon>
+                        <polygon id="Stroke-128" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 96.5 480.5 96.5 480.5 88.5 464.5 88.5"></polygon>
+                        <polygon id="Stroke-129" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 112.5 496.5 112.5 496.5 104.5 480.5 104.5"></polygon>
+                        <polygon id="Stroke-130" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 120.5 392.5 120.5 392.5 112.5 376.5 112.5"></polygon>
+                        <polygon id="Stroke-131" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 120.5 408.5 120.5 408.5 112.5 392.5 112.5"></polygon>
+                        <polygon id="Stroke-132" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 104.5 408.5 104.5 408.5 96.5 392.5 96.5"></polygon>
+                        <polygon id="Stroke-133" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 88.5 408.5 88.5 408.5 80.5 392.5 80.5"></polygon>
+                        <polygon id="Stroke-134" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="400.5 80.5 416.5 80.5 416.5 72.5 400.5 72.5"></polygon>
+                        <polygon id="Stroke-135" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="392.5 72.5 408.5 72.5 408.5 64.5 392.5 64.5"></polygon>
+                        <polygon id="Stroke-136" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="408.5 72.5 424.5 72.5 424.5 64.5 408.5 64.5"></polygon>
+                        <polygon id="Stroke-137" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 64.5 432.5 64.5 432.5 56.5 416.5 56.5"></polygon>
+                        <polygon id="Stroke-138" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="408.5 56.5 424.5 56.5 424.5 48.5 408.5 48.5"></polygon>
+                        <polygon id="Stroke-139" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="424.5 56.5 440.5 56.5 440.5 48.5 424.5 48.5"></polygon>
+                        <polygon id="Stroke-140" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 64.5 448.5 64.5 448.5 56.5 432.5 56.5"></polygon>
+                        <polygon id="Stroke-141" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 48.5 432.5 48.5 432.5 40.5 416.5 40.5"></polygon>
+                        <polygon id="Stroke-142" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 48.5 448.5 48.5 448.5 40.5 432.5 40.5"></polygon>
+                        <polygon id="Stroke-143" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="440.5 56.5 456.5 56.5 456.5 48.5 440.5 48.5"></polygon>
+                        <polygon id="Stroke-144" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="440.5 72.5 456.5 72.5 456.5 64.5 440.5 64.5"></polygon>
+                        <polygon id="Stroke-145" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 72.5 472.5 72.5 472.5 64.5 456.5 64.5"></polygon>
+                        <polygon id="Stroke-146" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="448.5 80.5 464.5 80.5 464.5 72.5 448.5 72.5"></polygon>
+                        <polygon id="Stroke-147" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 88.5 472.5 88.5 472.5 80.5 456.5 80.5"></polygon>
+                        <polygon id="Stroke-148" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 80.5 480.5 80.5 480.5 72.5 464.5 72.5"></polygon>
+                        <polygon id="Stroke-149" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 104.5 392.5 104.5 392.5 96.5 376.5 96.5"></polygon>
+                        <polygon id="Stroke-150" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 88.5 392.5 88.5 392.5 80.5 376.5 80.5"></polygon>
+                        <polygon id="Stroke-151" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 176.5 384.5 176.5 384.5 168.5 368.5 168.5"></polygon>
+                        <polygon id="Stroke-152" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 160.5 384.5 160.5 384.5 152.5 368.5 152.5"></polygon>
+                        <polygon id="Stroke-153" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 144.5 384.5 144.5 384.5 136.5 368.5 136.5"></polygon>
+                        <polygon id="Stroke-154" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 144.5 400.5 144.5 400.5 136.5 384.5 136.5"></polygon>
+                        <polygon id="Stroke-155" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="400.5 144.5 416.5 144.5 416.5 136.5 400.5 136.5"></polygon>
+                        <polygon id="Stroke-156" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 144.5 432.5 144.5 432.5 136.5 416.5 136.5"></polygon>
+                        <polygon id="Stroke-157" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 144.5 448.5 144.5 448.5 136.5 432.5 136.5"></polygon>
+                        <polygon id="Stroke-158" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="448.5 144.5 464.5 144.5 464.5 136.5 448.5 136.5"></polygon>
+                        <polygon id="Stroke-159" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="464.5 144.5 480.5 144.5 480.5 136.5 464.5 136.5"></polygon>
+                        <polygon id="Stroke-160" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 144.5 496.5 144.5 496.5 136.5 480.5 136.5"></polygon>
+                        <polygon id="Stroke-161" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 128.5 384.5 128.5 384.5 120.5 368.5 120.5"></polygon>
+                        <polygon id="Stroke-162" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 112.5 384.5 112.5 384.5 104.5 368.5 104.5"></polygon>
+                        <polygon id="Stroke-163" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 112.5 400.5 112.5 400.5 104.5 384.5 104.5"></polygon>
+                        <polygon id="Stroke-164" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 96.5 400.5 96.5 400.5 88.5 384.5 88.5"></polygon>
+                        <polygon id="Stroke-165" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="368.5 96.5 384.5 96.5 384.5 88.5 368.5 88.5"></polygon>
+                        <polygon id="Stroke-166" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="384.5 288.5 400.5 288.5 400.5 280.5 384.5 280.5"></polygon>
+                        <polygon id="Stroke-167" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="400.5 288.5 416.5 288.5 416.5 280.5 400.5 280.5"></polygon>
+                        <polygon id="Stroke-168" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="416.5 288.5 432.5 288.5 432.5 280.5 416.5 280.5"></polygon>
+                        <polygon id="Stroke-169" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 288.5 448.5 288.5 448.5 280.5 432.5 280.5"></polygon>
+                        <polygon id="Stroke-170" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 288.5 496.5 288.5 496.5 280.5 480.5 280.5"></polygon>
+                        <line x1="408.5" y1="144.5" x2="408.5" y2="192.5" id="Stroke-171" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="392.5" y1="168.5" x2="424.5" y2="168.5" id="Stroke-172" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="432.5" y1="64.5" x2="432.5" y2="120.5" id="Stroke-173" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="408.5" y1="96.5" x2="456.5" y2="96.5" id="Stroke-174" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="560.5" y1="48.5" x2="560.5" y2="104.5" id="Stroke-175" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="536.5" y1="80.5" x2="584.5" y2="80.5" id="Stroke-176" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="304.5" y1="80.5" x2="304.5" y2="136.5" id="Stroke-177" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="280.5" y1="112.5" x2="328.5" y2="112.5" id="Stroke-178" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="128.5" x2="240.5" y2="328.5" id="Stroke-179" stroke="#C3C3F4" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-180" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="160.5 208.5 152.5 216.5 152.5 192.5 160.5 192.5"></polygon>
+                        <polygon id="Stroke-181" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="80.5 216.5 72.5 224.5 72.5 200.5 80.5 200.5"></polygon>
+                        <line x1="440.5" y1="168.5" x2="472.5" y2="168.5" id="Stroke-182" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="456.5" y1="144.5" x2="456.5" y2="192.5" id="Stroke-183" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="392.5" y1="256.5" x2="424.5" y2="256.5" id="Stroke-184" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="520.5" y1="240.5" x2="552.5" y2="240.5" id="Stroke-185" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="264.5" y1="272.5" x2="296.5" y2="272.5" id="Stroke-186" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <path d="M528.5,176.5 L592.5,176.5 L592.5,168.5 C592.5,164.082 588.918,160.5 584.5,160.5 L536.5,160.5 C532.082,160.5 528.5,164.082 528.5,168.5 L528.5,176.5 Z" id="Fill-187" fill="#E6E6E6" mask="url(#mask-4)"></path>
+                        <polygon id="Fill-188" fill="#E6E6E6" mask="url(#mask-4)" points="264.5 208.5 280.5 208.5 280.5 172.5 264.5 172.5"></polygon>
+                        <path d="M288.4995,256.5 C288.4995,252.082 284.9175,248.5 280.4995,248.5 C276.0815,248.5 272.4995,252.082 272.4995,256.5 L288.4995,256.5 Z" id="Fill-189" fill="#E6E6E6" mask="url(#mask-4)"></path>
+                        <line x1="280.5" y1="248.5" x2="280.5" y2="240.5" id="Stroke-190" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <path d="M544.5,224.5 C544.5,220.082 540.918,216.5 536.5,216.5 C532.082,216.5 528.5,220.082 528.5,224.5 L544.5,224.5 Z" id="Fill-191" fill="#E6E6E6" mask="url(#mask-4)"></path>
+                        <line x1="536.5" y1="216.5" x2="536.5" y2="208.5" id="Stroke-192" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <path d="M416.5,240.5 C416.5,236.082 412.918,232.5 408.5,232.5 C404.082,232.5 400.5,236.082 400.5,240.5 L416.5,240.5 Z" id="Fill-193" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                        <line x1="408.5005" y1="232.5" x2="408.5005" y2="224.5" id="Stroke-194" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polyline id="Stroke-195" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="224.5 328.5 224.5 296.5 232.5 288.5 240.5 296.5 240.5 328.5"></polyline>
+                        <polyline id="Stroke-196" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="112.4966 326.1719 112.5006 312.4999 120.4996 304.4999 128.4996 312.4999 128.4996 328.4999"></polyline>
+                        <polyline id="Stroke-197" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="208.5 328.5 208.5 300.843 216.5 292.843 224.5 300.843 224.5 328.5"></polyline>
+                        <polyline id="Stroke-198" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="192.5 328.5 192.5 302.843 200.5 294.843 208.5 302.843 208.5 328.5"></polyline>
+                        <polyline id="Stroke-199" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="176.5 328.5 176.5 304.843 184.5 296.843 192.5 304.843 192.5 328.5"></polyline>
+                        <polyline id="Stroke-200" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="160.5 328.5 160.5 306.843 168.5 298.843 176.5 306.843 176.5 328.5"></polyline>
+                        <polyline id="Stroke-201" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="144.5 328.5 144.5 308.843 152.5 300.843 160.5 308.843 160.5 328.5"></polyline>
+                        <polyline id="Stroke-202" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="128.5 328.5 128.5 310.843 136.5 302.843 144.5 310.843 144.5 328.5"></polyline>
+                        <polyline id="Stroke-203" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="96.5 326 96.5 315.5 104.5 307.5 112.5 315.5 112.497 328.5"></polyline>
+                        <polyline id="Stroke-204" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="80.5 328.5 80.5 318.843 88.5 310.843 96.5 318.843 96.5 328.5"></polyline>
+                        <polyline id="Stroke-205" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="64.5 328.5 64.5 320.843 72.5 312.843 80.5 320.843 80.5 328.5"></polyline>
+                        <polyline id="Stroke-206" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="48.5 328.5 48.5 322.843 56.5 314.843 64.5 322.843 64.5 328.5"></polyline>
+                        <polyline id="Stroke-207" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="32.5 328.5 32.5 324.843 40.5 316.843 48.5 324.843 48.5 328.5"></polyline>
+                        <polyline id="Stroke-208" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="16.5 328.5 16.5 326.843 24.5 318.843 32.5 326.843 32.5 328.5"></polyline>
+                        <polyline id="Stroke-209" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="0.5 328.5 8.5 320.843 16.5 328.5"></polyline>
+                        <line x1="288.5" y1="160.5" x2="288.5" y2="208.5" id="Stroke-210" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="320.5" y1="160.5" x2="320.5" y2="208.5" id="Stroke-211" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="544.5" y1="128.5" x2="544.5" y2="176.5" id="Stroke-212" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="576.5" y1="128.5" x2="576.5" y2="176.5" id="Stroke-213" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="304.5" y1="296.5" x2="320.5" y2="296.5" id="Stroke-214" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="248.5" x2="368.5" y2="248.5" id="Stroke-215" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="256.5" x2="368.5" y2="256.5" id="Stroke-216" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="264.5" x2="368.5" y2="264.5" id="Stroke-217" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="272.5" x2="368.5" y2="272.5" id="Stroke-218" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="280.5" x2="368.5" y2="280.5" id="Stroke-219" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="288.5" x2="368.5" y2="288.5" id="Stroke-220" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="296.5" x2="368.5" y2="296.5" id="Stroke-221" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="299.1665" y1="288.5" x2="320.4995" y2="288.5" id="Stroke-222" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="280.5" x2="320.5" y2="280.5" id="Stroke-223" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="272.5" x2="320.5" y2="272.5" id="Stroke-224" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="264.5" x2="320.5" y2="264.5" id="Stroke-225" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="256.5" x2="320.5" y2="256.5" id="Stroke-226" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="248.5" x2="320.5" y2="248.5" id="Stroke-227" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="240.5" x2="368.5" y2="240.5" id="Stroke-228" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="240.5" x2="264.5" y2="240.5" id="Stroke-229" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="248.5" x2="264.5" y2="248.5" id="Stroke-230" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="256.5" x2="264.5" y2="256.5" id="Stroke-231" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="264.5" x2="264.5" y2="264.5" id="Stroke-232" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="272.5" x2="264.5" y2="272.5" id="Stroke-233" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="280.5" x2="264.5" y2="280.5" id="Stroke-234" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="288.5" x2="256.5" y2="288.5" id="Stroke-235" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="216.5" x2="256.5" y2="216.5" id="Stroke-236" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="352.5" y1="216.5" x2="368.5" y2="216.5" id="Stroke-237" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="208.5" x2="256.5" y2="208.5" id="Stroke-238" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="200.5" x2="264.5" y2="200.5" id="Stroke-239" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="192.5" x2="264.5" y2="192.5" id="Stroke-240" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="184.5" x2="264.5" y2="184.5" id="Stroke-241" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="176.5" x2="264.5" y2="176.5" id="Stroke-242" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="168.5" x2="264.5" y2="168.5" id="Stroke-243" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="160.5" x2="264.5" y2="160.5" id="Stroke-244" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="296.5" x2="256.5" y2="296.5" id="Stroke-245" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="232.5" x2="368.5" y2="232.5" id="Stroke-246" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="224.5" x2="368.5" y2="224.5" id="Stroke-247" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="152.5" x2="368.5" y2="152.5" id="Stroke-248" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="144.5" x2="368.5" y2="144.5" id="Stroke-249" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="136.5" x2="280.5" y2="136.5" id="Stroke-250" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="128.5" x2="280.5" y2="128.5" id="Stroke-251" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="120.5" x2="280.5" y2="120.5" id="Stroke-252" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="240.5" y1="112.5" x2="280.5" y2="112.5" id="Stroke-253" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="248.5" y1="104.5" x2="280.5" y2="104.5" id="Stroke-254" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="256.5" y1="96.5" x2="288.5" y2="96.5" id="Stroke-255" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="264.5" y1="88.5" x2="296.5" y2="88.5" id="Stroke-256" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="312.5" y1="88.5" x2="344.5" y2="88.5" id="Stroke-257" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="320.5" y1="96.5" x2="352.5" y2="96.5" id="Stroke-258" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="328.5" y1="104.5" x2="360.5" y2="104.5" id="Stroke-259" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="272.5" y1="80.5" x2="336.5" y2="80.5" id="Stroke-260" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="280.5" y1="72.5" x2="328.5" y2="72.5" id="Stroke-261" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="288.5" y1="64.5" x2="320.5" y2="64.5" id="Stroke-262" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="296.5" y1="56.5" x2="312.5" y2="56.5" id="Stroke-263" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="328.5" y1="128.5" x2="368.5" y2="128.5" id="Stroke-264" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="328.5" y1="136.5" x2="368.5" y2="136.5" id="Stroke-265" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="328.5" y1="120.5" x2="368.5" y2="120.5" id="Stroke-266" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="328.5" y1="112.5" x2="368.5" y2="112.5" id="Stroke-267" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-268" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="376.5 200.5 384.5 200.5 384.5 192.5 376.5 192.5"></polygon>
+                        <polygon id="Stroke-269" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="488.5 280.5 496.5 280.5 496.5 272.5 488.5 272.5"></polygon>
+                        <polygon id="Stroke-270" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 272.5 496.5 272.5 496.5 264.5 480.5 264.5"></polygon>
+                        <polygon id="Stroke-271" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="488.5 264.5 496.5 264.5 496.5 256.5 488.5 256.5"></polygon>
+                        <polygon id="Stroke-272" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="488.5 200.5 496.5 200.5 496.5 192.5 488.5 192.5"></polygon>
+                        <polygon id="Stroke-273" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="440.5 280.5 448.5 280.5 448.5 272.5 440.5 272.5"></polygon>
+                        <polygon id="Stroke-274" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 256.5 496.5 256.5 496.5 248.5 480.5 248.5"></polygon>
+                        <polygon id="Stroke-275" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="488.5 248.5 496.5 248.5 496.5 240.5 488.5 240.5"></polygon>
+                        <polygon id="Stroke-276" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 160.5 440.5 160.5 440.5 152.5 432.5 152.5"></polygon>
+                        <polygon id="Stroke-277" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 176.5 440.5 176.5 440.5 168.5 432.5 168.5"></polygon>
+                        <polygon id="Stroke-278" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="432.5 192.5 440.5 192.5 440.5 184.5 432.5 184.5"></polygon>
+                        <polygon id="Stroke-279" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="480.5 240.5 496.5 240.5 496.5 232.5 480.5 232.5"></polygon>
+                        <polygon id="Stroke-280" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="488.5 232.5 496.5 232.5 496.5 224.5 488.5 224.5"></polygon>
+                        <line x1="368.5" y1="208.5" x2="352.5" y2="208.5" id="Stroke-281" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="200.5" x2="344.5" y2="200.5" id="Stroke-282" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="192.5" x2="344.5" y2="192.5" id="Stroke-283" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="184.5" x2="344.5" y2="184.5" id="Stroke-284" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="176.5" x2="344.5" y2="176.5" id="Stroke-285" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="168.5" x2="344.5" y2="168.5" id="Stroke-286" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="368.5" y1="160.5" x2="344.5" y2="160.5" id="Stroke-287" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="560.5" y1="264.5" x2="576.5" y2="264.5" id="Stroke-288" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="216.5" x2="624.5" y2="216.5" id="Stroke-289" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="224.5" x2="624.5" y2="224.5" id="Stroke-290" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="232.5" x2="624.5" y2="232.5" id="Stroke-291" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="240.5" x2="624.5" y2="240.5" id="Stroke-292" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="248.5" x2="624.5" y2="248.5" id="Stroke-293" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="256.5" x2="624.5" y2="256.5" id="Stroke-294" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="264.5" x2="624.5" y2="264.5" id="Stroke-295" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="555.1665" y1="256.5" x2="576.4995" y2="256.5" id="Stroke-296" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="248.5" x2="576.5" y2="248.5" id="Stroke-297" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="240.5" x2="576.5" y2="240.5" id="Stroke-298" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="232.5" x2="576.5" y2="232.5" id="Stroke-299" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="224.5" x2="576.5" y2="224.5" id="Stroke-300" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="216.5" x2="576.5" y2="216.5" id="Stroke-301" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="208.5" x2="624.5" y2="208.5" id="Stroke-302" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="208.5" x2="520.5" y2="208.5" id="Stroke-303" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="216.5" x2="520.5" y2="216.5" id="Stroke-304" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="224.5" x2="520.5" y2="224.5" id="Stroke-305" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="232.5" x2="520.5" y2="232.5" id="Stroke-306" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="240.5" x2="520.5" y2="240.5" id="Stroke-307" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="248.5" x2="520.5" y2="248.5" id="Stroke-308" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="256.5" x2="512.5" y2="256.5" id="Stroke-309" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="184.5" x2="512.5" y2="184.5" id="Stroke-310" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="608.5" y1="184.5" x2="624.5" y2="184.5" id="Stroke-311" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="176.5" x2="512.5" y2="176.5" id="Stroke-312" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="168.5" x2="520.5" y2="168.5" id="Stroke-313" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="160.5" x2="520.5" y2="160.5" id="Stroke-314" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="152.5" x2="520.5" y2="152.5" id="Stroke-315" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="144.5" x2="520.5" y2="144.5" id="Stroke-316" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="136.5" x2="520.5" y2="136.5" id="Stroke-317" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="128.5" x2="520.5" y2="128.5" id="Stroke-318" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="264.5" x2="512.5" y2="264.5" id="Stroke-319" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="200.5" x2="624.5" y2="200.5" id="Stroke-320" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="192.5" x2="624.5" y2="192.5" id="Stroke-321" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="120.5" x2="624.5" y2="120.5" id="Stroke-322" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="112.5" x2="624.5" y2="112.5" id="Stroke-323" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="104.5" x2="536.5" y2="104.5" id="Stroke-324" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="96.5" x2="536.5" y2="96.5" id="Stroke-325" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="88.5" x2="536.5" y2="88.5" id="Stroke-326" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="496.5" y1="80.5" x2="536.5" y2="80.5" id="Stroke-327" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="504.5" y1="72.5" x2="536.5" y2="72.5" id="Stroke-328" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="512.5" y1="64.5" x2="544.5" y2="64.5" id="Stroke-329" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="520.5" y1="56.5" x2="552.5" y2="56.5" id="Stroke-330" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="568.5" y1="56.5" x2="600.5" y2="56.5" id="Stroke-331" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="576.5" y1="64.5" x2="608.5" y2="64.5" id="Stroke-332" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="584.5" y1="72.5" x2="616.5" y2="72.5" id="Stroke-333" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="528.5" y1="48.5" x2="592.5" y2="48.5" id="Stroke-334" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="536.5" y1="40.5" x2="584.5" y2="40.5" id="Stroke-335" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="544.5" y1="32.5" x2="576.5" y2="32.5" id="Stroke-336" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="552.5" y1="24.5" x2="568.5" y2="24.5" id="Stroke-337" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="584.5" y1="96.5" x2="624.5" y2="96.5" id="Stroke-338" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="584.5" y1="104.5" x2="624.5" y2="104.5" id="Stroke-339" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="584.5" y1="88.5" x2="624.5" y2="88.5" id="Stroke-340" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="584.5" y1="80.5" x2="624.5" y2="80.5" id="Stroke-341" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="176.5" x2="608.5" y2="176.5" id="Stroke-342" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="168.5" x2="600.5" y2="168.5" id="Stroke-343" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="160.5" x2="600.5" y2="160.5" id="Stroke-344" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="152.5" x2="600.5" y2="152.5" id="Stroke-345" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="144.5" x2="600.5" y2="144.5" id="Stroke-346" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="136.5" x2="600.5" y2="136.5" id="Stroke-347" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <line x1="624.5" y1="128.5" x2="600.5" y2="128.5" id="Stroke-348" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-349" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="584.5 236.5 600.5 236.5 600.5 216.5 584.5 216.5"></polygon>
+                        <line x1="604.5" y1="236.5" x2="604.5" y2="244.5" id="Stroke-350" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-351" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="584.5 264.5 600.5 264.5 600.5 244.5 584.5 244.5"></polygon>
+                        <polygon id="Stroke-352" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 252.5 472.5 252.5 472.5 232.5 456.5 232.5"></polygon>
+                        <line x1="476.5" y1="252.5" x2="476.5" y2="260.5" id="Stroke-353" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-354" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="456.5 280.5 472.5 280.5 472.5 260.5 456.5 260.5"></polygon>
+                        <polygon id="Stroke-355" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="328.5 268.5 344.5 268.5 344.5 248.5 328.5 248.5"></polygon>
+                        <line x1="348.5" y1="268.5" x2="348.5" y2="276.5" id="Stroke-356" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)"></line>
+                        <polygon id="Stroke-357" stroke="#C3C3C3" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="328.5 296.5 344.5 296.5 344.5 276.5 328.5 276.5"></polygon>
+                        <polyline id="Stroke-358" stroke="#E6E6E6" stroke-linecap="round" stroke-linejoin="round" mask="url(#mask-4)" points="64.5 240.5 60.5 236.5 104.5 192.5 144.5 232.5"></polyline>
+                    </g>
+                    <g id="Group-384" transform="translate(240.000000, 16.000000)" fill="#C3C3C3">
+                        <polygon id="Fill-360" points="16.5 208.5 112.5 208.5 112.5 200.5 16.5 200.5"></polygon>
+                        <polygon id="Fill-362" points="32.5 136.5 96.5 136.5 96.5 128.5 32.5 128.5"></polygon>
+                        <polygon id="Fill-364" points="160.5 120.5 224.5 120.5 224.5 112.5 160.5 112.5"></polygon>
+                        <polygon id="Fill-366" points="288.5 104.5 352.5 104.5 352.5 96.5 288.5 96.5"></polygon>
+                        <polygon id="Fill-368" points="144.5 192.5 240.5 192.5 240.5 184.5 144.5 184.5"></polygon>
+                        <polygon id="Fill-370" points="16.5 288.5 64.5 288.5 64.5 280.5 16.5 280.5"></polygon>
+                        <polygon id="Fill-372" points="144.5 272.5 192.5 272.5 192.5 264.5 144.5 264.5"></polygon>
+                        <polygon id="Fill-374" points="272.5 176.5 368.5 176.5 368.5 168.5 272.5 168.5"></polygon>
+                        <polygon id="Fill-376" points="272.5 256.5 320.5 256.5 320.5 248.5 272.5 248.5"></polygon>
+                        <polygon id="Fill-378" points="64.5 32.5 0.5 96.5 0.5 112.5 64.5 48.5 128.5 112.5 128.5 96.5"></polygon>
+                        <polygon id="Fill-380" points="192.5 16.5 128.5 80.5 128.5 96.5 192.5 32.5 256.5 96.5 256.5 80.5"></polygon>
+                        <polygon id="Fill-382" points="320.5 0.5 256.5 64.5 256.5 80.5 320.5 16.5 384.5 80.5 384.5 64.5"></polygon>
+                    </g>
+                    <polygon id="Stroke-385" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="384.5 280.5 432.5 280.5 432.5 272.5 384.5 272.5"></polygon>
+                    <polygon id="Stroke-386" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="440.5 296.5 488.5 296.5 488.5 288.5 440.5 288.5"></polygon>
+                    <line x1="368.5" y1="312.5" x2="496.5" y2="296.5" id="Stroke-387" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="368.5" y1="96.5" x2="368.5" y2="312.5" id="Stroke-388" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="240.5" y1="328.5" x2="240.5" y2="112.5" id="Stroke-389" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-391" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="496.5 96.5 432.5 32.5 368.5 96.5"></polyline>
+                    <polygon id="Stroke-392" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="256.5 296.5 304.5 296.5 304.5 288.5 256.5 288.5"></polygon>
+                    <polygon id="Stroke-393" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="256.5 216.5 352.5 216.5 352.5 208.5 256.5 208.5"></polygon>
+                    <polygon id="Stroke-394" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="272.5 144.5 336.5 144.5 336.5 136.5 272.5 136.5"></polygon>
+                    <polygon id="Stroke-395" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="528.5 112.5 592.5 112.5 592.5 104.5 528.5 104.5"></polygon>
+                    <polygon id="Stroke-396" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="400.5 128.5 464.5 128.5 464.5 120.5 400.5 120.5"></polygon>
+                    <polygon id="Stroke-397" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="312.5 312.5 360.5 312.5 360.5 304.5 312.5 304.5"></polygon>
+                    <polygon id="Stroke-398" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="368.5 312.5 304.5 320.5 304.5 312.5"></polygon>
+                    <line x1="240.5" y1="328.5" x2="304.5" y2="320.5" id="Stroke-399" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="496.5" y1="296.5" x2="496.5" y2="96.5" id="Stroke-401" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polygon id="Stroke-402" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="264.5 208.5 344.5 208.5 344.5 160.5 264.5 160.5"></polygon>
+                    <polygon id="Stroke-403" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="512.5 184.5 608.5 184.5 608.5 176.5 512.5 176.5"></polygon>
+                    <polygon id="Stroke-404" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="520.5 176.5 600.5 176.5 600.5 128.5 520.5 128.5"></polygon>
+                    <polyline id="Stroke-405" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="368.5 112.5 304.5 48.5 240.5 112.5"></polyline>
+                    <polygon id="Stroke-406" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="512.5 264.5 560.5 264.5 560.5 256.5 512.5 256.5"></polygon>
+                    <polygon id="Stroke-407" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="568.5 280.5 616.5 280.5 616.5 272.5 568.5 272.5"></polygon>
+                    <polygon id="Stroke-408" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="624.5 280.5 560.5 288.5 560.5 280.5"></polygon>
+                    <polygon id="Stroke-410" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="496.5 296.5 432.5 304.5 432.5 296.5"></polygon>
+                    <line x1="496.5" y1="296.5" x2="560.5" y2="288.5" id="Stroke-411" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <g id="Group-416" transform="translate(488.000000, 0.000000)" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline id="Stroke-412" points="136.5 80.5 72.5 16.5 8.5 80.5"></polyline>
+                        <polyline id="Stroke-414" points="136.5 80.5 136.5 64.5 72.5 0.5 0.5 72.5 8.5 80.5"></polyline>
+                    </g>
+                    <polyline id="Stroke-417" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="368.5 96.5 368.5 96.5 360.5 88.5 432.5 16.5 496.5 80.5 496.5 96.5"></polyline>
+                    <polyline id="Stroke-418" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="240.5 112.5 232.5 120.5 232.5 104.5 304.5 32.5 368.5 96.5 368.5 112.5"></polyline>
+                    <polygon id="Stroke-419" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="392.5 272.5 424.5 272.5 424.5 224.5 392.5 224.5"></polygon>
+                    <polygon id="Stroke-420" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="520.5 256.5 552.5 256.5 552.5 208.5 520.5 208.5"></polygon>
+                    <polygon id="Stroke-421" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="264.5 288.5 296.5 288.5 296.5 240.5 264.5 240.5"></polygon>
+                    <polygon id="Stroke-422" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="384.5 200.5 480.5 200.5 480.5 192.5 384.5 192.5"></polygon>
+                    <polygon id="Stroke-423" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="392.5 192.5 424.5 192.5 424.5 144.5 392.5 144.5"></polygon>
+                    <polygon id="Stroke-424" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="440.5 192.5 472.5 192.5 472.5 144.5 440.5 144.5"></polygon>
+                    <polyline id="Stroke-425" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="264.5 72.5 264.5 56.5 248.5 56.5 248.5 88.5"></polyline>
+                    <polyline id="Stroke-426" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="392.5 56.5 392.5 40.5 376.5 40.5 376.5 72.5"></polyline>
+                    <polyline id="Stroke-427" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="520.5 40.5 520.5 24.5 504.5 24.5 504.5 56.5"></polyline>
+                    <polygon id="Stroke-428" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="456.5 120.5 408.5 120.5 408.5 88.5 432.5 64.5 456.5 88.5"></polygon>
+                    <polygon id="Stroke-429" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="328.5 136.5 280.5 136.5 280.5 104.5 304.5 80.5 328.5 104.5"></polygon>
+                    <polygon id="Stroke-430" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="584.5 104.5 536.5 104.5 536.5 72.5 560.5 48.5 584.5 72.5"></polygon>
+                    <polygon id="Stroke-431" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="448.5 288.5 480.5 288.5 480.5 224.5 448.5 224.5"></polygon>
+                    <polygon id="Stroke-432" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="320.5 304.5 352.5 304.5 352.5 240.5 320.5 240.5"></polygon>
+                    <polygon id="Stroke-433" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round" points="576.5 272.5 608.5 272.5 608.5 208.5 576.5 208.5"></polygon>
+                    <line x1="240.5" y1="304.5" x2="312.5" y2="304.5" id="Stroke-434" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="440.5" y1="288.5" x2="368.5" y2="288.5" id="Stroke-435" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="368.5" y1="304.5" x2="360.5" y2="304.5" id="Stroke-436" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="496.5" y1="288.5" x2="488.5" y2="288.5" id="Stroke-437" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <line x1="568.5" y1="272.5" x2="496.5" y2="272.5" id="Stroke-438" stroke="#7A7A7A" stroke-linecap="round" stroke-linejoin="round"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

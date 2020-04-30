@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="52px" viewBox="0 0 62 52" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>6E959CCD-FBE4-492C-ACBE-C073FBB13E08</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Asset-Artboard-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons-/-home-features-/-smart-home-default" transform="translate(0.200054, 0.000000)">
+            <g id="smart-home-icon">
+                <polygon id="Fill-1" fill="#FFFFFF" points="4.3749 22.7098 4.3749 51.3798 56.3809 51.3798 56.3809 22.7098 30.3789 5.3748"></polygon>
+                <polyline id="Stroke-2" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="56.3802 51.3798 4.3752 51.3798 4.3752 22.7098 30.3782 5.3748 56.3802 22.7098"></polyline>
+                <polygon id="Fill-4" fill="#FFDF2A" points="0.3753 21.3769 0.3753 25.3769 30.3783 5.3749 60.3803 25.3769 60.3803 21.3769 30.3783 1.3749"></polygon>
+                <g id="Group-13" transform="translate(0.000000, 0.754600)">
+                    <polygon id="Fill-5" fill="#C3C3C3" points="30.3782 4.6203 4.3752 21.9553 4.3752 26.6233 30.3782 8.6213 56.3802 26.6233 56.3802 21.9553"></polygon>
+                    <polyline id="Stroke-7" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="4.3753 17.9553 30.3783 0.6203 60.3803 20.6223 60.3803 24.6223 30.3783 4.6203"></polyline>
+                    <polyline id="Stroke-9" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="56.3802 17.9553 30.3782 0.6203 0.3752 20.6223 0.3752 24.6223 30.3782 4.6203"></polyline>
+                    <polyline id="Stroke-11" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="55.677 50.6252 4.375 50.6252 4.375 21.9552 30.378 4.6202 56.38 21.9552 56.38 50.6252 40.379 50.6252"></polyline>
+                </g>
+                <polygon id="Fill-14" fill="#FFDF2A" points="4.375 51.3806 56.381 51.3806 56.381 46.1366 4.375 46.1366"></polygon>
+                <g id="Group-21" transform="translate(4.000000, 21.754600)">
+                    <polygon id="Stroke-15" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round" points="0.375 29.625 52.38 29.625 52.38 24.381 0.375 24.381"></polygon>
+                    <path d="M27.2034,15.6887 C27.2034,16.3387 26.6764,16.8677 26.0244,16.8677 C25.3734,16.8677 24.8464,16.3387 24.8464,15.6887 C24.8464,15.0377 25.3734,14.5097 26.0244,14.5097 C26.6764,14.5097 27.2034,15.0377 27.2034,15.6887" id="Fill-17" fill="#7A7A7A"></path>
+                    <path d="M37.9573,5.0803 C34.9083,2.0173 30.6883,0.1183 26.0243,0.1183 C21.3713,0.1183 17.1593,2.0073 14.1123,5.0593" id="Stroke-18" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M33.7444,8.5813 C31.7794,6.5843 29.0484,5.3443 26.0244,5.3443 C23.0094,5.3443 20.2824,6.5783 18.3174,8.5663" id="Stroke-19" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M29.9388,12.2082 C28.9718,11.1322 27.5848,10.4422 26.0248,10.4422 C24.4678,10.4422 23.0838,11.1292 22.1178,12.2002" id="Stroke-20" stroke="#7A7A7A" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
