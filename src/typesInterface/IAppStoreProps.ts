@@ -14,4 +14,5 @@ export interface IAppStoreProps {
   quotes?: any;
   error?: any;
   stepper?: any;
+  dispatch?: any;
 }

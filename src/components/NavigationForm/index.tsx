@@ -30,7 +30,7 @@ interface INavigationProps extends IAppStoreProps {
 const STEP_TYPES = [
   {
     type: 'new organic',
-    value: 'NEW QUOTE',
+    value: 'E&O APPLICATION',
     stepsSum: 7,
   },
   {
@@ -121,11 +121,7 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
     }; //JSON.parse(localStorage.getItem('step'));
     const stepType = currentStep && STEP_TYPES.find((step) => step.type === currentStep.type);
     const stepTypeValue = stepType ? stepType.value : '';
-    const step =
-      currentStep && stepType ? `step ${currentStep.number} of ${stepType.stepsSum}` : '';
-    console.log('STEPPPPPPPPP', step);
-    console.log('STEPPPPPPPPP', stepTypeValue);
-    console.log('STEPPPPPPPPP', stepType);
+    const step = currentStep && stepType ? `FIRM INFORMATION` : '';
 
     const hideBackButton = currentStep && currentStep.number === 1;
 

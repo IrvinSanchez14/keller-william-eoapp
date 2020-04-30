@@ -1,18 +1,22 @@
 const withImages = require('next-images');
+const withCSS = require('@zeit/next-css');
 
-module.exports = withImages({
-  webpack(cfg) {
-    const originalEntry = cfg.entry;
-    originalEntry.entry = async () => {
-      const entries = await originalEntry();
+module.exports = withImages(
+  withCSS({
+    webpack(cfg) {
+      const originalEntry = cfg.entry;
+      originalEntry.entry = async () => {
+        const entries = await originalEntry();
 
-      if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.ts')) {
-        entries['main.js'].unshift('./client/polyfills.ts');
-      }
+        if (entries['main.js'] && !entries['main.js'].includes('./client/polyfills.ts')) {
+          entries['main.js'].unshift('./client/polyfills.ts');
+        }
 
-      return entries;
-    };
+        return entries;
+      };
 
-    return cfg;
-  },
-});
+      return cfg;
+    },
+    cssModules: true,
+  }),
+);

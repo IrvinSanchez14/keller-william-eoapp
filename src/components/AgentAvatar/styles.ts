@@ -96,7 +96,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
       borderRadius: '50%',
       fontSize: 10,
       letterSpacing: -1,
-      fontFamily: ` "Arial", "sans-serif"`,
+      fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
       color: theme.palette.common.white,
       ...(!!avatar && {
         fontSize: responsiveSizes[0] * 0.2,

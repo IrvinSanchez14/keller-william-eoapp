@@ -85,7 +85,7 @@ const muiPalette = {
 };
 
 const muiTypography: MuiThemeOptions['typography'] = {
-  fontFamily: `Arial", "sans-serif"`,
+  fontFamily: `"${fonts.Effra}",Arial", "sans-serif"`,
   h1: {
     fontSize: 24,
     lineHeight: '28px',

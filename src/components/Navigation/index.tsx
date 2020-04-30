@@ -113,7 +113,6 @@ function Navigation(Props: NavigationProps) {
   };
 
   const handleResize = () => {
-    console.log('irvin', window.innerWidth);
     setIsMobile(window.innerWidth < 690);
   };
 

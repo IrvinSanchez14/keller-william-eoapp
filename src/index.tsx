@@ -3,11 +3,9 @@ import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import { AppStateContextProvider } from './store';
-import PageExample from './containers/PageExample';
 import { uiStoreInstance } from 'src/styles/FormStyle/UIStore';
 import { GlobalCssOverride as GlobalCss } from 'src/styles/FormStyle/css/globalCss';
-import { FirmInformation } from './containers/TreeEO/FirmInformation';
-import FormRouter from './components/FormRouter';
+import AppEO from './containers/TreeEO';
 
 export class App extends React.Component {
   render() {
@@ -16,9 +14,7 @@ export class App extends React.Component {
         <MuiThemeProvider theme={uiStoreInstance.muiTheme}>
           <CssBaseline />
           <GlobalCss />
-          <FormRouter>
-            <FirmInformation />
-          </FormRouter>
+          <AppEO />
         </MuiThemeProvider>
       </AppStateContextProvider>
     );

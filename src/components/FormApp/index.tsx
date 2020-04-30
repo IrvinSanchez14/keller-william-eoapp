@@ -16,7 +16,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     isInitValid?: boolean;
     initialValues: Object;
     validationSchema?: Object;
-    onSubmit?: (values: any, actions: any) => void;
+    onSubmit?: (dispatch: any, values: any) => void;
     hideButton?: boolean;
     buttonLabel?: string;
     buttonDescription?: string;
@@ -61,10 +61,13 @@ export class FormApp extends React.Component<CustomFormProps> {
       customNavigationSaveProgress();
     }
     saveProgress();*/
+    console.log('ERVIN?');
   };
 
   onSubmit = (values: any, formikActions: any) => {
-    // this.props.onSubmit(values, formikActions);
+    console.log('continue', values);
+    console.log('formikActions', formikActions);
+    this.props.onSubmit(this.props.dispatch, values);
   };
 
   render() {
@@ -154,7 +157,7 @@ export class FormApp extends React.Component<CustomFormProps> {
                   })}
                 >
                   <Row align="flex-start" className={classes.actionButtonContainer}>
-                    <ButtonForm
+                    <ButtonForm //
                       data-test-id={dataTestId || 'continueButton'}
                       type="submit"
                       label={buttonLabel}

@@ -46,6 +46,7 @@
     "@types/react": "^16.9.34",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
+    "@zeit/next-css": "^1.0.1",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.2",
     "classnames": "^2.2.6",
@@ -68,7 +69,8 @@
     "styled-reset": "^4.1.4",
     "text-mask-addons": "^3.8.0",
     "ts-loader": "^7.0.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "yup": "^0.28.5"
   },
   "husky": {
     "hooks": {

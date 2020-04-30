@@ -7,7 +7,6 @@ function FormStepper(Props: any) {
   const { store, children } = Props;
   const childrenArray = React.Children.toArray(children);
   const steps = childrenArray.map((step: any, index: any) => {
-    console.log('childreeeeeeeeeeen', step);
     const controlProps = {
       index,
       last: index + 1 === childrenArray.length,

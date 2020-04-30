@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     borderRadius: 12,
     boxShadow: 'none',
     width: customWidth || '100%',
-    fontFamily: `Arial", "sans-serif"`,
+    fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
     fontSize: 22,
     fontWeight: 'bold',
     padding: theme.spacing(0, 2, 0, 2),

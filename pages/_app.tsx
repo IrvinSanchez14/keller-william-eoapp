@@ -1,14 +1,14 @@
 import { AppProps } from 'next/app';
-import 'assets/fonts/Effra/stylesheet.css';
+//import 'assets/fonts/Effra/stylesheet.css';
 import React from 'react';
 import Head from 'next/head';
 
 import HomePageEO from 'src/containers/HomePageEO';
 import App from 'src';
 
-function MyApp() {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div>
+    <Component {...pageProps}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -34,7 +34,7 @@ function MyApp() {
         <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
       <App />
-    </div>
+    </Component>
   );
 }
 

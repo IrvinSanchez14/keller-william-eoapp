@@ -206,7 +206,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   saveProgressButton: {
-    fontFamily: `"Arial", "sans-serif"`,
+    fontFamily: `"${fonts.Effra}","Arial", "sans-serif"`,
     color: theme.palette.main.blue,
     fontSize: theme.fontSize.xs,
     fontWeight: 400,

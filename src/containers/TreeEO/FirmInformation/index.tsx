@@ -1,25 +1,39 @@
 import React from 'react';
+import * as Yup from 'yup';
 import { FormikErrors, FormikTouched } from 'formik';
 
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { storeFirmConfirmation } from 'src/store/actions/app';
 
 type FullNameProps = IAppStoreProps;
 
 export const getFullNameFields = () => [
   {
-    name: 'firstName',
+    name: 'contacName',
     type: 'text',
-    placeholder: 'firstName',
-    label: 'firstName',
+    placeholder: 'contacName',
+    label: 'Contact Name',
   },
   {
-    name: 'lastName',
+    name: 'brokerName',
     type: 'text',
-    placeholder: 'lastname',
-    label: 'lastName',
+    placeholder: 'brokerName',
+    label: 'Broker/owner name',
+  },
+  {
+    name: 'kwMarketCenterName',
+    type: 'text',
+    placeholder: 'kwMarketCenterName',
+    label: 'KW Market Center name',
+  },
+  {
+    name: 'yearEstablished',
+    type: 'number',
+    placeholder: 'yearEstablished',
+    label: 'Year established',
   },
 ];
 
@@ -30,12 +44,12 @@ export type FormikProps = {
   setFieldTouched: any;
 };
 
-const mockProps = {
-  errors: '',
-  touched: '',
-  values: '',
-  setFieldTouched: '',
-};
+export const fullNameValidateSchema = Yup.object().shape({
+  contacName: Yup.string().required('Field is required'),
+  brokerName: Yup.string().required('Field is required'),
+  kwMarketCenterName: Yup.string().required('Field is required'),
+  yearEstablished: Yup.string().required('Field is required'),
+});
 
 export class FirmInformation extends React.Component<FullNameProps> {
   nextStep = async (values: any, actions: any) => {
@@ -85,7 +99,6 @@ export class FirmInformation extends React.Component<FullNameProps> {
         key={name}
         name={name}
         type={type}
-        placeholder={placeholder}
         setFieldTouched={setFieldTouched}
         label={label}
         fullWidth
@@ -97,7 +110,6 @@ export class FirmInformation extends React.Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    console.log('fullNameValidateSchema');
     return (
       !isLoading && (
         <StepWrapper
@@ -113,16 +125,19 @@ export class FirmInformation extends React.Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              firstName: 'firstName' || '',
-              lastName: 'lastName' || '',
+              contacName: '' || '',
+              brokerName: '' || '',
+              kwMarketCenterName: '' || '',
+              yearEstablished: '' || '',
             }}
             isInitValid={false}
-            validationSchema={[]}
-            onSubmit={this.nextStep}
+            validationSchema={fullNameValidateSchema}
+            onSubmit={storeFirmConfirmation}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
             isLoading={false}
             isInQuestionnaire
+            dispatch={this.props.dispatch}
           >
             {this.renderFormChildren}
           </FormApp>

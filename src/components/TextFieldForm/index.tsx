@@ -7,9 +7,10 @@ import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrect
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
 import { WithStyles } from 'src/styles/FormStyle/css/withStyles';
+import { Column } from '../LayoutWrapper/Flex';
+import { LabelForm } from '../LabelForm';
 
 import { useStyles } from './styles';
-import { Column } from '../LayoutWrapper/Flex';
 
 export type TextFieldProps = InputProps &
   WithStyles<typeof useStyles> & {
@@ -140,7 +141,7 @@ export function TextFieldForm(Props: TextFieldProps) {
   });
   return (
     <Column className={classnames(classes.container, containerStyles)}>
-      <p>Label</p>
+      <LabelForm label={label} errorLabel={!!errorText ? errorText : ''} />
       <div className={classes.inputWrapper}>
         {mask && (
           <MaskedInput

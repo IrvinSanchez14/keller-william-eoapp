@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     customWidthDesktop,
     asLink,
   }: any) => ({
-    fontFamily: ` "Arial", "sans-serif"`,
+    fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
     fontWeight: 500,
     height: 50,
     width: customWidthMobile || '100%',
