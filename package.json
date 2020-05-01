@@ -10,7 +10,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet"
+    "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet",
+    "export": "npm run build && next export"
   },
   "dependencies": {
     "next": "9.3.5",
