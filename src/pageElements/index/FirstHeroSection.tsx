@@ -1,13 +1,10 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
+
+import ButtonWithArrow from 'src/components/Button/ButtonArrow';
 import theme from 'src/styles/MarketingEO/theme';
-import { IeStyles } from 'src/styles/MarketingEO/utils';
-import Image from 'src/components/Image';
-import P from 'src/components/P';
-import FirstHeroSection from 'src/pageElements/index/FirstHeroSection';
-import PartnersHeroSection from 'src/pageElements/index/PartnersHeroSection';
-import StepsHeroSection from 'src/pageElements/index/StepsHeroSection';
+import H from 'src/components/H';
 
 const StyledSection = styled.section`
   position: relative;
@@ -36,8 +33,10 @@ const StyledHeader = styled.header`
   `};
 `;
 
-const StyledText = styled(P)`
-  color: ${({ theme }) => theme.colors.dark};
+const StyledDogContainer = styled.div`
+  flex-direction: row;
+  align-items: center;
+  display: flex;
 `;
 
 const StyledSVG = styled(SVG)`
@@ -53,41 +52,45 @@ const StyledSVG = styled(SVG)`
   @media (max-width: 1188px) {
     display: none;
   }
-  // display:none;
-  // ${({ customHidden }) => customHidden && `display: flex;`};
 `;
 
-const StyledPersonDogSVG = styled(SVG)`
-  ${({ position }) => position && `position: ${position};`};
-  ${({ top }) => top && `top: ${top};`};
-  ${({ right }) => right && `right: ${right};`};
-  ${({ left }) => left && `left: ${left};`};
-  ${({ bottom }) => bottom && `bottom: ${bottom};`};
-  ${({ height }) => height && `height: ${height};`};
-  ${({ width }) => width && `width: ${width};`};
-  // only phone
-  // @media (max-width: 599px) {
-  //   width: 100%;
-  //   height: 290px;
-  // }
-  // // tablet portrait up
-  // @media (min-width: 600px) {
-  //   width: 340px;
-  //   height: 200px;
-  // }
-  // @media (min-width: 650px) and (max-width: 700px) {
-  //   width: 390px;
-  //   height: 200px;
-  // }
-  @media (max-width: 436px) {
-    width: 100%;
-    height: 290px;
+const StyledTextHeader = styled.h1`
+  font-size: 12px;
+  font-style: 'Bold';
+  letter-spacing: 2px;
+  ${({ padding }) =>
+    padding &&
+    `
+      padding: ${padding};
+    `};
+`;
+
+const StyledTextContainer = styled.div`
+  padding: 23px 0 0 0;
+  ${({ padding }) => padding && `padding: ${padding}`};
+`;
+
+const StyledTextElement = styled.span`
+  ${({ fontSize }) => fontSize && `font-size: ${fontSize};`}
+  color: rgb(29, 37, 60);
+  @media (min-width: 690px) {
+    display: flex;
+  }
+  @media (max-width: 689px) {
+    ${({ insertBr }) =>
+      insertBr &&
+      `
+      &::after {
+        display: block;
+        content: '\';
+        white-space: pre;
+      }
+    `}
   }
 `;
 
 const StyledSofaContainer = styled.div`
   padding-top: 10px;
-  // flex-direction: column;
   @media (max-width: 436px) {
     width: 230px;
     height: 210px;
@@ -161,6 +164,20 @@ const StyledSofaContainer = styled.div`
     margin-left: 120px;
     position: absolute;
     display: flex;
+  }
+`;
+
+const StyledPersonDogSVG = styled(SVG)`
+  ${({ position }) => position && `position: ${position};`};
+  ${({ top }) => top && `top: ${top};`};
+  ${({ right }) => right && `right: ${right};`};
+  ${({ left }) => left && `left: ${left};`};
+  ${({ bottom }) => bottom && `bottom: ${bottom};`};
+  ${({ height }) => height && `height: ${height};`};
+  ${({ width }) => width && `width: ${width};`};
+  @media (max-width: 436px) {
+    width: 100%;
+    height: 290px;
   }
 `;
 
@@ -372,57 +389,27 @@ const StyledIconsContainer = styled.div`
   }
 `;
 
-const StyledSpan = styled.span`
-  color: ${({ theme }) => theme.colors.primary};
-`;
-
-const StyledTextElement = styled.span`
-  @media (min-width: 600px) {
-    display: block;
+const StyledTextBroughtContainer = styled.div`
+  justify-content: center;
+  display: flex;
+  @media (min-width: 1189px) {
+    margin-top: -140px;
   }
 `;
 
-const sharedIconStyles = css`
-  ${IeStyles`
-    svg {
-      height: 300px !important;
-    }
-  `};
-  position: absolute;
-  z-index: 1;
+const StyledTextBrought = styled.h3`
+  font-size: 2.8rem;
+  font-style: 'Bold';
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 40px 0 40px 0;
 `;
 
-const StyledMobilePhoneIcon = styled(Image)`
-  ${sharedIconStyles};
-  display: none;
-  ${({ theme }) => theme.tablet`
-    display: block;
-    width: 256px;
-    height: 450px;
-    left: 50%;
-    top: 132px;
-    z-index: 1;
-    transform: translateX(-50%);
-  `};
-`;
-
-const StyledDesktopPhoneIcon = styled(Image)`
-  ${sharedIconStyles};
-  right: 99px;
-  top: 162px;
-  width: 427px;
-  height: 766px;
-  ${({ theme }) => theme.desktopSmall`right: -42px`};
-  @media (max-width: 960px) {
-    right: -36px;
-    top: 145px;
-    width: 355px;
-  }
-  ${({ theme }) => theme.tablet`display: none`};
-`;
-
-function HeroSection() {
-  const renderBackgroundShapes = () => {
+const FirstHeroSection = (): JSX.Element => {
+  const renderBackgroundShapes = (): Array<JSX.Element> => {
     const shapes = [
       {
         src: '/static/img/heroImgs/desktopShape.svg',
@@ -437,102 +424,59 @@ function HeroSection() {
         right: '0',
         isTabletHidden: true,
       },
-      // {
-      //   src: '/static/img/heroImgs/desktopCloudsLeft.svg',
-      //   bottom: '237px',
-      //   left: '0',
-      //   isTabletHidden: true,
-      // },
     ];
     return shapes.map((shape) => <StyledSVG key={shape.src} position="absolute" {...shape} />);
   };
 
-  const StyledFirstSection = styled.div`
-    padding-top: 130px;
-    padding-left: 181px;
-  `;
-
-  const StyledDogContainer = styled.div`
-    flex-direction: row;
-    align-items: center;
-    display: flex;
-  `;
-
-  const StyledTextHeader = styled.h1`
-    font-size: 12px;
-    font-style: 'Bold';
-    letter-spacing: 2px;
-    ${({ padding }) =>
-      padding &&
-      `
-      padding: ${padding};
-    `};
-  `;
-
-  const StyledTextContainer = styled.div`
-    padding: 23px 0 0 0;
-    ${({ padding }) => padding && `padding: ${padding}`};
-  `;
-
-  const StyledTextElement = styled.span`
-    ${({ fontSize }) => fontSize && `font-size: ${fontSize};`}
-    @media (min-width: 690px) {
-      display: flex;
-    }
-    @media (max-width: 689px) {
-      ${({ insertBr }) =>
-        insertBr &&
-        `
-      &::after {
-        display: block;
-        content: '\';
-        white-space: pre;
-      }
-    `}
-    }
-  `;
-
-  const StyledPersonDogContainer = styled.div`
-    padding: 30px;
-    position: absolute;
-    ${({ theme, mobilePadding }) =>
-      mobilePadding &&
-      theme.phone`
-      padding: ${mobilePadding};
-    `}
-    ${({ theme, tabletPadding }) =>
-      tabletPadding &&
-      theme.tablet`
-      padding: ${tabletPadding};
-    `}
-  `;
-
-  const StyledTextBroughtContainer = styled.div`
-    justify-content: center;
-    display: flex;
-    @media (min-width: 1189px) {
-      margin-top: -140px;
-    }
-  `;
-
-  const StyledTextBrought = styled.h3`
-    font-size: 2.8rem;
-    font-style: 'Bold';
-    display: flex;
-    width: 80%;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    padding: 40px 0 40px 0;
-  `;
-
   return (
     <>
-      <FirstHeroSection />
-      <PartnersHeroSection />
-      <StepsHeroSection />
+      <StyledSection>
+        <StyledContainer>
+          <StyledHeader>
+            <>
+              <StyledDogContainer>
+                <StyledSVG
+                  width="3.7rem"
+                  height="3.7rem"
+                  mobileWidth="3rem"
+                  mobileHeight="3rem"
+                  src="/static/img/dog-circle.svg"
+                />
+                <StyledTextHeader padding="0 20px">HI I'M KACEY!</StyledTextHeader>
+              </StyledDogContainer>
+              <StyledTextContainer>
+                <H>
+                  <StyledTextElement insertBr>E&O by Keller Covered</StyledTextElement>
+                  <StyledTextElement>with exclusive pricing </StyledTextElement>
+                  <StyledTextElement>for Keller Williams </StyledTextElement>
+                  <StyledTextElement>Marked Centers</StyledTextElement>
+                </H>
+              </StyledTextContainer>
+              <ButtonWithArrow
+                href="/firm_information"
+                margin="40px 0 0 0"
+                mobileMargin="8px 0 0 0"
+                customWidth="445px"
+                mobileWidth="250px"
+                data-test-id="getButton"
+              >
+                Get your quotes today
+              </ButtonWithArrow>
+              <StyledSofaContainer>
+                <StyledPersonDogSVG width="900px" height="220px" src="/static/img/mobileSofa.svg" />
+              </StyledSofaContainer>
+            </>
+          </StyledHeader>
+        </StyledContainer>
+        <StyledIconsContainer>{renderBackgroundShapes()}</StyledIconsContainer>
+      </StyledSection>
+      <StyledTextBroughtContainer>
+        <StyledTextBrought>
+          <StyledTextElement>Brought to you by out partners.</StyledTextElement>
+        </StyledTextBrought>
+      </StyledTextBroughtContainer>
     </>
   );
-}
+};
 
-export default HeroSection;
+export default FirstHeroSection;
