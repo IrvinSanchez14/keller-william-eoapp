@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect, createRef } from 'react';
 import SVG from 'react-inlinesvg';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
@@ -103,8 +103,8 @@ function Navigation(Props: NavigationProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
-  const hamburger = React.createRef();
-  const menuContainer = React.createRef();
+  const hamburger = createRef();
+  const menuContainer = createRef();
 
   const handleClicking = (e: any) => {
     if (menuContainer.current && hamburger.current && isMenuVisible && !isMobile) {

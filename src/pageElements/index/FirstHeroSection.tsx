@@ -1,9 +1,7 @@
-import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 
 import ButtonWithArrow from 'src/components/Button/ButtonArrow';
-import theme from 'src/styles/MarketingEO/theme';
 import H from 'src/components/H';
 
 const StyledSection = styled.section`

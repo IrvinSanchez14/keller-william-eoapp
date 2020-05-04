@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import SVG from 'react-inlinesvg';
 import IPartnerTile from './IPartnerTile';
@@ -66,7 +65,7 @@ const StyledSvg = styled(SVG)`
   width: 130px;
   ${({ theme }) => theme.phone`
     width: 120px;
-    height: 
+    height:
   `};
 
   ${({ theme, isSmall }) =>

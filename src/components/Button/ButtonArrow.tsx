@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import IButtonArrow from './IButtonArrow';
 
@@ -77,7 +76,7 @@ const StyledLink = styled.a`
 
   ${({ theme }) => theme.phone`
     height: 70px;
-    width: 380px; 
+    width: 380px;
     font-size: 23px;
     padding: 15px 65px 15px 25px;
   `};

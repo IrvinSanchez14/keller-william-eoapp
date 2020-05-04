@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppContext } from 'src/store';
 import { exampleContext } from 'src/store/actions/example';
 import Layout from 'src/components/Layout';

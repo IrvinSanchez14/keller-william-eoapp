@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
@@ -95,7 +95,7 @@ const renderList = (items: Array<string>) =>
     return link !== 'legal' && <ListElement key={link}>{renderNavItem(link, label)}</ListElement>;
   });
 
-const Menu = React.forwardRef((Props: MenuProps, ref: any) => {
+const Menu = forwardRef((Props: MenuProps, ref: any) => {
   const { items, isMenuVisible } = Props;
   return (
     <MenuWrapper isMenuVisible={isMenuVisible} ref={ref}>
