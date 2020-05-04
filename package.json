@@ -4,13 +4,15 @@
   "private": true,
   "author": "Applaudo Studios",
   "engines": {
-    "node": "12.16.2"
+    "node": "^12.16.2"
   },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet"
+    "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet",
+    "export": "npm run build && next export",
+    "format": "prettier --no-editorconfig \"**/*.+(js|jsx|json|yml|yaml|md|vue)\" --list-different && echo 'Prettier complete.'"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
@@ -53,6 +55,7 @@
     "babel-preset-react-app": "^9.1.2",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
+    "babel-plugin-styled-components": "^1.10.7",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.3",

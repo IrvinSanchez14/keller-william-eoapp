@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kc-frontend-eo-deployment
+  labels:
+    app: kc-frontend-eo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kc-frontend-eo
+  template:
+    metadata:
+      labels:
+        app: kc-frontend-eo
+    spec:
+      containers:
+      - name: kc-frontend-eo
+        image: gcr.io/starlit-myth-275818/kc-frontend-eo:v1
+        ports:
+        - name: web
+          containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kc-frontend-eo-service
+spec:
+  selector:
+    app: kc-frontend-eo
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 80
+  type: LoadBalancer

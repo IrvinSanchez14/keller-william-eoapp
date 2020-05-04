@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 import SVG from 'react-inlinesvg';
@@ -125,30 +124,30 @@ const StyledIcon = styled.span`
   margin-left: 3px;
 `;
 
-const renderLinks = (items) => {
-  const ListWrapper = styled.ul`
+const ListWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 ${largeDesktopMargin};
+
+  ${({ theme }) => theme.desktopSmall`margin: 0 ${smallDesktopMargin};`};
+  ${({ theme }) => theme.tablet`
+    margin: 0 22px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 0 ${largeDesktopMargin};
+    flex: 1;
+    align-items: center;
+  `};
+`;
 
-    ${({ theme }) => theme.desktopSmall`margin: 0 ${smallDesktopMargin};`};
-    ${({ theme }) => theme.tablet`
-      margin: 0 22px;
-      display: flex;
-      flex: 1;
-      align-items: center;
-    `};
-  `;
+const StyledTextLink = styled.p`
+  font-family: 'Light';
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 14px;
+  ${({ theme }) => theme.phone`font-size: 12px;`};
+`;
 
-  const StyledTextLink = styled.p`
-    font-family: 'Light';
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 14px;
-    ${({ theme }) => theme.phone`font-size: 12px;`};
-  `;
-
+const renderLinks = (items) => {
   const formatLink = (string: string) => string.toLowerCase().split(' ').join('');
 
   return (
@@ -185,6 +184,16 @@ const defaultProps: FooterProps = {
   agentAssetsFooter: false,
 };
 
+const StyledIconsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-right: ${largeDesktopMargin};
+  ${({ theme }) => theme.desktopSmall`margin-right: ${smallDesktopMargin};`};
+  ${({ theme }) => theme.tablet`margin-right: 16px;`};
+  ${({ theme }) => theme.phone`justify-content: space-between;`};
+`;
+
 function Footer(Props: FooterProps) {
   const { linkItems, agentAssetsFooter } = Props;
   const currentYear = new Date().getFullYear();
@@ -207,15 +216,6 @@ function Footer(Props: FooterProps) {
         href: 'https://www.linkedin.com/company/keller-williams-realty-inc/',
       },
     ];
-    const StyledIconsContainer = styled.div`
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      margin-right: ${largeDesktopMargin};
-      ${({ theme }) => theme.desktopSmall`margin-right: ${smallDesktopMargin};`};
-      ${({ theme }) => theme.tablet`margin-right: 16px;`};
-      ${({ theme }) => theme.phone`justify-content: space-between;`};
-    `;
 
     return (
       <StyledIconsContainer>

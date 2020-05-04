@@ -27,6 +27,7 @@ export default {
     lightestGray: '#ebebeb',
     lightBlue: '#1CA1D4',
     dark: colorDark,
+    darkBlue: '#1D253C',
     mainHeadingColor: colorDark,
     paragraph: {
       dark: '#07293D',
@@ -36,6 +37,8 @@ export default {
     spanColor: colorDark,
     primary: '#0093E9',
     grayLight: '#C4C4C4',
+    grayBorders: '#D4D4D4',
+    shadowColor: 'rgba(145, 145, 145, 0.28)',
   },
   boxShadow: '0 3px 9px 0 rgba(0,0,0,0.16)',
 };
