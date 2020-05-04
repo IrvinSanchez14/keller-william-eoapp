@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export",
+    "format": "prettier --no-editorconfig \"**/*.+(js|jsx|json|yml|yaml|md|vue)\" --list-different && echo 'Prettier complete.'"
   },
   "dependencies": {
     "next": "9.3.5",
