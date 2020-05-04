@@ -14,7 +14,7 @@ export const buttonStyles = css`
   height: ${({ height }) => height};
   font-weight: 400;
   cursor: pointer;
-  ${({ margin }) => margin && `margin: ${margin};`};
+  ${({ theme, margin }) => margin && `margin: ${margin};`};
   ${({ as }) => as === 'a' && 'text-decoration: none;'};
   color: ${({ isInverted, theme }) => (isInverted ? theme.colors.primary : theme.colors.white)};
   background: ${({ isInverted, theme, color, customColor }) =>

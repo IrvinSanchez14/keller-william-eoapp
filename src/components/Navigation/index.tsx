@@ -113,7 +113,6 @@ function Navigation(Props: NavigationProps) {
   };
 
   const handleResize = () => {
-    console.log('irvin', window.innerWidth);
     setIsMobile(window.innerWidth < 690);
   };
 
@@ -163,7 +162,7 @@ function Navigation(Props: NavigationProps) {
               ) : (
                 <>
                   <i className="fas fa-phone" />
-                  <StyledButtonCopy>(857) 263-2750</StyledButtonCopy>
+                  <StyledButtonCopy>Get covered now</StyledButtonCopy>
                 </>
               )}
             </StyledButton>
