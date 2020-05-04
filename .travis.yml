@@ -1,0 +1,40 @@
+sudo: required
+dist: xenial
+language: node_js
+
+cache:
+  directories:
+    - '~/.npm'
+    - '~/.cache'
+    - '~/.yarn'
+
+services:
+  - docker
+
+node_js:
+  - 'lts/*'
+
+branches:
+  only:
+    - master
+    - staging
+    - develop
+    - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+    - DOCKER_IMAGE_NAME='kc-frontend-eo'
+
+stages:
+  - test
+  - deploy
+
+jobs:
+  include:
+    - stage: test
+      if: branch IN (development, staging) AND type = pull_request
+      name: specs
+      install: yarn --non-interactive --frozen-lockfile
+      script:
+        - if [[ $TRAVIS_BRANCH  == "development" ]]; then yarn format; fi
