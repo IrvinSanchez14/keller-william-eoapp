@@ -13,7 +13,7 @@ services:
   - docker
 
 node_js:
-  - 'lts/*'
+  - '12.16.2'
 
 branches:
   only:
@@ -39,6 +39,6 @@ jobs:
     - stage: test
       if: branch IN (develop, staging) AND type = pull_request
       name: specs
-      install: yarn --non-interactive --frozen-lockfile
+      install: yarn --frozen-lockfile
       script:
         - if [[ $TRAVIS_BRANCH  == "develop" ]]; then yarn format; fi
