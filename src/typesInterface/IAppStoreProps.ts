@@ -15,4 +15,13 @@ export interface IAppStoreProps {
   error?: any;
   stepper?: any;
   dispatch?: any;
+  classes?: any;
+  formData?: any;
 }
+
+export type FormikProps = {
+  errors?: any;
+  touched?: any;
+  values: any;
+  setFieldTouched: any;
+};

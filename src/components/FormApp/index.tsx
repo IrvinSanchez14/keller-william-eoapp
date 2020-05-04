@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import { Formik, Form, FormikFormProps } from 'formik';
-import { ButtonBase, Typography } from '@material-ui/core';
+import { Formik, Form } from 'formik';
+import { ButtonBase } from '@material-ui/core';
 
 import { withStyles, WithStyles } from 'src/styles/FormStyle/css/withStyles';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -16,7 +16,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     isInitValid?: boolean;
     initialValues: Object;
     validationSchema?: Object;
-    onSubmit?: (dispatch: any, values: any) => void;
+    onSubmit?: (values: any, actions: any) => void;
     hideButton?: boolean;
     buttonLabel?: string;
     buttonDescription?: string;
@@ -41,6 +41,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     isInQuestionnaire?: boolean;
     purchaseColor?: string;
     customNavigationSaveProgress?: () => void;
+    progressBar?: number;
   };
 
 @withStyles(styles)
@@ -61,13 +62,10 @@ export class FormApp extends React.Component<CustomFormProps> {
       customNavigationSaveProgress();
     }
     saveProgress();*/
-    console.log('ERVIN?');
   };
 
   onSubmit = (values: any, formikActions: any) => {
-    console.log('continue', values);
-    console.log('formikActions', formikActions);
-    this.props.onSubmit(this.props.dispatch, values);
+    this.props.onSubmit(values, formikActions);
   };
 
   render() {
@@ -130,6 +128,10 @@ export class FormApp extends React.Component<CustomFormProps> {
             customWidthMobile: 'auto',
             customWidthDesktop: 225,
           };
+
+          const x = notDisabled
+            ? false
+            : disabled || isLoading || !isValid || isCustomValid === false || isSubmitting;
 
           return (
             <Form className={classnames(classes.form, className, { [classes.row]: isRowForm })}>

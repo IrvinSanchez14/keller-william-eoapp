@@ -1,99 +1,60 @@
 import React from 'react';
-import * as Yup from 'yup';
-import { FormikErrors, FormikTouched } from 'formik';
+import classnames from 'classnames';
+import { FormikHelpers } from 'formik';
+import { Typography } from '@material-ui/core';
+import _ from 'lodash';
 
+import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
+import { setPageLocation } from 'src/store/actions/app';
+import { fullNameValidateSchema } from 'src/helpers/validations';
+import { getFullNameFields } from 'src/helpers/fieldsForm';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
-import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeFirmConfirmation } from 'src/store/actions/app';
+
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { styles } from './styles';
 
 type FullNameProps = IAppStoreProps;
 
-export const getFullNameFields = () => [
-  {
-    name: 'contacName',
-    type: 'text',
-    placeholder: 'contacName',
-    label: 'Contact Name',
-  },
-  {
-    name: 'brokerName',
-    type: 'text',
-    placeholder: 'brokerName',
-    label: 'Broker/owner name',
-  },
-  {
-    name: 'kwMarketCenterName',
-    type: 'text',
-    placeholder: 'kwMarketCenterName',
-    label: 'KW Market Center name',
-  },
-  {
-    name: 'yearEstablished',
-    type: 'number',
-    placeholder: 'yearEstablished',
-    label: 'Year established',
-  },
-];
-
-export type FormikProps = {
-  errors?: any;
-  touched?: any;
-  values: any;
-  setFieldTouched: any;
+type FormFields = {
+  contactName: string;
+  brokerName: string;
+  kwMarketCenterName: string;
+  yearEstablished: number;
 };
 
-export const fullNameValidateSchema = Yup.object().shape({
-  contacName: Yup.string().required('Field is required'),
-  brokerName: Yup.string().required('Field is required'),
-  kwMarketCenterName: Yup.string().required('Field is required'),
-  yearEstablished: Yup.string().required('Field is required'),
-});
-
+@withStyles(styles)
 export class FirmInformation extends React.Component<FullNameProps> {
-  nextStep = async (values: any, actions: any) => {
-    /*this.isButtonLoading = true;
-    const {firstName, lastName} = values;
-    const {
-      property,
-      stepper,
-      session: {sendFormGAEvent},
-    } = this.props;
+  isInitValid = false;
+  isButtonLoading = false;
 
-    sendFormGAEvent('continue');
-
-    property.personalDetails.update({
-      firstName,
-      lastName,
-    });
+  nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
+    this.isButtonLoading = true;
+    const { dispatch, formData } = this.props;
+    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     actions.setSubmitting(true);
-    const userData = {
-      first_name: firstName,
-      last_name: lastName,
-    };
-    await property.updatePropertyDetails(userData);
-    actions.setSubmitting(false);
-    stepper.nextStep();*/
+    setPageLocation(dispatch, 1);
   };
 
   async componentDidMount() {
-    /*const {
-      property,
-      session: {sendFormGAEvent},
-    } = this.props;
-
-    sendFormGAEvent('page');
-
-    const {firstName, lastName} = property.personalDetails;
-    this.isInitValid = await fullNameValidateSchema.isValid({
-      firstName,
-      lastName,
-    });*/
+    const { dispatch } = this.props;
+    const { formData } = this.props;
+    if (!_.isEmpty(formData.app.data)) {
+      this.isInitValid = await fullNameValidateSchema.isValid({
+        contacName: formData.app.data.firmInformation.contacName,
+        brokerName: formData.app.data.firmInformation.brokerName,
+        kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName,
+        yearEstablished: formData.app.data.firmInformation.yearEstablished,
+      });
+    }
+    setPageLocation(dispatch, 0);
   }
 
   renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
-    getFullNameFields().map(({ name, type, placeholder, label }) => (
+    getFullNameFields().map(({ name, type, customWidth, label }) => (
       <FielControlForm
         data-test-id={name}
         key={name}
@@ -105,39 +66,41 @@ export class FirmInformation extends React.Component<FullNameProps> {
         errors={errors}
         touched={touched}
         renderFastField
+        customWidth={customWidth}
       />
     ));
 
   render() {
     const isLoading = false;
+    const { classes, formData } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={'Let me fetch you some quotes!'}
-          heading={'Hi Im Kacey!'}
-          subHeading={[
-            'I will connect you with multiple providers to shop and compare rates.',
-            'Whats your name?',
-          ]}
-          bottomContent={
-            'If you have questions about insurance along the way, connect with an insurance provider at <a href="tel:8572632750">(857) 263-2750</a>.'
-          }
+          avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
+          heading={this.props.intl.get('app.head.form.firm.part.one')}
+          subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
+          bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
         >
+          <Typography className={classnames(classes.titleForm)}>
+            {this.props.intl.get('app.title.form.firm.part.one')}
+          </Typography>
+
           <FormApp
             initialValues={{
-              contacName: '' || '',
-              brokerName: '' || '',
-              kwMarketCenterName: '' || '',
-              yearEstablished: '' || '',
+              contacName: formData.app.data.firmInformation.contacName || '',
+              brokerName: formData.app.data.firmInformation.brokerName || '',
+              kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
+              yearEstablished: formData.app.data.firmInformation.yearEstablished || '',
             }}
-            isInitValid={false}
+            isInitValid={this.isInitValid}
             validationSchema={fullNameValidateSchema}
-            onSubmit={storeFirmConfirmation}
+            onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={false}
+            isLoading={this.isButtonLoading}
             isInQuestionnaire
             dispatch={this.props.dispatch}
+            progressBar={formData.app.metadata.progressBar}
           >
             {this.renderFormChildren}
           </FormApp>

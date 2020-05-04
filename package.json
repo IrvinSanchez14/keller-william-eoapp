@@ -17,6 +17,7 @@
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-intl-universal": "^2.2.5",
     "styled-components": "^5.1.0"
   },
   "resolutions": {
@@ -42,6 +43,7 @@
     "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@material-ui/core": "^4.9.12",
     "@types/classnames": "^2.2.10",
+    "@types/lodash": "^4.14.150",
     "@types/node": "^13.13.2",
     "@types/react": "^16.9.34",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
@@ -58,6 +60,7 @@
     "eslint-plugin-react-hooks": "^3.0.0",
     "formik": "^2.1.4",
     "husky": "^4.2.5",
+    "lodash": "^4.17.15",
     "next-images": "^1.4.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",

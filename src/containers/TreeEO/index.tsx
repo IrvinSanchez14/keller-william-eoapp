@@ -3,13 +3,18 @@ import React from 'react';
 import { useAppContext } from 'src/store';
 import FormRouter from 'src/components/FormRouter';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
+import { FirmInformationEmail } from './FirmInformationEmail';
+import { FirmInformationAffiliated } from './FirmInformationAffiliated';
+import { FirmInformationBroker } from './FirmInformationBroker';
 
 function AppEO() {
-  const { state, dispatch } = useAppContext();
-  console.log('STATE', state);
+  const { dispatch, intl, state } = useAppContext();
   return (
     <FormRouter>
-      <FirmInformation dispatch={dispatch} />
+      <FirmInformation dispatch={dispatch} intl={intl} formData={state} />
+      <FirmInformationEmail dispatch={dispatch} intl={intl} formData={state} />
+      <FirmInformationAffiliated dispatch={dispatch} intl={intl} formData={state} />
+      <FirmInformationBroker dispatch={dispatch} intl={intl} formData={state} />
     </FormRouter>
   );
 }

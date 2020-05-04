@@ -1,10 +1,12 @@
 import React from 'react';
 
+import { useAppContext } from 'src/store';
 import LayoutWrapper from '../LayoutWrapper/Wrapper';
 import { NavigationForm } from '../NavigationForm';
 
 function FormStepper(Props: any) {
-  const { store, children } = Props;
+  const { children } = Props;
+  const { state } = useAppContext();
   const childrenArray = React.Children.toArray(children);
   const steps = childrenArray.map((step: any, index: any) => {
     const controlProps = {
@@ -12,11 +14,7 @@ function FormStepper(Props: any) {
       last: index + 1 === childrenArray.length,
     };
 
-    const state = {
-      store,
-    };
-
-    if (store.step === index + 1) {
+    if (state.app.metadata.actualPage === index) {
       return React.cloneElement(step, {
         ...controlProps,
         ...step.props,

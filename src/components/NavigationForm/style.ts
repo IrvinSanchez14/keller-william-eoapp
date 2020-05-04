@@ -1,8 +1,9 @@
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { makeStyles } from '@material-ui/core';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { fonts } from 'assets/fonts';
 
-export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => ({
+export const styles = makeStyles((theme: MuiTheme): { [style: string]: CSSProperties } => ({
   wrapper: {
     width: '100%',
     padding: theme.spacing(0, 3),
@@ -75,10 +76,20 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       width: '100%',
       justifyContent: 'space-between',
       padding: theme.spacing(0, 2),
+      backgroundColor: 'red',
     },
     [theme.breakpoints.down(400)]: {
       padding: theme.spacing(0),
     },
+  },
+  contentProgressBar: {
+    padding: 10,
+    position: 'static',
+    zIndex: 1,
+    width: '100%',
+    maxWidth: '1260px',
+    marginBottom: '1.3em',
+    marginTop: '-13px',
   },
   buttonContainerWithCustomBack: {
     flexDirection: 'row',
@@ -87,9 +98,9 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     cursor: 'pointer',
     width: 30,
     height: 30,
-    border: `1px solid ${theme.palette.main.blue}`,
+    border: `1px solid #1D253C`,
     borderRadius: 50,
-    backgroundColor: theme.palette.main.blue,
+    backgroundColor: 'transparent',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -103,7 +114,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   backIcon: {
     fontSize: theme.fontSize.md,
     fontWeight: 300,
-    color: theme.palette.common.white,
+    color: '#1D253C',
   },
   stepContainer: {
     'margin-right': 'auto',
@@ -126,6 +137,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       },
     },
   },
+
   stepType: {
     marginRight: 5,
   },
@@ -152,6 +164,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     '& i': {
       margin: 0,
     },
+    backgroundColor: 'transparent',
     [theme.breakpoints.up('lg')]: {
       display: 'none',
     },
@@ -256,4 +269,4 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       transform: 'rotate(360deg)',
     },
   },
-});
+}));

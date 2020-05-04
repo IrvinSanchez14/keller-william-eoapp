@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import { ButtonBase, Typography } from '@material-ui/core';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import { lighten, makeStyles, withStyles } from '@material-ui/core/styles';
 
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { withStyles, WithStyles } from 'src/styles/FormStyle/css/withStyles';
+import { WithStyles } from 'src/styles/FormStyle/css/withStyles';
 
 import { styles } from './style';
 import { Column, Row } from '../LayoutWrapper/Flex';
 import { Icon } from '../Icon';
 import ButtonForm from '../ButtonForm';
+import { useAppContext } from 'src/store';
+import { setPageLocation, changeStatusProgressBar } from 'src/store/actions/app';
 
 interface INavigationProps extends IAppStoreProps {
   withBackButton?: boolean;
@@ -29,58 +33,53 @@ interface INavigationProps extends IAppStoreProps {
 
 const STEP_TYPES = [
   {
-    type: 'new organic',
-    value: 'E&O APPLICATION',
-    stepsSum: 7,
-  },
-  {
-    type: 'new kwlead',
-    value: 'NEW QUOTE',
-    stepsSum: 10,
-  },
-  {
-    type: 'kw agent',
-    value: 'KW AGENT QUOTE',
-    stepsSum: 5,
-  },
-  {
-    type: 'comprehensive organic',
-    value: 'COMPREHENSIVE QUOTE',
-    stepsSum: 5,
+    type: 'firm information',
+    value: 'FIRM INFORMATION',
+    stepsSum: 4,
   },
 ];
 
-@withStyles(styles)
-export class NavigationForm extends React.Component<INavigationProps & WithStyles<typeof styles>> {
-  saveProgress = () => {
-    const { saveProgress, customSaveProgress } = this.props;
+const BorderLinearProgress = withStyles({
+  root: {
+    borderRadius: '9px',
+    height: '15px',
+    backgroundColor: '#e2e2e2',
+    width: '100%',
+  },
+  bar: {
+    borderRadius: 20,
+    backgroundColor: '#0070f3',
+  },
+})(LinearProgress);
+
+export function NavigationForm(Props: INavigationProps & WithStyles<typeof styles>) {
+  const {
+    withBackButton,
+    logoLink,
+    customBackLabel,
+    withSaveProgressButton,
+    isFetching,
+    isConfirmationPage = false,
+    isCallButton = true,
+  } = Props;
+  const { state, intl, dispatch } = useAppContext();
+  const classes = styles();
+
+  const saveProgress = () => {
+    /*const { saveProgress, customSaveProgress } = Props;
 
     if (customSaveProgress) {
       customSaveProgress();
     }
-    saveProgress();
+    saveProgress();*/
   };
 
-  goBack = (e, isLabel: boolean) => {
-    /*const {
-      backClick,
-      history,
-      session: { sendFormGAEvent, sendGAEvent },
-    } = this.props;
-
-    history && history.goBack();
-    backClick && backClick();
-
-    // @ts-ignore
-    if (history && history.location === '/find-agent') {
-      isLabel
-        ? sendGAEvent({ actionType: 'back', page: 'findAgentCity' })
-        : sendGAEvent({ actionType: 'backArrow', page: 'findAgentCity' });
-    }*/
+  const goBack = (e, isLabel: boolean) => {
+    changeStatusProgressBar(dispatch, state.app.metadata.progressBar - 5);
+    setPageLocation(dispatch, state.app.metadata.actualPage - 1);
   };
 
-  renderLogo() {
-    const { classes, isConfirmationPage = false } = this.props;
+  const renderLogo = () => {
     return (
       <Column align="center">
         <Icon
@@ -89,43 +88,24 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
         />
       </Column>
     );
-  }
+  };
 
-  openCallToActionDialog = () => {
+  const openCallToActionDialog = () => {
     /* const { customCTAHandler } = this.props;
 
     this.callToActionDialog.open();
     customCTAHandler();*/
   };
 
-  render() {
-    const {
-      classes,
-      intl,
-      withBackButton,
-      saveProgress,
-      logoLink,
-      customBackLabel,
-      withSaveProgressButton,
-      isFetching,
-      isConfirmationPage = false,
-      isCallButton = true,
-    } = this.props;
+  const stepType =
+    state.app.metadata && STEP_TYPES.find((step) => step.type === state.app.metadata.categoryPage);
+  const stepTypeValue = intl.get('app.name.form').toUpperCase(); //title app
+  const step = state.app.metadata && stepType ? state.app.metadata.categoryPage.toUpperCase() : ''; // category form
 
-    const currentStep = {
-      id: 1,
-      name: 'New 1 Organic',
-      number: 1,
-      type: 'new organic',
-      typeWithCampaign: 'new organic',
-    }; //JSON.parse(localStorage.getItem('step'));
-    const stepType = currentStep && STEP_TYPES.find((step) => step.type === currentStep.type);
-    const stepTypeValue = stepType ? stepType.value : '';
-    const step = currentStep && stepType ? `FIRM INFORMATION` : '';
+  const hideBackButton = state.app.metadata && state.app.metadata.actualPage === 0;
 
-    const hideBackButton = currentStep && currentStep.number === 1;
-
-    return (
+  return (
+    <Fragment>
       <Row align="center" className={classes.wrapper}>
         <header className={classes.container}>
           {withBackButton && (
@@ -135,7 +115,7 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
               })}
             >
               <div
-                onClick={() => this.goBack(null, false)}
+                onClick={() => goBack(null, false)}
                 tabIndex={1}
                 role="button"
                 className={classnames(classes.backIconContainer, {
@@ -158,7 +138,7 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
               >
                 {!!customBackLabel ? (
                   <Typography
-                    onClick={() => this.goBack(null, true)}
+                    onClick={() => goBack(null, true)}
                     className={classes.customBackLabel}
                     variant="body1"
                   >
@@ -180,7 +160,7 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
               <ButtonBase
                 data-test-id="saveProgressButton"
                 className={classes.saveProgressButton}
-                onClick={this.saveProgress}
+                onClick={() => saveProgress()}
               >
                 <span className={classes.saveProgressMobile}>
                   {intl.get('common.saveProgress')}
@@ -200,10 +180,10 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
                 [classes.logoCentered]: isConfirmationPage,
               })}
             >
-              <a href={logoLink}>{this.renderLogo()}</a>
+              <a href={logoLink}>{renderLogo()}</a>
             </div>
           ) : (
-            <div className={classes.logoContainer}>{this.renderLogo()}</div>
+            <div className={classes.logoContainer}>{renderLogo()}</div>
           )}
           {isCallButton && (
             <Row
@@ -219,7 +199,7 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
                 className={classnames(classes.ctaButtonMobile, {
                   [classes.ctaButtonMobileConfirmation]: isConfirmationPage,
                 })}
-                onClick={this.openCallToActionDialog}
+                onClick={() => openCallToActionDialog()}
                 label=""
                 isDark
                 outlined
@@ -230,14 +210,22 @@ export class NavigationForm extends React.Component<INavigationProps & WithStyle
                 className={classnames(classes.ctaButtonDesktop, {
                   [classes.ctaButtonDesktopConfirmation]: isConfirmationPage,
                 })}
-                onClick={this.openCallToActionDialog}
-                label={'(857) 263-2750'}
+                onClick={() => openCallToActionDialog()}
+                label={'Get covered now'}
                 isDark
               />
             </Row>
           )}
         </header>
       </Row>
-    );
-  }
+      <Row className={classnames(classes.contentProgressBar)}>
+        <BorderLinearProgress
+          className={classes.margin}
+          variant="determinate"
+          color="secondary"
+          value={state.app.metadata.progressBar}
+        />
+      </Row>
+    </Fragment>
+  );
 }

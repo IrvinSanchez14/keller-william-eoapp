@@ -3,7 +3,7 @@ import React from 'react';
 import FormStepper from './FormStepper';
 
 function FormRouter(Props: any) {
-  const { history, stepper, session, children } = Props;
+  const { history, session, children } = Props;
 
   const dataFetched = true;
   const newstrore = {

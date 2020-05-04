@@ -11,13 +11,40 @@ export const appInitialState = {
 };
 
 export const appActions: any = {
+  SET_PAGE_LOCATION: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          actualPage: action.payload,
+        },
+      },
+    };
+  },
   FIRM_CONFIRMATION_STORE: (state: any, action: any) => {
     return {
       ...state,
       app: {
         ...state.app,
         data: {
-          firmInformation: action.payload,
+          firmInformation: {
+            ...state.app.data.firmInformation,
+            ...action.payload,
+          },
+        },
+      },
+    };
+  },
+  CHANGE_STATUS_PROGRESS_BAR: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          progressBar: action.payload,
         },
       },
     };

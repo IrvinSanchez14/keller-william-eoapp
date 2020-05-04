@@ -45,6 +45,11 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   stepInfoHeader: {
     whiteSpace: 'pre-wrap',
+    fontSize: 24, // send fontSize via props?
+    [theme.breakpoints.up(768)]: {
+      fontSize: 53,
+      marginBottom: '0.7em',
+    },
   },
   stepInfoContent: {
     display: 'flex',
@@ -58,7 +63,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '24px',
     fontWeight: 'bold',
     [theme.breakpoints.up(768)]: {
-      fontSize: 48,
+      fontSize: 55,
       lineHeight: '54px',
     },
   },
