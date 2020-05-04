@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import _ from 'lodash';
 
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -28,7 +28,7 @@ export const propertyUsageFields = [
   },
 ];
 
-export class FirmInformationAffiliated extends React.Component<FullNameProps> {
+export class FirmInformationAffiliated extends Component<FullNameProps> {
   isInitValid = false;
   state = {
     isFirmOwned: '',

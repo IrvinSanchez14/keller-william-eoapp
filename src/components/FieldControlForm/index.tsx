@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { ReactNode } from 'react';
 import classnames from 'classnames';
 import { Field, FastField, FieldProps } from 'formik';
 
@@ -19,7 +19,7 @@ export type FieldControlProps = {
   isLoading?: boolean;
   setFieldTouched?: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void;
   renderFastField?: boolean;
-  renderCustomField?: ({ field: FieldProps, form: FormikProps }) => React.ReactNode;
+  renderCustomField?: ({ field: FieldProps, form: FormikProps }) => ReactNode;
   readOnly?: boolean;
   focused?: boolean;
   fullWidth?: boolean;

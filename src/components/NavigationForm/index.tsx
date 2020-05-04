@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import classnames from 'classnames';
 import { ButtonBase, Typography } from '@material-ui/core';
 import LinearProgress from '@material-ui/core/LinearProgress';

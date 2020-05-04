@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import reactIntlUniversal from 'react-intl-universal';
 import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
@@ -10,7 +10,7 @@ import AppEO from './containers/TreeEO';
 
 import enUS from 'assets/i18n/en-US.json';
 
-export class App extends React.Component {
+export class App extends Component {
   loadLocales() {
     const locales = {
       'en-US': enUS,

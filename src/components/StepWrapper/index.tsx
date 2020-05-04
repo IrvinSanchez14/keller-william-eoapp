@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 
@@ -17,11 +17,11 @@ interface IStepWrapper extends IAppStoreProps, WithStyles<typeof styles> {
   bottomContent?: string;
   avatarText?: string;
   isAgent?: boolean;
-  contentIcon?: React.ReactNode;
+  contentIcon?: ReactNode;
 }
 
 @withStyles(styles)
-export class StepWrapper extends React.Component<IStepWrapper> {
+export class StepWrapper extends Component<IStepWrapper> {
   render() {
     const {
       classes,

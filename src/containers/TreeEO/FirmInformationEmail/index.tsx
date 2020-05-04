@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import _ from 'lodash';
 
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -16,7 +16,7 @@ import { styles } from './styles';
 type FullNameProps = IAppStoreProps;
 
 @withStyles(styles)
-export class FirmInformationEmail extends React.Component<FullNameProps> {
+export class FirmInformationEmail extends Component<FullNameProps> {
   isInitValid = false;
 
   nextStep = async (values: any, actions: any) => {

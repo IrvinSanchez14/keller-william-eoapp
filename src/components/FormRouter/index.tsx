@@ -1,5 +1,3 @@
-import React from 'react';
-
 import FormStepper from './FormStepper';
 
 function FormRouter(Props: any) {

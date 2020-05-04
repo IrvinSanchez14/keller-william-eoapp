@@ -1,4 +1,3 @@
-import React from 'react';
 import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import { WithStyles } from 'src/styles/FormStyle/css/withStyles';

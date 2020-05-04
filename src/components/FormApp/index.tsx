@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component, ReactNode } from 'react';
 import classnames from 'classnames';
 import { Formik, Form } from 'formik';
 import { ButtonBase } from '@material-ui/core';
@@ -24,7 +24,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     isLoading?: boolean;
     isCustomValid?: boolean;
     notDisabled?: boolean;
-    children?: ({ errors, touched }: any) => React.ReactNode;
+    children?: ({ errors, touched }: any) => ReactNode;
     dataTestId?: string;
     validate?: any;
     disabled?: boolean;
@@ -45,7 +45,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
   };
 
 @withStyles(styles)
-export class FormApp extends React.Component<CustomFormProps> {
+export class FormApp extends Component<CustomFormProps> {
   saveProgress = () => {
     /*const {
       saveProgress,
