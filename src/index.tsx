@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppStateContextProvider } from './store';
 import PageExample from './containers/PageExample';
 

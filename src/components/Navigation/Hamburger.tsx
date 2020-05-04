@@ -1,6 +1,6 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import HamburguerProps from './IHamburguer';
+import { forwardRef } from 'react';
 
 const StyledHamburger = styled.button`
   outline: none;
@@ -34,7 +34,7 @@ const StyledLine = styled.span`
     `};
 `;
 
-const Hamburger = React.forwardRef((Props: HamburguerProps, ref: any) => {
+const Hamburger = forwardRef((Props: HamburguerProps, ref: any) => {
   const { isOpen, toggleMenu, isWhiteNav } = Props;
   const renderLines = () => {
     const lines = [

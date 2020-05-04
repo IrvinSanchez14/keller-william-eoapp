@@ -1,6 +1,6 @@
-import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { memo } from 'react';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -50,4 +50,4 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default React.memo(GlobalStyles);
+export default memo(GlobalStyles);

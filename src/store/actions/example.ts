@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { EXAMPLE_ACTION_CONTEXT } from '../types/examples/example';
 
 export const exampleContext = (dispatch: React.Dispatch<any>, example: number) => {

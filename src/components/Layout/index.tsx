@@ -1,9 +1,6 @@
-import React from 'react';
 import Head from 'next/head';
-import styled, { ThemeProvider, css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import globalTheme from 'src/styles/MarketingEO/theme';
-import GlobalStyles from 'src/styles/MarketingEO/globalStyles';
 import LayoutProps from './ILayout';
 import Footer from 'src/components/Footer';
 import Navigation from '../Navigation';
@@ -54,22 +51,17 @@ function Layout(Props: LayoutProps) {
       <Head>
         <title>Keller Covered</title>
       </Head>
-      <ThemeProvider theme={globalTheme}>
-        <>
-          <GlobalStyles />
-          {!withoutNavbar && <Navigation items={navigationItems} isWhiteNav={isWhiteNav} />}
-          <Wrapper
-            isPaddingTop={isPaddingTop}
-            withoutPositionRelative={withoutPositionRelative}
-            isDark={isDark}
-          >
-            {children}
-          </Wrapper>
-          {!withoutFooter && (
-            <Footer agentAssetsFooter={agentAssetsFooter} linkItems={navigationFooterItems} />
-          )}
-        </>
-      </ThemeProvider>
+      {!withoutNavbar && <Navigation items={navigationItems} isWhiteNav={isWhiteNav} />}
+      <Wrapper
+        isPaddingTop={isPaddingTop}
+        withoutPositionRelative={withoutPositionRelative}
+        isDark={isDark}
+      >
+        {children}
+      </Wrapper>
+      {!withoutFooter && (
+        <Footer agentAssetsFooter={agentAssetsFooter} linkItems={navigationFooterItems} />
+      )}
     </>
   );
 }

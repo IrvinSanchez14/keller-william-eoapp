@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 import theme from 'src/styles/MarketingEO/theme';
@@ -95,7 +94,7 @@ const PartnersHeroSection = (): JSX.Element => {
     return (
       list &&
       list.map((text) => (
-        <StyledBenefitItem>
+        <StyledBenefitItem key={text}>
           <StyledCircle>
             <i style={{ color: theme.colors.primary, fontSize: 13 }} className="fas fa-check" />
           </StyledCircle>
