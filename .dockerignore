@@ -9,3 +9,4 @@ Dockerfile*
 docker-compose*
 .dockerignore
 npm-debug.log
+.DS_Store
