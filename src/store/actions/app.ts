@@ -35,3 +35,12 @@ export const storeAgentInformation = (
   dispatch(storeValueAgent);
   return storeValueAgent;
 };
+
+export const setInformationPage = (dispatch: React.Dispatch<any>, page: number, title: string) => {
+  const setInformation = {
+    type: CONSTANTS.SET_INFORMATION_PAGE,
+    payload: { page, title },
+  };
+  dispatch(setInformation);
+  return setInformation;
+};

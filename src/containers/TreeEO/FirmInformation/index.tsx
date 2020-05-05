@@ -6,12 +6,13 @@ import _ from 'lodash';
 
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
-import { setPageLocation } from 'src/store/actions/app';
+import { setInformationPage } from 'src/store/actions/app';
 import { fullNameValidateSchema } from 'src/helpers/validations';
 import { getFullNameFields } from 'src/helpers/fieldsForm';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
+import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
@@ -36,7 +37,7 @@ export class FirmInformation extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     actions.setSubmitting(true);
-    setPageLocation(dispatch, 1);
+    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
@@ -50,7 +51,7 @@ export class FirmInformation extends Component<FullNameProps> {
         yearEstablished: formData.app.data.firmInformation.yearEstablished,
       });
     }
-    setPageLocation(dispatch, 0);
+    setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
   }
 
   renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>

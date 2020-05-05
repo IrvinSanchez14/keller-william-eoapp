@@ -1,86 +1,17 @@
-export const namesCategories = {
-  1: {
-    id: 1,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 1 Organic',
-    number: 1,
+export const STEP_TYPES = [
+  {
+    type: 'firm information',
+    value: 'FIRM INFORMATION',
+    stepsSum: 4,
   },
-  2: {
-    id: 2,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 2 Organic',
-    number: 2,
+  {
+    type: 'agent information',
+    value: 'AGENT INFORMATION',
+    stepsSum: 4,
   },
-  3: {
-    id: 3,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 3 Organic',
-    number: 3,
-  },
-  4: {
-    id: 4,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 4 Organic',
-    number: 4,
-  },
-  5: {
-    id: 5,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 5 Organic',
-    number: 5,
-  },
-  6: {
-    id: 6,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 6 Organic',
-    number: 6,
-  },
-  7: {
-    id: 7,
-    typeWithCampaign: 'new organic',
-    type: 'new organic',
-    name: 'New 7 Organic',
-    number: 7,
-  },
-  8: {
-    id: 8,
-    typeWithCampaign: 'kw agent organic',
-    type: 'kw agent',
-    name: 'KW Agent 1 Organic',
-    number: 1,
-  },
-  9: {
-    id: 9,
-    typeWithCampaign: 'kw agent organic',
-    type: 'kw agent',
-    name: 'KW Agent 2 Organic',
-    number: 2,
-  },
-  10: {
-    id: 10,
-    typeWithCampaign: 'kw agent organic',
-    type: 'kw agent',
-    name: 'KW Agent 3 Organic',
-    number: 3,
-  },
-  11: {
-    id: 11,
-    typeWithCampaign: 'kw agent organic',
-    type: 'kw agent',
-    name: 'KW Agent 4 Organic',
-    number: 4,
-  },
-  12: {
-    id: 12,
-    typeWithCampaign: 'kw agent organic',
-    type: 'kw agent',
-    name: 'KW Agent 5 Organic',
-    number: 5,
-  },
+];
+
+export const categoriesName = {
+  firmConfirmation: 'firm information',
+  agentInformation: 'agent information',
 };

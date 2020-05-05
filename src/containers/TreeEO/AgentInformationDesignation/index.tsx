@@ -4,9 +4,9 @@ import { FormikHelpers } from 'formik';
 import { Typography } from '@material-ui/core';
 import _ from 'lodash';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
-import { setPageLocation } from 'src/store/actions/app';
+import { setInformationPage } from 'src/store/actions/app';
 import { agentSpecialValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
@@ -15,6 +15,7 @@ import { FielControlForm } from 'src/components/FieldControlForm';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { categoriesName } from 'src/helpers/constants';
 
 type FullNameProps = IAppStoreProps;
 
@@ -36,7 +37,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     actions.setSubmitting(true);
-    setPageLocation(dispatch, 6);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
@@ -48,7 +49,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           formData.app.data.agentInformation.numberAgentSpecialDesignation,
       });
     }
-    setPageLocation(dispatch, 5);
+    setInformationPage(dispatch, 5, categoriesName.agentInformation);
   }
 
   render() {

@@ -1,15 +1,16 @@
 import { Component } from 'react';
 import _ from 'lodash';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
-import { setPageLocation } from 'src/store/actions/app';
-import { fullEmailValidateSchema } from 'src/helpers/validations';
+import { setInformationPage } from 'src/store/actions/app';
+
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
+import { categoriesName } from 'src/helpers/constants';
 
 type FullNameProps = IAppStoreProps;
 
@@ -38,12 +39,12 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
-    setPageLocation(dispatch, 3);
+    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setPageLocation(dispatch, 2);
+    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {

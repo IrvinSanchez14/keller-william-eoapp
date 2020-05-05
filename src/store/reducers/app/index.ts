@@ -65,4 +65,17 @@ export const appActions: any = {
       },
     };
   },
+  SET_INFORMATION_PAGE: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          categoryPage: action.payload.title,
+          actualPage: action.payload.page,
+        },
+      },
+    };
+  },
 };

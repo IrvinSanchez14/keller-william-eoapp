@@ -1,14 +1,15 @@
 import { Component } from 'react';
 import _ from 'lodash';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
-import { setPageLocation } from 'src/store/actions/app';
+import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
+import { categoriesName } from 'src/helpers/constants';
 
 type FullNameProps = IAppStoreProps;
 
@@ -37,12 +38,12 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
-    setPageLocation(dispatch, 7);
+    setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setPageLocation(dispatch, 6);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {
