@@ -1,8 +1,7 @@
 import { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
 
-import MenuProps from './IMenu';
+import MenuProps, { Items } from './IMenu';
 
 const MenuWrapper = styled.div`
   position: absolute;
@@ -65,6 +64,10 @@ const ListElement = styled.li`
   `};
 `;
 
+function redirectTo(link: string): void {
+  location.href = link;
+}
+
 const formatLink = (string: string) => string.toLowerCase().split(' ').join('');
 
 const renderNavItem = (link: string, label: string) => {
@@ -73,7 +76,7 @@ const renderNavItem = (link: string, label: string) => {
       return (
         <StyledLink
           data-test-id="faq"
-          href="http://intercom.help/keller-covered/faq"
+          onClick={() => redirectTo(link)}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -82,17 +85,21 @@ const renderNavItem = (link: string, label: string) => {
       );
     default:
       return (
-        <Link href={`/${link}`}>
+        <StyledLink onClick={() => redirectTo(link)}>
           <StyledLinkText data-test-id={link}>{label}</StyledLinkText>
-        </Link>
+        </StyledLink>
       );
   }
 };
 
-const renderList = (items: Array<string>) =>
-  items.map((label: string) => {
-    const link = formatLink(label);
-    return link !== 'legal' && <ListElement key={link}>{renderNavItem(link, label)}</ListElement>;
+const renderList = (items: Array<Items>) =>
+  items.map((item) => {
+    const link = formatLink(item.link);
+    return (
+      item.label !== 'Legal' && (
+        <ListElement key={link}>{renderNavItem(link, item.label)}</ListElement>
+      )
+    );
   });
 
 const Menu = forwardRef((Props: MenuProps, ref: any) => {

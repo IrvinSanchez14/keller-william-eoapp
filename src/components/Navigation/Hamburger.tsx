@@ -20,8 +20,8 @@ const StyledLine = styled.span`
   width: 100%;
   height: 4px;
   border-radius: 1px;
-  background-color: ${({ theme, isWhiteNav }) =>
-    isWhiteNav ? theme.colors.white : theme.colors.primary};
+  background-color: ${({ theme, iswhitenav }) =>
+    iswhitenav ? theme.colors.white : theme.colors.primary};
   transition: 0.3s ease-in-out;
   position: absolute;
   left: 50%;
@@ -35,7 +35,7 @@ const StyledLine = styled.span`
 `;
 
 const Hamburger = forwardRef((Props: HamburguerProps, ref: any) => {
-  const { isOpen, toggleMenu, isWhiteNav } = Props;
+  const { isOpen, toggleMenu, iswhitenav } = Props;
   const renderLines = () => {
     const lines = [
       {
@@ -57,7 +57,7 @@ const Hamburger = forwardRef((Props: HamburguerProps, ref: any) => {
     ];
 
     return lines.map((el, index) => (
-      <StyledLine key={index} top={el.top} isWhiteNav={isWhiteNav} openStyles={el.openStyles} />
+      <StyledLine key={index} top={el.top} iswhitenav={iswhitenav} openStyles={el.openStyles} />
     ));
   };
 
