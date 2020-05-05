@@ -57,7 +57,7 @@ jobs:
         - gcloud -q auth configure-docker
       script:
         - |
-          if [[ $TRAVIS_BRANCH  == "development" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             docker build --build-arg build_option=build-development -t $DOCKER_IMAGE_NAME-dev . && \
             docker tag $DOCKER_IMAGE_NAME-dev gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT && \
             docker push gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT && \
