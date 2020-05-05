@@ -1,9 +1,12 @@
-   server {
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kc-frontend-eo-nginx
+data:
+  nginx.conf: |
+    server {
         listen       80;
-
         default_type text/html;
-
-        rewrite ^/(.*)/$ /$1 permanent;
 
         error_page 404 /404/index.html;
         location = /404/index.html {
@@ -24,6 +27,7 @@
             if ($http_user_agent ~* "^GoogleHC") {
                 return 200;
             }
+            
             try_files $uri $uri/index.html $uri.html $uri/*.html =404;
         }
     }
