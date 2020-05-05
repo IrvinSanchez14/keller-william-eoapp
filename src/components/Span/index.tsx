@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ISpan from './ISpan';
 
-const StyledSpan = styled.span<ISpan>`
+const StyledSpan = styled.span`
   color: ${({ theme, color }) => (color === 'white' ? theme.colors.white : theme.colors.spanColor)};
   ${({ color }) => color && `color: ${color}`};
   font-size: 12px;

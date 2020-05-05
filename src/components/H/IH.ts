@@ -2,6 +2,6 @@ export default interface IH {
   color?: string;
   margin?: string;
   mobileMargin?: string;
-  as: any;
+  as: string;
   mobileFontSize?: string;
 }

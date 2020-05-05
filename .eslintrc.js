@@ -27,6 +27,5 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/interface-name-prefix': 0, // Ignore interfaces can't start with 'I'
     '@typescript-eslint/explicit-function-return-type': 0,
-    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

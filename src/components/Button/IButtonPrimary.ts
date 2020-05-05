@@ -1,6 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
-
-export default interface ButtonPrimaryProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export default interface ButtonPrimaryProps {
   isInverted: boolean;
   color: string;
   width: string;
