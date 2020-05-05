@@ -48,6 +48,7 @@ jobs:
         - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
         - chmod +x ./kubectl
         - sudo mv ./kubectl /usr/local/bin/kubectl
+        - mv ./.kube/ /home/travis
         - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
         - source $HOME/google-cloud-sdk/path.bash.inc
         - gcloud components update kubectl
@@ -59,6 +60,6 @@ jobs:
           docker build --build-arg build_option=build-development -t $DOCKER_IMAGE_NAME-dev . && \
           docker tag $DOCKER_IMAGE_NAME-dev gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT && \
           docker push gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT && \
-          kubectl config use-context gke_starlit-myth-275818_us-central1-c_cluster-1 && \
-          kubectl apply -f deployment.yaml && \
-          kubectl set image deployments/$DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME=gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT;
+          kubectl --kubeconfig=/home/travis/.kube/config config use-context gke_starlit-myth-275818_us-central1-c_cluster-1 && \
+          kubectl --kubeconfig=/home/travis/.kube/config apply -f deployment.yaml && \
+          kubectl --kubeconfig=/home/travis/.kube/config set image deployments/$DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME=gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT;
