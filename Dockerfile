@@ -6,6 +6,7 @@ WORKDIR /src
 
 COPY package.json ./
 COPY yarn.lock ./
+COPY .npmrc ./
 
 RUN yarn config set "@fortawesome:registry" https://npm.fontawesome.com/
 RUN yarn config set "//npm.fontawesome.com/:_authToken" $NPM_TOKEN
