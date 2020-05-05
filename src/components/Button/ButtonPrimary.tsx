@@ -1,8 +1,19 @@
 import styled, { keyframes, css } from 'styled-components';
-
 import ButtonPrimaryProps from './IButtonPrimary';
 
-export const buttonStyles = css`
+interface ButtonStylesProps {
+  width?: string;
+  height?: string;
+  margin?: string;
+  as?: any;
+  isInverted?: boolean;
+  color?: string;
+  customColor?: string;
+  mobileWidth?: string;
+  mobileMargin?: string;
+}
+
+export const buttonStyles = css<ButtonStylesProps>`
   border: none;
   outline: none;
   font-size: 18px;
@@ -13,7 +24,7 @@ export const buttonStyles = css`
   height: ${({ height }) => height};
   font-weight: 400;
   cursor: pointer;
-  ${({ theme, margin }) => margin && `margin: ${margin};`};
+  ${({ margin }) => margin && `margin: ${margin};`};
   ${({ as }) => as === 'a' && 'text-decoration: none;'};
   color: ${({ isInverted, theme }) => (isInverted ? theme.colors.primary : theme.colors.white)};
   background: ${({ isInverted, theme, color, customColor }) =>
@@ -89,8 +100,8 @@ const defaultProps: ButtonPrimaryProps = {
   isLoading: false,
 };
 
-function ButtonPrimary(Props: ButtonPrimaryProps) {
-  const { isInverted, color, width, children, isLoading, ...rest } = Props;
+function ButtonPrimary(props: ButtonPrimaryProps & ButtonStylesProps) {
+  const { isInverted, color, width, children, isLoading, ...rest } = props;
   return (
     <StyledButton isInverted={isInverted} width={width} color={color} {...rest}>
       {isLoading ? (
