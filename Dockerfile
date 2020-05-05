@@ -18,4 +18,3 @@ RUN yarn export
 
 FROM nginx:stable-alpine
 COPY --from=builder /src/out/ /usr/share/nginx/html
-COPY --from=builder /src/nginx/default.conf /etc/nginx/conf.d/
