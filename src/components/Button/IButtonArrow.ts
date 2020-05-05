@@ -10,5 +10,5 @@ export default interface IButtonArrow {
   mobileMargin?: string;
   width?: string;
   mobileWidth?: string;
-  onClick?: void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }

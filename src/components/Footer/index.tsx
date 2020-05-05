@@ -13,7 +13,7 @@ const FooterWrapper = styled.footer`
   ${({ theme }) => theme.tablet`padding: 50px 25px 40px;`};
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ agentAssetsFooter: boolean }>`
   max-width: 1260px;
   width: 100%;
   margin: 0 auto;
@@ -77,7 +77,15 @@ const StyledLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-const StyledFooterText = styled.p`
+interface StyledFooterTextProps {
+  isLabsText?: boolean;
+  marginTop?: string;
+  mobileMarginTop?: string;
+  tabletMarginTop?: string;
+  small?: boolean;
+}
+
+const StyledFooterText = styled.p<StyledFooterTextProps>`
   font-family: 'Light';
   color: ${({ theme }) => theme.colors.white};
   font-size: 12px;

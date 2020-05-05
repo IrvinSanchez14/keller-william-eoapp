@@ -16,7 +16,13 @@ const StyledHamburger = styled.button`
   `};
 `;
 
-const StyledLine = styled.span`
+interface StyledLineProps {
+  isWhiteNav?: boolean;
+  top: string;
+  openStyles?: string;
+}
+
+const StyledLine = styled.span<StyledLineProps>`
   width: 100%;
   height: 4px;
   border-radius: 1px;

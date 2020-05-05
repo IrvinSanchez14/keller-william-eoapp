@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useLayoutEffect, createRef } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import SVG from 'react-inlinesvg';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
