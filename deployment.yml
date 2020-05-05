@@ -21,18 +21,6 @@ spec:
             - name: kc-frontend-eo
               mountPath: /etc/nginx/conf.d/default.conf
               subPath: nginx.conf
-            - name: robots-config
-              mountPath: /etc/nginx/conf.d/robots.txt
-              subPath: robots.txt
-            - name: htpasswd
-              mountPath: /etc/nginx/conf.d/.htpasswd
-              subPath: htpasswd
-          livenessProbe:
-              httpGet:
-                path: /healthz
-                port: 80
-              initialDelaySeconds: 30
-              timeoutSeconds: 1
           ports:
             - name: web
               containerPort: 80
@@ -40,12 +28,6 @@ spec:
         - name: kc-frontend-eo
           configMap:
             name: kc-frontend-eo-nginx
-        - name: robots-config
-          configMap:
-            name: robots-config
-        - name: htpasswd
-          configMap:
-            name: htpasswd
 ---
 apiVersion: v1
 kind: Service
