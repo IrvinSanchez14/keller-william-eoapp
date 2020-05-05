@@ -1,6 +1,6 @@
 export default interface HamburguerProps {
   isOpen: boolean;
   toggleMenu: () => void;
-  iswhitenav: boolean;
+  isWhiteNav: boolean;
   ref: any;
 }
