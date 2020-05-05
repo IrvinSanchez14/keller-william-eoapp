@@ -227,8 +227,7 @@ const StyledStepPresentBuildingText = styled.div`
   ${({ padding }) => padding && `padding: ${padding}`};
   ${({ fontSize }) => fontSize && `font-size: ${fontSize}`};
   ${({ color }) => color && `color: ${color}`};
-  ${({ bold }) => bold && `font-weight: bold;`};
-  font-family: 'Bold';
+  font-family: 'Regular';
 `;
 
 const StyledStepText = styled.div`
@@ -362,6 +361,9 @@ const StyledTextContainer = styled.div`
 const StyledImg = styled.img`
   width: 100%;
   padding: 0 40px 28px 40px;
+  ${({ padding }) => padding && `padding: ${padding};`};
+  ${({ width }) => width && `width: ${width};`};
+  ${({ height }) => height && `height: ${height};`};
 `;
 
 const StyledT = styled.div`
@@ -516,18 +518,17 @@ const StepsHeroSection = (): JSX.Element => {
               <Span margin="13px 10px 0 10px">I'M HERE TO HELP</Span>
             </StyledStepPresentDogIcon>
             <StyledStepPresentBuilding>
-              <StyledSVG
-                key="second_dog"
-                src="/static/img/Group.svg"
-                width="130px"
-                height="100px"
-                mobileWidth="250px"
+              <StyledImg
+                padding="0 28px 0 28px"
+                height="110px"
+                width="175px"
+                alt="group"
+                src="/static/img/Group.png"
               />
               <StyledStepPresentBuildingText
                 color={theme.colors.primary}
+                padding="10px 0 6px 0"
                 fontSize="1.0rem"
-                padding="15px 0 40px 0"
-                bold
               >
                 Commercial
               </StyledStepPresentBuildingText>
@@ -621,7 +622,7 @@ const StepsHeroSection = (): JSX.Element => {
         <StyledBlueContainer>
           <StyledBlueHeaderText>Let's get you covered</StyledBlueHeaderText>
           <StyledBlueInfoText>A new way to shop for E&O Insurance!</StyledBlueInfoText>
-          <StyledBlueButton href="/firm_information">Get started now</StyledBlueButton>
+          <StyledBlueButton href="/eoapplication">Get started now</StyledBlueButton>
         </StyledBlueContainer>
       </StyledOtherContainer>
     </>

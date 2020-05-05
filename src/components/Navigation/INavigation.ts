@@ -1,4 +1,9 @@
+interface Items {
+  label: string;
+  link: string;
+}
+
 export default interface NavigationProps {
-  items: Array<string>;
-  isWhiteNav: boolean;
+  items: Array<Items>;
+  iswhitenav: boolean;
 }

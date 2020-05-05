@@ -57,8 +57,8 @@ const StyledSvg = styled(SVG)`
   height: 38px;
   width: 188px;
   cursor: pointer;
-  ${({ isWhiteNav, theme }) =>
-    isWhiteNav &&
+  ${({ iswhitenav, theme }) =>
+    iswhitenav &&
     css`
       path {
         fill: ${theme.colors.white};
@@ -99,7 +99,7 @@ const StyledImg = styled.img`
 `;
 
 function Navigation(Props: NavigationProps) {
-  const { items, isWhiteNav } = Props;
+  const { items, iswhitenav } = Props;
   const [isMobile, setIsMobile] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -140,7 +140,7 @@ function Navigation(Props: NavigationProps) {
       <Wrapper>
         <StyledContainer>
           <Hamburger
-            isWhiteNav={isWhiteNav && !isMobile}
+            iswhitenav={iswhitenav && !isMobile}
             ref={hamburger}
             isOpen={isMenuVisible}
             toggleMenu={() => toggleHamburger()}
@@ -149,7 +149,7 @@ function Navigation(Props: NavigationProps) {
             <StyledLogoContainer>
               <StyledImg src="/static/img/logoKW.svg" alt="KWlogo" data-test-id="logo" />
               <StyledSvg
-                isWhiteNav={isWhiteNav && !isMobile}
+                iswhitenav={iswhitenav && !isMobile}
                 src="/static/img/logoKW.svg"
                 data-test-id="logo"
               />

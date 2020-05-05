@@ -5,7 +5,15 @@ import LayoutProps from './ILayout';
 import Footer from 'src/components/Footer';
 import Navigation from '../Navigation';
 
-const navigationFooterItems = ['About', 'FAQ', 'Contact', 'Legal', 'Marketing'];
+const navigationFooterItems = [
+  { label: 'About', link: 'https://kellercovered.com/about' },
+  {
+    label: 'FAQ',
+    link: 'https://intercom.help/keller-covered/en/collections/1487633-faq',
+  },
+  { label: 'Contact', link: 'https://kellercovered.com/contact' },
+  { label: 'Legal', link: 'https://kellercovered.com/legal/#privacy' },
+];
 const navigationItems = ['About', 'FAQ', 'Contact', 'Legal'];
 
 const Wrapper = styled.main`
@@ -28,7 +36,7 @@ const defaultProps: LayoutProps = {
   title: null,
   withoutNavbar: false,
   withoutFooter: false,
-  isWhiteNav: false,
+  iswhitenav: false,
   isPaddingTop: false,
   isDark: false,
   agentAssetsFooter: false,
@@ -41,7 +49,7 @@ function Layout(Props: LayoutProps) {
     withoutPositionRelative,
     withoutNavbar,
     withoutFooter,
-    isWhiteNav,
+    iswhitenav,
     isPaddingTop,
     isDark,
     agentAssetsFooter,
@@ -51,7 +59,7 @@ function Layout(Props: LayoutProps) {
       <Head>
         <title>Keller Covered</title>
       </Head>
-      {!withoutNavbar && <Navigation items={navigationItems} isWhiteNav={isWhiteNav} />}
+      {!withoutNavbar && <Navigation items={navigationFooterItems} iswhitenav={iswhitenav} />}
       <Wrapper
         isPaddingTop={isPaddingTop}
         withoutPositionRelative={withoutPositionRelative}
