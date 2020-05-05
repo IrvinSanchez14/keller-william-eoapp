@@ -5,7 +5,13 @@ interface IProps {
   props?: any;
 }
 
-const StyledParagraph = styled.p`
+interface StyledParagraphProps {
+  margin?: string;
+  mobileMargin?: string;
+  isSmall?: boolean;
+}
+
+const StyledParagraph = styled.p<StyledParagraphProps>`
   color: ${({ theme: { colors }, color }) =>
     color === 'white' ? colors.white : colors.paragraph.dark};
   font-size: 22px;

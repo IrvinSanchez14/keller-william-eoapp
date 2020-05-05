@@ -2,7 +2,15 @@ import styled, { css } from 'styled-components';
 import theme from 'src/styles/MarketingEO/theme';
 import HProps from './IH';
 
-const StyledHeader = styled.h1`
+interface H1Props {
+  color?: string;
+  margin?: string;
+  mobileFontSize?: string;
+  mobileMargin?: string;
+  as: any;
+}
+
+const StyledHeader = styled.h1<H1Props>`
   ${({ color }) => color && `color: ${color}`};
   font-size: 64px;
   line-height: 66px;

@@ -28,7 +28,12 @@ const StyleBenefitSection = styled.div`
   ${({ theme }) => theme.phone`width: 100%;`};
 `;
 
-const StyleBenefitHeader = styled.div`
+interface StyleBenefitHeaderProps {
+  showRightLine?: boolean;
+  paddingLeft?: boolean;
+}
+
+const StyleBenefitHeader = styled.div<StyleBenefitHeaderProps>`
   left: 0;
   padding-left: 10px;
   ${({ showRightLine }) => showRightLine && `border-right: 1px solid ${theme.colors.lightGray};`}
@@ -78,7 +83,7 @@ const StyledCircle = styled.div`
   display: flex;
 `;
 
-const StyledBenefitText = styled.div`
+const StyledBenefitText = styled.div<{ customPadding?: string }>`
   padding: ${({ customPadding }) => customPadding};
   font-size: 1.6rem;
   font-weight: bold;
