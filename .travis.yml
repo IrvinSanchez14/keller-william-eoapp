@@ -40,7 +40,12 @@ jobs:
       before_install: npm i -g yarn
       install: yarn --frozen-lockfile
       script:
-        - if [[ $TRAVIS_BRANCH  == "develop" ]]; then yarn format; fi
+        - |
+          if [[ $TRAVIS_BRANCH  == "develop" ]]; then
+            yarn format
+            yarn build
+          fi
+
     - stage: deploy
       if: type = push
       name: deploy
