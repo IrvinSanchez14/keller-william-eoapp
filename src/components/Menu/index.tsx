@@ -3,11 +3,7 @@ import styled, { css } from 'styled-components';
 
 import MenuProps, { Items } from './IMenu';
 
-interface MenuWrapperProps {
-  isMenuVisible?: boolean;
-}
-
-const MenuWrapper = styled.div<MenuWrapperProps>`
+const MenuWrapper = styled.div`
   position: absolute;
   top: 110px;
   left: 2px;

@@ -52,7 +52,7 @@ const StyledSVG = styled(SVG)`
   }
 `;
 
-const StyledTextHeader = styled.h1<{ padding?: string }>`
+const StyledTextHeader = styled.h1`
   font-size: 12px;
   font-style: 'Bold';
   letter-spacing: 2px;
@@ -63,12 +63,12 @@ const StyledTextHeader = styled.h1<{ padding?: string }>`
     `};
 `;
 
-const StyledTextContainer = styled.div<{ padding?: string }>`
+const StyledTextContainer = styled.div`
   padding: 23px 0 0 0;
   ${({ padding }) => padding && `padding: ${padding}`};
 `;
 
-const StyledTextElement = styled.span<{ fontSize?: string; insertBr?: boolean }>`
+const StyledTextElement = styled.span`
   ${({ fontSize }) => fontSize && `font-size: ${fontSize};`}
   color: rgb(29, 37, 60);
   @media (min-width: 690px) {

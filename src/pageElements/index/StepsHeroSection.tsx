@@ -92,13 +92,13 @@ const StyledShapeCircle = styled.div`
   border: 1px solid ${theme.colors.grayBorders};
 `;
 
-const StyledShapeLine = styled.div<{ height?: string }>`
+const StyledShapeLine = styled.div`
   width: 1px;
   ${({ height }) => height && `height: ${height};`}
   background-color: ${theme.colors.grayBorders};
 `;
 
-const StyledLine = styled.div<{ padding?: string; directionContent?: boolean }>`
+const StyledLine = styled.div`
   width: 50px;
   flex-direction: column;
   align-items: center;
@@ -109,7 +109,7 @@ const StyledLine = styled.div<{ padding?: string; directionContent?: boolean }>`
   ${({ directionContent }) => directionContent && `justify-content: flex-start`}
 `;
 
-const StyledStepsContainer = styled.div<{ padding?: string }>`
+const StyledStepsContainer = styled.div`
   position: relative;
   ${({ padding }) => padding && `padding: ${padding};`}
   max-width: ${({ theme }) => theme.gridWidth};
@@ -119,16 +119,7 @@ const StyledStepsContainer = styled.div<{ padding?: string }>`
   ${({ theme }) => theme.tablet`flex-direction: column;`};
 `;
 
-interface StyledStepSectionProps {
-  margin?: string;
-  height?: string;
-  flexDirection?: string;
-  justifyContent?: string;
-  alignItems?: string;
-  padding?: string;
-}
-
-const StyledStepSection = styled.div<StyledStepSectionProps>`
+const StyledStepSection = styled.div`
   width: 48%;
   //   max-height: 300px;
   display: flex;
@@ -144,14 +135,7 @@ const StyledStepSection = styled.div<StyledStepSectionProps>`
   ${({ padding }) => padding && `padding: ${padding}`};
 `;
 
-interface StyledStepPresentItemProps {
-  showShadow?: boolean;
-  display?: boolean;
-  width?: string;
-  flexDirection?: string;
-}
-
-const StyledStepPresentItem = styled.div<StyledStepPresentItemProps>`
+const StyledStepPresentItem = styled.div`
   min-width: 180px;
   max-width: 370px;
   min-height: 90px;
@@ -193,7 +177,7 @@ const StyledButtonCheckContainer = styled.div`
   `}
 `;
 
-const StyledStepButtonCheck = styled.div<{ margin?: string }>`
+const StyledStepButtonCheck = styled.div`
   background-color: ${theme.colors.primary};
   height: 35px;
   width: 37px;
@@ -210,13 +194,7 @@ const StyledStepPresentDogIcon = styled.div`
   padding-left: 20px;
 `;
 
-interface StyledStepPresentBuildingProps {
-  padding?: string;
-  mobilePadding?: string;
-  width?: string;
-}
-
-const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
+const StyledStepPresentBuilding = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -245,13 +223,7 @@ const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
   `};
 `;
 
-interface StyledStepPresentBuildingTextProps {
-  padding?: string;
-  fontSize?: string;
-  bold?: boolean;
-}
-
-const StyledStepPresentBuildingText = styled.div<StyledStepPresentBuildingTextProps>`
+const StyledStepPresentBuildingText = styled.div`
   ${({ padding }) => padding && `padding: ${padding}`};
   ${({ fontSize }) => fontSize && `font-size: ${fontSize}`};
   ${({ color }) => color && `color: ${color}`};
@@ -303,7 +275,7 @@ const StyledPartnersSuscription = styled.div`
   display: flex;
 `;
 
-const StyledPartnerInformation = styled.div<{ paddingTop?: string }>`
+const StyledPartnerInformation = styled.div`
   -webkit-box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
   -moz-box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
   box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
@@ -313,7 +285,7 @@ const StyledPartnerInformation = styled.div<{ paddingTop?: string }>`
   border-radius: 5px;
   flex-direction: row;
   display: flex;
-  ${({ paddingTop }) => paddingTop && `margin-top: ${paddingTop}`};
+  ${({ paddingtop }) => paddingtop && `margin-top: ${paddingtop}`};
 `;
 
 const StyledPartnerBlock = styled.div`
@@ -587,7 +559,7 @@ const StepsHeroSection = (): JSX.Element => {
                 <StyledPartnerMoth>/moth</StyledPartnerMoth>
               </StyledPartnerBlock>
             </StyledPartnerInformation>
-            <StyledPartnerInformation paddingTop="20px">
+            <StyledPartnerInformation paddingtop="20px">
               <StyledPartnerBlock>
                 <StyledSVG
                   key="amwins_logo"
@@ -648,7 +620,7 @@ const StepsHeroSection = (): JSX.Element => {
           />
         </StyledT>
         <StyledBlueContainer>
-          <StyledBlueHeaderText>Let&apos;s get you covered</StyledBlueHeaderText>
+          <StyledBlueHeaderText>Let's get you covered</StyledBlueHeaderText>
           <StyledBlueInfoText>A new way to shop for E&O Insurance!</StyledBlueInfoText>
           <StyledBlueButton href="/eoapplication">Get started now</StyledBlueButton>
         </StyledBlueContainer>

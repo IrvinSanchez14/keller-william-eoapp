@@ -84,7 +84,7 @@ const StyledSvg = styled(SVG)`
 `;
 
 const PartnerTile = ({ name, price, isShadow, isCheckIcon }: IPartnerTile): JSX.Element => (
-  <StyledContainer>
+  <StyledContainer isShadow={isShadow}>
     <StyledSvg src="/static/img/PearlInsurance_Logo.svg" />
     <StyledPrice>
       {price}
