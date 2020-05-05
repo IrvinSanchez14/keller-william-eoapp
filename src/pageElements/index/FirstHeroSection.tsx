@@ -47,9 +47,13 @@ const StyledSVG = styled(SVG)`
   ${({ width }) => width && `width: ${width};`};
 
   ${({ isTabletHidden, theme }) => isTabletHidden && theme.tablet`display: none;`};
-  @media (max-width: 1188px) {
-    display: none;
+  ${({ hideShape }) =>
+    hideShape &&
+    `
+      @media (max-width: 1188px) {
+      display: none;
   }
+  `};
 `;
 
 const StyledTextHeader = styled.h1`
@@ -423,7 +427,9 @@ const FirstHeroSection = (): JSX.Element => {
         isTabletHidden: true,
       },
     ];
-    return shapes.map((shape) => <StyledSVG key={shape.src} position="absolute" {...shape} />);
+    return shapes.map((shape) => (
+      <StyledSVG hideShape key={shape.src} position="absolute" {...shape} />
+    ));
   };
 
   return (
