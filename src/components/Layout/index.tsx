@@ -36,7 +36,7 @@ const defaultProps: LayoutProps = {
   title: null,
   withoutNavbar: false,
   withoutFooter: false,
-  iswhitenav: false,
+  isWhiteNav: false,
   isPaddingTop: false,
   isDark: false,
   agentAssetsFooter: false,
@@ -49,7 +49,7 @@ function Layout(Props: LayoutProps) {
     withoutPositionRelative,
     withoutNavbar,
     withoutFooter,
-    iswhitenav,
+    isWhiteNav,
     isPaddingTop,
     isDark,
     agentAssetsFooter,
@@ -59,7 +59,7 @@ function Layout(Props: LayoutProps) {
       <Head>
         <title>Keller Covered</title>
       </Head>
-      {!withoutNavbar && <Navigation items={navigationFooterItems} iswhitenav={iswhitenav} />}
+      {!withoutNavbar && <Navigation items={navigationFooterItems} isWhiteNav={isWhiteNav} />}
       <Wrapper
         isPaddingTop={isPaddingTop}
         withoutPositionRelative={withoutPositionRelative}

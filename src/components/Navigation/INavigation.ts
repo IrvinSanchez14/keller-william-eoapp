@@ -5,5 +5,5 @@ interface Items {
 
 export default interface NavigationProps {
   items: Array<Items>;
-  iswhitenav: boolean;
+  isWhiteNav: boolean;
 }

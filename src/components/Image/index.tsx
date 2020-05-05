@@ -5,7 +5,19 @@ import SVG from 'react-inlinesvg';
 import { IeStyles } from 'src/styles/MarketingEO/utils';
 import ImageProps from './InImage';
 
-const ImageWrapper = styled.div`
+interface ImageWrapperProps {
+  static?: boolean;
+  customSize?: number[];
+  animationPosition?: number[];
+  position?: number[];
+  animationData?: boolean;
+  rotated?: boolean;
+  neverStatic?: boolean;
+  hiddenOnMobile?: boolean;
+  mobilePosition?: number[];
+}
+
+const ImageWrapper = styled.div<ImageWrapperProps>`
   position: absolute;
   background: transparent no-repeat;
   ${(props) =>
@@ -97,7 +109,7 @@ const ImageWrapper = styled.div`
     `};
 `;
 
-const StyledGif = styled.img`
+const StyledGif = styled.img<{ animationGif?: string }>`
   @media (max-width: 900px) {
     ${(props) =>
       !!props.animationGif &&

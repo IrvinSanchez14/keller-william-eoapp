@@ -358,7 +358,13 @@ const StyledTextContainer = styled.div`
   align-items: center;
 `;
 
-const StyledImg = styled.img`
+interface StyledImg {
+  padding?: string;
+  width?: string;
+  height?: string;
+}
+
+const StyledImg = styled.img<StyledImg>`
   width: 100%;
   padding: 0 40px 28px 40px;
   ${({ padding }) => padding && `padding: ${padding};`};
