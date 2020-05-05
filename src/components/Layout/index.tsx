@@ -16,7 +16,13 @@ const navigationFooterItems = [
 ];
 const navigationItems = ['About', 'FAQ', 'Contact', 'Legal'];
 
-const Wrapper = styled.main`
+interface WrapperProps {
+  isPaddingTop?: boolean;
+  isDark?: boolean;
+  withoutPositionRelative?: boolean;
+}
+
+const Wrapper = styled.main<WrapperProps>`
   position: relative;
   ${({ isPaddingTop }) => isPaddingTop && 'padding-top: 100px;'};
   ${({ isDark }) =>
