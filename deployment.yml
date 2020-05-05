@@ -15,11 +15,38 @@ spec:
         app: kc-frontend-eo
     spec:
       containers:
-      - name: kc-frontend-eo
-        image: gcr.io/starlit-myth-275818/kc-frontend-eo:latest
-        ports:
-        - name: web
-          containerPort: 80
+        - name: kc-frontend-eo
+          image: gcr.io/starlit-myth-275818/kc-frontend-eo:latest
+          volumeMounts:
+            - name: robots-config
+              mountPath: /etc/nginx/conf.d/robots.txt
+              subPath: robots.txt
+            - name: htpasswd
+              mountPath: /etc/nginx/conf.d/.htpasswd
+              subPath: htpasswd
+          resources:
+            requests:
+              memory: '100Mi'
+              cpu: '50m'
+            limits:
+              memory: '150Mi'
+              cpu: '75m'
+          livenessProbe:
+              httpGet:
+                path: /healthz
+                port: 80
+              initialDelaySeconds: 30
+              timeoutSeconds: 1
+          ports:
+            - name: web
+              containerPort: 80
+      volumes:
+        - name: robots-config
+          configMap:
+            name: robots-config
+        - name: htpasswd
+          configMap:
+            name: htpasswd
 ---
 apiVersion: v1
 kind: Service
@@ -29,7 +56,7 @@ spec:
   selector:
     app: kc-frontend-eo
   ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 80
+    - protocol: TCP
+      port: 80
+      targetPort: 80
   type: LoadBalancer
