@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as CONSTANTS from '../types/app';
-import { FirmInformationProps } from '../models/AppState';
+import { FirmInformationProps, AgentInformationProps } from '../models/AppState';
 
 export const setPageLocation = (dispatch: React.Dispatch<any>, page: number) => {
   const setPage = {
@@ -25,4 +25,13 @@ export const changeStatusProgressBar = (dispatch: React.Dispatch<any>, status: n
   const changeProgressBar = { type: CONSTANTS.CHANGE_STATUS_PROGRESS_BAR, payload: status };
   dispatch(changeProgressBar);
   return changeProgressBar;
+};
+
+export const storeAgentInformation = (
+  dispatch: React.Dispatch<any>,
+  agentForm: AgentInformationProps,
+) => {
+  const storeValueAgent = { type: CONSTANTS.AGENT_INFORMATION_STORE, payload: agentForm };
+  dispatch(storeValueAgent);
+  return storeValueAgent;
 };

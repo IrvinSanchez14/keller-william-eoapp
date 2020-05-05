@@ -1,3 +1,13 @@
+export interface AgentInformationProps {
+  numberAgentsMoreCommission: number;
+  numberAgentLessCommission: number;
+  numberAgenteNoCommission: number;
+  numberAgentSpecialDesignation: number;
+  revokedLicense: boolean;
+  currentCarrier: string;
+  isHaveInsurance: boolean;
+}
+
 export interface FirmInformationProps {
   contactName: string;
   brokerName: string;
@@ -15,7 +25,7 @@ export interface FirmInformationProps {
 
 export interface DataInitalProps {
   firmInformation: FirmInformationProps;
-  agentInformation?: Array<any>;
+  agentInformation?: AgentInformationProps;
   policyInformation?: Array<any>;
   commission?: Array<any>;
   riskProfile?: Array<any>;
@@ -55,6 +65,15 @@ export default class AppState implements IAppState {
         isFirmOwned: false,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
+      },
+      agentInformation: {
+        numberAgentsMoreCommission: 0,
+        numberAgentLessCommission: 0,
+        numberAgenteNoCommission: 0,
+        numberAgentSpecialDesignation: 0,
+        revokedLicense: false,
+        currentCarrier: '',
+        isHaveInsurance: false,
       },
     },
     providers: [],

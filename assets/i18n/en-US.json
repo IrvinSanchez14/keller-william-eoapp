@@ -10,5 +10,17 @@
   "app.avatar.text.firm.part.three": "INDEPENDENT, YOU KNOW WHAT I MEAN",
   "app.head.form.firm.part.three": "Is your firm independently owned and not controlled, affiliated with, or owned by another entity?",
   "app.radio.answer.YES": "Yes, I am independently owned",
-  "app.radio.answer.NO": "No, I am not independently owned"
+  "app.radio.answer.NO": "No, I am not independently owned",
+  "app.avatar.text.agent.part.one": "the more, the merrier!",
+  "app.head.form.agent.part.one": "What's the total number of licensed agents?",
+  "app.message.form.agent.part.one": "Please include owners and managers as part of the total as well",
+  "app.title.form.agent.part.one": "List the total number of agents for each category",
+  "app.subtitle.one.form.agent.part.one": "Earning more than $20,000 in commission per year",
+  "app.subtitle.two.form.agent.part.one": "Earning less than $20,000 in commission per year",
+  "app.subtitle.tree.form.agent.part.one": "Earning no commission",
+  "app.avatar.text.agent.part.two": "I got my phd in sniffing",
+  "app.head.form.agent.part.two": "How many of your agents have any type of special designation?",
+  "app.title.form.agent.part.two": "Please provide the total count of agents who have earned any type of special designation",
+  "app.avatar.text.agent.part.three": "Legal beagle",
+  "app.head.form.agent.part.three": "Have any licensees of the firm had their license cancelled or revoked in the last three years"
 }

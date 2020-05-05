@@ -19,3 +19,13 @@ export const dateBrokerValidateSchema = Yup.object().shape({
   dateLicensedBrokerAgent: Yup.string().required('Field is required'),
   dateLicensedBroker: Yup.string().required('Field is required'),
 });
+
+export const agentLicensedValidateSchema = Yup.object().shape({
+  numberAgentsMoreCommission: Yup.number().required('Field is required'),
+  numberAgentLessCommission: Yup.number().required('Field is required'),
+  numberAgenteNoCommission: Yup.number().required('Field is required'),
+});
+
+export const agentSpecialValidateSchema = Yup.object().shape({
+  numberAgentSpecialDesignation: Yup.number().required('Field is required'),
+});
