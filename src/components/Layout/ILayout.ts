@@ -4,7 +4,7 @@ export default interface LayoutProps {
   title?: string;
   withoutNavbar: boolean;
   withoutFooter: boolean;
-  isWhiteNav: boolean;
+  iswhitenav: boolean;
   isPaddingTop: boolean;
   isDark: boolean;
   agentAssetsFooter: boolean;
