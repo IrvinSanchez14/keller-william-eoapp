@@ -42,9 +42,9 @@ jobs:
       script:
         - if [[ $TRAVIS_BRANCH  == "develop" ]]; then yarn format; fi
     - stage: deploy
-      if: type NOT IN (pull_request, cron)
+      if: type = push
       name: deploy
-      install:
+      before_install:
         - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
         - chmod +x ./kubectl
         - sudo mv ./kubectl /usr/local/bin/kubectl
