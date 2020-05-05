@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
 import SVG from 'react-inlinesvg';
 
 import FooterProps from './IFooter';
@@ -78,6 +77,12 @@ const StyledLink = styled.a`
   color: ${({ theme }) => theme.colors.white};
 `;
 
+const Link = styled.a`
+  font-family: 'Light';
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
 const StyledFooterText = styled.p`
   font-family: 'Light';
   color: ${({ theme }) => theme.colors.white};
@@ -149,11 +154,13 @@ const StyledTextLink = styled.p`
 
 const renderLinks = (items) => {
   const formatLink = (string: string) => string.toLowerCase().split(' ').join('');
-
+  function redirectTo(link: string): void {
+    location.href = link;
+  }
   return (
     <ListWrapper>
-      {items.map((label) => {
-        const link = formatLink(label);
+      {items.map((item) => {
+        const link = formatLink(item.link);
 
         return (
           !(link === 'findmesavings' || link === 'getquotes' || link === 'namethedog') && (
@@ -161,15 +168,15 @@ const renderLinks = (items) => {
               {link === 'faq' ? (
                 <StyledLink
                   data-test-id="faqFooter"
-                  href="http://intercom.help/keller-covered/faq"
+                  onClick={() => redirectTo(link)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  {label}
+                  {item.label}
                 </StyledLink>
               ) : (
-                <Link href={`/${link}`}>
-                  <StyledTextLink data-test-id={`${link}Footer`}>{label}</StyledTextLink>
+                <Link href={link}>
+                  <StyledTextLink data-test-id={`${item.label}Footer`}>{item.label}</StyledTextLink>
                 </Link>
               )}
             </li>

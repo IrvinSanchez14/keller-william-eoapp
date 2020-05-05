@@ -451,7 +451,7 @@ const FirstHeroSection = (): JSX.Element => {
                 </H>
               </StyledTextContainer>
               <ButtonWithArrow
-                href="/firm_information"
+                href="/eoapplication"
                 margin="40px 0 0 0"
                 mobileMargin="8px 0 0 0"
                 customWidth="445px"
