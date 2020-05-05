@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import SVG from 'react-inlinesvg';
-
+import Link from 'next/link';
 import FooterProps from './IFooter';
 
 const largeDesktopMargin = '72px';
@@ -72,12 +72,6 @@ const SubContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-  font-family: 'Light';
-  text-decoration: none;
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const Link = styled.a`
   font-family: 'Light';
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
@@ -175,9 +169,9 @@ const renderLinks = (items) => {
                   {item.label}
                 </StyledLink>
               ) : (
-                <Link href={link}>
+                <StyledLink href={link}>
                   <StyledTextLink data-test-id={`${item.label}Footer`}>{item.label}</StyledTextLink>
-                </Link>
+                </StyledLink>
               )}
             </li>
           )

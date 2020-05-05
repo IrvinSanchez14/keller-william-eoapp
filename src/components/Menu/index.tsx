@@ -52,12 +52,6 @@ const StyledLink = styled.a`
   text-decoration: none;
 `;
 
-const Link = styled.a`
-  ${basicStyles};
-  display: block;
-  text-decoration: none;
-`;
-
 const ListWrapper = styled.ul`
   padding: 12px 44px 12px 26px;
   ${({ theme }) => theme.phone`padding: 95px 25px 20px;`};
@@ -91,9 +85,9 @@ const renderNavItem = (link: string, label: string) => {
       );
     default:
       return (
-        <Link onClick={() => redirectTo(link)}>
+        <StyledLink onClick={() => redirectTo(link)}>
           <StyledLinkText data-test-id={link}>{label}</StyledLinkText>
-        </Link>
+        </StyledLink>
       );
   }
 };
