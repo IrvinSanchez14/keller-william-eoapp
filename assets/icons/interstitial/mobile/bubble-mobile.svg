@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="327px" height="147px" viewBox="0 0 327 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Rectangle 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="19.8627673%" y1="39.0063186%" x2="73.1404194%" y2="77.465966%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#564CDC" offset="100%"></stop>
+        </linearGradient>
+        <path d="M30,111 C13.4314575,111 2.02906125e-15,97.5685425 5.04870979e-29,81 L5.04870979e-29,30 C-2.02906125e-15,13.4314575 13.4314575,3.04359188e-15 30,0 L295,0 C311.568542,-3.04359188e-15 325,13.4314575 325,30 L325,81 C325,97.5685425 311.568542,111 295,111 L235.4,111 L203,143.4 L203,111 L30,111 Z" id="path-2"></path>
+        <filter x="-0.5%" y="-1.0%" width="101.5%" height="104.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="2" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="coach-interstitial-02-mobile" transform="translate(-25.000000, -141.000000)">
+            <g id="speech-bubble" transform="translate(25.000000, 141.000000)">
+                <g id="chat-bubble">
+                    <g id="Rectangle-2">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

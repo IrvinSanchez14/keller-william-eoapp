@@ -1,0 +1,14 @@
+{
+  "app.name.form": "E&O application",
+  "app.name.firm": "Firm Information",
+  "app.avatar.text.firm.part.one": "Details, Details, Details ...",
+  "app.head.form.firm.part.one": "Let's get started on your E&O application.",
+  "app.subhead.form.firm.part.one": "First, I'll need some basic info.",
+  "app.link.condition.firm.part.one": "<a href='tel:8572632750'>By continuing, you agree to our Terms & Conditions.</a>",
+  "app.title.form.firm.part.one": "Keller Williams Realty, Inc.",
+  "app.head.form.firm.part.two": "I'll also need some contact information about your firm",
+  "app.avatar.text.firm.part.three": "INDEPENDENT, YOU KNOW WHAT I MEAN",
+  "app.head.form.firm.part.three": "Is your firm independently owned and not controlled, affiliated with, or owned by another entity?",
+  "app.radio.answer.YES": "Yes, I am independently owned",
+  "app.radio.answer.NO": "No, I am not independently owned"
+}

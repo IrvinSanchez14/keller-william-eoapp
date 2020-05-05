@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="394px" height="1353px" viewBox="0 0 394 1353" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>confirmation-shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="51.7332497%" y1="110.059216%" x2="48.6680778%" y2="-1.75318399%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#80D0C7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-text-confirmation-lemonade-paid" transform="translate(-1046.000000, 0.000000)" fill="url(#linearGradient-1)">
+            <g id="bg" transform="translate(1046.000000, -115.000000)">
+                <path d="M0,0 C246.759465,92.6235599 382.903683,271.824826 408.432656,537.6038 C446.726115,936.27226 307.494353,972.253666 250.64807,1162.08727 C212.750548,1288.64301 129.201191,1395.28059 0,1482 L0,0 Z" id="confirmation-shape" transform="translate(207.500000, 741.000000) scale(-1, 1) translate(-207.500000, -741.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

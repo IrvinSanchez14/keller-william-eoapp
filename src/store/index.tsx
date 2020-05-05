@@ -1,4 +1,6 @@
 import { createContext, useReducer, Dispatch, useContext } from 'react';
+import reactIntlUniversal from 'react-intl-universal';
+
 import AppState from './models/AppState';
 import { Actions } from './reducers';
 
@@ -22,11 +24,13 @@ const dispatch: Dispatch<any> = function () {
   // any
 };
 
-export const AppStateContext = createContext({ state, dispatch });
+const intl = reactIntlUniversal;
+
+export const AppStateContext = createContext({ state, dispatch, intl });
 
 export function AppStateContextProvider({ children }: any) {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const value = { state, dispatch };
+  const value = { state, dispatch, intl };
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
 }
 

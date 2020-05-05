@@ -118,7 +118,6 @@ const bodymovinOptions = (animation) => ({
 });
 
 function Image(Props: ImageProps) {
-  console.log('>>>>>>>>>>>><', Props);
   const { src, animationData, animationGif, alt, imgSrc, ...rest } = Props;
   return (
     <ImageWrapper animationData={animationData} {...rest}>

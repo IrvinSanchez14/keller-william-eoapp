@@ -1,12 +1,12 @@
 import Head from 'next/head';
 
-import HomePageEO from 'src/containers/HomePageEO';
+import App from 'src';
 
-export default function Example(): JSX.Element {
+function MyApp() {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Keller Covered</title>
         <link rel="icon" href="/favicon.ico" />
         <script src="https://kit.fontawesome.com/0f6ae094e0.js" crossOrigin="anonymous" />
         <link
@@ -27,8 +27,11 @@ export default function Example(): JSX.Element {
           rel="stylesheet"
           id="font-awesome-5-kit-css"
         />
+        <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
-      <HomePageEO />
+      <App />
     </div>
   );
 }
+
+export default MyApp;
