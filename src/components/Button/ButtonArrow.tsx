@@ -1,17 +1,7 @@
 import styled, { css } from 'styled-components';
 import IButtonArrow from './IButtonArrow';
 
-interface StyledLinkProps {
-  margin?: string;
-  textCenter?: boolean;
-  isRed?: boolean;
-  isWhite?: boolean;
-  customWidth?: string;
-  mobileWidth?: string;
-  mobileMargin?: string;
-}
-
-const StyledLink = styled.a<StyledLinkProps>`
+const StyledLink = styled.a`
   position: relative;
   display: flex;
   align-items: center;
@@ -110,7 +100,7 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 `;
 
-const StyledIcon = styled.div<{ isWhite: boolean }>`
+const StyledIcon = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
