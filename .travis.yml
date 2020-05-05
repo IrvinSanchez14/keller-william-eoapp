@@ -63,7 +63,7 @@ jobs:
             docker push gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT && \
             kubectl --kubeconfig=/home/travis/.kube/config config use-context gke_starlit-myth-275818_us-central1-c_cluster-1 && \
             kubectl --kubeconfig=/home/travis/.kube/config apply -f deployment-config-htpasswd.yml && \
-            kubectl --kubeconfig=/home/travis/.kube/config apply -f deployment-config-nginx.yaml && \
+            kubectl --kubeconfig=/home/travis/.kube/config apply -f deployment-config-nginx.yml && \
             kubectl --kubeconfig=/home/travis/.kube/config apply -f deployment.yml && \
             kubectl --kubeconfig=/home/travis/.kube/config set image deployments/$DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME=gcr.io/starlit-myth-275818/$DOCKER_IMAGE_NAME-dev:$COMMIT;
           fi
