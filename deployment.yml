@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kc-frontend-eo-deployment
+  name: kc-frontend-eo
   labels:
     app: kc-frontend-eo
 spec:
@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kc-frontend-eo-service
+  name: kc-frontend-eo
 spec:
   selector:
     app: kc-frontend-eo
