@@ -58,7 +58,7 @@ jobs:
         - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
         - source $HOME/google-cloud-sdk/path.bash.inc
         - gcloud components update kubectl
-        - '/home/travis/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ./key-account.json'
+        - '/home/travis/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file /home/travis/key-account.json'
         - gcloud config set project starlit-myth-275818
         - gcloud -q auth configure-docker
       script:
