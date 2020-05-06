@@ -11,11 +11,7 @@ export class App extends Component {
   render() {
     return (
       <AppStateContextProvider>
-        <MuiThemeProvider theme={uiStoreInstance.muiTheme}>
-          <CssBaseline />
-          <GlobalCss />
-          <AppEO />
-        </MuiThemeProvider>
+        <AppEO />
       </AppStateContextProvider>
     );
   }
