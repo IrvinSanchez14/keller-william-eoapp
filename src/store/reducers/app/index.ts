@@ -29,6 +29,7 @@ export const appActions: any = {
       app: {
         ...state.app,
         data: {
+          ...state.app.data,
           firmInformation: {
             ...state.app.data.firmInformation,
             ...action.payload,
@@ -45,6 +46,34 @@ export const appActions: any = {
         metadata: {
           ...state.app.metadata,
           progressBar: action.payload,
+        },
+      },
+    };
+  },
+  AGENT_INFORMATION_STORE: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          agentInformation: {
+            ...state.app.data.agentInformation,
+            ...action.payload,
+          },
+        },
+      },
+    };
+  },
+  SET_INFORMATION_PAGE: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          categoryPage: action.payload.title,
+          actualPage: action.payload.page,
         },
       },
     };

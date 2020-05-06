@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
@@ -16,40 +15,40 @@ type FullNameProps = IAppStoreProps;
 export const propertyUsageFields = [
   {
     id: 1,
-    name: 'isFirmOwned',
+    name: 'revokedLicense',
     value: true,
-    text: 'YES',
+    text: 'Yes',
   },
   {
     id: 2,
-    name: 'isFirmOwned',
+    name: 'revokedLicense',
     value: false,
-    text: 'NO',
+    text: 'No',
   },
 ];
 
-export class FirmInformationAffiliated extends Component<FullNameProps> {
+export class AgentInformationRevoked extends Component<FullNameProps> {
   isInitValid = false;
   state = {
-    isFirmOwned: '',
+    revokedLicense: '',
   };
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {
-    formikProps.setFieldValue('isFirmOwned', value);
+    formikProps.setFieldValue('revokedLicense', value);
     this.setState({
-      isFirmOwned: value,
+      revokedLicense: value,
     });
   };
 
@@ -63,9 +62,9 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             {...field}
             value={item.value}
             data-test-id={item.value}
-            label={this.props.intl.get(`app.radio.answer.${item.text}`)}
+            label={item.text}
             onChange={() => this.handleChange(item.value, formikProps)}
-            checked={formikProps.values.isFirmOwned === item.value}
+            checked={formikProps.values.revokedLicense === item.value}
           />
         )}
       />
@@ -78,12 +77,12 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
-          heading={this.props.intl.get('app.head.form.firm.part.three')}
+          avatarText={this.props.intl.get('app.avatar.text.agent.part.three')}
+          heading={this.props.intl.get('app.head.form.agent.part.three')}
         >
           <FormApp
             initialValues={{
-              isFirmOwned: this.state.isFirmOwned,
+              revokedLicense: this.state.revokedLicense,
             }}
             isInitValid
             onSubmit={this.nextStep}

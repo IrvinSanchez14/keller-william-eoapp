@@ -14,6 +14,7 @@ import { Icon } from '../Icon';
 import ButtonForm from '../ButtonForm';
 import { useAppContext } from 'src/store';
 import { setPageLocation, changeStatusProgressBar } from 'src/store/actions/app';
+import { STEP_TYPES } from 'src/helpers/constants';
 
 interface INavigationProps extends IAppStoreProps {
   withBackButton?: boolean;
@@ -30,14 +31,6 @@ interface INavigationProps extends IAppStoreProps {
   isConfirmationPage?: boolean;
   isCallButton?: boolean;
 }
-
-const STEP_TYPES = [
-  {
-    type: 'firm information',
-    value: 'FIRM INFORMATION',
-    stepsSum: 4,
-  },
-];
 
 const BorderLinearProgress = withStyles({
   root: {

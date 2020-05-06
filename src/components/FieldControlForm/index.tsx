@@ -94,5 +94,5 @@ export function FielControlForm(Props: FieldControlProps) {
     ...rest,
   };
 
-  return renderFastField ? <FastField {...props} /> : <Field {...props} />;
+  return renderFastField ? <Field {...props}></Field> : <Field {...props}></Field>;
 }

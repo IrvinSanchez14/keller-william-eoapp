@@ -5,9 +5,9 @@ import { Typography } from '@material-ui/core';
 import isEmpty from 'lodash/isEmpty';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
+import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { dateBrokerValidateSchema } from 'src/helpers/validations';
+import { agentSpecialValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
@@ -27,29 +27,29 @@ type FormFields = {
 };
 
 @withStyles(styles)
-export class FirmInformationBroker extends Component<FullNameProps> {
+export class AgentInformationDesignation extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
-      this.isInitValid = await dateBrokerValidateSchema.isValid({
-        dateLicensedBrokerAgent: formData.app.data.firmInformation.dateLicensedBrokerAgent,
-        dateLicensedBroker: formData.app.data.firmInformation.dateLicensedBroker,
+      this.isInitValid = await agentSpecialValidateSchema.isValid({
+        numberAgentSpecialDesignation:
+          formData.app.data.agentInformation.numberAgentSpecialDesignation,
       });
     }
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 5, categoriesName.agentInformation);
   }
 
   render() {
@@ -58,19 +58,20 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
-          heading={this.props.intl.get('app.head.form.firm.part.one')}
-          subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
-          bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
+          avatarText={this.props.intl.get('app.avatar.text.agent.part.two')}
+          heading={this.props.intl.get('app.head.form.agent.part.two')}
         >
+          <Typography className={classnames(classes.titleForm)}>
+            {this.props.intl.get('app.title.form.agent.part.two')}
+          </Typography>
+
           <FormApp
             initialValues={{
-              dateLicensedBrokerAgent:
-                formData.app.data.firmInformation.dateLicensedBrokerAgent || '',
-              dateLicensedBroker: formData.app.data.firmInformation.dateLicensedBroker || '',
+              numberAgentSpecialDesignation:
+                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
             }}
             isInitValid={this.isInitValid}
-            validationSchema={dateBrokerValidateSchema}
+            validationSchema={agentSpecialValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
@@ -79,39 +80,21 @@ export class FirmInformationBroker extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
           >
-            {({ touched, errors, values, setFieldValue, setFieldTouched, dirty }) => {
+            {({ touched, errors }) => {
               return (
                 <>
                   <Row wrap="wrap" margin="0 -8px">
                     <Column padding="0px 8px">
-                      <Typography className={classnames(classes.titleForm)}>
-                        Date broker licensed as an agent
-                      </Typography>
                       <FielControlForm
-                        data-test-id="dateLicensedBrokerAgent"
-                        name="dateLicensedBrokerAgent"
-                        type="text"
-                        label={'Date'}
+                        data-test-id="numberAgentSpecialDesignation"
+                        name="numberAgentSpecialDesignation"
+                        type="number"
+                        label={'Number of agents'}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
                         isErrorMessageHidden
-                      />
-                    </Column>
-
-                    <Column padding="0px 8px">
-                      <Typography className={classnames(classes.titleForm)}>
-                        Date licensed as a broker.
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="dateLicensedBroker"
-                        name="dateLicensedBroker"
-                        type="text"
-                        label={'Date'}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        isErrorMessageHidden
+                        customWidth={94}
                       />
                     </Column>
                   </Row>
