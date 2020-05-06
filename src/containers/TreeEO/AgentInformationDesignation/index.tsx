@@ -80,7 +80,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
           >
-            {({ touched, errors }) => {
+            {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
                   <Row wrap="wrap" margin="0 -8px">
@@ -90,10 +90,11 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
                         name="numberAgentSpecialDesignation"
                         type="number"
                         label={'Number of agents'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                         customWidth={94}
                       />
                     </Column>

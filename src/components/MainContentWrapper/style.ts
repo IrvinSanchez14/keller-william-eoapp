@@ -9,9 +9,22 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '0 auto 147px',
     zIndex: 1,
     [theme.breakpoints.up('md')]: {
-      flexDirection: 'row',
       minHeight: 650,
     },
+  },
+  divContainerBody: {
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+    },
+  },
+  progressBar: {
+    padding: 10,
+    position: 'static',
+    zIndex: 1,
+    width: '100%',
+    maxWidth: '1260px',
+    marginBottom: '0.3em',
+    marginTop: '-20px',
   },
   basicContainer: {
     width: '100%',

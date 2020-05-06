@@ -27,7 +27,6 @@ function MyApp() {
           rel="stylesheet"
           id="font-awesome-5-kit-css"
         />
-        <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
       <App />
     </div>
