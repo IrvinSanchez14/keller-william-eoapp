@@ -28,10 +28,12 @@ export type FieldControlProps = {
   isErrorMessageHidden?: boolean;
   textAlign?: 'center' | 'left';
   containerStyles?: string;
+  id?: string;
 };
 
 export function FielControlForm(Props: FieldControlProps) {
   const {
+    id,
     name,
     type,
     placeholder,
@@ -94,5 +96,11 @@ export function FielControlForm(Props: FieldControlProps) {
     ...rest,
   };
 
-  return renderFastField ? <Field {...props}></Field> : <Field {...props}></Field>;
+  return renderFastField ? (
+    <Field name={props.name} id={id}>
+      {render}
+    </Field>
+  ) : (
+    <Field>{render}</Field>
+  );
 }

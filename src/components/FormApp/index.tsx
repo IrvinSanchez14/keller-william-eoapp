@@ -104,7 +104,7 @@ export class FormApp extends Component<CustomFormProps> {
         validationSchema={validationSchema}
         validate={validate}
         onSubmit={this.onSubmit}
-        isInitialValid={isInitValid}
+        validateOnMount={isInitValid}
         enableReinitialize
         {...rest}
       >
