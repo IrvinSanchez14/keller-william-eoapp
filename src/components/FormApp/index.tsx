@@ -158,7 +158,7 @@ export class FormApp extends Component<CustomFormProps> {
                     [classes.rowButtonContainer]: isRowForm,
                   })}
                 >
-                  <Row align="flex-start" className={classes.actionButtonContainer}>
+                  <Row align="flex-end" className={classes.actionButtonContainer}>
                     <ButtonForm //
                       data-test-id={dataTestId || 'continueButton'}
                       type="submit"

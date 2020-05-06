@@ -10,7 +10,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   buttonContainer: {
     marginTop: 25,
-    justifyContent: 'center',
     [theme.breakpoints.up(768)]: {
       marginTop: 'auto',
     },
@@ -34,7 +33,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     alignItems: 'flex-end',
   },
   actionButtonContainer: {
-    flex: 2,
+    width: 100,
+    [theme.breakpoints.up(768)]: {
+      flex: 2,
+    },
   },
   button: {
     [theme.breakpoints.up(768)]: {
