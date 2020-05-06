@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -29,7 +29,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch, formData } = this.props;
-    if (!_.isEmpty(formData.app.data)) {
+    if (!isEmpty(formData.app.data)) {
       this.isInitValid = await fullEmailValidateSchema.isValid({
         streetAddress: formData.app.data.firmInformation.streetAddress,
         suite: formData.app.data.firmInformation.suite,

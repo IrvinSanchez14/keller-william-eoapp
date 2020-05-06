@@ -2,7 +2,7 @@ import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import { Typography } from '@material-ui/core';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -43,7 +43,7 @@ export class FirmInformation extends Component<FullNameProps> {
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    if (!_.isEmpty(formData.app.data)) {
+    if (!isEmpty(formData.app.data)) {
       this.isInitValid = await fullNameValidateSchema.isValid({
         contacName: formData.app.data.firmInformation.contacName,
         brokerName: formData.app.data.firmInformation.brokerName,

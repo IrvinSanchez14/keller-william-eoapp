@@ -2,7 +2,7 @@ import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import { Typography } from '@material-ui/core';
-import _ from 'lodash';
+import { isEmpty } from 'lodash';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -43,7 +43,7 @@ export class FirmInformationBroker extends Component<FullNameProps> {
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    if (!_.isEmpty(formData.app.data)) {
+    if (!isEmpty(formData.app.data)) {
       this.isInitValid = await dateBrokerValidateSchema.isValid({
         dateLicensedBrokerAgent: formData.app.data.firmInformation.dateLicensedBrokerAgent,
         dateLicensedBroker: formData.app.data.firmInformation.dateLicensedBroker,

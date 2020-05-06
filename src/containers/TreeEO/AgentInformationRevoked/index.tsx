@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import _ from 'lodash';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
