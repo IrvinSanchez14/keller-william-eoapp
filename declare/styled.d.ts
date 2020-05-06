@@ -2,6 +2,10 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    desktopSmall: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+    tablet: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+    phone: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+    phoneSmall: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
     desktopSmall: string;
     tablet: string;
     phone: string;
