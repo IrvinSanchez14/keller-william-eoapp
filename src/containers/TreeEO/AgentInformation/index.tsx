@@ -86,7 +86,7 @@ export class AgentInformation extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
           >
-            {({ touched, errors }) => {
+            {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
                   <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
@@ -99,10 +99,11 @@ export class AgentInformation extends Component<FullNameProps> {
                         name="numberAgentsMoreCommission"
                         type="number"
                         label={'Number of agents'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                         customWidth={94}
                       />
                     </Column>
@@ -117,10 +118,11 @@ export class AgentInformation extends Component<FullNameProps> {
                         name="numberAgentLessCommission"
                         type="number"
                         label={'Number of agents'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                         customWidth={94}
                       />
                     </Column>
@@ -135,10 +137,11 @@ export class AgentInformation extends Component<FullNameProps> {
                         name="numberAgenteNoCommission"
                         type="number"
                         label={'Number of agents'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                         customWidth={94}
                       />
                     </Column>

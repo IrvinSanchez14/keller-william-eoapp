@@ -89,13 +89,15 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                       </Typography>
                       <FielControlForm
                         data-test-id="dateLicensedBrokerAgent"
+                        id="dateLicensedBrokerAgent"
                         name="dateLicensedBrokerAgent"
                         type="text"
                         label={'Date'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                       />
                     </Column>
 
@@ -108,10 +110,11 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                         name="dateLicensedBroker"
                         type="text"
                         label={'Date'}
+                        setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
-                        isErrorMessageHidden
+                        renderFastField
                       />
                     </Column>
                   </Row>
