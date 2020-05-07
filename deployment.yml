@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kc-frontend-eo
-          image: gcr.io/starlit-myth-275818/kc-frontend-eo:latest
+          image: gcr.io/keller-covered/kc-frontend-eo:latest
           volumeMounts:
             - name: kc-frontend-eo
               mountPath: /etc/nginx/conf.d/default.conf
