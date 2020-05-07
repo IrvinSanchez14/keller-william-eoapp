@@ -1,9 +1,8 @@
-import * as React from 'react';
-import { Typography } from '@material-ui/core';
+import { Component } from 'react';
 import classnames from 'classnames';
 
 import { FielControlForm } from 'src/components/FieldControlForm';
-import { Column, Row } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import {
   setInformationPage,
   addClaimsPolicy,
@@ -14,7 +13,7 @@ import {
 import { styles } from './styles';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { TextFieldForm } from 'src/components/TextFieldForm';
-import { withStyles, WithStyles } from 'src/styles/FormStyle/css/withStyles';
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { RadioField } from 'src/components/RadioForm';
@@ -33,18 +32,18 @@ type FormValues = {
 };
 
 @withStyles(styles)
-export class PolicyInformationClaims extends React.Component<CurrentAddressProps> {
-  isLoading: boolean = false;
-  isButtonLoading: boolean = false;
-  shouldErrorShow: boolean = true;
-  formattedAddress: string = '';
+export class PolicyInformationClaims extends Component<CurrentAddressProps> {
+  isLoading = false;
+  isButtonLoading = false;
+  shouldErrorShow = true;
+  formattedAddress = '';
   isHaveClaims: boolean = undefined;
   addressComponent: Array<string> = [];
-  unit: string = '';
-  monthsAtCurrentAddress: number = 0;
+  unit = '';
+  monthsAtCurrentAddress = 0;
   years: number | '' = '';
   months: number | '' = '';
-  isInitialValid: boolean = false;
+  isInitialValid = false;
 
   async componentDidMount() {
     const { dispatch } = this.props;
