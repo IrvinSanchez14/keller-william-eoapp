@@ -122,6 +122,7 @@ export class FormApp extends Component<CustomFormProps> {
           isValidating,
           isSubmitting,
           dirty,
+          resetForm,
         }) => {
           const isValid = isFormValid || this.props.isValid;
           const customWidth = isSaveProgressButton && {
@@ -142,6 +143,7 @@ export class FormApp extends Component<CustomFormProps> {
                 setFieldError,
                 handleSubmit,
                 setFieldValue,
+                resetForm,
                 validateField,
                 setFieldTouched,
                 setSubmitting,

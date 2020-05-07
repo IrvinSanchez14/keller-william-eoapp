@@ -7,10 +7,12 @@ import {
   faPhone as faPhoneSolid,
   faArrowLeft as faArrowLeftSolid,
   faArrowRight as faArrowRightSolid,
+  faPlusCircle as faPlusCircleSolid,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faTimes,
   faPhone,
+  faPlusCircle,
   faEnvelopeOpenText,
   faComment,
   faArrowLeft,
@@ -23,6 +25,7 @@ import {
   faTimes as FaTimesLight,
   faSearch,
   faPhone as faPhoneLight,
+  faPlusCircle as faPlusCircleLight,
   faBorderAll,
   faEdit,
   faShare,
@@ -47,12 +50,14 @@ const solidIcons: IconListType = {
   faCaretDown,
   faTimes: FaTimesSolid,
   faPhone: faPhoneSolid,
+  faPlusCircle: faPlusCircleSolid,
   faArrowRight: faArrowRightSolid,
   faArrowLeft: faArrowLeftSolid,
 };
 
 const regularIcons: IconListType = {
   faPhone,
+  faPlusCircle,
   faFileAlt,
   faTimes,
   faBars,
@@ -71,6 +76,7 @@ const lightIcons: IconListType = {
   faArrowRight,
   faPhone: faPhoneLight,
   faTimes: FaTimesLight,
+  faPlusCircle: faPlusCircleLight,
 };
 
 export const AwesomeFontIcon = ({

@@ -29,3 +29,20 @@ export const agentLicensedValidateSchema = Yup.object().shape({
 export const agentSpecialValidateSchema = Yup.object().shape({
   numberAgentSpecialDesignation: Yup.number().required('Field is required'),
 });
+
+export const policyInforamtionValidateSchema = (status: boolean) => {
+  if (status) {
+    return Yup.object().shape({
+      isHaveClaims: Yup.boolean(),
+    });
+  } else {
+    return Yup.object().shape({
+      currentCarrier: Yup.string().required('Field is required'),
+      renewalDate: Yup.string().required('Field is required'),
+      deductible: Yup.string().required('Field is required'),
+      limits: Yup.string().required('Field is required'),
+      yearCoverage: Yup.string().required('Field is required'),
+      annualPremium: Yup.string().required('Field is required'),
+    });
+  }
+};

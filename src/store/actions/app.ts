@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as CONSTANTS from '../types/app';
 import { FirmInformationProps, AgentInformationProps } from '../models/AppState';
+import { PolicyInformation } from 'src/containers/TreeEO/PolicyInformation';
 
 export const setPageLocation = (dispatch: React.Dispatch<any>, page: number) => {
   const setPage = {
@@ -43,4 +44,34 @@ export const setInformationPage = (dispatch: React.Dispatch<any>, page: number, 
   };
   dispatch(setInformation);
   return setInformation;
+};
+
+export const storeInsurancePolicy = (
+  dispatch: React.Dispatch<any>,
+  insuranceForm: PolicyInformation,
+) => {
+  const storeValueInsurance = {
+    type: CONSTANTS.SET_INSURANCE_POLICY_INFORMATION,
+    payload: insuranceForm,
+  };
+  dispatch(storeValueInsurance);
+  return storeValueInsurance;
+};
+
+export const storeClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
+  const storeValueClaim = {
+    type: CONSTANTS.SET_CLAIMS_POLICY_INFORMATION,
+    payload: claimForm,
+  };
+  dispatch(storeValueClaim);
+  return storeValueClaim;
+};
+
+export const addClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
+  const storeValueClaim = {
+    type: CONSTANTS.ADD_CLAIMS_POLICY_INFORMATION,
+    payload: claimForm,
+  };
+  dispatch(storeValueClaim);
+  return storeValueClaim;
 };
