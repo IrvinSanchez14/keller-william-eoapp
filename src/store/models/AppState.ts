@@ -59,7 +59,7 @@ export interface MetaDataProps {
 export interface AppInitalProps {
   email: string;
   data: DataInitalProps;
-  providers: Object;
+  providers: Record<string, any>;
   metadata: MetaDataProps;
 }
 
