@@ -1,5 +1,3 @@
-import React from 'react';
-
 import * as CONSTANTS from '../types/app';
 import { FirmInformationProps, AgentInformationProps } from '../models/AppState';
 import { PolicyInformation } from 'src/containers/TreeEO/PolicyInformation';
