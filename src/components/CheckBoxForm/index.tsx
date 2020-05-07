@@ -1,9 +1,7 @@
-import * as React from 'react';
 import classnames from 'classnames';
 import { Checkbox, Typography } from '@material-ui/core';
 
 import { Icon } from 'src/components/Icon';
-
 import { useStyles } from './styles';
 
 export type CustomCheckboxProps = {
@@ -23,7 +21,7 @@ export const CheckBoxForm: React.FC<CustomCheckboxProps> = ({
   hasHelper,
   withoutBorder,
   ...rest
-}) => {
+}: CustomCheckboxProps) => {
   const classes = useStyles({ hasHelper, isChecked, withoutBorder });
 
   return (
