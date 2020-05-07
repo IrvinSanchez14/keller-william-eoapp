@@ -18,5 +18,6 @@ module.exports = withImages(
       return cfg;
     },
     cssModules: true,
+    exportTrailingSlash: true,
   }),
 );
