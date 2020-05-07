@@ -14,8 +14,8 @@ import { AwesomeFontIcon } from '../AwesomeFontIcon';
 export type CustomFormProps = WithStyles<typeof styles> &
   IAppStoreProps & {
     isInitValid?: boolean;
-    initialValues: Object;
-    validationSchema?: Object;
+    initialValues: Record<string, any>;
+    validationSchema?: Record<string, any>;
     onSubmit?: (values: any, actions: any) => void;
     hideButton?: boolean;
     buttonLabel?: string;
@@ -169,7 +169,6 @@ export class FormApp extends Component<CustomFormProps> {
                         [classes.doubleButton]: isSaveProgressButton,
                         [classes.rowButton]: isRowForm,
                       })}
-                      // tslint:disable-next-line: no-boolean-literal-compare
                       disabled={
                         notDisabled
                           ? false
