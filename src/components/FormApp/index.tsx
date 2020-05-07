@@ -161,7 +161,7 @@ export class FormApp extends Component<CustomFormProps> {
                   })}
                 >
                   <Row align="flex-end" className={classes.actionButtonContainer}>
-                    <ButtonForm //
+                    <ButtonForm
                       data-test-id={dataTestId || 'continueButton'}
                       type="submit"
                       label={buttonLabel}

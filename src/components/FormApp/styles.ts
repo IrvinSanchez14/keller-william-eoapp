@@ -33,9 +33,11 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     alignItems: 'flex-end',
   },
   actionButtonContainer: {
-    width: 100,
-    [theme.breakpoints.up(768)]: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
       flex: 2,
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
     },
   },
   button: {
