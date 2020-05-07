@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import isEmpty from 'lodash/isEmpty';
 
@@ -53,7 +52,7 @@ export class PolicyInformation extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { formData } = this.props;
     const { isHaveInsurance } = this.state;
     return (
       !isLoading && (
@@ -111,7 +110,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                           {...field}
                           data-test-id="other"
                           label={'I do not have insurance'}
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                          onChange={() => {
                             resetForm({
                               currentCarrier: '',
                               renewalDate: '',
