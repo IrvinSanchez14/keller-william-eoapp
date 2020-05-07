@@ -6,16 +6,19 @@ import { Actions } from './reducers';
 
 import enUS from 'assets/i18n/en-US.json';
 
+const server = 'dev';
+
 const reducer = (state: any, action: any) => {
   const getAction = Actions[action.type];
   const updateAction = getAction && getAction(state, action);
-  console.group('Dispatch Action: ' + action.type);
-  console.info('Prev State');
-  console.table(state, 'background: #222; color: #bada55');
-  console.debug('New State');
-  console.table({ ...state, ...updateAction });
-  console.groupEnd();
-
+  if (server === 'dev') {
+    console.group('Dispatch Action: ' + action.type);
+    console.info('Prev State');
+    console.table(state, 'background: #222; color: #bada55');
+    console.debug('New State');
+    console.table({ ...state, ...updateAction });
+    console.groupEnd();
+  }
   return { ...state, ...updateAction };
 };
 

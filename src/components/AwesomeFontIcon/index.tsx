@@ -7,10 +7,12 @@ import {
   faPhone as faPhoneSolid,
   faArrowLeft as faArrowLeftSolid,
   faArrowRight as faArrowRightSolid,
+  faPlusCircle as faPlusCircleSolid,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faTimes,
   faPhone,
+  faPlusCircle,
   faEnvelopeOpenText,
   faComment,
   faArrowLeft,
@@ -23,12 +25,13 @@ import {
   faTimes as FaTimesLight,
   faSearch,
   faPhone as faPhoneLight,
+  faPlusCircle as faPlusCircleLight,
   faBorderAll,
   faEdit,
   faShare,
   faArrowRight,
 } from '@fortawesome/pro-light-svg-icons';
-import { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import { SizeProp, IconProp } from '@fortawesome/fontawesome-svg-core';
 
 import { IconListType } from 'src/components/Icon';
 
@@ -47,12 +50,14 @@ const solidIcons: IconListType = {
   faCaretDown,
   faTimes: FaTimesSolid,
   faPhone: faPhoneSolid,
+  faPlusCircle: faPlusCircleSolid,
   faArrowRight: faArrowRightSolid,
   faArrowLeft: faArrowLeftSolid,
 };
 
 const regularIcons: IconListType = {
   faPhone,
+  faPlusCircle,
   faFileAlt,
   faTimes,
   faBars,
@@ -71,7 +76,19 @@ const lightIcons: IconListType = {
   faArrowRight,
   faPhone: faPhoneLight,
   faTimes: FaTimesLight,
+  faPlusCircle: faPlusCircleLight,
 };
+
+function getIcon(type: string, name: string): IconProp {
+  switch (type) {
+    case 'regular':
+      return regularIcons[name];
+    case 'light':
+      return lightIcons[name];
+    default:
+      return solidIcons[name];
+  }
+}
 
 export const AwesomeFontIcon = ({
   name,
@@ -80,27 +97,12 @@ export const AwesomeFontIcon = ({
   onClick,
   dataTestId,
   size,
-}: AwesomeFontIconProps) => {
-  let icon;
-  switch (type) {
-    case 'regular':
-      icon = regularIcons[name];
-      break;
-    case 'light':
-      icon = lightIcons[name];
-      break;
-    default:
-      icon = solidIcons[name];
-      break;
-  }
-
-  return (
-    <FontAwesomeIcon
-      size={size}
-      icon={icon}
-      className={className}
-      onClick={onClick}
-      data-test-id={dataTestId}
-    />
-  );
-};
+}: AwesomeFontIconProps) => (
+  <FontAwesomeIcon
+    size={size}
+    icon={getIcon(type, name)}
+    className={className}
+    onClick={onClick}
+    data-test-id={dataTestId}
+  />
+);

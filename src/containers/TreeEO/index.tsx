@@ -7,6 +7,8 @@ import { FirmInformationBroker } from './FirmInformationBroker';
 import { AgentInformation } from './AgentInformation';
 import { AgentInformationDesignation } from './AgentInformationDesignation';
 import { AgentInformationRevoked } from './AgentInformationRevoked';
+import { PolicyInformation } from './PolicyInformation';
+import { PolicyInformationClaims } from './PolicyInformationClaims';
 
 function AppEO() {
   const { dispatch, intl, state } = useAppContext();
@@ -19,6 +21,8 @@ function AppEO() {
       <AgentInformation dispatch={dispatch} intl={intl} formData={state} />
       <AgentInformationDesignation dispatch={dispatch} intl={intl} formData={state} />
       <AgentInformationRevoked dispatch={dispatch} intl={intl} formData={state} />
+      <PolicyInformation dispatch={dispatch} intl={intl} formData={state} />
+      <PolicyInformationClaims dispatch={dispatch} intl={intl} formData={state} />
     </FormRouter>
   );
 }

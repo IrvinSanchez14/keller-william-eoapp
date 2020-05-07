@@ -1,3 +1,22 @@
+export interface PolicyInformationProps {
+  currentCarrier: string;
+  isHaveInsurance: boolean;
+  insurance: {
+    renewalDate: string;
+    deductible: number;
+    limits: number;
+    yearCoverage: string;
+    annualPremium: number;
+  };
+  isHaveClaims: boolean;
+  claims: [
+    {
+      dateClaim: string;
+      amountClaim: number;
+    },
+  ];
+}
+
 export interface AgentInformationProps {
   numberAgentsMoreCommission: number;
   numberAgentLessCommission: number;
@@ -26,7 +45,7 @@ export interface FirmInformationProps {
 export interface DataInitalProps {
   firmInformation: FirmInformationProps;
   agentInformation?: AgentInformationProps;
-  policyInformation?: Array<any>;
+  policyInformation?: PolicyInformationProps;
   commission?: Array<any>;
   riskProfile?: Array<any>;
 }
@@ -40,7 +59,7 @@ export interface MetaDataProps {
 export interface AppInitalProps {
   email: string;
   data: DataInitalProps;
-  providers: Object;
+  providers: Record<string, any>;
   metadata: MetaDataProps;
 }
 
@@ -74,6 +93,24 @@ export default class AppState implements IAppState {
         revokedLicense: false,
         currentCarrier: '',
         isHaveInsurance: false,
+      },
+      policyInformation: {
+        currentCarrier: '',
+        isHaveInsurance: false,
+        insurance: {
+          renewalDate: '',
+          deductible: 0,
+          limits: 0,
+          yearCoverage: '',
+          annualPremium: 0,
+        },
+        isHaveClaims: undefined,
+        claims: [
+          {
+            dateClaim: '',
+            amountClaim: undefined,
+          },
+        ],
       },
     },
     providers: [],

@@ -39,10 +39,10 @@ export const getFullEmailFields = () => [
   },
   {
     name: 'suite',
-    type: 'text',
+    type: 'number',
     placeholder: '',
     label: 'Suite/Unit #',
-    customWidth: 0,
+    customWidth: 95,
   },
   {
     name: 'phoneNumber',
