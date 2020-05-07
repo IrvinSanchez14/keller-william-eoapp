@@ -20,6 +20,7 @@ import {
   faFileAlt,
   faBars,
   faQuestionCircle,
+  faCheckCircle,
 } from '@fortawesome/pro-regular-svg-icons';
 import {
   faTimes as FaTimesLight,
@@ -66,6 +67,7 @@ const regularIcons: IconListType = {
   faComment,
   faArrowLeft,
   faArrowRight: faArrowRightRegular,
+  faCheckCircle,
 };
 
 const lightIcons: IconListType = {
