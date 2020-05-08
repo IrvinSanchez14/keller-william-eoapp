@@ -58,5 +58,5 @@ interface Data {
 
 export default interface IPolicyCommissionInformation {
   data: Data;
-  openEditModal: () => void;
+  openEditModal: (nameForm: string) => void;
 }

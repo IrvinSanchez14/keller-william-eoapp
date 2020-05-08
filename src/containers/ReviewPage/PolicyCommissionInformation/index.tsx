@@ -65,7 +65,7 @@ const Table = styled.div`
   `}
 `;
 
-const TableHeader = styled.p`
+const TableHeader = styled.div`
   ${({ theme }) =>
     theme &&
     `background-color: ${theme.colors.lightestGray};color: ${theme.colors.paragraph.darkGray}`};
@@ -138,7 +138,10 @@ export default function PolicyCommissionInformation({
 }: PolicyCommissionInformationProps): JSX.Element {
   return (
     <ContainerBackgroundShape>
-      <Layout textHeader="Policy information" openEditPageModal={openEditModal}>
+      <Layout
+        textHeader="Policy information"
+        openEditPageModal={() => openEditModal('Policy information')}
+      >
         <ContainerInformation firstPadding>
           <TextLight text={labelInformation.policyInformation.currentCarrier} />
           <TextBold customMargin text={data.policyInformation.currentCarrier} />
@@ -176,7 +179,7 @@ export default function PolicyCommissionInformation({
           <TextLight typeFormat="money" text={data.policyInformation.claims[0].amountClaim} />
         </ContainerInformation>
       </Layout>
-      <Layout textHeader="Commission" openEditPageModal={openEditModal}>
+      <Layout textHeader="Commission" openEditPageModal={() => openEditModal('Commission')}>
         <ContainerInformation firstPadding>
           <TextLight text={labelInformation.commission.grossCommission} />
           <TextBold typeFormat="money" customMargin text={data.commission.grossCommission} />

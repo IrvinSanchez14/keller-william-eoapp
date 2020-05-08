@@ -12,5 +12,5 @@ interface Data {
 
 export default interface RiskPRofileProps {
   data: Data;
-  openEditModal: () => void;
+  openEditModal: (nameform: string) => void;
 }
