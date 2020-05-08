@@ -11,7 +11,7 @@ interface ModalContainerProps {
 }
 
 interface ModalScheduleTextProps {
-  firstText?: string;
+  firstText?: boolean;
   left?: boolean;
   right?: boolean;
   isPhone?: boolean;

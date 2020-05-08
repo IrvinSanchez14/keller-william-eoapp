@@ -6,7 +6,7 @@ import FooterReview from 'src/components/FooterReview';
 import Layout from 'src/components/LayoutInformationReview';
 
 export default function ReviewPage(): JSX.Element {
-  const { state, dispatch, intl } = useAppContext();
+  const { dispatch } = useAppContext();
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [width, setWidth] = useState(1024);

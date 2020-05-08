@@ -7,7 +7,7 @@ interface TextLightProps {
   customWidth?: boolean;
 }
 
-const Text = styled.a`
+const Text = styled.a<Pick<TextLightProps, 'customWidth'>>`
   font-size: 22px;
   width: 100%;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark}`};

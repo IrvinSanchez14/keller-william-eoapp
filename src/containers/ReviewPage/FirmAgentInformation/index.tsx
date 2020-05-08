@@ -33,7 +33,7 @@ const labelInformation = {
   },
 };
 
-const ContainerInformation = styled.div<{ firstPadding: boolean }>`
+const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
   padding-bottom: 34px;
   ${({ firstPadding }) => firstPadding && `padding-bottom: 31px;`};
 `;
