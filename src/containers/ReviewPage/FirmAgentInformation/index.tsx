@@ -16,7 +16,7 @@ const labelInformation = {
     faxNumber: 'Fax number',
     email: 'Email address',
     isFirmOwned:
-      'Is your firm independently owned and not controlled , affiliated with, or owned by another entity?',
+      'Is your firm independently owned and not controlled, affiliated with, or owned by another entity?',
     dateLicensedBrokerAgent: 'Date broker licensed as an agent',
     dateLicensedBroker: 'Date licensed as a broker',
   },
@@ -103,7 +103,7 @@ export default function FirmAgentInformation({
           <TextBold customMargin text={data.firmInformation.dateLicensedBroker} />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.firmInformation.isFirmOwned} />
+          <TextLight customWidth text={labelInformation.firmInformation.isFirmOwned} />
           <TextBold typeFormat="boolean" customMargin text={data.firmInformation.isFirmOwned} />
         </ContainerInformation>
       </Layout>

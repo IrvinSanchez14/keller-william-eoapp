@@ -5,8 +5,9 @@ interface TextBoldProps {
   customMargin?: boolean;
   text: any;
   typeFormat?: string;
+  customWidth?: boolean;
 }
-const Text = styled.h1<{ customMargin: boolean }>`
+const Text = styled.h1<{ customMargin?: boolean }>`
   font-size: 22px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ customMargin }) =>

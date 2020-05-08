@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
   height: 120px;
   display: flex;
   background-color: ${theme.colors.darkBlue};
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
 `;

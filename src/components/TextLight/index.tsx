@@ -4,14 +4,23 @@ import { verifyType } from 'src/helpers/formatData';
 interface TextLightProps {
   text: any;
   typeFormat?: string;
+  customWidth?: boolean;
 }
 
 const Text = styled.a`
   font-size: 22px;
   width: 100%;
-  ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark}`}
+  ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark}`};
+  ${({ customWidth }) =>
+    customWidth &&
+    `
+    @media (min-width: 900px) {
+      max-width: 640px;
+      display: flex;
+    }
+  `};
 `;
 
-export default function TextLight({ text, typeFormat }: TextLightProps): JSX.Element {
-  return <Text>{verifyType(text, typeFormat)}</Text>;
+export default function TextLight({ text, typeFormat, customWidth }: TextLightProps): JSX.Element {
+  return <Text customWidth={customWidth}>{verifyType(text, typeFormat)}</Text>;
 }
