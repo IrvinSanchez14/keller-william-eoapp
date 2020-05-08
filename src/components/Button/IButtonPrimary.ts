@@ -4,6 +4,6 @@ export default interface ButtonPrimaryProps extends ButtonHTMLAttributes<HTMLBut
   isInverted: boolean;
   color: string;
   width: string;
-  children?: JSX.Element;
+  children?: JSX.Element | string;
   isLoading: boolean;
 }

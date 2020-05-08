@@ -13,7 +13,7 @@ const labelInformation = {
     'Percentage of you overall transactions were derived from REOs/Foreclosures/Short Sale',
 };
 
-const ContainerInformation = styled.div<{ firstPadding: boolean }>`
+const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
   padding-bottom: 34px;
   ${({ firstPadding }) => firstPadding && `padding-bottom: 31px;`};
 `;

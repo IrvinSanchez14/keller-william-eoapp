@@ -74,7 +74,7 @@ const TableHeader = styled.div`
   padding: 10px 15px 10px;
 `;
 
-const TableList = styled.p<{ lastItem: boolean }>`
+const TableList = styled.p<{ lastItem?: boolean }>`
   justify-content: center;
   align-items: center;
   display: flex;

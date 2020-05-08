@@ -7,12 +7,11 @@ const FooterContainer = styled.footer`
   height: 120px;
   display: flex;
   background-color: ${theme.colors.darkBlue};
-  position: absolute;
   bottom: 0;
   width: 100%;
 `;
 
-const FooterSection = styled.div<{ hideDogIcon: boolean; alignRight: boolean }>`
+const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }>`
   width: 70%;
   display: flex;
   align-items: center;
@@ -41,8 +40,8 @@ const FooterDogIcon = styled(SVG)<{ width: string; height: string }>`
   ${({ width }) => width && `width: ${width};`};
   margin-left: 97px;
   @media (max-width: 900px) {
-      margin-left: 20px;
-  }}
+    margin-left: 20px;
+  }
 `;
 
 const FooterLooksText = styled.h1`
@@ -51,7 +50,7 @@ const FooterLooksText = styled.h1`
   font-weight: 200;
   @media (max-width: 850px) {
     font-size: 27px;
-  }}
+  }
   color: ${theme.colors.white};
 `;
 
