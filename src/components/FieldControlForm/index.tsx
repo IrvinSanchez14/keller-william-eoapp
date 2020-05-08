@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import classnames from 'classnames';
-import { Field, FastField, FieldProps } from 'formik';
+import { Field, FieldProps } from 'formik';
 
 import { useStyles } from './styles';
 import { TextFieldForm } from '../TextFieldForm';
