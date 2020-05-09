@@ -27,14 +27,10 @@ export default function ReviewPage(): JSX.Element {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   return (
     <>
       <NavigationReview width={width} isTablet={isTablet} isMobile={isMobile} />
-      <Layout
-        textHeader="Please review your application before submitting"
-        openEditPage={() => alert('Hola')}
-      />
+      <Layout textHeader="Please review your application before submitting" />
       <FooterReview />
     </>
   );

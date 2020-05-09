@@ -54,7 +54,10 @@ export default function FirmAgentInformation({
 }: FirmAgentInformationProps): JSX.Element {
   return (
     <ContainerBackgroundShape>
-      <Layout textHeader="Firm information" openEditPageModal={openEditModal}>
+      <Layout
+        textHeader="Firm information"
+        openEditPageModal={() => openEditModal('Firm information')}
+      >
         <ContainerInformation firstPadding>
           <TextBold text="Keller Williams Realty, Inc." />
         </ContainerInformation>
@@ -107,7 +110,10 @@ export default function FirmAgentInformation({
           <TextBold typeFormat="boolean" customMargin text={data.firmInformation.isFirmOwned} />
         </ContainerInformation>
       </Layout>
-      <Layout textHeader="Agent information" openEditPageModal={openEditModal}>
+      <Layout
+        textHeader="Agent information"
+        openEditPageModal={() => openEditModal('Agent information')}
+      >
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.numberAgentsMoreCommission} />
           <TextBold

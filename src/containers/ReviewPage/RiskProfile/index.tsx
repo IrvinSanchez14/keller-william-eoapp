@@ -20,7 +20,7 @@ const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
 
 export default function RiskProfile({ data, openEditModal }: RiskProfileProps): JSX.Element {
   return (
-    <Layout textHeader="Risk profile" openEditPageModal={openEditModal}>
+    <Layout textHeader="Risk profile" openEditPageModal={() => openEditModal('Risk profile')}>
       <ContainerInformation firstPadding>
         <TextLight text={labelInformation.isHomeWarranty} />
         <TextBold typeFormat="boolean" customMargin text={data.riskProfile.isHomeWarranty} />
