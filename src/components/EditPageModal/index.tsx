@@ -1,8 +1,13 @@
+import { CSSProperties } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import IEditPageModal from './IEditPageModal';
 
-const customStyles = {
+interface CustomStylesProps {
+  overlay: CSSProperties;
+}
+
+const customStyles: CustomStylesProps = {
   overlay: {
     display: 'flex',
     zIndex: 10000,
@@ -11,7 +16,7 @@ const customStyles = {
   },
 };
 
-const StyledModal = styled(Modal)`
+const StyledModal = styled(Modal)<{ style: CustomStylesProps }>`
   &:focus {
     outline: none;
   }
