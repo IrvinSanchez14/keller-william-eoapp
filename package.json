@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "ky": "^0.19.1",
+    "ky-universal": "^0.6.0",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
