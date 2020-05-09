@@ -28,6 +28,7 @@ export const appActions: any = {
       ...state,
       app: {
         ...state.app,
+        email: action.payload.emailAddress || state.app.email,
         data: {
           ...state.app.data,
           firmInformation: {
