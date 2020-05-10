@@ -46,3 +46,26 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
     });
   }
 };
+
+export const commissionInformationValidateSchema = Yup.object().shape({
+  grossCommission: Yup.number().required('Field is required'),
+  averageValue: Yup.number().required('Field is required'),
+});
+
+export const commissionTransactionValidateSchema = Yup.object().shape({
+  percentageTransactions: Yup.number().required('Field is required'),
+});
+
+export const commissionResidentialValidateSchema = Yup.object().shape({
+  realEstate: Yup.number().required('Field is required'),
+  rawLand: Yup.number().required('Field is required'),
+  appraisals: Yup.number().required('Field is required'),
+  propertyMgmt: Yup.number().required('Field is required'),
+  ownedProperty: Yup.number().required('Field is required'),
+});
+
+export const commissionOtherValidateSchema = Yup.object().shape({
+  farmRanch: Yup.number().required('Field is required'),
+  auctioneering: Yup.number().required('Field is required'),
+  mortageBrokerage: Yup.number().required('Field is required'),
+});
