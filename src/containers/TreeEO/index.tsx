@@ -16,6 +16,7 @@ import { CommissionInformationSummary } from './CommissionInformationSummary';
 import { CommissionInformationMenu } from './CommissionInformationMenu';
 import { CommissionInformationCommercial } from './CommissionInformationCommercial';
 import { CommissionInformationOther } from './CommissionInformationOther';
+import { RiskProfile } from './RiskProfile';
 
 function AppEO() {
   const { dispatch, intl, state } = useAppContext();
@@ -37,6 +38,7 @@ function AppEO() {
       <CommissionInformationCommercial dispatch={dispatch} intl={intl} formData={state} />
       <CommissionInformationOther dispatch={dispatch} intl={intl} formData={state} />
       <CommissionInformationSummary dispatch={dispatch} intl={intl} formData={state} />
+      <RiskProfile dispatch={dispatch} intl={intl} formData={state} />
     </FormRouter>
   );
 }

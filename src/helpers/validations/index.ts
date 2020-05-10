@@ -71,3 +71,7 @@ export const commissionOtherValidateSchema = Yup.object().shape({
   auctioneering: Yup.number().required('Field is required'),
   mortageBrokerage: Yup.number().required('Field is required'),
 });
+
+export const riskProfileValidateSchema = Yup.object().shape({
+  isHomeWarranty: Yup.boolean().required('Field is required'),
+});

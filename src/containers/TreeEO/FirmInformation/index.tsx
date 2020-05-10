@@ -51,7 +51,7 @@ export class FirmInformation extends Component<FullNameProps> {
         yearEstablished: formData.app.data.firmInformation.yearEstablished,
       });
     }
-    setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 16, categoriesName.firmConfirmation);
   }
 
   renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>

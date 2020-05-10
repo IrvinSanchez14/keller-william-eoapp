@@ -1,3 +1,11 @@
+export interface RiskProfileProps {
+  isHomeWarranty: boolean;
+  isMortageBanking: boolean;
+  isPerformServices: boolean;
+  isRepresentCommission: boolean;
+  percentageTransactions: number;
+}
+
 export interface SummaryProps {
   realEstate: number;
   rawLand: number;
@@ -68,7 +76,7 @@ export interface DataInitalProps {
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
   commission?: CommissionInformationProps;
-  riskProfile?: Array<any>;
+  riskProfile?: RiskProfileProps;
 }
 
 export interface MetaDataProps {
@@ -157,6 +165,13 @@ export default class AppState implements IAppState {
         auctioneering: 0,
         mortageBrokerage: 0,
         totalCommision: 0,
+      },
+      riskProfile: {
+        isHomeWarranty: undefined,
+        isMortageBanking: undefined,
+        isPerformServices: undefined,
+        isRepresentCommission: undefined,
+        percentageTransactions: undefined,
       },
     },
     providers: [],
