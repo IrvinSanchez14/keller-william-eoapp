@@ -69,7 +69,7 @@ export class StepWrapper extends Component<IStepWrapper> {
               subHeading.map((heading, index) => (
                 <Typography
                   key={index}
-                  className={classnames(classes.stepInfoHeader, classes.description)}
+                  className={classnames(classes.stepInfoHeader, classes.subHeading)}
                   gutterBottom
                   data-test-id="subheader"
                 >

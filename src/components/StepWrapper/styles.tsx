@@ -46,7 +46,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   stepInfoHeader: {
     fontSize: 53,
-    marginBottom: '0.7em',
+    marginBottom: '0.4em',
+    lineHeight: '62px',
     whiteSpace: 'pre-wrap',
     fontFamily: fonts.Effra,
     fontWeight: 'bold',
@@ -62,8 +63,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   subHeading: {
-    fontSize: 22,
-    lineHeight: '54px',
+    fontSize: 54,
+    lineHeight: '62px',
+    fontFamily: fonts.Effra,
+    fontWeight: 'bold',
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       fontSize: 20,
       lineHeight: '24px',
