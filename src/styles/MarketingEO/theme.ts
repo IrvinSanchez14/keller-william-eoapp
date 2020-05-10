@@ -34,6 +34,7 @@ export default {
       lightGray: '#999999',
       darkGray: '#6A6A6A',
     },
+    grayTableHeader: '#979797',
     spanColor: colorDark,
     primary: '#0093E9',
     grayLight: '#C4C4C4',

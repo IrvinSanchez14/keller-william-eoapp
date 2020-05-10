@@ -13,6 +13,7 @@ import { Icon } from '../Icon';
 interface IStepWrapper extends IAppStoreProps, WithStyles<typeof styles> {
   heading: string;
   subHeading?: string[];
+  description?: string[];
   content?: string;
   bottomContent?: string;
   avatarText?: string;
@@ -30,6 +31,7 @@ export class StepWrapper extends Component<IStepWrapper> {
       avatarText,
       heading,
       subHeading,
+      description,
       content,
       bottomContent,
       children,
@@ -78,6 +80,17 @@ export class StepWrapper extends Component<IStepWrapper> {
                   data-test-id="subheader"
                 >
                   {heading}
+                </Typography>
+              ))}
+            {description?.length &&
+              description.map((desc, index) => (
+                <Typography
+                  key={index}
+                  className={classnames(classes.stepInfoHeader, classes.description)}
+                  gutterBottom
+                  data-test-id="description"
+                >
+                  {desc}
                 </Typography>
               ))}
             {content && (

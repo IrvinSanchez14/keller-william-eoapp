@@ -112,8 +112,6 @@ const StyledLine = styled.div<{ padding?: string; directionContent?: boolean }>`
 const StyledStepsContainer = styled.div<{ padding?: string }>`
   position: relative;
   ${({ padding }) => padding && `padding: ${padding};`}
-  max-width: ${({ theme }) => theme.gridWidth};
-  //   background-color: green;
   flex-direction: row;
   display: flex;
   ${({ theme }) => theme.tablet`flex-direction: column;`};
@@ -130,7 +128,6 @@ interface StyledStepSectionProps {
 
 const StyledStepSection = styled.div<StyledStepSectionProps>`
   width: 48%;
-  //   max-height: 300px;
   display: flex;
   justify-content: center;
   ${({ margin }) => margin && `margin: ${margin}`};

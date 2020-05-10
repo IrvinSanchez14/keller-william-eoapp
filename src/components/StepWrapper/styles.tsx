@@ -1,5 +1,6 @@
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
+import { fonts } from 'assets/fonts';
 
 export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => ({
   stepContainer: {
@@ -44,11 +45,14 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   stepInfoHeader: {
+    fontSize: 53,
+    marginBottom: '0.4em',
+    lineHeight: '62px',
     whiteSpace: 'pre-wrap',
-    fontSize: 24, // send fontSize via props?
-    [theme.breakpoints.up(768)]: {
-      fontSize: 53,
-      marginBottom: '0.7em',
+    fontFamily: fonts.Effra,
+    fontWeight: 'bold',
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      fontSize: 24, // send fontSize via props?
     },
   },
   stepInfoContent: {
@@ -59,12 +63,25 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   subHeading: {
-    fontSize: 20,
-    lineHeight: '24px',
+    fontSize: 54,
+    lineHeight: '62px',
+    fontFamily: fonts.Effra,
     fontWeight: 'bold',
-    [theme.breakpoints.up(768)]: {
-      fontSize: 55,
-      lineHeight: '54px',
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      fontSize: 20,
+      lineHeight: '24px',
+      fontWeight: 'bold',
+    },
+  },
+  description: {
+    lineHeight: '28px',
+    fontSize: '22px',
+    fontFamily: fonts.Effra,
+    fontWeight: 'bold',
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      fontSize: '16px',
+      lineHeight: '20px',
+      fontWeight: 'normal',
     },
   },
   bottomContent: {

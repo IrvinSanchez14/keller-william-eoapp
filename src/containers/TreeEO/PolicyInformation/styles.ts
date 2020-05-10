@@ -18,4 +18,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       padding: '0px 8px',
     },
   },
+  customContainer: {
+    [theme.breakpoints.down('xs')]: {
+      margin: 0,
+      '& > .MuiGrid-item': {
+        padding: 0,
+      },
+    },
+  },
 });

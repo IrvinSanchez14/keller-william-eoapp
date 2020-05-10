@@ -79,11 +79,11 @@ export class FirmInformationBroker extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
           >
-            {({ touched, errors, values, setFieldValue, setFieldTouched, dirty }) => {
+            {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
-                  <Row wrap="wrap" margin="0 -8px">
-                    <Column padding="0px 8px">
+                  <Row wrap="wrap" className={classnames(classes.rowStyles)}>
+                    <Column>
                       <Typography className={classnames(classes.titleForm)}>
                         Date broker licensed as an agent
                       </Typography>
@@ -97,11 +97,12 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
+                        className={classnames(classes.fielControlForm)}
                         renderFastField
                       />
                     </Column>
 
-                    <Column padding="0px 8px">
+                    <Column>
                       <Typography className={classnames(classes.titleForm)}>
                         Date licensed as a broker.
                       </Typography>
@@ -113,6 +114,7 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                         setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
+                        className={classnames(classes.fielControlForm)}
                         shouldValidateOnMount
                         renderFastField
                       />
