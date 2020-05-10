@@ -132,7 +132,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     alignItems: 'center',
   },
   customIcon: {
-    [theme.breakpoints.up(768)]: {
+    [theme.breakpoints.up(theme.breakpoints.values.lg)]: {
       marginRight: theme.spacing(),
     },
   },
