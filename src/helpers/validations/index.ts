@@ -50,24 +50,29 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
 };
 
 export const commissionInformationValidateSchema = Yup.object().shape({
-  grossCommission: Yup.number().required('Field is required'),
-  averageValue: Yup.number().required('Field is required'),
+  grossCommission: Yup.number()
+    .required('Field is required')
+    .positive('The value must be positive'),
+  averageValue: Yup.number().required('Field is required').positive('The value must be positive'),
 });
 
 export const commissionTransactionValidateSchema = Yup.object().shape({
-  percentageTransactions: Yup.number().required('Field is required'),
+  percentageTransactions: Yup.number()
+    .required('Field is required')
+    .max(100, 'Please enter value between 0-100')
+    .positive('The value must be positive'),
 });
 
 export const commissionResidentialValidateSchema = Yup.object().shape({
-  realEstate: Yup.number().required('Field is required'),
-  rawLand: Yup.number().required('Field is required'),
-  appraisals: Yup.number().required('Field is required'),
-  propertyMgmt: Yup.number().required('Field is required'),
-  ownedProperty: Yup.number().required('Field is required'),
+  realEstate: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  rawLand: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  appraisals: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  propertyMgmt: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  ownedProperty: Yup.number().required('Field is required').min(0, 'The value must be positive'),
 });
 
 export const commissionOtherValidateSchema = Yup.object().shape({
-  farmRanch: Yup.number().required('Field is required'),
-  auctioneering: Yup.number().required('Field is required'),
-  mortageBrokerage: Yup.number().required('Field is required'),
+  farmRanch: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  auctioneering: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  mortageBrokerage: Yup.number().required('Field is required').min(0, 'The value must be positive'),
 });
