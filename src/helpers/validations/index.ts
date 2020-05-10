@@ -12,7 +12,9 @@ export const fullEmailValidateSchema = Yup.object().shape({
   suite: Yup.number().required('Field is required'),
   phoneNumber: Yup.number().required('Field is required'),
   faxNumber: Yup.number().required('Field is required'),
-  emailAddress: Yup.string().required('Field is required'),
+  emailAddress: Yup.string()
+    .email('Email Address must be a valid email')
+    .required('Field is required'),
 });
 
 export const dateBrokerValidateSchema = Yup.object().shape({
