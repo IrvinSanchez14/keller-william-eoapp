@@ -61,7 +61,7 @@ export class AgentInformation extends Component<FullNameProps> {
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.text.agent.part.one')}
           heading={this.props.intl.get('app.head.form.agent.part.one')}
-          subHeading={['', this.props.intl.get('app.message.form.agent.part.one')]}
+          description={['', this.props.intl.get('app.message.form.agent.part.one')]}
         >
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.one')}
