@@ -1,7 +1,7 @@
 import { Component } from 'react';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
+import { changeStatusProgressBar, storeAgentInformation } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
@@ -30,12 +30,12 @@ export const propertyUsageFields = [
 export class AgentInformationRevoked extends Component<FullNameProps> {
   isInitValid = false;
   state = {
-    revokedLicense: '',
+    revokedLicense: null,
   };
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
@@ -82,7 +82,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              revokedLicense: this.state.revokedLicense,
+              revokedLicense: formData.app.data.agentInformation.revokedLicense,
             }}
             isInitValid
             onSubmit={this.nextStep}
