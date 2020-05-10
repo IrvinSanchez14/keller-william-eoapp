@@ -54,5 +54,18 @@
   "app.avatar.text.risk.part.one": "PROTECTION FOR THE PEOPLE",
   "app.header.form.risk.part.one": "Do you offer home warranty programs?",
   "app.text.checkbox.yes.risk.part.one": "Yes, I offer warranty programs",
-  "app.text.checkbox.no.risk.part.one": "No, I do not offer warranty programs"
+  "app.text.checkbox.no.risk.part.one": "No, I do not offer warranty programs",
+  "app.avatar.text.risk.part.two": "BONES RULE EVERTHING AROUND ME",
+  "app.header.form.risk.part.two": "Are you involved in mortgage banking, development, or construction?",
+  "app.text.checkbox.yes.risk.part.two": "Yes, I am involved",
+  "app.text.checkbox.no.risk.part.two": "No, I am not involved",
+  "app.avatar.text.risk.part.three": "JACK OF ALL TRADES, AM I RIGHT?",
+  "app.header.form.risk.part.three": "Do you perform services for REITS \nor property syndications?",
+  "app.text.checkbox.yes.risk.part.three": "Yes, I perform these services",
+  "app.text.checkbox.no.risk.part.three": "No, I do not perform these services",
+  "app.avatar.text.risk.part.four": "ALL YOUR EGGS IN ONE BASKET?",
+  "app.header.form.risk.part.four": "Does any one client represent more than 25% of the \nfirm’s annual commission?",
+  "app.avatar.text.risk.part.five": "FIXER UPPERS! JOANNA WOULD BE PROUD.",
+  "app.header.form.risk.part.five": "What percentage of your overall transactions were derived from REOs/Foreclosures/Short Sales?",
+  "app.title.form.risk.part.five": "Please sum the percentage from each category and enter the total below."
 }

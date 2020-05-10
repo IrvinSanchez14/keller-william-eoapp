@@ -17,6 +17,10 @@ import { CommissionInformationMenu } from './CommissionInformationMenu';
 import { CommissionInformationCommercial } from './CommissionInformationCommercial';
 import { CommissionInformationOther } from './CommissionInformationOther';
 import { RiskProfile } from './RiskProfile';
+import { RiskProfileBanck } from './RiskProfileBanck';
+import { RiskProfileReits } from './RiskProfieReits';
+import { RiskProfileFirm } from './RiskProfileFirm';
+import { RiskProfileTransaction } from './RiskProfileTransaction';
 
 function AppEO() {
   const { dispatch, intl, state } = useAppContext();
@@ -39,6 +43,10 @@ function AppEO() {
       <CommissionInformationOther dispatch={dispatch} intl={intl} formData={state} />
       <CommissionInformationSummary dispatch={dispatch} intl={intl} formData={state} />
       <RiskProfile dispatch={dispatch} intl={intl} formData={state} />
+      <RiskProfileBanck dispatch={dispatch} intl={intl} formData={state} />
+      <RiskProfileReits dispatch={dispatch} intl={intl} formData={state} />
+      <RiskProfileFirm dispatch={dispatch} intl={intl} formData={state} />
+      <RiskProfileTransaction dispatch={dispatch} intl={intl} formData={state} />
     </FormRouter>
   );
 }

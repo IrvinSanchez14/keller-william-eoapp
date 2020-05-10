@@ -46,8 +46,6 @@ export class StepWrapper extends Component<IStepWrapper> {
       isAgentType: false,
     };
 
-    console.log('changestyle', this.props);
-
     return (
       <MainContentWrapper
         className={classnames(classes.stepContainer, { [classes.hidden]: false })}
