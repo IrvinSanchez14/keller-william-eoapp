@@ -37,7 +37,7 @@ export class FirmInformation extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 9, categoriesName.firmConfirmation);
   }
 
   render() {

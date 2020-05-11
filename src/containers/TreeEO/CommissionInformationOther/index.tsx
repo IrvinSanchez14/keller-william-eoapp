@@ -1,20 +1,16 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { commissionOtherValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormCommissionInformationOther } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -46,7 +42,7 @@ export class CommissionInformationOther extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -56,94 +52,14 @@ export class CommissionInformationOther extends Component<FullNameProps> {
           classHeader={classnames(classes.stepHeader)}
           classBottom={classnames(classes.stepBottom)}
         >
-          <FormApp
-            initialValues={{
-              farmRanch: formData.app.data.commission.farmRanch,
-              auctioneering: formData.app.data.commission.auctioneering,
-              mortageBrokerage: formData.app.data.commission.mortageBrokerage,
-            }}
-            isInitValid={this.isInitValid}
-            validationSchema={commissionOtherValidateSchema}
+          <FormCommissionInformationOther
+            formData={formData}
+            dispatch={dispatch}
             onSubmit={this.nextStep}
-            buttonLabel={'Continue'}
-            dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
-            isInQuestionnaire
-            dispatch={this.props.dispatch}
-            progressBar={formData.app.metadata.progressBar}
-          >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.one.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="farmRanch"
-                        name="farmRanch"
-                        type="number"
-                        label={'Commission'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.two.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="auctioneering"
-                        name="auctioneering"
-                        type="number"
-                        label={'Average property value'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" className={classnames(classes.rowFinal)}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.three.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="mortageBrokerage"
-                        name="mortageBrokerage"
-                        type="number"
-                        label={'Average property value'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
-            }}
-          </FormApp>
+            hideButton={false}
+          />
         </StepWrapper>
       )
     );
   }
 }
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
-};
