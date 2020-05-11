@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeRiskProfile, changeStatusProgressBar } from 'src/store/actions/app';

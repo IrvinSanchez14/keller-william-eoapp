@@ -1,6 +1,6 @@
 import { Component, ReactNode } from 'react';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import MainContentWrapper from '../MainContentWrapper';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
