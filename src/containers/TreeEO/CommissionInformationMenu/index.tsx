@@ -1,13 +1,10 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
-import isEmpty from 'lodash/isEmpty';
-
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
+import Typography from '@material-ui/core/Typography';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { fullNameValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { categoriesName } from 'src/helpers/constants';

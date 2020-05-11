@@ -1,9 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
-import isEmpty from 'lodash/isEmpty';
-
+import Typography from '@material-ui/core/Typography';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';

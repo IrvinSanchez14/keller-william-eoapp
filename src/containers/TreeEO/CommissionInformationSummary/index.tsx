@@ -1,13 +1,11 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography, Divider } from '@material-ui/core';
-import isEmpty from 'lodash/isEmpty';
-
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { changeStatusProgressBar, storeCommissionTotalSummary } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { fullNameValidateSchema } from 'src/helpers/validations';
 import { getFullNameFields } from 'src/helpers/fieldsForm';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
