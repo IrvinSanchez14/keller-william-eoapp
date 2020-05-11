@@ -16,6 +16,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormAgentInformationDesignation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -54,7 +55,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -64,45 +65,12 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.two')}
           </Typography>
-
-          <FormApp
-            initialValues={{
-              numberAgentSpecialDesignation:
-                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
-            }}
-            isInitValid={this.isInitValid}
-            validationSchema={agentSpecialValidateSchema}
+          <FormAgentInformationDesignation
+            formData={formData}
+            dispatch={dispatch}
             onSubmit={this.nextStep}
-            buttonLabel={'Continue'}
-            dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
-            isInQuestionnaire
-            dispatch={this.props.dispatch}
-            progressBar={formData.app.metadata.progressBar}
-          >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 -8px">
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentSpecialDesignation"
-                        name="numberAgentSpecialDesignation"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
-            }}
-          </FormApp>
+            hideButton={false}
+          />
         </StepWrapper>
       )
     );

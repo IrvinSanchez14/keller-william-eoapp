@@ -16,6 +16,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormAgentInformation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -55,7 +56,7 @@ export class AgentInformation extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -66,98 +67,14 @@ export class AgentInformation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.one')}
           </Typography>
-
-          <FormApp
-            initialValues={{
-              numberAgentsMoreCommission:
-                formData.app.data.agentInformation.numberAgentsMoreCommission || '',
-              numberAgentLessCommission:
-                formData.app.data.agentInformation.numberAgentLessCommission || '',
-              numberAgenteNoCommission:
-                formData.app.data.agentInformation.numberAgenteNoCommission || '',
-            }}
-            isInitValid={this.isInitValid}
-            validationSchema={agentLicensedValidateSchema}
+          <FormAgentInformation
+            formData={formData}
+            dispatch={dispatch}
             onSubmit={this.nextStep}
-            buttonLabel={'Continue'}
-            dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
-            isInQuestionnaire
-            dispatch={this.props.dispatch}
-            progressBar={formData.app.metadata.progressBar}
-          >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.one.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentsMoreCommission"
-                        name="numberAgentsMoreCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.two.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentLessCommission"
-                        name="numberAgentLessCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={{ flexDirection: 'column' }}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.tree.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgenteNoCommission"
-                        name="numberAgenteNoCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
-            }}
-          </FormApp>
+            hideButton={false}
+          />
         </StepWrapper>
       )
     );
   }
 }
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
-};
