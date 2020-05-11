@@ -99,7 +99,7 @@ export function NavigationForm(Props: INavigationProps) {
                 })}
               >
                 <AwesomeFontIcon
-                  name="faArrowLeft"
+                  name="faAngleLeft"
                   type="regular"
                   dataTestId="backButton"
                   className={classes.backIcon}
