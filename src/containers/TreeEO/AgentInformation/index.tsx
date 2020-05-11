@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import isEmpty from 'lodash/isEmpty';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -35,7 +35,7 @@ export class AgentInformation extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 5, categoriesName.agentInformation);
   };

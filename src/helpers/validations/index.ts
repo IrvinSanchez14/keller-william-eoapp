@@ -76,3 +76,26 @@ export const commissionOtherValidateSchema = Yup.object().shape({
   auctioneering: Yup.number().required('Field is required').min(0, 'The value must be positive'),
   mortageBrokerage: Yup.number().required('Field is required').min(0, 'The value must be positive'),
 });
+
+export const riskProfileValidateSchema = Yup.object().shape({
+  isHomeWarranty: Yup.boolean().required('Field is required'),
+});
+
+export const riskProfileBanckValidateSchema = Yup.object().shape({
+  isMortageBanking: Yup.boolean().required('Field is required'),
+});
+
+export const riskProfileReitsValidateSchema = Yup.object().shape({
+  isPerformServices: Yup.boolean().required('Field is required'),
+});
+
+export const riskProfileFirmValidateSchema = Yup.object().shape({
+  isRepresentCommission: Yup.boolean().required('Field is required'),
+});
+
+export const riskProfileTransactionValidateSchema = Yup.object().shape({
+  percentageTransactions: Yup.number()
+    .required('Field is required')
+    .max(100, 'Please enter value between 0-100')
+    .positive('The value must be positive'),
+});

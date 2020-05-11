@@ -5,6 +5,7 @@ import {
   CommissionInformationProps,
 } from '../models/AppState';
 import { PolicyInformation } from 'src/containers/TreeEO/PolicyInformation';
+import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
 
 export const setPageLocation = (dispatch: React.Dispatch<any>, page: number) => {
   const setPage = {
@@ -123,4 +124,13 @@ export const storeCommissionCommercial = (
   };
   dispatch(storeValueCommission);
   return storeValueCommission;
+};
+
+export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPRofileProps) => {
+  const storeValueRisk = {
+    type: CONSTANTS.SET_RISK_PROFILE,
+    payload: riskForm,
+  };
+  dispatch(storeValueRisk);
+  return storeValueRisk;
 };

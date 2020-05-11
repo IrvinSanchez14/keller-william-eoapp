@@ -19,6 +19,11 @@ export const STEP_TYPES = [
     value: 'COMMISSION',
     stepsSum: 4,
   },
+  {
+    type: 'risk profile',
+    value: 'RISK PROFILE',
+    stepsSum: 4,
+  },
 ];
 
 export const categoriesName = {
@@ -26,4 +31,5 @@ export const categoriesName = {
   agentInformation: 'agent information',
   policyInformation: 'policy information',
   commission: 'commission',
+  riskProfile: 'risk profile',
 };

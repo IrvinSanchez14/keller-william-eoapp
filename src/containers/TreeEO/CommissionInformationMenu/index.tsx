@@ -58,7 +58,7 @@ export class CommissionInformationMenu extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 12, categoriesName.commission);
   };

@@ -35,7 +35,7 @@ export class PolicyInformation extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 8, categoriesName.policyInformation);
   };

@@ -2,13 +2,15 @@ import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import Typography from '@material-ui/core/Typography';
+
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
+import { storeRiskProfile, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { commissionInformationValidateSchema } from 'src/helpers/validations';
+import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
+
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
@@ -24,22 +26,22 @@ type FormFields = {
 };
 
 @withStyles(styles)
-export class CommissionInformation extends Component<FullNameProps> {
+export class RiskProfileTransaction extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
+    storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 10, categoriesName.commission);
+    setInformationPage(dispatch, 21, categoriesName.commission);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 9, categoriesName.commission);
+    setInformationPage(dispatch, 20, categoriesName.commission);
   }
 
   render() {
@@ -48,19 +50,16 @@ export class CommissionInformation extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avata.title.commission.part.one')}
-          heading={this.props.intl.get('app.head.commission.part.one')}
-          bottomContent={this.props.intl.get('app.link.commission.part.one')}
+          avatarText={this.props.intl.get('app.avatar.text.risk.part.five')}
+          heading={this.props.intl.get('app.header.form.risk.part.five')}
           classHeader={classnames(classes.stepHeader)}
-          classBottom={classnames(classes.stepBottom)}
         >
           <FormApp
             initialValues={{
-              grossCommission: formData.app.data.commission.grossCommission,
-              averageValue: formData.app.data.commission.averageValue,
+              percentageTransactions: formData.app.data.riskProfile.percentageTransactions,
             }}
             isInitValid={this.isInitValid}
-            validationSchema={commissionInformationValidateSchema}
+            validationSchema={riskProfileTransactionValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
@@ -72,41 +71,25 @@ export class CommissionInformation extends Component<FullNameProps> {
             {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
+                  <Row wrap="wrap" margin="0 8px" style={stylesComponent.rowContainer}>
+                    <Typography
+                      style={{ margin: '0 8px' }}
+                      className={classnames(classes.subTitleForm)}
+                    >
+                      {this.props.intl.get('app.title.form.risk.part.five')}
+                    </Typography>
                     <Column padding="0px 8px">
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.form.commission.part.one')}
-                      </Typography>
                       <FielControlForm
-                        data-test-id="grossCommission"
-                        name="grossCommission"
+                        data-test-id="percentageTransactions"
+                        name="percentageTransactions"
                         type="number"
-                        label={'Commission'}
+                        label={'Percentage of transactions'}
                         setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
                         renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Column padding="0px 8px">
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle2.form.commission.part.one')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="averageValue"
-                        name="averageValue"
-                        type="number"
-                        label={'Average property value'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
+                        customWidth={100}
                       />
                     </Column>
                   </Row>

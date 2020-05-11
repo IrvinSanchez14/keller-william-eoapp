@@ -35,6 +35,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
+
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
     setInformationPage(dispatch, 7, categoriesName.agentInformation);

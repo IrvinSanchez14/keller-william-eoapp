@@ -51,7 +51,7 @@ export function NavigationForm(Props: INavigationProps) {
   };
 
   const goBack = (e, isLabel: boolean) => {
-    changeStatusProgressBar(dispatch, state.app.metadata.progressBar - 5);
+    changeStatusProgressBar(dispatch, state.app.metadata.progressBar - 4.8);
     setPageLocation(dispatch, state.app.metadata.actualPage - 1);
   };
 

@@ -76,8 +76,22 @@ export const appActions: any = {
       },
     };
   },
+  SET_RISK_PROFILE: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          riskProfile: {
+            ...state.app.data.riskProfile,
+            ...action.payload,
+          },
+        },
+      },
+    };
+  },
   SET_TOTAL_SUMMARY_COMMISSION: (state: any, action: any) => {
-    console.log('ACTION', action);
     return {
       ...state,
       app: {
