@@ -51,7 +51,7 @@ export interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense: boolean | null;
   currentCarrier: string;
   isHaveInsurance: boolean;
 }
@@ -119,7 +119,7 @@ export default class AppState implements IAppState {
         numberAgentLessCommission: 0,
         numberAgenteNoCommission: 0,
         numberAgentSpecialDesignation: 0,
-        revokedLicense: false,
+        revokedLicense: null,
         currentCarrier: '',
         isHaveInsurance: false,
       },
