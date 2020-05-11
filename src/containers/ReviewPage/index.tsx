@@ -29,7 +29,12 @@ export default function ReviewPage(): JSX.Element {
   }, []);
   return (
     <>
-      <NavigationReview width={width} isTablet={isTablet} isMobile={isMobile} />
+      <NavigationReview
+        sectionPage=":REVIEW"
+        width={width}
+        isTablet={isTablet}
+        isMobile={isMobile}
+      />
       <Layout textHeader="Please review your application before submitting" />
       <FooterReview />
     </>

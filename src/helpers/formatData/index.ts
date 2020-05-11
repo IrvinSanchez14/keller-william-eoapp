@@ -16,6 +16,23 @@ export function formatAmount(
   return formatValue;
 }
 
+export function formatNumericalAbbreviation(amount: number) {
+  if (amount && amount > 0) {
+    let newAmount = amount.toString();
+    if (newAmount.length >= 10 && newAmount.length <= 12) {
+      newAmount = `$${newAmount.substr(0, newAmount.length - 9)}B`;
+    } else if (newAmount.length >= 7 && newAmount.length <= 9) {
+      newAmount = `$${newAmount.substr(0, newAmount.length - 6)}M`;
+    } else if (newAmount.length >= 4 && newAmount.length <= 6) {
+      newAmount = `$${newAmount.substr(0, newAmount.length - 3)}K`;
+    } else {
+      newAmount = formatAmount(amount, true);
+    }
+    return newAmount;
+  }
+  return formatAmount(amount, true);
+}
+
 export function formatBoolean(value: string | boolean | number): string {
   return value ? 'Yes' : 'No';
 }
