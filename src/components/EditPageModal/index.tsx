@@ -1,6 +1,7 @@
 import { CSSProperties } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
+
 import IEditPageModal from './IEditPageModal';
 
 interface CustomStylesProps {
@@ -138,6 +139,7 @@ export default function EditPageModal({
   isModalOpen,
   closeModal,
   nameForm,
+  children,
 }: IEditPageModal): JSX.Element {
   return (
     <StyledModal onRequestClose={closeModal} style={customStyles} isOpen={isModalOpen}>
@@ -149,7 +151,7 @@ export default function EditPageModal({
           </ModalHeaderCloseContainer>
         </ModalHeader>
         <ModalFormContainer>
-          <ModalForm>{/* Form here */}</ModalForm>
+          <ModalForm>{children}</ModalForm>
         </ModalFormContainer>
       </ModalContainer>
     </StyledModal>

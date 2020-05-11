@@ -110,7 +110,7 @@ export default class AppState implements IAppState {
         phoneNumber: 0,
         faxNumber: 0,
         emailAddress: '',
-        isFirmOwned: false,
+        isFirmOwned: undefined,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
       },

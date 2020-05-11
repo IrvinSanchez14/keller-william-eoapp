@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+
 import FirmAgentInformation from 'src/containers/ReviewPage/FirmAgentInformation';
 import PolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation';
 import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
 import { useState } from 'react';
 import EditPageModal from '../EditPageModal';
+import { FormsEditPage } from 'src/containers/ReviewPage/FormEditPages';
 
 interface LayoutInformationReviewProps {
   textHeader: string;
@@ -124,10 +126,12 @@ export default function LayoutInformationReview({
 }: LayoutInformationReviewProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
   const [nameForm, setNameForm] = useState('');
+  const [children, setChildren] = useState(null);
 
   function openModal(nameCategory: string): void {
     setNameForm(nameCategory);
     setShowModal(true);
+    console.log('nameCategory', nameCategory);
   }
 
   return (
@@ -149,6 +153,7 @@ export default function LayoutInformationReview({
         nameForm={nameForm}
         isModalOpen={showModal}
         closeModal={() => setShowModal(false)}
+        children={<FormsEditPage nameForm={nameForm} />}
       />
     </Container>
   );

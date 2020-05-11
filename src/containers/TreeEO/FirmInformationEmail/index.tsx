@@ -13,6 +13,7 @@ import { FielControlForm } from 'src/components/FieldControlForm';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
+import { FormFirmInformationEmail } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -60,33 +61,19 @@ export class FirmInformationEmail extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
           heading={this.props.intl.get('app.head.form.firm.part.two')}
         >
-          <FormApp
-            initialValues={{
-              streetAddress: formData.app.data.firmInformation.streetAddress || '',
-              suite: formData.app.data.firmInformation.suite || '',
-              phoneNumber: formData.app.data.firmInformation.phoneNumber || '',
-              faxNumber: formData.app.data.firmInformation.faxNumber || '',
-              emailAddress: formData.app.data.firmInformation.emailAddress || '',
-            }}
-            isInitValid={this.isInitValid}
-            validationSchema={fullEmailValidateSchema}
+          <FormFirmInformationEmail
+            formData={formData}
+            dispatch={dispatch}
             onSubmit={this.nextStep}
-            buttonLabel={'Continue'}
-            dataTestId="continueButton"
-            isLoading={false}
-            isInQuestionnaire
-            dispatch={this.props.dispatch}
-            progressBar={formData.app.metadata.progressBar}
-          >
-            {this.renderFormChildren}
-          </FormApp>
+            hideButton={false}
+          />
         </StepWrapper>
       )
     );

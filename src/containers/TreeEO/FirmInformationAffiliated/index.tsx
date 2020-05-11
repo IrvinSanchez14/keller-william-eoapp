@@ -10,6 +10,7 @@ import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
+import { FormFirmInformationAffiliated } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -74,28 +75,19 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
           heading={this.props.intl.get('app.head.form.firm.part.three')}
         >
-          <FormApp
-            initialValues={{
-              isFirmOwned: this.state.isFirmOwned,
-            }}
-            isInitValid
+          <FormFirmInformationAffiliated
+            formData={formData}
+            dispatch={dispatch}
             onSubmit={this.nextStep}
-            buttonLabel={'Continue'}
-            dataTestId="continueButton"
-            isLoading={false}
-            isInQuestionnaire
-            dispatch={this.props.dispatch}
-            progressBar={formData.app.metadata.progressBar}
-          >
-            {this.renderFormChildren}
-          </FormApp>
+            hideButton={false}
+          />
         </StepWrapper>
       )
     );
