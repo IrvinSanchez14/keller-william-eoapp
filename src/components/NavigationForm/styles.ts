@@ -96,7 +96,7 @@ export default makeStyles((theme: MuiTheme) => ({
     cursor: 'pointer',
     width: 30,
     height: 30,
-    border: `1px solid #1D253C`,
+    border: `2px solid #1D253C`,
     borderRadius: 50,
     backgroundColor: 'transparent',
     display: 'flex',
