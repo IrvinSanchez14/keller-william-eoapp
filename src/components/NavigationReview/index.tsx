@@ -88,7 +88,7 @@ const StyledButtonCopy = styled.span`
 `;
 
 export default function NavigationReview(Props: NavigationReviewProps): JSX.Element {
-  const { isTablet, isMobile, width } = Props;
+  const { isTablet, isMobile, width, sectionPage } = Props;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -102,7 +102,7 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
           <HeaderTextPage>
             <strong>E&O APPLICATION</strong>
           </HeaderTextPage>
-          <HeaderTextP>:REVIEW</HeaderTextP>
+          <HeaderTextP>{sectionPage}</HeaderTextP>
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
