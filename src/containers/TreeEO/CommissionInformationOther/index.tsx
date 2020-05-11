@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -75,7 +75,7 @@ export class CommissionInformationOther extends Component<FullNameProps> {
             {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
+                  <Row wrap="wrap" style={stylesComponent.rowContainer}>
                     <Column>
                       <Typography className={classnames(classes.subTitleForm)}>
                         {this.props.intl.get('app.subtitle.one.commission.part.six')}
@@ -94,7 +94,7 @@ export class CommissionInformationOther extends Component<FullNameProps> {
                       />
                     </Column>
                   </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
+                  <Row wrap="wrap" style={stylesComponent.rowContainer}>
                     <Column>
                       <Typography className={classnames(classes.subTitleForm)}>
                         {this.props.intl.get('app.subtitle.two.commission.part.six')}

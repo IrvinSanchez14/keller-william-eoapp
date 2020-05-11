@@ -2,10 +2,8 @@ import { Component } from 'react';
 import { FormikHelpers } from 'formik';
 import classnames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import { Typography } from '@material-ui/core';
-import { Divider } from '@material-ui/core';
-import { sum } from 'lodash';
-
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -13,13 +11,10 @@ import { commissionResidentialValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
-import { TextFieldForm } from 'src/components/TextFieldForm';
-
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
-import { CheckBoxForm } from 'src/components/CheckBoxForm';
 
 type FullNameProps = IAppStoreProps;
 
