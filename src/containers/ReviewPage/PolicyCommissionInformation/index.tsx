@@ -4,6 +4,7 @@ import TextBold from 'src/components/TextBold';
 import TextLight from 'src/components/TextLight';
 import PolicyCommissionInformationProps from './IPolicyCommissionInformation';
 import { formatAmount } from 'src/helpers/formatData';
+import { useCallback } from 'react';
 
 interface ContainerInformationProps {
   firstPadding?: boolean;
@@ -136,11 +137,17 @@ export default function PolicyCommissionInformation({
   data,
   openEditModal,
 }: PolicyCommissionInformationProps): JSX.Element {
+  const onOpenModal = useCallback(
+    (nameForm: string) => () => {
+      openEditModal?.(nameForm);
+    },
+    [openEditModal],
+  );
   return (
     <ContainerBackgroundShape>
       <Layout
         textHeader="Policy information"
-        openEditPageModal={() => openEditModal('Policy information')}
+        openEditPageModal={openEditModal && onOpenModal('Policy information')}
       >
         <ContainerInformation firstPadding>
           <TextLight text={labelInformation.policyInformation.currentCarrier} />
@@ -179,7 +186,7 @@ export default function PolicyCommissionInformation({
           <TextLight typeFormat="money" text={data.policyInformation.claims[0].amountClaim} />
         </ContainerInformation>
       </Layout>
-      <Layout textHeader="Commission" openEditPageModal={() => openEditModal('Commission')}>
+      <Layout textHeader="Commission" openEditPageModal={openEditModal && onOpenModal('Comission')}>
         <ContainerInformation firstPadding>
           <TextLight text={labelInformation.commission.grossCommission} />
           <TextBold typeFormat="money" customMargin text={data.commission.grossCommission} />
