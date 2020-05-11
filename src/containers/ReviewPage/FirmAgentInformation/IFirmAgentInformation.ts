@@ -18,7 +18,7 @@ interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense: boolean | null;
 }
 
 interface DataProps {
