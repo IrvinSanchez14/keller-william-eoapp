@@ -36,6 +36,7 @@ declare module 'styled-components' {
       dark: colorDark;
       darkBlue: string;
       mainHeadingColor: string;
+      grayTableHeader: string;
       paragraph: {
         dark: string;
         lightGray: string;
