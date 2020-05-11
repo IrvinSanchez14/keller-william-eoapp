@@ -61,6 +61,73 @@ export const appActions: any = {
       },
     };
   },
+  SET_COMMISSION_INFORMATION: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commission: {
+            ...state.app.data.commission,
+            ...action.payload,
+          },
+        },
+      },
+    };
+  },
+  SET_TOTAL_SUMMARY_COMMISSION: (state: any, action: any) => {
+    console.log('ACTION', action);
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commission: {
+            ...state.app.data.commission,
+            totalCommision: action.payload,
+          },
+        },
+      },
+    };
+  },
+  SET_COMMISSION_RESIDENTIAL: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commission: {
+            ...state.app.data.commission,
+            residential: {
+              ...action.payload.commissionForm,
+              total: action.payload.total,
+            },
+          },
+        },
+      },
+    };
+  },
+  SET_COMMISSION_COMMERCIAL: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commission: {
+            ...state.app.data.commission,
+            commercial: {
+              ...action.payload.commissionForm,
+              total: action.payload.total,
+            },
+          },
+        },
+      },
+    };
+  },
   SET_CLAIMS_POLICY_INFORMATION: (state: any, action: any) => {
     return {
       ...state,

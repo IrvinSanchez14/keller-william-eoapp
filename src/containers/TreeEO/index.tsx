@@ -9,6 +9,13 @@ import { AgentInformationDesignation } from './AgentInformationDesignation';
 import { AgentInformationRevoked } from './AgentInformationRevoked';
 import { PolicyInformation } from './PolicyInformation';
 import { PolicyInformationClaims } from './PolicyInformationClaims';
+import { CommissionInformation } from './CommissionInformation';
+import { CommissionInformationTransaction } from './CommissionInformationTransaction';
+import { CommissionInformationResidential } from './CommissionInformationResidential';
+import { CommissionInformationSummary } from './CommissionInformationSummary';
+import { CommissionInformationMenu } from './CommissionInformationMenu';
+import { CommissionInformationCommercial } from './CommissionInformationCommercial';
+import { CommissionInformationOther } from './CommissionInformationOther';
 
 function AppEO() {
   const { dispatch, intl, state } = useAppContext();
@@ -23,6 +30,13 @@ function AppEO() {
       <AgentInformationRevoked dispatch={dispatch} intl={intl} formData={state} />
       <PolicyInformation dispatch={dispatch} intl={intl} formData={state} />
       <PolicyInformationClaims dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformation dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationTransaction dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationMenu dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationResidential dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationCommercial dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationOther dispatch={dispatch} intl={intl} formData={state} />
+      <CommissionInformationSummary dispatch={dispatch} intl={intl} formData={state} />
     </FormRouter>
   );
 }

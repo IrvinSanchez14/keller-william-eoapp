@@ -1,3 +1,24 @@
+export interface SummaryProps {
+  realEstate: number;
+  rawLand: number;
+  appraisals: number;
+  propertyMgmt: number;
+  ownedProperty: number;
+  total: number;
+}
+
+export interface CommissionInformationProps {
+  grossCommission: number;
+  averageValue: number;
+  percentageTransactions: number;
+  residential: SummaryProps;
+  commercial: SummaryProps;
+  farmRanch: number;
+  auctioneering: number;
+  mortageBrokerage: number;
+  totalCommision: number;
+}
+
 export interface PolicyInformationProps {
   currentCarrier: string;
   isHaveInsurance: boolean;
@@ -46,7 +67,7 @@ export interface DataInitalProps {
   firmInformation: FirmInformationProps;
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
-  commission?: Array<any>;
+  commission?: CommissionInformationProps;
   riskProfile?: Array<any>;
 }
 
@@ -111,6 +132,31 @@ export default class AppState implements IAppState {
             amountClaim: undefined,
           },
         ],
+      },
+      commission: {
+        grossCommission: undefined,
+        averageValue: undefined,
+        percentageTransactions: undefined,
+        residential: {
+          realEstate: 0,
+          rawLand: 0,
+          appraisals: 0,
+          propertyMgmt: 0,
+          ownedProperty: 0,
+          total: 0,
+        },
+        commercial: {
+          realEstate: 0,
+          rawLand: 0,
+          appraisals: 0,
+          propertyMgmt: 0,
+          ownedProperty: 0,
+          total: 0,
+        },
+        farmRanch: 0,
+        auctioneering: 0,
+        mortageBrokerage: 0,
+        totalCommision: 0,
       },
     },
     providers: [],

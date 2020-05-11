@@ -29,6 +29,7 @@ export type FieldControlProps = {
   textAlign?: 'center' | 'left';
   containerStyles?: string;
   id?: string;
+  onChange?: any;
 };
 
 export function FielControlForm(Props: FieldControlProps) {
