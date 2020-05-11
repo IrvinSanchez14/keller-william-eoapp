@@ -3,6 +3,7 @@ import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
+import { agentRevokedValidateSchema } from 'src/helpers/validations';
 
 interface IFormFirmInformation {
   formData: any;
@@ -67,6 +68,7 @@ export class FormAgentInformationRevoked extends Component<IFormFirmInformation>
         initialValues={{
           revokedLicense: this.state.revokedLicense,
         }}
+        validationSchema={agentRevokedValidateSchema}
         isInitValid
         onSubmit={onSubmit}
         buttonLabel={'Continue'}
