@@ -53,7 +53,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     this.isButtonLoading = true;
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     storeClaimsPolicy(dispatch, values);
     setInformationPage(dispatch, 9, categoriesName.policyInformation);

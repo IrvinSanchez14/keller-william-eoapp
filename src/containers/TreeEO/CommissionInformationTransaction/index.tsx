@@ -2,12 +2,10 @@ import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import Typography from '@material-ui/core/Typography';
-import isEmpty from 'lodash/isEmpty';
-
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
+import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { agentSpecialValidateSchema } from 'src/helpers/validations';
+import { commissionTransactionValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
@@ -27,29 +25,22 @@ type FormFields = {
 };
 
 @withStyles(styles)
-export class AgentInformationDesignation extends Component<FullNameProps> {
+export class CommissionInformationTransaction extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeAgentInformation(dispatch, values); //TODO put state in localstorage
+    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 6, categoriesName.agentInformation);
+    setInformationPage(dispatch, 11, categoriesName.commission);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-      this.isInitValid = await agentSpecialValidateSchema.isValid({
-        numberAgentSpecialDesignation:
-          formData.app.data.agentInformation.numberAgentSpecialDesignation,
-      });
-    }
-    setInformationPage(dispatch, 5, categoriesName.agentInformation);
+    setInformationPage(dispatch, 10, categoriesName.commission);
   }
 
   render() {
@@ -58,20 +49,16 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.agent.part.two')}
-          heading={this.props.intl.get('app.head.form.agent.part.two')}
+          avatarText={this.props.intl.get('app.avatar.title.commission.part.two')}
+          heading={this.props.intl.get('app.head.commission.part.two')}
+          classHeader={classnames(classes.stepHeader)}
         >
-          <Typography className={classnames(classes.titleForm)}>
-            {this.props.intl.get('app.title.form.agent.part.two')}
-          </Typography>
-
           <FormApp
             initialValues={{
-              numberAgentSpecialDesignation:
-                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
+              percentageTransactions: formData.app.data.commission.percentageTransactions,
             }}
             isInitValid={this.isInitValid}
-            validationSchema={agentSpecialValidateSchema}
+            validationSchema={commissionTransactionValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
@@ -83,19 +70,25 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
             {({ touched, errors, setFieldTouched }) => {
               return (
                 <>
-                  <Row wrap="wrap" margin="0 -8px">
+                  <Row wrap="wrap" margin="0 8px" style={stylesComponent.rowContainer}>
+                    <Typography
+                      style={{ margin: '0 8px' }}
+                      className={classnames(classes.subTitleForm)}
+                    >
+                      {this.props.intl.get('app.subtitle.form.commission.part.two')}
+                    </Typography>
                     <Column padding="0px 8px">
                       <FielControlForm
-                        data-test-id="numberAgentSpecialDesignation"
-                        name="numberAgentSpecialDesignation"
+                        data-test-id="percentageTransactions"
+                        name="percentageTransactions"
                         type="number"
-                        label={'Number of agents'}
+                        label={'Percentage of transactions'}
                         setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
                         renderFastField
-                        customWidth={94}
+                        customWidth={100}
                       />
                     </Column>
                   </Row>
@@ -108,3 +101,9 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     );
   }
 }
+
+const stylesComponent = {
+  rowContainer: {
+    marginBottom: '1.3em',
+  },
+};

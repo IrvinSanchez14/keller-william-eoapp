@@ -1,6 +1,6 @@
 import { Component, ReactNode } from 'react';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import MainContentWrapper from '../MainContentWrapper';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -19,6 +19,8 @@ interface IStepWrapper extends IAppStoreProps, WithStyles<typeof styles> {
   avatarText?: string;
   isAgent?: boolean;
   contentIcon?: ReactNode;
+  classHeader?: any;
+  classBottom?: any;
 }
 
 @withStyles(styles)
@@ -36,6 +38,8 @@ export class StepWrapper extends Component<IStepWrapper> {
       property,
       contentIcon,
       stepper,
+      classHeader,
+      classBottom,
     } = this.props;
 
     const copyStepper = {
@@ -58,7 +62,7 @@ export class StepWrapper extends Component<IStepWrapper> {
               </Row>
             )}
             <Typography
-              className={classes.stepInfoHeader}
+              className={classnames(classes.stepInfoHeader, classHeader)}
               gutterBottom
               variant="h1"
               data-test-id="header"
@@ -94,7 +98,9 @@ export class StepWrapper extends Component<IStepWrapper> {
               </Typography>
             )}
             {bottomContent && (
-              <Typography className={classes.bottomContent}>{bottomContent}</Typography>
+              <Typography className={classnames(classes.bottomContent, classBottom)}>
+                {bottomContent}
+              </Typography>
             )}
           </>
         )}

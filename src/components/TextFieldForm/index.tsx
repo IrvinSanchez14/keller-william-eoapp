@@ -37,6 +37,7 @@ export type TextFieldProps = InputProps &
     setFieldValue?: (field: string, value: any, shouldValidate?: boolean) => void;
     setFieldTouched?: (field: string, isTouched?: boolean, shouldValidate?: boolean) => void;
     validateForm?: () => void;
+    resetForm?: () => void;
     shouldValidateOnMount?: boolean;
     containerStyles?: any;
   };

@@ -1,6 +1,11 @@
 import * as CONSTANTS from '../types/app';
-import { FirmInformationProps, AgentInformationProps } from '../models/AppState';
+import {
+  FirmInformationProps,
+  AgentInformationProps,
+  CommissionInformationProps,
+} from '../models/AppState';
 import { PolicyInformation } from 'src/containers/TreeEO/PolicyInformation';
+import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
 
 export const setPageLocation = (dispatch: React.Dispatch<any>, page: number) => {
   const setPage = {
@@ -72,4 +77,60 @@ export const addClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) =
   };
   dispatch(storeValueClaim);
   return storeValueClaim;
+};
+
+export const storeCommissionInformation = (
+  dispatch: React.Dispatch<any>,
+  commissionForm: CommissionInformationProps,
+) => {
+  const storeValueCommission = {
+    type: CONSTANTS.SET_COMMISSION_INFORMATION,
+    payload: commissionForm,
+  };
+  dispatch(storeValueCommission);
+  return storeValueCommission;
+};
+
+export const storeCommissionTotalSummary = (dispatch: React.Dispatch<any>, total: number) => {
+  const storeValueCommission = {
+    type: CONSTANTS.SET_TOTAL_SUMMARY_COMMISSION,
+    payload: total,
+  };
+  dispatch(storeValueCommission);
+  return storeValueCommission;
+};
+
+export const storeCommissionResidential = (
+  dispatch: React.Dispatch<any>,
+  commissionForm: CommissionInformationProps,
+  total: number,
+) => {
+  const storeValueCommission = {
+    type: CONSTANTS.SET_COMMISSION_RESIDENTIAL,
+    payload: { commissionForm, total },
+  };
+  dispatch(storeValueCommission);
+  return storeValueCommission;
+};
+
+export const storeCommissionCommercial = (
+  dispatch: React.Dispatch<any>,
+  commissionForm: CommissionInformationProps,
+  total: number,
+) => {
+  const storeValueCommission = {
+    type: CONSTANTS.SET_COMMISSION_COMMERCIAL,
+    payload: { commissionForm, total },
+  };
+  dispatch(storeValueCommission);
+  return storeValueCommission;
+};
+
+export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPRofileProps) => {
+  const storeValueRisk = {
+    type: CONSTANTS.SET_RISK_PROFILE,
+    payload: riskForm,
+  };
+  dispatch(storeValueRisk);
+  return storeValueRisk;
 };

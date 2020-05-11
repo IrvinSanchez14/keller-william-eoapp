@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import updatingIcon from 'assets/images/Marketing1.png';
 
@@ -84,6 +84,11 @@ import townhomeDefault from 'assets/images/homeTypes/townhouse-default.svg';
 import townhomeSelected from 'assets/images/homeTypes/townhouse-selected.svg';
 import otherDefault from 'assets/images/homeTypes/other-default.svg';
 import otherSelected from 'assets/images/homeTypes/other-selected.svg';
+
+import farmDefault from 'assets/images/commissionTypes/farm.svg';
+import commercialDefault from 'assets/images/commissionTypes/commercial.svg';
+import mortgageDefault from 'assets/images/commissionTypes/mortgage.svg';
+import auctioneringDefault from 'assets/images/commissionTypes/auctionering.svg';
 
 import gasDefault from 'assets/images/heatingTypes/gas-default.svg';
 import gasSelected from 'assets/images/heatingTypes/gas-selected.svg';
@@ -229,6 +234,10 @@ const iconList: IconListType = {
   circleCheck,
   squareCheck,
   singleDefault,
+  farmDefault,
+  auctioneringDefault,
+  commercialDefault,
+  mortgageDefault,
   singleSelected,
   multiDefault,
   multiSelected,
