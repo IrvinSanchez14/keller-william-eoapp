@@ -244,6 +244,7 @@ const ConfirmationHeaderText = styled.p`
 const ConfirmationSummaryText = styled.h1`
   font-size: 22px;
   padding: 30px 5px 37px 52px;
+  ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -288,7 +289,7 @@ const TableNameText = styled.p`
   width: 80%;
   padding: 16px 0 15px 20px;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
-  ${({ theme }) => theme && theme.phone`font-size: 14px;width: 70%;`};
+  ${({ theme }) => theme && theme.phone`font-size: 14px;width: 80%;`};
 `;
 
 const TableValueText = styled.h1`
@@ -299,7 +300,7 @@ const TableValueText = styled.h1`
   right: 0;
   padding-right: 15px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.darkGray};`};
-  ${({ theme }) => theme && theme.phone`color: ${theme.colors.paragraph.dark};font-size: 14px;`};
+  ${({ theme }) => theme && theme.phone`font-size: 14px;`};
 `;
 
 const ContainerShape = styled.div`
