@@ -83,10 +83,7 @@ function AppEO() {
   }, [state, complete]);
 
   useEffect(() => {
-    if (state.app.completed)
-      router.push(
-        `confirmation-page?sessionid=${sessionId}&confirmationnumber=${state.app.confirmationNumber}`,
-      );
+    if (state.app.completed) router.push(`/confirmation-page?sessionId=${sessionId}`);
   }, [state.app.completed, sessionId, router, state.app.confirmationNumber]);
 
   useEffect(() => {
