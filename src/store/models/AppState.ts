@@ -76,6 +76,7 @@ export interface MetaDataProps {
   actualPage?: number;
   categoryPage?: string;
   progressBar?: number;
+  finishProgressForm?: boolean;
 }
 
 export interface AppInitalProps {
@@ -171,6 +172,7 @@ export default class AppState implements IAppState {
       actualPage: 0,
       categoryPage: 'firm information',
       progressBar: 0,
+      finishProgressForm: false,
     },
   };
 }

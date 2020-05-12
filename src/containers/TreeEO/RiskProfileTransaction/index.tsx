@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeRiskProfile, changeStatusProgressBar } from 'src/store/actions/app';
+import { storeRiskProfile, changeStatusProgressBar, finishForm } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 
@@ -33,6 +33,9 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    setTimeout(function () {
+      finishForm(dispatch);
+    }, 3000);
     actions.setSubmitting(true);
   };
 

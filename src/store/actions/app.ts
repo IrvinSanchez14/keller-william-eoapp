@@ -173,3 +173,11 @@ export const setCopyStore = (dispatch: React.Dispatch<any>, state: any) => {
   dispatch(appStateAction);
   return appStateAction;
 };
+
+export const finishForm = (dispatch: React.Dispatch<any>) => {
+  const setInformation = {
+    type: CONSTANTS.FINISH_FORM,
+  };
+  dispatch(setInformation);
+  return setInformation;
+};

@@ -25,6 +25,18 @@ export const appActions: any = {
       },
     };
   },
+  FINISH_FORM: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          finishProgressForm: true,
+        },
+      },
+    };
+  },
   FIRM_CONFIRMATION_STORE: (state: any, action: any) => {
     return {
       ...state,

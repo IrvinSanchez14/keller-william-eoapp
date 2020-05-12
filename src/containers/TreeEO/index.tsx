@@ -32,7 +32,7 @@ import { WelcomeEO } from './WelcomeEO';
 type SessionResponse = AppState['app'];
 
 function isLastPage(state: AppState) {
-  return state.app.metadata.actualPage === 22;
+  return state.app.metadata.finishProgressForm === true;
 }
 
 function useSessionSaver(state: AppState) {
@@ -78,7 +78,10 @@ function AppEO() {
 
   useEffect(() => {
     if (state.app.confirmationNumber) router.push(`/confirmation-page?sessionId=${sessionId}`);
-    else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    else if (isLastPage(state))
+      setTimeout(function () {
+        router.push(`/review?sessionId=${sessionId}`);
+      }, 3000);
   }, [state, sessionId, router]);
 
   useEffect(() => {
