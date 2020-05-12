@@ -80,10 +80,10 @@ function AppEO() {
   }, [state, sessionId, router]);
 
   useEffect(() => {
-    const resume = router.query.resume;
-    if (typeof resume !== 'string') return;
-    getSession(resume);
-  }, [getSession, router.query.resume]);
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    getSession(sessionId);
+  }, [getSession, router.query.sessionId]);
 
   return (
     <>
