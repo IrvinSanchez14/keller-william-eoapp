@@ -83,6 +83,7 @@ export class RiskProfileReits extends Component<FullNameProps> {
             isInQuestionnaire
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
+            alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
               return FormRiskProfileReits(formikProps);

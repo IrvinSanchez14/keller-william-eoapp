@@ -9,6 +9,7 @@ import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
 import { FormApp } from 'src/components/FormApp';
+import { Icon } from 'src/components/Icon';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
@@ -21,6 +22,34 @@ type FormFields = {
   kwMarketCenterName: string;
   yearEstablished: number;
 };
+
+const getTypesCommission = [
+  {
+    id: 1,
+    icon: 'firmWelcome',
+    label: 'Residential',
+  },
+  {
+    id: 2,
+    icon: 'agentWelcome',
+    label: 'Commercial',
+  },
+  {
+    id: 3,
+    icon: 'commissionWelcome',
+    label: 'Farm/Ranch',
+  },
+  {
+    id: 4,
+    icon: 'policyWelcome',
+    label: 'Auctioneering',
+  },
+  {
+    id: 5,
+    icon: 'riskWelcome',
+    label: 'Mortgage',
+  },
+];
 
 @withStyles(styles)
 export class WelcomeEO extends Component<FullNameProps> {
@@ -40,6 +69,18 @@ export class WelcomeEO extends Component<FullNameProps> {
     const { dispatch } = this.props;
     setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
   }
+
+  renderChildrenCommissionTypes = () =>
+    getTypesCommission.map((item) => (
+      <div key={item.id} className={classnames(this.props.classes.card)}>
+        <div className={classnames(this.props.classes.content)}>
+          <Icon name={item.icon} className={classnames(this.props.classes.iconSize)} />
+          <Typography variant="body1" className={classnames(this.props.classes.label)}>
+            {item.label}
+          </Typography>
+        </div>
+      </div>
+    ));
 
   render() {
     const isLoading = false;
@@ -64,13 +105,20 @@ export class WelcomeEO extends Component<FullNameProps> {
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {() => {
               return (
                 <>
-                  <div>
-                    <Typography>{this.props.intl.getHTML('app.text.welcome')}</Typography>
+                  <div className={classnames(this.props.classes.divSVG)}>
+                    {this.renderChildrenCommissionTypes()}
                   </div>
+                  <Typography className={classnames(this.props.classes.textContent)}>
+                    {this.props.intl.getHTML('app.text.welcome')}
+                  </Typography>
+                  <Typography className={classnames(this.props.classes.textContent)}>
+                    {this.props.intl.getHTML('app.text.welcome.two')}
+                  </Typography>
                 </>
               );
             }}

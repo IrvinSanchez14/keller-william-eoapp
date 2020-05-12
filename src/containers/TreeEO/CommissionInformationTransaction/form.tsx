@@ -39,6 +39,7 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
+            placeholder="%"
             shouldValidateOnMount
             renderFastField
             customWidth={100}

@@ -57,6 +57,7 @@ export class RiskProfileFirm extends Component<FullNameProps> {
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
               return FormRiskProfileFirm(formikProps);

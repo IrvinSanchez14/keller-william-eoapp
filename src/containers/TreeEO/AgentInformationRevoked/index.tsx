@@ -1,17 +1,21 @@
 import { Component } from 'react';
-import { FormApp } from 'src/components/FormApp';
+import classnames from 'classnames';
 
+import { FormApp } from 'src/components/FormApp';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { agentRevokedValidateSchema } from 'src/helpers/validations';
-
 import { categoriesName } from 'src/helpers/constants';
 import { FormAgentInformationRevoked } from './form';
 
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { styles } from './styles';
+
 type FullNameProps = IAppStoreProps;
 
+@withStyles(styles)
 export class AgentInformationRevoked extends Component<FullNameProps> {
   isInitValid = false;
 
@@ -36,7 +40,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData, dispatch } = this.props;
+    const { formData, dispatch, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -57,6 +61,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
               return FormAgentInformationRevoked(formikProps, this.handleChange);

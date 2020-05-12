@@ -62,7 +62,7 @@ export class FormCommissionInformationMenu extends Component<IFormFirmInformatio
     ));
 
   render() {
-    const { formData, onSubmit, dispatch, hideButton } = this.props;
+    const { formData, onSubmit, dispatch, hideButton, classes } = this.props;
     return (
       <FormApp
         initialValues={{}}
@@ -77,6 +77,7 @@ export class FormCommissionInformationMenu extends Component<IFormFirmInformatio
         progressBar={formData.app.metadata.progressBar}
         notDisabled={true}
         hideButton={hideButton}
+        alignButton={classnames(classes.alignButton)}
       >
         {() => {
           return (

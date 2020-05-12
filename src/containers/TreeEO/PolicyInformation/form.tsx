@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { useState } from 'react';
+import { dateMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   customContainer: {
@@ -79,6 +80,8 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               setFieldTouched={formikProps.setFieldTouched}
               errors={formikProps.errors}
               touched={formikProps.touched}
+              placeholder="MM/DD/YYYY"
+              mask={dateMask}
               shouldValidateOnMount
               fullWidth
               renderFastField
@@ -94,6 +97,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                 name="deductible"
                 type="number"
                 label={'Deductible'}
+                placeholder="$"
                 setFieldTouched={formikProps.setFieldTouched}
                 errors={formikProps.errors}
                 touched={formikProps.touched}
@@ -110,6 +114,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                 name="limits"
                 type="number"
                 label={'Limits'}
+                placeholder="$"
                 setFieldTouched={formikProps.setFieldTouched}
                 errors={formikProps.errors}
                 touched={formikProps.touched}
@@ -150,6 +155,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               setFieldTouched={formikProps.setFieldTouched}
               errors={formikProps.errors}
               touched={formikProps.touched}
+              placeholder="$"
               shouldValidateOnMount
               fullWidth
               renderFastField

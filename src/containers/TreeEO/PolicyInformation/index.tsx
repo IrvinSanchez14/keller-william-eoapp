@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { FormikHelpers } from 'formik';
-import isEmpty from 'lodash/isEmpty';
+import classnames from 'classnames';
 
 import { policyInforamtionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
@@ -43,8 +43,6 @@ export class PolicyInformation extends Component<FullNameProps> {
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-    }
     setInformationPage(dispatch, 8, categoriesName.policyInformation);
   }
 
@@ -56,7 +54,7 @@ export class PolicyInformation extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData, dispatch } = this.props;
+    const { formData, dispatch, classes } = this.props;
 
     return (
       !isLoading && (
@@ -84,6 +82,7 @@ export class PolicyInformation extends Component<FullNameProps> {
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
               return FormPolicyInformation(formikProps, this.handleChange);

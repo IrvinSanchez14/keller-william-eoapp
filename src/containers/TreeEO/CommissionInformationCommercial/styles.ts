@@ -91,4 +91,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '48px',
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });

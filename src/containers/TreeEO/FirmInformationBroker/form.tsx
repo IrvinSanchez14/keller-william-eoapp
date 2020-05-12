@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { dateMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -51,6 +52,8 @@ export const FormFirmInformationBroker = (formikProps: any) => {
           name="dateLicensedBrokerAgent"
           type="text"
           label={'Date'}
+          placeholder="MM/DD/YYYY"
+          mask={dateMask}
           setFieldTouched={formikProps.setFieldTouched}
           errors={formikProps.errors}
           touched={formikProps.touched}
@@ -74,6 +77,8 @@ export const FormFirmInformationBroker = (formikProps: any) => {
           touched={formikProps.touched}
           className={classnames(classes.fielControlForm)}
           shouldValidateOnMount
+          placeholder="MM/DD/YYYY"
+          mask={dateMask}
           renderFastField
         />
       </Column>

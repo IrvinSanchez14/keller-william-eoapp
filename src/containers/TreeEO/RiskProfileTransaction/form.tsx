@@ -41,6 +41,7 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
             type="number"
             label={'Percentage of transactions'}
             setFieldTouched={formikProps.setFieldTouched}
+            placeholder="%"
             errors={formikProps.errors}
             touched={formikProps.touched}
             shouldValidateOnMount

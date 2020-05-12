@@ -10,6 +10,7 @@ import { TextFieldForm } from 'src/components/TextFieldForm';
 
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
+import { dateMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   unitContainer: {
@@ -102,13 +103,16 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
     const residenceTimeFields = [
       {
         name: 'dateClaim',
-        placeholder: '',
+        mask: dateMask,
+        numberMask: false,
+        placeholder: 'MM/DD/YYYY',
         label: 'Date of claim',
       },
       {
+        placeholder: '$',
         name: 'amountClaim',
-        placeholder: '',
         label: 'Amount of claim',
+        numberMask: true,
       },
     ];
 
@@ -116,7 +120,7 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
       <>
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
-            {residenceTimeFields.map(({ name, placeholder, label }: any) => (
+            {residenceTimeFields.map(({ name, placeholder, label, mask, numberMask }: any) => (
               <FielControlForm
                 key={`claims.${name}.${index}`}
                 name={`claims.${index}.${name}`}
@@ -128,11 +132,13 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
                   <TextFieldForm
                     {...field}
                     type="text"
+                    numberMask={numberMask}
                     data-test-id={`${name}.${index}`}
                     label={label}
                     placeholder={placeholder}
                     setFieldTouched={formikProps.setFieldTouched}
                     customWidth={150}
+                    mask={mask}
                     className={classnames(classes.periodContainerInput, {
                       [classes.periodContainerInputInvalid]:
                         formikProps.errors[name] && formikProps.touched[name],
@@ -207,7 +213,10 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
               value={false}
               data-test-id="sameAddressButtonNo"
               label={'No, I do not have any claims'}
-              onChange={() => formikProps.setFieldValue('isHaveClaims', false)}
+              onChange={() => {
+                formikProps.setFieldValue('isHaveClaims', false);
+                formikProps.setFieldValue('claims', []);
+              }}
               checked={formikProps.values.isHaveClaims === false}
             />
           )}

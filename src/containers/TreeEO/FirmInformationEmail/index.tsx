@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import classnames from 'classnames';
+
 import isEmpty from 'lodash/isEmpty';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
@@ -43,7 +45,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData, dispatch } = this.props;
+    const { formData, dispatch, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -68,6 +70,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {FormFirmInformationEmail}
           </FormApp>

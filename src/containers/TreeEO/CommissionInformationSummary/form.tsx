@@ -124,6 +124,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
         dispatch={dispatch}
         progressBar={formData.app.metadata.progressBar}
         hideButton={hideButton}
+        alignButton={classnames(classes.alignButton)}
       >
         {({ touched, errors, setFieldTouched }) => {
           return (

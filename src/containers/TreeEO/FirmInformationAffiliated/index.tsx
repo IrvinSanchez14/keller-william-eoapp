@@ -1,4 +1,6 @@
 import { Component } from 'react';
+import classnames from 'classnames';
+
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -7,6 +9,8 @@ import { isFirmOwnedValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 import { categoriesName } from 'src/helpers/constants';
 import { FormFirmInformationAffiliated } from './form';
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { styles } from './styles';
 
 type FullNameProps = IAppStoreProps;
 
@@ -25,6 +29,7 @@ export const propertyUsageFields = [
   },
 ];
 
+@withStyles(styles)
 export class FirmInformationAffiliated extends Component<FullNameProps> {
   isInitValid = false;
   state = {
@@ -49,7 +54,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -70,6 +75,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
             hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
               return FormFirmInformationAffiliated(formikProps, this.handleChange);

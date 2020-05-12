@@ -70,6 +70,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
               isInQuestionnaire
               progressBar={formData.app.metadata.progressBar}
               hideButton={false}
+              alignButton={classnames(classes.alignButton)}
             >
               {(formikProps) => {
                 return FormPolicyInformationClaims(formikProps, formData, dispatch);
