@@ -19,7 +19,7 @@ import { FormApp } from 'src/components/FormApp';
 import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
-import { policyInforamtionClaims } from 'src/helpers/validations';
+import { policyInforamtionClaimsSchema } from 'src/helpers/validations';
 import { dateMask } from 'src/utils';
 
 export type CurrentAddressProps = IAppStoreProps;
@@ -146,7 +146,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
                 isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
                 claims: formData.app.data.policyInformation.claims || [],
               }}
-              validationSchema={policyInforamtionClaims}
+              validationSchema={policyInforamtionClaimsSchema}
               onSubmit={this.nextStep}
               className={classes.form}
               buttonLabel={'Continue'}
