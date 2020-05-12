@@ -163,7 +163,7 @@ export default function LayoutInformationReview({
         nameForm={nameForm}
         isModalOpen={showModal}
         closeModal={() => setShowModal(false)}
-        children={<FormsEditPage nameForm={nameForm} />}
+        children={<FormsEditPage nameForm={nameForm} data={state} />}
       />
     </Container>
   );

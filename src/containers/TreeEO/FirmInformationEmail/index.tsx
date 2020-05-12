@@ -72,7 +72,9 @@ export class FirmInformationEmail extends Component<FullNameProps> {
             hideButton={false}
             alignButton={classnames(classes.alignButton)}
           >
-            {FormFirmInformationEmail}
+            {(formikProps) => {
+              return FormFirmInformationEmail(formikProps);
+            }}
           </FormApp>
         </StepWrapper>
       )

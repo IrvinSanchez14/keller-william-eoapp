@@ -33,6 +33,8 @@ const ReviewPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
     };
   }, []);
 
+  console.log('state', state);
+
   return (
     <>
       <NavigationReview

@@ -105,11 +105,11 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
   const { state } = useAppContext();
   const classes = useStyles();
   const [residential, setResidential] = useState({
-    realState: state.app.data.commission.residential.realEstate,
-    rawLand: state.app.data.commission.residential.rawLand,
-    appraisals: state.app.data.commission.residential.appraisals,
-    propertyMgmt: state.app.data.commission.residential.propertyMgmt,
-    ownedProperty: state.app.data.commission.residential.ownedProperty,
+    realState: state.app.data.commissionInformation.residential.realEstate,
+    rawLand: state.app.data.commissionInformation.residential.rawLand,
+    appraisals: state.app.data.commissionInformation.residential.appraisals,
+    propertyMgmt: state.app.data.commissionInformation.residential.propertyMgmt,
+    ownedProperty: state.app.data.commissionInformation.residential.ownedProperty,
   });
 
   const changeDataSum = (event: any) => {

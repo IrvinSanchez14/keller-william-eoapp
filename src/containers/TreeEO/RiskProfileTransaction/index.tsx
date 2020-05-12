@@ -34,12 +34,12 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 22, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 20, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
   }
 
   render() {

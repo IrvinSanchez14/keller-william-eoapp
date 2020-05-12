@@ -24,12 +24,12 @@ export class RiskProfileFirm extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 20, categoriesName.riskFactorInformation);
+    setInformationPage(dispatch, 21, categoriesName.riskFactorInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 19, categoriesName.riskFactorInformation);
+    setInformationPage(dispatch, 20, categoriesName.riskFactorInformation);
     this.setState({ width: window.innerWidth });
   }
 

@@ -6,18 +6,19 @@ import { EditPageRiskProfile } from './riskprofile';
 
 interface IFormEditPages {
   nameForm: string;
+  data: any;
 }
 
 const CONSTANTS_EDIT_PAGE = {
   FIRM_INFORMATION: 'Firm information',
   AGENT_INFORMATION: 'Agent information',
   POLICY_INFORMATION: 'Policy information',
-  COMMISSION: 'Commission',
+  COMMISSION: 'Comission',
   RISK_PROFILE: 'Risk profile',
 };
 
 export function FormsEditPage(Props: IFormEditPages) {
-  const { nameForm } = Props;
+  const { nameForm, data } = Props;
   const renderComponent = () => {
     switch (nameForm) {
       case CONSTANTS_EDIT_PAGE.FIRM_INFORMATION: {

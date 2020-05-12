@@ -30,7 +30,7 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 12, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   }
 
   nextStep = async (values: any, actions: any) => {
@@ -70,14 +70,14 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               residential: {
-                realEstate: formData.app.data.commission.residential.realEstate,
-                rawLand: formData.app.data.commission.residential.rawLand,
-                appraisals: formData.app.data.commission.residential.appraisals,
-                propertyMgmt: formData.app.data.commission.residential.propertyMgmt,
-                ownedProperty: formData.app.data.commission.residential.ownedProperty,
+                realEstate: formData.app.data.commissionInformation.residential.realEstate,
+                rawLand: formData.app.data.commissionInformation.residential.rawLand,
+                appraisals: formData.app.data.commissionInformation.residential.appraisals,
+                propertyMgmt: formData.app.data.commissionInformation.residential.propertyMgmt,
+                ownedProperty: formData.app.data.commissionInformation.residential.ownedProperty,
               },
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={commissionResidentialValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}

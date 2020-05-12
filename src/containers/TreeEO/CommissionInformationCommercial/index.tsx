@@ -36,7 +36,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     storeCommissionCommercial(dispatch, numberValues, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
@@ -44,7 +44,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   }
 
   sumState = (object: any) => {
@@ -67,11 +67,11 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               commercial: {
-                realEstate: formData.app.data.commission.commercial.realEstate,
-                rawLand: formData.app.data.commission.commercial.rawLand,
-                appraisals: formData.app.data.commission.commercial.appraisals,
-                propertyMgmt: formData.app.data.commission.commercial.propertyMgmt,
-                ownedProperty: formData.app.data.commission.commercial.ownedProperty,
+                realEstate: formData.app.data.commissionInformation.commercial.realEstate,
+                rawLand: formData.app.data.commissionInformation.commercial.rawLand,
+                appraisals: formData.app.data.commissionInformation.commercial.appraisals,
+                propertyMgmt: formData.app.data.commissionInformation.commercial.propertyMgmt,
+                ownedProperty: formData.app.data.commissionInformation.commercial.ownedProperty,
               },
             }}
             isInitValid={this.isInitValid}

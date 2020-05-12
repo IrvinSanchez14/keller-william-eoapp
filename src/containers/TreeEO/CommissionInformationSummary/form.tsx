@@ -55,27 +55,27 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
       {
         key: 1,
         title: 'Residential',
-        value: formData.app.data.commission.residential.total,
+        value: formData.app.data.commissionInformation.residential.total,
       },
       {
         key: 2,
         title: 'Commercial',
-        value: formData.app.data.commission.commercial.total,
+        value: formData.app.data.commissionInformation.commercial.total,
       },
       {
         key: 3,
         title: 'Farm/Ranch',
-        value: formData.app.data.commission.farmRanch,
+        value: formData.app.data.commissionInformation.farmRanch,
       },
       {
         key: 4,
         title: 'Auctioneering',
-        value: formData.app.data.commission.auctioneering,
+        value: formData.app.data.commissionInformation.auctioneering,
       },
       {
         key: 5,
         title: 'Mortgage',
-        value: formData.app.data.commission.mortageBrokerage,
+        value: formData.app.data.commissionInformation.mortageBrokerage,
       },
     );
     return children.map((item: any) => {
@@ -96,11 +96,11 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
   totalSummary = () => {
     const { formData } = this.props;
     const total =
-      formData.app.data.commission.residential.total +
-      formData.app.data.commission.commercial.total +
-      formData.app.data.commission.farmRanch +
-      formData.app.data.commission.auctioneering +
-      formData.app.data.commission.mortageBrokerage;
+      formData.app.data.commissionInformation.residential.total +
+      formData.app.data.commissionInformation.commercial.total +
+      formData.app.data.commissionInformation.farmRanch +
+      formData.app.data.commissionInformation.auctioneering +
+      formData.app.data.commissionInformation.mortageBrokerage;
     return total;
   };
 

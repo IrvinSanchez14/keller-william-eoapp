@@ -6,7 +6,7 @@ import { Actions } from './reducers';
 
 import enUS from 'assets/i18n/en-US.json';
 
-const server: string = 'prod';
+const server: string = 'dev';
 
 const reducer = (state: any, action: any) => {
   const getAction = Actions[action.type];

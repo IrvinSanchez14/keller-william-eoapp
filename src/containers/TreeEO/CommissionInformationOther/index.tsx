@@ -34,12 +34,12 @@ export class CommissionInformationOther extends Component<FullNameProps> {
     storeCommissionInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 16, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   }
 
   render() {

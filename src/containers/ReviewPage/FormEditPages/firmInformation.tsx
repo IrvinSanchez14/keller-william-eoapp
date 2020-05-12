@@ -80,7 +80,7 @@ export function EditPageFirmInformation() {
           suite: state.app.data.firmInformation.suite,
           phoneNumber: state.app.data.firmInformation.phoneNumber,
           faxNumber: state.app.data.firmInformation.faxNumber,
-          emailAddress: state.app.data.firmInformation.emailAddress,
+          emailAddress: state.app.data.firmInformation.email,
           dateLicensedBrokerAgent: state.app.data.firmInformation.dateLicensedBrokerAgent,
           dateLicensedBroker: state.app.data.firmInformation.dateLicensedBroker,
           isFirmOwned: state.app.data.firmInformation.isFirmOwned,

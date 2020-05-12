@@ -50,7 +50,7 @@ export interface AgentInformationProps {
 }
 
 export interface FirmInformationProps {
-  contacName: string;
+  contacName?: string;
   brokerName: string;
   kwMarketCenterName: string;
   yearEstablished: number;

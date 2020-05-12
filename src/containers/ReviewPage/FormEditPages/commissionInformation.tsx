@@ -87,26 +87,26 @@ export function EditPageCommissionInformation() {
     <>
       <FormApp
         initialValues={{
-          grossCommission: state.app.data.commission.grossCommission,
-          averageValue: state.app.data.commission.averageValue,
+          grossCommission: state.app.data.commissionInformation.grossCommission,
+          averageValue: state.app.data.commissionInformation.averageValue,
           commercial: {
-            realEstate: state.app.data.commission.commercial.realEstate,
-            rawLand: state.app.data.commission.commercial.rawLand,
-            appraisals: state.app.data.commission.commercial.appraisals,
-            propertyMgmt: state.app.data.commission.commercial.propertyMgmt,
-            ownedProperty: state.app.data.commission.commercial.ownedProperty,
+            realEstate: state.app.data.commissionInformation.commercial.realEstate,
+            rawLand: state.app.data.commissionInformation.commercial.rawLand,
+            appraisals: state.app.data.commissionInformation.commercial.appraisals,
+            propertyMgmt: state.app.data.commissionInformation.commercial.propertyMgmt,
+            ownedProperty: state.app.data.commissionInformation.commercial.ownedProperty,
           },
-          farmRanch: state.app.data.commission.farmRanch,
-          auctioneering: state.app.data.commission.auctioneering,
-          mortageBrokerage: state.app.data.commission.mortageBrokerage,
+          farmRanch: state.app.data.commissionInformation.farmRanch,
+          auctioneering: state.app.data.commissionInformation.auctioneering,
+          mortageBrokerage: state.app.data.commissionInformation.mortageBrokerage,
           residential: {
-            realEstate: state.app.data.commission.residential.realEstate,
-            rawLand: state.app.data.commission.residential.rawLand,
-            appraisals: state.app.data.commission.residential.appraisals,
-            propertyMgmt: state.app.data.commission.residential.propertyMgmt,
-            ownedProperty: state.app.data.commission.residential.ownedProperty,
+            realEstate: state.app.data.commissionInformation.residential.realEstate,
+            rawLand: state.app.data.commissionInformation.residential.rawLand,
+            appraisals: state.app.data.commissionInformation.residential.appraisals,
+            propertyMgmt: state.app.data.commissionInformation.residential.propertyMgmt,
+            ownedProperty: state.app.data.commissionInformation.residential.ownedProperty,
           },
-          percentageTransactions: state.app.data.commission.percentageTransactions,
+          percentageTransactions: state.app.data.commissionInformation.percentageTransactions,
         }}
         isInitValid={false}
         validationSchema={null}
