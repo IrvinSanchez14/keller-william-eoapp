@@ -1,3 +1,5 @@
+import AppState from 'src/store/models/AppState';
+
 export interface IFormInterface {
   click: number;
 }
@@ -28,7 +30,7 @@ export const appActions: any = {
       ...state,
       app: {
         ...state.app,
-        email: action.payload.emailAddress || state.app.email,
+        email: action.payload.email || state.app.email,
         data: {
           ...state.app.data,
           firmInformation: {
@@ -224,5 +226,8 @@ export const appActions: any = {
         },
       },
     };
+  },
+  SET_APP_STATE: (_: AppState, action: { payload: AppState }) => {
+    return action.payload;
   },
 };

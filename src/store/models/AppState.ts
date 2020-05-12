@@ -60,7 +60,7 @@ export interface FirmInformationProps {
   suite: number;
   phoneNumber: number;
   faxNumber: number;
-  emailAddress: string;
+  email: string;
   isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
@@ -84,6 +84,8 @@ export interface AppInitalProps {
   email: string;
   data: DataInitalProps;
   providers: Record<string, any>;
+  completed: boolean;
+  confirmationNumber?: string;
   metadata: MetaDataProps;
 }
 
@@ -104,7 +106,7 @@ export default class AppState implements IAppState {
         suite: 0,
         phoneNumber: 0,
         faxNumber: 0,
-        emailAddress: '',
+        email: '',
         isFirmOwned: null,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
@@ -165,6 +167,8 @@ export default class AppState implements IAppState {
       },
     },
     providers: [],
+    completed: false,
+    confirmationNumber: undefined,
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',

@@ -46,20 +46,20 @@ export const getFullEmailFields = () => [
   },
   {
     name: 'phoneNumber',
-    type: 'number',
+    type: 'text',
     placeholder: '',
     label: 'Phone Number',
     customWidth: 0,
   },
   {
     name: 'faxNumber',
-    type: 'number',
+    type: 'text',
     placeholder: '',
     label: 'Fax Number',
     customWidth: 0,
   },
   {
-    name: 'emailAddress',
+    name: 'email',
     type: 'text',
     placeholder: '',
     label: 'Email Address',
