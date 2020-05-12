@@ -85,6 +85,7 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
                         type="number"
                         label={'Percentage of transactions'}
                         setFieldTouched={setFieldTouched}
+                        placeholder="%"
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount

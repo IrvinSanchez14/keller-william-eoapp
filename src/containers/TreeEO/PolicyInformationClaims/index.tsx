@@ -59,14 +59,14 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
     const residenceTimeFields = [
       {
         name: 'dateClaim',
-        placeholder: '',
         label: 'Date of claim',
         mask: dateMask,
         numberMask: false,
+        placeholder: 'MM/DD/YYYY',
       },
       {
+        placeholder: '$',
         name: 'amountClaim',
-        placeholder: '',
         label: 'Amount of claim',
         numberMask: true,
       },
