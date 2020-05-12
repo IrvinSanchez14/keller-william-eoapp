@@ -70,6 +70,15 @@ export const storeClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any)
   return storeValueClaim;
 };
 
+export const storeAllPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
+  const storeAll = {
+    type: CONSTANTS.SET_ALL_INFORMATION_POLICY,
+    payload: claimForm,
+  };
+  dispatch(storeAll);
+  return storeAll;
+};
+
 export const addClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
   const storeValueClaim = {
     type: CONSTANTS.ADD_CLAIMS_POLICY_INFORMATION,

@@ -40,6 +40,10 @@ export const agentRevokedValidateSchema = Yup.object().shape({
   revokedLicense: Yup.boolean().required('Field is required'),
 });
 
+export const isHaveClaimsValidateSchema = Yup.object().shape({
+  isHaveClaims: Yup.boolean().required('Field is required'),
+});
+
 export const policyInforamtionValidateSchema = (status: boolean) => {
   if (status) {
     return Yup.object().shape({

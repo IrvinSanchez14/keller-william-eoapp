@@ -74,6 +74,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             hideButton={false}
           >
             {(formikProps) => {
+              console.log('formikProps', formikProps);
               return FormFirmInformationAffiliated(formikProps, this.handleChange);
             }}
           </FormApp>

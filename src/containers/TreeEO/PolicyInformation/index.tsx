@@ -1,6 +1,9 @@
 import { Component } from 'react';
 import { FormikHelpers } from 'formik';
 import isEmpty from 'lodash/isEmpty';
+
+import { policyInforamtionValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeInsurancePolicy, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -9,7 +12,6 @@ import StepWrapper from 'src/components/StepWrapper';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
-
 import { FormPolicyInformation } from './form';
 
 type FullNameProps = IAppStoreProps;
@@ -53,12 +55,35 @@ export class PolicyInformation extends Component<FullNameProps> {
           avatarText={this.props.intl.get('app.avatar.title.policy.part.one')}
           heading={this.props.intl.get('app.head.form.policy.part.one')}
         >
-          <FormPolicyInformation
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              currentCarrier: formData.app.data.policyInformation.currentCarrier || '',
+              isHaveInsurance: formData.app.data.policyInformation.isHaveInsurance,
+              renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
+              deductible: formData.app.data.policyInformation.insurance.deductible || '',
+              limits: formData.app.data.policyInformation.insurance.limits || '',
+              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || '',
+              annualPremium: formData.app.data.policyInformation.insurance.annualPremium || '',
+            }}
+            validationSchema={policyInforamtionValidateSchema(
+              formData.app.data.policyInformation.isHaveInsurance,
+            )}
+            isInitValid={this.isInitValid}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
+            notDisabled={false}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              console.log('formikProps', formikProps);
+              return FormPolicyInformation(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

@@ -12,6 +12,7 @@ import {
 
 import { styles } from './styles';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { isHaveClaimsValidateSchema } from 'src/helpers/validations';
 import { TextFieldForm } from 'src/components/TextFieldForm';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import StepWrapper from 'src/components/StepWrapper';
@@ -36,6 +37,7 @@ type FormValues = {
 export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isLoading = false;
   isButtonLoading = false;
+  isInitValid = false;
 
   async componentDidMount() {
     const { dispatch } = this.props;
@@ -53,6 +55,10 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
 
   render() {
     const { intl, classes, formData, dispatch } = this.props;
+    console.log(
+      'formData.app.data.policyInformation.isHaveClaims',
+      formData.app.data.policyInformation.isHaveClaims,
+    );
 
     return (
       !this.isLoading && (
@@ -61,12 +67,28 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
             avatarText={intl.get('app.avatar.title.policy.part.two')}
             heading={intl.get('app.head.form.policy.part.two')}
           >
-            <FormPolicyInformationClaims
-              formData={formData}
-              dispatch={dispatch}
+            <FormApp
+              initialValues={{
+                isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
+                claims: formData.app.data.policyInformation.claims || [],
+              }}
+              validationSchema={isHaveClaimsValidateSchema}
               onSubmit={this.nextStep}
+              className={classes.form}
+              buttonLabel={'Continue'}
+              dataTestId="reviewButton"
+              isLoading={this.isButtonLoading}
+              isInitValid
+              dispatch={this.props.dispatch}
+              isInQuestionnaire
+              progressBar={formData.app.metadata.progressBar}
               hideButton={false}
-            />
+            >
+              {(formikProps) => {
+                console.log('ervin', formikProps);
+                return FormPolicyInformationClaims(formikProps, formData, dispatch);
+              }}
+            </FormApp>
           </StepWrapper>
         </>
       )

@@ -163,6 +163,37 @@ export const appActions: any = {
       },
     };
   },
+  SET_ALL_INFORMATION_POLICY: (state: any, action: any) => {
+    console.log('ACTION', action);
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            currentCarrier: action.payload.currentCarrier,
+            isHaveInsurance: action.payload.isHaveInsurance,
+            insurance: {
+              renewalDate: action.payload.renewalDate,
+              deductible: action.payload.deductible,
+              limits: action.payload.limits,
+              yearCoverage: action.payload.yearCoverage,
+              annualPremium: action.payload.annualPremium,
+            },
+            isHaveClaims: action.payload.isHaveClaims,
+            claims: action.payload.claims.map((item: any) => {
+              return {
+                dateClaim: item.dateClaim,
+                amountClaim: item.amountClaim,
+              };
+            }),
+          },
+        },
+      },
+    };
+  },
   ADD_CLAIMS_POLICY_INFORMATION: (state: any, action: any) => {
     return {
       ...state,

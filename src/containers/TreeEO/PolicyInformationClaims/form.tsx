@@ -1,35 +1,104 @@
-import { Component } from 'react';
 import classnames from 'classnames';
+import { makeStyles } from '@material-ui/styles';
+import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { addClaimsPolicy } from 'src/store/actions/app';
 
-import { styles } from './styles';
 import { TextFieldForm } from 'src/components/TextFieldForm';
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { FormApp } from 'src/components/FormApp';
+
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 
-interface IFormFirmInformation {
-  formData: any;
-  dispatch: any;
-  onSubmit?: any;
-  hideButton?: boolean;
-  classes?: any;
-}
+const useStyles = makeStyles((theme: MuiTheme) => ({
+  unitContainer: {
+    [theme.breakpoints.up(768)]: {
+      width: 90,
+      textAlign: 'center',
+      marginLeft: 12,
+    },
+    marginBottom: 30,
+    width: '100%',
+  },
+  cardContainer: {
+    position: 'relative',
+    top: -40,
+    padding: theme.spacing(6.5, 3, 3.5),
+    background: theme.palette.primary.light,
+    borderRadius: '0 0 18px 18px',
+    '@media (min-width: 768px)': {
+      top: -60,
+      padding: theme.spacing(8.5, 2.5, 4.5),
+      borderRadius: '0 0 36px 36px',
+    },
+    '@media (min-width: 900px)': {
+      padding: theme.spacing(5.5, 4.5, 4.5),
+      maxHeight: '375px',
+      overflowY: 'auto',
+    },
+  },
+  iconPlus: {
+    fontSize: 23,
+  },
+  containerAddButton: {
+    marginTop: '10px',
+    display: 'flex',
+    flexDirection: 'row',
+    cursor: 'pointer',
+    color: '#0093E9',
+  },
+  pAddButton: {
+    marginLeft: 15,
+    fontSize: '1.15em',
+    fontWeight: 600,
+  },
+  radioContainer: {
+    zIndex: 1,
+  },
+  radioBottomContainer: {
+    zIndex: 1,
+    position: 'relative',
+    top: -30,
+    [theme.breakpoints.up(768)]: {
+      top: -40,
+    },
+  },
+  addressCotaniner: {
+    [theme.breakpoints.down(768)]: {
+      flexWrap: 'wrap',
+    },
+  },
+  periodContainer: {
+    flexDirection: 'row',
+    '& > div': {
+      [theme.breakpoints.down('md')]: {
+        flex: 1,
+      },
+      '&:first-child': {
+        marginRight: 10,
+        [theme.breakpoints.up('md')]: {
+          marginRight: theme.spacing(2),
+        },
+      },
+    },
+  },
+  periodContainerInput: {
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+    },
+    [theme.breakpoints.up('md')]: {
+      textAlign: 'center',
+    },
+  },
+  periodContainerInputInvalid: {
+    borderColor: theme.palette.error.main,
+  },
+}));
 
-@withStyles(styles)
-export class FormPolicyInformationClaims extends Component<IFormFirmInformation> {
-  isLoading = false;
-  isButtonLoading = false;
-  isHaveClaims: boolean = undefined;
-  isInitialValid = false;
-
-  renderResidenceTimeForm = ({ touched, errors, setFieldTouched }: any) => {
-    const { classes, formData, dispatch } = this.props;
-
+export const FormPolicyInformationClaims = (formikProps: any, formData: any, dispatch: any) => {
+  const classes = useStyles();
+  const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
       {
         name: 'dateClaim',
@@ -52,8 +121,8 @@ export class FormPolicyInformationClaims extends Component<IFormFirmInformation>
                 key={`claims.${name}.${index}`}
                 name={`claims.${index}.${name}`}
                 type="text"
-                errors={errors}
-                touched={touched}
+                errors={formikProps.errors}
+                touched={formikProps.touched}
                 renderFastField
                 renderCustomField={({ field }) => (
                   <TextFieldForm
@@ -62,10 +131,11 @@ export class FormPolicyInformationClaims extends Component<IFormFirmInformation>
                     data-test-id={`${name}.${index}`}
                     label={label}
                     placeholder={placeholder}
-                    setFieldTouched={setFieldTouched}
+                    setFieldTouched={formikProps.setFieldTouched}
                     customWidth={150}
                     className={classnames(classes.periodContainerInput, {
-                      [classes.periodContainerInputInvalid]: errors[name] && touched[name],
+                      [classes.periodContainerInputInvalid]:
+                        formikProps.errors[name] && formikProps.touched[name],
                     })}
                   />
                 )}
@@ -100,71 +170,49 @@ export class FormPolicyInformationClaims extends Component<IFormFirmInformation>
     );
   };
 
-  render() {
-    const { classes, formData, onSubmit, hideButton } = this.props;
-
-    return (
-      <FormApp
-        initialValues={{
-          isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
-          claims: formData.app.data.policyInformation.claims || [],
-        }}
-        validationSchema={null}
-        onSubmit={onSubmit}
-        className={classes.form}
-        buttonLabel={'Continue'}
-        dataTestId="reviewButton"
-        isLoading={this.isButtonLoading}
-        isInitValid={this.isInitialValid}
-        isInQuestionnaire
-        hideButton={hideButton}
+  return (
+    <>
+      <div className={classes.radioContainer}>
+        <FielControlForm
+          name="isHaveClaims"
+          shouldValidateOnMount
+          renderCustomField={({ field }) => (
+            <RadioField
+              {...field}
+              name="isHaveClaims"
+              value={true}
+              data-test-id="sameAddressButtonYes"
+              label={'Yes, I have claims'}
+              onChange={() => formikProps.setFieldValue('isHaveClaims', true)}
+              checked={formikProps.values.isHaveClaims === true}
+            />
+          )}
+        />
+      </div>
+      {formikProps.values.isHaveClaims && (
+        <Column className={classes.cardContainer}>{renderResidenceTimeForm()}</Column>
+      )}
+      <div
+        className={classnames(classes.radioContainer, {
+          [classes.radioBottomContainer]: !!formikProps.values.isHaveClaims,
+        })}
       >
-        {({ touched, errors, values, setFieldValue, setFieldTouched, dirty }: any) => (
-          <>
-            <div className={classes.radioContainer}>
-              <FielControlForm
-                name="isHaveClaims"
-                renderCustomField={({ field }) => (
-                  <RadioField
-                    {...field}
-                    name="isHaveClaims"
-                    value="isHaveClaims"
-                    data-test-id="sameAddressButtonYes"
-                    label={'Yes, I have claims'}
-                    onChange={() => setFieldValue('isHaveClaims', true)}
-                    checked={values.isHaveClaims === true}
-                  />
-                )}
-              />
-            </div>
-            {values.isHaveClaims && (
-              <Column className={classes.cardContainer}>
-                {this.renderResidenceTimeForm({ touched, errors, setFieldTouched })}
-              </Column>
-            )}
-            <div
-              className={classnames(classes.radioContainer, {
-                [classes.radioBottomContainer]: !!values.isHaveClaims,
-              })}
-            >
-              <FielControlForm
-                name="isHaveClaims"
-                renderCustomField={({ field }) => (
-                  <RadioField
-                    {...field}
-                    name="isHaveClaims"
-                    value="isHaveClaims"
-                    data-test-id="sameAddressButtonNo"
-                    label={'No, I do not have any claims'}
-                    onChange={() => setFieldValue('isHaveClaims', false)}
-                    checked={values.isHaveClaims === false}
-                  />
-                )}
-              />
-            </div>
-          </>
-        )}
-      </FormApp>
-    );
-  }
-}
+        <FielControlForm
+          name="isHaveClaims"
+          shouldValidateOnMount
+          renderCustomField={({ field }) => (
+            <RadioField
+              {...field}
+              name="isHaveClaims"
+              value={false}
+              data-test-id="sameAddressButtonNo"
+              label={'No, I do not have any claims'}
+              onChange={() => formikProps.setFieldValue('isHaveClaims', false)}
+              checked={formikProps.values.isHaveClaims === false}
+            />
+          )}
+        />
+      </div>
+    </>
+  );
+};
