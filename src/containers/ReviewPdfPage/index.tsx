@@ -27,7 +27,7 @@ const ReviewPdfPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
   return (
     <>
       <NavigationPdf isTablet={isTablet} isMobile={isMobile} />
-      <Layout textHeader={`Application Number: ${257023}`} state={state} />
+      <Layout textHeader={`Application Number: ${state.confirmationNumber}`} state={state} />
     </>
   );
 };

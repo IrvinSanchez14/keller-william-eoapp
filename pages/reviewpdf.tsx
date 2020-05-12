@@ -7,7 +7,7 @@ import ky from '../src/utils/ky';
 import Error from 'next/error';
 
 const MyApp: React.FC<Partial<AppState>> = ({ app }) => {
-  if (!app) return <Error statusCode={404} />;
+  if (!app || !app.confirmationNumber) return <Error statusCode={404} />;
   return (
     <div>
       <Head>
