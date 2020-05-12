@@ -45,6 +45,7 @@ export type TextFieldProps = InputProps &
 const setNumberMask = (rawValue: string) => {
   const numberMask = createNumberMask({
     prefix: '',
+    thousandsSeparatorSymbol: '',
   });
   const mask = numberMask(rawValue);
   return mask;

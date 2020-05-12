@@ -37,13 +37,8 @@ export interface PolicyInformationProps {
     yearCoverage: string;
     annualPremium: number;
   };
-  isHaveClaims: boolean;
-  claims: [
-    {
-      dateClaim: string;
-      amountClaim: number;
-    },
-  ];
+  isHaveClaims: boolean | null;
+  claims: [] | [{ dateClaim: string; amountClaim: number }];
 }
 
 export interface AgentInformationProps {
@@ -133,13 +128,8 @@ export default class AppState implements IAppState {
           yearCoverage: '',
           annualPremium: 0,
         },
-        isHaveClaims: undefined,
-        claims: [
-          {
-            dateClaim: '',
-            amountClaim: undefined,
-          },
-        ],
+        isHaveClaims: null,
+        claims: [],
       },
       commission: {
         grossCommission: undefined,

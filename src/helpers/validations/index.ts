@@ -49,6 +49,24 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
   }
 };
 
+export const policyInforamtionClaims = Yup.object().shape({
+  isHaveClaims: Yup.boolean().required(),
+  claims: Yup.array().when('isHaveClaims', {
+    is: true,
+    then: Yup.array()
+      .of(
+        Yup.object().shape({
+          dateClaim: Yup.string()
+            .matches(/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/)
+            .required(),
+          amountClaim: Yup.number().required().min(0),
+        }),
+      )
+      .min(1),
+    otherwise: Yup.array(),
+  }),
+});
+
 export const commissionInformationValidateSchema = Yup.object().shape({
   grossCommission: Yup.number()
     .required('Field is required')

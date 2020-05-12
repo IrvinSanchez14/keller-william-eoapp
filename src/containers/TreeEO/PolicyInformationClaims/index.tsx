@@ -19,25 +19,18 @@ import { FormApp } from 'src/components/FormApp';
 import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
+import { policyInforamtionClaims } from 'src/helpers/validations';
 
 export type CurrentAddressProps = IAppStoreProps;
-
-type FormValues = {
-  unit: string;
-  formattedAddress: string;
-  isHaveClaims: boolean;
-  years: number;
-  months: number;
-  zero_results?: boolean;
-};
 
 @withStyles(styles)
 export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isLoading = false;
+  isInitValid = false;
   isButtonLoading = false;
   shouldErrorShow = true;
   formattedAddress = '';
-  isHaveClaims: boolean = undefined;
+  isHaveClaims: boolean = null;
   addressComponent: Array<string> = [];
   unit = '';
   monthsAtCurrentAddress = 0;
@@ -60,18 +53,21 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   };
 
   renderResidenceTimeForm = ({ touched, errors, setFieldTouched }: any) => {
-    const { classes, intl, formData, dispatch } = this.props;
+    const { classes, formData, dispatch } = this.props;
 
     const residenceTimeFields = [
       {
         name: 'dateClaim',
         placeholder: '',
         label: 'Date of claim',
+        mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+        numberMask: false,
       },
       {
         name: 'amountClaim',
         placeholder: '',
         label: 'Amount of claim',
+        numberMask: true,
       },
     ];
 
@@ -79,7 +75,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
       <>
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
-            {residenceTimeFields.map(({ name, placeholder, label }: any) => (
+            {residenceTimeFields.map(({ name, placeholder, label, mask, numberMask }: any) => (
               <FielControlForm
                 key={`claims.${name}.${index}`}
                 name={`claims.${index}.${name}`}
@@ -91,11 +87,13 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
                   <TextFieldForm
                     {...field}
                     type="text"
+                    numberMask={numberMask}
                     data-test-id={`${name}.${index}`}
                     label={label}
                     placeholder={placeholder}
                     setFieldTouched={setFieldTouched}
                     customWidth={150}
+                    mask={mask}
                     className={classnames(classes.periodContainerInput, {
                       [classes.periodContainerInputInvalid]: errors[name] && touched[name],
                     })}
@@ -147,16 +145,16 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
                 isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
                 claims: formData.app.data.policyInformation.claims || [],
               }}
-              validationSchema={null}
+              validationSchema={policyInforamtionClaims}
               onSubmit={this.nextStep}
               className={classes.form}
               buttonLabel={'Continue'}
               dataTestId="reviewButton"
               isLoading={this.isButtonLoading}
-              isInitValid={this.isInitialValid}
+              isInitValid
               isInQuestionnaire
             >
-              {({ touched, errors, values, setFieldValue, setFieldTouched, dirty }: any) => (
+              {({ touched, errors, values, setFieldValue, setFieldTouched }: any) => (
                 <>
                   <div className={classes.radioContainer}>
                     <FielControlForm
@@ -193,7 +191,10 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
                           value="isHaveClaims"
                           data-test-id="sameAddressButtonNo"
                           label={'No, I do not have any claims'}
-                          onChange={() => setFieldValue('isHaveClaims', false)}
+                          onChange={() => {
+                            setFieldValue('isHaveClaims', false);
+                            setFieldValue('claims', []);
+                          }}
                           checked={values.isHaveClaims === false}
                         />
                       )}

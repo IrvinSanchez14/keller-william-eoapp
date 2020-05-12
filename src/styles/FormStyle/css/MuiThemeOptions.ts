@@ -27,7 +27,7 @@ const muiFontSizes = {
 
 const muiPalette = {
   primary: {
-    light: '#4791db',
+    light: '#F6F6F6',
     main: '#1976d2',
     dark: '#1D253C',
   },
