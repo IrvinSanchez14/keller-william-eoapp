@@ -6,9 +6,9 @@ import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
-
 import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
+import { agentRevokedLicenseSchema } from 'src/helpers/validations';
 
 type FullNameProps = IAppStoreProps;
 
@@ -86,6 +86,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
               revokedLicense: formData.app.data.agentInformation.revokedLicense,
             }}
             isInitValid
+            validationSchema={agentRevokedLicenseSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
