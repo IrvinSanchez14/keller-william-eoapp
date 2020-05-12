@@ -76,14 +76,15 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    if (state.app.confirmationNumber) router.push(`/confirmation-page?sessionId=${sessionId}`);
+    else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
-    const resume = router.query.resume;
-    if (typeof resume !== 'string') return;
-    getSession(resume);
-  }, [getSession, router.query.resume]);
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    getSession(sessionId);
+  }, [getSession, router.query.sessionId]);
 
   return (
     <>
