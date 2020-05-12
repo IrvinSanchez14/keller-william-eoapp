@@ -8,7 +8,7 @@ interface FirmInformationProps {
   phoneNumber: string | number;
   faxNumber: string | number;
   email: string;
-  isFirmOwned: boolean;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
