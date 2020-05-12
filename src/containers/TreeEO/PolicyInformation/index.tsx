@@ -28,12 +28,13 @@ export class PolicyInformation extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
   state = {
-    isHaveInsurance: false,
+    isHaveInsurance: this.props.formData.app.data.policyInformation.isHaveInsurance,
   };
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
+    values.isHaveInsuranceField = this.state.isHaveInsurance;
     storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
@@ -65,7 +66,7 @@ export class PolicyInformation extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               currentCarrier: formData.app.data.policyInformation.currentCarrier || '',
-              isHaveInsurance: formData.app.data.policyInformation.isHaveInsurance,
+              isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance,
               renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
               deductible: formData.app.data.policyInformation.insurance.deductible || '',
               limits: formData.app.data.policyInformation.insurance.limits || '',

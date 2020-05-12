@@ -9,12 +9,14 @@ import { storeRiskProfile } from 'src/store/actions/app';
 
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FormRiskProfile } from 'src/containers/TreeEO/RiskProfile/form';
 import { FormRiskProfileBanck } from 'src/containers/TreeEO/RiskProfileBanck/form';
 import { FormRiskProfileReits } from 'src/containers/TreeEO/RiskProfieReits/form';
 import { FormRiskProfileFirm } from 'src/containers/TreeEO/RiskProfileFirm/form';
 import { FormRiskProfileTransaction } from 'src/containers/TreeEO/RiskProfileTransaction/form';
+import { useRouter } from 'next/dist/client/router';
+import ky from 'src/utils/ky';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -75,19 +77,45 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export function EditPageRiskProfile() {
+  const router = useRouter();
   const [isReview] = useState(true);
+  const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
   const [isHaveInsurance, setIsHaveInsurance] = useState(false);
   const classes = useStyles();
 
-  const onSubmit = (values: any, actions: any) => {
+  const onSubmit = async (values: any, actions: any) => {
     storeRiskProfile(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          riskFactorInformation: {
+            ...state.app.data.riskFactorInformation,
+            ...values,
+          },
+        },
+      },
+    });
   };
+
+  useEffect(() => {
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
+  }, []);
 
   return (
     <>
       <FormApp
-        initialValues={{}}
+        initialValues={{
+          isHomeWarranty: state.app.data.riskFactorInformation.isHomeWarranty,
+          isPerformServices: state.app.data.riskFactorInformation.isPerformServices,
+          isMortageBanking: state.app.data.riskFactorInformation.isMortageBanking,
+          isRepresentCommission: state.app.data.riskFactorInformation.isRepresentCommission,
+          percentageTransactions: state.app.data.riskFactorInformation.percentageTransactions,
+        }}
         isInitValid={false}
         validationSchema={null}
         onSubmit={onSubmit}

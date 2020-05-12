@@ -24,7 +24,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
 
   nextStep = async (values: any, actions: any) => {
     const totalResidential = this.sumState(values.commercial);
-    const numberValues: any = Object.keys(values).reduce(
+    const numberValues: any = Object.keys(values.commercial).reduce(
       (res, key: string) => ({
         ...res,
         [key]: Number(values[key]),
@@ -33,7 +33,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     );
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionCommercial(dispatch, numberValues, totalResidential); //TODO put state in localstorage
+    storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 15, categoriesName.commissionInformation);

@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { useRouter } from 'next/dist/client/router';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
@@ -12,6 +13,8 @@ import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { FormFirmInformationEmail } from 'src/containers/TreeEO/FirmInformationEmail/form';
 import { FormFirmInformationAffiliated } from 'src/containers/TreeEO/FirmInformationAffiliated/form';
 import { FormFirmInformationBroker } from 'src/containers/TreeEO/FirmInformationBroker/form';
+import ky from 'src/utils/ky';
+import { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -57,22 +60,42 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export function EditPageFirmInformation() {
+  const router = useRouter();
+  const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
   const classes = useStyles();
 
-  const onSubmit = (values: any, actions: any) => {
+  const onSubmit = async (values: any, actions: any) => {
     storeFirmConfirmation(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          firmInformation: {
+            ...state.app.data.firmInformation,
+            ...values,
+          },
+        },
+      },
+    });
   };
 
   const handleChange = (value: boolean, formikProps: any) => {
     formikProps.setFieldValue('isFirmOwned', value);
   };
 
+  useEffect(() => {
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
+  }, []);
+
   return (
     <>
       <FormApp
         initialValues={{
-          contacName: state.app.data.firmInformation.contacName,
+          contactName: state.app.data.firmInformation.contactName,
           brokerName: state.app.data.firmInformation.brokerName,
           kwMarketCenterName: state.app.data.firmInformation.kwMarketCenterName,
           yearEstablished: state.app.data.firmInformation.yearEstablished,

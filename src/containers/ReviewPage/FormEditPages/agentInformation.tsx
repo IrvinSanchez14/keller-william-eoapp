@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { useRouter } from 'next/dist/client/router';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
@@ -11,7 +12,8 @@ import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { FormAgentInformation } from 'src/containers/TreeEO/AgentInformation/form';
 import { FormAgentInformationDesignation } from 'src/containers/TreeEO/AgentInformationDesignation/form';
 import { FormAgentInformationRevoked } from 'src/containers/TreeEO/AgentInformationRevoked/form';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import ky from 'src/utils/ky';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -72,13 +74,33 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export function EditPageAgentInformation() {
+  const router = useRouter();
   const [isReview] = useState(true);
+  const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
   const classes = useStyles();
 
-  const onSubmit = (values: any, actions: any) => {
+  const onSubmit = async (values: any, actions: any) => {
     storeAgentInformation(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          agentInformation: {
+            ...state.app.data.agentInformation,
+            ...values,
+          },
+        },
+      },
+    });
   };
+
+  useEffect(() => {
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
+  }, []);
 
   const handleChange = (value: boolean, formikProps: any) => {
     formikProps.setFieldValue('revokedLicense', value);

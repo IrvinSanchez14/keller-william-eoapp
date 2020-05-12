@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { useRouter } from 'next/dist/client/router';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
@@ -10,6 +11,8 @@ import { storeAllPolicy } from 'src/store/actions/app';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { FormPolicyInformation } from 'src/containers/TreeEO/PolicyInformation/form';
 import { FormPolicyInformationClaims } from 'src/containers/TreeEO/PolicyInformationClaims/form';
+import { useEffect, useState } from 'react';
+import ky from 'src/utils/ky';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -70,19 +73,62 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export function EditPagePolicyInformation() {
+  const router = useRouter();
+  const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
+  const [isHaveInsurance, setIsHaveInsurance] = useState(
+    state.app.data.policyInformation.isHaveInsurance,
+  );
   const classes = useStyles();
 
-  const onSubmit = (values: any, actions: any) => {
+  const onSubmit = async (values: any, actions: any) => {
+    console.log(values);
     storeAllPolicy(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            currentCarrier: values.currentCarrier,
+            isHaveInsurance: isHaveInsurance,
+            insurance: {
+              renewalDate: values.renewalDate,
+              deductible: values.deductible,
+              limits: values.limits,
+              yearCoverage: values.yearCoverage,
+              annualPremium: values.annualPremium,
+            },
+            isHaveClaims: values.isHaveClaims,
+            claims: values.claims.map((item: any) => {
+              return {
+                dateClaim: item.dateClaim,
+                amountClaim: item.amountClaim,
+              };
+            }),
+          },
+        },
+      },
+    });
   };
+
+  const handleChange = () => {
+    setIsHaveInsurance(!isHaveInsurance);
+  };
+
+  useEffect(() => {
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
+  }, []);
 
   return (
     <>
       <FormApp
         initialValues={{
           currentCarrier: state.app.data.policyInformation.currentCarrier,
-          isHaveInsurance: state.app.data.policyInformation.isHaveInsurance,
+          isHaveInsuranceField: state.app.data.policyInformation.isHaveInsurance,
           renewalDate: state.app.data.policyInformation.insurance.renewalDate,
           deductible: state.app.data.policyInformation.insurance.deductible,
           limits: state.app.data.policyInformation.insurance.limits,
@@ -109,7 +155,7 @@ export function EditPagePolicyInformation() {
                 <Typography className={classnames(classes.titleForm)}>
                   {'Insurance information'}
                 </Typography>
-                {FormPolicyInformation(formikProps)}
+                {FormPolicyInformation(formikProps, handleChange)}
               </Column>
               <Column className={classnames(classes.rowContainer)}>
                 <Typography className={classnames(classes.titleForm)}>

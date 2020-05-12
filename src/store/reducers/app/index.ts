@@ -42,6 +42,7 @@ export const appActions: any = {
     };
   },
   SET_INSURANCE_POLICY_INFORMATION: (state: any, action: any) => {
+    console.log('action', action);
     return {
       ...state,
       app: {
@@ -51,7 +52,7 @@ export const appActions: any = {
           policyInformation: {
             ...state.app.data.policyInformation,
             currentCarrier: action.payload.currentCarrier,
-            isHaveInsurance: action.payload.isHaveInsurance,
+            isHaveInsurance: action.payload.isHaveInsuranceField,
             insurance: {
               renewalDate: action.payload.renewalDate,
               deductible: action.payload.deductible,
@@ -152,8 +153,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          commission: {
-            ...state.app.data.commission,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
             ...action.payload,
           },
         },
@@ -191,7 +192,7 @@ export const appActions: any = {
           policyInformation: {
             ...state.app.data.policyInformation,
             currentCarrier: action.payload.currentCarrier,
-            isHaveInsurance: action.payload.isHaveInsurance,
+            isHaveInsurance: action.payload.isHaveInsuranceField,
             insurance: {
               renewalDate: action.payload.renewalDate,
               deductible: action.payload.deductible,
@@ -274,5 +275,22 @@ export const appActions: any = {
   },
   SET_APP_STATE: (_: AppState, action: { payload: AppState }) => {
     return action.payload;
+  },
+  SET_COPY_STORE_API: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        completed: action.payload.completed,
+        email: action.payload.email,
+        id: action.payload.id,
+        data: {
+          ...action.payload.data,
+        },
+        metadata: {
+          ...action.payload.metadata,
+        },
+      },
+    };
   },
 };

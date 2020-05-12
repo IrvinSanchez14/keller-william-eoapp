@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
+import ky from 'src/utils/ky';
 
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
@@ -9,12 +10,13 @@ import { storeCommissionAll } from 'src/store/actions/app';
 
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FormCommissionInformation } from 'src/containers/TreeEO/CommissionInformation/form';
 import { FormCommissionInformationTransaction } from 'src/containers/TreeEO/CommissionInformationTransaction/form';
 import { FormCommissionInformationResidential } from 'src/containers/TreeEO/CommissionInformationResidential/form';
 import { FormCommissionInformationCommercial } from 'src/containers/TreeEO/CommissionInformationCommercial/form';
 import { FormCommissionInformationOther } from 'src/containers/TreeEO/CommissionInformationOther/form';
+import { useRouter } from 'next/dist/client/router';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -75,13 +77,41 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export function EditPageCommissionInformation() {
+  const router = useRouter();
   const [isReview] = useState(true);
+  const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
   const classes = useStyles();
 
-  const onSubmit = (values: any, actions: any) => {
+  const onSubmit = async (values: any, actions: any) => {
+    const totalResidential = sumState(values.residential);
+    const totalCommercial = sumState(values.commercial);
+    values.residential.total = totalResidential;
+    values.commercial.total = totalCommercial;
     storeCommissionAll(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
+            ...values,
+          },
+        },
+      },
+    });
   };
+
+  const sumState = (object: any) => {
+    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
+  };
+
+  useEffect(() => {
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
+  }, []);
 
   return (
     <>

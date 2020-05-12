@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { useState } from 'react';
 import { dateMask } from 'src/utils';
+import { useAppContext } from 'src/store';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   customContainer: {
@@ -19,8 +20,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 }));
 
 export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
+  const { state } = useAppContext();
   const classes = useStyles();
-  const [isHaveInsurance, setIsHaveInsurance] = useState(false);
+  const [isHaveInsurance, setIsHaveInsurance] = useState(
+    state.app.data.policyInformation.isHaveInsurance,
+  );
 
   return (
     <>
@@ -41,7 +45,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             readOnly={isHaveInsurance}
           />
           <FielControlForm
-            name="isHaveInsurance"
+            name="isHaveInsuranceField"
             type="checkbox"
             renderFastField
             setFieldTouched={formikProps.setFieldTouched}
@@ -49,7 +53,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             renderCustomField={({ field }) => (
               <CheckBoxForm
                 {...field}
-                name="isHaveInsurance"
+                name="isHaveInsuranceField"
                 data-test-id="other"
                 label={'I do not have insurance'}
                 onChange={() => {

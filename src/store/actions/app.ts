@@ -164,3 +164,12 @@ export const setAppState = (dispatch: React.Dispatch<any>, state: AppState) => {
   dispatch(appStateAction);
   return appStateAction;
 };
+
+export const setCopyStore = (dispatch: React.Dispatch<any>, state: any) => {
+  const appStateAction = {
+    type: CONSTANTS.SET_COPY_STORE_API,
+    payload: state,
+  };
+  dispatch(appStateAction);
+  return appStateAction;
+};

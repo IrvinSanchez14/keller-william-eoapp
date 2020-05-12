@@ -50,7 +50,7 @@ export interface AgentInformationProps {
 }
 
 export interface FirmInformationProps {
-  contacName?: string;
+  contactName?: string;
   brokerName: string;
   kwMarketCenterName: string;
   yearEstablished: number;
@@ -97,7 +97,7 @@ export default class AppState implements IAppState {
     email: '',
     data: {
       firmInformation: {
-        contacName: undefined,
+        contactName: undefined,
         brokerName: undefined,
         kwMarketCenterName: undefined,
         yearEstablished: undefined,

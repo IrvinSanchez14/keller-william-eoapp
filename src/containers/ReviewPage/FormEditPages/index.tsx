@@ -3,10 +3,10 @@ import { EditPageAgentInformation } from './agentInformation';
 import { EditPagePolicyInformation } from './policyInformation';
 import { EditPageCommissionInformation } from './commissionInformation';
 import { EditPageRiskProfile } from './riskprofile';
+import { useEffect, useState } from 'react';
 
 interface IFormEditPages {
   nameForm: string;
-  data: any;
 }
 
 const CONSTANTS_EDIT_PAGE = {
@@ -18,7 +18,10 @@ const CONSTANTS_EDIT_PAGE = {
 };
 
 export function FormsEditPage(Props: IFormEditPages) {
-  const { nameForm, data } = Props;
+  const { nameForm } = Props;
+
+  useEffect(() => {}, []);
+
   const renderComponent = () => {
     switch (nameForm) {
       case CONSTANTS_EDIT_PAGE.FIRM_INFORMATION: {

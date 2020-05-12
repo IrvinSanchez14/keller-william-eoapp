@@ -32,7 +32,7 @@ import { WelcomeEO } from './WelcomeEO';
 type SessionResponse = AppState['app'];
 
 function isLastPage(state: AppState) {
-  return state.app.metadata.actualPage === 21;
+  return state.app.metadata.actualPage === 22;
 }
 
 function useSessionSaver(state: AppState) {

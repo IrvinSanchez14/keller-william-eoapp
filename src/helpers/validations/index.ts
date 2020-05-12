@@ -47,7 +47,7 @@ export const isHaveClaimsValidateSchema = Yup.object().shape({
 export const policyInforamtionValidateSchema = (status: boolean) => {
   if (status) {
     return Yup.object().shape({
-      isHaveClaims: Yup.boolean(),
+      isHaveInsuranceField: Yup.boolean(),
     });
   } else {
     return Yup.object().shape({

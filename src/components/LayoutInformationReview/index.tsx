@@ -3,17 +3,19 @@ import styled from 'styled-components';
 import FirmAgentInformation from 'src/containers/ReviewPage/FirmAgentInformation';
 import PolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation';
 import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EditPageModal from '../EditPageModal';
 import { FormsEditPage } from 'src/containers/ReviewPage/FormEditPages';
 import AppState, { PolicyInformationProps, RiskProfileProps } from 'src/store/models/AppState';
 import FirmAgentInformationProps from 'src/containers/ReviewPage/FirmAgentInformation/IFirmAgentInformation';
 import IPolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation/IPolicyCommissionInformation';
 import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
+import { setCopyStore } from 'src/store/actions/app';
+import { useAppContext } from 'src/store';
 
 interface LayoutInformationReviewProps {
   textHeader: string;
-  state: AppState['app'];
+  stateServer: AppState['app'];
 }
 
 const data = {
@@ -128,8 +130,9 @@ const Container = styled.div`
 
 export default function LayoutInformationReview({
   textHeader,
-  state,
+  stateServer,
 }: LayoutInformationReviewProps): JSX.Element {
+  const { dispatch, state } = useAppContext();
   const [showModal, setShowModal] = useState(false);
   const [nameForm, setNameForm] = useState('');
 
@@ -138,24 +141,28 @@ export default function LayoutInformationReview({
     setShowModal(true);
   }
 
+  useEffect(() => {
+    setCopyStore(dispatch, stateServer);
+  }, [setCopyStore]);
+
   return (
     <Container>
       <LayoutHeaderText>{textHeader}</LayoutHeaderText>
       <LayoutsInformation>
         <FirmAgentInformation
-          data={state.data as FirmAgentInformationProps['data']}
+          data={state.app.data as FirmAgentInformationProps['data']}
           openEditModal={(nameForm) => openModal(nameForm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <PolicyCommissionInformation
-          data={state.data as IPolicyCommissionInformation['data']}
+          data={state.app.data as IPolicyCommissionInformation['data']}
           openEditModal={(nameForm) => openModal(nameForm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <RiskProfile
-          data={state.data as RiskPRofileProps['data']}
+          data={state.app.data as RiskPRofileProps['data']}
           openEditModal={(nameForm) => openModal(nameForm)}
         />
       </LayoutsInformation>
@@ -163,7 +170,7 @@ export default function LayoutInformationReview({
         nameForm={nameForm}
         isModalOpen={showModal}
         closeModal={() => setShowModal(false)}
-        children={<FormsEditPage nameForm={nameForm} data={state} />}
+        children={<FormsEditPage nameForm={nameForm} />}
       />
     </Container>
   );
