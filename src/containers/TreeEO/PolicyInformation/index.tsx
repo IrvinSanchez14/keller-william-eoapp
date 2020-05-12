@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { FormikHelpers } from 'formik';
 import isEmpty from 'lodash/isEmpty';
+import Grid from '@material-ui/core/Grid';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeInsurancePolicy, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -12,7 +13,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { CheckBoxForm } from 'src/components/CheckBoxForm';
-import Grid from '@material-ui/core/Grid';
+import { dateMask } from 'src/utils';
 
 type FullNameProps = IAppStoreProps;
 
@@ -143,6 +144,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                           shouldValidateOnMount
                           fullWidth
                           renderFastField
+                          mask={dateMask}
                           readOnly={isHaveInsurance}
                         />
                       </Grid>

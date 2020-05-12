@@ -20,6 +20,7 @@ import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { policyInforamtionClaims } from 'src/helpers/validations';
+import { dateMask } from 'src/utils';
 
 export type CurrentAddressProps = IAppStoreProps;
 
@@ -60,7 +61,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
         name: 'dateClaim',
         placeholder: '',
         label: 'Date of claim',
-        mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+        mask: dateMask,
         numberMask: false,
       },
       {
