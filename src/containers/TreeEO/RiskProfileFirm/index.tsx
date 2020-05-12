@@ -41,12 +41,12 @@ export class RiskProfileFirm extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 20, categoriesName.riskProfile);
+    setInformationPage(dispatch, 20, categoriesName.riskFactorInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 19, categoriesName.riskProfile);
+    setInformationPage(dispatch, 19, categoriesName.riskFactorInformation);
     this.setState({ width: window.innerWidth });
     window.addEventListener('resize', this.updateDimensions);
   }
@@ -71,7 +71,7 @@ export class RiskProfileFirm extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              isRepresentCommission: formData.app.data.riskProfile.isRepresentCommission,
+              isRepresentCommission: formData.app.data.riskFactorInformation.isRepresentCommission,
             }}
             isInitValid
             validationSchema={riskProfileFirmValidateSchema}

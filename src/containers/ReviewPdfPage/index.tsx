@@ -3,8 +3,9 @@ import { useAppContext } from 'src/store';
 import { exampleContext } from 'src/store/actions/example';
 import NavigationPdf from 'src/components/NavigationPdf';
 import Layout from 'src/components/LayoutInformationPdf';
+import AppState from 'src/store/models/AppState';
 
-export default function ReviewPdfPage(): JSX.Element {
+const ReviewPdfPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
   const { dispatch } = useAppContext();
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -26,7 +27,9 @@ export default function ReviewPdfPage(): JSX.Element {
   return (
     <>
       <NavigationPdf isTablet={isTablet} isMobile={isMobile} />
-      <Layout textHeader={`Application Number: ${257023}`} />
+      <Layout textHeader={`Application Number: ${state.confirmationNumber}`} state={state} />
     </>
   );
-}
+};
+
+export default ReviewPdfPage;

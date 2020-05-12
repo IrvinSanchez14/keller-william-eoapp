@@ -1,8 +1,13 @@
 import Head from 'next/head';
 
 import ConfirmationPage from 'src/containers/ConfirmationPage';
+import { GetServerSideProps } from 'next';
+import AppState from 'src/store/models/AppState';
+import ky from '../src/utils/ky';
+import Error from 'next/error';
 
-function MyApp() {
+const MyApp: React.FC<Partial<AppState>> = ({ app }) => {
+  if (!app || !app.confirmationNumber) return <Error statusCode={404} />;
   return (
     <div>
       <Head>
@@ -29,9 +34,31 @@ function MyApp() {
         />
         <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
-      <ConfirmationPage />
+      <ConfirmationPage
+        confirmationNumber={app.confirmationNumber!}
+        agentsNumber={
+          app.data.agentInformation.numberAgenteNoCommission +
+          app.data.agentInformation.numberAgentLessCommission +
+          app.data.agentInformation.numberAgentsMoreCommission +
+          app.data.agentInformation.numberAgentSpecialDesignation
+        }
+        grossCommission={app.data.commissionInformation.grossCommission}
+        claimsNumber={app.data.policyInformation.claims.length}
+        propertySoldValue={app.data.commissionInformation.averageValue}
+      />
     </div>
   );
-}
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const sessionId = context.query.sessionId;
+  if (typeof sessionId !== 'string') return { props: {} };
+  try {
+    const response = await ky.get(`session/${sessionId}`).json<AppState['app']>();
+    return { props: { app: response } };
+  } catch {
+    return { props: {} };
+  }
+};
 
 export default MyApp;

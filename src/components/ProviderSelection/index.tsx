@@ -1,4 +1,5 @@
 import ProviderCard from './ProviderCard';
+import { Formik, Form, Field } from 'formik';
 import ProviderCardList from './ProviderCardList';
 import ProviderCardHeader from './ProviderCardHeader';
 import styled from 'styled-components';
@@ -8,6 +9,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { NavigationForm } from '../NavigationForm';
 import DogIcon from '../DogIcon';
 import ButtonForm from '../ButtonForm';
+import LayoutWrapper from '../LayoutWrapper/Wrapper';
+import { useCallback } from 'react';
+import ky from '../../utils/ky';
+import AppState from 'src/store/models/AppState';
+import { setAppState } from 'src/store/actions/app';
 
 const CardBody = styled.section`
   padding: 2rem 4rem;
@@ -54,7 +60,7 @@ const KaceyHeader = styled.div`
   }
 `;
 
-const StyledProviderSelection = styled.div`
+const StyledProviderSelection = styled(Form)`
   & > * {
     margin-bottom: 1rem;
   }
@@ -84,63 +90,99 @@ const ButtonContainer = styled.div`
   }
 `;
 
-const ProviderSelection: React.FC = () => {
-  const { intl } = useAppContext();
+type SessionFinishResponse = AppState['app'] & {
+  id: string;
+  completed: boolean;
+  confirmationNumber: string;
+};
+
+const ProviderSelection: React.FC<{ sessionId?: string }> = ({ sessionId }) => {
+  const { intl, state, dispatch } = useAppContext();
+
+  const onSubmit = useCallback(
+    (state: AppState['app']) => {
+      if (!sessionId) return;
+      return ky.post(`session/${sessionId}/finish`, { json: state }).json<SessionFinishResponse>();
+    },
+    [sessionId],
+  );
+
   return (
-    <StyledProviderSelection>
-      <NavigationForm withBackButton showStep={false} />
-      <KaceyHeader>
-        <DogIcon size="55px" mobileSize="55px" />
-        <strong>{intl.get('app.providerSelection.kacey')}</strong>
-      </KaceyHeader>
-      <CardContainer>
-        <ProviderCard>
-          <ProviderCardHeader
-            logo="/static/img/AmWins_Logo_White.svg"
-            logoDescription="Am WINS Logo"
-          />
-          <CardBody>
-            <ProviderCardList>
-              {intl
-                .get('app.providerSelection.list.amWins')
-                .split('\n')
-                .map((m) => (
-                  <li key={m}>{m}</li>
-                ))}
-            </ProviderCardList>
-            <FormControlLabel
-              label={intl.get('app.providerSelection.checkbox', { provider: 'Am WINS' })}
-              control={<Checkbox defaultChecked color="primary" />}
-              labelPlacement="end"
-            />
-          </CardBody>
-        </ProviderCard>
-        <ProviderCard>
-          <ProviderCardHeader
-            logo="/static/img/PearlInsurance_Logo_White.svg"
-            logoDescription="Pearl Insurance Logo"
-          />
-          <CardBody>
-            <ProviderCardList>
-              {intl
-                .get('app.providerSelection.list.pearlInsurance')
-                .split('\n')
-                .map((m) => (
-                  <li key={m}>{m}</li>
-                ))}
-            </ProviderCardList>
-            <FormControlLabel
-              label={intl.get('app.providerSelection.checkbox', { provider: 'Pearl Insurance' })}
-              control={<Checkbox defaultChecked color="primary" />}
-              labelPlacement="end"
-            />
-          </CardBody>
-        </ProviderCard>
-      </CardContainer>
-      <ButtonContainer>
-        <ButtonForm label="Submit" />
-      </ButtonContainer>
-    </StyledProviderSelection>
+    <LayoutWrapper withTreesAndHouseImage withGrayShapeRight>
+      <Formik
+        initialValues={{
+          amWins: true,
+          pearlInsurance: true,
+        }}
+        onSubmit={async (values) => {
+          const providers: string[] = [];
+          if (values.amWins) providers.push('amwins');
+          if (values.pearlInsurance) providers.push('pearl');
+          const body = { ...state.app, providers };
+          const response = await onSubmit(body);
+          setAppState(dispatch, { app: { ...body, ...response } });
+        }}
+      >
+        <StyledProviderSelection>
+          <NavigationForm withBackButton showStep={false} />
+          <KaceyHeader>
+            <DogIcon size="55px" mobileSize="55px" />
+            <strong>{intl.get('app.providerSelection.kacey')}</strong>
+          </KaceyHeader>
+          <CardContainer>
+            <ProviderCard>
+              <ProviderCardHeader
+                logo="/static/img/AmWins_Logo_White.svg"
+                logoDescription="Am WINS Logo"
+              />
+              <CardBody>
+                <ProviderCardList>
+                  {intl
+                    .get('app.providerSelection.list.amWins')
+                    .split('\n')
+                    .map((m) => (
+                      <li key={m}>{m}</li>
+                    ))}
+                </ProviderCardList>
+                <FormControlLabel
+                  label={intl.get('app.providerSelection.checkbox', { provider: 'Am WINS' })}
+                  control={<Field as={Checkbox} name="amWins" defaultChecked color="primary" />}
+                  labelPlacement="end"
+                />
+              </CardBody>
+            </ProviderCard>
+            <ProviderCard>
+              <ProviderCardHeader
+                logo="/static/img/PearlInsurance_Logo_White.svg"
+                logoDescription="Pearl Insurance Logo"
+              />
+              <CardBody>
+                <ProviderCardList>
+                  {intl
+                    .get('app.providerSelection.list.pearlInsurance')
+                    .split('\n')
+                    .map((m) => (
+                      <li key={m}>{m}</li>
+                    ))}
+                </ProviderCardList>
+                <FormControlLabel
+                  label={intl.get('app.providerSelection.checkbox', {
+                    provider: 'Pearl Insurance',
+                  })}
+                  control={
+                    <Field as={Checkbox} name="pearlInsurance" defaultChecked color="primary" />
+                  }
+                  labelPlacement="end"
+                />
+              </CardBody>
+            </ProviderCard>
+          </CardContainer>
+          <ButtonContainer>
+            <ButtonForm type="submit" label="Submit" />
+          </ButtonContainer>
+        </StyledProviderSelection>
+      </Formik>
+    </LayoutWrapper>
   );
 };
 

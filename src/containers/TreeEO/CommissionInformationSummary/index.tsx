@@ -40,12 +40,12 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
     storeCommissionTotalSummary(dispatch, total); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 16, categoriesName.commission);
+    setInformationPage(dispatch, 16, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 15, categoriesName.commission);
+    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   }
 
   renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
@@ -72,27 +72,27 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
       {
         key: 1,
         title: 'Residential',
-        value: formData.app.data.commission.residential.total,
+        value: formData.app.data.commissionInformation.residential.total,
       },
       {
         key: 2,
         title: 'Commercial',
-        value: formData.app.data.commission.commercial.total,
+        value: formData.app.data.commissionInformation.commercial.total,
       },
       {
         key: 3,
         title: 'Farm/Ranch',
-        value: formData.app.data.commission.farmRanch,
+        value: formData.app.data.commissionInformation.farmRanch,
       },
       {
         key: 4,
         title: 'Auctioneering',
-        value: formData.app.data.commission.auctioneering,
+        value: formData.app.data.commissionInformation.auctioneering,
       },
       {
         key: 5,
         title: 'Mortgage',
-        value: formData.app.data.commission.mortageBrokerage,
+        value: formData.app.data.commissionInformation.mortageBrokerage,
       },
     );
     return children.map((item: any) => {
@@ -113,11 +113,11 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
   totalSummary = () => {
     const { formData } = this.props;
     const total =
-      formData.app.data.commission.residential.total +
-      formData.app.data.commission.commercial.total +
-      formData.app.data.commission.farmRanch +
-      formData.app.data.commission.auctioneering +
-      formData.app.data.commission.mortageBrokerage;
+      formData.app.data.commissionInformation.residential.total +
+      formData.app.data.commissionInformation.commercial.total +
+      formData.app.data.commissionInformation.farmRanch +
+      formData.app.data.commissionInformation.auctioneering +
+      formData.app.data.commissionInformation.mortageBrokerage;
     return total;
   };
 
@@ -137,7 +137,7 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
 
           <FormApp
             initialValues={{
-              contacName: formData.app.data.firmInformation.contacName || '',
+              contactName: formData.app.data.firmInformation.contactName || '',
               brokerName: formData.app.data.firmInformation.brokerName || '',
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
               yearEstablished: formData.app.data.firmInformation.yearEstablished || '',

@@ -36,12 +36,12 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 21, categoriesName.commission);
+    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 20, categoriesName.commission);
+    setInformationPage(dispatch, 20, categoriesName.commissionInformation);
   }
 
   render() {
@@ -56,7 +56,8 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              percentageTransactions: formData.app.data.riskProfile.percentageTransactions,
+              percentageTransactions:
+                formData.app.data.riskFactorInformation.percentageTransactions,
             }}
             isInitValid={this.isInitValid}
             validationSchema={riskProfileTransactionValidateSchema}
