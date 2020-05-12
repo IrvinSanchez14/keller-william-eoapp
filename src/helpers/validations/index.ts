@@ -55,7 +55,7 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
       renewalDate: Yup.string().required('Field is required'),
       deductible: Yup.string().required('Field is required'),
       limits: Yup.string().required('Field is required'),
-      yearCoverage: Yup.string().required('Field is required'),
+      yearCoverage: Yup.number().required('Field is required'),
       annualPremium: Yup.string().required('Field is required'),
     });
   }

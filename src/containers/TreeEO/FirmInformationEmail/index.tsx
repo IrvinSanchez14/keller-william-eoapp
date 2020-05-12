@@ -55,7 +55,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               streetAddress: formData.app.data.firmInformation.streetAddress || '',
-              suite: formData.app.data.firmInformation.suite || '',
+              suite: formData.app.data.firmInformation.suite || null,
               phoneNumber: formData.app.data.firmInformation.phoneNumber || '',
               faxNumber: formData.app.data.firmInformation.faxNumber || '',
               email: formData.app.data.firmInformation.email || '',
