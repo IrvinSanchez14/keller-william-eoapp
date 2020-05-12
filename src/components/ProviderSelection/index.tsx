@@ -10,10 +10,11 @@ import { NavigationForm } from '../NavigationForm';
 import DogIcon from '../DogIcon';
 import ButtonForm from '../ButtonForm';
 import LayoutWrapper from '../LayoutWrapper/Wrapper';
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import ky from '../../utils/ky';
 import AppState from 'src/store/models/AppState';
 import { setAppState } from 'src/store/actions/app';
+import { useRouter } from 'next/dist/client/router';
 
 const CardBody = styled.section`
   padding: 2rem 4rem;
@@ -96,8 +97,13 @@ type SessionFinishResponse = AppState['app'] & {
   confirmationNumber: string;
 };
 
-const ProviderSelection: React.FC<{ sessionId?: string }> = ({ sessionId }) => {
+const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app }) => {
+  const sessionId = app.id;
+  const router = useRouter();
   const { intl, state, dispatch } = useAppContext();
+  useEffect(() => {
+    setAppState(dispatch, { app });
+  }, [app, dispatch]);
 
   const onSubmit = useCallback(
     (state: AppState['app']) => {
@@ -121,6 +127,7 @@ const ProviderSelection: React.FC<{ sessionId?: string }> = ({ sessionId }) => {
           const body = { ...state.app, providers };
           const response = await onSubmit(body);
           setAppState(dispatch, { app: { ...body, ...response } });
+          router.push(`/confirmation-page?sessionId=${sessionId}`);
         }}
       >
         <StyledProviderSelection>

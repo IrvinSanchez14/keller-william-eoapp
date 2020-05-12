@@ -1,12 +1,13 @@
 import Head from 'next/head';
 
-import ReviewPage from 'src/containers/ReviewPage';
 import { GetServerSideProps } from 'next';
 import ky from '../src/utils/ky';
 import AppState from 'src/store/models/AppState';
 import Error from 'next/error';
+import ProviderSelection from 'src/components/ProviderSelection';
+import { AppStateContextProvider } from 'src/store';
 
-const MyApp: React.FC<Partial<AppState>> = ({ app }) => {
+const ProviderSelectionPage: React.FC<Partial<AppState>> = ({ app }) => {
   if (!app) return <Error statusCode={404} />;
   return (
     <div>
@@ -34,7 +35,9 @@ const MyApp: React.FC<Partial<AppState>> = ({ app }) => {
         />
         <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
-      <ReviewPage state={app} />
+      <AppStateContextProvider>
+        <ProviderSelection state={app} />
+      </AppStateContextProvider>
     </div>
   );
 };
@@ -50,4 +53,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-export default MyApp;
+export default ProviderSelectionPage;

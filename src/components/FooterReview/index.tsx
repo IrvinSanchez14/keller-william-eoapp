@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 import theme from 'src/styles/MarketingEO/theme';
 import ButtonPrimary from 'src/components/Button/ButtonPrimary';
+import { useRouter } from 'next/dist/client/router';
 
 const FooterContainer = styled.footer`
   height: 120px;
@@ -58,7 +59,8 @@ const FooterSubmitText = styled.p`
   font-style: 'Bold';
 `;
 
-export default function FooterReview(): JSX.Element {
+export default function FooterReview({ sessionId }: { sessionId: string }): JSX.Element {
+  const router = useRouter();
   return (
     <FooterContainer>
       <FooterSection hideDogIcon>
@@ -66,7 +68,7 @@ export default function FooterReview(): JSX.Element {
         <FooterLooksText>Looks great. Woof woof!</FooterLooksText>
       </FooterSection>
       <FooterSection alignRight>
-        <ButtonPrimary>
+        <ButtonPrimary onClick={() => router.push(`/provider-selection?sessionId=${sessionId}`)}>
           <FooterSubmitText>Submit application</FooterSubmitText>
         </ButtonPrimary>
       </FooterSection>
