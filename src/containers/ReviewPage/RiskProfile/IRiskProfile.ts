@@ -7,7 +7,7 @@ interface RiskProfileDataProps {
 }
 
 interface Data {
-  riskProfile: RiskProfileDataProps;
+  riskFactorInformation: RiskProfileDataProps;
 }
 
 export default interface RiskPRofileProps {

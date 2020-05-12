@@ -71,7 +71,7 @@ export interface DataInitalProps {
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
   commissionInformation?: CommissionInformationProps;
-  riskProfile?: RiskProfileProps;
+  riskFactorInformation?: RiskProfileProps;
 }
 
 export interface MetaDataProps {
@@ -159,7 +159,7 @@ export default class AppState implements IAppState {
         mortageBrokerage: 0,
         totalCommision: 0,
       },
-      riskProfile: {
+      riskFactorInformation: {
         isHomeWarranty: undefined,
         isMortageBanking: undefined,
         isPerformServices: undefined,

@@ -80,7 +80,7 @@ const dataPC = {
 };
 
 const dataRisk = {
-  riskProfile: {
+  riskFactorInformation: {
     isHomeWarranty: true,
     isMortageBanking: true,
     isPerformServices: true,

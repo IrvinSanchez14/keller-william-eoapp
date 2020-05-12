@@ -56,7 +56,8 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              percentageTransactions: formData.app.data.riskProfile.percentageTransactions,
+              percentageTransactions:
+                formData.app.data.riskFactorInformation.percentageTransactions,
             }}
             isInitValid={this.isInitValid}
             validationSchema={riskProfileTransactionValidateSchema}

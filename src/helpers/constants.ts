@@ -31,5 +31,5 @@ export const categoriesName = {
   agentInformation: 'agent information',
   policyInformation: 'policy information',
   commissionInformation: 'commission',
-  riskProfile: 'risk profile',
+  riskFactorInformation: 'risk profile',
 };

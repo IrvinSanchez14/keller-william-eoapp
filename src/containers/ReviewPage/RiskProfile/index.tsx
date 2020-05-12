@@ -33,22 +33,34 @@ export default function RiskProfile({ data, openEditModal }: RiskProfileProps): 
     >
       <ContainerInformation firstPadding>
         <TextLight text={labelInformation.isHomeWarranty} />
-        <TextBold typeFormat="boolean" customMargin text={data.riskProfile.isHomeWarranty} />
+        <TextBold
+          typeFormat="boolean"
+          customMargin
+          text={data.riskFactorInformation.isHomeWarranty}
+        />
       </ContainerInformation>
       <ContainerInformation>
         <TextLight text={labelInformation.isMortageBanking} />
-        <TextBold typeFormat="boolean" customMargin text={data.riskProfile.isMortageBanking} />
+        <TextBold
+          typeFormat="boolean"
+          customMargin
+          text={data.riskFactorInformation.isMortageBanking}
+        />
       </ContainerInformation>
       <ContainerInformation>
         <TextLight text={labelInformation.isPerformServices} />
-        <TextBold typeFormat="boolean" customMargin text={data.riskProfile.isPerformServices} />
+        <TextBold
+          typeFormat="boolean"
+          customMargin
+          text={data.riskFactorInformation.isPerformServices}
+        />
       </ContainerInformation>
       <ContainerInformation>
         <TextLight text={labelInformation.percentageTransactions} />
         <TextBold
           typeFormat="percentage"
           customMargin
-          text={data.riskProfile.percentageTransactions}
+          text={data.riskFactorInformation.percentageTransactions}
         />
       </ContainerInformation>
     </Layout>

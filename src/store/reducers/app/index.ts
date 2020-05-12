@@ -86,8 +86,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          riskProfile: {
-            ...state.app.data.riskProfile,
+          riskFactorInformation: {
+            ...state.app.data.riskFactorInformation,
             ...action.payload,
           },
         },
