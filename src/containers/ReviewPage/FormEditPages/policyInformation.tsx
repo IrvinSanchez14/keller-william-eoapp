@@ -82,7 +82,6 @@ export function EditPagePolicyInformation() {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
-    console.log(values);
     storeAllPolicy(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {

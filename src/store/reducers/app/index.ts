@@ -54,7 +54,6 @@ export const appActions: any = {
     };
   },
   SET_INSURANCE_POLICY_INFORMATION: (state: any, action: any) => {
-    console.log('action', action);
     return {
       ...state,
       app: {
