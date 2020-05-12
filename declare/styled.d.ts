@@ -47,6 +47,8 @@ declare module 'styled-components' {
       grayLight: string;
       grayBorders: string;
       shadowColor: string;
+      grayTableColor: string;
+      shadowGrayColor: string;
     };
   }
 }
