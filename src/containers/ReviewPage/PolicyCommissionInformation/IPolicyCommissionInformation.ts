@@ -53,7 +53,7 @@ interface Commission {
 
 interface Data {
   policyInformation: PolicyInformation;
-  commission: Commission;
+  commissionInformation: Commission;
 }
 
 export default interface IPolicyCommissionInformation {

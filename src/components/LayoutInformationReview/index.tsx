@@ -52,7 +52,7 @@ const dataPC = {
       },
     ],
   },
-  commission: {
+  commissionInformation: {
     grossCommission: 100200,
     averageValue: 100200,
     percentageTransactions: 47,

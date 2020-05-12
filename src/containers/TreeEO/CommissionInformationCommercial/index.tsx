@@ -29,11 +29,11 @@ type FormFields = {
 export class CommissionInformationCommercial extends Component<FullNameProps> {
   state = {
     residential: {
-      realEstate: this.props.formData.app.data.commission.commercial.realEstate,
-      rawLand: this.props.formData.app.data.commission.commercial.rawLand,
-      appraisals: this.props.formData.app.data.commission.commercial.appraisals,
-      propertyMgmt: this.props.formData.app.data.commission.commercial.propertyMgmt,
-      ownedProperty: this.props.formData.app.data.commission.commercial.ownedProperty,
+      realEstate: this.props.formData.app.data.commissionInformation.commercial.realEstate,
+      rawLand: this.props.formData.app.data.commissionInformation.commercial.rawLand,
+      appraisals: this.props.formData.app.data.commissionInformation.commercial.appraisals,
+      propertyMgmt: this.props.formData.app.data.commissionInformation.commercial.propertyMgmt,
+      ownedProperty: this.props.formData.app.data.commissionInformation.commercial.ownedProperty,
     },
     total: 0,
   };
@@ -47,7 +47,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 14, categoriesName.commission);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
@@ -55,7 +55,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 13, categoriesName.commission);
+    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   }
 
   changeDataSum = (event: any) => {
@@ -89,11 +89,11 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>{'Commercial'}</Typography>
           <FormApp
             initialValues={{
-              realEstate: formData.app.data.commission.commercial.realEstate,
-              rawLand: formData.app.data.commission.commercial.rawLand,
-              appraisals: formData.app.data.commission.commercial.appraisals,
-              propertyMgmt: formData.app.data.commission.commercial.propertyMgmt,
-              ownedProperty: formData.app.data.commission.commercial.ownedProperty,
+              realEstate: formData.app.data.commissionInformation.commercial.realEstate,
+              rawLand: formData.app.data.commissionInformation.commercial.rawLand,
+              appraisals: formData.app.data.commissionInformation.commercial.appraisals,
+              propertyMgmt: formData.app.data.commissionInformation.commercial.propertyMgmt,
+              ownedProperty: formData.app.data.commissionInformation.commercial.ownedProperty,
             }}
             isInitValid={this.isInitValid}
             validationSchema={commissionResidentialValidateSchema}

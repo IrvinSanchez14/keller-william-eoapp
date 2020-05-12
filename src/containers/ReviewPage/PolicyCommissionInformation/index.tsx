@@ -24,7 +24,7 @@ const labelInformation = {
     dateClaim: 'Date of claim',
     amountClaim: 'Amount of claim',
   },
-  commission: {
+  commissionInformation: {
     grossCommission: 'Gross commission for the last 12 months',
     averageValue: 'Average value of properties sold',
     percentageTransactions: 'Percentageof transactions representing both buyer and seller',
@@ -188,19 +188,27 @@ export default function PolicyCommissionInformation({
       </Layout>
       <Layout textHeader="Commission" openEditPageModal={openEditModal && onOpenModal('Comission')}>
         <ContainerInformation firstPadding>
-          <TextLight text={labelInformation.commission.grossCommission} />
-          <TextBold typeFormat="money" customMargin text={data.commission.grossCommission} />
+          <TextLight text={labelInformation.commissionInformation.grossCommission} />
+          <TextBold
+            typeFormat="money"
+            customMargin
+            text={data.commissionInformation.grossCommission}
+          />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.commission.averageValue} />
-          <TextBold typeFormat="money" customMargin text={data.commission.averageValue} />
+          <TextLight text={labelInformation.commissionInformation.averageValue} />
+          <TextBold
+            typeFormat="money"
+            customMargin
+            text={data.commissionInformation.averageValue}
+          />
         </ContainerInformation>
         <ContainerInformation fixMobilePosition>
-          <TextLight text={labelInformation.commission.percentageTransactions} />
+          <TextLight text={labelInformation.commissionInformation.percentageTransactions} />
           <TextBold
             typeFormat="percentage"
             customMargin
-            text={data.commission.percentageTransactions}
+            text={data.commissionInformation.percentageTransactions}
           />
         </ContainerInformation>
         <ContainerInformation maxWidthMobile>
@@ -209,37 +217,37 @@ export default function PolicyCommissionInformation({
             <TableList>
               <ComissionNameText>{`Residential`}</ComissionNameText>
               <ComissionValueText>
-                {data.commission.summary.residential.residentialTotal}
+                {data.commissionInformation.summary.residential.residentialTotal}
               </ComissionValueText>
             </TableList>
             <TableList>
               <ComissionNameText>{`Comercial`}</ComissionNameText>
               <ComissionValueText>
-                {formatAmount(data.commission.summary.commercial.commercialTotal, true)}
+                {formatAmount(data.commissionInformation.summary.commercial.commercialTotal, true)}
               </ComissionValueText>
             </TableList>
             <TableList>
               <ComissionNameText>{`Farm/Ranch`}</ComissionNameText>
               <ComissionValueText>
-                {formatAmount(data.commission.farmRanch, true)}
+                {formatAmount(data.commissionInformation.farmRanch, true)}
               </ComissionValueText>
             </TableList>
             <TableList>
               <ComissionNameText>{`Auctionering`}</ComissionNameText>
               <ComissionValueText>
-                {formatAmount(data.commission.auctioneering, true)}
+                {formatAmount(data.commissionInformation.auctioneering, true)}
               </ComissionValueText>
             </TableList>
             <TableList>
               <ComissionNameText>{`Mortgage`}</ComissionNameText>
               <ComissionValueText>
-                {formatAmount(data.commission.mortageBrokerage, true)}
+                {formatAmount(data.commissionInformation.mortageBrokerage, true)}
               </ComissionValueText>
             </TableList>
             <TableList lastItem>
               <ComissionTotalNameText>{`Total`}</ComissionTotalNameText>
               <ComissionTotalValueText>
-                {formatAmount(data.commission.totalCommision, true)}
+                {formatAmount(data.commissionInformation.totalCommision, true)}
               </ComissionTotalValueText>
             </TableList>
           </Table>

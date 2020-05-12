@@ -71,8 +71,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          commission: {
-            ...state.app.data.commission,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
             ...action.payload,
           },
         },
@@ -101,8 +101,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          commission: {
-            ...state.app.data.commission,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
             totalCommision: action.payload,
           },
         },
@@ -116,8 +116,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          commission: {
-            ...state.app.data.commission,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
             residential: {
               ...action.payload.commissionForm,
               total: action.payload.total,
@@ -134,8 +134,8 @@ export const appActions: any = {
         ...state.app,
         data: {
           ...state.app.data,
-          commission: {
-            ...state.app.data.commission,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
             commercial: {
               ...action.payload.commissionForm,
               total: action.payload.total,

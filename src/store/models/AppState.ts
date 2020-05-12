@@ -70,7 +70,7 @@ export interface DataInitalProps {
   firmInformation: FirmInformationProps;
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
-  commission?: CommissionInformationProps;
+  commissionInformation?: CommissionInformationProps;
   riskProfile?: RiskProfileProps;
 }
 
@@ -81,6 +81,7 @@ export interface MetaDataProps {
 }
 
 export interface AppInitalProps {
+  id?: string;
   email: string;
   data: DataInitalProps;
   providers: Record<string, any>;
@@ -133,7 +134,7 @@ export default class AppState implements IAppState {
         isHaveClaims: null,
         claims: [],
       },
-      commission: {
+      commissionInformation: {
         grossCommission: undefined,
         averageValue: undefined,
         percentageTransactions: undefined,
@@ -166,6 +167,7 @@ export default class AppState implements IAppState {
         percentageTransactions: undefined,
       },
     },
+    id: undefined,
     providers: [],
     completed: false,
     confirmationNumber: undefined,
