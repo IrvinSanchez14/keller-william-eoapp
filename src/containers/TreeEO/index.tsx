@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import FormRouter from 'src/components/FormRouter';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
 import { useAppContext } from 'src/store';
@@ -24,12 +24,15 @@ import { RiskProfileBanck } from './RiskProfileBanck';
 import { RiskProfileReits } from './RiskProfieReits';
 import { RiskProfileFirm } from './RiskProfileFirm';
 import { RiskProfileTransaction } from './RiskProfileTransaction';
+import ProviderSelection from 'src/components/ProviderSelection';
+import { useRouter } from 'next/dist/client/router';
+import { setAppState } from 'src/store/actions/app';
 
-type SessionCreateResponse = AppState['app'] & {
-  id: string;
-  completed: boolean;
-  confirmationNumber: string;
-};
+type SessionResponse = AppState['app'];
+
+function isLastPage(state: AppState) {
+  return state.app.metadata.actualPage === 21;
+}
 
 function useSessionSaver(state: AppState) {
   const [sessionId, setSessionId] = useState<string>();
@@ -40,12 +43,11 @@ function useSessionSaver(state: AppState) {
     const actualPage = state.app.metadata.actualPage;
     if (!state.app.email || creating || page.current === actualPage) return;
     page.current = actualPage;
-    if (sessionId) return void ky.put(`session/${sessionId}`, { json: state.app });
+    if (sessionId || state.app.id)
+      return void ky.put(`session/${sessionId || state.app.id}`, { json: state.app });
     const createSession = async (state: AppState) => {
       try {
-        const response = await ky
-          .post('session', { json: state.app })
-          .json<SessionCreateResponse>();
+        const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
         setSessionId(response.id);
       } finally {
         setCreating(false);
@@ -54,12 +56,43 @@ function useSessionSaver(state: AppState) {
     setCreating(true);
     createSession(state);
   }, [sessionId, state, creating]);
-  return { sessionId };
+  return { sessionId: sessionId || state.app.id };
 }
 
 function AppEO() {
+  const router = useRouter();
   const { dispatch, intl, state } = useAppContext();
-  useSessionSaver(state);
+  const { sessionId } = useSessionSaver(state);
+  const [complete, setComplete] = useState(true);
+  const getSession = useCallback(
+    async (sessionId: string) => {
+      try {
+        const response = await ky.get(`session/${sessionId}`).json<SessionResponse>();
+        setAppState(dispatch, { app: response });
+      } catch {}
+    },
+    [dispatch],
+  );
+
+  useEffect(() => {
+    if (!isLastPage(state) && complete) setComplete(false);
+    if (isLastPage(state) && !complete) setComplete(true);
+  }, [state, complete]);
+
+  useEffect(() => {
+    if (state.app.completed)
+      router.push(
+        `confirmation-page?sessionid=${sessionId}&confirmationnumber=${state.app.confirmationNumber}`,
+      );
+  }, [state.app.completed, sessionId, router, state.app.confirmationNumber]);
+
+  useEffect(() => {
+    const resume = router.query.resume;
+    if (typeof resume !== 'string') return;
+    getSession(resume);
+  }, [getSession, router.query.resume]);
+
+  if (complete) return <ProviderSelection sessionId={sessionId} />;
 
   return (
     <FormRouter>

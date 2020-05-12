@@ -10,6 +10,8 @@ export const fullNameValidateSchema = Yup.object().shape({
 export const fullEmailValidateSchema = Yup.object().shape({
   streetAddress: Yup.string().required('Field is required'),
   suite: Yup.number().required('Field is required'),
+  phoneNumber: Yup.string().required('Field is required'),
+  faxNumber: Yup.string().required('Field is required'),
   email: Yup.string().email('Email Address must be a valid email').required('Field is required'),
 });
 
