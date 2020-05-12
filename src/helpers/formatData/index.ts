@@ -4,6 +4,7 @@ export function formatAmount(
   withDecimal = false,
 ): string {
   let formatValue: string | number;
+  if (!amount) return '';
   if (isMoney) {
     formatValue = amount.toLocaleString('en-US', {
       style: 'currency',

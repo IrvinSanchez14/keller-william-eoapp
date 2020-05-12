@@ -30,18 +30,24 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 13, categoriesName.commission);
+    setInformationPage(dispatch, 12, categoriesName.commissionInformation);
   }
 
   nextStep = async (values: any, actions: any) => {
+    const numberValues: any = Object.keys(values).reduce(
+      (res, key: string) => ({
+        ...res,
+        [key]: Number(values[key]),
+      }),
+      {},
+    );
     const totalResidential = this.sumState(values.residential);
-
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
+    storeCommissionResidential(dispatch, numberValues, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 14, categoriesName.commission);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
   sumState = (object: any) => {

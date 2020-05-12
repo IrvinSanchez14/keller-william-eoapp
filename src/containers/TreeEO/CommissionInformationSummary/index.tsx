@@ -37,22 +37,22 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
     storeCommissionTotalSummary(dispatch, total); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 17, categoriesName.commission);
+    setInformationPage(dispatch, 16, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 16, categoriesName.commission);
+    setInformationPage(dispatch, 16, categoriesName.commissionInformation);
   }
 
   totalSummary = () => {
     const { formData } = this.props;
     const total =
-      formData.app.data.commission.residential.total +
-      formData.app.data.commission.commercial.total +
-      formData.app.data.commission.farmRanch +
-      formData.app.data.commission.auctioneering +
-      formData.app.data.commission.mortageBrokerage;
+      formData.app.data.commissionInformation.residential.total +
+      formData.app.data.commissionInformation.commercial.total +
+      formData.app.data.commissionInformation.farmRanch +
+      formData.app.data.commissionInformation.auctioneering +
+      formData.app.data.commissionInformation.mortageBrokerage;
     return total;
   };
 

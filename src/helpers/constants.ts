@@ -30,6 +30,6 @@ export const categoriesName = {
   firmConfirmation: 'firm information',
   agentInformation: 'agent information',
   policyInformation: 'policy information',
-  commission: 'commission',
-  riskProfile: 'risk profile',
+  commissionInformation: 'commission',
+  riskFactorInformation: 'risk profile',
 };

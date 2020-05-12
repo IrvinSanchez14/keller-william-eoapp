@@ -37,7 +37,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
         suite: formData.app.data.firmInformation.suite,
         phoneNumber: formData.app.data.firmInformation.phoneNumber,
         faxNumber: formData.app.data.firmInformation.faxNumber,
-        emailAddress: formData.app.data.firmInformation.emailAddress,
+        email: formData.app.data.firmInformation.email,
       });
     }
     setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
@@ -58,7 +58,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
               suite: formData.app.data.firmInformation.suite || '',
               phoneNumber: formData.app.data.firmInformation.phoneNumber || '',
               faxNumber: formData.app.data.firmInformation.faxNumber || '',
-              emailAddress: formData.app.data.firmInformation.emailAddress || '',
+              email: formData.app.data.firmInformation.email || '',
             }}
             isInitValid
             validationSchema={fullEmailValidateSchema}

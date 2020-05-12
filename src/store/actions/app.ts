@@ -1,5 +1,5 @@
 import * as CONSTANTS from '../types/app';
-import {
+import AppState, {
   FirmInformationProps,
   AgentInformationProps,
   CommissionInformationProps,
@@ -154,4 +154,13 @@ export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPR
   };
   dispatch(storeValueRisk);
   return storeValueRisk;
+};
+
+export const setAppState = (dispatch: React.Dispatch<any>, state: AppState) => {
+  const appStateAction = {
+    type: CONSTANTS.SET_APP_STATE,
+    payload: state,
+  };
+  dispatch(appStateAction);
+  return appStateAction;
 };

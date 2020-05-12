@@ -6,9 +6,14 @@ import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
 import { useState } from 'react';
 import EditPageModal from '../EditPageModal';
 import { FormsEditPage } from 'src/containers/ReviewPage/FormEditPages';
+import AppState, { PolicyInformationProps, RiskProfileProps } from 'src/store/models/AppState';
+import FirmAgentInformationProps from 'src/containers/ReviewPage/FirmAgentInformation/IFirmAgentInformation';
+import IPolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation/IPolicyCommissionInformation';
+import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
 
 interface LayoutInformationReviewProps {
   textHeader: string;
+  state: AppState['app'];
 }
 
 const data = {
@@ -54,7 +59,7 @@ const dataPC = {
       },
     ],
   },
-  commission: {
+  commissionInformation: {
     grossCommission: 100200,
     averageValue: 100200,
     percentageTransactions: 47,
@@ -84,7 +89,7 @@ const dataPC = {
 };
 
 const dataRisk = {
-  riskProfile: {
+  riskFactorInformation: {
     isHomeWarranty: true,
     isMortageBanking: true,
     isPerformServices: true,
@@ -123,6 +128,7 @@ const Container = styled.div`
 
 export default function LayoutInformationReview({
   textHeader,
+  state,
 }: LayoutInformationReviewProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
   const [nameForm, setNameForm] = useState('');
@@ -136,16 +142,22 @@ export default function LayoutInformationReview({
     <Container>
       <LayoutHeaderText>{textHeader}</LayoutHeaderText>
       <LayoutsInformation>
-        <FirmAgentInformation data={data} openEditModal={(nameForm) => openModal(nameForm)} />
-      </LayoutsInformation>
-      <LayoutsInformation>
-        <PolicyCommissionInformation
-          data={dataPC}
+        <FirmAgentInformation
+          data={state.data as FirmAgentInformationProps['data']}
           openEditModal={(nameForm) => openModal(nameForm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
-        <RiskProfile data={dataRisk} openEditModal={(nameForm) => openModal(nameForm)} />
+        <PolicyCommissionInformation
+          data={state.data as IPolicyCommissionInformation['data']}
+          openEditModal={(nameForm) => openModal(nameForm)}
+        />
+      </LayoutsInformation>
+      <LayoutsInformation>
+        <RiskProfile
+          data={state.data as RiskPRofileProps['data']}
+          openEditModal={(nameForm) => openModal(nameForm)}
+        />
       </LayoutsInformation>
       <EditPageModal
         nameForm={nameForm}

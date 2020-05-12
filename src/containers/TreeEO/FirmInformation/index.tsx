@@ -59,10 +59,10 @@ export class FirmInformation extends Component<FullNameProps> {
           </Typography>
           <FormApp
             initialValues={{
-              contacName: formData.app.data.firmInformation.contacName || '',
-              brokerName: formData.app.data.firmInformation.brokerName,
-              kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName,
-              yearEstablished: formData.app.data.firmInformation.yearEstablished,
+              contactName: formData.app.data.firmInformation.contactName || '',
+              brokerName: formData.app.data.firmInformation.brokerName || '',
+              kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
+              yearEstablished: formData.app.data.firmInformation.yearEstablished || '',
             }}
             isInitValid
             validationSchema={fullNameValidateSchema}

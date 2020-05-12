@@ -41,7 +41,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     storeClaimsPolicy(dispatch, values);
-    setInformationPage(dispatch, 10, categoriesName.commission);
+    setInformationPage(dispatch, 10, categoriesName.commissionInformation);
   };
 
   render() {

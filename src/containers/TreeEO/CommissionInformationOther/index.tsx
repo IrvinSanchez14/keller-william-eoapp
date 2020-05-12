@@ -34,12 +34,12 @@ export class CommissionInformationOther extends Component<FullNameProps> {
     storeCommissionInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 16, categoriesName.commission);
+    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 15, categoriesName.commission);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   }
 
   render() {
@@ -56,9 +56,9 @@ export class CommissionInformationOther extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              farmRanch: formData.app.data.commission.farmRanch,
-              auctioneering: formData.app.data.commission.auctioneering,
-              mortageBrokerage: formData.app.data.commission.mortageBrokerage,
+              farmRanch: formData.app.data.commissionInformation.farmRanch,
+              auctioneering: formData.app.data.commissionInformation.auctioneering,
+              mortageBrokerage: formData.app.data.commissionInformation.mortageBrokerage,
             }}
             isInitValid={this.isInitValid}
             validationSchema={commissionOtherValidateSchema}

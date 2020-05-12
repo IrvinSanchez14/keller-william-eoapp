@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import NavigationReview from 'src/components/NavigationReview';
 import FooterReview from 'src/components/FooterReview';
 import Layout from 'src/components/LayoutInformationReview';
+import AppState from 'src/store/models/AppState';
 
 const getWidth = (): number =>
   process.browser
     ? window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
     : 1024;
 
-export default function ReviewPage(): JSX.Element {
+const ReviewPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [width, setWidth] = useState(getWidth());
@@ -40,8 +41,10 @@ export default function ReviewPage(): JSX.Element {
         isTablet={isTablet}
         isMobile={isMobile}
       />
-      <Layout textHeader="Please review your application before submitting" />
-      <FooterReview />
+      <Layout textHeader="Please review your application before submitting" state={state} />
+      <FooterReview sessionId={state.id} />
     </>
   );
-}
+};
+
+export default ReviewPage;

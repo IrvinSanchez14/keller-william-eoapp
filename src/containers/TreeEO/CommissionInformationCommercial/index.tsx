@@ -24,12 +24,19 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
 
   nextStep = async (values: any, actions: any) => {
     const totalResidential = this.sumState(values.commercial);
+    const numberValues: any = Object.keys(values).reduce(
+      (res, key: string) => ({
+        ...res,
+        [key]: Number(values[key]),
+      }),
+      {},
+    );
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
+    storeCommissionCommercial(dispatch, numberValues, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 15, categoriesName.commission);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
@@ -37,7 +44,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 14, categoriesName.commission);
+    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   }
 
   sumState = (object: any) => {

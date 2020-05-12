@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import FirmAgentInformation from 'src/containers/ReviewPage/FirmAgentInformation';
 import PolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation';
 import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
+import AppState from 'src/store/models/AppState';
+import FirmAgentInformationProps from 'src/containers/ReviewPage/FirmAgentInformation/IFirmAgentInformation';
+import IPolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation/IPolicyCommissionInformation';
+import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
 
 interface LayoutInformationPdfProps {
   textHeader: string;
+  state: AppState['app'];
 }
 
 const data = {
@@ -50,7 +55,7 @@ const dataPC = {
       },
     ],
   },
-  commission: {
+  commissionInformation: {
     grossCommission: 100200,
     averageValue: 100200,
     percentageTransactions: 47,
@@ -80,7 +85,7 @@ const dataPC = {
 };
 
 const dataRisk = {
-  riskProfile: {
+  riskFactorInformation: {
     isHomeWarranty: true,
     isMortageBanking: true,
     isPerformServices: true,
@@ -119,18 +124,22 @@ const Container = styled.div`
 
 export default function LayoutInformationPdf({
   textHeader,
+  state,
 }: LayoutInformationPdfProps): React.ReactElement {
   return (
     <Container>
       <LayoutHeaderText>{textHeader}</LayoutHeaderText>
       <LayoutsInformation>
-        <FirmAgentInformation data={data} />
+        <FirmAgentInformation data={state.data as FirmAgentInformationProps['data']} />
       </LayoutsInformation>
       <LayoutsInformation>
-        <PolicyCommissionInformation data={dataPC} />
+        <PolicyCommissionInformation
+          data={state.data as IPolicyCommissionInformation['data']}
+          isPdf
+        />
       </LayoutsInformation>
       <LayoutsInformation>
-        <RiskProfile data={dataRisk} />
+        <RiskProfile data={state.data as RiskPRofileProps['data']} />
       </LayoutsInformation>
     </Container>
   );

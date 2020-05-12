@@ -58,7 +58,7 @@ export interface FirmInformationProps {
   suite: number;
   phoneNumber: number;
   faxNumber: number;
-  emailAddress: string;
+  email: string;
   isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
@@ -68,8 +68,8 @@ export interface DataInitalProps {
   firmInformation: FirmInformationProps;
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
-  commission?: CommissionInformationProps;
-  riskProfile?: RiskProfileProps;
+  commissionInformation?: CommissionInformationProps;
+  riskFactorInformation?: RiskProfileProps;
 }
 
 export interface MetaDataProps {
@@ -79,9 +79,12 @@ export interface MetaDataProps {
 }
 
 export interface AppInitalProps {
+  id?: string;
   email: string;
   data: DataInitalProps;
   providers: Record<string, any>;
+  completed: boolean;
+  confirmationNumber?: string;
   metadata: MetaDataProps;
 }
 
@@ -102,8 +105,8 @@ export default class AppState implements IAppState {
         suite: 0,
         phoneNumber: 0,
         faxNumber: 0,
-        emailAddress: '',
-        isFirmOwned: undefined,
+        email: '',
+        isFirmOwned: null,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
       },
@@ -127,7 +130,7 @@ export default class AppState implements IAppState {
         isHaveClaims: null,
         claims: [],
       },
-      commission: {
+      commissionInformation: {
         grossCommission: undefined,
         averageValue: undefined,
         percentageTransactions: undefined,
@@ -152,7 +155,7 @@ export default class AppState implements IAppState {
         mortageBrokerage: 0,
         totalCommision: 0,
       },
-      riskProfile: {
+      riskFactorInformation: {
         isHomeWarranty: undefined,
         isMortageBanking: undefined,
         isPerformServices: undefined,
@@ -160,7 +163,10 @@ export default class AppState implements IAppState {
         percentageTransactions: undefined,
       },
     },
+    id: undefined,
     providers: [],
+    completed: false,
+    confirmationNumber: undefined,
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',
