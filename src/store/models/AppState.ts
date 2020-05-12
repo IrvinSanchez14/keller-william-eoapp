@@ -61,7 +61,7 @@ export interface FirmInformationProps {
   phoneNumber: number;
   faxNumber: number;
   emailAddress: string;
-  isFirmOwned: boolean;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
@@ -105,7 +105,7 @@ export default class AppState implements IAppState {
         phoneNumber: 0,
         faxNumber: 0,
         emailAddress: '',
-        isFirmOwned: false,
+        isFirmOwned: null,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
       },
