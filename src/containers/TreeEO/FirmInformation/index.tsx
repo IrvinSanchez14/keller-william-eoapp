@@ -93,7 +93,7 @@ export class FirmInformation extends Component<FullNameProps> {
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
               yearEstablished: formData.app.data.firmInformation.yearEstablished || '',
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={fullNameValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
