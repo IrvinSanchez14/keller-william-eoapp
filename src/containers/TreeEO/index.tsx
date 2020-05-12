@@ -76,7 +76,8 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    if (state.app.confirmationNumber) router.push(`/confirmation-page?sessionId=${sessionId}`);
+    else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
