@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TextLight from 'src/components/TextLight';
 import TextBold from 'src/components/TextBold';
 import RiskProfileProps from './IRiskProfile';
+import { useCallback } from 'react';
 
 const labelInformation = {
   isHomeWarranty: 'Do you offer home warranty programs',
@@ -19,8 +20,17 @@ const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
 `;
 
 export default function RiskProfile({ data, openEditModal }: RiskProfileProps): JSX.Element {
+  const onOpenModal = useCallback(
+    (nameForm: string) => () => {
+      openEditModal?.(nameForm);
+    },
+    [openEditModal],
+  );
   return (
-    <Layout textHeader="Risk profile" openEditPageModal={() => openEditModal('Risk profile')}>
+    <Layout
+      textHeader="Risk profile"
+      openEditPageModal={openEditModal && onOpenModal('Risk profile')}
+    >
       <ContainerInformation firstPadding>
         <TextLight text={labelInformation.isHomeWarranty} />
         <TextBold typeFormat="boolean" customMargin text={data.riskProfile.isHomeWarranty} />

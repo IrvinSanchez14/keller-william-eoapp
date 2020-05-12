@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'react/react-in-jsx-scope': 0,
+    'react/prop-types': 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/interface-name-prefix': 0, // Ignore interfaces can't start with 'I'

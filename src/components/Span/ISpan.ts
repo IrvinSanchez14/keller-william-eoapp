@@ -1,5 +1,7 @@
+import { DefaultTheme } from 'styled-components';
+
 export default interface ISpan {
-  theme?: string;
+  theme?: DefaultTheme;
   color?: string;
   letterSpacing?: string;
   margin?: string;

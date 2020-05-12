@@ -3,8 +3,8 @@ import ButtonPrimary from 'src/components/Button/ButtonPrimary';
 
 interface LayoutProps {
   textHeader: string;
-  openEditPageModal: () => void;
-  children: Array<JSX.Element> | JSX.Element;
+  openEditPageModal?: () => void;
+  children: React.ReactNode;
 }
 
 const LayoutContainer = styled.div`
@@ -124,12 +124,12 @@ export default function Layout({
   textHeader,
   openEditPageModal,
   children,
-}: LayoutProps): JSX.Element {
+}: LayoutProps): React.ReactElement {
   return (
     <LayoutContainer>
       <LayoutHeaderSection>
         <LayoutHeaderText>{textHeader}</LayoutHeaderText>
-        <LayoutEditBottom onClick={openEditPageModal}>Edit</LayoutEditBottom>
+        {openEditPageModal && <LayoutEditBottom onClick={openEditPageModal}>Edit</LayoutEditBottom>}
       </LayoutHeaderSection>
       <LayoutData>{children}</LayoutData>
     </LayoutContainer>

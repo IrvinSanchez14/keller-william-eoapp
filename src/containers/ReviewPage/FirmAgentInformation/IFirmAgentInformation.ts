@@ -27,6 +27,6 @@ interface DataProps {
 }
 
 export default interface FirmAgentInformationProps {
-  openEditModal: (nameform: string) => void;
+  openEditModal?: (nameform: string) => void;
   data: DataProps;
 }
