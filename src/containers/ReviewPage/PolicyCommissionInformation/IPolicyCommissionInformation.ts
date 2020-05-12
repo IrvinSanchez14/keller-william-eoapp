@@ -4,7 +4,7 @@ interface Insurance {
   renewalDate: string;
   deductible: number;
   limits: number;
-  yearCoverage: string;
+  yearCoverage: number;
   annualPremium: number;
 }
 
@@ -17,7 +17,7 @@ interface PolicyInformation {
   currentCarrier: string;
   isHaveInsurance: boolean;
   insurance: Insurance;
-  isHaveClaims: boolean;
+  isHaveClaims?: boolean;
   claims: Array<Claims>;
 }
 

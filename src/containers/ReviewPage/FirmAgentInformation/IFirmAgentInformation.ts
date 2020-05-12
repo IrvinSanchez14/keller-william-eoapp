@@ -4,9 +4,9 @@ interface FirmInformationProps {
   kwMarketCenterName: string;
   yearEstablished: number;
   streetAddress: string;
-  suite: number;
+  suite?: number;
   phoneNumber: string | number;
-  faxNumber: string | number;
+  faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;

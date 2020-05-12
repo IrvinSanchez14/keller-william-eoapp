@@ -31,7 +31,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isButtonLoading = false;
   shouldErrorShow = true;
   formattedAddress = '';
-  isHaveClaims: boolean = null;
+  isHaveClaims?: boolean = null;
   addressComponent: Array<string> = [];
   unit = '';
   monthsAtCurrentAddress = 0;
@@ -63,12 +63,14 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
         mask: dateMask,
         numberMask: false,
         placeholder: 'MM/DD/YYYY',
+        type: 'text',
       },
       {
         placeholder: '$',
         name: 'amountClaim',
         label: 'Amount of claim',
         numberMask: true,
+        type: 'number',
       },
     ];
 
@@ -76,32 +78,34 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
       <>
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
-            {residenceTimeFields.map(({ name, placeholder, label, mask, numberMask }: any) => (
-              <FielControlForm
-                key={`claims.${name}.${index}`}
-                name={`claims.${index}.${name}`}
-                type="text"
-                errors={errors}
-                touched={touched}
-                renderFastField
-                renderCustomField={({ field }) => (
-                  <TextFieldForm
-                    {...field}
-                    type="text"
-                    numberMask={numberMask}
-                    data-test-id={`${name}.${index}`}
-                    label={label}
-                    placeholder={placeholder}
-                    setFieldTouched={setFieldTouched}
-                    customWidth={150}
-                    mask={mask}
-                    className={classnames(classes.periodContainerInput, {
-                      [classes.periodContainerInputInvalid]: errors[name] && touched[name],
-                    })}
-                  />
-                )}
-              />
-            ))}
+            {residenceTimeFields.map(
+              ({ name, placeholder, label, mask, numberMask, type }: any) => (
+                <FielControlForm
+                  key={`claims.${name}.${index}`}
+                  name={`claims.${index}.${name}`}
+                  type={type}
+                  errors={errors}
+                  touched={touched}
+                  renderFastField
+                  renderCustomField={({ field }) => (
+                    <TextFieldForm
+                      {...field}
+                      type={type}
+                      numberMask={numberMask}
+                      data-test-id={`${name}.${index}`}
+                      label={label}
+                      placeholder={placeholder}
+                      setFieldTouched={setFieldTouched}
+                      customWidth={150}
+                      mask={mask}
+                      className={classnames(classes.periodContainerInput, {
+                        [classes.periodContainerInputInvalid]: errors[name] && touched[name],
+                      })}
+                    />
+                  )}
+                />
+              ),
+            )}
           </Column>
         ))}
         <div

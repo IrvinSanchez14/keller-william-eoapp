@@ -46,7 +46,7 @@ const dataPC = {
       renewalDate: '12/15/2021',
       deductible: 5000,
       limits: 100000,
-      yearCoverage: '3',
+      yearCoverage: 3,
       annualPremium: 10000,
     },
     isHaveClaims: true,

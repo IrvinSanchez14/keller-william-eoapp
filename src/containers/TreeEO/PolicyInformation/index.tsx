@@ -65,10 +65,10 @@ export class PolicyInformation extends Component<FullNameProps> {
               currentCarrier: formData.app.data.policyInformation.currentCarrier || '',
               isHaveInsurance: formData.app.data.policyInformation.isHaveInsurance || false,
               renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
-              deductible: formData.app.data.policyInformation.insurance.deductible || '',
-              limits: formData.app.data.policyInformation.insurance.limits || '',
-              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || '',
-              annualPremium: formData.app.data.policyInformation.insurance.annualPremium || '',
+              deductible: formData.app.data.policyInformation.insurance.deductible || 0,
+              limits: formData.app.data.policyInformation.insurance.limits || 0,
+              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || 0,
+              annualPremium: formData.app.data.policyInformation.insurance.annualPremium || 0,
             }}
             isInitValid={this.isInitValid}
             validationSchema={policyInforamtionValidateSchema(isHaveInsurance)}
@@ -115,10 +115,10 @@ export class PolicyInformation extends Component<FullNameProps> {
                               resetForm({
                                 currentCarrier: '',
                                 renewalDate: '',
-                                deductible: '',
-                                limits: '',
-                                yearCoverage: '',
-                                annualPremium: '',
+                                deductible: 0,
+                                limits: 0,
+                                yearCoverage: 0,
+                                annualPremium: 0,
                               });
                               this.setState({
                                 isHaveInsurance: !this.state.isHaveInsurance,

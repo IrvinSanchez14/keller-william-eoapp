@@ -1,8 +1,8 @@
 export interface RiskProfileProps {
-  isHomeWarranty: boolean;
-  isMortageBanking: boolean;
-  isPerformServices: boolean;
-  isRepresentCommission: boolean;
+  isHomeWarranty?: boolean;
+  isMortageBanking?: boolean;
+  isPerformServices?: boolean;
+  isRepresentCommission?: boolean;
   percentageTransactions: number;
 }
 
@@ -34,10 +34,10 @@ export interface PolicyInformationProps {
     renewalDate: string;
     deductible: number;
     limits: number;
-    yearCoverage: string;
+    yearCoverage: number;
     annualPremium: number;
   };
-  isHaveClaims: boolean | null;
+  isHaveClaims?: boolean;
   claims: [] | [{ dateClaim: string; amountClaim: number }];
 }
 
@@ -57,9 +57,9 @@ export interface FirmInformationProps {
   kwMarketCenterName: string;
   yearEstablished: number;
   streetAddress: string;
-  suite: number;
-  phoneNumber: number;
-  faxNumber: number;
+  suite?: number;
+  phoneNumber?: string;
+  faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
@@ -104,9 +104,9 @@ export default class AppState implements IAppState {
         kwMarketCenterName: '',
         yearEstablished: 0,
         streetAddress: '',
-        suite: 0,
-        phoneNumber: 0,
-        faxNumber: 0,
+        suite: null,
+        phoneNumber: '',
+        faxNumber: '',
         email: '',
         isFirmOwned: null,
         dateLicensedBrokerAgent: '',
@@ -128,16 +128,16 @@ export default class AppState implements IAppState {
           renewalDate: '',
           deductible: 0,
           limits: 0,
-          yearCoverage: '',
+          yearCoverage: 0,
           annualPremium: 0,
         },
         isHaveClaims: null,
         claims: [],
       },
       commissionInformation: {
-        grossCommission: undefined,
-        averageValue: undefined,
-        percentageTransactions: undefined,
+        grossCommission: 0,
+        averageValue: 0,
+        percentageTransactions: 0,
         residential: {
           realEstate: 0,
           rawLand: 0,
@@ -160,11 +160,11 @@ export default class AppState implements IAppState {
         totalCommision: 0,
       },
       riskFactorInformation: {
-        isHomeWarranty: undefined,
-        isMortageBanking: undefined,
-        isPerformServices: undefined,
-        isRepresentCommission: undefined,
-        percentageTransactions: undefined,
+        isHomeWarranty: null,
+        isMortageBanking: null,
+        isPerformServices: null,
+        isRepresentCommission: null,
+        percentageTransactions: 0,
       },
     },
     id: undefined,

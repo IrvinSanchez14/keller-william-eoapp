@@ -42,7 +42,9 @@ export function formatPercentage(percentage: string | boolean | number): string 
   return `${percentage}%`;
 }
 
-export function verifyType(value: any, type?: string): string {
+export function verifyType(value: any, type?: string): string | null {
+  if (value === null || value === undefined) return value;
+
   if (type) {
     if (type === 'amount' || type === 'money') {
       return formatAmount(value, type === 'money');
