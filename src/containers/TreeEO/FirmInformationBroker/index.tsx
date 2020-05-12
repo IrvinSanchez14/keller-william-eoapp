@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import Router from 'next/router';
+//import Router from 'next/router';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 
@@ -35,8 +35,8 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    Router.push('/review');
-    //setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    //Router.push('/review');
+    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {

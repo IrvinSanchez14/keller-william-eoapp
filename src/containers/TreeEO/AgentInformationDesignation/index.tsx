@@ -65,12 +65,27 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.two')}
           </Typography>
-          <FormAgentInformationDesignation
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              numberAgentSpecialDesignation:
+                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={agentSpecialValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+            alignButton={classnames(classes.alignButton)}
+          >
+            {(formikProps) => {
+              return FormAgentInformationDesignation(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

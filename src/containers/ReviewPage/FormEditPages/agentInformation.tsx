@@ -5,13 +5,13 @@ import { FormApp } from 'src/components/FormApp';
 
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { storeFirmConfirmation } from 'src/store/actions/app';
+import { storeAgentInformation } from 'src/store/actions/app';
 
-import { FormFirmInformation } from 'src/containers/TreeEO/FirmInformation/form';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
-import { FormFirmInformationEmail } from 'src/containers/TreeEO/FirmInformationEmail/form';
-import { FormFirmInformationAffiliated } from 'src/containers/TreeEO/FirmInformationAffiliated/form';
-import { FormFirmInformationBroker } from 'src/containers/TreeEO/FirmInformationBroker/form';
+import { FormAgentInformation } from 'src/containers/TreeEO/AgentInformation/form';
+import { FormAgentInformationDesignation } from 'src/containers/TreeEO/AgentInformationDesignation/form';
+import { FormAgentInformationRevoked } from 'src/containers/TreeEO/AgentInformationRevoked/form';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -36,6 +36,21 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '121px',
     },
   },
+  titleSpecial: {
+    fontWeight: 'bold',
+    fontSize: '20px',
+    lineHeight: '18px',
+    color: '#07293D',
+    marginBottom: '15px',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '30px',
+      fontWeight: 'bold',
+      fontSize: '36px',
+      lineHeight: '40px',
+      letterSpacing: '-0.5px',
+      color: '#1D253C',
+    },
+  },
   textFirm: {
     fontWeight: 'bold',
     fontSize: '16px',
@@ -56,34 +71,29 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPageFirmInformation() {
+export function EditPageAgentInformation() {
+  const [isReview] = useState(true);
   const { dispatch, state, intl } = useAppContext();
   const classes = useStyles();
 
   const onSubmit = (values: any, actions: any) => {
-    storeFirmConfirmation(dispatch, values);
+    storeAgentInformation(dispatch, values);
   };
 
   const handleChange = (value: boolean, formikProps: any) => {
-    formikProps.setFieldValue('isFirmOwned', value);
+    formikProps.setFieldValue('revokedLicense', value);
   };
 
   return (
     <>
       <FormApp
         initialValues={{
-          contacName: state.app.data.firmInformation.contacName,
-          brokerName: state.app.data.firmInformation.brokerName,
-          kwMarketCenterName: state.app.data.firmInformation.kwMarketCenterName,
-          yearEstablished: state.app.data.firmInformation.yearEstablished,
-          streetAddress: state.app.data.firmInformation.streetAddress,
-          suite: state.app.data.firmInformation.suite,
-          phoneNumber: state.app.data.firmInformation.phoneNumber,
-          faxNumber: state.app.data.firmInformation.faxNumber,
-          emailAddress: state.app.data.firmInformation.emailAddress,
-          dateLicensedBrokerAgent: state.app.data.firmInformation.dateLicensedBrokerAgent,
-          dateLicensedBroker: state.app.data.firmInformation.dateLicensedBroker,
-          isFirmOwned: state.app.data.firmInformation.isFirmOwned,
+          numberAgentsMoreCommission: state.app.data.agentInformation.numberAgentsMoreCommission,
+          numberAgentLessCommission: state.app.data.agentInformation.numberAgentLessCommission,
+          numberAgenteNoCommission: state.app.data.agentInformation.numberAgenteNoCommission,
+          numberAgentSpecialDesignation:
+            state.app.data.agentInformation.numberAgentSpecialDesignation,
+          revokedLicense: state.app.data.agentInformation.revokedLicense,
         }}
         isInitValid={false}
         validationSchema={null}
@@ -101,28 +111,22 @@ export function EditPageFirmInformation() {
             <>
               <Column className={classnames(classes.rowContainer)}>
                 <Typography className={classnames(classes.titleForm)}>
-                  {'Basic Information'}
+                  {'Total number of licensed agents'}
                 </Typography>
-                {FormFirmInformation(formikProps)}
+                {FormAgentInformation(formikProps, isReview)}
               </Column>
               <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Contact information'}
+                <Typography className={classnames(classes.titleSpecial)}>
+                  {'Special designations'}
                 </Typography>
-                {FormFirmInformationEmail(formikProps)}
-              </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Broker information'}
-                </Typography>
-                {FormFirmInformationBroker(formikProps)}
+                {FormAgentInformationDesignation(formikProps)}
               </Column>
               <Column className={classnames(classes.rowContainerDetail)}>
                 <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
                 <Typography className={classnames(classes.textFirm)}>
-                  {intl.get('app.head.form.firm.part.three')}
+                  {intl.get('app.head.form.agent.part.three')}
                 </Typography>
-                {FormFirmInformationAffiliated(formikProps, handleChange)}
+                {FormAgentInformationRevoked(formikProps, handleChange)}
               </Column>
             </>
           );

@@ -1,4 +1,5 @@
 import { EditPageFirmInformation } from './firmInformation';
+import { EditPageAgentInformation } from './agentInformation';
 
 interface IFormEditPages {
   nameForm: string;
@@ -17,7 +18,7 @@ export function FormsEditPage(Props: IFormEditPages) {
         return <EditPageFirmInformation />;
       }
       case CONSTANTS_EDIT_PAGE.AGENT_INFORMATION: {
-        return null;
+        return <EditPageAgentInformation />;
       }
       default:
         return nameForm;

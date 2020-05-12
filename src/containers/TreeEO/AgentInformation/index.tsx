@@ -67,12 +67,30 @@ export class AgentInformation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.one')}
           </Typography>
-          <FormAgentInformation
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              numberAgentsMoreCommission:
+                formData.app.data.agentInformation.numberAgentsMoreCommission || '',
+              numberAgentLessCommission:
+                formData.app.data.agentInformation.numberAgentLessCommission || '',
+              numberAgenteNoCommission:
+                formData.app.data.agentInformation.numberAgenteNoCommission || '',
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={agentLicensedValidateSchema}
             onSubmit={this.nextStep}
-            hideButton={false}
-          />
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
+            alignButton={classnames(classes.alignButton)}
+          >
+            {(formikProps) => {
+              return FormAgentInformation(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

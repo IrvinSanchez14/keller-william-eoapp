@@ -18,4 +18,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       padding: '0px 8px',
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });
