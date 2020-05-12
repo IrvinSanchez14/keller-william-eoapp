@@ -81,6 +81,7 @@ export class CommissionInformation extends Component<FullNameProps> {
                         data-test-id="grossCommission"
                         name="grossCommission"
                         type="number"
+                        placeholder="$"
                         label={'Commission'}
                         setFieldTouched={setFieldTouched}
                         errors={errors}
@@ -100,6 +101,7 @@ export class CommissionInformation extends Component<FullNameProps> {
                         data-test-id="averageValue"
                         name="averageValue"
                         type="number"
+                        placeholder="$"
                         label={'Average property value'}
                         setFieldTouched={setFieldTouched}
                         errors={errors}
