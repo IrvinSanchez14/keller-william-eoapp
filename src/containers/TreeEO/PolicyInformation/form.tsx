@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/styles';
 
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   customContainer: {
@@ -16,8 +17,9 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export const FormPolicyInformation = (formikProps: any) => {
+export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
   const classes = useStyles();
+  const [isHaveInsurance, setIsHaveInsurance] = useState(false);
 
   return (
     <>
@@ -35,7 +37,7 @@ export const FormPolicyInformation = (formikProps: any) => {
             fullWidth
             renderFastField
             customWidth={0}
-            readOnly={formikProps.values.isHaveInsurance}
+            readOnly={isHaveInsurance}
           />
           <FielControlForm
             name="isHaveInsurance"
@@ -58,9 +60,10 @@ export const FormPolicyInformation = (formikProps: any) => {
                     yearCoverage: '',
                     annualPremium: '',
                   });
-                  formikProps.setFieldValue('isHaveInsurance', !formikProps.values.isHaveInsurance);
+                  setIsHaveInsurance(!isHaveInsurance);
+                  handleChange(!isHaveInsurance);
                 }}
-                isChecked={formikProps.values.isHaveInsurance}
+                isChecked={isHaveInsurance}
                 hasHelper
               />
             )}
@@ -79,7 +82,7 @@ export const FormPolicyInformation = (formikProps: any) => {
               shouldValidateOnMount
               fullWidth
               renderFastField
-              readOnly={formikProps.values.isHaveInsurance}
+              readOnly={isHaveInsurance}
             />
           </Grid>
         </Grid>
@@ -96,7 +99,7 @@ export const FormPolicyInformation = (formikProps: any) => {
                 touched={formikProps.touched}
                 shouldValidateOnMount
                 renderFastField
-                readOnly={formikProps.values.isHaveInsurance}
+                readOnly={isHaveInsurance}
               />
             </Grid>
           </Grid>
@@ -112,7 +115,7 @@ export const FormPolicyInformation = (formikProps: any) => {
                 touched={formikProps.touched}
                 shouldValidateOnMount
                 renderFastField
-                readOnly={formikProps.values.isHaveInsurance}
+                readOnly={isHaveInsurance}
               />
             </Grid>
           </Grid>
@@ -132,7 +135,7 @@ export const FormPolicyInformation = (formikProps: any) => {
               fullWidth
               renderFastField
               customWidth={80}
-              readOnly={formikProps.values.isHaveInsurance}
+              readOnly={isHaveInsurance}
             />
           </Grid>
         </Grid>
@@ -150,7 +153,7 @@ export const FormPolicyInformation = (formikProps: any) => {
               shouldValidateOnMount
               fullWidth
               renderFastField
-              readOnly={formikProps.values.isHaveInsurance}
+              readOnly={isHaveInsurance}
             />
           </Grid>
         </Grid>

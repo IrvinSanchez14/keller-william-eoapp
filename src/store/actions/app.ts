@@ -135,6 +135,18 @@ export const storeCommissionCommercial = (
   return storeValueCommission;
 };
 
+export const storeCommissionAll = (
+  dispatch: React.Dispatch<any>,
+  commissionForm: CommissionInformationProps,
+) => {
+  const storeAll = {
+    type: CONSTANTS.SET_ALL_COMMISSION_INFORMATION,
+    payload: commissionForm,
+  };
+  dispatch(storeAll);
+  return storeAll;
+};
+
 export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPRofileProps) => {
   const storeValueRisk = {
     type: CONSTANTS.SET_RISK_PROFILE,

@@ -55,10 +55,6 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
 
   render() {
     const { intl, classes, formData, dispatch } = this.props;
-    console.log(
-      'formData.app.data.policyInformation.isHaveClaims',
-      formData.app.data.policyInformation.isHaveClaims,
-    );
 
     return (
       !this.isLoading && (
@@ -85,7 +81,6 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
               hideButton={false}
             >
               {(formikProps) => {
-                console.log('ervin', formikProps);
                 return FormPolicyInformationClaims(formikProps, formData, dispatch);
               }}
             </FormApp>

@@ -71,11 +71,23 @@ export const commissionTransactionValidateSchema = Yup.object().shape({
 });
 
 export const commissionResidentialValidateSchema = Yup.object().shape({
-  realEstate: Yup.number().required('Field is required'),
-  rawLand: Yup.number().required('Field is required'),
-  appraisals: Yup.number().required('Field is required'),
-  propertyMgmt: Yup.number().required('Field is required'),
-  ownedProperty: Yup.number().required('Field is required'),
+  residential: Yup.object().shape({
+    realEstate: Yup.number().required('Field is required'),
+    rawLand: Yup.number().required('Field is required'),
+    appraisals: Yup.number().required('Field is required'),
+    propertyMgmt: Yup.number().required('Field is required'),
+    ownedProperty: Yup.number().required('Field is required'),
+  }),
+});
+
+export const commissionCommercialValidateSchema = Yup.object().shape({
+  commercial: Yup.object().shape({
+    realEstate: Yup.number().required('Field is required'),
+    rawLand: Yup.number().required('Field is required'),
+    appraisals: Yup.number().required('Field is required'),
+    propertyMgmt: Yup.number().required('Field is required'),
+    ownedProperty: Yup.number().required('Field is required'),
+  }),
 });
 
 export const commissionOtherValidateSchema = Yup.object().shape({

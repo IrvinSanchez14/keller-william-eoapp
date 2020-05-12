@@ -11,6 +11,8 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationTransaction } from './form';
+import { commissionTransactionValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 
 type FullNameProps = IAppStoreProps;
 
@@ -50,12 +52,25 @@ export class CommissionInformationTransaction extends Component<FullNameProps> {
           heading={this.props.intl.get('app.head.commission.part.two')}
           classHeader={classnames(classes.stepHeader)}
         >
-          <FormCommissionInformationTransaction
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              percentageTransactions: formData.app.data.commission.percentageTransactions,
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={commissionTransactionValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormCommissionInformationTransaction(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

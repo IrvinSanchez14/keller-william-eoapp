@@ -40,7 +40,7 @@ export class FirmInformation extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 8, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 12, categoriesName.firmConfirmation);
   }
 
   render() {
@@ -76,7 +76,6 @@ export class FirmInformation extends Component<FullNameProps> {
             hideButton={false}
           >
             {(formikProps) => {
-              console.log('formikProps', formikProps);
               return FormFirmInformation(formikProps);
             }}
           </FormApp>

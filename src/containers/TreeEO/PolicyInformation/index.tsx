@@ -27,6 +27,9 @@ type FormFields = {
 export class PolicyInformation extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
+  state = {
+    isHaveInsurance: false,
+  };
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
@@ -44,6 +47,12 @@ export class PolicyInformation extends Component<FullNameProps> {
     }
     setInformationPage(dispatch, 7, categoriesName.policyInformation);
   }
+
+  handleChange = () => {
+    this.setState({
+      isHaveInsurance: !this.state.isHaveInsurance,
+    });
+  };
 
   render() {
     const isLoading = false;
@@ -65,10 +74,8 @@ export class PolicyInformation extends Component<FullNameProps> {
               yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || '',
               annualPremium: formData.app.data.policyInformation.insurance.annualPremium || '',
             }}
-            validationSchema={policyInforamtionValidateSchema(
-              formData.app.data.policyInformation.isHaveInsurance,
-            )}
-            isInitValid={this.isInitValid}
+            validationSchema={policyInforamtionValidateSchema(this.state.isHaveInsurance)}
+            isInitValid
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
@@ -76,12 +83,10 @@ export class PolicyInformation extends Component<FullNameProps> {
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
-            notDisabled={false}
             hideButton={false}
           >
             {(formikProps) => {
-              console.log('formikProps', formikProps);
-              return FormPolicyInformation(formikProps);
+              return FormPolicyInformation(formikProps, this.handleChange);
             }}
           </FormApp>
         </StepWrapper>

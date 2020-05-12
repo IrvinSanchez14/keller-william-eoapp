@@ -130,7 +130,6 @@ export default function LayoutInformationReview({
   function openModal(nameCategory: string): void {
     setNameForm(nameCategory);
     setShowModal(true);
-    console.log('nameCategory', nameCategory);
   }
 
   return (

@@ -75,7 +75,6 @@ export class FirmInformationBroker extends Component<FullNameProps> {
             alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
-              console.log('formikProps', formikProps);
               return FormFirmInformationBroker(formikProps);
             }}
           </FormApp>

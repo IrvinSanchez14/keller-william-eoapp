@@ -116,7 +116,7 @@ export const appActions: any = {
           commission: {
             ...state.app.data.commission,
             residential: {
-              ...action.payload.commissionForm,
+              ...action.payload.commissionForm.residential,
               total: action.payload.total,
             },
           },
@@ -134,9 +134,24 @@ export const appActions: any = {
           commission: {
             ...state.app.data.commission,
             commercial: {
-              ...action.payload.commissionForm,
+              ...action.payload.commissionForm.commercial,
               total: action.payload.total,
             },
+          },
+        },
+      },
+    };
+  },
+  SET_ALL_COMMISSION_INFORMATION: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commission: {
+            ...state.app.data.commission,
+            ...action.payload,
           },
         },
       },
@@ -164,7 +179,6 @@ export const appActions: any = {
     };
   },
   SET_ALL_INFORMATION_POLICY: (state: any, action: any) => {
-    console.log('ACTION', action);
     return {
       ...state,
       app: {

@@ -11,6 +11,8 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationOther } from './form';
+import { commissionOtherValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 
 type FullNameProps = IAppStoreProps;
 
@@ -52,12 +54,27 @@ export class CommissionInformationOther extends Component<FullNameProps> {
           classHeader={classnames(classes.stepHeader)}
           classBottom={classnames(classes.stepBottom)}
         >
-          <FormCommissionInformationOther
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              farmRanch: formData.app.data.commission.farmRanch,
+              auctioneering: formData.app.data.commission.auctioneering,
+              mortageBrokerage: formData.app.data.commission.mortageBrokerage,
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={commissionOtherValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormCommissionInformationOther(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

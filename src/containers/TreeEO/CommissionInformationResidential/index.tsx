@@ -10,15 +10,15 @@ import StepWrapper from 'src/components/StepWrapper';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
+import { commissionResidentialValidateSchema } from 'src/helpers/validations';
+import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/actions/app';
+import { FormApp } from 'src/components/FormApp';
 import { FormCommissionInformationResidential } from './form';
 
 type FullNameProps = IAppStoreProps;
 
-type FormFields = {
-  contactName: string;
-  brokerName: string;
-  kwMarketCenterName: string;
-  yearEstablished: number;
+const residential = {
+  realState: '',
 };
 
 @withStyles(styles)
@@ -34,6 +34,21 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     setInformationPage(dispatch, 12, categoriesName.commission);
   }
 
+  nextStep = async (values: any, actions: any) => {
+    const totalResidential = this.sumState(values.residential);
+
+    this.isButtonLoading = true;
+    const { dispatch, formData } = this.props;
+    storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    actions.setSubmitting(true);
+    setInformationPage(dispatch, 13, categoriesName.commission);
+  };
+
+  sumState = (object: any) => {
+    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
+  };
+
   render() {
     const isLoading = false;
     const { formData, classes, dispatch } = this.props;
@@ -47,12 +62,31 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
           classBottom={classnames(classes.stepBottom)}
         >
           <Typography className={classnames(classes.titleForm)}>{'Residential'}</Typography>
-          <FormCommissionInformationResidential
-            formData={formData}
+          <FormApp
+            initialValues={{
+              residential: {
+                realEstate: formData.app.data.commission.residential.realEstate,
+                rawLand: formData.app.data.commission.residential.rawLand,
+                appraisals: formData.app.data.commission.residential.appraisals,
+                propertyMgmt: formData.app.data.commission.residential.propertyMgmt,
+                ownedProperty: formData.app.data.commission.residential.ownedProperty,
+              },
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={commissionResidentialValidateSchema}
+            onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
             dispatch={dispatch}
-            onSubmit={null}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormCommissionInformationResidential(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );
