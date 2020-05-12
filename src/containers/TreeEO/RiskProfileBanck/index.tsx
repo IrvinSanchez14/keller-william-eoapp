@@ -10,6 +10,8 @@ import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { riskProfileBanckValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileBanck } from './form';
 
 type FullNameProps = IAppStoreProps;
@@ -42,12 +44,25 @@ export class RiskProfileBanck extends Component<FullNameProps> {
           heading={this.props.intl.get('app.header.form.risk.part.two')}
           classHeader={classnames(classes.stepHeader)}
         >
-          <FormRiskProfileBanck
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              isMortageBanking: formData.app.data.riskProfile.isMortageBanking,
+            }}
+            isInitValid
+            validationSchema={riskProfileBanckValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={false}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormRiskProfileBanck(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

@@ -4,26 +4,24 @@ import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
 
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { styles } from './styles';
 import { useAppContext } from 'src/store';
 
 export const propertyUsageFields = [
   {
     id: 1,
-    name: 'isMortageBanking',
+    name: 'isPerformServices',
     value: true,
     text: 'Yes',
   },
   {
     id: 2,
-    name: 'isMortageBanking',
+    name: 'isPerformServices',
     value: false,
     text: 'No',
   },
 ];
 
-export const FormRiskProfileBanck = (formikProps: any) => {
+export const FormRiskProfileReits = (formikProp: any) => {
   const { intl } = useAppContext();
   const [isMobile, setIsMobile] = useState(0);
 
@@ -44,32 +42,32 @@ export const FormRiskProfileBanck = (formikProps: any) => {
     <>
       <div>
         <FielControlForm
-          name="isMortageBanking"
+          name="isPerformServices"
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
-              name="isMortageBanking"
-              value="isMortageBanking"
+              name="isPerformServices"
+              value="isPerformServices"
               data-test-id="sameAddressButtonNo"
-              label={isMobile <= 768 ? 'Yes' : intl.get('app.text.checkbox.yes.risk.part.two')}
-              onChange={() => formikProps.setFieldValue('isMortageBanking', true)}
-              checked={formikProps.values.isMortageBanking === true}
+              label={isMobile <= 768 ? 'Yes' : intl.get('app.text.checkbox.yes.risk.part.three')}
+              onChange={() => formikProp.setFieldValue('isPerformServices', true)}
+              checked={formikProp.values.isPerformServices === true}
             />
           )}
         />
       </div>
       <div>
         <FielControlForm
-          name="isMortageBanking"
+          name="isPerformServices"
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
-              name="isMortageBanking"
-              value="isMortageBanking"
+              name="isPerformServices"
+              value="isPerformServices"
               data-test-id="sameAddressButtonNo"
-              label={isMobile <= 768 ? 'No' : intl.get('app.text.checkbox.no.risk.part.two')}
-              onChange={() => formikProps.setFieldValue('isMortageBanking', false)}
-              checked={formikProps.values.isMortageBanking === false}
+              label={isMobile <= 768 ? 'No' : intl.get('app.text.checkbox.no.risk.part.three')}
+              onChange={() => formikProp.setFieldValue('isPerformServices', false)}
+              checked={formikProp.values.isPerformServices === false}
             />
           )}
         />

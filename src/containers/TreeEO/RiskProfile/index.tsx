@@ -11,6 +11,8 @@ import { categoriesName } from 'src/helpers/constants';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { FormRiskProfile } from './form';
+import { riskProfileValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 
 type FullNameProps = IAppStoreProps;
 
@@ -42,12 +44,25 @@ export class RiskProfile extends Component<FullNameProps> {
           heading={this.props.intl.get('app.header.form.risk.part.one')}
           classHeader={classnames(classes.stepHeader)}
         >
-          <FormRiskProfile
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              isHomeWarranty: formData.app.data.riskProfile.isHomeWarranty,
+            }}
+            isInitValid
+            validationSchema={riskProfileValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={false}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormRiskProfile(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

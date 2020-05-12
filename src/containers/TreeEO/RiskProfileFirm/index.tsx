@@ -9,6 +9,8 @@ import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { riskProfileFirmValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileFirm } from './form';
 
 type FullNameProps = IAppStoreProps;
@@ -41,12 +43,25 @@ export class RiskProfileFirm extends Component<FullNameProps> {
           heading={this.props.intl.get('app.header.form.risk.part.four')}
           classHeader={classnames(classes.stepHeader)}
         >
-          <FormRiskProfileFirm
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              isRepresentCommission: formData.app.data.riskProfile.isRepresentCommission,
+            }}
+            isInitValid
+            validationSchema={riskProfileFirmValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={false}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormRiskProfileFirm(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

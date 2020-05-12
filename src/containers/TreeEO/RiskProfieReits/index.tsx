@@ -14,6 +14,7 @@ import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { FormRiskProfileReits } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -83,50 +84,9 @@ export class RiskProfileReits extends Component<FullNameProps> {
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
           >
-            {({ values, setFieldValue }: any) => (
-              <>
-                <div>
-                  <FielControlForm
-                    name="isPerformServices"
-                    renderCustomField={({ field }) => (
-                      <RadioField
-                        {...field}
-                        name="isPerformServices"
-                        value="isPerformServices"
-                        data-test-id="sameAddressButtonNo"
-                        label={
-                          this.state.width <= 768
-                            ? 'Yes'
-                            : this.props.intl.get('app.text.checkbox.yes.risk.part.three')
-                        }
-                        onChange={() => setFieldValue('isPerformServices', true)}
-                        checked={values.isPerformServices === true}
-                      />
-                    )}
-                  />
-                </div>
-                <div>
-                  <FielControlForm
-                    name="isPerformServices"
-                    renderCustomField={({ field }) => (
-                      <RadioField
-                        {...field}
-                        name="isPerformServices"
-                        value="isPerformServices"
-                        data-test-id="sameAddressButtonNo"
-                        label={
-                          this.state.width <= 768
-                            ? 'No'
-                            : this.props.intl.get('app.text.checkbox.no.risk.part.three')
-                        }
-                        onChange={() => setFieldValue('isPerformServices', false)}
-                        checked={values.isPerformServices === false}
-                      />
-                    )}
-                  />
-                </div>
-              </>
-            )}
+            {(formikProps) => {
+              return FormRiskProfileReits(formikProps);
+            }}
           </FormApp>
         </StepWrapper>
       )

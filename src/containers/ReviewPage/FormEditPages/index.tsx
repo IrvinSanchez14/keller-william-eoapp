@@ -2,6 +2,7 @@ import { EditPageFirmInformation } from './firmInformation';
 import { EditPageAgentInformation } from './agentInformation';
 import { EditPagePolicyInformation } from './policyInformation';
 import { EditPageCommissionInformation } from './commissionInformation';
+import { EditPageRiskProfile } from './riskprofile';
 
 interface IFormEditPages {
   nameForm: string;
@@ -12,6 +13,7 @@ const CONSTANTS_EDIT_PAGE = {
   AGENT_INFORMATION: 'Agent information',
   POLICY_INFORMATION: 'Policy information',
   COMMISSION: 'Commission',
+  RISK_PROFILE: 'Risk profile',
 };
 
 export function FormsEditPage(Props: IFormEditPages) {
@@ -29,6 +31,9 @@ export function FormsEditPage(Props: IFormEditPages) {
       }
       case CONSTANTS_EDIT_PAGE.COMMISSION: {
         return <EditPageCommissionInformation />;
+      }
+      case CONSTANTS_EDIT_PAGE.RISK_PROFILE: {
+        return <EditPageRiskProfile />;
       }
       default:
         return nameForm;

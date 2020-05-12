@@ -1,81 +1,57 @@
-import { Component } from 'react';
 import classnames from 'classnames';
-import reactIntlUniversal from 'react-intl-universal';
+import { makeStyles } from '@material-ui/styles';
+import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { Typography } from '@material-ui/core';
 
-import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
-import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { useAppContext } from 'src/store';
 
-interface IFormFirmInformation {
-  formData: any;
-  dispatch: any;
-  onSubmit?: any;
-  hideButton?: boolean;
-  classes?: any;
-}
+const useStyles = makeStyles((theme: MuiTheme) => ({
+  subTitleForm: {
+    color: '#07293D',
+    fontSize: '16px',
+    lineHeight: '21px',
+    width: '275px',
+    [theme.breakpoints.up(768)]: {
+      fontSize: '22px',
+      lineHeight: '28px',
+      width: '100%',
+    },
+  },
+}));
 
-const intl = reactIntlUniversal;
+export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean) => {
+  const { intl } = useAppContext();
+  const classes = useStyles();
+  return (
+    <>
+      <Row wrap="wrap" style={stylesComponent.rowContainer}>
+        {isReview ? null : (
+          <Typography className={classnames(classes.subTitleForm)}>
+            {intl.get('app.title.form.risk.part.five')}
+          </Typography>
+        )}
 
-@withStyles(styles)
-export class FormRiskProfileTransaction extends Component<IFormFirmInformation> {
-  isInitValid = false;
-  isButtonLoading = false;
-
-  render() {
-    const { classes, formData, onSubmit, dispatch, hideButton } = this.props;
-    return (
-      <FormApp
-        initialValues={{
-          percentageTransactions: formData.app.data.riskProfile.percentageTransactions,
-        }}
-        isInitValid={this.isInitValid}
-        validationSchema={riskProfileTransactionValidateSchema}
-        onSubmit={onSubmit}
-        buttonLabel={'Continue'}
-        dataTestId="continueButton"
-        isLoading={this.isButtonLoading}
-        isInQuestionnaire
-        dispatch={dispatch}
-        progressBar={formData.app.metadata.progressBar}
-        hideButton={hideButton}
-      >
-        {({ touched, errors, setFieldTouched }) => {
-          return (
-            <>
-              <Row wrap="wrap" margin="0 8px" style={stylesComponent.rowContainer}>
-                <Typography
-                  style={{ margin: '0 8px' }}
-                  className={classnames(classes.subTitleForm)}
-                >
-                  {intl.get('app.title.form.risk.part.five')}
-                </Typography>
-                <Column padding="0px 8px">
-                  <FielControlForm
-                    data-test-id="percentageTransactions"
-                    name="percentageTransactions"
-                    type="number"
-                    label={'Percentage of transactions'}
-                    setFieldTouched={setFieldTouched}
-                    errors={errors}
-                    touched={touched}
-                    shouldValidateOnMount
-                    renderFastField
-                    customWidth={100}
-                  />
-                </Column>
-              </Row>
-            </>
-          );
-        }}
-      </FormApp>
-    );
-  }
-}
+        <Column padding="0px 8px">
+          <FielControlForm
+            data-test-id="percentageTransactions"
+            name="percentageTransactions"
+            type="number"
+            label={'Percentage of transactions'}
+            setFieldTouched={formikProps.setFieldTouched}
+            errors={formikProps.errors}
+            touched={formikProps.touched}
+            shouldValidateOnMount
+            renderFastField
+            customWidth={100}
+          />
+        </Column>
+      </Row>
+    </>
+  );
+};
 
 const stylesComponent = {
   rowContainer: {

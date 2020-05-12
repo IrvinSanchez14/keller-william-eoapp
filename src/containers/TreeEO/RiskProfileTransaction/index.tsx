@@ -10,6 +10,8 @@ import StepWrapper from 'src/components/StepWrapper';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
+import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileTransaction } from './form';
 
 type FullNameProps = IAppStoreProps;
@@ -50,12 +52,25 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
           heading={this.props.intl.get('app.header.form.risk.part.five')}
           classHeader={classnames(classes.stepHeader)}
         >
-          <FormRiskProfileTransaction
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              percentageTransactions: formData.app.data.riskProfile.percentageTransactions,
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={riskProfileTransactionValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormRiskProfileTransaction(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );
