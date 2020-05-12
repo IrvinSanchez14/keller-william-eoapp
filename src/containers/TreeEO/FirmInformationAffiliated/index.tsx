@@ -1,15 +1,13 @@
 import { Component } from 'react';
-
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
 import { FielControlForm } from 'src/components/FieldControlForm';
-
 import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
+import { isFirmOwnedFirmSchema } from 'src/helpers/validations';
 
 type FullNameProps = IAppStoreProps;
 
@@ -30,9 +28,6 @@ export const propertyUsageFields = [
 
 export class FirmInformationAffiliated extends Component<FullNameProps> {
   isInitValid = false;
-  state = {
-    isFirmOwned: '',
-  };
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
@@ -48,9 +43,6 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
 
   handleChange = (value: boolean, formikProps: any) => {
     formikProps.setFieldValue('isFirmOwned', value);
-    this.setState({
-      isFirmOwned: value,
-    });
   };
 
   renderFormChildren = (formikProps: any) => {
@@ -83,9 +75,10 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              isFirmOwned: this.state.isFirmOwned,
+              isFirmOwned: formData.app.data.firmInformation.isFirmOwned,
             }}
             isInitValid
+            validationSchema={isFirmOwnedFirmSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
