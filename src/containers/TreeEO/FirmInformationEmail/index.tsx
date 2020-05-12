@@ -75,7 +75,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
               faxNumber: formData.app.data.firmInformation.faxNumber || '',
               emailAddress: formData.app.data.firmInformation.emailAddress || '',
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={fullEmailValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
