@@ -1,33 +1,32 @@
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useRouter } from 'next/dist/client/router';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import FormRouter from 'src/components/FormRouter';
+import SessionModal from 'src/components/SessionModal';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
 import { useAppContext } from 'src/store';
+import { setAppState } from 'src/store/actions/app';
 import AppState from 'src/store/models/AppState';
 import ky from '../../utils/ky';
 import { AgentInformation } from './AgentInformation';
 import { AgentInformationDesignation } from './AgentInformationDesignation';
 import { AgentInformationRevoked } from './AgentInformationRevoked';
+import { CommissionInformation } from './CommissionInformation';
+import { CommissionInformationCommercial } from './CommissionInformationCommercial';
+import { CommissionInformationMenu } from './CommissionInformationMenu';
+import { CommissionInformationOther } from './CommissionInformationOther';
+import { CommissionInformationResidential } from './CommissionInformationResidential';
+import { CommissionInformationSummary } from './CommissionInformationSummary';
+import { CommissionInformationTransaction } from './CommissionInformationTransaction';
 import { FirmInformationAffiliated } from './FirmInformationAffiliated';
 import { FirmInformationBroker } from './FirmInformationBroker';
 import { FirmInformationEmail } from './FirmInformationEmail';
 import { PolicyInformation } from './PolicyInformation';
 import { PolicyInformationClaims } from './PolicyInformationClaims';
-import { CommissionInformation } from './CommissionInformation';
-import { CommissionInformationTransaction } from './CommissionInformationTransaction';
-import { CommissionInformationResidential } from './CommissionInformationResidential';
-import { CommissionInformationSummary } from './CommissionInformationSummary';
-import { CommissionInformationMenu } from './CommissionInformationMenu';
-import { CommissionInformationCommercial } from './CommissionInformationCommercial';
-import { CommissionInformationOther } from './CommissionInformationOther';
+import { RiskProfileReits } from './RiskProfieReits';
 import { RiskProfile } from './RiskProfile';
 import { RiskProfileBanck } from './RiskProfileBanck';
-import { RiskProfileReits } from './RiskProfieReits';
 import { RiskProfileFirm } from './RiskProfileFirm';
 import { RiskProfileTransaction } from './RiskProfileTransaction';
-import ProviderSelection from 'src/components/ProviderSelection';
-import { useRouter } from 'next/dist/client/router';
-import { setAppState } from 'src/store/actions/app';
-import SessionModal from 'src/components/SessionModal';
 
 type SessionResponse = AppState['app'];
 
@@ -66,7 +65,6 @@ function AppEO() {
   const router = useRouter();
   const { dispatch, intl, state } = useAppContext();
   const { sessionId, isOpen, setIsOpen } = useSessionSaver(state);
-  const [complete, setComplete] = useState(true);
   const getSession = useCallback(
     async (sessionId: string) => {
       try {
@@ -78,21 +76,14 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (!isLastPage(state) && complete) setComplete(false);
-    if (isLastPage(state) && !complete) setComplete(true);
-  }, [state, complete]);
-
-  useEffect(() => {
-    if (state.app.completed) router.push(`/confirmation-page?sessionId=${sessionId}`);
-  }, [state.app.completed, sessionId, router, state.app.confirmationNumber]);
+    if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+  }, [state, sessionId, router]);
 
   useEffect(() => {
     const resume = router.query.resume;
     if (typeof resume !== 'string') return;
     getSession(resume);
   }, [getSession, router.query.resume]);
-
-  if (complete) return <ProviderSelection sessionId={sessionId} />;
 
   return (
     <>
