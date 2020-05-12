@@ -1,9 +1,7 @@
 import { Component } from 'react';
-
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-
 import StepWrapper from 'src/components/StepWrapper';
 import { isFirmOwnedValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
@@ -60,7 +58,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              isFirmOwned: this.state.isFirmOwned,
+              isFirmOwned: formData.app.data.firmInformation.isFirmOwned,
             }}
             validationSchema={isFirmOwnedValidateSchema}
             isInitValid

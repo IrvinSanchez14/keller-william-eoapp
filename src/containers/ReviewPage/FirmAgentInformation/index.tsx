@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import FirmAgentInformationProps from './IFirmAgentInformation';
 import TextLight from 'src/components/TextLight';
 import TextBold from 'src/components/TextBold';
+import { useCallback } from 'react';
 
 const labelInformation = {
   firmInformation: {
@@ -51,12 +52,18 @@ const ContainerBackgroundShape = styled.div`
 export default function FirmAgentInformation({
   openEditModal,
   data,
-}: FirmAgentInformationProps): JSX.Element {
+}: FirmAgentInformationProps): React.ReactElement {
+  const onOpenModal = useCallback(
+    (nameform: string) => () => {
+      openEditModal?.(nameform);
+    },
+    [openEditModal],
+  );
   return (
     <ContainerBackgroundShape>
       <Layout
         textHeader="Firm information"
-        openEditPageModal={() => openEditModal('Firm information')}
+        openEditPageModal={openEditModal && onOpenModal('Firm information')}
       >
         <ContainerInformation firstPadding>
           <TextBold text="Keller Williams Realty, Inc." />
@@ -112,7 +119,7 @@ export default function FirmAgentInformation({
       </Layout>
       <Layout
         textHeader="Agent information"
-        openEditPageModal={() => openEditModal('Agent information')}
+        openEditPageModal={openEditModal && onOpenModal('Agent information')}
       >
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.numberAgentsMoreCommission} />

@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import theme from 'src/styles/MarketingEO/theme';
 import SVG from 'react-inlinesvg';
 import ButtonPrimary from 'src/components/Button/ButtonPrimary';
-import CoveredNowModal from '../CoveredNowModal';
-import NavigationReviewProps from './INavigationReview';
+import NavigationPdfProps from './INavigationPdf';
 
 interface HeaderContainerProps {
   centerItem?: boolean;
@@ -68,32 +66,8 @@ const StyledSVG = styled(SVG)<StyledSVGProps>`
   ${({ width }) => width && `width: ${width};`};
 `;
 
-const StyledButton = styled(ButtonPrimary)`
-  ${({ theme }) => theme.phone`
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    margin-left: 22px;
-    i {
-      transform: translateY(-3px);
-    }
-  `};
-`;
-
-const StyledButtonCopy = styled.span`
-  margin-left: 11px;
-  i {
-    transform: translateY(-3px);
-  }
-`;
-
-export default function NavigationReview(Props: NavigationReviewProps): JSX.Element {
-  const { isTablet, isMobile, width, sectionPage } = Props;
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
+export default function NavigationPdf(Props: NavigationPdfProps): React.ReactElement {
+  const { isTablet, isMobile } = Props;
 
   return (
     <Header isTablet={isTablet}>
@@ -102,31 +76,13 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
           <HeaderTextPage>
             <strong>E&O APPLICATION</strong>
           </HeaderTextPage>
-          <HeaderTextP>{sectionPage}</HeaderTextP>
+          <HeaderTextP>:REVIEW</HeaderTextP>
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
         <StyledSVG height="120px" width="188px" src="/static/img/logoKW.svg" />
       </HeaderContainer>
-      <HeaderContainer rightItem>
-        <StyledButton onClick={() => toggleModal()} width="200px" color="dark">
-          {isMobile ? (
-            <i className="fas fa-phone" />
-          ) : (
-            <>
-              <i style={{ fontSize: 18, marginLeft: 12 }} className="fas fa-phone" />
-              <StyledButtonCopy>Get covered now</StyledButtonCopy>
-            </>
-          )}
-        </StyledButton>
-      </HeaderContainer>
-      {isModalVisible && (
-        <CoveredNowModal
-          width={width}
-          isModalOpen={isModalVisible}
-          closeModal={() => toggleModal()}
-        />
-      )}
+      <HeaderContainer rightItem></HeaderContainer>
     </Header>
   );
 }

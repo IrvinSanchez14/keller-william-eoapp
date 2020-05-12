@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';

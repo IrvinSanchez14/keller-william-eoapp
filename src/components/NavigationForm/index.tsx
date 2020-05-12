@@ -26,6 +26,7 @@ interface INavigationProps extends IAppStoreProps {
   isFetching?: boolean;
   isConfirmationPage?: boolean;
   isCallButton?: boolean;
+  showStep?: boolean;
 }
 
 export function NavigationForm(Props: INavigationProps) {
@@ -37,6 +38,7 @@ export function NavigationForm(Props: INavigationProps) {
     isFetching,
     isConfirmationPage = false,
     isCallButton = true,
+    showStep = true,
   } = Props;
   const { state, intl, dispatch } = useAppContext();
   const classes = useStyles();
@@ -99,7 +101,7 @@ export function NavigationForm(Props: INavigationProps) {
                 })}
               >
                 <AwesomeFontIcon
-                  name="faArrowLeft"
+                  name="faAngleLeft"
                   type="regular"
                   dataTestId="backButton"
                   className={classes.backIcon}
@@ -120,13 +122,17 @@ export function NavigationForm(Props: INavigationProps) {
                   >
                     {customBackLabel}
                   </Typography>
-                ) : (
+                ) : showStep ? (
                   <>
                     <Typography variant="caption" className={classes.stepType}>
                       <strong>{`${stepTypeValue}:`}</strong>
                     </Typography>
                     <Typography variant="caption">{step}</Typography>
                   </>
+                ) : (
+                  <Typography variant="caption" className={classes.stepType}>
+                    <strong>{stepTypeValue}</strong>
+                  </Typography>
                 )}
               </Row>
             </Row>

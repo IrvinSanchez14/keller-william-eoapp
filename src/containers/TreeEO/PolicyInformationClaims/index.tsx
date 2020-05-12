@@ -24,20 +24,11 @@ import { FormPolicyInformationClaims } from './form';
 
 export type CurrentAddressProps = IAppStoreProps;
 
-type FormValues = {
-  unit: string;
-  formattedAddress: string;
-  isHaveClaims: boolean;
-  years: number;
-  months: number;
-  zero_results?: boolean;
-};
-
 @withStyles(styles)
 export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isLoading = false;
-  isButtonLoading = false;
   isInitValid = false;
+  isButtonLoading = false;
 
   async componentDidMount() {
     const { dispatch } = this.props;

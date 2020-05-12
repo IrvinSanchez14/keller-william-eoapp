@@ -8,7 +8,7 @@ interface FirmInformationProps {
   phoneNumber: string | number;
   faxNumber: string | number;
   email: string;
-  isFirmOwned: boolean;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
@@ -18,7 +18,7 @@ interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense: boolean | null;
 }
 
 interface DataProps {
@@ -27,6 +27,6 @@ interface DataProps {
 }
 
 export default interface FirmAgentInformationProps {
-  openEditModal: (nameform: string) => void;
+  openEditModal?: (nameform: string) => void;
   data: DataProps;
 }

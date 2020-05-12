@@ -37,13 +37,8 @@ export interface PolicyInformationProps {
     yearCoverage: string;
     annualPremium: number;
   };
-  isHaveClaims: boolean;
-  claims: [
-    {
-      dateClaim: string;
-      amountClaim: number;
-    },
-  ];
+  isHaveClaims: boolean | null;
+  claims: [] | [{ dateClaim: string; amountClaim: number }];
 }
 
 export interface AgentInformationProps {
@@ -64,7 +59,7 @@ export interface FirmInformationProps {
   phoneNumber: number;
   faxNumber: number;
   emailAddress: string;
-  isFirmOwned: boolean;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
@@ -129,13 +124,8 @@ export default class AppState implements IAppState {
           yearCoverage: '',
           annualPremium: 0,
         },
-        isHaveClaims: undefined,
-        claims: [
-          {
-            dateClaim: '',
-            amountClaim: undefined,
-          },
-        ],
+        isHaveClaims: null,
+        claims: [],
       },
       commission: {
         grossCommission: undefined,
