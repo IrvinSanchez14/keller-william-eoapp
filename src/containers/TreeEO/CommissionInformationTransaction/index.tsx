@@ -87,6 +87,7 @@ export class CommissionInformationTransaction extends Component<FullNameProps> {
                         errors={errors}
                         touched={touched}
                         shouldValidateOnMount
+                        placeholder="%"
                         renderFastField
                         customWidth={100}
                       />

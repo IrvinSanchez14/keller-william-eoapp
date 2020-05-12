@@ -16,6 +16,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { dateMask } from 'src/utils';
 
 type FullNameProps = IAppStoreProps;
 
@@ -93,9 +94,11 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                         name="dateLicensedBrokerAgent"
                         type="text"
                         label={'Date'}
+                        placeholder="MM/DD/YYYY"
                         setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
+                        mask={dateMask}
                         shouldValidateOnMount
                         className={classnames(classes.fielControlForm)}
                         renderFastField
@@ -111,6 +114,8 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                         name="dateLicensedBroker"
                         type="text"
                         label={'Date'}
+                        placeholder="MM/DD/YYYY"
+                        mask={dateMask}
                         setFieldTouched={setFieldTouched}
                         errors={errors}
                         touched={touched}
