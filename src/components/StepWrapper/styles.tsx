@@ -53,6 +53,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     fontWeight: 'bold',
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       fontSize: 24, // send fontSize via props?
+      lineHeight: '28px',
     },
   },
   stepInfoContent: {

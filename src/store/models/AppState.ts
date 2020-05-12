@@ -1,3 +1,11 @@
+export interface RiskProfileProps {
+  isHomeWarranty: boolean;
+  isMortageBanking: boolean;
+  isPerformServices: boolean;
+  isRepresentCommission: boolean;
+  percentageTransactions: number;
+}
+
 export interface SummaryProps {
   realEstate: number;
   rawLand: number;
@@ -43,7 +51,7 @@ export interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense: boolean | null;
   currentCarrier: string;
   isHaveInsurance: boolean;
 }
@@ -68,7 +76,7 @@ export interface DataInitalProps {
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
   commission?: CommissionInformationProps;
-  riskProfile?: Array<any>;
+  riskProfile?: RiskProfileProps;
 }
 
 export interface MetaDataProps {
@@ -111,7 +119,7 @@ export default class AppState implements IAppState {
         numberAgentLessCommission: 0,
         numberAgenteNoCommission: 0,
         numberAgentSpecialDesignation: 0,
-        revokedLicense: false,
+        revokedLicense: null,
         currentCarrier: '',
         isHaveInsurance: false,
       },
@@ -158,12 +166,19 @@ export default class AppState implements IAppState {
         mortageBrokerage: 0,
         totalCommision: 0,
       },
+      riskProfile: {
+        isHomeWarranty: undefined,
+        isMortageBanking: undefined,
+        isPerformServices: undefined,
+        isRepresentCommission: undefined,
+        percentageTransactions: undefined,
+      },
     },
     providers: [],
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',
-      progressBar: 5,
+      progressBar: 4.8,
     },
   };
 }
