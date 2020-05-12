@@ -22,6 +22,10 @@ export const dateBrokerValidateSchema = Yup.object().shape({
   dateLicensedBroker: Yup.string().required('Field is required'),
 });
 
+export const agentRevokedLicenseSchema = Yup.object().shape({
+  revokedLicense: Yup.boolean().required(),
+});
+
 export const agentLicensedValidateSchema = Yup.object().shape({
   numberAgentsMoreCommission: Yup.number().required('Field is required'),
   numberAgentLessCommission: Yup.number().required('Field is required'),
@@ -49,7 +53,7 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
   }
 };
 
-export const policyInforamtionClaims = Yup.object().shape({
+export const policyInforamtionClaimsSchema = Yup.object().shape({
   isHaveClaims: Yup.boolean().required(),
   claims: Yup.array().when('isHaveClaims', {
     is: true,
