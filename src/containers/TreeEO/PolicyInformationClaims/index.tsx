@@ -32,7 +32,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 9, categoriesName.commission);
+    setInformationPage(dispatch, 9, categoriesName.policyInformation);
   }
 
   nextStep = async (values: any, actions: any) => {
@@ -41,7 +41,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     storeClaimsPolicy(dispatch, values);
-    setInformationPage(dispatch, 10, categoriesName.policyInformation);
+    setInformationPage(dispatch, 10, categoriesName.commission);
   };
 
   render() {
