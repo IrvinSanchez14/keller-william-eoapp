@@ -1,14 +1,18 @@
 import Head from 'next/head';
 
-import { GetServerSideProps } from 'next';
-import ky from '../src/utils/ky';
 import AppState from 'src/store/models/AppState';
 import Error from 'next/error';
 import ProviderSelection from 'src/components/ProviderSelection';
 import { AppStateContextProvider } from 'src/store';
+import { useKyGet } from 'src/utils/use-ky';
+import { useRouter } from 'next/dist/client/router';
 
-const ProviderSelectionPage: React.FC<Partial<AppState>> = ({ app }) => {
-  if (!app) return <Error statusCode={404} />;
+const ProviderSelectionPage: React.FC = () => {
+  const router = useRouter();
+  const { data, state } = useKyGet<AppState['app']>(`session/${router.query.sessionId}`, {
+    pause: typeof router.query.sessionId !== 'string',
+  });
+  if (state === 'error') return <Error statusCode={404} />;
   return (
     <div>
       <Head>
@@ -36,21 +40,10 @@ const ProviderSelectionPage: React.FC<Partial<AppState>> = ({ app }) => {
         <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
       <AppStateContextProvider>
-        <ProviderSelection state={app} />
+        {data && <ProviderSelection state={data} />}
       </AppStateContextProvider>
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const sessionId = context.query.sessionId;
-  if (typeof sessionId !== 'string') return { props: {} };
-  try {
-    const response = await ky.get(`session/${sessionId}`).json<AppState['app']>();
-    return { props: { app: response } };
-  } catch {
-    return { props: {} };
-  }
 };
 
 export default ProviderSelectionPage;
