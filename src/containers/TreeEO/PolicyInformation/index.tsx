@@ -140,6 +140,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                           label={'Renewal date'}
                           setFieldTouched={setFieldTouched}
                           errors={errors}
+                          placeholder="MM/DD/YYYY"
                           touched={touched}
                           shouldValidateOnMount
                           fullWidth
@@ -163,6 +164,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                             name="deductible"
                             type="number"
                             label={'Deductible'}
+                            placeholder="$"
                             setFieldTouched={setFieldTouched}
                             errors={errors}
                             touched={touched}
@@ -179,6 +181,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                             name="limits"
                             type="number"
                             label={'Limits'}
+                            placeholder="$"
                             setFieldTouched={setFieldTouched}
                             errors={errors}
                             touched={touched}
@@ -228,6 +231,7 @@ export class PolicyInformation extends Component<FullNameProps> {
                           shouldValidateOnMount
                           fullWidth
                           renderFastField
+                          placeholder="$"
                           readOnly={isHaveInsurance}
                         />
                       </Grid>
