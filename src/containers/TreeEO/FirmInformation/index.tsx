@@ -45,7 +45,7 @@ export class FirmInformation extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
       this.isInitValid = await fullNameValidateSchema.isValid({
-        contacName: formData.app.data.firmInformation.contacName,
+        contactName: formData.app.data.firmInformation.contactName,
         brokerName: formData.app.data.firmInformation.brokerName,
         kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName,
         yearEstablished: formData.app.data.firmInformation.yearEstablished,
@@ -88,7 +88,7 @@ export class FirmInformation extends Component<FullNameProps> {
 
           <FormApp
             initialValues={{
-              contacName: formData.app.data.firmInformation.contacName || '',
+              contactName: formData.app.data.firmInformation.contactName || '',
               brokerName: formData.app.data.firmInformation.brokerName || '',
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
               yearEstablished: formData.app.data.firmInformation.yearEstablished || '',

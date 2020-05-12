@@ -1,6 +1,6 @@
 export const getFullNameFields = () => [
   {
-    name: 'contacName',
+    name: 'contactName',
     type: 'text',
     placeholder: '',
     label: 'Contact Name',

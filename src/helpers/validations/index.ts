@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 export const fullNameValidateSchema = Yup.object().shape({
-  contacName: Yup.string().required('Field is required'),
+  contactName: Yup.string().required('Field is required'),
   brokerName: Yup.string().required('Field is required'),
   kwMarketCenterName: Yup.string().required('Field is required'),
   yearEstablished: Yup.number().required('Field is required'),
