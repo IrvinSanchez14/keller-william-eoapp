@@ -136,7 +136,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               data-test-id="yearCoverage"
               name="yearCoverage"
               type="string"
-              label={'Years of continuos coverage'}
+              label={'Years of continuous coverage'}
               setFieldTouched={formikProps.setFieldTouched}
               errors={formikProps.errors}
               touched={formikProps.touched}
