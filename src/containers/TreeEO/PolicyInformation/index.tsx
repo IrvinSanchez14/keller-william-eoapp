@@ -37,7 +37,7 @@ export class PolicyInformation extends Component<FullNameProps> {
     storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 8, categoriesName.policyInformation);
+    setInformationPage(dispatch, 9, categoriesName.policyInformation);
   };
 
   async componentDidMount() {
@@ -45,7 +45,7 @@ export class PolicyInformation extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 7, categoriesName.policyInformation);
+    setInformationPage(dispatch, 8, categoriesName.policyInformation);
   }
 
   handleChange = () => {

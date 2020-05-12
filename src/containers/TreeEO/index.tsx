@@ -21,11 +21,13 @@ import { RiskProfileBanck } from './RiskProfileBanck';
 import { RiskProfileReits } from './RiskProfieReits';
 import { RiskProfileFirm } from './RiskProfileFirm';
 import { RiskProfileTransaction } from './RiskProfileTransaction';
+import { WelcomeEO } from './WelcomeEO';
 
 function AppEO() {
   const { dispatch, intl, state } = useAppContext();
   return (
     <FormRouter>
+      <WelcomeEO dispatch={dispatch} intl={intl} formData={state} />
       <FirmInformation dispatch={dispatch} intl={intl} formData={state} />
       <FirmInformationEmail dispatch={dispatch} intl={intl} formData={state} />
       <FirmInformationAffiliated dispatch={dispatch} intl={intl} formData={state} />

@@ -36,13 +36,13 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
     //Router.push('/review');
-    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   }
 
   render() {

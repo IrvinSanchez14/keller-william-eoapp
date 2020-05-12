@@ -38,7 +38,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 6, categoriesName.agentInformation);
+    setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
@@ -50,7 +50,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           formData.app.data.agentInformation.numberAgentSpecialDesignation,
       });
     }
-    setInformationPage(dispatch, 5, categoriesName.agentInformation);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   }
 
   render() {

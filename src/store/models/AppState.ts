@@ -164,7 +164,7 @@ export default class AppState implements IAppState {
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',
-      progressBar: 4.8,
+      progressBar: 0,
     },
   };
 }

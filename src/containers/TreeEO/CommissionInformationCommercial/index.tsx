@@ -29,7 +29,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 14, categoriesName.commission);
+    setInformationPage(dispatch, 15, categoriesName.commission);
   };
 
   async componentDidMount() {
@@ -37,7 +37,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 13, categoriesName.commission);
+    setInformationPage(dispatch, 14, categoriesName.commission);
   }
 
   sumState = (object: any) => {
