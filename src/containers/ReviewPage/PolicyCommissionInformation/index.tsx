@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TextBold from 'src/components/TextBold';
 import TextLight from 'src/components/TextLight';
 import PolicyCommissionInformationProps from './IPolicyCommissionInformation';
-import { formatAmount } from 'src/helpers/formatData';
+import { formatAmount, formatPercentage } from 'src/helpers/formatData';
 import { useCallback } from 'react';
 
 interface ContainerInformationProps {
@@ -64,6 +64,12 @@ const Table = styled.div`
   ${({ theme }) => theme.phone`
     max-width: 100%;
   `}
+
+  &:last-child {
+    border-top: 1px solid ${(props) => props.theme.colors.grayTableHeader};
+    border-bottom: 0;
+  }
+}
 `;
 
 const TableHeader = styled.div`
@@ -133,9 +139,14 @@ const ComissionTotalValueText = styled.h1`
   `};
 `;
 
+function calcCommission(total: number, value: number) {
+  return formatPercentage(Math.round((value / total) * 100));
+}
+
 export default function PolicyCommissionInformation({
   data,
   openEditModal,
+  isPdf,
 }: PolicyCommissionInformationProps): JSX.Element {
   const onOpenModal = useCallback(
     (nameForm: string) => () => {
@@ -143,6 +154,122 @@ export default function PolicyCommissionInformation({
     },
     [openEditModal],
   );
+  const tableInfo = isPdf
+    ? [
+        {
+          name: 'Residential real estate',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.realEstate,
+          ),
+        },
+        {
+          name: 'Residential raw land',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.rawLand,
+          ),
+        },
+        {
+          name: 'Residential appraisals',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.appraisals,
+          ),
+        },
+        {
+          name: 'Residential property management',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.propertyMgmt,
+          ),
+        },
+        {
+          name: 'Residential owned property',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.ownedProperty,
+          ),
+        },
+        {
+          name: 'Commercial real estate',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.realEstate,
+          ),
+        },
+        {
+          name: 'Commercial raw land',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.rawLand,
+          ),
+        },
+        {
+          name: 'Commercial appraisals',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.appraisals,
+          ),
+        },
+        {
+          name: 'Commercial property management',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.propertyMgmt,
+          ),
+        },
+        {
+          name: 'Commercial property',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.ownedProperty,
+          ),
+        },
+        {
+          name: 'Farm/Ranch',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.farmRanch,
+          ),
+        },
+        {
+          name: 'Auctioneering',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.auctioneering,
+          ),
+        },
+        {
+          name: 'Mortgage',
+          value: calcCommission(
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.mortageBrokerage,
+          ),
+        },
+      ]
+    : [
+        {
+          name: 'Residential',
+          value: formatAmount(data.commissionInformation.residential.total, true),
+        },
+        {
+          name: 'Commercial',
+          value: formatAmount(data.commissionInformation.commercial.total, true),
+        },
+        {
+          name: 'Farm/Ranch',
+          value: formatAmount(data.commissionInformation.farmRanch, true),
+        },
+        {
+          name: 'Auctioneering',
+          value: formatAmount(data.commissionInformation.auctioneering, true),
+        },
+        {
+          name: 'Mortgage',
+          value: formatAmount(data.commissionInformation.mortageBrokerage, true),
+        },
+      ];
   return (
     <ContainerBackgroundShape>
       <Layout
@@ -214,40 +341,16 @@ export default function PolicyCommissionInformation({
         <ContainerInformation maxWidthMobile>
           <Table>
             <TableHeader>TYPES OF COMMISSION</TableHeader>
-            <TableList>
-              <ComissionNameText>{`Residential`}</ComissionNameText>
-              <ComissionValueText>
-                {data.commissionInformation.summary.residential.residentialTotal}
-              </ComissionValueText>
-            </TableList>
-            <TableList>
-              <ComissionNameText>{`Comercial`}</ComissionNameText>
-              <ComissionValueText>
-                {formatAmount(data.commissionInformation.summary.commercial.commercialTotal, true)}
-              </ComissionValueText>
-            </TableList>
-            <TableList>
-              <ComissionNameText>{`Farm/Ranch`}</ComissionNameText>
-              <ComissionValueText>
-                {formatAmount(data.commissionInformation.farmRanch, true)}
-              </ComissionValueText>
-            </TableList>
-            <TableList>
-              <ComissionNameText>{`Auctionering`}</ComissionNameText>
-              <ComissionValueText>
-                {formatAmount(data.commissionInformation.auctioneering, true)}
-              </ComissionValueText>
-            </TableList>
-            <TableList>
-              <ComissionNameText>{`Mortgage`}</ComissionNameText>
-              <ComissionValueText>
-                {formatAmount(data.commissionInformation.mortageBrokerage, true)}
-              </ComissionValueText>
-            </TableList>
+            {tableInfo.map((cell) => (
+              <TableList key={cell.name}>
+                <ComissionNameText>{cell.name}</ComissionNameText>
+                <ComissionValueText>{cell.value}</ComissionValueText>
+              </TableList>
+            ))}
             <TableList lastItem>
-              <ComissionTotalNameText>{`Total`}</ComissionTotalNameText>
+              <ComissionTotalNameText>Total</ComissionTotalNameText>
               <ComissionTotalValueText>
-                {formatAmount(data.commissionInformation.totalCommision, true)}
+                {isPdf ? '100%' : formatAmount(data.commissionInformation.totalCommision, true)}
               </ComissionTotalValueText>
             </TableList>
           </Table>
