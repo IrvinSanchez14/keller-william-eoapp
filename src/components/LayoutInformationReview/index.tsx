@@ -126,7 +126,6 @@ export default function LayoutInformationReview({
 }: LayoutInformationReviewProps): JSX.Element {
   const [showModal, setShowModal] = useState(false);
   const [nameForm, setNameForm] = useState('');
-  const [children, setChildren] = useState(null);
 
   function openModal(nameCategory: string): void {
     setNameForm(nameCategory);

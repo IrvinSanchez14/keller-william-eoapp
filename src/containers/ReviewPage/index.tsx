@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useAppContext } from 'src/store';
+import { useAppContext, AppStateContextProvider } from 'src/store';
 import { exampleContext } from 'src/store/actions/example';
 import NavigationReview from 'src/components/NavigationReview';
 import FooterReview from 'src/components/FooterReview';
@@ -29,9 +29,11 @@ export default function ReviewPage(): JSX.Element {
   }, []);
   return (
     <>
-      <NavigationReview width={width} isTablet={isTablet} isMobile={isMobile} />
-      <Layout textHeader="Please review your application before submitting" />
-      <FooterReview />
+      <AppStateContextProvider>
+        <NavigationReview width={width} isTablet={isTablet} isMobile={isMobile} />
+        <Layout textHeader="Please review your application before submitting" />
+        <FooterReview />
+      </AppStateContextProvider>
     </>
   );
 }

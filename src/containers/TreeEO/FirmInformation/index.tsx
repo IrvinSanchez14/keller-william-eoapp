@@ -8,6 +8,8 @@ import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/action
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
+import { FormApp } from 'src/components/FormApp';
+import { fullNameValidateSchema } from 'src/helpers/validations';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
@@ -25,6 +27,7 @@ type FormFields = {
 @withStyles(styles)
 export class FirmInformation extends Component<FullNameProps> {
   isButtonLoading = false;
+  isInitValid = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
@@ -54,13 +57,29 @@ export class FirmInformation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.firm.part.one')}
           </Typography>
-
-          <FormFirmInformation
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              contacName: formData.app.data.firmInformation.contacName || '',
+              brokerName: formData.app.data.firmInformation.brokerName,
+              kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName,
+              yearEstablished: formData.app.data.firmInformation.yearEstablished,
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={fullNameValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              console.log('formikProps', formikProps);
+              return FormFirmInformation(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

@@ -107,6 +107,7 @@ const ModalFormContainer = styled.div`
 `;
 
 const ModalForm = styled.div`
+  height: 100%;
   margin-top: 29px;
   margin-left: 90px;
   margin-right: 90px;
@@ -115,7 +116,6 @@ const ModalForm = styled.div`
   display: flex;
   border-radius: 6px;
   background-color: white;
-  height: 2000px;
   ${({ theme }) =>
     theme &&
     `

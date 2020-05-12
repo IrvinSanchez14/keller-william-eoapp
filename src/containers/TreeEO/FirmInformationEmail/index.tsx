@@ -1,14 +1,13 @@
 import { Component } from 'react';
 import isEmpty from 'lodash/isEmpty';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import { fullEmailValidateSchema } from 'src/helpers/validations';
-import { getFullEmailFields } from 'src/helpers/fieldsForm';
+
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
@@ -42,23 +41,6 @@ export class FirmInformationEmail extends Component<FullNameProps> {
     setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
   }
 
-  renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
-    getFullEmailFields().map(({ name, type, customWidth, label }) => (
-      <FielControlForm
-        data-test-id={name}
-        key={name}
-        name={name}
-        type={type}
-        setFieldTouched={setFieldTouched}
-        label={label}
-        fullWidth
-        errors={errors}
-        touched={touched}
-        renderFastField
-        customWidth={customWidth}
-      />
-    ));
-
   render() {
     const isLoading = false;
     const { formData, dispatch } = this.props;
@@ -68,12 +50,27 @@ export class FirmInformationEmail extends Component<FullNameProps> {
           avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
           heading={this.props.intl.get('app.head.form.firm.part.two')}
         >
-          <FormFirmInformationEmail
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              streetAddress: formData.app.data.firmInformation.streetAddress || '',
+              suite: formData.app.data.firmInformation.suite || '',
+              phoneNumber: formData.app.data.firmInformation.phoneNumber || '',
+              faxNumber: formData.app.data.firmInformation.faxNumber || '',
+              emailAddress: formData.app.data.firmInformation.emailAddress || '',
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={fullEmailValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={false}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {FormFirmInformationEmail}
+          </FormApp>
         </StepWrapper>
       )
     );

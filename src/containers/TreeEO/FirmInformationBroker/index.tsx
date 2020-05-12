@@ -1,6 +1,10 @@
 import { Component } from 'react';
+import Router from 'next/router';
+import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 
+import { FormApp } from 'src/components/FormApp';
+import { dateBrokerValidateSchema } from 'src/helpers/validations';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -31,7 +35,8 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    Router.push('/review');
+    //setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
@@ -51,12 +56,29 @@ export class FirmInformationBroker extends Component<FullNameProps> {
           subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
           bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
         >
-          <FormFirmInformationBroker
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              dateLicensedBrokerAgent:
+                formData.app.data.firmInformation.dateLicensedBrokerAgent || '',
+              dateLicensedBroker: formData.app.data.firmInformation.dateLicensedBroker || '',
+            }}
+            isInitValid={this.isInitValid}
+            validationSchema={dateBrokerValidateSchema}
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={this.isButtonLoading}
+            isInQuestionnaire
+            dispatch={dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+            alignButton={classnames(classes.alignButton)}
+          >
+            {(formikProps) => {
+              console.log('formikProps', formikProps);
+              return FormFirmInformationBroker(formikProps);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );

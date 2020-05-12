@@ -5,10 +5,8 @@ import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/action
 import { setInformationPage } from 'src/store/actions/app';
 
 import StepWrapper from 'src/components/StepWrapper';
+import { isFirmOwnedValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-
-import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
 import { FormFirmInformationAffiliated } from './form';
 
@@ -32,7 +30,7 @@ export const propertyUsageFields = [
 export class FirmInformationAffiliated extends Component<FullNameProps> {
   isInitValid = false;
   state = {
-    isFirmOwned: '',
+    isFirmOwned: this.props.formData.app.data.firmInformation.isFirmOwned,
   };
 
   nextStep = async (values: any, actions: any) => {
@@ -49,45 +47,36 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
 
   handleChange = (value: boolean, formikProps: any) => {
     formikProps.setFieldValue('isFirmOwned', value);
-    this.setState({
-      isFirmOwned: value,
-    });
-  };
-
-  renderFormChildren = (formikProps: any) => {
-    return propertyUsageFields.map((item) => (
-      <FielControlForm
-        key={item.id}
-        name={item.name}
-        renderCustomField={({ field }) => (
-          <RadioField
-            {...field}
-            value={item.value}
-            data-test-id={item.value}
-            label={this.props.intl.get(`app.radio.answer.${item.text}`)}
-            onChange={() => this.handleChange(item.value, formikProps)}
-            checked={formikProps.values.isFirmOwned === item.value}
-          />
-        )}
-      />
-    ));
   };
 
   render() {
     const isLoading = false;
-    const { formData, dispatch } = this.props;
+    const { formData } = this.props;
     return (
       !isLoading && (
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
           heading={this.props.intl.get('app.head.form.firm.part.three')}
         >
-          <FormFirmInformationAffiliated
-            formData={formData}
-            dispatch={dispatch}
+          <FormApp
+            initialValues={{
+              isFirmOwned: this.state.isFirmOwned,
+            }}
+            validationSchema={isFirmOwnedValidateSchema}
+            isInitValid
             onSubmit={this.nextStep}
+            buttonLabel={'Continue'}
+            dataTestId="continueButton"
+            isLoading={false}
+            isInQuestionnaire
+            dispatch={this.props.dispatch}
+            progressBar={formData.app.metadata.progressBar}
             hideButton={false}
-          />
+          >
+            {(formikProps) => {
+              return FormFirmInformationAffiliated(formikProps, this.handleChange);
+            }}
+          </FormApp>
         </StepWrapper>
       )
     );
