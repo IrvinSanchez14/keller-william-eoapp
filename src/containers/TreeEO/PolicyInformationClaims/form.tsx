@@ -123,46 +123,46 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
             {residenceTimeFields.map(
-              ({ name, placeholder, label, mask, numberMask, type }: any) => (
-                <FielControlForm
-                  key={`claims.${name}.${index}`}
-                  name={`claims.${index}.${name}`}
-                  type={type}
-                  errors={formikProps.errors}
-                  touched={formikProps.touched}
-                  renderFastField
-                  renderCustomField={({ field }) => (
-                    <TextFieldForm
-                      {...field}
-                      type={type}
-                      numberMask={numberMask}
-                      data-test-id={`${name}.${index}`}
-                      label={label}
-                      placeholder={placeholder}
-                      setFieldTouched={formikProps.setFieldTouched}
-                      customWidth={150}
-                      mask={mask}
-                      className={classnames(classes.periodContainerInput, {
-                        [classes.periodContainerInputInvalid]:
-                          formikProps.errors[name] && formikProps.touched[name],
-                      })}
-                    />
-                  )}
-                />
-              ),
+              ({ name, placeholder, label, mask, numberMask, type, values }: any) => {
+                return (
+                  <FielControlForm
+                    key={`claims.${name}.${index}`}
+                    name={`claims.${index}.${name}`}
+                    type={type}
+                    errors={formikProps.errors}
+                    touched={formikProps.touched}
+                    renderFastField
+                    renderCustomField={({ field }) => (
+                      <TextFieldForm
+                        {...field}
+                        type={type}
+                        numberMask={numberMask}
+                        data-test-id={`${name}.${index}`}
+                        label={label}
+                        placeholder={placeholder}
+                        setFieldTouched={formikProps.setFieldTouched}
+                        customWidth={150}
+                        mask={mask}
+                        className={classnames(classes.periodContainerInput, {
+                          [classes.periodContainerInputInvalid]:
+                            formikProps.errors[name] && formikProps.touched[name],
+                        })}
+                      />
+                    )}
+                  />
+                );
+              },
             )}
           </Column>
         ))}
         <div
           className={classes.containerAddButton}
-          onClick={() =>
+          onClick={() => {
+            const addArray = [{}];
             addClaimsPolicy(dispatch, {
-              claims: [
-                ...formData.app.data.policyInformation.claims,
-                formData.app.data.policyInformation.claims,
-              ],
-            })
-          }
+              claims: [...formikProps.values.claims, addArray],
+            });
+          }}
         >
           <div>
             <AwesomeFontIcon

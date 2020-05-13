@@ -48,7 +48,6 @@ export const appActions: any = {
           firmInformation: {
             ...state.app.data.firmInformation,
             ...action.payload,
-            suite: action.payload.suite === '' ? null : action.payload.suite,
           },
         },
       },
@@ -225,6 +224,7 @@ export const appActions: any = {
     };
   },
   ADD_CLAIMS_POLICY_INFORMATION: (state: any, action: any) => {
+    const addArray = [{}];
     return {
       ...state,
       app: {
@@ -234,12 +234,15 @@ export const appActions: any = {
           policyInformation: {
             ...state.app.data.policyInformation,
             isHaveClaims: true,
-            claims: action.payload.claims.map((item: any) => {
-              return {
-                dateClaim: item.dateClaim,
-                amountClaim: item.amountClaim,
-              };
-            }),
+            claims:
+              action.payload.claims.length <= 0
+                ? addArray
+                : action.payload.claims.map((item: any) => {
+                    return {
+                      dateClaim: item.dateClaim,
+                      amountClaim: item.amountClaim,
+                    };
+                  }),
           },
         },
       },

@@ -66,6 +66,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    values.suite = values.suite === '' ? null : values.suite;
     storeFirmConfirmation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
@@ -101,7 +102,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
           kwMarketCenterName: state.app.data.firmInformation.kwMarketCenterName,
           yearEstablished: state.app.data.firmInformation.yearEstablished,
           streetAddress: state.app.data.firmInformation.streetAddress,
-          suite: state.app.data.firmInformation.suite,
+          suite: state.app.data.firmInformation.suite || null,
           phoneNumber: state.app.data.firmInformation.phoneNumber,
           faxNumber: state.app.data.firmInformation.faxNumber,
           email: state.app.data.firmInformation.email,
