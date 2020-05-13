@@ -1,5 +1,6 @@
 import ky from 'ky-universal';
+import { getBaseUrl } from './constants';
 
 export default ky.extend({
-  prefixUrl: 'https://eo-dev-api.kellercovered.io/api/v1',
+  prefixUrl: getBaseUrl(process.env.ENV),
 });
