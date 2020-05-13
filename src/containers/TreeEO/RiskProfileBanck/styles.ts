@@ -11,4 +11,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       marginBottom: '6em',
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });

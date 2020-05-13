@@ -42,6 +42,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     purchaseColor?: string;
     customNavigationSaveProgress?: () => void;
     progressBar?: number;
+    alignButton?: any;
   };
 
 @withStyles(styles)
@@ -95,6 +96,7 @@ export class FormApp extends Component<CustomFormProps> {
       customButtonContainer,
       centeredButtonContainer,
       isRowForm,
+      alignButton,
       ...rest
     } = this.props;
 
@@ -160,7 +162,7 @@ export class FormApp extends Component<CustomFormProps> {
                     [classes.rowButtonContainer]: isRowForm,
                   })}
                 >
-                  <Row align="flex-end" className={classes.actionButtonContainer}>
+                  <Row className={classnames(classes.actionButtonContainer, alignButton)}>
                     <ButtonForm
                       data-test-id={dataTestId || 'continueButton'}
                       type="submit"

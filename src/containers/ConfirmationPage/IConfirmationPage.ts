@@ -1,5 +1,5 @@
 export default interface IConfirmationPage {
-  confirmationNumber: number;
+  confirmationNumber: string;
   agentsNumber: number;
   grossCommission: number;
   claimsNumber: number;

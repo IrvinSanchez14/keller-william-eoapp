@@ -14,6 +14,7 @@ import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { FormRiskProfileReits } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -41,12 +42,12 @@ export class RiskProfileReits extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 19, categoriesName.riskProfile);
+    setInformationPage(dispatch, 20, categoriesName.riskFactorInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 18, categoriesName.riskProfile);
+    setInformationPage(dispatch, 19, categoriesName.riskFactorInformation);
     this.setState({ width: window.innerWidth });
     window.addEventListener('resize', this.updateDimensions);
   }
@@ -71,7 +72,7 @@ export class RiskProfileReits extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              isPerformServices: formData.app.data.riskProfile.isPerformServices,
+              isPerformServices: formData.app.data.riskFactorInformation.isPerformServices,
             }}
             isInitValid
             validationSchema={riskProfileReitsValidateSchema}
@@ -82,51 +83,11 @@ export class RiskProfileReits extends Component<FullNameProps> {
             isInQuestionnaire
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ values, setFieldValue }: any) => (
-              <>
-                <div>
-                  <FielControlForm
-                    name="isPerformServices"
-                    renderCustomField={({ field }) => (
-                      <RadioField
-                        {...field}
-                        name="isPerformServices"
-                        value="isPerformServices"
-                        data-test-id="sameAddressButtonNo"
-                        label={
-                          this.state.width <= 768
-                            ? 'Yes'
-                            : this.props.intl.get('app.text.checkbox.yes.risk.part.three')
-                        }
-                        onChange={() => setFieldValue('isPerformServices', true)}
-                        checked={values.isPerformServices === true}
-                      />
-                    )}
-                  />
-                </div>
-                <div>
-                  <FielControlForm
-                    name="isPerformServices"
-                    renderCustomField={({ field }) => (
-                      <RadioField
-                        {...field}
-                        name="isPerformServices"
-                        value="isPerformServices"
-                        data-test-id="sameAddressButtonNo"
-                        label={
-                          this.state.width <= 768
-                            ? 'No'
-                            : this.props.intl.get('app.text.checkbox.no.risk.part.three')
-                        }
-                        onChange={() => setFieldValue('isPerformServices', false)}
-                        checked={values.isPerformServices === false}
-                      />
-                    )}
-                  />
-                </div>
-              </>
-            )}
+            {(formikProps) => {
+              return FormRiskProfileReits(formikProps);
+            }}
           </FormApp>
         </StepWrapper>
       )

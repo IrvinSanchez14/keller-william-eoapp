@@ -90,6 +90,12 @@ import commercialDefault from 'assets/images/commissionTypes/commercial.svg';
 import mortgageDefault from 'assets/images/commissionTypes/mortgage.svg';
 import auctioneringDefault from 'assets/images/commissionTypes/auctionering.svg';
 
+import firmWelcome from 'assets/images/welcomeIcon/firm.svg';
+import agentWelcome from 'assets/images/welcomeIcon/agents.svg';
+import commissionWelcome from 'assets/images/welcomeIcon/commission.svg';
+import policyWelcome from 'assets/images/welcomeIcon/policy.svg';
+import riskWelcome from 'assets/images/welcomeIcon/risk.svg';
+
 import gasDefault from 'assets/images/heatingTypes/gas-default.svg';
 import gasSelected from 'assets/images/heatingTypes/gas-selected.svg';
 import electricDefault from 'assets/images/heatingTypes/electric-default.svg';
@@ -326,6 +332,11 @@ const iconList: IconListType = {
   insuramatch,
   insuramatchWhite,
   progressiveWhite,
+  firmWelcome,
+  agentWelcome,
+  commissionWelcome,
+  policyWelcome,
+  riskWelcome,
 };
 
 export const Icon: React.SFC<{

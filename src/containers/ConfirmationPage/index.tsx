@@ -408,11 +408,11 @@ export default function ConfirmationPage({
               </TableList>
               <TableList>
                 <TableNameText>{`Total number of claims in the past 5 years`}</TableNameText>
-                <TableValueText>{grossCommission}</TableValueText>
+                <TableValueText>{claimsNumber}</TableValueText>
               </TableList>
               <TableList>
                 <TableNameText>{`Gross commission for the last 12 moths`}</TableNameText>
-                <TableValueText>{formatNumericalAbbreviation(claimsNumber)}</TableValueText>
+                <TableValueText>{formatNumericalAbbreviation(grossCommission)}</TableValueText>
               </TableList>
               <TableList>
                 <TableNameText>{`Average value of property sold`}</TableNameText>
@@ -427,7 +427,7 @@ export default function ConfirmationPage({
 }
 
 ConfirmationPage.defaultProps = {
-  confirmationNumber: 99393,
+  confirmationNumber: '99393',
   agentsNumber: 54,
   grossCommission: 2,
   claimsNumber: 100000000,

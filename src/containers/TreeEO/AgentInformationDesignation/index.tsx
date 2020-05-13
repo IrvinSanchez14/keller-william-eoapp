@@ -16,6 +16,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormAgentInformationDesignation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -37,7 +38,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 6, categoriesName.agentInformation);
+    setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
@@ -49,12 +50,12 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           formData.app.data.agentInformation.numberAgentSpecialDesignation,
       });
     }
-    setInformationPage(dispatch, 5, categoriesName.agentInformation);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   }
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -64,7 +65,6 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.two')}
           </Typography>
-
           <FormApp
             initialValues={{
               numberAgentSpecialDesignation:
@@ -77,30 +77,13 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 -8px">
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentSpecialDesignation"
-                        name="numberAgentSpecialDesignation"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
+            {(formikProps) => {
+              return FormAgentInformationDesignation(formikProps);
             }}
           </FormApp>
         </StepWrapper>

@@ -1,49 +1,34 @@
 import { Component } from 'react';
+import classnames from 'classnames';
 
+import { FormApp } from 'src/components/FormApp';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { changeStatusProgressBar, storeAgentInformation } from 'src/store/actions/app';
+import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-
-import { RadioField } from 'src/components/RadioForm';
+import { agentRevokedValidateSchema } from 'src/helpers/validations';
 import { categoriesName } from 'src/helpers/constants';
+import { FormAgentInformationRevoked } from './form';
+
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { styles } from './styles';
 
 type FullNameProps = IAppStoreProps;
 
-export const propertyUsageFields = [
-  {
-    id: 1,
-    name: 'revokedLicense',
-    value: true,
-    text: 'Yes',
-  },
-  {
-    id: 2,
-    name: 'revokedLicense',
-    value: false,
-    text: 'No',
-  },
-];
-
+@withStyles(styles)
 export class AgentInformationRevoked extends Component<FullNameProps> {
   isInitValid = false;
-  state = {
-    revokedLicense: null,
-  };
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
-
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5);
-    setInformationPage(dispatch, 7, categoriesName.agentInformation);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    setInformationPage(dispatch, 8, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 6, categoriesName.agentInformation);
+    setInformationPage(dispatch, 7, categoriesName.agentInformation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {
@@ -53,28 +38,9 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
     });
   };
 
-  renderFormChildren = (formikProps: any) => {
-    return propertyUsageFields.map((item) => (
-      <FielControlForm
-        key={item.id}
-        name={item.name}
-        renderCustomField={({ field }) => (
-          <RadioField
-            {...field}
-            value={item.value}
-            data-test-id={item.value}
-            label={item.text}
-            onChange={() => this.handleChange(item.value, formikProps)}
-            checked={formikProps.values.revokedLicense === item.value}
-          />
-        )}
-      />
-    ));
-  };
-
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, dispatch, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -85,16 +51,21 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
             initialValues={{
               revokedLicense: formData.app.data.agentInformation.revokedLicense,
             }}
+            validationSchema={agentRevokedValidateSchema}
             isInitValid
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
             isLoading={false}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {this.renderFormChildren}
+            {(formikProps) => {
+              return FormAgentInformationRevoked(formikProps, this.handleChange);
+            }}
           </FormApp>
         </StepWrapper>
       )

@@ -45,6 +45,7 @@ export type TextFieldProps = InputProps &
 const setNumberMask = (rawValue: string) => {
   const numberMask = createNumberMask({
     prefix: '',
+    thousandsSeparatorSymbol: '',
   });
   const mask = numberMask(rawValue);
   return mask;
@@ -109,7 +110,7 @@ export function TextFieldForm(Props: TextFieldProps) {
 
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     const { name } = rest;
-    const date = value.toString();
+    const date = value?.toString();
     if (name === 'dateOfBirth' && date.length === 8) {
       const givenDate = date.slice(0, 6);
       //const countedYear = autocompleteYear(date);

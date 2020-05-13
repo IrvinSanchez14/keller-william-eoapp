@@ -7,10 +7,10 @@ interface RiskProfileDataProps {
 }
 
 interface Data {
-  riskProfile: RiskProfileDataProps;
+  riskFactorInformation: RiskProfileDataProps;
 }
 
 export default interface RiskPRofileProps {
   data: Data;
-  openEditModal: (nameform: string) => void;
+  openEditModal?: (nameform: string) => void;
 }

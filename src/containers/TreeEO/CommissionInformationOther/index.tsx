@@ -1,20 +1,18 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import Typography from '@material-ui/core/Typography';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeCommissionInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { commissionOtherValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormCommissionInformationOther } from './form';
+import { commissionOtherValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
 
 type FullNameProps = IAppStoreProps;
 
@@ -36,17 +34,17 @@ export class CommissionInformationOther extends Component<FullNameProps> {
     storeCommissionInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 15, categoriesName.commission);
+    setInformationPage(dispatch, 16, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 14, categoriesName.commission);
+    setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   }
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -58,9 +56,9 @@ export class CommissionInformationOther extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              farmRanch: formData.app.data.commission.farmRanch,
-              auctioneering: formData.app.data.commission.auctioneering,
-              mortageBrokerage: formData.app.data.commission.mortageBrokerage,
+              farmRanch: formData.app.data.commissionInformation.farmRanch,
+              auctioneering: formData.app.data.commissionInformation.auctioneering,
+              mortageBrokerage: formData.app.data.commissionInformation.mortageBrokerage,
             }}
             isInitValid={this.isInitValid}
             validationSchema={commissionOtherValidateSchema}
@@ -69,71 +67,13 @@ export class CommissionInformationOther extends Component<FullNameProps> {
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" style={stylesComponent.rowContainer}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.one.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="farmRanch"
-                        name="farmRanch"
-                        type="number"
-                        label={'Commission'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" style={stylesComponent.rowContainer}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.two.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="auctioneering"
-                        name="auctioneering"
-                        type="number"
-                        label={'Average property value'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" className={classnames(classes.rowFinal)}>
-                    <Column>
-                      <Typography className={classnames(classes.subTitleForm)}>
-                        {this.props.intl.get('app.subtitle.three.commission.part.six')}
-                      </Typography>
-                      <FielControlForm
-                        data-test-id="mortageBrokerage"
-                        name="mortageBrokerage"
-                        type="number"
-                        label={'Average property value'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={150}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
+            {(formikProps) => {
+              return FormCommissionInformationOther(formikProps);
             }}
           </FormApp>
         </StepWrapper>
@@ -141,9 +81,3 @@ export class CommissionInformationOther extends Component<FullNameProps> {
     );
   }
 }
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
-};

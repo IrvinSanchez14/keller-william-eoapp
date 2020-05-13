@@ -28,6 +28,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   basicContainer: {
     width: '100%',
+    overflowWrap: 'break-word',
     flexDirection: 'column',
     padding: theme.spacing(3),
     boxShadow: '0 0 42px 0 rgba(0,0,0,0.15)',

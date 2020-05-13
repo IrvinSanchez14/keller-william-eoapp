@@ -13,4 +13,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       letterSpacing: '-1px',
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });

@@ -1,21 +1,19 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import Typography from '@material-ui/core/Typography';
-import isEmpty from 'lodash/isEmpty';
+import { Typography } from '@material-ui/core';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { fullNameValidateSchema } from 'src/helpers/validations';
-import { getFullNameFields } from 'src/helpers/fieldsForm';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 import { categoriesName } from 'src/helpers/constants';
+import { FormApp } from 'src/components/FormApp';
+import { fullNameValidateSchema } from 'src/helpers/validations';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { FormFirmInformation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -28,8 +26,8 @@ type FormFields = {
 
 @withStyles(styles)
 export class FirmInformation extends Component<FullNameProps> {
-  isInitValid = false;
   isButtonLoading = false;
+  isInitValid = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
@@ -37,43 +35,17 @@ export class FirmInformation extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-      this.isInitValid = await fullNameValidateSchema.isValid({
-        contacName: formData.app.data.firmInformation.contacName,
-        brokerName: formData.app.data.firmInformation.brokerName,
-        kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName,
-        yearEstablished: formData.app.data.firmInformation.yearEstablished,
-      });
-    }
-    setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
   }
-
-  renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
-    getFullNameFields().map(({ name, type, customWidth, label }) => (
-      <FielControlForm
-        data-test-id={name}
-        key={name}
-        name={name}
-        type={type}
-        setFieldTouched={setFieldTouched}
-        label={label}
-        fullWidth
-        errors={errors}
-        touched={touched}
-        renderFastField
-        customWidth={customWidth}
-      />
-    ));
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -85,25 +57,28 @@ export class FirmInformation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.firm.part.one')}
           </Typography>
-
           <FormApp
             initialValues={{
-              contacName: formData.app.data.firmInformation.contacName || '',
+              contactName: formData.app.data.firmInformation.contactName || '',
               brokerName: formData.app.data.firmInformation.brokerName || '',
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
               yearEstablished: formData.app.data.firmInformation.yearEstablished || '',
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={fullNameValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {this.renderFormChildren}
+            {(formikProps) => {
+              return FormFirmInformation(formikProps);
+            }}
           </FormApp>
         </StepWrapper>
       )

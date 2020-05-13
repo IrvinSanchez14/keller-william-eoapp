@@ -1,12 +1,21 @@
 import styled from 'styled-components';
+
 import FirmAgentInformation from 'src/containers/ReviewPage/FirmAgentInformation';
 import PolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation';
 import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import EditPageModal from '../EditPageModal';
+import { FormsEditPage } from 'src/containers/ReviewPage/FormEditPages';
+import AppState, { PolicyInformationProps, RiskProfileProps } from 'src/store/models/AppState';
+import FirmAgentInformationProps from 'src/containers/ReviewPage/FirmAgentInformation/IFirmAgentInformation';
+import IPolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation/IPolicyCommissionInformation';
+import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';
+import { setCopyStore } from 'src/store/actions/app';
+import { useAppContext } from 'src/store';
 
 interface LayoutInformationReviewProps {
   textHeader: string;
+  stateServer: AppState['app'];
 }
 
 const data = {
@@ -41,7 +50,7 @@ const dataPC = {
       renewalDate: '12/15/2021',
       deductible: 5000,
       limits: 100000,
-      yearCoverage: '3',
+      yearCoverage: 3,
       annualPremium: 10000,
     },
     isHaveClaims: true,
@@ -52,7 +61,7 @@ const dataPC = {
       },
     ],
   },
-  commission: {
+  commissionInformation: {
     grossCommission: 100200,
     averageValue: 100200,
     percentageTransactions: 47,
@@ -82,7 +91,7 @@ const dataPC = {
 };
 
 const dataRisk = {
-  riskProfile: {
+  riskFactorInformation: {
     isHomeWarranty: true,
     isMortageBanking: true,
     isPerformServices: true,
@@ -121,7 +130,9 @@ const Container = styled.div`
 
 export default function LayoutInformationReview({
   textHeader,
+  stateServer,
 }: LayoutInformationReviewProps): JSX.Element {
+  const { dispatch, state } = useAppContext();
   const [showModal, setShowModal] = useState(false);
   const [nameForm, setNameForm] = useState('');
 
@@ -130,25 +141,38 @@ export default function LayoutInformationReview({
     setShowModal(true);
   }
 
+  useEffect(() => {
+    setCopyStore(dispatch, stateServer);
+  }, [setCopyStore]);
+
   return (
     <Container>
       <LayoutHeaderText>{textHeader}</LayoutHeaderText>
       <LayoutsInformation>
-        <FirmAgentInformation data={data} openEditModal={(nameForm) => openModal(nameForm)} />
-      </LayoutsInformation>
-      <LayoutsInformation>
-        <PolicyCommissionInformation
-          data={dataPC}
+        <FirmAgentInformation
+          data={state.app.data as FirmAgentInformationProps['data']}
           openEditModal={(nameForm) => openModal(nameForm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
-        <RiskProfile data={dataRisk} openEditModal={(nameForm) => openModal(nameForm)} />
+        <PolicyCommissionInformation
+          data={state.app.data as IPolicyCommissionInformation['data']}
+          openEditModal={(nameForm) => openModal(nameForm)}
+        />
+      </LayoutsInformation>
+      <LayoutsInformation>
+        <RiskProfile
+          data={state.app.data as RiskPRofileProps['data']}
+          openEditModal={(nameForm) => openModal(nameForm)}
+        />
       </LayoutsInformation>
       <EditPageModal
         nameForm={nameForm}
         isModalOpen={showModal}
         closeModal={() => setShowModal(false)}
+        children={
+          <FormsEditPage nameForm={nameForm} isOpen={showModal} setShowModal={setShowModal} />
+        }
       />
     </Container>
   );

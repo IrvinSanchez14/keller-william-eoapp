@@ -84,4 +84,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       marginBottom: theme.spacing(2),
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });

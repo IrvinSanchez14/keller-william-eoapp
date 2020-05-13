@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, ThemedCssFunction, DefaultTheme } from 'styled-components';
 import breakpoints from './breakpoints';
 
 export default Object.keys(breakpoints).reduce((acc, label) => {
@@ -8,4 +8,9 @@ export default Object.keys(breakpoints).reduce((acc, label) => {
     }
   `;
   return acc;
-}, {});
+}, {}) as {
+  desktopSmall: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+  tablet: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+  phone: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+  phoneSmall: (...opts: any) => ReturnType<ThemedCssFunction<DefaultTheme>>;
+};

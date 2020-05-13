@@ -4,11 +4,11 @@ interface FirmInformationProps {
   kwMarketCenterName: string;
   yearEstablished: number;
   streetAddress: string;
-  suite: number;
+  suite?: number;
   phoneNumber: string | number;
-  faxNumber: string | number;
+  faxNumber?: string;
   email: string;
-  isFirmOwned: boolean;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
@@ -27,6 +27,6 @@ interface DataProps {
 }
 
 export default interface FirmAgentInformationProps {
-  openEditModal: (nameform: string) => void;
+  openEditModal?: (nameform: string) => void;
   data: DataProps;
 }

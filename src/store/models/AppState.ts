@@ -1,8 +1,8 @@
 export interface RiskProfileProps {
-  isHomeWarranty: boolean;
-  isMortageBanking: boolean;
-  isPerformServices: boolean;
-  isRepresentCommission: boolean;
+  isHomeWarranty?: boolean;
+  isMortageBanking?: boolean;
+  isPerformServices?: boolean;
+  isRepresentCommission?: boolean;
   percentageTransactions: number;
 }
 
@@ -34,16 +34,11 @@ export interface PolicyInformationProps {
     renewalDate: string;
     deductible: number;
     limits: number;
-    yearCoverage: string;
+    yearCoverage: number;
     annualPremium: number;
   };
-  isHaveClaims: boolean;
-  claims: [
-    {
-      dateClaim: string;
-      amountClaim: number;
-    },
-  ];
+  isHaveClaims?: boolean;
+  claims: [] | [{ dateClaim: string; amountClaim: number }];
 }
 
 export interface AgentInformationProps {
@@ -51,7 +46,7 @@ export interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense?: boolean;
   currentCarrier: string;
   isHaveInsurance: boolean;
 }
@@ -62,11 +57,11 @@ export interface FirmInformationProps {
   kwMarketCenterName: string;
   yearEstablished: number;
   streetAddress: string;
-  suite: number;
-  phoneNumber: number;
-  faxNumber: number;
-  emailAddress: string;
-  isFirmOwned: boolean;
+  suite?: number;
+  phoneNumber: string;
+  faxNumber?: string;
+  email: string;
+  isFirmOwned?: boolean;
   dateLicensedBrokerAgent: string;
   dateLicensedBroker: string;
 }
@@ -75,20 +70,24 @@ export interface DataInitalProps {
   firmInformation: FirmInformationProps;
   agentInformation?: AgentInformationProps;
   policyInformation?: PolicyInformationProps;
-  commission?: CommissionInformationProps;
-  riskProfile?: RiskProfileProps;
+  commissionInformation?: CommissionInformationProps;
+  riskFactorInformation?: RiskProfileProps;
 }
 
 export interface MetaDataProps {
   actualPage?: number;
   categoryPage?: string;
   progressBar?: number;
+  finishProgressForm?: boolean;
 }
 
 export interface AppInitalProps {
+  id?: string;
   email: string;
   data: DataInitalProps;
   providers: Record<string, any>;
+  completed: boolean;
+  confirmationNumber?: string;
   metadata: MetaDataProps;
 }
 
@@ -106,11 +105,11 @@ export default class AppState implements IAppState {
         kwMarketCenterName: '',
         yearEstablished: 0,
         streetAddress: '',
-        suite: 0,
-        phoneNumber: 0,
-        faxNumber: 0,
-        emailAddress: '',
-        isFirmOwned: false,
+        suite: null,
+        phoneNumber: '',
+        faxNumber: '',
+        email: '',
+        isFirmOwned: null,
         dateLicensedBrokerAgent: '',
         dateLicensedBroker: '',
       },
@@ -119,7 +118,7 @@ export default class AppState implements IAppState {
         numberAgentLessCommission: 0,
         numberAgenteNoCommission: 0,
         numberAgentSpecialDesignation: 0,
-        revokedLicense: false,
+        revokedLicense: null,
         currentCarrier: '',
         isHaveInsurance: false,
       },
@@ -130,21 +129,16 @@ export default class AppState implements IAppState {
           renewalDate: '',
           deductible: 0,
           limits: 0,
-          yearCoverage: '',
+          yearCoverage: 0,
           annualPremium: 0,
         },
-        isHaveClaims: undefined,
-        claims: [
-          {
-            dateClaim: '',
-            amountClaim: undefined,
-          },
-        ],
+        isHaveClaims: null,
+        claims: [],
       },
-      commission: {
-        grossCommission: undefined,
-        averageValue: undefined,
-        percentageTransactions: undefined,
+      commissionInformation: {
+        grossCommission: 0,
+        averageValue: 0,
+        percentageTransactions: 0,
         residential: {
           realEstate: 0,
           rawLand: 0,
@@ -166,19 +160,23 @@ export default class AppState implements IAppState {
         mortageBrokerage: 0,
         totalCommision: 0,
       },
-      riskProfile: {
-        isHomeWarranty: undefined,
-        isMortageBanking: undefined,
-        isPerformServices: undefined,
-        isRepresentCommission: undefined,
-        percentageTransactions: undefined,
+      riskFactorInformation: {
+        isHomeWarranty: null,
+        isMortageBanking: null,
+        isPerformServices: null,
+        isRepresentCommission: null,
+        percentageTransactions: 0,
       },
     },
+    id: undefined,
     providers: [],
+    completed: false,
+    confirmationNumber: undefined,
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',
-      progressBar: 4.8,
+      progressBar: 0,
+      finishProgressForm: false,
     },
   };
 }

@@ -1,5 +1,5 @@
 import * as CONSTANTS from '../types/app';
-import {
+import AppState, {
   FirmInformationProps,
   AgentInformationProps,
   CommissionInformationProps,
@@ -70,6 +70,15 @@ export const storeClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any)
   return storeValueClaim;
 };
 
+export const storeAllPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
+  const storeAll = {
+    type: CONSTANTS.SET_ALL_INFORMATION_POLICY,
+    payload: claimForm,
+  };
+  dispatch(storeAll);
+  return storeAll;
+};
+
 export const addClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) => {
   const storeValueClaim = {
     type: CONSTANTS.ADD_CLAIMS_POLICY_INFORMATION,
@@ -126,6 +135,18 @@ export const storeCommissionCommercial = (
   return storeValueCommission;
 };
 
+export const storeCommissionAll = (
+  dispatch: React.Dispatch<any>,
+  commissionForm: CommissionInformationProps,
+) => {
+  const storeAll = {
+    type: CONSTANTS.SET_ALL_COMMISSION_INFORMATION,
+    payload: commissionForm,
+  };
+  dispatch(storeAll);
+  return storeAll;
+};
+
 export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPRofileProps) => {
   const storeValueRisk = {
     type: CONSTANTS.SET_RISK_PROFILE,
@@ -133,4 +154,30 @@ export const storeRiskProfile = (dispatch: React.Dispatch<any>, riskForm: RiskPR
   };
   dispatch(storeValueRisk);
   return storeValueRisk;
+};
+
+export const setAppState = (dispatch: React.Dispatch<any>, state: AppState) => {
+  const appStateAction = {
+    type: CONSTANTS.SET_APP_STATE,
+    payload: state,
+  };
+  dispatch(appStateAction);
+  return appStateAction;
+};
+
+export const setCopyStore = (dispatch: React.Dispatch<any>, state: any) => {
+  const appStateAction = {
+    type: CONSTANTS.SET_COPY_STORE_API,
+    payload: state,
+  };
+  dispatch(appStateAction);
+  return appStateAction;
+};
+
+export const finishForm = (dispatch: React.Dispatch<any>) => {
+  const setInformation = {
+    type: CONSTANTS.FINISH_FORM,
+  };
+  dispatch(setInformation);
+  return setInformation;
 };

@@ -8,6 +8,7 @@ import {
   faArrowLeft as faArrowLeftSolid,
   faArrowRight as faArrowRightSolid,
   faPlusCircle as faPlusCircleSolid,
+  faAngleLeft,
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faTimes,
@@ -20,6 +21,7 @@ import {
   faFileAlt,
   faBars,
   faQuestionCircle,
+  faCheckCircle,
 } from '@fortawesome/pro-regular-svg-icons';
 import {
   faTimes as FaTimesLight,
@@ -53,6 +55,7 @@ const solidIcons: IconListType = {
   faPlusCircle: faPlusCircleSolid,
   faArrowRight: faArrowRightSolid,
   faArrowLeft: faArrowLeftSolid,
+  faAngleLeft,
 };
 
 const regularIcons: IconListType = {
@@ -66,6 +69,8 @@ const regularIcons: IconListType = {
   faComment,
   faArrowLeft,
   faArrowRight: faArrowRightRegular,
+  faCheckCircle,
+  faAngleLeft,
 };
 
 const lightIcons: IconListType = {
@@ -77,6 +82,7 @@ const lightIcons: IconListType = {
   faPhone: faPhoneLight,
   faTimes: FaTimesLight,
   faPlusCircle: faPlusCircleLight,
+  faAngleLeft,
 };
 
 function getIcon(type: string, name: string): IconProp {

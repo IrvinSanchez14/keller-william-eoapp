@@ -84,4 +84,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   periodContainerInputInvalid: {
     borderColor: theme.palette.error.main,
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });
