@@ -23,6 +23,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
   isInitValid = false;
 
   nextStep = async (values: any, actions: any) => {
+    values.suite = values.suite === '' ? null : values.suite;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
