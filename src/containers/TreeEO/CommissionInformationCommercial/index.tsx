@@ -15,7 +15,7 @@ import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationCommercial } from './form';
 import { FormApp } from 'src/components/FormApp';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
 export class CommissionInformationCommercial extends Component<FullNameProps> {
@@ -33,9 +33,10 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     );
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
+    storeCommissionCommercial(dispatch, values, totalResidential); //TODO put state in localstorage
+    await this.props.onSubmit?.();
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 15, categoriesName.commissionInformation);
   };
 
