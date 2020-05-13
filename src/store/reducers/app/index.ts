@@ -48,6 +48,7 @@ export const appActions: any = {
           firmInformation: {
             ...state.app.data.firmInformation,
             ...action.payload,
+            suite: action.payload.suite === '' ? null : action.payload.suite,
           },
         },
       },
