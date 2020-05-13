@@ -1,0 +1,62 @@
+sudo: required
+dist: xenial
+language: node_js
+
+cache:
+  directories:
+    - '~/.npm'
+    - '~/.cache'
+    - '~/.yarn'
+    - '~/.yarn-cache'
+
+node_js:
+  - '12.16.3'
+
+branches:
+  only:
+    - master
+    - staging
+    - develop
+    - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+
+env:
+  global:
+    - CLOUDSDK_CORE_DISABLE_PROMPTS=1
+
+stages:
+  - test
+  - deploy
+
+jobs:
+  include:
+    - stage: test
+      if: branch IN (develop, staging) AND type = pull_request
+      name: specs
+      before_install: npm i -g yarn
+      install: yarn --frozen-lockfile
+      script:
+        - |
+          if [[ $TRAVIS_BRANCH  == "develop" ]]; then
+            yarn format
+            yarn build
+          fi
+
+    - stage: deploy
+      if: type = push
+      name: deploy
+      before_install:
+        - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+        - openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv -in secrets.tar.enc -out secrets.tar -d
+        - tar xvf secrets.tar -C /home/travis
+        - if [ ! -d $HOME/google-cloud-sdk/bin ]; then rm -rf $HOME/google-cloud-sdk; curl https://sdk.cloud.google.com | bash > /dev/null; fi
+        - source $HOME/google-cloud-sdk/path.bash.inc
+        - gcloud components update gsutil
+        - '/home/travis/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file /home/travis/key-account.json'
+      install: yarn --frozen-lockfile
+      script:
+        - |
+          if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+            yarn format
+            yarn export
+            gsutil -m cp -r ./out/* gs://eo-dev.kellercovered.io/
+          fi

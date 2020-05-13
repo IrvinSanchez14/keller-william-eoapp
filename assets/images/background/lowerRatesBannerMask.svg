@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="225px" height="275px" viewBox="0 0 225 275" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>C61C4EC5-C6E0-4277-BD45-DD9174B5B749</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="50.6458588%" y1="90.6479492%" x2="48.0287781%" y2="36.6801758%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#80D0C7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-quote-results-basic-expanded" transform="translate(-1125.000000, -1399.000000)" fill="url(#linearGradient-1)">
+            <g id="list" transform="translate(90.000000, 219.000000)">
+                <g id="agent" transform="translate(0.000000, 1155.000000)">
+                    <g id="Mask" transform="translate(0.000000, 25.000000)">
+                        <path d="M1035,-362 C1168.78525,-312.000777 1242.59838,-215.265951 1256.43939,-71.7955197 C1277.20091,143.410127 1201.71381,162.833288 1170.89353,265.30757 C1150.34668,333.623757 1105.04884,391.187901 1035,438 L1035,-362 Z" transform="translate(1147.500000, 38.000000) scale(-1, 1) translate(-1147.500000, -38.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

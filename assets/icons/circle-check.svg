@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="31px" viewBox="0 0 31 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>D5275C1F-9AEF-4B92-B929-AF2BE050D371</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI-sheet-buttons-and-icons" transform="translate(-147.000000, -4390.000000)">
+            <g id="forms" transform="translate(120.000000, 2023.000000)">
+                <g id="desktop" transform="translate(0.000000, 184.000000)">
+                    <g id="radio-buttons-subset" transform="translate(0.000000, 2104.000000)">
+                        <g id="radio-with-subset" transform="translate(0.000000, 54.000000)">
+                            <g id="yes">
+                                <g id="circle-check" transform="translate(27.000000, 25.000000)">
+                                    <circle id="Oval" fill="#0093E9" cx="15.5" cy="15.5" r="15.5"></circle>
+                                    <path d="M13.4343132,21.7313849 L8.23431341,16.5313851 C7.9219057,16.2189774 7.9219057,15.7124479 8.23431341,15.4000096 L9.36565837,14.2686342 C9.67806607,13.9561959 10.1846261,13.9561959 10.4970338,14.2686342 L13.9999857,17.771586 L21.502928,10.2686437 C21.8153357,9.95623599 22.3218958,9.95623599 22.6343035,10.2686437 L23.7656484,11.4000192 C24.0780561,11.7124269 24.0780561,12.2189564 23.7656484,12.5313946 L14.5656582,21.7314154 C14.25322,22.0438231 13.7466904,22.0438231 13.4343132,21.7313849 Z" id="c" fill="#FFFFFF" fill-rule="nonzero"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

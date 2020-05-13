@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kc-frontend-eo
+  labels:
+    app: kc-frontend-eo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kc-frontend-eo
+  template:
+    metadata:
+      labels:
+        app: kc-frontend-eo
+    spec:
+      containers:
+        - name: kc-frontend-eo
+          image: gcr.io/keller-covered/kc-frontend-eo:latest
+          volumeMounts:
+            - name: kc-frontend-eo
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: nginx.conf
+          ports:
+            - name: web
+              containerPort: 80
+      volumes:
+        - name: kc-frontend-eo
+          configMap:
+            name: kc-frontend-eo-nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kc-frontend-eo
+spec:
+  selector:
+    app: kc-frontend-eo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

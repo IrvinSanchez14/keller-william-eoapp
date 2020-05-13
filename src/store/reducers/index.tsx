@@ -1,9 +1,9 @@
-import { exampleInitialState, examplesActions } from './example';
+import { appActions, appInitialState } from './app';
 
 export const initialState: any = {
-	...exampleInitialState,
+  ...appInitialState,
 };
 
 export const Actions: any = {
-	...examplesActions,
+  ...appActions,
 };

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Elements/Carrier Logo/Small / Progressive</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="20" cy="20" r="20"></circle>
+    </defs>
+    <g id="Elements/Carrier-Logo/Small-/-Progressive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="State-Farm">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#2480FE" fill-rule="nonzero" xlink:href="#path-1"></use>
+            <path d="M28.1467397,19.5036982 C28.5742038,18.6046598 29.4211419,16.7414941 30.3839347,14.5772929 C32.0738159,10.7696006 29.9844356,9.00813609 27.7672156,9 L18.0673774,9 L8,31 L13.2334382,31 L16.7490303,23.2951183 C16.7490303,23.2951183 19.7053237,23.2951183 21.8466389,23.2951183 C25.1105466,23.3195266 26.8164077,22.2984467 28.1467397,19.5036982 Z M25.4461258,14.4023669 C24.5033079,16.4363905 23.7842095,17.9578402 23.7043097,18.1246302 C23.2808407,19.0440089 22.673602,19.4508136 21.7587491,19.4508136 L18.4748665,19.4508136 L21.5789745,12.6042899 L24.8708471,12.6042899 C25.5939405,12.608358 26.1092943,12.9785503 25.4461258,14.4023669 L25.4461258,14.4023669 Z" id="path73" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-2)"></path>
+        </g>
+    </g>
+</svg>

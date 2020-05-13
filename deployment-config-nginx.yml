@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kc-frontend-eo-nginx
+data:
+  nginx.conf: |
+    server {
+        listen       80;
+        default_type text/html;
+
+        error_page 404 /404/index.html;
+        location = /404/index.html {
+          root /usr/share/nginx/html;
+          internal;
+        }
+
+        location = /healthz {
+            access_log off;
+            return 200 "ok";
+        }
+
+        location /robots.txt {
+            alias /etc/nginx/conf.d/robots.txt;
+        }
+
+        location ~ / {
+            if ($http_user_agent ~* "^GoogleHC") {
+                return 200;
+            }
+            
+            try_files $uri $uri/index.html $uri.html $uri/*.html =404;
+        }
+    }
+
+    root  /usr/share/nginx/html;

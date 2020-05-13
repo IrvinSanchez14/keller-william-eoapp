@@ -1,13 +1,16 @@
-import React from 'react';
-import { AppStateContextProvider } from './store';
-import PageExample from './containers/PageExample';
+import { Component } from 'react';
 
-function App() {
-	return (
-		<AppStateContextProvider>
-			<PageExample />
-		</AppStateContextProvider>
-	);
+import { AppStateContextProvider } from './store';
+import AppEO from './containers/TreeEO';
+
+export class App extends Component {
+  render() {
+    return (
+      <AppStateContextProvider>
+        <AppEO />
+      </AppStateContextProvider>
+    );
+  }
 }
 
 export default App;

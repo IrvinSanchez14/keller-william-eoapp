@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="178px" height="992px" viewBox="0 0 178 992" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63 (92445) - https://sketch.com -->
+    <title>Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="51.7214204%" y1="110.059216%" x2="48.6771681%" y2="-1.75318399%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#80D0C7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-quote-results-edit-property-details-basic-mobile" transform="translate(0.000000, -296.000000)" fill="url(#linearGradient-1)">
+            <g id="background" transform="translate(-182.000000, 191.000000)">
+                <path d="M0,0 C214.056403,80.6237464 332.157412,236.608655 354.303027,467.954725 C387.521449,814.973829 266.742089,846.293677 217.429651,1011.53346 C184.554692,1121.69331 112.078142,1214.51549 0,1290 L0,0 Z" id="Mask"></path>
+            </g>
+        </g>
+    </g>
+</svg>
