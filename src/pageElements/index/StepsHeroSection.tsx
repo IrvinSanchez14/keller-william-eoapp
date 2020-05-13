@@ -499,7 +499,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
   const steps = [
     {
       numberStep: 'STEP ONE',
-      headerText: 'Fill out a standart application',
+      headerText: 'Fill out a standard application',
       descriptionStep: 'Get quotes from both of our partners',
       padding: '50px 30px',
       width: '100%',
