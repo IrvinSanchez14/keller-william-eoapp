@@ -222,9 +222,8 @@ export default function CoveredNowModal(Props: CallModalProps) {
               <ModalScheduleText firstText left>
                 8am - 5pm CST, Mon-Fri
               </ModalScheduleText>
-              <ModalScheduleText left>9am - 2pm CST, Sat</ModalScheduleText>
-              <ModalScheduleText isPhone href="tel:1 (857) 263-2750" left>
-                1 (857) 263-2750
+              <ModalScheduleText isPhone href="tel:1 (404) 978-6029" left>
+                <strong>1 (404) 978-6029</strong>
               </ModalScheduleText>
             </ModalSheduleContainer>
           </ModalPartnerSection>
@@ -232,11 +231,10 @@ export default function CoveredNowModal(Props: CallModalProps) {
             <StyledPearlIcon src="/static/img/PearlInsurance_Logo.svg" />
             <ModalSheduleContainer>
               <ModalScheduleText firstText right>
-                8am - 5pm CST, Mon-Fri
+                7am - 6pm CST, Mon-Fri
               </ModalScheduleText>
-              <ModalScheduleText right>9am - 2pm CST, Sat</ModalScheduleText>
-              <ModalScheduleText isPhone href="tel:1 (857) 263-2750" right>
-                1 (857) 263-2750
+              <ModalScheduleText isPhone href="tel:1 (800) 469-3582" right>
+                <strong>1 (800) 469-3582</strong>
               </ModalScheduleText>
             </ModalSheduleContainer>
           </ModalPartnerSection>

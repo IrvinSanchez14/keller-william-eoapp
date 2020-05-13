@@ -94,7 +94,7 @@ const ComissionNameText = styled.p`
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
 `;
 
-const ComissionValueText = styled.p`
+const ComissionValueText = styled.h1`
   font-size: 16px;
   font-style: 'Bold';
   width: 60%;

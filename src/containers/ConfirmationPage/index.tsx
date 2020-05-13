@@ -289,7 +289,7 @@ const TableNameText = styled.p`
   width: 80%;
   padding: 16px 0 15px 20px;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
-  ${({ theme }) => theme && theme.phone`font-size: 14px;width: 80%;`};
+  ${({ theme }) => theme && theme.phone`font-size: 14px;width: 70%;`};
 `;
 
 const TableValueText = styled.h1`

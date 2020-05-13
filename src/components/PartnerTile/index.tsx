@@ -55,6 +55,13 @@ const StyledPrice = styled.p`
     font-size: 17px;
     line-height: 18px;
   `};
+  @media (max-width: 373px) {
+    margin-right: -30px;
+  }
+  @media (max-width: 333px) {
+    margin-right: -40px;
+    font-size: 15px;
+  }
 `;
 
 const StyledSvg = styled(SVG)`
