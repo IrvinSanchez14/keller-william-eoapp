@@ -27,11 +27,12 @@ import { RiskProfile } from './RiskProfile';
 import { RiskProfileBanck } from './RiskProfileBanck';
 import { RiskProfileFirm } from './RiskProfileFirm';
 import { RiskProfileTransaction } from './RiskProfileTransaction';
+import { WelcomeEO } from './WelcomeEO';
 
 type SessionResponse = AppState['app'];
 
 function isLastPage(state: AppState) {
-  return state.app.metadata.actualPage === 21;
+  return state.app.metadata.finishProgressForm === true;
 }
 
 function useSessionSaver(state: AppState) {
@@ -90,6 +91,7 @@ function AppEO() {
     <>
       <SessionModal onClose={() => setIsOpen(false)} isOpen={isOpen} />
       <FormRouter>
+        <WelcomeEO dispatch={dispatch} intl={intl} formData={state} />
         <FirmInformation dispatch={dispatch} intl={intl} formData={state} />
         <FirmInformationEmail dispatch={dispatch} intl={intl} formData={state} />
         <FirmInformationAffiliated dispatch={dispatch} intl={intl} formData={state} />

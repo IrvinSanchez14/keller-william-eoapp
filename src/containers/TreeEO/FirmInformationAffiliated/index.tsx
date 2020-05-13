@@ -1,13 +1,16 @@
 import { Component } from 'react';
+import classnames from 'classnames';
+
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
+import { isFirmOwnedValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-import { RadioField } from 'src/components/RadioForm';
 import { categoriesName } from 'src/helpers/constants';
-import { isFirmOwnedFirmSchema } from 'src/helpers/validations';
+import { FormFirmInformationAffiliated } from './form';
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { styles } from './styles';
 
 type FullNameProps = IAppStoreProps;
 
@@ -26,47 +29,32 @@ export const propertyUsageFields = [
   },
 ];
 
+@withStyles(styles)
 export class FirmInformationAffiliated extends Component<FullNameProps> {
   isInitValid = false;
+  state = {
+    isFirmOwned: this.props.formData.app.data.firmInformation.isFirmOwned,
+  };
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {
     formikProps.setFieldValue('isFirmOwned', value);
   };
 
-  renderFormChildren = (formikProps: any) => {
-    return propertyUsageFields.map((item) => (
-      <FielControlForm
-        key={item.id}
-        name={item.name}
-        renderCustomField={({ field }) => (
-          <RadioField
-            {...field}
-            value={item.value}
-            data-test-id={item.value}
-            label={this.props.intl.get(`app.radio.answer.${item.text}`)}
-            onChange={() => this.handleChange(item.value, formikProps)}
-            checked={formikProps.values.isFirmOwned === item.value}
-          />
-        )}
-      />
-    ));
-  };
-
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -77,8 +65,8 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             initialValues={{
               isFirmOwned: formData.app.data.firmInformation.isFirmOwned,
             }}
+            validationSchema={isFirmOwnedValidateSchema}
             isInitValid
-            validationSchema={isFirmOwnedFirmSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
@@ -86,8 +74,12 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             isInQuestionnaire
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {this.renderFormChildren}
+            {(formikProps) => {
+              return FormFirmInformationAffiliated(formikProps, this.handleChange);
+            }}
           </FormApp>
         </StepWrapper>
       )

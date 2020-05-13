@@ -1,18 +1,20 @@
 import { Component } from 'react';
+import classnames from 'classnames';
+
 import isEmpty from 'lodash/isEmpty';
 
-import { FormikProps, IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import { fullEmailValidateSchema } from 'src/helpers/validations';
-import { getFullEmailFields } from 'src/helpers/fieldsForm';
+
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
+import { FormFirmInformationEmail } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -24,7 +26,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
@@ -38,29 +40,12 @@ export class FirmInformationEmail extends Component<FullNameProps> {
         email: formData.app.data.firmInformation.email,
       });
     }
-    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   }
-
-  renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
-    getFullEmailFields().map(({ name, type, customWidth, label }) => (
-      <FielControlForm
-        data-test-id={name}
-        key={name}
-        name={name}
-        type={type}
-        setFieldTouched={setFieldTouched}
-        label={label}
-        fullWidth
-        errors={errors}
-        touched={touched}
-        renderFastField
-        customWidth={customWidth}
-      />
-    ));
 
   render() {
     const isLoading = false;
-    const { formData } = this.props;
+    const { formData, dispatch, classes } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -82,10 +67,14 @@ export class FirmInformationEmail extends Component<FullNameProps> {
             dataTestId="continueButton"
             isLoading={false}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {this.renderFormChildren}
+            {(formikProps) => {
+              return FormFirmInformationEmail(formikProps);
+            }}
           </FormApp>
         </StepWrapper>
       )

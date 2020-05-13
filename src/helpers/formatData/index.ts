@@ -54,5 +54,5 @@ export function verifyType(value: any, type?: string): string | null {
       return formatPercentage(value);
     }
   }
-  return value.toString();
+  return value;
 }

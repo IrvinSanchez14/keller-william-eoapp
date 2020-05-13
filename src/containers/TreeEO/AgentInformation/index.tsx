@@ -16,6 +16,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { FormAgentInformation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -37,7 +38,7 @@ export class AgentInformation extends Component<FullNameProps> {
     storeAgentInformation(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 5, categoriesName.agentInformation);
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
   };
 
   async componentDidMount() {
@@ -50,12 +51,12 @@ export class AgentInformation extends Component<FullNameProps> {
         numberAgenteNoCommission: formData.app.data.agentInformation.numberAgenteNoCommission,
       });
     }
-    setInformationPage(dispatch, 4, categoriesName.agentInformation);
+    setInformationPage(dispatch, 5, categoriesName.agentInformation);
   }
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -66,7 +67,6 @@ export class AgentInformation extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.agent.part.one')}
           </Typography>
-
           <FormApp
             initialValues={{
               numberAgentsMoreCommission:
@@ -83,71 +83,12 @@ export class AgentInformation extends Component<FullNameProps> {
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.one.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentsMoreCommission"
-                        name="numberAgentsMoreCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.two.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgentLessCommission"
-                        name="numberAgentLessCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 -8px" style={{ flexDirection: 'column' }}>
-                    <Typography className={classnames(classes.subTitleForm)}>
-                      {this.props.intl.get('app.subtitle.tree.form.agent.part.one')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="numberAgenteNoCommission"
-                        name="numberAgenteNoCommission"
-                        type="number"
-                        label={'Number of agents'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={94}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
+            {(formikProps) => {
+              return FormAgentInformation(formikProps);
             }}
           </FormApp>
         </StepWrapper>
@@ -155,9 +96,3 @@ export class AgentInformation extends Component<FullNameProps> {
     );
   }
 }
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
-};

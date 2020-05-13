@@ -1,20 +1,18 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import Typography from '@material-ui/core/Typography';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeRiskProfile, changeStatusProgressBar } from 'src/store/actions/app';
+import { storeRiskProfile, changeStatusProgressBar, finishForm } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
+import { FormApp } from 'src/components/FormApp';
+import { FormRiskProfileTransaction } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -35,18 +33,18 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    finishForm(dispatch);
     actions.setSubmitting(true);
-    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 20, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
   }
 
   render() {
     const isLoading = false;
-    const { classes, formData } = this.props;
+    const { classes, formData, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -66,37 +64,13 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ touched, errors, setFieldTouched }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 8px" style={stylesComponent.rowContainer}>
-                    <Typography
-                      style={{ margin: '0 8px' }}
-                      className={classnames(classes.subTitleForm)}
-                    >
-                      {this.props.intl.get('app.title.form.risk.part.five')}
-                    </Typography>
-                    <Column padding="0px 8px">
-                      <FielControlForm
-                        data-test-id="percentageTransactions"
-                        name="percentageTransactions"
-                        type="number"
-                        label={'Percentage of transactions'}
-                        setFieldTouched={setFieldTouched}
-                        placeholder="%"
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={100}
-                      />
-                    </Column>
-                  </Row>
-                </>
-              );
+            {(formikProps) => {
+              return FormRiskProfileTransaction(formikProps);
             }}
           </FormApp>
         </StepWrapper>
@@ -104,9 +78,3 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     );
   }
 }
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
-};

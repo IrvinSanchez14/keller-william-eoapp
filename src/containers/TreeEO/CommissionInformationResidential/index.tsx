@@ -1,79 +1,53 @@
 import { Component } from 'react';
-import { FormikHelpers } from 'formik';
 import classnames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
+import { Typography } from '@material-ui/core';
+
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import { commissionResidentialValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
+import { commissionResidentialValidateSchema } from 'src/helpers/validations';
+import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/actions/app';
+import { FormApp } from 'src/components/FormApp';
+import { FormCommissionInformationResidential } from './form';
 
 type FullNameProps = IAppStoreProps;
 
-type FormFields = {
-  contactName: string;
-  brokerName: string;
-  kwMarketCenterName: string;
-  yearEstablished: number;
+const residential = {
+  realState: '',
 };
 
 @withStyles(styles)
 export class CommissionInformationResidential extends Component<FullNameProps> {
-  state = {
-    residential: {
-      realEstate: this.props.formData.app.data.commissionInformation.residential.realEstate,
-      rawLand: this.props.formData.app.data.commissionInformation.residential.rawLand,
-      appraisals: this.props.formData.app.data.commissionInformation.residential.appraisals,
-      propertyMgmt: this.props.formData.app.data.commissionInformation.residential.propertyMgmt,
-      ownedProperty: this.props.formData.app.data.commissionInformation.residential.ownedProperty,
-    },
-    total: 0,
-  };
   isInitValid = false;
   isButtonLoading = false;
-
-  nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
-    const numberValues: any = Object.keys(values).reduce(
-      (res, key: string) => ({
-        ...res,
-        [key]: Number(values[key]),
-      }),
-      {},
-    );
-    const totalResidential = this.sumState(this.state.residential);
-    this.isButtonLoading = true;
-    const { dispatch, formData } = this.props;
-    storeCommissionResidential(dispatch, numberValues, totalResidential); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    actions.setSubmitting(true);
-    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
-  };
 
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
     if (!isEmpty(formData.app.data)) {
     }
-    setInformationPage(dispatch, 12, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   }
 
-  changeDataSum = (event: any) => {
-    const { name, value } = event.target;
-
-    this.setState((prev: any) => ({
-      residential: {
-        ...prev.residential,
-        [name]: Number(value),
-      },
-    }));
+  nextStep = async (values: any, actions: any) => {
+    const numberValues: any = Object.keys(values.residential).reduce(
+      (res, key: string) => ({
+        ...res,
+        [key]: Number(values[key]),
+      }),
+      {},
+    );
+    const totalResidential = this.sumState(values.residential);
+    this.isButtonLoading = true;
+    const { dispatch, formData } = this.props;
+    storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    actions.setSubmitting(true);
+    setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
   sumState = (object: any) => {
@@ -82,8 +56,7 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
 
   render() {
     const isLoading = false;
-    const { formData, classes } = this.props;
-    const { residential } = this.state;
+    const { formData, classes, dispatch } = this.props;
     return (
       !isLoading && (
         <StepWrapper
@@ -96,135 +69,28 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
           <Typography className={classnames(classes.titleForm)}>{'Residential'}</Typography>
           <FormApp
             initialValues={{
-              realEstate: formData.app.data.commissionInformation.residential.realEstate,
-              rawLand: formData.app.data.commissionInformation.residential.rawLand,
-              appraisals: formData.app.data.commissionInformation.residential.appraisals,
-              propertyMgmt: formData.app.data.commissionInformation.residential.propertyMgmt,
-              ownedProperty: formData.app.data.commissionInformation.residential.ownedProperty,
+              residential: {
+                realEstate: formData.app.data.commissionInformation.residential.realEstate,
+                rawLand: formData.app.data.commissionInformation.residential.rawLand,
+                appraisals: formData.app.data.commissionInformation.residential.appraisals,
+                propertyMgmt: formData.app.data.commissionInformation.residential.propertyMgmt,
+                ownedProperty: formData.app.data.commissionInformation.residential.ownedProperty,
+              },
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={commissionResidentialValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
             isLoading={this.isButtonLoading}
             isInQuestionnaire
-            dispatch={this.props.dispatch}
+            dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
+            hideButton={false}
+            alignButton={classnames(classes.alignButton)}
           >
-            {({ touched, errors, setFieldTouched, setFieldValue, resetForm, dirty, values }) => {
-              return (
-                <>
-                  <Row wrap="wrap" margin="0 8px">
-                    <Column className={classnames(classes.containerOne)}>
-                      <FielControlForm
-                        data-test-id="realEstate"
-                        name="realEstate"
-                        type="number"
-                        label={'Real Estate'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={165}
-                        onChange={(e: any) => {
-                          this.changeDataSum(e);
-                          setFieldValue('realEstate', +e.target.value);
-                        }}
-                      />
-                    </Column>
-                    <Column className={classnames(classes.containerTwo)}>
-                      <FielControlForm
-                        data-test-id="rawLand"
-                        name="rawLand"
-                        type="number"
-                        label={'Raw Land'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={165}
-                        onChange={(e: any) => {
-                          this.changeDataSum(e);
-                          setFieldValue('rawLand', +e.target.value);
-                        }}
-                      />
-                    </Column>
-                  </Row>
-                  <Row wrap="wrap" margin="0 8px">
-                    <Column className={classnames(classes.containerOne)}>
-                      <FielControlForm
-                        data-test-id="appraisals"
-                        name="appraisals"
-                        type="number"
-                        label={'Appraisals'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={165}
-                        onChange={(e: any) => {
-                          this.changeDataSum(e);
-                          setFieldValue('appraisals', +e.target.value);
-                        }}
-                      />
-                    </Column>
-                    <Column className={classnames(classes.containerTwo)}>
-                      <FielControlForm
-                        data-test-id="propertyMgmt"
-                        name="propertyMgmt"
-                        type="number"
-                        label={'Property Mgmt'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={165}
-                        onChange={(e: any) => {
-                          this.changeDataSum(e);
-                          setFieldValue('propertyMgmt', +e.target.value);
-                        }}
-                      />
-                    </Column>
-                  </Row>
-
-                  <Row wrap="wrap" margin="0 8px" style={{ flexDirection: 'column' }}>
-                    <Column className={classnames(classes.containerOne)}>
-                      <FielControlForm
-                        data-test-id="ownedProperty"
-                        name="ownedProperty"
-                        type="number"
-                        label={'Owned Property'}
-                        setFieldTouched={setFieldTouched}
-                        errors={errors}
-                        touched={touched}
-                        shouldValidateOnMount
-                        renderFastField
-                        customWidth={165}
-                        onChange={(e: any) => {
-                          this.changeDataSum(e);
-                          setFieldValue('ownedProperty', +e.target.value);
-                        }}
-                      />
-                    </Column>
-                  </Row>
-                  <div className={classnames(classes.containerTotal)}>
-                    <Divider style={{ margin: '0 15px' }} />
-                    <div className={classnames(classes.divContainerTotal)}>
-                      <Typography className={classnames(classes.textTotal)}>
-                        {'Residential total'}
-                      </Typography>
-                      <Typography className={classnames(classes.textNumberTotal)}>
-                        ${this.sumState(residential)}
-                      </Typography>
-                    </div>
-                  </div>
-                </>
-              );
+            {(formikProps) => {
+              return FormCommissionInformationResidential(formikProps);
             }}
           </FormApp>
         </StepWrapper>

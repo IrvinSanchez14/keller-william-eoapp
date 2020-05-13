@@ -22,8 +22,8 @@ export const dateBrokerValidateSchema = Yup.object().shape({
   dateLicensedBroker: Yup.string().required('Field is required'),
 });
 
-export const agentRevokedLicenseSchema = Yup.object().shape({
-  revokedLicense: Yup.boolean().required(),
+export const isFirmOwnedValidateSchema = Yup.object().shape({
+  isFirmOwned: Yup.boolean().required('Field is required'),
 });
 
 export const agentLicensedValidateSchema = Yup.object().shape({
@@ -36,10 +36,18 @@ export const agentSpecialValidateSchema = Yup.object().shape({
   numberAgentSpecialDesignation: Yup.number().required('Field is required'),
 });
 
+export const agentRevokedValidateSchema = Yup.object().shape({
+  revokedLicense: Yup.boolean().required('Field is required'),
+});
+
+export const isHaveClaimsValidateSchema = Yup.object().shape({
+  isHaveClaims: Yup.boolean().required('Field is required'),
+});
+
 export const policyInforamtionValidateSchema = (status: boolean) => {
   if (status) {
     return Yup.object().shape({
-      isHaveClaims: Yup.boolean(),
+      isHaveInsuranceField: Yup.boolean(),
     });
   } else {
     return Yup.object().shape({
@@ -86,11 +94,23 @@ export const commissionTransactionValidateSchema = Yup.object().shape({
 });
 
 export const commissionResidentialValidateSchema = Yup.object().shape({
-  realEstate: Yup.number().required('Field is required').min(0, 'The value must be positive'),
-  rawLand: Yup.number().required('Field is required').min(0, 'The value must be positive'),
-  appraisals: Yup.number().required('Field is required').min(0, 'The value must be positive'),
-  propertyMgmt: Yup.number().required('Field is required').min(0, 'The value must be positive'),
-  ownedProperty: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  residential: Yup.object().shape({
+    realEstate: Yup.number().required('Field is required'),
+    rawLand: Yup.number().required('Field is required'),
+    appraisals: Yup.number().required('Field is required'),
+    propertyMgmt: Yup.number().required('Field is required'),
+    ownedProperty: Yup.number().required('Field is required'),
+  }),
+});
+
+export const commissionCommercialValidateSchema = Yup.object().shape({
+  commercial: Yup.object().shape({
+    realEstate: Yup.number().required('Field is required'),
+    rawLand: Yup.number().required('Field is required'),
+    appraisals: Yup.number().required('Field is required'),
+    propertyMgmt: Yup.number().required('Field is required'),
+    ownedProperty: Yup.number().required('Field is required'),
+  }),
 });
 
 export const commissionOtherValidateSchema = Yup.object().shape({

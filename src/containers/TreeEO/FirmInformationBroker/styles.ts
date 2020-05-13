@@ -30,4 +30,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       },
     },
   },
+  alignButton: {
+    justifyContent: 'flex-end',
+  },
 });

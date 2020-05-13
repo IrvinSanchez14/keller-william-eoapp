@@ -25,6 +25,18 @@ export const appActions: any = {
       },
     };
   },
+  FINISH_FORM: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        metadata: {
+          ...state.app.metadata,
+          finishProgressForm: true,
+        },
+      },
+    };
+  },
   FIRM_CONFIRMATION_STORE: (state: any, action: any) => {
     return {
       ...state,
@@ -36,6 +48,7 @@ export const appActions: any = {
           firmInformation: {
             ...state.app.data.firmInformation,
             ...action.payload,
+            suite: action.payload.suite === '' ? null : action.payload.suite,
           },
         },
       },
@@ -51,7 +64,7 @@ export const appActions: any = {
           policyInformation: {
             ...state.app.data.policyInformation,
             currentCarrier: action.payload.currentCarrier,
-            isHaveInsurance: action.payload.isHaveInsurance,
+            isHaveInsurance: action.payload.isHaveInsuranceField,
             insurance: {
               renewalDate: action.payload.renewalDate,
               deductible: action.payload.deductible,
@@ -119,7 +132,7 @@ export const appActions: any = {
           commissionInformation: {
             ...state.app.data.commissionInformation,
             residential: {
-              ...action.payload.commissionForm,
+              ...action.payload.commissionForm.residential,
               total: action.payload.total,
             },
           },
@@ -137,9 +150,24 @@ export const appActions: any = {
           commissionInformation: {
             ...state.app.data.commissionInformation,
             commercial: {
-              ...action.payload.commissionForm,
+              ...action.payload.commissionForm.commercial,
               total: action.payload.total,
             },
+          },
+        },
+      },
+    };
+  },
+  SET_ALL_COMMISSION_INFORMATION: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          commissionInformation: {
+            ...state.app.data.commissionInformation,
+            ...action.payload,
           },
         },
       },
@@ -154,6 +182,36 @@ export const appActions: any = {
           ...state.app.data,
           policyInformation: {
             ...state.app.data.policyInformation,
+            isHaveClaims: action.payload.isHaveClaims,
+            claims: action.payload.claims.map((item: any) => {
+              return {
+                dateClaim: item.dateClaim,
+                amountClaim: item.amountClaim,
+              };
+            }),
+          },
+        },
+      },
+    };
+  },
+  SET_ALL_INFORMATION_POLICY: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            currentCarrier: action.payload.currentCarrier,
+            isHaveInsurance: action.payload.isHaveInsuranceField,
+            insurance: {
+              renewalDate: action.payload.renewalDate,
+              deductible: action.payload.deductible,
+              limits: action.payload.limits,
+              yearCoverage: action.payload.yearCoverage,
+              annualPremium: action.payload.annualPremium,
+            },
             isHaveClaims: action.payload.isHaveClaims,
             claims: action.payload.claims.map((item: any) => {
               return {
@@ -229,5 +287,22 @@ export const appActions: any = {
   },
   SET_APP_STATE: (_: AppState, action: { payload: AppState }) => {
     return action.payload;
+  },
+  SET_COPY_STORE_API: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        completed: action.payload.completed,
+        email: action.payload.email,
+        id: action.payload.id,
+        data: {
+          ...action.payload.data,
+        },
+        metadata: {
+          ...action.payload.metadata,
+        },
+      },
+    };
   },
 };

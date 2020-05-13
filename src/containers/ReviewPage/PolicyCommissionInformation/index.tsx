@@ -18,7 +18,7 @@ const labelInformation = {
     renewalDate: 'Renewal date',
     deductible: 'Deductible',
     limits: 'Limits',
-    years: 'Years of continuos coverage',
+    years: 'Years of continuous coverage',
     annualPremium: 'Annual premium',
     isHaveClaims: 'Any claims in the last 5 years?',
     dateClaim: 'Date of claim',

@@ -46,7 +46,7 @@ export interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean | null;
+  revokedLicense?: boolean;
   currentCarrier: string;
   isHaveInsurance: boolean;
 }
@@ -58,7 +58,7 @@ export interface FirmInformationProps {
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
-  phoneNumber?: string;
+  phoneNumber: string;
   faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;
@@ -78,6 +78,7 @@ export interface MetaDataProps {
   actualPage?: number;
   categoryPage?: string;
   progressBar?: number;
+  finishProgressForm?: boolean;
 }
 
 export interface AppInitalProps {
@@ -174,7 +175,8 @@ export default class AppState implements IAppState {
     metadata: {
       actualPage: 0,
       categoryPage: 'firm information',
-      progressBar: 4.8,
+      progressBar: 0,
+      finishProgressForm: false,
     },
   };
 }
