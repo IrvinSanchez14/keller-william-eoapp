@@ -91,6 +91,7 @@ export class WelcomeEO extends Component<FullNameProps> {
           avatarText={this.props.intl.get('app.avatar.text,welcome')}
           heading={this.props.intl.get('app.head.welcome')}
           bottomContent={this.props.intl.getHTML('app.link.welcome')}
+          classBottom={classnames(classes.bottomHeader)}
         >
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.welcome')}
