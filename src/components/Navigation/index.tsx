@@ -15,6 +15,11 @@ const Wrapper = styled.nav`
   background-color: transparent;
   width: 100%;
   transition: all 0.2s;
+  padding-left: 90px;
+  padding-right: 90px;
+  ${({ theme }) => theme.desktopSmall`padding: 30px 25px 0 25px;`};
+  ${({ theme }) => theme.tablet`padding-left: 30px;
+  padding-right: 1px;`};
   ${({ theme }) => theme.phone`
     top: 0;
     position: fixed;
@@ -24,7 +29,6 @@ const Wrapper = styled.nav`
 `;
 
 const StyledContainer = styled.div`
-  max-width: ${({ theme }) => theme.gridWidth};
   width: 100%;
   margin: 0 auto;
   padding: 30px 0;
