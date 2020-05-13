@@ -7,7 +7,7 @@ import Hamburger from './Hamburger';
 import NavigationProps from './INavigation';
 import ButtonPrimary from '../Button/ButtonPrimary';
 import Menu from '../Menu';
-import CallModal from './CallModal';
+import CoveredNowModal from 'src/components/CoveredNowModal';
 
 const Wrapper = styled.nav`
   position: absolute;
@@ -173,7 +173,7 @@ function Navigation(Props: NavigationProps) {
         </StyledContainer>
       </Wrapper>
       {isModalVisible && (
-        <CallModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />
+        <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />
       )}
     </>
   );
