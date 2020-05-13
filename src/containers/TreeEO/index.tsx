@@ -38,34 +38,24 @@ function isLastPage(state: AppState) {
 function useSessionSaver(state: AppState) {
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState<string>();
-  const [creating, setCreating] = useState(false);
-  const page = useRef(state.app.metadata.actualPage);
 
-  useEffect(() => {
-    const actualPage = state.app.metadata.actualPage;
-    if (!state.app.email || creating || page.current === actualPage) return;
-    page.current = actualPage;
+  const onSubmit = useCallback(async () => {
     if (sessionId || state.app.id)
-      return void ky.put(`session/${sessionId || state.app.id}`, { json: state.app });
-    const createSession = async (state: AppState) => {
-      try {
-        setIsOpen(true);
-        const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
-        setSessionId(response.id);
-      } finally {
-        setCreating(false);
-      }
-    };
-    setCreating(true);
-    createSession(state);
-  }, [sessionId, state, creating]);
-  return { sessionId: sessionId || state.app.id, isOpen, setIsOpen };
+      return ky
+        .put(`session/${sessionId || state.app.id}`, { json: state.app })
+        .json<SessionResponse>();
+    const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
+    setIsOpen(true);
+    setSessionId(response.id);
+    return response;
+  }, [sessionId, state]);
+  return { sessionId: sessionId || state.app.id, isOpen, setIsOpen, onSubmit };
 }
 
 function AppEO() {
   const router = useRouter();
   const { dispatch, intl, state } = useAppContext();
-  const { sessionId, isOpen, setIsOpen } = useSessionSaver(state);
+  const { onSubmit, sessionId, isOpen, setIsOpen } = useSessionSaver(state);
   const getSession = useCallback(
     async (sessionId: string) => {
       try {
@@ -90,29 +80,29 @@ function AppEO() {
   return (
     <>
       <SessionModal onClose={() => setIsOpen(false)} isOpen={isOpen} />
-      <FormRouter>
-        <WelcomeEO dispatch={dispatch} intl={intl} formData={state} />
-        <FirmInformation dispatch={dispatch} intl={intl} formData={state} />
-        <FirmInformationEmail dispatch={dispatch} intl={intl} formData={state} />
-        <FirmInformationAffiliated dispatch={dispatch} intl={intl} formData={state} />
-        <FirmInformationBroker dispatch={dispatch} intl={intl} formData={state} />
-        <AgentInformation dispatch={dispatch} intl={intl} formData={state} />
-        <AgentInformationDesignation dispatch={dispatch} intl={intl} formData={state} />
-        <AgentInformationRevoked dispatch={dispatch} intl={intl} formData={state} />
-        <PolicyInformation dispatch={dispatch} intl={intl} formData={state} />
-        <PolicyInformationClaims dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformation dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationTransaction dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationMenu dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationResidential dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationCommercial dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationOther dispatch={dispatch} intl={intl} formData={state} />
-        <CommissionInformationSummary dispatch={dispatch} intl={intl} formData={state} />
-        <RiskProfile dispatch={dispatch} intl={intl} formData={state} />
-        <RiskProfileBanck dispatch={dispatch} intl={intl} formData={state} />
-        <RiskProfileReits dispatch={dispatch} intl={intl} formData={state} />
-        <RiskProfileFirm dispatch={dispatch} intl={intl} formData={state} />
-        <RiskProfileTransaction dispatch={dispatch} intl={intl} formData={state} />
+      <FormRouter dispatch={dispatch} intl={intl} formData={state} onSubmit={onSubmit}>
+        <WelcomeEO />
+        <FirmInformation />
+        <FirmInformationEmail />
+        <FirmInformationAffiliated />
+        <FirmInformationBroker />
+        <AgentInformation />
+        <AgentInformationDesignation />
+        <AgentInformationRevoked />
+        <PolicyInformation />
+        <PolicyInformationClaims />
+        <CommissionInformation />
+        <CommissionInformationTransaction />
+        <CommissionInformationMenu />
+        <CommissionInformationResidential />
+        <CommissionInformationCommercial />
+        <CommissionInformationOther />
+        <CommissionInformationSummary />
+        <RiskProfile />
+        <RiskProfileBanck />
+        <RiskProfileReits />
+        <RiskProfileFirm />
+        <RiskProfileTransaction />
       </FormRouter>
     </>
   );
