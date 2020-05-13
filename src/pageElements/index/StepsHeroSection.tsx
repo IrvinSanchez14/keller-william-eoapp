@@ -6,69 +6,6 @@ import Span from 'src/components/Span';
 import DogIcon from 'src/components/DogIcon';
 import PartnerTile from 'src/components/PartnerTile';
 
-const StyledTest = styled.div`
-  @media (max-width: 690px) {
-    position: absolute;
-    top: 1900px;
-    left: -490px;
-    height: 830px;
-    width: 600px;
-    background: url(../../../static/img/stepsImgs/mobileBackgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-  @media (min-width: 691px) and (max-width: 900px) {
-    position: absolute;
-    top: 2400px;
-    left: -490px;
-    height: 830px;
-    width: 600px;
-    background: url(../../../static/img/stepsImgs/mobileBackgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-  @media (min-width: 901px) and (max-width: 1000px) {
-    position: absolute;
-    top: 2100px;
-    left: -550px;
-    height: 1510px;
-    width: 800px;
-    background: url(../../../static/img/stepsImgs/backgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-  @media (min-width: 1001px) and (max-width: 1160px) {
-    position: absolute;
-    top: 2000px;
-    left: -550px;
-    height: 1510px;
-    width: 800px;
-    background: url(../../../static/img/stepsImgs/backgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-  @media (min-width: 1161px) and (max-width: 1300px) {
-    position: absolute;
-    top: 1900px;
-    left: -550px;
-    height: 1510px;
-    width: 800px;
-    background: url(../../../static/img/stepsImgs/backgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-  @media (min-width: 1301px) {
-    position: absolute;
-    top: 1700px;
-    left: -550px;
-    height: 1710px;
-    width: 800px;
-    background: url(../../../static/img/stepsImgs/backgroundShape.svg) no-repeat 100%;
-    background-size: contain;
-    z-index: 1px;
-  }
-`;
-
 const StyledSVG = styled(SVG)`
   ${({ position }) => position && `position: ${position};`};
   ${({ top }) => top && `top: ${top};`};
@@ -111,10 +48,13 @@ const StyledLine = styled.div<{ padding?: string; directionContent?: boolean }>`
 
 const StyledStepsContainer = styled.div<{ padding?: string }>`
   position: relative;
-  ${({ padding }) => padding && `padding: ${padding};`}
   flex-direction: row;
   display: flex;
+  ${({ padding }) => padding && `padding: ${padding};`}
   ${({ theme }) => theme.tablet`flex-direction: column;`};
+  ${({ theme }) => theme.phone`
+    padding: 0 51px 0 50px;
+  `};
 `;
 
 interface StyledStepSectionProps {
@@ -138,7 +78,7 @@ const StyledStepSection = styled.div<StyledStepSectionProps>`
   ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`};
   ${({ justifyContent }) => justifyContent && `justify-content: ${justifyContent}`};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
-  ${({ padding }) => padding && `padding: ${padding}`};
+  // ${({ padding }) => padding && `padding: ${padding}`};
 `;
 
 interface StyledStepPresentItemProps {
@@ -167,9 +107,15 @@ const StyledStepPresentItem = styled.div<StyledStepPresentItemProps>`
   ${({ width }) => width && `width: ${width}`};
   ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`}
   justify-content: space-around;
-
   ${({ theme }) => theme.tablet`
     width: 100%;
+    max-height: 380px;
+    height: 380px;
+  `};
+  ${({ theme }) => theme.tablet`
+    width: 100%;
+    max-height: 350px;
+    height: 350px;
   `};
 `;
 
@@ -248,69 +194,103 @@ interface StyledStepPresentBuildingTextProps {
   bold?: boolean;
 }
 
-const StyledStepPresentBuildingText = styled.div<StyledStepPresentBuildingTextProps>`
-  ${({ padding }) => padding && `padding: ${padding}`};
-  ${({ fontSize }) => fontSize && `font-size: ${fontSize}`};
-  ${({ color }) => color && `color: ${color}`};
-  font-family: 'Regular';
+const StyledStepPresentBuildingText = styled.h1<StyledStepPresentBuildingTextProps>`
+  color: ${({ theme }) => theme.colors.primary};
+  padding-top: 20px;
+  font-size: 16px;
+  line-height: 23px;
+  // ${({ padding }) => padding && `padding: ${padding}`};
+  // ${({ fontSize }) => fontSize && `font-size: ${fontSize}`};
+  // ${({ color }) => color && `color: ${color}`};
+  // font-family: 'Regular';
 `;
 
-const StyledStepText = styled.div`
-  font-size: 1rem;
+const StyledStepText = styled.h1`
+  font-size: 12px;
+  letter-spacing: 2px;
   font-weight: bold;
   font-family: 'Regular';
   width: 100%;
-  color: ${theme.colors.dark};
+  color: ${theme.colors.darkBlue};
   ${({ theme }) =>
     theme &&
     theme.phone`
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 2px;
     text-align: center;
     width: 100%;
   `};
 `;
 
-const StyledStepHeader = styled.div`
-  font-family: 'Bold';
-  font-size: 2.9rem;
-  font-weight: bold;
+const StyledStepHeader = styled.h1<{ insertBr?: boolean }>`
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: -1px;
   width: 100%;
-  color: ${theme.colors.dark};
+  color: ${theme.colors.darkBlue};
   padding-top: 20px;
   ${({ theme }) =>
     theme &&
     theme.phone`
-    font-size: 1.8rem;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: -0.5px;
     width: 100%;
+  `};
+  ${({ insertBr, theme }) =>
+    insertBr &&
+    theme.tablet`
+    max-width: 420px;
+  `};
+  ${({ insertBr, theme }) =>
+    insertBr &&
+    theme.phone`
+    max-width: 190px;
   `};
 `;
 
-const StyledStepDescription = styled.div`
-  font-family: 'Regular';
-  font-size: 1.1rem;
-  font-weight: normal;
+const StyledStepDescription = styled.span`
   width: 100%;
   padding-top: 25px;
-  color: gray;
+  font-size: 18px;
+  line-height: 26px;
+  color: ${({ theme }) => theme.colors.paragraph.darkGray};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 16px;
+    line-height: 20px;
+  `};
 `;
 
 const StyledPartnersSuscription = styled.div`
   flex-direction: column;
+  width: 100%;
   padding-top: 100px;
   padding-bottom: 10px;
   display: flex;
+  //
+  align-items: center;
 `;
 
 const StyledPartnerInformation = styled.div<{ paddingTop?: string }>`
+  ${({ paddingTop }) => paddingTop && `margin-top: ${paddingTop}`};
   -webkit-box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
   -moz-box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
   box-shadow: -1px 0px 8px 2px ${theme.colors.shadowColor};
-  width: 350px;
   background-color: ${theme.colors.white};
   height: 90px;
+  // min-width: 180px;
+  // max-width: 370px;
+  width: 370px;
   border-radius: 5px;
   flex-direction: row;
   display: flex;
-  ${({ paddingTop }) => paddingTop && `margin-top: ${paddingTop}`};
+  ${({ theme }) => theme.tablet`
+    max-width: 100%;
+  `};
 `;
 
 const StyledPartnerBlock = styled.div`
@@ -320,9 +300,14 @@ const StyledPartnerBlock = styled.div`
 `;
 
 const StyledPartnerPrice = styled.h3`
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: 'Light';
+  font-size: 21px;
+  line-height: 23px;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 17px;
+    line-height: 23px;
+  `};
   color: ${theme.colors.dark};
   justify-content: center;
   align-items: center;
@@ -330,8 +315,14 @@ const StyledPartnerPrice = styled.h3`
 `;
 
 const StyledPartnerMoth = styled.p`
-  font-size: 0.8rem;
-  font-family: 'Light';
+  font-size: 11px;
+  line-height: 9px;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 9px;
+    line-height: 9px;
+  `};
   padding-top: 4px;
   color: ${theme.colors.dark};
   justify-content: center;
@@ -395,6 +386,24 @@ const StyledImg = styled.img<StyledImg>`
   ${({ padding }) => padding && `padding: ${padding};`};
   ${({ width }) => width && `width: ${width};`};
   ${({ height }) => height && `height: ${height};`};
+`;
+
+const StyledImgGroup = styled.img<StyledImg>`
+  width: 100%;
+  padding: 0 40px 28px 40px;
+  ${({ padding }) => padding && `padding: ${padding};`};
+  ${({ width }) => width && `width: ${width};`};
+  ${({ height }) => height && `height: ${height};`};
+  ${({ theme }) => theme.tablet`
+    width: 239px;
+    height: 170px;
+    padding-top: 20px;
+  `};
+  ${({ theme }) => theme.phone`
+    width: 219px;
+    height: 150px;
+    padding-top: 20px;
+  `};
 `;
 
 const StyledT = styled.div`
@@ -490,7 +499,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
   const steps = [
     {
       numberStep: 'STEP ONE',
-      headerText: 'Fill out a standart application',
+      headerText: 'Fill out a standard application',
       descriptionStep: 'Get quotes from both of our partners',
       padding: '50px 30px',
       width: '100%',
@@ -520,7 +529,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       padding={steps[numberStep].padding}
     >
       <StyledStepText>{steps[numberStep].numberStep}</StyledStepText>
-      <StyledStepHeader>{steps[numberStep].headerText}</StyledStepHeader>
+      <StyledStepHeader insertBr={numberStep < 1}>{steps[numberStep].headerText}</StyledStepHeader>
       <StyledStepDescription>{steps[numberStep].descriptionStep}</StyledStepDescription>
     </StyledStepPresentBuilding>
   );
@@ -529,12 +538,11 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
 const StepsHeroSection = (): JSX.Element => {
   return (
     <>
-      <StyledTest />
       <StyledStepsContainer padding="20px 90px 0 90px">
         <StyledStepSection>
           <StyledStepPresentItem showShadow width="270px">
             <StyledButtonCheckContainer>
-              <StyledStepButtonCheck margin="-14px 20px 0 0">
+              <StyledStepButtonCheck margin="-14px 7px 0 0">
                 <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
               </StyledStepButtonCheck>
             </StyledButtonCheckContainer>
@@ -549,7 +557,7 @@ const StepsHeroSection = (): JSX.Element => {
               <Span margin="13px 10px 0 10px">I'M HERE TO HELP</Span>
             </StyledStepPresentDogIcon>
             <StyledStepPresentBuilding>
-              <StyledImg
+              <StyledImgGroup
                 padding="0 28px 0 28px"
                 height="110px"
                 width="175px"
