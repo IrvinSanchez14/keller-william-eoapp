@@ -67,9 +67,16 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   divSVG: {
     display: 'flex',
-    flexWrap: 'wrap',
     marginBottom: '46px',
     marginTop: '15px',
+    [theme.breakpoints.down(990)]: {
+      flexWrap: 'wrap',
+    },
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      marginBottom: '46px',
+      marginTop: '15px',
+    },
   },
   textContent: {
     fontSize: '16px',
@@ -85,5 +92,14 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   alignButton: {
     justifyContent: 'flex-end',
+  },
+  bottomHeader: {
+    fontSize: '16px',
+    lineHeight: '20px',
+    [theme.breakpoints.up(750)]: {
+      fontSize: '22px',
+      lineHeight: '28px',
+      marginTop: 0,
+    },
   },
 });
