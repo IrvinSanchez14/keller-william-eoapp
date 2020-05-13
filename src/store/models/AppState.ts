@@ -46,17 +46,19 @@ export interface AgentInformationProps {
   numberAgentLessCommission: number;
   numberAgenteNoCommission: number;
   numberAgentSpecialDesignation: number;
-  revokedLicense: boolean;
+  revokedLicense?: boolean;
+  currentCarrier: string;
+  isHaveInsurance: boolean;
 }
 
 export interface FirmInformationProps {
-  contactName?: string;
+  contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
-  phoneNumber?: string;
+  phoneNumber: string;
   faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;
@@ -98,10 +100,10 @@ export default class AppState implements IAppState {
     email: '',
     data: {
       firmInformation: {
-        contactName: undefined,
-        brokerName: undefined,
-        kwMarketCenterName: undefined,
-        yearEstablished: undefined,
+        contactName: '',
+        brokerName: '',
+        kwMarketCenterName: '',
+        yearEstablished: 0,
         streetAddress: '',
         suite: null,
         phoneNumber: '',
@@ -116,7 +118,9 @@ export default class AppState implements IAppState {
         numberAgentLessCommission: 0,
         numberAgenteNoCommission: 0,
         numberAgentSpecialDesignation: 0,
-        revokedLicense: undefined,
+        revokedLicense: null,
+        currentCarrier: '',
+        isHaveInsurance: false,
       },
       policyInformation: {
         currentCarrier: '',
