@@ -142,7 +142,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.realEstate', e.target.value);
+              formikProps.setFieldValue('residential.realEstate', +e.target.value);
             }}
           />
         </Column>
@@ -160,7 +160,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.rawLand', e.target.value);
+              formikProps.setFieldValue('residential.rawLand', +e.target.value);
             }}
           />
         </Column>
@@ -179,7 +179,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.appraisals', e.target.value);
+              formikProps.setFieldValue('residential.appraisals', +e.target.value);
             }}
           />
         </Column>
@@ -197,7 +197,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.propertyMgmt', e.target.value);
+              formikProps.setFieldValue('residential.propertyMgmt', +e.target.value);
             }}
           />
         </Column>
@@ -215,7 +215,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.ownedProperty', e.target.value);
+              formikProps.setFieldValue('residential.ownedProperty', +e.target.value);
             }}
           />
         </Column>
