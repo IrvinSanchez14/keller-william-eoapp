@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPageFirmInformation() {
+export function EditPageFirmInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
@@ -79,6 +79,7 @@ export function EditPageFirmInformation() {
         },
       },
     });
+    closeModal(false);
   };
 
   const handleChange = (value: boolean, formikProps: any) => {

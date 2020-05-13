@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPageAgentInformation() {
+export function EditPageAgentInformation({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
   const [sessionId, setSessionId] = useState<string>();
@@ -94,6 +94,7 @@ export function EditPageAgentInformation() {
         },
       },
     });
+    closeModal(false);
   };
 
   useEffect(() => {

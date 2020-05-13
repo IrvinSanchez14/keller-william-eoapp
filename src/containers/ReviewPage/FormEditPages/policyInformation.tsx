@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPagePolicyInformation() {
+export function EditPagePolicyInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state, intl } = useAppContext();
@@ -110,6 +110,7 @@ export function EditPagePolicyInformation() {
         },
       },
     });
+    closeModal(false);
   };
 
   const handleChange = () => {

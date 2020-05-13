@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPageRiskProfile() {
+export function EditPageRiskProfile({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
   const [sessionId, setSessionId] = useState<string>();
@@ -98,6 +98,7 @@ export function EditPageRiskProfile() {
         },
       },
     });
+    closeModal(false);
   };
 
   useEffect(() => {

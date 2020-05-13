@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 
 interface IFormEditPages {
   nameForm: string;
+  setShowModal?: any;
+  isOpen?: any;
 }
 
 const CONSTANTS_EDIT_PAGE = {
@@ -18,26 +20,28 @@ const CONSTANTS_EDIT_PAGE = {
 };
 
 export function FormsEditPage(Props: IFormEditPages) {
-  const { nameForm } = Props;
+  const { nameForm, isOpen, setShowModal } = Props;
 
-  useEffect(() => {}, []);
+  const close = () => {
+    setShowModal(false);
+  };
 
   const renderComponent = () => {
     switch (nameForm) {
       case CONSTANTS_EDIT_PAGE.FIRM_INFORMATION: {
-        return <EditPageFirmInformation />;
+        return <EditPageFirmInformation closeModal={close} />;
       }
       case CONSTANTS_EDIT_PAGE.AGENT_INFORMATION: {
-        return <EditPageAgentInformation />;
+        return <EditPageAgentInformation closeModal={close} />;
       }
       case CONSTANTS_EDIT_PAGE.POLICY_INFORMATION: {
-        return <EditPagePolicyInformation />;
+        return <EditPagePolicyInformation closeModal={close} />;
       }
       case CONSTANTS_EDIT_PAGE.COMMISSION: {
-        return <EditPageCommissionInformation />;
+        return <EditPageCommissionInformation closeModal={close} />;
       }
       case CONSTANTS_EDIT_PAGE.RISK_PROFILE: {
-        return <EditPageRiskProfile />;
+        return <EditPageRiskProfile closeModal={close} />;
       }
       default:
         return nameForm;

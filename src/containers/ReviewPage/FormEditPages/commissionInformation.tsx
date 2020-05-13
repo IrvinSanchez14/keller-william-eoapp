@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export function EditPageCommissionInformation() {
+export function EditPageCommissionInformation({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
   const [sessionId, setSessionId] = useState<string>();
@@ -101,6 +101,7 @@ export function EditPageCommissionInformation() {
         },
       },
     });
+    closeModal(false);
   };
 
   const sumState = (object: any) => {
