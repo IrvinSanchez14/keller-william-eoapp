@@ -26,6 +26,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
 
   nextStep = async (values: any, actions: FormikHelpers<any>) => {
     actions.setSubmitting(true);
+    values.suite = values.suite === '' ? null : values.suite;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     try {
