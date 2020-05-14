@@ -68,10 +68,7 @@ function AppEO() {
 
   useEffect(() => {
     if (state.app.confirmationNumber) router.push(`/confirmation-page?sessionId=${sessionId}`);
-    else if (isLastPage(state))
-      setTimeout(function () {
-        router.push(`/review?sessionId=${sessionId}`);
-      }, 3000);
+    else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
