@@ -17,26 +17,31 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   stepHeader: {
     fontSize: '24px',
     lineHeight: '28px',
+    letterSpacing: '-0.5px',
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
+      marginBottom: '30px',
+      letterSpacing: '-1px',
     },
   },
   label: {
-    color: '#082a3e',
-    fontWeight: 'bold',
-    fontSize: theme.fontSize.xxs,
-    textAlign: 'center',
     lineHeight: '14px',
-    margin: '-3px 0px 0px -18px',
-    [theme.breakpoints.up(750)]: {
-      fontSize: '16px',
-      marginTop: '-25px',
-    },
+    fontSize: '16px',
     [theme.breakpoints.up('md')]: {
-      fontSize: 16,
-      lineHeight: '28px',
-      margin: '-20px 0px 0px -34px',
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+    },
+  },
+  labelFirm: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginTop: '1px',
     },
   },
   iconSize: {
@@ -44,17 +49,90 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     height: '100%',
   },
   content: {
-    width: '100%',
-    height: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: theme.spacing(),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(1.5),
+    marginTop: '34px',
+    textAlign: 'center',
+    [theme.breakpoints.up(750)]: {
+      textAlign: 'center',
+      marginTop: '56px',
     },
+  },
+  contentFirm: {
+    marginRight: '42px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '42px',
+      marginTop: '59px',
+    },
+  },
+  iconFirm: {
+    width: '66px',
+    height: '51px',
+    [theme.breakpoints.up(750)]: {
+      width: '66px',
+      height: '51px',
+    },
+  },
+  contentAgent: {
+    marginRight: '32px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '29px',
+    },
+  },
+  iconAgent: {
+    width: '50px',
+    height: '55px',
+    [theme.breakpoints.up(750)]: {
+      width: '50px',
+      height: '55px',
+    },
+  },
+  contentCommission: {
+    marginTop: '27px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '38px',
+      marginTop: '49px',
+    },
+  },
+  iconCommission: {
+    width: '62px',
+    height: '62px',
+    [theme.breakpoints.up(750)]: {
+      width: '62px',
+      height: '62px',
+    },
+  },
+  contentPolicy: {
+    marginRight: '45px',
+    marginTop: '22px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '45px',
+      marginTop: '50px',
+    },
+  },
+  iconPolicy: {
+    width: '57px',
+    height: '62px',
+    [theme.breakpoints.up(750)]: {
+      width: '57px',
+      height: '62px',
+    },
+  },
+  labelPolicy: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '13px',
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(2),
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginLeft: '13px',
+    },
+  },
+  iconRisk: {
+    width: '53px',
+    height: '55px',
+    [theme.breakpoints.up(750)]: {
+      width: '53px',
+      height: '55px',
     },
   },
   card: {
