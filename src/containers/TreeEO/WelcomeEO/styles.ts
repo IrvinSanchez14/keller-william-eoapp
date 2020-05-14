@@ -57,7 +57,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   contentFirm: {
-    marginRight: '42px',
+    marginRight: '37px',
     [theme.breakpoints.up(750)]: {
       marginRight: '42px',
       marginTop: '59px',
@@ -72,17 +72,30 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   contentAgent: {
-    marginRight: '32px',
+    marginRight: '10px',
+    marginTop: '31px',
     [theme.breakpoints.up(750)]: {
       marginRight: '29px',
+      marginTop: '56px',
     },
   },
   iconAgent: {
-    width: '50px',
+    width: '79px',
     height: '55px',
     [theme.breakpoints.up(750)]: {
-      width: '50px',
+      width: '79px',
       height: '55px',
+    },
+  },
+  labelAgent: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '-26px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginLeft: '-26px',
     },
   },
   contentCommission: {

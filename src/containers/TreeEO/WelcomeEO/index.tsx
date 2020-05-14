@@ -145,7 +145,7 @@ export class WelcomeEO extends Component<FullNameProps> {
                         />
                         <Typography
                           variant="body1"
-                          className={classnames(this.props.classes.label)}
+                          className={classnames(this.props.classes.labelAgent)}
                         >
                           Agents
                         </Typography>
