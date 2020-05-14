@@ -129,6 +129,7 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
@@ -150,6 +151,7 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
@@ -171,6 +173,7 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
