@@ -14,7 +14,7 @@ import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormPolicyInformation } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
   contactName: string;
@@ -34,10 +34,11 @@ export class PolicyInformation extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
+    actions.setSubmitting(true);
     values.isHaveInsuranceField = this.state.isHaveInsurance;
     storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    actions.setSubmitting(true);
     setInformationPage(dispatch, 9, categoriesName.policyInformation);
   };
 

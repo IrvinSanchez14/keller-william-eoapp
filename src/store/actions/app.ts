@@ -88,6 +88,22 @@ export const addClaimsPolicy = (dispatch: React.Dispatch<any>, claimForm: any) =
   return storeValueClaim;
 };
 
+export const removeClaims = (dispatch: React.Dispatch<any>) => {
+  const storeValueClaim = {
+    type: CONSTANTS.REMOVE_CLAIMS,
+  };
+  dispatch(storeValueClaim);
+  return storeValueClaim;
+};
+
+export const insertFirstClaims = (dispatch: React.Dispatch<any>) => {
+  const storeValueClaim = {
+    type: CONSTANTS.INSERT_FIRST_CLAIMS,
+  };
+  dispatch(storeValueClaim);
+  return storeValueClaim;
+};
+
 export const storeCommissionInformation = (
   dispatch: React.Dispatch<any>,
   commissionForm: CommissionInformationProps,

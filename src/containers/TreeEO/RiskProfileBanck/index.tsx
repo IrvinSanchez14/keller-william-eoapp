@@ -14,7 +14,7 @@ import { riskProfileBanckValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileBanck } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
 export class RiskProfileBanck extends Component<FullNameProps> {
@@ -24,6 +24,7 @@ export class RiskProfileBanck extends Component<FullNameProps> {
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 19, categoriesName.riskFactorInformation);
   };
