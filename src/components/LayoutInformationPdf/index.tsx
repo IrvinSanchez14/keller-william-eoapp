@@ -66,7 +66,7 @@ const dataPC = {
         appraisals: 1,
         propertyMgmt: 1,
         ownedProperty: 1,
-        residentialTotal: 7400000,
+        total: 7400000,
       },
       commercial: {
         realEstate: 1,
@@ -74,7 +74,7 @@ const dataPC = {
         appraisals: 1,
         propertyMgmt: 1,
         ownedProperty: 1,
-        commercialTotal: 6400000,
+        total: 6400000,
       },
     },
     farmRanch: 100000,
