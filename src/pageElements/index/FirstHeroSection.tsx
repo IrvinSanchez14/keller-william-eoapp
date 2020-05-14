@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 import ButtonWithArrow from 'src/components/Button/ButtonArrow';
+import { fonts } from 'assets/fonts';
 
 const Container = styled.div`
   background: url(../../../static/img/heroImgs/tabletShape.svg) no-repeat 100%;
@@ -153,6 +154,7 @@ const ContainerDog = styled.div`
 const DogIcon = styled(SVG)`
   width: 60px;
   height: 60px;
+  ${({ theme }) => theme && theme.phone`width: 40px;height: 40px;`};
 `;
 
 const KaceyTopText = styled.h1`
@@ -160,6 +162,7 @@ const KaceyTopText = styled.h1`
   letter-spacing: 2px;
   padding-left: 18px;
   padding-top: 3px;
+  line-height: 14px;
   ${({ theme }) => theme && `color: ${theme.colors.darkBlue};`};
   ${({ theme }) => theme && theme.phone`font-size: 11px;`};
 `;

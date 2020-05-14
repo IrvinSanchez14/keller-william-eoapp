@@ -15,16 +15,23 @@ const Wrapper = styled.nav`
   background-color: transparent;
   width: 100%;
   transition: all 0.2s;
+  padding-left: 91px;
+  padding-right: 91px;
+  ${({ theme }) => theme.desktopSmall`padding: 30px 25px 0 25px;`};
+  ${({ theme }) => theme.tablet`padding-left: 30px;
+  padding-right: 1px;`};
   ${({ theme }) => theme.phone`
     top: 0;
     position: fixed;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
     background-color: ${theme.colors.white};
     z-index: 100;
   `};
 `;
 
 const StyledContainer = styled.div`
-  max-width: ${({ theme }) => theme.gridWidth};
   width: 100%;
   margin: 0 auto;
   padding: 30px 0;
