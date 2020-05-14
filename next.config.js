@@ -19,8 +19,8 @@ module.exports = withImages(
     },
     cssModules: true,
     exportTrailingSlash: true,
-    publicRuntimeConfig: {
-      ENVIRONMENT: process.env.ENV,
+    env: {
+      ENVIRONMENT: process.env.ENV || 'development',
     },
   }),
 );
