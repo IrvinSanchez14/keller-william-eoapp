@@ -15,7 +15,7 @@ import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormFirmInformationBroker } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
   contactName: string;
@@ -32,10 +32,10 @@ export class FirmInformationBroker extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
-    //Router.push('/review');
+    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
   };
 

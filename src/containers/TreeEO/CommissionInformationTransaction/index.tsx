@@ -13,7 +13,7 @@ import { FormCommissionInformationTransaction } from './form';
 import { commissionTransactionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
   contactName: string;
@@ -30,9 +30,10 @@ export class CommissionInformationTransaction extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
+    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 12, categoriesName.commissionInformation);
   };
 

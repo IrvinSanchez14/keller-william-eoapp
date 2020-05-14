@@ -1,13 +1,11 @@
 import FirstHeroSection from 'src/pageElements/index/FirstHeroSection';
-import PartnersHeroSection from 'src/pageElements/index/PartnersHeroSection';
-import StepsHeroSection from 'src/pageElements/index/StepsHeroSection';
+import SecondHeroSection from 'src/containers/HomePageEO/SecondHeroSection';
 
 function HeroSection() {
   return (
     <>
       <FirstHeroSection />
-      <PartnersHeroSection />
-      <StepsHeroSection />
+      <SecondHeroSection />
     </>
   );
 }
