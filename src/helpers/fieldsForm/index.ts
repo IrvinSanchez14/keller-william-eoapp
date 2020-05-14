@@ -1,3 +1,5 @@
+import { phoneMask } from 'src/utils';
+
 export const getFullNameFields = () => [
   {
     name: 'contactName',
@@ -50,6 +52,7 @@ export const getFullEmailFields = () => [
     placeholder: '',
     label: 'Phone Number',
     customWidth: 0,
+    mask: phoneMask,
   },
   {
     name: 'faxNumber',
@@ -57,6 +60,7 @@ export const getFullEmailFields = () => [
     placeholder: '',
     label: 'Fax Number',
     customWidth: 0,
+    mask: phoneMask,
   },
   {
     name: 'email',
