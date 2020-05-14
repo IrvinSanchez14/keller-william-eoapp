@@ -131,7 +131,7 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
         }}
       >
         <StyledProviderSelection>
-          <NavigationForm withBackButton showStep={false} />
+          <NavigationForm hideBackButton withBackButton showStep={false} />
           <KaceyHeader>
             <DogIcon size="55px" mobileSize="55px" />
             <strong>{intl.get('app.providerSelection.kacey')}</strong>

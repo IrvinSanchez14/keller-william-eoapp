@@ -1,34 +1,29 @@
-import { Component } from 'react';
 import classnames from 'classnames';
-
-import { FielControlForm } from 'src/components/FieldControlForm';
-import { Column } from 'src/components/LayoutWrapper/Flex';
-import {
-  setInformationPage,
-  addClaimsPolicy,
-  storeClaimsPolicy,
-  changeStatusProgressBar,
-} from 'src/store/actions/app';
-
-import { styles } from './styles';
-import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { isHaveClaimsValidateSchema } from 'src/helpers/validations';
-import { TextFieldForm } from 'src/components/TextFieldForm';
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import StepWrapper from 'src/components/StepWrapper';
+import { Component } from 'react';
 import { FormApp } from 'src/components/FormApp';
-import { RadioField } from 'src/components/RadioForm';
+import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
-import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
+import { isHaveClaimsValidateSchema } from 'src/helpers/validations';
+import {
+  changeStatusProgressBar,
+  setInformationPage,
+  storeClaimsPolicy,
+} from 'src/store/actions/app';
+import { withStyles } from 'src/styles/FormStyle/css/withStyles';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { FormPolicyInformationClaims } from './form';
+import { styles } from './styles';
 
-export type CurrentAddressProps = IAppStoreProps;
+export type CurrentAddressProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
 export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isLoading = false;
   isInitValid = false;
   isButtonLoading = false;
+  state = {
+    isHaveClaims: this.props.formData.app.data.policyInformation.isHaveClaims,
+  };
 
   async componentDidMount() {
     const { dispatch } = this.props;
@@ -37,11 +32,18 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
 
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
+    actions.setSubmitting(true);
+    await this.props.onSubmit?.();
     this.isButtonLoading = true;
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    actions.setSubmitting(true);
     storeClaimsPolicy(dispatch, values);
     setInformationPage(dispatch, 10, categoriesName.commissionInformation);
+  };
+
+  handleChange = (response: boolean) => {
+    this.setState({
+      isHaveClaims: response,
+    });
   };
 
   render() {
@@ -57,7 +59,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
             <FormApp
               initialValues={{
                 isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
-                claims: formData.app.data.policyInformation.claims || [],
+                claims: formData.app.data.policyInformation.claims,
               }}
               validationSchema={isHaveClaimsValidateSchema}
               onSubmit={this.nextStep}
@@ -73,7 +75,12 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
               alignButton={classnames(classes.alignButton)}
             >
               {(formikProps) => {
-                return FormPolicyInformationClaims(formikProps, formData, dispatch);
+                return FormPolicyInformationClaims(
+                  formikProps,
+                  formData,
+                  dispatch,
+                  this.handleChange,
+                );
               }}
             </FormApp>
           </StepWrapper>

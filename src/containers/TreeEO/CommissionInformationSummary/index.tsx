@@ -13,7 +13,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { FormCommissionInformationSummary } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
   contactName: string;
@@ -32,11 +32,12 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
+    actions.setSubmitting(true);
     const { dispatch, formData } = this.props;
     const total = this.totalSummary();
     storeCommissionTotalSummary(dispatch, total); //TODO put state in localstorage
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    actions.setSubmitting(true);
     setInformationPage(dispatch, 17, categoriesName.commissionInformation);
   };
 

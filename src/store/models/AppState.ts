@@ -133,7 +133,7 @@ export default class AppState implements IAppState {
           annualPremium: 0,
         },
         isHaveClaims: null,
-        claims: [],
+        claims: [{ dateClaim: '', amountClaim: null }],
       },
       commissionInformation: {
         grossCommission: 0,

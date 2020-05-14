@@ -12,7 +12,7 @@ import { FormFirmInformationAffiliated } from './form';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 export const propertyUsageFields = [
   {
@@ -39,6 +39,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };

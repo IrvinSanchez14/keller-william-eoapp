@@ -17,6 +17,7 @@ export interface IAppStoreProps {
   dispatch?: any;
   classes?: any;
   formData?: any;
+  sessionId?: any;
 }
 
 export type FormikProps = {

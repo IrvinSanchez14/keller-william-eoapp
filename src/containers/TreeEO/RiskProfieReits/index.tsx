@@ -1,22 +1,20 @@
-import { Component } from 'react';
 import classnames from 'classnames';
-
-import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
-import { storeRiskProfile, changeStatusProgressBar } from 'src/store/actions/app';
-import { riskProfileReitsValidateSchema } from 'src/helpers/validations';
-import { setInformationPage } from 'src/store/actions/app';
-import StepWrapper from 'src/components/StepWrapper';
+import { Component } from 'react';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-
-import { RadioField } from 'src/components/RadioForm';
+import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
-
+import { riskProfileReitsValidateSchema } from 'src/helpers/validations';
+import {
+  changeStatusProgressBar,
+  setInformationPage,
+  storeRiskProfile,
+} from 'src/store/actions/app';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { styles } from './styles';
+import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { FormRiskProfileReits } from './form';
+import { styles } from './styles';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 export const propertyUsageFields = [
   {
@@ -41,6 +39,7 @@ export class RiskProfileReits extends Component<FullNameProps> {
   nextStep = async (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 20, categoriesName.riskFactorInformation);
   };

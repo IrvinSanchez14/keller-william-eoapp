@@ -4,13 +4,14 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
-import { addClaimsPolicy } from 'src/store/actions/app';
+import { addClaimsPolicy, removeClaims, insertFirstClaims } from 'src/store/actions/app';
 
 import { TextFieldForm } from 'src/components/TextFieldForm';
 
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { dateMask } from 'src/utils';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   unitContainer: {
@@ -97,8 +98,15 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export const FormPolicyInformationClaims = (formikProps: any, formData: any, dispatch: any) => {
+export const FormPolicyInformationClaims = (
+  formikProps: any,
+  formData: any,
+  dispatch: any,
+  handleChange?: any,
+) => {
   const classes = useStyles();
+  const [isHaveInsurance, setIsHaveInsurance] = useState(false);
+
   const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
       {
@@ -186,6 +194,8 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
         <FielControlForm
           name="isHaveClaims"
           shouldValidateOnMount
+          setFieldTouched={formikProps.setFieldTouched}
+          errors={formikProps.errors}
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
@@ -193,7 +203,11 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
               value={true}
               data-test-id="sameAddressButtonYes"
               label={'Yes, I have claims'}
-              onChange={() => formikProps.setFieldValue('isHaveClaims', true)}
+              onChange={() => {
+                formikProps.setFieldValue('isHaveClaims', true);
+                setIsHaveInsurance(true);
+                handleChange(true);
+              }}
               checked={formikProps.values.isHaveClaims === true}
             />
           )}
@@ -210,6 +224,7 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
         <FielControlForm
           name="isHaveClaims"
           shouldValidateOnMount
+          setFieldTouched={formikProps.setFieldTouched}
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
@@ -220,6 +235,9 @@ export const FormPolicyInformationClaims = (formikProps: any, formData: any, dis
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', false);
                 formikProps.setFieldValue('claims', []);
+                setIsHaveInsurance(false);
+                handleChange(false);
+                removeClaims(dispatch);
               }}
               checked={formikProps.values.isHaveClaims === false}
             />

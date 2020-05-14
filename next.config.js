@@ -19,5 +19,8 @@ module.exports = withImages(
     },
     cssModules: true,
     exportTrailingSlash: true,
+    env: {
+      ENVIRONMENT: process.env.ENV || 'development',
+    },
   }),
 );

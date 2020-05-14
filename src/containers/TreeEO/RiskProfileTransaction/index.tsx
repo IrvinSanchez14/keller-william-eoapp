@@ -14,7 +14,7 @@ import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileTransaction } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
   contactName: string;
@@ -32,9 +32,10 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
+    actions.setSubmitting(true);
+    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     finishForm(dispatch);
-    actions.setSubmitting(true);
   };
 
   async componentDidMount() {

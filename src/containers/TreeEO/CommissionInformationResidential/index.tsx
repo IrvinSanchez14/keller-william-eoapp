@@ -14,7 +14,7 @@ import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/a
 import { FormApp } from 'src/components/FormApp';
 import { FormCommissionInformationResidential } from './form';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 const residential = {
   realState: '',
@@ -44,9 +44,10 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     const totalResidential = this.sumState(values.residential);
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     actions.setSubmitting(true);
+    storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
+    await this.props.onSubmit?.();
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
