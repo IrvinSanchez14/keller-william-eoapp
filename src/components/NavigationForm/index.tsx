@@ -27,6 +27,7 @@ interface INavigationProps extends IAppStoreProps {
   isConfirmationPage?: boolean;
   isCallButton?: boolean;
   showStep?: boolean;
+  hideBackButton?: boolean;
 }
 
 export function NavigationForm(Props: INavigationProps) {
@@ -39,6 +40,7 @@ export function NavigationForm(Props: INavigationProps) {
     isConfirmationPage = false,
     isCallButton = true,
     showStep = true,
+    hideBackButton,
   } = Props;
   const { state, intl, dispatch } = useAppContext();
   const classes = useStyles();
@@ -80,7 +82,8 @@ export function NavigationForm(Props: INavigationProps) {
   const stepTypeValue = intl.get('app.name.form').toUpperCase(); //title app
   const step = state.app.metadata && stepType ? state.app.metadata.categoryPage.toUpperCase() : ''; // category form
 
-  const hideBackButton = state.app.metadata && state.app.metadata.actualPage === 0;
+  const shouldHideBackButton =
+    hideBackButton || (state.app.metadata && state.app.metadata.actualPage === 0);
 
   return (
     <Fragment>
@@ -97,7 +100,7 @@ export function NavigationForm(Props: INavigationProps) {
                 tabIndex={1}
                 role="button"
                 className={classnames(classes.backIconContainer, {
-                  [classes.hidden]: hideBackButton && !customBackLabel,
+                  [classes.hidden]: shouldHideBackButton && !customBackLabel,
                 })}
               >
                 <AwesomeFontIcon
@@ -111,7 +114,7 @@ export function NavigationForm(Props: INavigationProps) {
               <Row
                 valign="center"
                 className={classnames(classes.stepContainer, {
-                  [classes.noPadding]: hideBackButton,
+                  [classes.noPadding]: shouldHideBackButton,
                 })}
               >
                 {!!customBackLabel ? (
