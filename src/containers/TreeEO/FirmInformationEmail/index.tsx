@@ -15,19 +15,31 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormFirmInformationEmail } from './form';
+import { FormikHelpers } from 'formik';
+import { isHttpError } from 'src/helpers/typeGuards';
 
-type FullNameProps = IAppStoreProps;
+type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
 export class FirmInformationEmail extends Component<FullNameProps> {
   isInitValid = false;
 
-  nextStep = async (values: any, actions: any) => {
+  nextStep = async (values: any, actions: FormikHelpers<any>) => {
+    actions.setSubmitting(true);
     values.suite = values.suite === '' ? null : values.suite;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    try {
+      await this.props.onSubmit?.();
+      changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+      setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    } catch (err) {
+      if (!isHttpError(err) || err.response.status !== 422) return;
+      actions.setFieldError('email', 'This email aready exists');
+      actions.setFieldTouched('email', true, false);
+    } finally {
+      actions.setSubmitting(false);
+    }
   };
 
   async componentDidMount() {
