@@ -83,7 +83,8 @@ export const policyInforamtionClaimsSchema = Yup.object().shape({
           amountClaim: Yup.number().required().min(0),
         }),
       )
-      .min(1),
+      .min(1)
+      .required(),
     otherwise: Yup.array(),
   }),
 });
