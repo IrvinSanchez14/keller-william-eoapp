@@ -197,6 +197,7 @@ export function NavigationForm(Props: INavigationProps) {
                 onClick={() => openCallToActionDialog()}
                 label={'Get covered now'}
                 isDark
+                withLabelClass={classnames(classes.labelButton)}
               />
             </Row>
           )}

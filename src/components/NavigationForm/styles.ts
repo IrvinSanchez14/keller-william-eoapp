@@ -35,6 +35,7 @@ export default makeStyles((theme: MuiTheme) => ({
     order: 1,
     [theme.breakpoints.up('md')]: {
       order: 2,
+      margin: '0px 0px 0px 9px',
     },
     '& > a': {
       textDecoration: 'none',
@@ -121,14 +122,10 @@ export default makeStyles((theme: MuiTheme) => ({
       letterSpacing: '1.5px',
     },
     [theme.breakpoints.up('md')]: {
-      paddingLeft: theme.spacing(),
-      borderLeft: '1px solid #C0C0C0',
-      '& span': {
-        fontSize: theme.fontSize.xxs,
-      },
+      paddingLeft: '0px',
     },
     [theme.breakpoints.up('lg')]: {
-      paddingLeft: theme.spacing(3),
+      paddingLeft: '0px',
       '& span': {
         letterSpacing: '2px',
         fontSize: theme.fontSize.xs,
@@ -173,8 +170,16 @@ export default makeStyles((theme: MuiTheme) => ({
   },
   ctaButtonDesktop: {
     display: 'none',
+    width: '201px',
     [theme.breakpoints.up('lg')]: {
       display: 'block',
+      width: '201px',
+    },
+  },
+  labelButton: {
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '16px',
+      lineHeight: '18px',
     },
   },
   ctaButtonDesktopConfirmation: {

@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
     fontWeight: 500,
     height: 50,
-    width: customWidthMobile || '100%',
+    width: '201px',
     fontSize: theme.fontSize.sm,
     boxShadow: 'none',
     outline: 'none',
@@ -130,6 +130,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
   labelWithIconContainer: {
     display: 'flex',
     alignItems: 'center',
+    margin: '3px 0px 0px -3px',
   },
   customIcon: {
     [theme.breakpoints.up(theme.breakpoints.values.lg)]: {
@@ -186,7 +187,8 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   labelClass: {
-    fontSize: 30,
+    fontSize: '16px',
+    lineHeight: '18px',
   },
   subLabelClass: {
     marginTop: 7,

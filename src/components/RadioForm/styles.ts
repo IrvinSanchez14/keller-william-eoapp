@@ -60,6 +60,8 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '25px',
     '@media (min-width: 768px)': {
       fontSize: 22,
+      margin: '0px 0px 0px 8px',
+      letterSpacing: '0.3px',
     },
   },
   subLabel: {

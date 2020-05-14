@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   cardContainer: {
     position: 'relative',
     top: -40,
-    padding: theme.spacing(6.5, 3, 3.5),
+    padding: '36px 36px 36px',
     background: theme.palette.primary.light,
     borderRadius: '0 0 18px 18px',
     '@media (min-width: 768px)': {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       borderRadius: '0 0 36px 36px',
     },
     '@media (min-width: 900px)': {
-      padding: theme.spacing(5.5, 4.5, 4.5),
+      padding: '36px 36px 36px',
       maxHeight: '375px',
       overflowY: 'auto',
     },
@@ -44,15 +44,16 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     fontSize: 23,
   },
   containerAddButton: {
-    marginTop: '10px',
     display: 'flex',
     flexDirection: 'row',
     cursor: 'pointer',
     color: '#0093E9',
+    margin: '21px 0px -8px -5px',
   },
   pAddButton: {
-    marginLeft: 15,
-    fontSize: '1.15em',
+    margin: '6px 0px 0px 10px',
+    fontSize: '16px',
+    lineHeight: '12px',
     fontWeight: 600,
   },
   radioContainer: {
@@ -73,6 +74,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   periodContainer: {
     flexDirection: 'row',
+    margin: '10px 0px 0px -8px',
     '& > div': {
       [theme.breakpoints.down('md')]: {
         flex: 1,
@@ -80,7 +82,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       '&:first-child': {
         marginRight: 10,
         [theme.breakpoints.up('md')]: {
-          marginRight: theme.spacing(2),
+          margin: '0px 31px 0px -2px',
         },
       },
     },
@@ -149,12 +151,12 @@ export const FormPolicyInformationClaims = (
                         label={label}
                         placeholder={placeholder}
                         setFieldTouched={formikProps.setFieldTouched}
-                        customWidth={150}
                         mask={mask}
                         className={classnames(classes.periodContainerInput, {
                           [classes.periodContainerInputInvalid]:
                             formikProps.errors[name] && formikProps.touched[name],
                         })}
+                        customWidth={161}
                       />
                     )}
                   />
@@ -178,6 +180,7 @@ export const FormPolicyInformationClaims = (
               type="light"
               dataTestId="backButton"
               className={classes.iconPlus}
+              size="10x"
             />
           </div>
           <div className={classes.pAddButton}>
