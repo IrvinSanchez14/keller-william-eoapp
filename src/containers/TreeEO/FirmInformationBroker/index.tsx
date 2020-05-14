@@ -36,13 +36,13 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
   }
 
   render() {
@@ -51,10 +51,9 @@ export class FirmInformationBroker extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
-          heading={this.props.intl.get('app.head.form.firm.part.one')}
-          subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
-          bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
+          avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
+          heading={this.props.intl.get('app.head.form.firm.part.three')}
+          classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
             initialValues={{

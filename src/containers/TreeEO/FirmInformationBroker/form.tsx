@@ -10,10 +10,10 @@ import { dateMask } from 'src/utils';
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
     fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: '1.0em',
+    lineHeight: '14px',
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
+      lineHeight: '28px',
       marginBottom: '-0.2em',
     },
   },
@@ -36,13 +36,18 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       },
     },
   },
+  containerFirst: {
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '20px',
+    },
+  },
 }));
 
 export const FormFirmInformationBroker = (formikProps: any) => {
   const classes = useStyles();
   return (
     <>
-      <Column>
+      <Column className={classnames(classes.containerFirst)}>
         <Typography className={classnames(classes.titleForm)}>
           Date broker licensed as an agent
         </Typography>

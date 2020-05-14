@@ -34,7 +34,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             data-test-id="currentCarrier"
             name="currentCarrier"
             type="string"
-            label={'Current Carrier'}
+            label={'Current carrier'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}

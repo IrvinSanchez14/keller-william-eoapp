@@ -58,7 +58,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avata.text.commission.part.four')}
+          avatarText={this.props.intl.get('app.avatar.text.commission.part.commercial')}
           heading={this.props.intl.get('app.head.form.commission.part.five')}
           bottomContent={this.props.intl.get('app.link.commission.part.four')}
           classHeader={classnames(classes.stepHeader)}

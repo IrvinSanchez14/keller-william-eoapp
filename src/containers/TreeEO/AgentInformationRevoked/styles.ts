@@ -14,4 +14,13 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   alignButton: {
     justifyContent: 'flex-end',
   },
+  stepHeader: {
+    fontSize: '24px',
+    lineHeight: '28px',
+    [theme.breakpoints.up(768)]: {
+      fontSize: '56px',
+      lineHeight: '62px',
+      marginBottom: '265px',
+    },
+  },
 });

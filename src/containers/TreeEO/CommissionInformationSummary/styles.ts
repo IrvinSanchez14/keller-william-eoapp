@@ -7,10 +7,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '21px',
     fontWeight: 'bold',
     marginBottom: '1.0em',
+    color: '#07293D',
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
       lineHeight: '28px',
       marginBottom: '0.7em',
+      color: '#07293D',
     },
   },
   backTitleTable: {

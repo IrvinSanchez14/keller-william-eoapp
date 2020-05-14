@@ -10,7 +10,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '22px',
       lineHeight: '28px',
-      width: '100%',
+      width: '430px',
+      fontWeight: 'bold',
     },
   },
   stepHeader: {
@@ -83,11 +84,13 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '19px',
     color: '#07293D',
     marginBottom: '25px',
+    width: '275px',
     [theme.breakpoints.up(750)]: {
       fontSize: '20px',
       lineHeight: '26px',
       color: '#07293D',
       marginBottom: '45px',
+      width: '528px',
     },
   },
   alignButton: {

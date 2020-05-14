@@ -41,12 +41,12 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
-    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   }
 
   handleChange = (value: boolean, formikProps: any) => {
@@ -59,8 +59,9 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
-          heading={this.props.intl.get('app.head.form.firm.part.three')}
+          avatarText={this.props.intl.get('app.avatar.text.firm.part.four')}
+          heading={this.props.intl.get('app.head.form.firm.part.four')}
+          classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
             initialValues={{
