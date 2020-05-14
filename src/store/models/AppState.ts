@@ -7,11 +7,11 @@ export interface RiskProfileProps {
 }
 
 export interface SummaryProps {
-  realEstate: number;
-  rawLand: number;
-  appraisals: number;
-  propertyMgmt: number;
-  ownedProperty: number;
+  realEstate?: number;
+  rawLand?: number;
+  appraisals?: number;
+  propertyMgmt?: number;
+  ownedProperty?: number;
   total: number;
 }
 
@@ -136,28 +136,28 @@ export default class AppState implements IAppState {
         claims: [{ dateClaim: '', amountClaim: null }],
       },
       commissionInformation: {
-        grossCommission: 0,
-        averageValue: 0,
-        percentageTransactions: 0,
+        grossCommission: undefined,
+        averageValue: undefined,
+        percentageTransactions: undefined,
         residential: {
-          realEstate: 0,
-          rawLand: 0,
-          appraisals: 0,
-          propertyMgmt: 0,
-          ownedProperty: 0,
+          realEstate: undefined,
+          rawLand: undefined,
+          appraisals: undefined,
+          propertyMgmt: undefined,
+          ownedProperty: undefined,
           total: 0,
         },
         commercial: {
-          realEstate: 0,
-          rawLand: 0,
-          appraisals: 0,
-          propertyMgmt: 0,
-          ownedProperty: 0,
+          realEstate: undefined,
+          rawLand: undefined,
+          appraisals: undefined,
+          propertyMgmt: undefined,
+          ownedProperty: undefined,
           total: 0,
         },
-        farmRanch: 0,
-        auctioneering: 0,
-        mortageBrokerage: 0,
+        farmRanch: undefined,
+        auctioneering: undefined,
+        mortageBrokerage: undefined,
         totalCommision: 0,
       },
       riskFactorInformation: {

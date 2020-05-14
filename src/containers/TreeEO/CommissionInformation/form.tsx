@@ -35,7 +35,7 @@ export const FormCommissionInformation = (formikProps: any) => {
             data-test-id="grossCommission"
             name="grossCommission"
             type="number"
-            placeholder="$"
+            placeholder="$0"
             label={'Commission'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -55,7 +55,7 @@ export const FormCommissionInformation = (formikProps: any) => {
             data-test-id="averageValue"
             name="averageValue"
             type="number"
-            placeholder="$"
+            placeholder="$0"
             label={'Average property value'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
