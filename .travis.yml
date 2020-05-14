@@ -30,7 +30,7 @@ stages:
 jobs:
   include:
     - stage: test
-      if: branch IN (develop, staging) AND type = pull_request
+      if: type = pull_request
       name: specs
       before_install: npm i -g yarn
       install: yarn --frozen-lockfile
@@ -42,7 +42,7 @@ jobs:
           fi
 
     - stage: deploy
-      if: type = push
+      if: branch IN (develop, master) AND type = push
       name: deploy
       before_install:
         - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -57,6 +57,11 @@ jobs:
         - |
           if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
-            NODE_ENV=development yarn export
+            NODE_ENV=development yarn export:sitemap
             gsutil -m cp -r ./out/* gs://eo-dev.kellercovered.io/
+          fi
+          if [[ $TRAVIS_BRANCH  == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+            yarn format
+            NODE_ENV=production yarn export:sitemap
+            gsutil -m cp -r ./out/* gs://eo.kellercovered.com/
           fi
