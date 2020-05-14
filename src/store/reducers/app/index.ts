@@ -249,6 +249,48 @@ export const appActions: any = {
       },
     };
   },
+  REMOVE_CLAIMS: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            isHaveClaims: false,
+            claims: [
+              {
+                dateClaim: '',
+                amountClaim: null,
+              },
+            ],
+          },
+        },
+      },
+    };
+  },
+  INSERT_FIRST_CLAIMS: (state: any, action: any) => {
+    return {
+      ...state,
+      app: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            isHaveClaims: true,
+            claims: [
+              {
+                dateClaim: '',
+                amountClaim: null,
+              },
+            ],
+          },
+        },
+      },
+    };
+  },
   CHANGE_STATUS_PROGRESS_BAR: (state: any, action: any) => {
     return {
       ...state,
