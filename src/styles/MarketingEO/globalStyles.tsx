@@ -35,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     overflow: hidden;
     position: relative;
+    font-family: "Regular";
   }
 
   html {
