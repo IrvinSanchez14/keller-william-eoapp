@@ -46,7 +46,7 @@ export const getFullEmailFields = () => [
   },
   {
     name: 'phoneNumber',
-    type: 'number',
+    type: 'text',
     placeholder: '',
     label: 'Phone Number',
     customWidth: 0,

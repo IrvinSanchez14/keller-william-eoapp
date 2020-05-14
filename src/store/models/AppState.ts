@@ -58,7 +58,7 @@ export interface FirmInformationProps {
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
-  phoneNumber: number;
+  phoneNumber: string;
   faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;
@@ -106,7 +106,7 @@ export default class AppState implements IAppState {
         yearEstablished: 0,
         streetAddress: '',
         suite: null,
-        phoneNumber: 0,
+        phoneNumber: '',
         faxNumber: '',
         email: '',
         isFirmOwned: null,

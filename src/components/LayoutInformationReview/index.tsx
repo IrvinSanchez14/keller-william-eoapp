@@ -121,11 +121,11 @@ const LayoutHeaderText = styled.h1`
 `;
 
 const LayoutsInformation = styled.div`
-  padding-top: 34px;
+  padding-top: 60px;
 `;
 
 const Container = styled.div`
-  padding-bottom: 150px;
+  padding-bottom: 40px;
 `;
 
 export default function LayoutInformationReview({

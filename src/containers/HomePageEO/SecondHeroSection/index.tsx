@@ -18,7 +18,7 @@ const PartnersContainerText = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-top: 67px;
+  padding-top: 90px;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -46,7 +46,7 @@ const PartnersText = styled.h1`
 const StyledBenefitsContainer = styled.div`
   display: flex;
   justify-items: center;
-  padding: 20px 90px 80px 90px;
+  padding: 82px 90px 80px 90px;
   ${({ theme }) => theme.tablet`flex-direction: column;`};
   ${({ theme }) => theme.phone`padding: 50px 20px 0 20px;`};
 `;

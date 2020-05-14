@@ -9,10 +9,7 @@ export const fullNameValidateSchema = Yup.object().shape({
 
 export const fullEmailValidateSchema = Yup.object().shape({
   streetAddress: Yup.string().required('Field is required'),
-  phoneNumber: Yup.number()
-    .min(1234567890, 'Phone number is limited to min 10 characters')
-    .max(1234567890, 'Phone number is limited to max 10 characters')
-    .required('Field is required'),
+  phoneNumber: Yup.string().required('Field is required'),
   email: Yup.string().email('Email Address must be a valid email').required('Field is required'),
 });
 

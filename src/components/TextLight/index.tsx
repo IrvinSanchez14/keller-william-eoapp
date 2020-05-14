@@ -10,6 +10,8 @@ interface TextLightProps {
 const Text = styled.a<Pick<TextLightProps, 'customWidth'>>`
   font-size: 22px;
   width: 100%;
+  letter-spacing: 0;
+  line-height: 28px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark}`};
   ${({ customWidth }) =>
     customWidth &&
