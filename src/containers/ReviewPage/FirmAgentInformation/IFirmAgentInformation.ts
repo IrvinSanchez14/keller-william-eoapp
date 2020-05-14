@@ -5,7 +5,7 @@ interface FirmInformationProps {
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
-  phoneNumber: string | number;
+  phoneNumber: string;
   faxNumber?: string;
   email: string;
   isFirmOwned?: boolean;

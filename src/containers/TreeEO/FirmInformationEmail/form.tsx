@@ -3,7 +3,7 @@ import { getFullEmailFields } from 'src/helpers/fieldsForm';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 export const FormFirmInformationEmail = ({ errors, touched, setFieldTouched }: FormikProps) =>
-  getFullEmailFields().map(({ name, type, customWidth, label }) => (
+  getFullEmailFields().map(({ name, type, customWidth, label, mask }) => (
     <FielControlForm
       data-test-id={name}
       key={name}
@@ -17,5 +17,6 @@ export const FormFirmInformationEmail = ({ errors, touched, setFieldTouched }: F
       renderFastField
       shouldValidateOnMount
       customWidth={customWidth}
+      mask={mask}
     />
   ));
