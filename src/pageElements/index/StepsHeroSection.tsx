@@ -500,7 +500,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
     {
       numberStep: 'STEP ONE',
       headerText: 'Fill out a standard application',
-      descriptionStep: 'Get quotes from both of our partners',
+      descriptionStep: 'Get quotes from both of our partners.',
       padding: '50px 30px',
       width: '100%',
     },
@@ -508,7 +508,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       numberStep: 'STEP TWO',
       headerText: 'Enjoy exclusive benefits',
       descriptionStep:
-        'Keller Covered has done the work for you and negotiated rates for you at no extra cost',
+        'Keller Covered has done the work for you and negotiated rates for you at no extra cost.',
       padding: '150px 30px',
       mobilePadding: '100px 30px',
       width: '100%',
@@ -516,7 +516,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
     {
       numberStep: 'STEP THREE',
       headerText: 'Get a policy in as little as 24 hours',
-      descriptionStep: 'Get expert support and choose the best coverage for you needs',
+      descriptionStep: 'Get expert support and choose the best coverage for your needs.',
       padding: '0 30px',
       mobilePadding: '40px 30px',
       width: '100%',
