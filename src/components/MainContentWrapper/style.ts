@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
   divContainerBody: {
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      height: '709px',
     },
   },
   progressBar: {

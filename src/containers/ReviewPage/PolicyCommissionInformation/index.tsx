@@ -140,21 +140,11 @@ const ComissionTotalValueText = styled.h1`
 `;
 
 function calcCommission(total: number, value: number) {
-  return formatPercentage(Math.round((value / total) * 100));
+  return (value / total) * 100;
 }
 
-export default function PolicyCommissionInformation({
-  data,
-  openEditModal,
-  isPdf,
-}: PolicyCommissionInformationProps): JSX.Element {
-  const onOpenModal = useCallback(
-    (nameForm: string) => () => {
-      openEditModal?.(nameForm);
-    },
-    [openEditModal],
-  );
-  const tableInfo = isPdf
+function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boolean) {
+  const tableInfo: { name: string; value: number | string }[] = isPdf
     ? [
         {
           name: 'Residential real estate',
@@ -270,6 +260,38 @@ export default function PolicyCommissionInformation({
           value: formatAmount(data.commissionInformation.mortageBrokerage, true),
         },
       ];
+  if (isPdf) {
+    const percentages = tableInfo.map((cell) => cell.value) as number[];
+    const percDiff = 100 - percentages.reduce((sum, value) => sum + Math.floor(value), 0);
+    if (percDiff > 0) {
+      const sortedPercentages = percentages.sort((a, b) => b - Math.floor(b) - (a - Math.floor(a)));
+      for (let i = 0; i < percDiff; i++) {
+        for (const cell of tableInfo) {
+          if (cell.value !== sortedPercentages[i]) continue;
+          cell.value = Math.floor(cell.value) + 1;
+          break;
+        }
+      }
+      for (const cell of tableInfo) {
+        cell.value = formatPercentage(Math.floor(cell.value as number));
+      }
+    }
+  }
+  return tableInfo;
+}
+
+export default function PolicyCommissionInformation({
+  data,
+  openEditModal,
+  isPdf,
+}: PolicyCommissionInformationProps): JSX.Element {
+  const onOpenModal = useCallback(
+    (nameForm: string) => () => {
+      openEditModal?.(nameForm);
+    },
+    [openEditModal],
+  );
+  const tableInfo = getTableInfo(data, isPdf);
   return (
     <ContainerBackgroundShape>
       <Layout
