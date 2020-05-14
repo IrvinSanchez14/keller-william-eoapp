@@ -40,7 +40,7 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 21, categoriesName.commissionInformation);
+    setInformationPage(dispatch, 21, categoriesName.riskFactorInformation);
   }
 
   render() {
