@@ -37,7 +37,6 @@ const ProviderSelectionPage: React.FC = () => {
           rel="stylesheet"
           id="font-awesome-5-kit-css"
         />
-        <link href="/assets/fonts/Effra/stylesheet.css" rel="stylesheet" />
       </Head>
       <AppStateContextProvider>
         {data && <ProviderSelection state={data} />}
