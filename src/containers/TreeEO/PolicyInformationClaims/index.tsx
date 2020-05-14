@@ -21,6 +21,9 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   isLoading = false;
   isInitValid = false;
   isButtonLoading = false;
+  state = {
+    isHaveClaims: this.props.formData.app.data.policyInformation.isHaveClaims,
+  };
 
   async componentDidMount() {
     const { dispatch } = this.props;
@@ -37,6 +40,12 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
     setInformationPage(dispatch, 10, categoriesName.commissionInformation);
   };
 
+  handleChange = (response: boolean) => {
+    this.setState({
+      isHaveClaims: response,
+    });
+  };
+
   render() {
     const { intl, classes, formData, dispatch } = this.props;
 
@@ -50,7 +59,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
             <FormApp
               initialValues={{
                 isHaveClaims: formData.app.data.policyInformation.isHaveClaims,
-                claims: formData.app.data.policyInformation.claims || [],
+                claims: formData.app.data.policyInformation.claims,
               }}
               validationSchema={isHaveClaimsValidateSchema}
               onSubmit={this.nextStep}
@@ -66,7 +75,12 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
               alignButton={classnames(classes.alignButton)}
             >
               {(formikProps) => {
-                return FormPolicyInformationClaims(formikProps, formData, dispatch);
+                return FormPolicyInformationClaims(
+                  formikProps,
+                  formData,
+                  dispatch,
+                  this.handleChange,
+                );
               }}
             </FormApp>
           </StepWrapper>
