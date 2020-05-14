@@ -55,6 +55,7 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
           <StepWrapper
             avatarText={intl.get('app.avatar.title.policy.part.two')}
             heading={intl.get('app.head.form.policy.part.two')}
+            classHeader={classnames(classes.stepHeader)}
           >
             <FormApp
               initialValues={{

@@ -27,9 +27,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     fontSize: 16,
     lineHeight: '21px',
     width: '275px',
-    fontWeight: 'bold',
     [theme.breakpoints.up(768)]: {
-      fontWeight: 'bold',
       width: '100%',
       fontSize: 22,
       lineHeight: '28px',

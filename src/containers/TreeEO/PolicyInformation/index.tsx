@@ -63,6 +63,7 @@ export class PolicyInformation extends Component<FullNameProps> {
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.title.policy.part.one')}
           heading={this.props.intl.get('app.head.form.policy.part.one')}
+          classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
             initialValues={{

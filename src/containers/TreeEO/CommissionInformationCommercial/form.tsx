@@ -223,7 +223,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
         <div className={classnames(classes.containerTotal)}>
           <Divider style={{ margin: '0 15px' }} />
           <div className={classnames(classes.divContainerTotal)}>
-            <Typography className={classnames(classes.textTotal)}>{'Residential total'}</Typography>
+            <Typography className={classnames(classes.textTotal)}>{'Commercial total'}</Typography>
             <Typography className={classnames(classes.textNumberTotal)}>
               ${sumState(commercial)}
             </Typography>

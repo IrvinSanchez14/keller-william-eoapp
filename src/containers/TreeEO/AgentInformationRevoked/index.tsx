@@ -47,6 +47,7 @@ export class AgentInformationRevoked extends Component<FullNameProps> {
         <StepWrapper
           avatarText={this.props.intl.get('app.avatar.text.agent.part.three')}
           heading={this.props.intl.get('app.head.form.agent.part.three')}
+          classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
             initialValues={{

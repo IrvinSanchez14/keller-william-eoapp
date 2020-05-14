@@ -27,27 +27,27 @@ const getTypesCommission = [
   {
     id: 1,
     icon: 'firmWelcome',
-    label: 'Residential',
+    label: 'Firm',
   },
   {
     id: 2,
     icon: 'agentWelcome',
-    label: 'Commercial',
+    label: 'Agents',
   },
   {
     id: 3,
     icon: 'commissionWelcome',
-    label: 'Farm/Ranch',
+    label: 'Commission',
   },
   {
     id: 4,
     icon: 'policyWelcome',
-    label: 'Auctioneering',
+    label: 'Policy',
   },
   {
     id: 5,
     icon: 'riskWelcome',
-    label: 'Mortgage',
+    label: 'Risk Profile',
   },
 ];
 
