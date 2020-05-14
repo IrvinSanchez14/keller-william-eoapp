@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import classnames from 'classnames';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
@@ -11,6 +11,7 @@ import { useAppContext } from 'src/store';
 import { setPageLocation, changeStatusProgressBar } from 'src/store/actions/app';
 import { STEP_TYPES } from 'src/helpers/constants';
 import useStyles from './styles';
+import CoveredNowModal from '../CoveredNowModal';
 
 interface INavigationProps extends IAppStoreProps {
   withBackButton?: boolean;
@@ -43,6 +44,7 @@ export function NavigationForm(Props: INavigationProps) {
     hideBackButton,
   } = Props;
   const { state, intl, dispatch } = useAppContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const classes = useStyles();
 
   const saveProgress = () => {
@@ -71,10 +73,7 @@ export function NavigationForm(Props: INavigationProps) {
   };
 
   const openCallToActionDialog = () => {
-    /* const { customCTAHandler } = this.props;
-
-    this.callToActionDialog.open();
-    customCTAHandler();*/
+    setIsModalOpen(true);
   };
 
   const stepType =
@@ -87,6 +86,7 @@ export function NavigationForm(Props: INavigationProps) {
 
   return (
     <Fragment>
+      <CoveredNowModal isModalOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
       <Row align="center" className={classes.wrapper}>
         <header className={classes.container}>
           {withBackButton && (
