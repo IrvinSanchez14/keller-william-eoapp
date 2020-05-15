@@ -29,6 +29,9 @@ export class CommissionInformationOther extends Component<FullNameProps> {
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
+    values.farmRanch = values.farmRanch === undefined ? 0 : values.farmRanch;
+    values.auctioneering = values.auctioneering === undefined ? 0 : values.auctioneering;
+    values.mortageBrokerage = values.mortageBrokerage === undefined ? 0 : values.mortageBrokerage;
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);

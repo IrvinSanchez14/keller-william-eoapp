@@ -37,9 +37,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginTop: '25px',
-    [theme.breakpoints.up(768)]: {
-      marginBottom: 80,
-    },
   },
   totalTypo: {
     color: '#1d253c',

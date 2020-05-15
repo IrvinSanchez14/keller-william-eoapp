@@ -82,7 +82,7 @@ export class FormCommissionInformationMenu extends Component<IFormFirmInformatio
         {() => {
           return (
             <>
-              <div style={{ display: 'flex', flexWrap: 'wrap', marginBottom: '1em' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', marginTop: '-16px' }}>
                 {this.renderChildrenCommissionTypes()}
               </div>
             </>

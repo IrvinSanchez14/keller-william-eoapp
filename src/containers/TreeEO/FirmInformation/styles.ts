@@ -20,8 +20,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     fontSize: '16px',
     lineHeight: '20px',
     [theme.breakpoints.up(768)]: {
-      fontSize: '22px',
-      lineHeight: '28px',
+      fontSize: '12px',
+      lineHeight: '25px',
       width: '410px',
       marginTop: '80px',
     },
@@ -32,7 +32,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
-      width: '545px',
+      letterSpacing: '-1px',
     },
   },
 });

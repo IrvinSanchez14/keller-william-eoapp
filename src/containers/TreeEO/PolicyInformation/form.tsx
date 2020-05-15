@@ -28,7 +28,7 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
 
   return (
     <>
-      <Grid container>
+      <Grid container style={{ marginTop: '-18px' }}>
         <Grid item xs={12}>
           <FielControlForm
             data-test-id="currentCarrier"
