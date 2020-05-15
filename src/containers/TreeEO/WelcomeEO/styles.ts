@@ -8,35 +8,44 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '21px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
-      fontSize: '22px',
+      fontSize: '21px',
       lineHeight: '28px',
-      width: '430px',
       fontWeight: 'bold',
+      margin: '3px 0px 0px 15px',
+      letterSpacing: '0.8px',
+      width: '512px',
     },
   },
   stepHeader: {
     fontSize: '24px',
     lineHeight: '28px',
+    letterSpacing: '-0.5px',
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
+      marginBottom: '30px',
+      letterSpacing: '-1px',
+      marginTop: '7px',
     },
   },
   label: {
-    color: '#082a3e',
-    fontWeight: 'bold',
-    fontSize: theme.fontSize.xxs,
-    textAlign: 'center',
     lineHeight: '14px',
-    margin: '-3px 0px 0px -18px',
-    [theme.breakpoints.up(750)]: {
-      fontSize: '16px',
-      marginTop: '-25px',
-    },
+    fontSize: '16px',
     [theme.breakpoints.up('md')]: {
-      fontSize: 16,
-      lineHeight: '28px',
-      margin: '-20px 0px 0px -34px',
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+    },
+  },
+  labelFirm: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginTop: '1px',
+      marginLeft: '-9px',
     },
   },
   iconSize: {
@@ -44,17 +53,138 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     height: '100%',
   },
   content: {
-    width: '100%',
-    height: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: theme.spacing(),
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(1.5),
+    marginTop: '34px',
+    textAlign: 'center',
+    [theme.breakpoints.up(750)]: {
+      textAlign: 'center',
+      marginTop: '56px',
     },
+  },
+  contentFirm: {
+    marginRight: '37px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '42px',
+      marginTop: '59px',
+    },
+  },
+  iconFirm: {
+    width: '66px',
+    height: '51px',
+    [theme.breakpoints.up(750)]: {
+      width: '66px',
+      height: '51px',
+    },
+  },
+  contentAgent: {
+    marginRight: '10px',
+    marginTop: '31px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '29px',
+      marginTop: '56px',
+    },
+  },
+  iconAgent: {
+    width: '79px',
+    height: '55px',
+    [theme.breakpoints.up(750)]: {
+      width: '79px',
+      height: '55px',
+    },
+  },
+  labelAgent: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '-26px',
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(2),
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginLeft: '-26px',
+    },
+  },
+  labelComission: {
+    lineHeight: '14px',
+    fontSize: '16px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      margin: '-6px 0px 0px -7px',
+    },
+  },
+  contentCommission: {
+    marginTop: '27px',
+    marginRight: '16px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '31px',
+      marginTop: '54px',
+      marginLeft: '5px',
+    },
+  },
+  iconCommission: {
+    width: '62px',
+    height: '62px',
+    [theme.breakpoints.up(750)]: {
+      width: '62px',
+      height: '62px',
+    },
+  },
+  contentPolicy: {
+    marginRight: '45px',
+    marginTop: '22px',
+    [theme.breakpoints.up(750)]: {
+      marginRight: '45px',
+      marginTop: '50px',
+    },
+  },
+  contentRisk: {
+    marginRight: '45px',
+    marginTop: '22px',
+    [theme.breakpoints.up(750)]: {
+      marginTop: '56px',
+      marginLeft: '11px',
+    },
+  },
+  iconPolicy: {
+    width: '57px',
+    height: '62px',
+    [theme.breakpoints.up(750)]: {
+      width: '72px',
+      height: '62px',
+    },
+  },
+  labelPolicy: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '13px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      marginLeft: '13px',
+      letterSpacing: '1px',
+      marginTop: '-2px',
+    },
+  },
+  iconRisk: {
+    width: '53px',
+    height: '55px',
+    [theme.breakpoints.up(750)]: {
+      width: '55px',
+      height: '55px',
+    },
+  },
+  labelRisk: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '13px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      width: '88px',
+      margin: '0px 0px 0px -18px',
+      letterSpacing: '1px',
     },
   },
   card: {
@@ -76,7 +206,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       marginBottom: '46px',
-      marginTop: '15px',
+      marginTop: '-10px',
     },
   },
   textContent: {
@@ -93,6 +223,21 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       width: '528px',
     },
   },
+  textContentFinal: {
+    fontSize: '16px',
+    lineHeight: '19px',
+    color: '#07293D',
+    marginBottom: '25px',
+    width: '275px',
+    [theme.breakpoints.up(750)]: {
+      fontSize: '20px',
+      lineHeight: '26px',
+      color: '#07293D',
+      marginBottom: '0px',
+      width: '528px',
+      marginTop: '-19px',
+    },
+  },
   alignButton: {
     justifyContent: 'flex-end',
   },
@@ -102,6 +247,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(750)]: {
       fontSize: '22px',
       lineHeight: '28px',
+      margin: '0px 0px 0px 4px',
       marginTop: 0,
     },
   },

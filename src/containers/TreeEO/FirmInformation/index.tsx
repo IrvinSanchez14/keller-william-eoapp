@@ -53,6 +53,8 @@ export class FirmInformation extends Component<FullNameProps> {
           heading={this.props.intl.get('app.head.form.firm.part.one')}
           subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
           bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
+          classHeader={classnames(classes.stepHeader)}
+          classBottom={classnames(classes.stepBottom)}
         >
           <Typography className={classnames(classes.titleForm)}>
             {this.props.intl.get('app.title.form.firm.part.one')}

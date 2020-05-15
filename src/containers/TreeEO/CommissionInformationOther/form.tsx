@@ -122,13 +122,13 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             data-test-id="farmRanch"
             name="farmRanch"
             type="number"
-            label={'Commission'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
@@ -143,13 +143,13 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             data-test-id="auctioneering"
             name="auctioneering"
             type="number"
-            label={'Average property value'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
@@ -164,13 +164,13 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             data-test-id="mortageBrokerage"
             name="mortageBrokerage"
             type="number"
-            label={'Average property value'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            placeholder="$0"
           />
         </Column>
       </Row>
