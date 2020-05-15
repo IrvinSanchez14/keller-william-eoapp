@@ -326,18 +326,19 @@ export default function PolicyCommissionInformation({
           <TextBold customMargin text={labelInformation.policyInformation.isHaveClaims} />
           <TextLight typeFormat="boolean" text={data.policyInformation.isHaveClaims} />
         </ContainerInformation>
-        {data.policyInformation.isHaveClaims && (
-          <>
-            <ContainerInformation>
-              <TextBold customMargin text={labelInformation.policyInformation.dateClaim} />
-              <TextLight text={data.policyInformation.claims[0].dateClaim} />
-            </ContainerInformation>
-            <ContainerInformation>
-              <TextBold customMargin text={labelInformation.policyInformation.amountClaim} />
-              <TextLight typeFormat="money" text={data.policyInformation.claims[0].amountClaim} />
-            </ContainerInformation>
-          </>
-        )}
+        {data.policyInformation.isHaveClaims &&
+          data.policyInformation.claims.map((claim) => (
+            <>
+              <ContainerInformation>
+                <TextBold customMargin text={labelInformation.policyInformation.dateClaim} />
+                <TextLight text={claim.dateClaim} />
+              </ContainerInformation>
+              <ContainerInformation>
+                <TextBold customMargin text={labelInformation.policyInformation.amountClaim} />
+                <TextLight typeFormat="money" text={claim.amountClaim} />
+              </ContainerInformation>
+            </>
+          ))}
       </Layout>
       <Layout textHeader="Commission" openEditPageModal={openEditModal && onOpenModal('Comission')}>
         <ContainerInformation firstPadding>
