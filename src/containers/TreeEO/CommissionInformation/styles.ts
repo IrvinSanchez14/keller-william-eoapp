@@ -39,7 +39,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '28px',
       width: '401px',
       marginTop: '40px',
-      marginBottom: '225px',
     },
   },
   alignButton: {

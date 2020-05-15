@@ -39,7 +39,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
-      marginBottom: '450px',
     },
   },
 });

@@ -214,7 +214,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '19px',
     color: '#07293D',
     marginBottom: '25px',
-    width: '275px',
+    width: 'auto',
     [theme.breakpoints.up(750)]: {
       fontSize: '20px',
       lineHeight: '26px',
@@ -228,7 +228,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '19px',
     color: '#07293D',
     marginBottom: '25px',
-    width: '275px',
+    width: 'auto',
     [theme.breakpoints.up(750)]: {
       fontSize: '20px',
       lineHeight: '26px',
