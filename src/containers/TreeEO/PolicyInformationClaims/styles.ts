@@ -86,6 +86,9 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   alignButton: {
     justifyContent: 'flex-end',
+    [theme.breakpoints.up(768)]: {
+      marginTop: '-64px',
+    },
   },
   stepHeader: {
     fontSize: '24px',
