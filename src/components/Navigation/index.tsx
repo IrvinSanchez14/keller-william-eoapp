@@ -182,11 +182,7 @@ function Navigation(Props: NavigationProps) {
         </StyledContainer>
       </Wrapper>
       {isModalVisible && (
-        <CoveredNowModal
-          width={width}
-          isModalOpen={isModalVisible}
-          closeModal={() => toggleModal()}
-        />
+        <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />
       )}
     </>
   );
