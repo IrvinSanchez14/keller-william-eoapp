@@ -121,11 +121,7 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
         </StyledButton>
       </HeaderContainer>
       {isModalVisible && (
-        <CoveredNowModal
-          width={width}
-          isModalOpen={isModalVisible}
-          closeModal={() => toggleModal()}
-        />
+        <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />
       )}
     </Header>
   );
