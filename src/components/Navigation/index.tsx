@@ -107,6 +107,7 @@ const StyledImg = styled.img`
 
 function Navigation(Props: NavigationProps) {
   const { items, isWhiteNav } = Props;
+  const [width, setWidth] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
@@ -121,13 +122,14 @@ function Navigation(Props: NavigationProps) {
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 690);
+    setWidth(window.innerWidth);
   };
 
   useEffect(() => {
     window.addEventListener('click', handleClicking);
     window.addEventListener('resize', handleResize);
     setIsMobile(window.innerWidth < 690);
-
+    setWidth(window.innerWidth);
     return () => {
       window.removeEventListener('click', handleClicking);
       window.removeEventListener('resize', handleResize);
@@ -180,7 +182,11 @@ function Navigation(Props: NavigationProps) {
         </StyledContainer>
       </Wrapper>
       {isModalVisible && (
-        <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />
+        <CoveredNowModal
+          width={width}
+          isModalOpen={isModalVisible}
+          closeModal={() => toggleModal()}
+        />
       )}
     </>
   );

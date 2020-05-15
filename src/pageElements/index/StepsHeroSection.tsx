@@ -517,7 +517,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       numberStep: 'STEP THREE',
       headerText: 'Get a policy in as little as 24 hours',
       descriptionStep: 'Get expert support and choose the best coverage for your needs.',
-      padding: '0 30px',
+      padding: '10px 30px',
       mobilePadding: '40px 30px',
       width: '100%',
     },
