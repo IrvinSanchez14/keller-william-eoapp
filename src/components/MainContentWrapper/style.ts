@@ -13,9 +13,10 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   divContainerBody: {
+    height: 'auto',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
-      height: '709px',
+      minHeight: '709px',
       marginTop: '10px',
     },
   },
