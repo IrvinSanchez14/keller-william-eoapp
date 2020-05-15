@@ -43,8 +43,7 @@ const MyApp: React.FC = () => {
           agentsNumber={
             data.data.agentInformation.numberAgenteNoCommission +
             data.data.agentInformation.numberAgentLessCommission +
-            data.data.agentInformation.numberAgentsMoreCommission +
-            data.data.agentInformation.numberAgentSpecialDesignation
+            data.data.agentInformation.numberAgentsMoreCommission
           }
           grossCommission={data.data.commissionInformation.grossCommission}
           claimsNumber={data.data.policyInformation.claims.length}
