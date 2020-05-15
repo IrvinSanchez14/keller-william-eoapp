@@ -84,7 +84,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
           <div key={item.key} className={classnames(classes.divFieldTable)}>
             <Typography className={classnames(classes.textTableField)}>{item.title}</Typography>
             <Typography className={classnames(classes.typoValueNumber)}>
-              ${item.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              ${(item.value || '0').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             </Typography>
           </div>
           <Divider />
@@ -141,10 +141,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
               <div className={classnames(classes.divBottomTotal)}>
                 <Typography className={classnames(classes.totalTypo)}>Total</Typography>
                 <Typography className={classnames(classes.totalTypo)}>
-                  $
-                  {this.totalSummary()
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  ${(this.totalSummary() ?? '0').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </Typography>
               </div>
             </>
