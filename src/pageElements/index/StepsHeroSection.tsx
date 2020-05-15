@@ -23,8 +23,8 @@ const StyledSVG = styled(SVG)`
 `;
 
 const StyledShapeCircle = styled.div`
-  width: 15px;
-  height: 15px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: 1px solid ${theme.colors.grayBorders};
 `;
@@ -576,7 +576,7 @@ const StepsHeroSection = (): JSX.Element => {
         </StyledStepSection>
         <StyledLine>
           <StyledShapeCircle />
-          <StyledShapeLine height="215px" />
+          <StyledShapeLine height="150px" />
         </StyledLine>
         <StyledStepSection>{renderStepInformation(0)}</StyledStepSection>
       </StyledStepsContainer>

@@ -232,11 +232,11 @@ export default function SecondHeroSection(): React.ReactElement {
               />
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="22px 5px">
+                  <StyledCircle custom="18px 5px">
                     <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
-                <StyledBenefitText customPadding={'13px 15px'}>
+                <StyledBenefitText customPadding={'14px 15px'}>
                   {secondBenefitList[0].label}
                 </StyledBenefitText>
               </StyledBenefitItem>
