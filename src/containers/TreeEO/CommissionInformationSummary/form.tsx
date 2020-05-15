@@ -55,27 +55,27 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
       {
         key: 1,
         title: 'Residential',
-        value: formData.app.data.commissionInformation.residential.total,
+        value: formData.app.data.commissionInformation.residential.total || 0,
       },
       {
         key: 2,
         title: 'Commercial',
-        value: formData.app.data.commissionInformation.commercial.total,
+        value: formData.app.data.commissionInformation.commercial.total || 0,
       },
       {
         key: 3,
         title: 'Farm/Ranch',
-        value: formData.app.data.commissionInformation.farmRanch,
+        value: formData.app.data.commissionInformation.farmRanch || 0,
       },
       {
         key: 4,
         title: 'Auctioneering',
-        value: formData.app.data.commissionInformation.auctioneering,
+        value: formData.app.data.commissionInformation.auctioneering || 0,
       },
       {
         key: 5,
         title: 'Mortgage',
-        value: formData.app.data.commissionInformation.mortageBrokerage,
+        value: formData.app.data.commissionInformation.mortageBrokerage || 0,
       },
     );
     return children.map((item: any) => {
@@ -84,7 +84,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
           <div key={item.key} className={classnames(classes.divFieldTable)}>
             <Typography className={classnames(classes.textTableField)}>{item.title}</Typography>
             <Typography className={classnames(classes.typoValueNumber)}>
-              ${item.value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              ${(item.value || '0').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             </Typography>
           </div>
           <Divider />
@@ -101,7 +101,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
       formData.app.data.commissionInformation.farmRanch +
       formData.app.data.commissionInformation.auctioneering +
       formData.app.data.commissionInformation.mortageBrokerage;
-    return total;
+    return total || 0;
   };
 
   render() {
@@ -141,10 +141,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
               <div className={classnames(classes.divBottomTotal)}>
                 <Typography className={classnames(classes.totalTypo)}>Total</Typography>
                 <Typography className={classnames(classes.totalTypo)}>
-                  $
-                  {this.totalSummary()
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                  ${(this.totalSummary() ?? '0').toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                 </Typography>
               </div>
             </>
