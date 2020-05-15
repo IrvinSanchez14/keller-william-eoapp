@@ -21,7 +21,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   progressBar: {
-    padding: 10,
+    padding: '10px 0px 10px 0px',
     position: 'static',
     zIndex: 1,
     width: '100%',

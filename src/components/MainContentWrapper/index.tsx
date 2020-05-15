@@ -34,6 +34,18 @@ function MainContentWrapper(Props: IMainContentWrapper) {
   return (
     <>
       <Row className={classnames(classes.wrapper, className)}>
+        <div style={{ marginTop: '-28px' }}>
+          <p
+            style={{
+              transform: `translateX(${state.app.metadata.progressBar}%)`,
+              marginLeft: state.app.metadata.progressBar === 0 ? 0 : '-8px',
+              fontSize: '16px',
+              lineHeight: '28px',
+            }}
+          >
+            {parseInt(`${state.app.metadata.progressBar}`)}%
+          </p>
+        </div>
         <Row className={classnames(classes.progressBar)}>
           <BorderLinearProgress
             variant="determinate"

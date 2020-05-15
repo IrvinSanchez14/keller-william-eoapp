@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography } from '@material-ui/core';
+import { Typography, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 

@@ -33,7 +33,7 @@ export class CommissionInformationTransaction extends Component<FullNameProps> {
     actions.setSubmitting(true);
     storeCommissionInformation(dispatch, values); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 12, categoriesName.commissionInformation);
   };
 

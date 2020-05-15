@@ -34,7 +34,7 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
     storeRiskProfile(dispatch, values); //TODO put state in localstorage
     actions.setSubmitting(true);
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5.5);
     finishForm(dispatch);
   };
 

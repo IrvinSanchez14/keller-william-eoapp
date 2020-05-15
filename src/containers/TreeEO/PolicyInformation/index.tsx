@@ -38,7 +38,7 @@ export class PolicyInformation extends Component<FullNameProps> {
     values.isHaveInsuranceField = this.state.isHaveInsurance;
     storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 9, categoriesName.policyInformation);
   };
 
