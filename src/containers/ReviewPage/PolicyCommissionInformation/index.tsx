@@ -270,7 +270,7 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
       const sortedPercentages = percentages.sort((a, b) => b - Math.floor(b) - (a - Math.floor(a)));
       for (let i = 0; i < percDiff; i++) {
         for (const cell of tableInfo) {
-          if (cell.value !== sortedPercentages[i] || cell.value == 0) continue;
+          if (cell.value !== sortedPercentages[i]) continue;
           cell.value = Math.floor(cell.value) + 1;
           break;
         }
