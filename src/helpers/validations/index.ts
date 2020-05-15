@@ -133,8 +133,8 @@ export const commissionCommercialValidateSchema = Yup.object().shape({
 
 export const commissionOtherValidateSchema = Yup.object().shape({
   farmRanch: Yup.number().min(0, 'The value must be positive'),
-  auctioneering: Yup.number().required('Field is required').min(0, 'The value must be positive'),
-  mortageBrokerage: Yup.number().required('Field is required').min(0, 'The value must be positive'),
+  auctioneering: Yup.number().min(0, 'The value must be positive'),
+  mortageBrokerage: Yup.number().min(0, 'The value must be positive'),
 });
 
 export const riskProfileValidateSchema = Yup.object().shape({
