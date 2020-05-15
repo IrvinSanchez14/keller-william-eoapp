@@ -200,10 +200,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     display: 'flex',
     marginBottom: '46px',
     marginTop: '15px',
-    [theme.breakpoints.down(990)]: {
+    [theme.breakpoints.down(1200)]: {
       flexWrap: 'wrap',
     },
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up(500)]: {
       display: 'flex',
       marginBottom: '46px',
       marginTop: '-10px',
@@ -220,7 +220,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '26px',
       color: '#07293D',
       marginBottom: '45px',
-      width: '528px',
+      width: 'auto',
     },
   },
   textContentFinal: {
@@ -234,7 +234,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '26px',
       color: '#07293D',
       marginBottom: '0px',
-      width: '528px',
+      width: 'auto',
       marginTop: '-19px',
     },
   },
