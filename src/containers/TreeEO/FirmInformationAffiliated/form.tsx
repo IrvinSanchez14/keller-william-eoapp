@@ -1,6 +1,7 @@
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { RadioField } from 'src/components/RadioForm';
 import { useAppContext } from 'src/store';
+import { useState, useEffect } from 'react';
 
 export const propertyUsageFields = [
   {
@@ -8,17 +9,33 @@ export const propertyUsageFields = [
     name: 'isFirmOwned',
     value: true,
     text: 'YES',
+    textMobile: 'Yes',
   },
   {
     id: 2,
     name: 'isFirmOwned',
     value: false,
     text: 'NO',
+    textMobile: 'No',
   },
 ];
 
 export const FormFirmInformationAffiliated = (formikProps: any, handleChange: any) => {
   const { intl } = useAppContext();
+  const [isMobile, setIsMobile] = useState(0);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    setIsMobile(window.innerWidth);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return propertyUsageFields.map((item) => (
     <FielControlForm
@@ -31,7 +48,7 @@ export const FormFirmInformationAffiliated = (formikProps: any, handleChange: an
           name={item.name}
           value={item.value}
           data-test-id={item.value}
-          label={intl.get(`app.radio.answer.${item.text}`)}
+          label={isMobile <= 768 ? item.textMobile : intl.get(`app.radio.answer.${item.text}`)}
           onChange={() => handleChange(item.value, formikProps)}
           checked={formikProps.values.isFirmOwned === item.value}
         />
