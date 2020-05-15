@@ -8,10 +8,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '21px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
-      fontSize: '22px',
+      fontSize: '21px',
       lineHeight: '28px',
-      width: '430px',
       fontWeight: 'bold',
+      margin: '3px 0px 0px 15px',
+      letterSpacing: '0.8px',
+      width: '512px',
     },
   },
   stepHeader: {
@@ -23,6 +25,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '62px',
       marginBottom: '30px',
       letterSpacing: '-1px',
+      marginTop: '7px',
     },
   },
   label: {
@@ -42,6 +45,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '22px',
       color: '#07293D',
       marginTop: '1px',
+      marginLeft: '-9px',
     },
   },
   iconSize: {
@@ -98,11 +102,23 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       marginLeft: '-26px',
     },
   },
+  labelComission: {
+    lineHeight: '14px',
+    fontSize: '16px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      margin: '-6px 0px 0px -7px',
+    },
+  },
   contentCommission: {
     marginTop: '27px',
+    marginRight: '16px',
     [theme.breakpoints.up(750)]: {
-      marginRight: '38px',
-      marginTop: '49px',
+      marginRight: '31px',
+      marginTop: '54px',
+      marginLeft: '5px',
     },
   },
   iconCommission: {
@@ -121,11 +137,19 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       marginTop: '50px',
     },
   },
+  contentRisk: {
+    marginRight: '45px',
+    marginTop: '22px',
+    [theme.breakpoints.up(750)]: {
+      marginTop: '56px',
+      marginLeft: '11px',
+    },
+  },
   iconPolicy: {
     width: '57px',
     height: '62px',
     [theme.breakpoints.up(750)]: {
-      width: '57px',
+      width: '72px',
       height: '62px',
     },
   },
@@ -138,14 +162,29 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '22px',
       color: '#07293D',
       marginLeft: '13px',
+      letterSpacing: '1px',
+      marginTop: '-2px',
     },
   },
   iconRisk: {
     width: '53px',
     height: '55px',
     [theme.breakpoints.up(750)]: {
-      width: '53px',
+      width: '55px',
       height: '55px',
+    },
+  },
+  labelRisk: {
+    fontSize: '16px',
+    lineHeight: '22px',
+    marginLeft: '13px',
+    [theme.breakpoints.up('md')]: {
+      fontSize: '16px',
+      lineHeight: '22px',
+      color: '#07293D',
+      width: '88px',
+      margin: '0px 0px 0px -18px',
+      letterSpacing: '1px',
     },
   },
   card: {
@@ -167,7 +206,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up('md')]: {
       display: 'flex',
       marginBottom: '46px',
-      marginTop: '15px',
+      marginTop: '-10px',
     },
   },
   textContent: {
@@ -184,6 +223,21 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       width: '528px',
     },
   },
+  textContentFinal: {
+    fontSize: '16px',
+    lineHeight: '19px',
+    color: '#07293D',
+    marginBottom: '25px',
+    width: '275px',
+    [theme.breakpoints.up(750)]: {
+      fontSize: '20px',
+      lineHeight: '26px',
+      color: '#07293D',
+      marginBottom: '0px',
+      width: '528px',
+      marginTop: '-19px',
+    },
+  },
   alignButton: {
     justifyContent: 'flex-end',
   },
@@ -193,6 +247,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(750)]: {
       fontSize: '22px',
       lineHeight: '28px',
+      margin: '0px 0px 0px 4px',
       marginTop: 0,
     },
   },

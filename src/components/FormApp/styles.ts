@@ -7,6 +7,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
+    margin: '6px 14px 0px 14px',
   },
   buttonContainer: {
     marginTop: 25,
@@ -35,6 +36,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   actionButtonContainer: {
     [theme.breakpoints.up(theme.breakpoints.values.md)]: {
       flex: 2,
+      margin: '0px 0px 5px 0px',
     },
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       width: 140,

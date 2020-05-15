@@ -152,19 +152,14 @@ export class WelcomeEO extends Component<FullNameProps> {
                       </div>
                     </div>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentCommission,
-                          this.props.classes.content,
-                        )}
-                      >
+                      <div className={classnames(this.props.classes.contentCommission)}>
                         <Icon
                           name="commissionWelcome"
                           className={classnames(this.props.classes.iconCommission)}
                         />
                         <Typography
                           variant="body1"
-                          className={classnames(this.props.classes.label)}
+                          className={classnames(this.props.classes.labelComission)}
                         >
                           Commission
                         </Typography>
@@ -190,14 +185,14 @@ export class WelcomeEO extends Component<FullNameProps> {
                       </div>
                     </div>
                     <div>
-                      <div className={classnames(this.props.classes.content)}>
+                      <div className={classnames(this.props.classes.contentRisk)}>
                         <Icon
                           name="riskWelcome"
                           className={classnames(this.props.classes.iconRisk)}
                         />
                         <Typography
                           variant="body1"
-                          className={classnames(this.props.classes.label)}
+                          className={classnames(this.props.classes.labelRisk)}
                         >
                           Risk Profile
                         </Typography>
@@ -207,7 +202,7 @@ export class WelcomeEO extends Component<FullNameProps> {
                   <Typography className={classnames(this.props.classes.textContent)}>
                     {this.props.intl.getHTML('app.text.welcome')}
                   </Typography>
-                  <Typography className={classnames(this.props.classes.textContent)}>
+                  <Typography className={classnames(this.props.classes.textContentFinal)}>
                     {this.props.intl.getHTML('app.text.welcome.two')}
                   </Typography>
                 </>

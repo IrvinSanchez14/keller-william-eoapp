@@ -9,6 +9,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       fontSize: '56px',
       lineHeight: '62px',
       marginBottom: '6em',
+      marginTop: '9px',
+      letterSpacing: '-1px',
     },
   },
   alignButton: {

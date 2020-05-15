@@ -16,12 +16,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   stepInfoKaceyBadge: {
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(2.5),
+      margin: '7px 0px 20px 5px',
     },
   },
   stepInfoAgentBadge: {
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(8),
+      margin: '5px 0px 20px 5px',
     },
   },
   stepInfoDogAvatar: {
@@ -41,7 +41,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     margin: 0,
     letterSpacing: '2px',
     [theme.breakpoints.up('md')]: {
-      fontSize: 12,
+      marginTop: '2px',
+      fontSize: '12px',
+      lineHeight: '14px',
+      letterSpacing: '2.2px',
     },
   },
   stepInfoHeader: {
