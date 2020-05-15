@@ -46,6 +46,43 @@ export const agentRevokedValidateSchema = Yup.object().shape({
   revokedLicense: Yup.boolean().required('Field is required'),
 });
 
+export const valdiatePolicySchema = (status: boolean) => {
+  if (status) {
+    return Yup.object().shape({
+      isHaveInsuranceField: Yup.boolean(),
+      isHaveClaims: Yup.boolean().required('Field is required'),
+      claims: Yup.array().when('isHaveClaims', {
+        is: true,
+        then: Yup.array().of(
+          Yup.object().shape({
+            dateClaim: Yup.string().required('Field is required'),
+            amountClaim: Yup.number().required('Field is required'),
+          }),
+        ),
+      }),
+    });
+  } else {
+    return Yup.object().shape({
+      currentCarrier: Yup.string().required('Field is required'),
+      renewalDate: Yup.string().required('Field is required'),
+      deductible: Yup.string().required('Field is required'),
+      limits: Yup.string().required('Field is required'),
+      yearCoverage: Yup.number().required('Field is required'),
+      annualPremium: Yup.string().required('Field is required'),
+      isHaveClaims: Yup.boolean().required('Field is required'),
+      claims: Yup.array().when('isHaveClaims', {
+        is: true,
+        then: Yup.array().of(
+          Yup.object().shape({
+            dateClaim: Yup.string().required('Field is required'),
+            amountClaim: Yup.number().required('Field is required'),
+          }),
+        ),
+      }),
+    });
+  }
+};
+
 export const isHaveClaimsValidateSchema = Yup.object().shape({
   isHaveClaims: Yup.boolean().required('Field is required'),
   claims: Yup.array().when('isHaveClaims', {

@@ -48,23 +48,19 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             name="isHaveInsuranceField"
             type="checkbox"
             renderFastField
-            setFieldTouched={formikProps.setFieldTouched}
-            shouldValidateOnMount
             renderCustomField={({ field }) => (
               <CheckBoxForm
                 {...field}
                 name="isHaveInsuranceField"
                 data-test-id="other"
                 label={'I do not have insurance'}
-                onChange={() => {
-                  formikProps.resetForm({
-                    currentCarrier: '',
-                    renewalDate: '',
-                    deductible: '',
-                    limits: '',
-                    yearCoverage: '',
-                    annualPremium: '',
-                  });
+                onChange={(e: any) => {
+                  formikProps.setFieldValue('currentCarrier', '');
+                  formikProps.setFieldValue('renewalDate', '');
+                  formikProps.setFieldValue('deductible', '');
+                  formikProps.setFieldValue('limits', '');
+                  formikProps.setFieldValue('yearCoverage', '');
+                  formikProps.setFieldValue('annualPremium', '');
                   setIsHaveInsurance(!isHaveInsurance);
                   handleChange(!isHaveInsurance);
                 }}

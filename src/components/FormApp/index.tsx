@@ -43,6 +43,7 @@ export type CustomFormProps = WithStyles<typeof styles> &
     customNavigationSaveProgress?: () => void;
     progressBar?: number;
     alignButton?: any;
+    validateOnChange?: boolean;
   };
 
 @withStyles(styles)
@@ -97,6 +98,7 @@ export class FormApp extends Component<CustomFormProps> {
       centeredButtonContainer,
       isRowForm,
       alignButton,
+      validateOnChange,
       ...rest
     } = this.props;
 

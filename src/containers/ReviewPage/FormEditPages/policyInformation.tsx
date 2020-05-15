@@ -3,6 +3,7 @@ import { useRouter } from 'next/dist/client/router';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
+import { valdiatePolicySchema } from 'src/helpers/validations';
 
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
@@ -82,6 +83,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    values.isHaveInsuranceField = isHaveInsurance;
     storeAllPolicy(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
@@ -113,8 +115,8 @@ export function EditPagePolicyInformation({ closeModal }: any) {
     closeModal(false);
   };
 
-  const handleChange = () => {
-    setIsHaveInsurance(!isHaveInsurance);
+  const handleChange = (value: boolean) => {
+    setIsHaveInsurance(value);
   };
 
   useEffect(() => {
@@ -138,7 +140,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
           claims: state.app.data.policyInformation.claims,
         }}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={valdiatePolicySchema(isHaveInsurance)}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"
@@ -147,6 +149,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
+        validateOnChange={true}
       >
         {(formikProps) => {
           return (
