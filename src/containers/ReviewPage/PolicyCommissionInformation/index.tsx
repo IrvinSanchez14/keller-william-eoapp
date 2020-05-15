@@ -260,7 +260,9 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
           value: formatAmount(data.commissionInformation.mortageBrokerage, true),
         },
       ];
+  let total: number | undefined;
   if (isPdf) {
+    total = 0;
     const percentages = tableInfo.map((cell) => cell.value) as number[];
     const percDiff = 100 - percentages.reduce((sum, value) => sum + Math.floor(value), 0);
     if (percDiff > 0) {
@@ -273,11 +275,13 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
         }
       }
       for (const cell of tableInfo) {
-        cell.value = formatPercentage(Math.floor(cell.value as number));
+        const cellValue = Math.floor(cell.value as number);
+        total += cellValue;
+        cell.value = formatPercentage(cellValue);
       }
     }
   }
-  return tableInfo;
+  return { tableInfo, total };
 }
 
 export default function PolicyCommissionInformation({
@@ -291,7 +295,7 @@ export default function PolicyCommissionInformation({
     },
     [openEditModal],
   );
-  const tableInfo = getTableInfo(data, isPdf);
+  const { tableInfo, total } = getTableInfo(data, isPdf);
   return (
     <ContainerBackgroundShape>
       <Layout
@@ -377,7 +381,9 @@ export default function PolicyCommissionInformation({
             <TableList lastItem>
               <ComissionTotalNameText>Total</ComissionTotalNameText>
               <ComissionTotalValueText>
-                {isPdf ? '100%' : formatAmount(data.commissionInformation.totalCommision, true)}
+                {isPdf
+                  ? formatPercentage(total)
+                  : formatAmount(data.commissionInformation.totalCommision, true)}
               </ComissionTotalValueText>
             </TableList>
           </Table>
