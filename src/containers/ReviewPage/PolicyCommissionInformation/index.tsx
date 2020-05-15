@@ -140,7 +140,7 @@ const ComissionTotalValueText = styled.h1`
 `;
 
 function calcCommission(total: number, value: number) {
-  return (value / total) * 100;
+  return ((+value || 0) / (total || 1)) * 100;
 }
 
 function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boolean) {
