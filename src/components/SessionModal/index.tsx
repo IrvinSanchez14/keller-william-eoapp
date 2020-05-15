@@ -39,6 +39,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
   color: #fff;
   border-radius: 12px;
   width: 90vw;
+  min-height: 516px;
   height: auto;
   box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
   margin-right: 4px;
@@ -49,8 +50,8 @@ const ModalContainer = styled.div<ModalContainerProps>`
     margin-top: 1rem;
   }
 
-  @media (min-width: 690px) {
-    width: 690px;
+  @media (min-width: 1000px) {
+    width: 1000px;
   }
 `;
 
@@ -67,7 +68,8 @@ const ModalHeader = styled.div`
 
   & p {
     text-transform: uppercase;
-    font-weight: 900;
+    font-family: Bold;
+    letter-spacing: 0.1rem;
     font-size: 0.8rem;
     margin-top: 0.5rem;
   }
@@ -92,19 +94,31 @@ const StyledHeading = styled.h1`
   text-align: center;
 
   @media (min-width: 690px) {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
   }
 `;
 
 const StyledModalParagraph = styled.p`
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-align: center;
-  max-width: 400px;
+  max-width: 460px;
 `;
 
 const ButtonContainer = styled.div`
+  margin-top: 2rem;
+
   & button {
-    min-width: 200px;
+    min-width: 180px;
+    width: 180px;
+    height: 50px;
+    font-size: 0.95rem;
+  }
+`;
+
+const ParagraphContainer = styled.div`
+  margin-top: 2rem;
+  & > * + * {
+    margin-top: 2rem;
   }
 `;
 
@@ -123,14 +137,16 @@ const SessionModal: React.FC<SessionModalProps> = (props) => {
           <p>Keys to the kingdom</p>
         </ModalHeader>
         <StyledHeading>We&apos;ve created a login for you!</StyledHeading>
-        <StyledModalParagraph>
-          You&apos;ll receive an email shortly with a special link that will allow you to take
-          access your application at any time!
-        </StyledModalParagraph>
-        <StyledModalParagraph>
-          This will come in handy if you need information for the application that you do not have
-          currently at hand.
-        </StyledModalParagraph>
+        <ParagraphContainer>
+          <StyledModalParagraph>
+            You&apos;ll receive an email shortly with a special link that will allow you to take
+            access your application at any time!
+          </StyledModalParagraph>
+          <StyledModalParagraph>
+            This will come in handy if you need information for the application that you do not have
+            currently at hand.
+          </StyledModalParagraph>
+        </ParagraphContainer>
         <ButtonContainer>
           <ButtonForm onClick={onClose} label="Continue" />
         </ButtonContainer>

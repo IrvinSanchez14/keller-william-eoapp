@@ -20,9 +20,9 @@ const StyledLink = styled.a<StyledLinkProps>`
   padding: 15px 75px 15px 35px;
   height: 90px;
   font-family: 'Bold';
-  font-size: 1.6rem;
-  line-height: 1.3em;
-  letter-spacing: 0.03em;
+  font-size: 26px;
+  letter-spacing: 0px;
+  line-height: 30px;
   text-align: center;
   text-decoration: none;
   color: #fff;
@@ -58,14 +58,14 @@ const StyledLink = styled.a<StyledLinkProps>`
     css`
       width: ${customWidth};
     `};
-
+//
     ${({ theme, mobileWidth }) => theme.phone`
-      font-size: 26px;
+      // font-size: 26px;
       font-weigth: bold;
       padding: 15px 8px;
       width: ${mobileWidth};
   `};
-
+//
    ${({ theme, mobileMargin }) => theme.phone`
      margin: ${mobileMargin};
      font-size: 26px;
@@ -110,6 +110,28 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 `;
 
+const StyledText = styled.h1`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  letter-spacing: 0px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  padding-right: 7px;
+  ${({ theme }) => theme.phone`
+      font-size: 26px;
+  `};
+  @media (min-width: 370px) and (max-width: 570px) {
+    font-size: 16px;
+  }
+  ${({ theme }) => theme.phoneSmall`
+    font-size: 16px;
+  `};
+`;
+
 const StyledIcon = styled.div<{ isWhite: boolean }>`
   position: absolute;
   display: flex;
@@ -118,11 +140,13 @@ const StyledIcon = styled.div<{ isWhite: boolean }>`
   top: 50%;
   right: 15px;
   transform: translateY(-50%);
-  width: 70px;
-  height: 70px;
+  width: 67px;
+  height: 67px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.2);
-
+  i {
+    font-size: 26px;
+  }
   ${({ theme, isWhite }) =>
     isWhite &&
     css`
@@ -130,11 +154,6 @@ const StyledIcon = styled.div<{ isWhite: boolean }>`
         color: ${theme.colors.gray};
       }
     `};
-
-  i {
-    font-size: 22px;
-  }
-
   ${({ theme }) => theme.phone`
     width: 65px;
     height: 65px;
@@ -191,7 +210,7 @@ const ButtonWithArrow = ({
     textCenter={textCenter}
     {...rest}
   >
-    <div>{children}</div>
+    <StyledText>{children}</StyledText>
     <StyledIcon isWhite={isWhite}>
       <i className="fa fa-arrow-right" />
     </StyledIcon>
