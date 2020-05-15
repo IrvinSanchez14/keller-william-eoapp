@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
@@ -55,11 +56,13 @@ const ModalContainer = styled.div<ModalContainerProps>`
     theme &&
     theme.phone`
     max-width: ${screenWidth};
+    padding-top: 10px;
     padding-vertical: 10px;
   `};
   ${({ theme, screenWidth }) =>
     theme &&
     theme.phoneSmall`
+    padding-top: 10px;
     max-width: ${screenWidth};
     padding-vertical: 10px;
   `};
@@ -195,12 +198,24 @@ const ModalSheduleContainer = styled.div`
 `;
 
 export default function CoveredNowModal(Props: CallModalProps) {
-  const { isModalOpen, closeModal, width } = Props;
+  const [width, setWidth] = useState(0);
+  const { isModalOpen, closeModal } = Props;
   const updateSvgStyle = (code: string): string => {
     const codeWithReplacedFill = code.replace(/fill=".*?"/g, 'fill="currentColor"');
     const codeWithReplacedMask = codeWithReplacedFill.replace(/mask=".*?"/g, 'mask=""');
     return codeWithReplacedMask;
   };
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <StyledModal onRequestClose={closeModal} style={customStyles} isOpen={isModalOpen}>
