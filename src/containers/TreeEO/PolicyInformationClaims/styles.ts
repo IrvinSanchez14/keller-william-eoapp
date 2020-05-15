@@ -68,7 +68,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       '&:first-child': {
         marginRight: 10,
         [theme.breakpoints.up('md')]: {
-          marginRight: theme.spacing(2),
+          margin: '0px 31px 0px -2px',
         },
       },
     },
@@ -86,5 +86,19 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   alignButton: {
     justifyContent: 'flex-end',
+    [theme.breakpoints.up(768)]: {
+      marginTop: '-64px',
+    },
+  },
+  stepHeader: {
+    fontSize: '24px',
+    lineHeight: '28px',
+    [theme.breakpoints.up(768)]: {
+      fontSize: '56px',
+      lineHeight: '62px',
+      marginBottom: '390px',
+      marginTop: '8px',
+      letterSpacing: '-1px',
+    },
   },
 });

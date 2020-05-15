@@ -9,7 +9,7 @@ import ConfirmationPageProps from './IConfirmationPage';
 import { formatNumericalAbbreviation } from 'src/helpers/formatData';
 
 const DogIconContainer = styled.div`
-  padding-left: 82px;
+  padding-left: 81px;
   padding-top: 14px;
   align-items: center;
   display: flex;
@@ -64,8 +64,8 @@ const DogWoofText = styled.h1`
 
 const Content = styled.div`
   width: 100%;
-  margin-top: 33px;
-  padding-bottom: 350px;
+  margin-top: 48px;
+  padding-bottom: 321px;
   display: flex;
   background: url(../../../static/img/confirmation.svg) no-repeat;
   background-size: 100% 300px;
@@ -135,7 +135,7 @@ const WelcomeText = styled.h2<{ primaryColor?: boolean; normalMargin?: boolean }
 `;
 
 const FollowingInformation = styled.div`
-  margin-top: 70px;
+  margin-top: 83px;
   margin-left: -2px;
   ${({ theme }) =>
     theme &&
@@ -192,12 +192,14 @@ const CheckTextContainer = styled.div`
 
 const CheckText = styled.p`
   font-size: 22px;
-  margin-top: 21px;
+  line-height: 31px;
+  margin-top: 23px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
     theme.phone`
     font-size: 18px;
+    line-height: 25px;
   `};
 `;
 

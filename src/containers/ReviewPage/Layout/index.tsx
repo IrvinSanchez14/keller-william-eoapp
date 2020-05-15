@@ -8,9 +8,9 @@ interface LayoutProps {
 }
 
 const LayoutContainer = styled.div`
-  margin: 0 90px 29px 90px;
+  margin: 0 90px 30px 90px;
   padding-top: 40px;
-  padding-bottom: 72px;
+  padding-bottom: 60px;
   border-radius: 6px;
   background-color: white;
   position: relative;
@@ -77,6 +77,7 @@ const LayoutEditBottom = styled(ButtonPrimary)`
     theme.phone`
       width: 84px;
       height: 50px;
+      margin-top: 10px;
       justify-content: center;
       margin-right: 40px;
   `};

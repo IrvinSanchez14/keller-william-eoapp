@@ -12,6 +12,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     [theme.breakpoints.up(768)]: {
       fontSize: theme.fontSize.xs,
       lineHeight: '14px',
+      marginBottom: '11px',
     },
   },
   labelWrapper: {

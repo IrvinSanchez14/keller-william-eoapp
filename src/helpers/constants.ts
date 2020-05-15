@@ -1,5 +1,10 @@
 export const STEP_TYPES = [
   {
+    type: 'intro',
+    value: 'INTRO',
+    stepsSum: 4,
+  },
+  {
     type: 'firm information',
     value: 'FIRM INFORMATION',
     stepsSum: 4,
@@ -27,6 +32,7 @@ export const STEP_TYPES = [
 ];
 
 export const categoriesName = {
+  intro: 'intro',
   firmConfirmation: 'firm information',
   agentInformation: 'agent information',
   policyInformation: 'policy information',

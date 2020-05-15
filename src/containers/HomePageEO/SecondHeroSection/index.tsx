@@ -2,23 +2,42 @@ import styled from 'styled-components';
 import SVG from 'react-inlinesvg';
 import StepsHeroSection from 'src/pageElements/index/StepsHeroSection';
 
-const firstBenefitList: Array<string> = [
-  'Access the best E&O carries at wholesale pricing, only available through the KC program',
-  'Dedicated customer service team shops the best policy for you',
-  'Free legal support for E&O claims through The Boxwood Group',
+interface BenefitList {
+  label: string;
+}
+
+const firstBenefitList: Array<BenefitList> = [
+  {
+    label:
+      'Access the best E&O carries at wholesale pricing, only available through the KC program',
+  },
+  {
+    label: 'Dedicated customer service team shops the best policy for you',
+  },
+  {
+    label: 'Free legal support for E&O claims through The Boxwood Group',
+  },
 ];
 
-const secondBenefitList: Array<string> = [
-  'Free onsite or remote risk management consultant',
-  '5% to 10% discount  on premiums with Preferred premium credit exclusive for Keller Williams with interest-free financing',
-  "Pearl's national buying program offering deep discounts on a wide variety of business supplies and services",
+const secondBenefitList: Array<BenefitList> = [
+  {
+    label: 'Free onsite or remote risk management consultant',
+  },
+  {
+    label:
+      '5% to 10% discount  on premiums with Preferred premium credit exclusive for Keller Williams with interest-free financing',
+  },
+  {
+    label:
+      "Pearl's national buying program offering deep discounts on a wide variety of business supplies and services",
+  },
 ];
 
 const PartnersContainerText = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  padding-top: 67px;
+  padding-top: 90px;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -46,7 +65,7 @@ const PartnersText = styled.h1`
 const StyledBenefitsContainer = styled.div`
   display: flex;
   justify-items: center;
-  padding: 20px 90px 80px 90px;
+  padding: 90px 90px 80px 90px;
   ${({ theme }) => theme.tablet`flex-direction: column;`};
   ${({ theme }) => theme.phone`padding: 50px 20px 0 20px;`};
 `;
@@ -64,21 +83,21 @@ interface StyleBenefitHeaderProps {
 
 const StyleBenefitHeader = styled.div<StyleBenefitHeaderProps>`
   left: 0;
-  padding-left: 10px;
+  padding-left: 42px;
   ${({ showRightLine, theme }) =>
     showRightLine && `border-right: 1px solid ${theme.colors.lightGray};`}
-  ${({ paddingLeft }) => paddingLeft && `padding-left: 80px;`}
+  ${({ paddingLeft }) => paddingLeft && `padding-left: 78px;margin-top: -36px;`}
   ${({ theme }) =>
     theme.phone`border-right: 0;padding-left: 0;` &&
     theme.tablet`border-right: 0;padding-left: 0;`};
 `;
 
-const StyledBenefitItem = styled.div`
+const StyledBenefitItem = styled.div<{ custom?: boolean }>`
   width: 100%;
-  min-height: 110px;
-  padding-bottom: 30px;
+  // min-height: 110px;
   display: flex;
   flex-direction: row;
+  ${({ custom }) => custom && `margin-bottom: 10px;`};
   ${({ theme }) => theme.phone`
     min-height: 80px;
   `};
@@ -99,28 +118,38 @@ const StyledSVG = styled(SVG)`
     theme.phone`
       width: ${mobileWidth};
   `}
+  margin-bottom: 43px;
 `;
 
-const StyledCircle = styled.div`
-  width: 22px;
-  height: 22px;
-  padding: 3px 3px 3px 3px;
-  border-radius: 11px;
+const StyledCircle = styled.div<{ custom?: string }>`
+  width: 23px;
+  height: 23px;
+  // padding: 7px 20px 3px 3px;
+  margin-top: 7px;
+  margin-left: 7px;
+  border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.colors.primary};
   justify-content: center;
   align-items: center;
   display: flex;
+  ${({ custom }) => custom && `margin: ${custom};`};
 `;
 
-const StyledBenefitText = styled.div<{ customPadding?: string }>`
+const StyledBenefitText = styled.h1<{ customPadding?: string; customWidth?: boolean }>`
   padding: ${({ customPadding }) => customPadding};
-  font-size: 1.6rem;
-  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: -0.43px;
+  line-height: 31px;
+  width: 491px;
   color: ${({ theme }) => theme.colors.dark};
   ${({ theme }) => theme.phone`
     font-size: 1.2rem;
+    font-size: 18px;
+    letter-spacing: -0.32px;
+    line-height: 24px;
     padding: 0 0 0 10px;
   `};
+  ${({ customWidth }) => customWidth && `width: 470px;`};
 `;
 
 const Shape = styled.div`
@@ -144,20 +173,6 @@ const Shape = styled.div`
 `;
 
 export default function SecondHeroSection(): React.ReactElement {
-  const renderBenefitList = (list: Array<string>, customPadding?: string): Array<JSX.Element> => {
-    return (
-      list &&
-      list.map((text) => (
-        <StyledBenefitItem key={text}>
-          <StyledCircle>
-            <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
-          </StyledCircle>
-          <StyledBenefitText customPadding={customPadding}>{text}</StyledBenefitText>
-        </StyledBenefitItem>
-      ))
-    );
-  };
-
   return (
     <>
       <PartnersContainerText>
@@ -170,11 +185,40 @@ export default function SecondHeroSection(): React.ReactElement {
               <StyledSVG
                 key="first_benefit"
                 src="/static/img/AmWins_Logo.svg"
-                width="230px"
-                height="100px"
+                width="212px"
+                height="45px"
                 mobileWidth="200px"
               />
-              {renderBenefitList(firstBenefitList, '0 90px 0px 30px')}
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle>
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customPadding={'3px 20px'}>
+                  {firstBenefitList[0].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle custom="33px 7px">
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customPadding={'27px 13px'}>
+                  {firstBenefitList[1].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle custom="9px 7px">
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customPadding="4px 13px">
+                  {firstBenefitList[2].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
             </StyleBenefitHeader>
           </StyleBenefitSection>
           <StyleBenefitSection>
@@ -183,10 +227,39 @@ export default function SecondHeroSection(): React.ReactElement {
                 key="second_benefit"
                 src="/static/img/PearlInsurance_Logo.svg"
                 width="290px"
-                height="100px"
+                height="70px"
                 mobileWidth="250px"
               />
-              {renderBenefitList(secondBenefitList, '0 20px 0px 20px')}
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle custom="22px 5px">
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customPadding={'13px 15px'}>
+                  {secondBenefitList[0].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle custom="22px 5px">
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customWidth customPadding={'18px 14px'}>
+                  {secondBenefitList[1].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
+              <StyledBenefitItem>
+                <div>
+                  <StyledCircle custom="4px 7px">
+                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  </StyledCircle>
+                </div>
+                <StyledBenefitText customPadding="0 11px">
+                  {secondBenefitList[2].label}
+                </StyledBenefitText>
+              </StyledBenefitItem>
             </StyleBenefitHeader>
           </StyleBenefitSection>
         </StyledBenefitsContainer>

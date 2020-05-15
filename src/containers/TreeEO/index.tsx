@@ -84,8 +84,8 @@ function AppEO() {
         <WelcomeEO />
         <FirmInformation />
         <FirmInformationEmail />
-        <FirmInformationAffiliated />
         <FirmInformationBroker />
+        <FirmInformationAffiliated />
         <AgentInformation />
         <AgentInformationDesignation />
         <AgentInformationRevoked />

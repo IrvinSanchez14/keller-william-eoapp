@@ -20,6 +20,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       fontSize: '22px',
       lineHeight: '28px',
       width: '100%',
+      color: '#07293D',
     },
   },
   stepHeader: {
@@ -36,6 +37,9 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '22px',
       lineHeight: '28px',
+      width: '401px',
+      marginTop: '40px',
+      marginBottom: '225px',
     },
   },
   alignButton: {

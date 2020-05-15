@@ -143,6 +143,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
               changeDataSum(e);
               formikProps.setFieldValue('commercial.realEstate', +e.target.value);
             }}
+            placeholder="$0"
           />
         </Column>
         <Column className={classnames(classes.containerTwo)}>
@@ -161,6 +162,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
               changeDataSum(e);
               formikProps.setFieldValue('commercial.rawLand', +e.target.value);
             }}
+            placeholder="$0"
           />
         </Column>
 
@@ -180,6 +182,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
               changeDataSum(e);
               formikProps.setFieldValue('commercial.appraisals', +e.target.value);
             }}
+            placeholder="$0"
           />
         </Column>
         <Column className={classnames(classes.containerTwo)}>
@@ -198,6 +201,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
               changeDataSum(e);
               formikProps.setFieldValue('commercial.propertyMgmt', +e.target.value);
             }}
+            placeholder="$0"
           />
         </Column>
         <Column className={classnames(classes.containerOne)}>
@@ -216,6 +220,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
               changeDataSum(e);
               formikProps.setFieldValue('commercial.ownedProperty', +e.target.value);
             }}
+            placeholder="$0"
           />
         </Column>
       </Row>
@@ -223,7 +228,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
         <div className={classnames(classes.containerTotal)}>
           <Divider style={{ margin: '0 15px' }} />
           <div className={classnames(classes.divContainerTotal)}>
-            <Typography className={classnames(classes.textTotal)}>{'Residential total'}</Typography>
+            <Typography className={classnames(classes.textTotal)}>{'Commercial total'}</Typography>
             <Typography className={classnames(classes.textNumberTotal)}>
               ${sumState(commercial)}
             </Typography>

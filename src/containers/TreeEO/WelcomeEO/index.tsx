@@ -27,27 +27,27 @@ const getTypesCommission = [
   {
     id: 1,
     icon: 'firmWelcome',
-    label: 'Residential',
+    label: 'Firm',
   },
   {
     id: 2,
     icon: 'agentWelcome',
-    label: 'Commercial',
+    label: 'Agents',
   },
   {
     id: 3,
     icon: 'commissionWelcome',
-    label: 'Farm/Ranch',
+    label: 'Commission',
   },
   {
     id: 4,
     icon: 'policyWelcome',
-    label: 'Auctioneering',
+    label: 'Policy',
   },
   {
     id: 5,
     icon: 'riskWelcome',
-    label: 'Mortgage',
+    label: 'Risk Profile',
   },
 ];
 
@@ -67,7 +67,7 @@ export class WelcomeEO extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    setInformationPage(dispatch, 0, categoriesName.firmConfirmation);
+    setInformationPage(dispatch, 0, categoriesName.intro);
   }
 
   renderChildrenCommissionTypes = () =>
@@ -91,6 +91,7 @@ export class WelcomeEO extends Component<FullNameProps> {
           avatarText={this.props.intl.get('app.avatar.text,welcome')}
           heading={this.props.intl.get('app.head.welcome')}
           bottomContent={this.props.intl.getHTML('app.link.welcome')}
+          classHeader={classnames(classes.stepHeader)}
           classBottom={classnames(classes.bottomHeader)}
         >
           <Typography className={classnames(classes.titleForm)}>
@@ -112,12 +113,96 @@ export class WelcomeEO extends Component<FullNameProps> {
               return (
                 <>
                   <div className={classnames(this.props.classes.divSVG)}>
-                    {this.renderChildrenCommissionTypes()}
+                    <div>
+                      <div
+                        className={classnames(
+                          this.props.classes.contentFirm,
+                          this.props.classes.content,
+                        )}
+                      >
+                        <Icon
+                          name="firmWelcome"
+                          className={classnames(this.props.classes.iconFirm)}
+                        />
+                        <Typography
+                          className={classnames(this.props.classes.labelFirm)}
+                          variant="body1"
+                        >
+                          Firm
+                        </Typography>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        className={classnames(
+                          this.props.classes.contentAgent,
+                          this.props.classes.content,
+                        )}
+                      >
+                        <Icon
+                          name="agentWelcome"
+                          className={classnames(this.props.classes.iconAgent)}
+                        />
+                        <Typography
+                          variant="body1"
+                          className={classnames(this.props.classes.labelAgent)}
+                        >
+                          Agents
+                        </Typography>
+                      </div>
+                    </div>
+                    <div>
+                      <div className={classnames(this.props.classes.contentCommission)}>
+                        <Icon
+                          name="commissionWelcome"
+                          className={classnames(this.props.classes.iconCommission)}
+                        />
+                        <Typography
+                          variant="body1"
+                          className={classnames(this.props.classes.labelComission)}
+                        >
+                          Commission
+                        </Typography>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        className={classnames(
+                          this.props.classes.contentPolicy,
+                          this.props.classes.content,
+                        )}
+                      >
+                        <Icon
+                          name="policyWelcome"
+                          className={classnames(this.props.classes.iconPolicy)}
+                        />
+                        <Typography
+                          variant="body1"
+                          className={classnames(this.props.classes.labelPolicy)}
+                        >
+                          Policy
+                        </Typography>
+                      </div>
+                    </div>
+                    <div>
+                      <div className={classnames(this.props.classes.contentRisk)}>
+                        <Icon
+                          name="riskWelcome"
+                          className={classnames(this.props.classes.iconRisk)}
+                        />
+                        <Typography
+                          variant="body1"
+                          className={classnames(this.props.classes.labelRisk)}
+                        >
+                          Risk Profile
+                        </Typography>
+                      </div>
+                    </div>
                   </div>
                   <Typography className={classnames(this.props.classes.textContent)}>
                     {this.props.intl.getHTML('app.text.welcome')}
                   </Typography>
-                  <Typography className={classnames(this.props.classes.textContent)}>
+                  <Typography className={classnames(this.props.classes.textContentFinal)}>
                     {this.props.intl.getHTML('app.text.welcome.two')}
                   </Typography>
                 </>

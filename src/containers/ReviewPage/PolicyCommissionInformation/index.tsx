@@ -140,21 +140,11 @@ const ComissionTotalValueText = styled.h1`
 `;
 
 function calcCommission(total: number, value: number) {
-  return formatPercentage(Math.round((value / total) * 100));
+  return ((+value || 0) / (total || 1)) * 100;
 }
 
-export default function PolicyCommissionInformation({
-  data,
-  openEditModal,
-  isPdf,
-}: PolicyCommissionInformationProps): JSX.Element {
-  const onOpenModal = useCallback(
-    (nameForm: string) => () => {
-      openEditModal?.(nameForm);
-    },
-    [openEditModal],
-  );
-  const tableInfo = isPdf
+function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boolean) {
+  const tableInfo: { name: string; value: number | string }[] = isPdf
     ? [
         {
           name: 'Residential real estate',
@@ -270,6 +260,42 @@ export default function PolicyCommissionInformation({
           value: formatAmount(data.commissionInformation.mortageBrokerage, true),
         },
       ];
+  let total: number | undefined;
+  if (isPdf) {
+    total = 0;
+    const percentages = tableInfo.map((cell) => cell.value) as number[];
+    const percDiff = 100 - percentages.reduce((sum, value) => sum + Math.floor(value), 0);
+    if (percDiff > 0) {
+      const sortedPercentages = percentages.sort((a, b) => b - Math.floor(b) - (a - Math.floor(a)));
+      for (let i = 0; i < percDiff; i++) {
+        for (const cell of tableInfo) {
+          if (cell.value !== sortedPercentages[i]) continue;
+          cell.value = Math.floor(cell.value) + 1;
+          break;
+        }
+      }
+      for (const cell of tableInfo) {
+        const cellValue = Math.floor(cell.value as number);
+        total += cellValue;
+        cell.value = formatPercentage(cellValue);
+      }
+    }
+  }
+  return { tableInfo, total };
+}
+
+export default function PolicyCommissionInformation({
+  data,
+  openEditModal,
+  isPdf,
+}: PolicyCommissionInformationProps): JSX.Element {
+  const onOpenModal = useCallback(
+    (nameForm: string) => () => {
+      openEditModal?.(nameForm);
+    },
+    [openEditModal],
+  );
+  const { tableInfo, total } = getTableInfo(data, isPdf);
   return (
     <ContainerBackgroundShape>
       <Layout
@@ -304,18 +330,19 @@ export default function PolicyCommissionInformation({
           <TextBold customMargin text={labelInformation.policyInformation.isHaveClaims} />
           <TextLight typeFormat="boolean" text={data.policyInformation.isHaveClaims} />
         </ContainerInformation>
-        {data.policyInformation.isHaveClaims && (
-          <>
-            <ContainerInformation>
-              <TextBold customMargin text={labelInformation.policyInformation.dateClaim} />
-              <TextLight text={data.policyInformation.claims[0].dateClaim} />
-            </ContainerInformation>
-            <ContainerInformation>
-              <TextBold customMargin text={labelInformation.policyInformation.amountClaim} />
-              <TextLight typeFormat="money" text={data.policyInformation.claims[0].amountClaim} />
-            </ContainerInformation>
-          </>
-        )}
+        {data.policyInformation.isHaveClaims &&
+          data.policyInformation.claims.map((claim) => (
+            <>
+              <ContainerInformation>
+                <TextBold customMargin text={labelInformation.policyInformation.dateClaim} />
+                <TextLight text={claim.dateClaim} />
+              </ContainerInformation>
+              <ContainerInformation>
+                <TextBold customMargin text={labelInformation.policyInformation.amountClaim} />
+                <TextLight typeFormat="money" text={claim.amountClaim} />
+              </ContainerInformation>
+            </>
+          ))}
       </Layout>
       <Layout textHeader="Commission" openEditPageModal={openEditModal && onOpenModal('Comission')}>
         <ContainerInformation firstPadding>
@@ -354,7 +381,9 @@ export default function PolicyCommissionInformation({
             <TableList lastItem>
               <ComissionTotalNameText>Total</ComissionTotalNameText>
               <ComissionTotalValueText>
-                {isPdf ? '100%' : formatAmount(data.commissionInformation.totalCommision, true)}
+                {isPdf
+                  ? formatPercentage(total)
+                  : formatAmount(data.commissionInformation.totalCommision, true)}
               </ComissionTotalValueText>
             </TableList>
           </Table>

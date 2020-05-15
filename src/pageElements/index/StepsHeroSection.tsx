@@ -53,7 +53,7 @@ const StyledStepsContainer = styled.div<{ padding?: string }>`
   ${({ padding }) => padding && `padding: ${padding};`}
   ${({ theme }) => theme.tablet`flex-direction: column;`};
   ${({ theme }) => theme.phone`
-    padding: 0 51px 0 50px;
+    padding: 87px 51px 0 50px;
   `};
 `;
 
@@ -449,7 +449,7 @@ const StyledBlueHeaderText = styled.div`
   font-family: 'Bold';
   text-align: center;
   font-size: 2.9rem;
-  padding-top: 80px;
+  padding-top: 100px;
   ${({ theme }) => theme.phone`
     font-size: 1.5rem;
   `}
@@ -460,7 +460,7 @@ const StyledBlueInfoText = styled.div`
   font-family: 'Light';
   text-align: center;
   font-size: 1.2rem;
-  padding-top: 20px;
+  padding-top: 13px;
   ${({ theme }) => theme.phone`
     font-size: 1.1rem;
   `}
@@ -474,8 +474,8 @@ const StyledBlueButton = styled.a`
   color: ${theme.colors.white};
   font-size: 1.1rem;
   font-family: 'Regular';
-  margin-top: 50px;
-  margin-bottom: 60px;
+  margin-top: 57px;
+  margin-bottom: 89px;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -483,7 +483,7 @@ const StyledBlueButton = styled.a`
 `;
 
 const StyledOtherContainer = styled.div`
-  padding: 40px 110px 40px 110px;
+  padding: 40px 110px 85px 110px;
   ${({ theme }) => theme.tablet`
     padding: 20px 50px 20px 50px;
   `};
@@ -500,7 +500,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
     {
       numberStep: 'STEP ONE',
       headerText: 'Fill out a standard application',
-      descriptionStep: 'Get quotes from both of our partners',
+      descriptionStep: 'Get quotes from both of our partners.',
       padding: '50px 30px',
       width: '100%',
     },
@@ -508,7 +508,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       numberStep: 'STEP TWO',
       headerText: 'Enjoy exclusive benefits',
       descriptionStep:
-        'Keller Covered has done the work for you and negotiated rates for you at no extra cost',
+        'Keller Covered has done the work for you and negotiated rates for you at no extra cost.',
       padding: '150px 30px',
       mobilePadding: '100px 30px',
       width: '100%',
@@ -516,8 +516,8 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
     {
       numberStep: 'STEP THREE',
       headerText: 'Get a policy in as little as 24 hours',
-      descriptionStep: 'Get expert support and choose the best coverage for you needs',
-      padding: '0 30px',
+      descriptionStep: 'Get expert support and choose the best coverage for your needs.',
+      padding: '10px 30px',
       mobilePadding: '40px 30px',
       width: '100%',
     },
@@ -538,7 +538,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
 const StepsHeroSection = (): JSX.Element => {
   return (
     <>
-      <StyledStepsContainer padding="20px 90px 0 90px">
+      <StyledStepsContainer padding="60px 90px 0 90px">
         <StyledStepSection>
           <StyledStepPresentItem showShadow width="270px">
             <StyledButtonCheckContainer>
