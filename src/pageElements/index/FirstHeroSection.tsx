@@ -66,7 +66,7 @@ const Container = styled.div`
     background-size: 110px 100%;
   }
   @media (min-width: 300px) and (max-width: 372px) {
-    background: url(../../../static/img/heroImgs/tabletShape.svg) no-repeat 100% -110px;
+    background: url(../../../static/img/heroImgs/tabletShape.svg) no-repeat 100% -160px;
     background-size: 110px 100%;
   }
   min-height: auto;
@@ -168,7 +168,7 @@ const KaceyTopText = styled.h1`
 `;
 
 const FetchDiscountedContainer = styled.div`
-  margin-top: 17px;
+  margin-top: 20px;
   margin-left: 181px;
   ${({ theme }) => theme && theme.tablet`margin-left: 31px;`};
   ${({ theme }) =>
@@ -219,7 +219,7 @@ const ButtonQuoteContainer = styled.div`
 
 const DogPersonImage = styled(SVG)`
   margin-left: 323px;
-  margin-top: 47px;
+  margin-top: 44px;
   width: 476px;
   height: 251px;
   ${({ theme }) =>
@@ -249,13 +249,12 @@ const DogPersonImage = styled(SVG)`
     height: 135px;
   }
   @media (min-width: 300px) and (max-width: 372px) {
-    margin-top: 142px;
+    margin-top: 145px;
   }
 `;
 
 const OurStory = styled.div`
   padding-top: 42px;
-  padding-bottom: 20px;
   padding-left: 120px;
   padding-right: 120px;
   ${({ theme }) =>
@@ -276,22 +275,26 @@ const OurStoryContainer = styled.div`
   border-radius: 6px;
   ${({ theme }) => theme && `background-color: ${theme.colors.darkBlue};`};
   ${({ theme }) => theme && `color: ${theme.colors.white};`};
-  padding-bottom: 65px;
+  padding-bottom: 69px;
 `;
 
 const OurStoryHeader = styled.h1`
-  padding-top: 35px;
+  padding-top: 48px;
   text-align: center;
   font-size: 48px;
+  line-height: 48px;
   letter-spacing: -1px;
 `;
 
-const OurStoryDescription = styled.p`
+const OurStoryDescription = styled.p<{ secondSection?: boolean }>`
   font-size: 22px;
+  letter-spacing: 0px;
+  line-height: 27px;
   text-align: center;
   padding-left: 112px;
   padding-right: 112px;
-  padding-top: 13px;
+  padding-top: 24px;
+  ${({ secondSection }) => secondSection && `padding-top: 26px;margin-left: 2px;`};
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -324,9 +327,9 @@ export default function FirstHeroSection(): React.ReactElement {
         <ButtonQuoteContainer>
           <ButtonWithArrow
             href="/eoapplication"
-            margin="40px 0 0 0"
+            margin="38px 0 0 0"
             mobileMargin="8px 0 0 0"
-            customWidth="445px"
+            customWidth="436px"
             mobileWidth="250px"
             data-test-id="getButton"
           >
@@ -340,10 +343,10 @@ export default function FirstHeroSection(): React.ReactElement {
             <OurStoryDescription>
               Keller Covered has done the hard work for you by negotiating significant discounts
               with E&O Insurance providers. What was normally a process of 4-8 hours for a single
-              quote, has been streamlined through our proprietary workflow to allow you to receive
+              quote, has been streamlined through our proprietary workflow to allow you to apply for
               multiple quotes in less than 1 hour.
             </OurStoryDescription>
-            <OurStoryDescription>
+            <OurStoryDescription secondSection>
               Quotes are provided at additional costs to you as we have eliminated any middle-man
               fees associated with the process. We are extremely proud to provide the best purchase
               experience in the industry!
