@@ -265,11 +265,12 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
     total = 0;
     const percentages = tableInfo.map((cell) => cell.value) as number[];
     const percDiff = 100 - percentages.reduce((sum, value) => sum + Math.floor(value), 0);
+
     if (percDiff > 0) {
       const sortedPercentages = percentages.sort((a, b) => b - Math.floor(b) - (a - Math.floor(a)));
       for (let i = 0; i < percDiff; i++) {
         for (const cell of tableInfo) {
-          if (cell.value !== sortedPercentages[i]) continue;
+          if (cell.value !== sortedPercentages[i] || cell.value == 0) continue;
           cell.value = Math.floor(cell.value) + 1;
           break;
         }
@@ -296,6 +297,7 @@ export default function PolicyCommissionInformation({
     [openEditModal],
   );
   const { tableInfo, total } = getTableInfo(data, isPdf);
+
   return (
     <ContainerBackgroundShape>
       <Layout
