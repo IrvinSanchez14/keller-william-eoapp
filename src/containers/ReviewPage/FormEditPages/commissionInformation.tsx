@@ -84,10 +84,20 @@ export function EditPageCommissionInformation({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    values.farmRanch ?? 0;
+    values.auctioneering ?? 0;
+    values.mortageBrokerage ?? 0;
     const totalResidential = sumState(values.residential);
     const totalCommercial = sumState(values.commercial);
+    const total =
+      totalResidential +
+      totalCommercial +
+      values.farmRanch +
+      values.auctioneering +
+      values.mortageBrokerage;
     values.residential.total = totalResidential;
     values.commercial.total = totalCommercial;
+    values.totalCommision = total;
     storeCommissionAll(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
