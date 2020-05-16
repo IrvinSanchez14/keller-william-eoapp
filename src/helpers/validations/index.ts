@@ -4,7 +4,13 @@ export const fullNameValidateSchema = Yup.object().shape({
   contactName: Yup.string().required('Field is required'),
   brokerName: Yup.string().required('Field is required'),
   kwMarketCenterName: Yup.string().required('Field is required'),
-  yearEstablished: Yup.number().required('Field is required'),
+  yearEstablished: Yup.number()
+    .moreThan(1899, 'Year established must be greater or equal than 1900')
+    .lessThan(
+      new Date().getFullYear() + 1,
+      `Year established must be less or equal than ${new Date().getFullYear()}`,
+    )
+    .required('Field is required'),
 });
 
 export const fullEmailValidateSchema = Yup.object().shape({
