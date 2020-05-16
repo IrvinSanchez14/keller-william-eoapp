@@ -1,4 +1,11 @@
 import * as Yup from 'yup';
+import { removePercentageSign } from 'src/utils';
+
+Yup.addMethod(Yup.number, 'parsePercentage', function () {
+  return this.transform(function (_, originalValue) {
+    return removePercentageSign(originalValue);
+  });
+});
 
 export const fullNameValidateSchema = Yup.object().shape({
   contactName: Yup.string().required('Field is required'),
@@ -146,8 +153,9 @@ export const commissionInformationValidateSchema = Yup.object().shape({
 
 export const commissionTransactionValidateSchema = Yup.object().shape({
   percentageTransactions: Yup.number()
+    .parsePercentage()
     .required('Field is required')
-    .max(100, 'Please enter value between 0-100')
+    .max(100, 'Please enter a value between 0-100')
     .positive('The value must be positive'),
 });
 
@@ -195,7 +203,8 @@ export const riskProfileFirmValidateSchema = Yup.object().shape({
 
 export const riskProfileTransactionValidateSchema = Yup.object().shape({
   percentageTransactions: Yup.number()
+    .parsePercentage()
     .required('Field is required')
-    .max(100, 'Please enter value between 0-100')
+    .max(100, 'Please enter a value between 0-100')
     .positive('The value must be positive'),
 });
