@@ -62,7 +62,7 @@ const muiPalette = {
     500: '#EBEFF5',
     600: '#FAFAFA',
     700: '#F6F9FB',
-    800: '#676672',
+    800: '#6A6A6A',
   },
   lemonade: {
     main: '#FF0083',
