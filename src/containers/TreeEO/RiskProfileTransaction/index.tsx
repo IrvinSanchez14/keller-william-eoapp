@@ -13,6 +13,7 @@ import { categoriesName } from 'src/helpers/constants';
 import { riskProfileTransactionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 import { FormRiskProfileTransaction } from './form';
+import { removePercentageSign } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -31,7 +32,10 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
-    storeRiskProfile(dispatch, values); //TODO put state in localstorage
+    storeRiskProfile(dispatch, {
+      ...values,
+      percentageTransactions: removePercentageSign(values.percentageTransactions),
+    }); //TODO put state in localstorage
     actions.setSubmitting(true);
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5.5);

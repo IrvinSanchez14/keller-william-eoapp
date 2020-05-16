@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     asLink,
   }: any) => ({
     fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
-    fontWeight: fontWeight || 500,
+    fontWeight: fontWeight || 600,
     height: 50,
     width: '201px',
     fontSize: theme.fontSize.sm,
@@ -59,7 +59,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
       }),
     ...(!outlined &&
       disabled && {
-        color: theme.palette.primary.main,
+        color: theme.palette.gray['800'],
         backgroundColor: theme.palette.main.gray,
       }),
     ...(outlined && {

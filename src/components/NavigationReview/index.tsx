@@ -11,11 +11,13 @@ interface HeaderContainerProps {
   rightItem?: boolean;
   leftItem?: boolean;
   paddingLogo?: boolean;
+  isConfirmationPage?: boolean;
 }
 
 interface StyledSVGProps {
   width: string;
   height: string;
+  isConfirmationPage?: boolean;
 }
 
 const Header = styled.div<{ isTablet?: boolean }>`
@@ -78,12 +80,13 @@ const HeaderTextP = styled.p`
 `;
 
 const StyledSVG = styled(SVG)<StyledSVGProps>`
+  ${({ isConfirmationPage }) => isConfirmationPage && `padding-left: 5px;`}
   ${({ height }) => height && `height: ${height};`};
   ${({ width }) => width && `width: ${width};`};
 `;
 
 export default function NavigationReview(Props: NavigationReviewProps): JSX.Element {
-  const { isTablet, isMobile, sectionPage } = Props;
+  const { isTablet, isMobile, sectionPage, isConfirmationPage } = Props;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -99,10 +102,10 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
-        <StyledSVG height="120px" width="188px" src="/static/img/logoKW.svg" />
+        <StyledSVG isConfirmationPage height="120px" width="188px" src="/static/img/logoKW.svg" />
       </HeaderContainer>
-      <HeaderContainer rightItem>
-        <GetCoveredNowButton onClick={toggleModal} isMobile={isMobile} />
+      <HeaderContainer isConfirmationPage rightItem>
+        <GetCoveredNowButton isConfirmationPage onClick={toggleModal} isMobile={isMobile} />
       </HeaderContainer>
       {isModalVisible && (
         <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />

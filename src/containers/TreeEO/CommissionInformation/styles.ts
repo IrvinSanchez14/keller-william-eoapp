@@ -37,7 +37,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '22px',
       lineHeight: '28px',
-      width: '401px',
+      maxWidth: '401px',
       marginTop: '40px',
     },
   },
