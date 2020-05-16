@@ -59,7 +59,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
       }),
     ...(!outlined &&
       disabled && {
-        color: theme.palette.primary.main,
+        color: theme.palette.gray['800'],
         backgroundColor: theme.palette.main.gray,
       }),
     ...(outlined && {
