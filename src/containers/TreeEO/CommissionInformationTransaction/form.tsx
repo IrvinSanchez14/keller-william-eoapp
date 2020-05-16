@@ -39,7 +39,6 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"
-            type="number"
             label={'Percentage of transactions'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -48,6 +47,7 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={100}
+            percentageMask
           />
         </Column>
       </Row>

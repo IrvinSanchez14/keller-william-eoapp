@@ -38,7 +38,6 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"
-            type="number"
             label={'Percentage of transactions'}
             setFieldTouched={formikProps.setFieldTouched}
             placeholder="%"
@@ -47,6 +46,7 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
             shouldValidateOnMount
             renderFastField
             customWidth={100}
+            percentageMask
           />
         </Column>
       </Row>

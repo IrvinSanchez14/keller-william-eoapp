@@ -1,5 +1,7 @@
+import ky from 'src/utils/ky';
+import { useRouter } from 'next/dist/client/router';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 
@@ -15,8 +17,7 @@ import { FormRiskProfileBanck } from 'src/containers/TreeEO/RiskProfileBanck/for
 import { FormRiskProfileReits } from 'src/containers/TreeEO/RiskProfieReits/form';
 import { FormRiskProfileFirm } from 'src/containers/TreeEO/RiskProfileFirm/form';
 import { FormRiskProfileTransaction } from 'src/containers/TreeEO/RiskProfileTransaction/form';
-import { useRouter } from 'next/dist/client/router';
-import ky from 'src/utils/ky';
+import { removePercentageSign } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -85,7 +86,11 @@ export function EditPageRiskProfile({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
-    storeRiskProfile(dispatch, values);
+    const parsedValues = {
+      ...values,
+      percentageTransactions: removePercentageSign(values.percentageTransactions),
+    };
+    storeRiskProfile(dispatch, parsedValues);
     await ky.put(`session/${sessionId}`, {
       json: {
         ...state.app,
@@ -93,7 +98,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
           ...state.app.data,
           riskFactorInformation: {
             ...state.app.data.riskFactorInformation,
-            ...values,
+            ...parsedValues,
           },
         },
       },

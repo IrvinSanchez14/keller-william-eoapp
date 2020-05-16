@@ -1,8 +1,9 @@
+import ky from 'src/utils/ky';
+import { useRouter } from 'next/dist/client/router';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
-import ky from 'src/utils/ky';
 
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
@@ -16,7 +17,7 @@ import { FormCommissionInformationTransaction } from 'src/containers/TreeEO/Comm
 import { FormCommissionInformationResidential } from 'src/containers/TreeEO/CommissionInformationResidential/form';
 import { FormCommissionInformationCommercial } from 'src/containers/TreeEO/CommissionInformationCommercial/form';
 import { FormCommissionInformationOther } from 'src/containers/TreeEO/CommissionInformationOther/form';
-import { useRouter } from 'next/dist/client/router';
+import { removePercentageSign } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -84,6 +85,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    values.percentageTransactions = removePercentageSign(values.percentageTransactions);
     values.farmRanch ?? 0;
     values.auctioneering ?? 0;
     values.mortageBrokerage ?? 0;
