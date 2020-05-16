@@ -32,17 +32,12 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       padding: '0px 8px',
     },
   },
-  containerOne: {
-    padding: '0px 0px',
-    [theme.breakpoints.up(768)]: {
-      padding: '0px 8px',
-    },
+  rowContainer: {
+    display: 'flex',
   },
-  containerTwo: {
-    padding: '0px 0px',
-    [theme.breakpoints.up(768)]: {
-      padding: '0px 30px',
-    },
+  inputContainer: {
+    padding: '0',
+    paddingLeft: '30px',
   },
   containerTotal: {
     marginTop: 20,
@@ -126,8 +121,8 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
 
   return (
     <>
-      <Row wrap="wrap">
-        <Column className={classnames(classes.containerOne)}>
+      <Row className={classes.rowContainer} wrap="wrap">
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="realEstate"
             name="commercial.realEstate"
@@ -146,7 +141,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             placeholder="$0"
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="rawLand"
             name="commercial.rawLand"
@@ -166,7 +161,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
           />
         </Column>
 
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="appraisals"
             name="commercial.appraisals"
@@ -185,7 +180,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             placeholder="$0"
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="propertyMgmt"
             name="commercial.propertyMgmt"
@@ -204,7 +199,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             placeholder="$0"
           />
         </Column>
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="ownedProperty"
             name="commercial.ownedProperty"
