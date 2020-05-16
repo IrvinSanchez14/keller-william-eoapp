@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       width: '100%',
     },
   },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1.3em',
+  },
 }));
 
 export const FormCommissionInformationTransaction = (formikProps: any) => {
@@ -26,7 +31,7 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
+      <Row wrap="wrap" className={classes.rowContainer}>
         <Typography className={classnames(classes.subTitleForm)}>
           {intl.get('app.subtitle.form.commission.part.two')}
         </Typography>
@@ -48,10 +53,4 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };

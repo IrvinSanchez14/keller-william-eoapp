@@ -10,6 +10,7 @@ import { useAppContext } from 'src/store';
 const useStyles = makeStyles((theme: MuiTheme) => ({
   subTitleForm: {
     fontSize: 16,
+    width: '100%',
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
     },
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   rowContainer: {
     display: 'flex',
     flexDirection: 'column',
+    marginBottom: '1.3em',
+  },
+  column: {
+    width: '100%',
   },
 }));
 
@@ -26,8 +31,8 @@ export const FormCommissionInformation = (formikProps: any) => {
 
   return (
     <>
-      <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-        <Column padding="0px 8px">
+      <Row wrap="wrap" margin="0 -8px" className={classes.rowContainer}>
+        <Column className={classes.column} padding="0px 8px">
           <Typography className={classnames(classes.subTitleForm)}>
             {intl.get('app.subtitle.form.commission.part.one')}
           </Typography>
@@ -46,8 +51,8 @@ export const FormCommissionInformation = (formikProps: any) => {
           />
         </Column>
       </Row>
-      <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-        <Column padding="0px 8px">
+      <Row wrap="wrap" margin="0 -8px" className={classes.rowContainer}>
+        <Column className={classes.column} padding="0px 8px">
           <Typography className={classnames(classes.subTitleForm)}>
             {intl.get('app.subtitle2.form.commission.part.one')}
           </Typography>
@@ -68,10 +73,4 @@ export const FormCommissionInformation = (formikProps: any) => {
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };
