@@ -35,7 +35,7 @@ const GetCoveredNowButton: React.FC<Props> = ({ onClick, isMobile }) => {
   return (
     <StyledButton onClick={onClick} width="200px" color="dark">
       {isMobile ? (
-        <i style={{ marginTop: 6 }} className="fas fa-phone" />
+        <i className="fas fa-phone" />
       ) : (
         <>
           <i style={{ fontSize: 18 }} className="fas fa-phone" />

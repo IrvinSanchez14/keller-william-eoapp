@@ -49,6 +49,7 @@ const FooterLooksText = styled.h1`
   font-size: 30px;
   font-style: 'Regular';
   font-weight: 200;
+  letter-spacing: -0.54px;
   @media (max-width: 850px) {
     font-size: 27px;
   }

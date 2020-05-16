@@ -11,11 +11,16 @@ const Text = styled.h1<{ customMargin?: boolean }>`
   font-size: 22px;
   letter-spacing: 0;
   line-height: 28px;
+  ${({ theme }) => theme.phone`
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 21px;
+`}
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ customMargin }) =>
     customMargin &&
     `
-    padding-top: 7px;
+
   `};
 `;
 

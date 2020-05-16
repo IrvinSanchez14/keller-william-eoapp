@@ -32,7 +32,7 @@ const labelInformation = {
 };
 
 const ContainerInformation = styled.div<ContainerInformationProps>`
-  padding-bottom: 34px;
+  padding-bottom: 32px;
   ${({ firstPadding }) => firstPadding && `padding-bottom: 31px;`};
   ${({ fixMobilePosition, theme }) =>
     fixMobilePosition &&
@@ -43,7 +43,7 @@ const ContainerInformation = styled.div<ContainerInformationProps>`
     maxWidthMobile &&
     theme.phone`
         position: absolute;
-        bottom: -15px;
+        top: 317px;
         left: 0;
         width: 100%;
   `}
@@ -66,7 +66,6 @@ const Table = styled.div`
   `}
 
   &:last-child {
-    border-top: 1px solid ${(props) => props.theme.colors.grayTableHeader};
     border-bottom: 0;
   }
 }
@@ -74,11 +73,23 @@ const Table = styled.div`
 
 const TableHeader = styled.div`
   ${({ theme }) =>
-    theme &&
-    `background-color: ${theme.colors.lightestGray};color: ${theme.colors.paragraph.darkGray}`};
-  font-style: 'Bold';
+    theme && `background-color: rgba(52,51,66,0.05);color: ${theme.colors.paragraph.darkGray}`};
+  font-weight: bold;
   font-size: 12px;
-  padding: 10px 15px 10px;
+  padding: 14px 18px 12px;
+  letter-spacing: 2px;
+  line-height: 14px;
+  height: 40px;
+  ${({ theme }) => theme.phone`
+    max-width: 100%;
+    background-color: rgba(52,51,66,0.05);color: ${theme.colors.paragraph.darkGray};
+    font-weight: bold;
+    font-size: 11px;
+    padding: 14px 28px 12px;
+    letter-spacing: 2px;
+    line-height: 14px;
+    height: 40px;
+`}
 `;
 
 const TableList = styled.div<{ lastItem?: boolean }>`
@@ -97,32 +108,59 @@ const TableList = styled.div<{ lastItem?: boolean }>`
 const ComissionNameText = styled.p`
   font-size: 16px;
   width: 60%;
-  padding: 15px 0 15px 15px;
+  padding: 0px 0px 0px 15px;
+  letter-spacing: 0;
+  line-height: 56px;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
+  ${({ theme }) => theme.phone`
+  font-size: 14px;
+  width: 60%;
+  padding: 0px 0px 0px 30px;
+  letter-spacing: 0;
+  line-height: 46px;
+`}
 `;
 
 const ComissionValueText = styled.h1`
   font-size: 16px;
-  font-style: 'Bold';
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 56px;
   width: 60%;
   text-align: right;
   right: 0;
   padding-right: 15px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.darkGray};`};
-  ${({ theme }) => theme && theme.phone`color: ${theme.colors.paragraph.dark};font-style: 'Bold';`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`color: ${theme.colors.paragraph.dark};font-style: 'Bold';
+  font-size: 14px;
+  font-weight: bold;
+  padding-right: 25px;
+  letter-spacing: 0;
+  line-height: 46px;
+  text-align: right;
+  `};
 `;
 
 const ComissionTotalNameText = styled.h1`
-  font-size: 16px;
   width: 60%;
   padding: 15px 0 15px 15px;
   ${({ theme }) =>
     theme &&
     `
-    color: ${theme.colors.primaryDark};
-    letter-spacing: -0.31px;
+    color: #1D253C;
     font-size: 22px;
+    font-weight: bold;
+    letter-spacing: -0.31px;
+    line-height: 40px;
   `}
+  ${({ theme }) => theme.phone`
+  font-size: 24px;
+  padding: 15px 0 15px 29px;
+  letter-spacing: -0.5px;
+  line-height: 30px;
+`}
 `;
 
 const ComissionTotalValueText = styled.h1`
@@ -133,10 +171,18 @@ const ComissionTotalValueText = styled.h1`
   ${({ theme }) =>
     theme &&
     `
-    color: ${theme.colors.primaryDark};
+    color: #1D253C;
     letter-spacing: -0.31px;
     font-size: 22px;
+    line-height: 40px;
+    font-weight: bold;
   `};
+  ${({ theme }) => theme.phone`
+  font-size: 24px;
+  padding-right: 25px;
+  letter-spacing: 0;
+  line-height: 30px;
+`}
 `;
 
 function calcCommission(total: number, value: number) {
@@ -346,7 +392,11 @@ export default function PolicyCommissionInformation({
             </>
           ))}
       </Layout>
-      <Layout textHeader="Commission" openEditPageModal={openEditModal && onOpenModal('Comission')}>
+      <Layout
+        textHeader="Commission"
+        openEditPageModal={openEditModal && onOpenModal('Comission')}
+        style={true}
+      >
         <ContainerInformation firstPadding>
           <TextLight text={labelInformation.commissionInformation.grossCommission} />
           <TextBold
