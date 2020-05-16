@@ -152,7 +152,7 @@ export const FormPolicyInformationClaims = (
                         placeholder={placeholder}
                         setFieldTouched={formikProps.setFieldTouched}
                         mask={mask}
-                        className={classnames(classes.periodContainerInput, {
+                        className={classnames({
                           [classes.periodContainerInputInvalid]:
                             formikProps.errors[name] && formikProps.touched[name],
                         })}
