@@ -1,9 +1,15 @@
 import * as Yup from 'yup';
-import { removePercentageSign } from 'src/utils';
+import { removePercentageSign, removeSignsFromNumbers } from 'src/utils';
 
 Yup.addMethod(Yup.number, 'parsePercentage', function () {
   return this.transform(function (_, originalValue) {
     return removePercentageSign(originalValue);
+  });
+});
+
+Yup.addMethod(Yup.number, 'parseMoney', function () {
+  return this.transform(function (_, originalValue) {
+    return removeSignsFromNumbers(originalValue);
   });
 });
 
@@ -43,13 +49,13 @@ export const isFirmOwnedValidateSchema = Yup.object().shape({
 });
 
 export const agentLicensedValidateSchema = Yup.object().shape({
-  numberAgentsMoreCommission: Yup.number().required('Field is required'),
-  numberAgentLessCommission: Yup.number().required('Field is required'),
-  numberAgenteNoCommission: Yup.number().required('Field is required'),
+  numberAgentsMoreCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgentLessCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgenteNoCommission: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentSpecialValidateSchema = Yup.object().shape({
-  numberAgentSpecialDesignation: Yup.number().required('Field is required'),
+  numberAgentSpecialDesignation: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentRevokedValidateSchema = Yup.object().shape({
@@ -66,7 +72,7 @@ export const valdiatePolicySchema = (status: boolean) => {
         then: Yup.array().of(
           Yup.object().shape({
             dateClaim: Yup.string().required('Field is required'),
-            amountClaim: Yup.number().required('Field is required'),
+            amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
           }),
         ),
       }),
@@ -75,17 +81,17 @@ export const valdiatePolicySchema = (status: boolean) => {
     return Yup.object().shape({
       currentCarrier: Yup.string().required('Field is required'),
       renewalDate: Yup.string().required('Field is required'),
-      deductible: Yup.string().required('Field is required'),
-      limits: Yup.string().required('Field is required'),
-      yearCoverage: Yup.number().required('Field is required'),
-      annualPremium: Yup.string().required('Field is required'),
+      deductible: Yup.number().parseMoney().required('Field is required'),
+      limits: Yup.number().parseMoney().required('Field is required'),
+      yearCoverage: Yup.number().parseMoney().required('Field is required'),
+      annualPremium: Yup.number().parseMoney().required('Field is required'),
       isHaveClaims: Yup.boolean().required('Field is required'),
       claims: Yup.array().when('isHaveClaims', {
         is: true,
         then: Yup.array().of(
           Yup.object().shape({
             dateClaim: Yup.string().required('Field is required'),
-            amountClaim: Yup.number().required('Field is required'),
+            amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
           }),
         ),
       }),
@@ -100,7 +106,7 @@ export const isHaveClaimsValidateSchema = Yup.object().shape({
     then: Yup.array().of(
       Yup.object().shape({
         dateClaim: Yup.string().required('Field is required'),
-        amountClaim: Yup.number().required('Field is required'),
+        amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
       }),
     ),
   }),
@@ -115,10 +121,10 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
     return Yup.object().shape({
       currentCarrier: Yup.string().required('Field is required'),
       renewalDate: Yup.string().required('Field is required'),
-      deductible: Yup.string().required('Field is required'),
-      limits: Yup.string().required('Field is required'),
-      yearCoverage: Yup.number().required('Field is required'),
-      annualPremium: Yup.string().required('Field is required'),
+      deductible: Yup.number().parseMoney().required('Field is required'),
+      limits: Yup.number().parseMoney().required('Field is required'),
+      yearCoverage: Yup.number().parseMoney().required('Field is required'),
+      annualPremium: Yup.number().parseMoney().required('Field is required'),
     });
   }
 };
@@ -133,7 +139,7 @@ export const policyInforamtionClaimsSchema = Yup.object().shape({
           dateClaim: Yup.string()
             .matches(/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/)
             .required(),
-          amountClaim: Yup.number().required().min(0),
+          amountClaim: Yup.number().parseMoney().required().min(0),
         }),
       )
       .min(1)
@@ -144,10 +150,12 @@ export const policyInforamtionClaimsSchema = Yup.object().shape({
 
 export const commissionInformationValidateSchema = Yup.object().shape({
   grossCommission: Yup.number()
+    .parseMoney()
     .required('Field is required')
     .min(0, 'Commission must be greater than or equal to 0'),
   averageValue: Yup.number()
     .required('Field is required')
+    .parseMoney()
     .min(0, 'Average must be greater than or equal to 0'),
 });
 
@@ -161,28 +169,28 @@ export const commissionTransactionValidateSchema = Yup.object().shape({
 
 export const commissionResidentialValidateSchema = Yup.object().shape({
   residential: Yup.object().shape({
-    realEstate: Yup.number().nullable(),
-    rawLand: Yup.number().nullable(),
-    appraisals: Yup.number().nullable(),
-    propertyMgmt: Yup.number().nullable(),
-    ownedProperty: Yup.number().nullable(),
+    realEstate: Yup.number().parseMoney().nullable(),
+    rawLand: Yup.number().parseMoney().nullable(),
+    appraisals: Yup.number().parseMoney().nullable(),
+    propertyMgmt: Yup.number().parseMoney().nullable(),
+    ownedProperty: Yup.number().parseMoney().nullable(),
   }),
 });
 
 export const commissionCommercialValidateSchema = Yup.object().shape({
   commercial: Yup.object().shape({
-    realEstate: Yup.number().nullable(),
-    rawLand: Yup.number().nullable(),
-    appraisals: Yup.number().nullable(),
-    propertyMgmt: Yup.number().nullable(),
-    ownedProperty: Yup.number().nullable(),
+    realEstate: Yup.number().parseMoney().nullable(),
+    rawLand: Yup.number().parseMoney().nullable(),
+    appraisals: Yup.number().parseMoney().nullable(),
+    propertyMgmt: Yup.number().parseMoney().nullable(),
+    ownedProperty: Yup.number().parseMoney().nullable(),
   }),
 });
 
 export const commissionOtherValidateSchema = Yup.object().shape({
-  farmRanch: Yup.number().min(0, 'The value must be positive'),
-  auctioneering: Yup.number().min(0, 'The value must be positive'),
-  mortageBrokerage: Yup.number().min(0, 'The value must be positive'),
+  farmRanch: Yup.number().parseMoney().min(0, 'The value must be positive'),
+  auctioneering: Yup.number().parseMoney().min(0, 'The value must be positive'),
+  mortageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
 });
 
 export const riskProfileValidateSchema = Yup.object().shape({

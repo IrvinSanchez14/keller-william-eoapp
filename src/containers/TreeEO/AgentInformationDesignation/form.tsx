@@ -9,7 +9,6 @@ export const FormAgentInformationDesignation = (formikProps: any) => {
           <FielControlForm
             data-test-id="numberAgentSpecialDesignation"
             name="numberAgentSpecialDesignation"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -17,6 +16,7 @@ export const FormAgentInformationDesignation = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>

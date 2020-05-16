@@ -1,19 +1,18 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import { Typography } from '@material-ui/core';
-
+import Typography from '@material-ui/core/Typography';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
 import { storeCommissionCommercial, changeStatusProgressBar } from 'src/store/actions/app';
-
 import { commissionCommercialValidateSchema } from 'src/helpers/validations';
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationCommercial } from './form';
 import { FormApp } from 'src/components/FormApp';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -23,14 +22,14 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: any) => {
-    const totalResidential = this.sumState(values.commercial);
-    const numberValues: any = Object.keys(values.commercial).reduce(
+    values.commercial = Object.keys(values.commercial).reduce(
       (res, key: string) => ({
         ...res,
-        [key]: Number(values[key]),
+        [key]: removeSignsFromNumbers(values.commercial[key] ?? 0),
       }),
       {},
     );
+    const totalResidential = this.sumState(values.commercial);
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
@@ -48,9 +47,8 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   }
 
-  sumState = (object: any) => {
-    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
-  };
+  sumState = (object: any) =>
+    Object.keys(object).reduce((sum, key) => sum + removeSignsFromNumbers(object[key] ?? 0), 0);
 
   render() {
     const isLoading = false;

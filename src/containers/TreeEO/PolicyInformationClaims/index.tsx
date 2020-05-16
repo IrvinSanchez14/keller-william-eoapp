@@ -13,6 +13,7 @@ import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { FormPolicyInformationClaims } from './form';
 import { styles } from './styles';
+import { removeSignsFromNumbers } from 'src/utils';
 
 export type CurrentAddressProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -31,12 +32,19 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   }
 
   nextStep = async (values: any, actions: any) => {
+    const parsedValues = {
+      ...values,
+      claims: values.claims.map((c) => ({
+        ...c,
+        amountClaim: removeSignsFromNumbers(c.amountClaim),
+      })),
+    };
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
     await this.props.onSubmit?.();
     this.isButtonLoading = true;
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
-    storeClaimsPolicy(dispatch, values);
+    storeClaimsPolicy(dispatch, parsedValues);
     setInformationPage(dispatch, 10, categoriesName.commissionInformation);
   };
 
