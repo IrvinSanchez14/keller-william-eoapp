@@ -165,7 +165,7 @@ export default class AppState implements IAppState {
         isMortageBanking: null,
         isPerformServices: null,
         isRepresentCommission: null,
-        percentageTransactions: 0,
+        percentageTransactions: undefined,
       },
     },
     id: undefined,
