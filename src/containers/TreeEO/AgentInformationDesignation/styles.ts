@@ -26,10 +26,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   stepHeader: {
     fontSize: '24px',
     lineHeight: '28px',
+    width: '100%',
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
-      width: 520,
     },
   },
 });
