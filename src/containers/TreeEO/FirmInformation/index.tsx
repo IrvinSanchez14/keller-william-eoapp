@@ -33,7 +33,7 @@ export class FirmInformation extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   };

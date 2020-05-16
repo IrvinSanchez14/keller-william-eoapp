@@ -30,10 +30,15 @@ const BorderLinearProgress = withStyles({
 function MainContentWrapper(Props: IMainContentWrapper) {
   const { infoContent, formContent, className, contentPapersClasses } = Props;
   const { state } = useAppContext();
-  const classes = useStyles({});
+  const classes = useStyles(state);
   return (
     <>
       <Row className={classnames(classes.wrapper, className)}>
+        <div className={classnames(classes.divPercentage)}>
+          <p className={classnames(classes.percentage)}>
+            {parseInt(`${state.app.metadata.progressBar}`)}%
+          </p>
+        </div>
         <Row className={classnames(classes.progressBar)}>
           <BorderLinearProgress
             variant="determinate"

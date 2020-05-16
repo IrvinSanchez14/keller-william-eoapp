@@ -12,6 +12,42 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
       minHeight: 650,
     },
   },
+  percentage: {
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fontSize: '12px',
+    lineHeight: '28px',
+    color: '#07293D',
+    transform: (state: any) =>
+      `translateX(${
+        state.app.metadata.progressBar <= 0
+          ? 0
+          : state.app.metadata.progressBar === 100
+          ? 90.7
+          : state.app.metadata.progressBar - 1
+      }%)`,
+    [theme.breakpoints.up('md')]: {
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '16px',
+      lineHeight: '28px',
+      color: '#07293D',
+      transform: (state: any) =>
+        `translateX(${
+          state.app.metadata.progressBar <= 0
+            ? 0
+            : state.app.metadata.progressBar === 100
+            ? 96.9
+            : state.app.metadata.progressBar - 1
+        }%)`,
+    },
+  },
+  divPercentage: {
+    margin: '-23px 0px -5px 0px',
+    [theme.breakpoints.up('md')]: {
+      margin: '-28px 0px 0px 0px',
+    },
+  },
   divContainerBody: {
     height: 'auto',
     [theme.breakpoints.up('md')]: {
@@ -21,7 +57,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   progressBar: {
-    padding: 10,
+    padding: '10px 0px 10px 0px',
     position: 'static',
     zIndex: 1,
     width: '100%',

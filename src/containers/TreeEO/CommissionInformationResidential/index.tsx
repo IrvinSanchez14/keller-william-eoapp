@@ -47,7 +47,7 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     actions.setSubmitting(true);
     storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
