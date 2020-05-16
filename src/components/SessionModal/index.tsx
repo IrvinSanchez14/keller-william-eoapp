@@ -139,8 +139,8 @@ const SessionModal: React.FC<SessionModalProps> = (props) => {
         <StyledHeading>We&apos;ve created a login for you!</StyledHeading>
         <ParagraphContainer>
           <StyledModalParagraph>
-            You&apos;ll receive an email shortly with a special link that will allow you to take
-            access your application at any time!
+            You&apos;ll receive an email shortly with a special link that will allow you to access
+            your application at any time!
           </StyledModalParagraph>
           <StyledModalParagraph>
             This will come in handy if you need information for the application that you do not have
