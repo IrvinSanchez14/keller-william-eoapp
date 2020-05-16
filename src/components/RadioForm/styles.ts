@@ -11,6 +11,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: theme.spacing(0, 0, 1.25),
     border: '1px solid #E4E4E4',
     borderRadius: 40,
+    paddingRight: '1em',
     boxShadow: '2px 2px 0 0 rgba(181,181,181,0.5)',
     '& > span:first-child': {
       paddingLeft: 20,
