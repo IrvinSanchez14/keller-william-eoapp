@@ -16,13 +16,10 @@ export const fullNameValidateSchema = Yup.object().shape({
 export const fullEmailValidateSchema = Yup.object().shape({
   streetAddress: Yup.string().required('Field is required'),
   phoneNumber: Yup.string()
-    .length(14, 'Phone Number must be at least 14 characters')
+    .length(14, 'Phone number must have 10 digits.')
     .required('Field is required'),
-  faxNumber: Yup.string()
-    .length(14, 'Fax Number must be at least 14 characters')
-    .notRequired()
-    .nullable(),
-  email: Yup.string().email('Email Address must be a valid email').required('Field is required'),
+  faxNumber: Yup.string().length(14, 'Fax number must have 10 digits.').notRequired().nullable(),
+  email: Yup.string().email('Email address must be a valid email').required('Field is required'),
 });
 
 export const isFirmOwnedFirmSchema = Yup.object().shape({
