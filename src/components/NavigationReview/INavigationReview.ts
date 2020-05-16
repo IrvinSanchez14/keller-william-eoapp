@@ -3,4 +3,5 @@ export default interface NavigationReviewProps {
   isMobile: boolean;
   width?: number;
   sectionPage?: string;
+  isConfirmationPage?: boolean;
 }

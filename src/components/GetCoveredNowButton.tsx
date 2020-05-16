@@ -19,8 +19,9 @@ const StyledButton = styled(ButtonPrimary)`
   `};
 `;
 
-const StyledButtonCopy = styled.span`
+const StyledButtonCopy = styled.span<{ isConfirmationPage?: boolean }>`
   margin-left: 11px;
+  ${({ isConfirmationPage }) => isConfirmationPage && `margin-left: 1px;`};
   i {
     transform: translateY(-3px);
   }
@@ -29,17 +30,23 @@ const StyledButtonCopy = styled.span`
 interface Props {
   onClick: () => void;
   isMobile?: boolean;
+  isConfirmationPage?: boolean;
 }
 
-const GetCoveredNowButton: React.FC<Props> = ({ onClick, isMobile }) => {
+const GetCoveredNowButton: React.FC<Props> = ({ onClick, isMobile, isConfirmationPage }) => {
   return (
     <StyledButton onClick={onClick} width="200px" color="dark">
       {isMobile ? (
         <i style={{ marginTop: 6 }} className="fas fa-phone" />
       ) : (
         <>
-          <i style={{ fontSize: 18 }} className="fas fa-phone" />
-          <StyledButtonCopy>Get covered now</StyledButtonCopy>
+          <i
+            style={{ fontSize: 16, marginRight: isConfirmationPage ? 8 : 0 }}
+            className="fas fa-phone"
+          />
+          <StyledButtonCopy isConfirmationPage={isConfirmationPage}>
+            Get covered now
+          </StyledButtonCopy>
         </>
       )}
     </StyledButton>
