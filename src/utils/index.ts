@@ -18,7 +18,7 @@ export const phoneMask = [
 ];
 
 export const percentageMask = (rawValue: string) =>
-  createNumberMask({ prefix: '', sufix: ' %' })(rawValue);
+  createNumberMask({ prefix: '', suffix: '%', integerLimit: 3 })(rawValue);
 
 export const numberMask = (rawValue: string) =>
   createNumberMask({
@@ -32,3 +32,6 @@ export const fourDigitsMask = (rawValue: string) =>
     prefix: '',
     thousandsSeparatorSymbol: '',
   })(rawValue);
+
+export const removePercentageSign = (rawValue: string | number): number =>
+  isNaN(+rawValue) ? +(rawValue as string).replace('%', '') : Number(rawValue);
