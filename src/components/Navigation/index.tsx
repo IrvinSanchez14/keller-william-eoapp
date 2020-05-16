@@ -5,9 +5,9 @@ import styled, { css } from 'styled-components';
 
 import Hamburger from './Hamburger';
 import NavigationProps from './INavigation';
-import ButtonPrimary from '../Button/ButtonPrimary';
 import Menu from '../Menu';
 import CoveredNowModal from 'src/components/CoveredNowModal';
+import GetCoveredNowButton from '../GetCoveredNowButton';
 
 const Wrapper = styled.nav`
   position: absolute;
@@ -74,25 +74,6 @@ const StyledSvg = styled(SVG)`
   ${({ theme }) => theme.phone`
     display: none;
   `};
-`;
-
-const StyledButton = styled(ButtonPrimary)`
-  ${({ theme }) => theme.phone`
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    margin-left: 22px;
-    i {
-      transform: translateY(-3px);
-    }
-  `};
-`;
-
-const StyledButtonCopy = styled.span`
-  margin-left: 11px;
-  i {
-    transform: translateY(-3px);
-  }
 `;
 
 const StyledImg = styled.img`
@@ -165,16 +146,7 @@ function Navigation(Props: NavigationProps) {
             </StyledLogoContainer>
           </Link>
           {((isMobile && !isMenuVisible) || !isMobile) && (
-            <StyledButton onClick={() => toggleModal()} width="200px" color="dark">
-              {isMobile ? (
-                <i className="fas fa-phone" />
-              ) : (
-                <>
-                  <i className="fas fa-phone" />
-                  <StyledButtonCopy>Get covered now</StyledButtonCopy>
-                </>
-              )}
-            </StyledButton>
+            <GetCoveredNowButton isMobile={isMobile} onClick={toggleModal} />
           )}
           {(isMenuVisible || isMobile) && (
             <Menu isMenuVisible={isMenuVisible} ref={menuContainer} items={items} />

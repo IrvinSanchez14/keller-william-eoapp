@@ -191,6 +191,7 @@ export function NavigationForm(Props: INavigationProps) {
               <ButtonForm
                 customIconName="faPhone"
                 customIconType="solid"
+                fontWeight="bold"
                 className={classnames(classes.ctaButtonDesktop, {
                   [classes.ctaButtonDesktopConfirmation]: isConfirmationPage,
                 })}
