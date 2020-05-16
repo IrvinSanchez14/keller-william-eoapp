@@ -103,7 +103,7 @@ export default makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: theme.spacing(),
+    marginRight: '1px',
     [theme.breakpoints.up('lg')]: {
       marginRight: theme.spacing(3),
       width: 34,
@@ -139,6 +139,9 @@ export default makeStyles((theme: MuiTheme) => ({
   ctaContainer: {
     order: 3,
     flex: 1,
+    [theme.breakpoints.down(400)]: {
+      margin: '0px 2px 0px 0px',
+    },
   },
   ctaContainerPosition: {
     [theme.breakpoints.down('sm')]: {
