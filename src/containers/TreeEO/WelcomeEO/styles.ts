@@ -6,14 +6,13 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     color: '#07293D',
     fontSize: '16px',
     lineHeight: '21px',
-    width: '275px',
+    width: '100%',
     [theme.breakpoints.up(768)]: {
       fontSize: '21px',
       lineHeight: '28px',
       fontWeight: 'bold',
       margin: '3px 0px 0px 15px',
       letterSpacing: '0.8px',
-      width: '512px',
     },
   },
   stepHeader: {
