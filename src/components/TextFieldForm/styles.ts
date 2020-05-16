@@ -19,6 +19,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     textIndent: 16,
     WebkitAppearance: 'none',
     margin: 0,
+    color: '#1D253C',
     '&::placeholder': {
       color: theme.palette.inputs.placeholder,
       fontSize: 21,
