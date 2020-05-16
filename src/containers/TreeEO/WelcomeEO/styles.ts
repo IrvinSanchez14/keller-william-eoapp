@@ -31,7 +31,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     lineHeight: '14px',
     fontSize: '16px',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
     },
@@ -39,8 +38,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   labelFirm: {
     fontSize: '16px',
     lineHeight: '22px',
+    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
       marginTop: '1px',
@@ -94,8 +93,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     fontSize: '16px',
     lineHeight: '22px',
     marginLeft: '-26px',
+    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
       marginLeft: '-26px',
@@ -104,8 +103,8 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   labelComission: {
     lineHeight: '14px',
     fontSize: '16px',
+    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
       margin: '-6px 0px 0px -7px',
@@ -156,12 +155,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     fontSize: '16px',
     lineHeight: '22px',
     marginLeft: '13px',
+    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
       marginLeft: '13px',
-      letterSpacing: '1px',
+      letterSpacing: '0px',
       marginTop: '-2px',
     },
   },
@@ -177,13 +176,13 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     fontSize: '16px',
     lineHeight: '22px',
     marginLeft: '13px',
+    fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
-      fontSize: '16px',
       lineHeight: '22px',
       color: '#07293D',
       width: '88px',
       margin: '0px 0px 0px -18px',
-      letterSpacing: '1px',
+      letterSpacing: '0px',
     },
   },
   card: {
