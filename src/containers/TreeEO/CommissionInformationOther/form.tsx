@@ -23,12 +23,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       color: '#07293D',
     },
   },
+  rowContainer: {
+    marginBottom: '1.3em',
+  },
+  column: {
+    width: '100%',
+  },
   subTitleForm: {
     fontSize: 16,
     lineHeight: '21px',
-    width: '275px',
+    width: '100%',
     [theme.breakpoints.up(768)]: {
-      width: '100%',
       fontSize: 22,
       lineHeight: '28px',
     },
@@ -111,8 +116,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
-        <Column>
+      <Row wrap="wrap" className={classes.rowContainer}>
+        <Column className={classes.column}>
           <Typography className={classnames(classes.subTitleForm)}>
             {isReview
               ? intl.get('app.subtitle.one.commission.part.six.review')
@@ -132,8 +137,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           />
         </Column>
       </Row>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
-        <Column>
+      <Row wrap="wrap" className={classes.rowContainer}>
+        <Column className={classes.column}>
           <Typography className={classnames(classes.subTitleForm)}>
             {isReview
               ? intl.get('app.subtitle.two.commission.part.six.review')
@@ -154,7 +159,7 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
         </Column>
       </Row>
       <Row wrap="wrap" className={classnames(classes.rowFinal)}>
-        <Column>
+        <Column className={classes.column}>
           <Typography className={classnames(classes.subTitleForm)}>
             {isReview
               ? intl.get('app.subtitle.three.commission.part.six.review')
@@ -176,10 +181,4 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };
