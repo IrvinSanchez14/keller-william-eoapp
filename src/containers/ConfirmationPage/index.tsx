@@ -350,6 +350,7 @@ const TableNameText = styled(P)<{ padding?: string }>`
   letter-spacing: 0px;
   line-height: 56px;
   width: 80%;
+  padding: 0px 0px 0px 21px;
   ${({ padding }) => padding && `padding: ${padding};`};
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
   ${({ theme }) =>
@@ -471,15 +472,15 @@ export default function ConfirmationPage({
                 <strong>{`RISK PROFILE`}</strong>
               </TableHeader>
               <TableList>
-                <TableNameText padding="0px 0px 0px 21px">{`Total number of agents (including owners and managers)`}</TableNameText>
+                <TableNameText>{`Total number of agents (including owners and managers)`}</TableNameText>
                 <TableValueText>{agentsNumber}</TableValueText>
               </TableList>
               <TableList>
-                <TableNameText padding="0px 0px 0px 21px">{`Total number of claims in the past 5 years`}</TableNameText>
+                <TableNameText>{`Total number of claims in the past 5 years`}</TableNameText>
                 <TableValueText>{claimsNumber}</TableValueText>
               </TableList>
               <TableList>
-                <TableNameText padding="0px 0px 0px 21px">{`Gross commission for the last 12 months`}</TableNameText>
+                <TableNameText>{`Gross commission for the last 12 months`}</TableNameText>
                 <TableValueText>{formatNumericalAbbreviation(grossCommission)}</TableValueText>
               </TableList>
               <TableList>
