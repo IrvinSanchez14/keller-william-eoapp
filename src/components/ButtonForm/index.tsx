@@ -26,6 +26,7 @@ export type CustomButtonProps = WithStyles<typeof useStyles> &
     isBlue?: boolean;
     isWhite?: boolean;
     isDark?: boolean;
+    fontWeight?: string | number;
     type?: string;
     customWidth?: number;
     withLabelClass?: boolean;
@@ -56,6 +57,7 @@ function ButtonForm(Props: any) {
     isBlue = true,
     isWhite,
     isDark,
+    fontWeight,
     type,
     customWidthMobile,
     customWidthDesktop,
@@ -69,6 +71,7 @@ function ButtonForm(Props: any) {
     isBlue,
     isWhite,
     isDark,
+    fontWeight,
     disabled,
     customWidthMobile,
     customWidthDesktop,
