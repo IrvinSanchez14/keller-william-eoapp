@@ -109,13 +109,14 @@ const ContentSection = styled.div<{ left?: boolean; right?: boolean }>`
   `};
 `;
 
-const WelcomeText = styled.h2<{ primaryColor?: boolean; normalMargin?: boolean }>`
+const WelcomeText = styled.h1<{ primaryColor?: boolean; normalMargin?: boolean }>`
   font-size: 64px;
-  letter-spacing: -1.33px;
+  letter-spacing: -1.35px;
+  line-height: 66px;
   overflow: hidden;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
   ${({ primaryColor, theme }) => primaryColor && `color: ${theme.colors.primary};`};
-  ${({ normalMargin }) => normalMargin && `margin-top: -25px;letter-spacing: -1.40px;`};
+  ${({ normalMargin }) => normalMargin && `letter-spacing: -1.40px;`};
   @media (min-width: 1252px) and (max-width: 1418px) {
     font-size: 55px;
   }
@@ -167,7 +168,8 @@ const CheckIcon = styled.i`
   height: 21px;
   width: 21px;
   border-radius: 50%;
-  justify-content: center;
+  padding-left: 4px;
+  padding-top: 5px;
   align-items: center;
   display: flex;
   margin-top: 27px;
@@ -181,7 +183,7 @@ const CheckIcon = styled.i`
 
 const CheckTextContainer = styled.div`
   margin-left: 11px;
-  margin-right: 80px;
+  margin-right: 140px;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -193,7 +195,7 @@ const CheckTextContainer = styled.div`
 const CheckText = styled.p`
   font-size: 22px;
   line-height: 31px;
-  margin-top: 23px;
+  margin-top: 22px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
@@ -204,7 +206,8 @@ const CheckText = styled.p`
 `;
 
 const Confirmation = styled.div`
-  margin-top: 36px;
+  margin-top: 22px;
+  padding-bottom: 8px;
   margin-left: 32px;
   margin-right: 60px;
   border-radius: 15px;
@@ -233,8 +236,9 @@ const ConfirmationHeader = styled.div`
 
 const ConfirmationHeaderText = styled.p`
   font-size: 22px;
+  line-height: 28px;
   padding-top: 9px;
-  padding-left: 51px;
+  padding-left: 50px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
@@ -245,7 +249,9 @@ const ConfirmationHeaderText = styled.p`
 
 const ConfirmationSummaryText = styled.h1`
   font-size: 22px;
-  padding: 30px 5px 37px 52px;
+  letter-spacing: 0;
+  line-height: 28px;
+  padding: 31px 0 37px 52px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
@@ -288,8 +294,10 @@ const TableList = styled.div`
 
 const TableNameText = styled.p`
   font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 56px;
   width: 80%;
-  padding: 16px 0 15px 20px;
+  padding: 0px 0px 0px 20px;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
   ${({ theme }) => theme && theme.phone`font-size: 14px;width: 70%;`};
 `;
