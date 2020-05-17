@@ -14,6 +14,7 @@ import { FormAgentInformationDesignation } from 'src/containers/TreeEO/AgentInfo
 import { FormAgentInformationRevoked } from 'src/containers/TreeEO/AgentInformationRevoked/form';
 import { editAgentInformationSchema } from 'src/helpers/validations';
 import { removeSignsFromNumbers } from 'src/utils';
+import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {

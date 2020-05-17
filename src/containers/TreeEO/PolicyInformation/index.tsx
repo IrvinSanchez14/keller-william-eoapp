@@ -54,9 +54,9 @@ export class PolicyInformation extends Component<FullNameProps> {
     setInformationPage(dispatch, 8, categoriesName.policyInformation);
   }
 
-  handleChange = () => {
+  handleChange = (value: boolean) => {
     this.setState({
-      isHaveInsurance: !this.state.isHaveInsurance,
+      isHaveInsurance: value,
     });
   };
 
@@ -81,7 +81,7 @@ export class PolicyInformation extends Component<FullNameProps> {
               yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage,
               annualPremium: formData.app.data.policyInformation.insurance.annualPremium,
             }}
-            validationSchema={policyInforamtionValidateSchema(this.state.isHaveInsurance)}
+            validationSchema={policyInforamtionValidateSchema}
             isInitValid
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}

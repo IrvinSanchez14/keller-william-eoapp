@@ -55,14 +55,9 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                 data-test-id="other"
                 label={'I do not have insurance'}
                 onChange={(e: any) => {
-                  formikProps.setFieldValue('currentCarrier', '');
-                  formikProps.setFieldValue('renewalDate', '');
-                  formikProps.setFieldValue('deductible', '');
-                  formikProps.setFieldValue('limits', '');
-                  formikProps.setFieldValue('yearCoverage', '');
-                  formikProps.setFieldValue('annualPremium', '');
-                  setIsHaveInsurance(!isHaveInsurance);
-                  handleChange(!isHaveInsurance);
+                  formikProps.setFieldValue('isHaveInsuranceField', e.target.checked);
+                  setIsHaveInsurance(e.target.checked);
+                  handleChange(e.target.checked);
                 }}
                 isChecked={isHaveInsurance}
                 hasHelper

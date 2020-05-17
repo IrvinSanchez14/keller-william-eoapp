@@ -150,7 +150,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
           claims: state.app.data.policyInformation.claims,
         }}
         isInitValid={false}
-        validationSchema={valdiatePolicySchema(isHaveInsurance)}
+        validationSchema={valdiatePolicySchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"

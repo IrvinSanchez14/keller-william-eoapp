@@ -140,7 +140,6 @@ export default function Layout({
   children,
   style,
 }: LayoutProps): React.ReactElement {
-  console.log('style', style);
   return (
     <LayoutContainer padding={style}>
       <LayoutHeaderSection>
