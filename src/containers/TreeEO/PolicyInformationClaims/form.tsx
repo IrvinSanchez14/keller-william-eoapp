@@ -73,6 +73,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   periodContainer: {
     flexDirection: 'row',
     margin: '10px 0px 0px -8px',
+
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      flexDirection: 'column',
+    },
+
     '& > div': {
       [theme.breakpoints.down('md')]: {
         flex: 1,
