@@ -10,13 +10,12 @@ import { setInformationPage } from 'src/store/actions/app';
 import { agentLicensedValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
 import { FormAgentInformation } from './form';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -33,10 +32,16 @@ export class AgentInformation extends Component<FullNameProps> {
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
+    const parsedValues = {
+      ...values,
+      numberAgentLessCommission: removeSignsFromNumbers(values.numberAgentLessCommission),
+      numberAgenteNoCommission: removeSignsFromNumbers(values.numberAgenteNoCommission),
+      numberAgentsMoreCommission: removeSignsFromNumbers(values.numberAgentsMoreCommission),
+    };
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    storeAgentInformation(dispatch, values); //TODO put state in localstorage
+    storeAgentInformation(dispatch, parsedValues); //TODO put state in localstorage
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 6, categoriesName.agentInformation);

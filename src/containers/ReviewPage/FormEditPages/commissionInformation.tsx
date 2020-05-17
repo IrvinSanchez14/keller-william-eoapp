@@ -4,20 +4,18 @@ import classnames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
-
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeCommissionAll } from 'src/store/actions/app';
-
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
-
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { useState, useEffect } from 'react';
 import { FormCommissionInformation } from 'src/containers/TreeEO/CommissionInformation/form';
 import { FormCommissionInformationTransaction } from 'src/containers/TreeEO/CommissionInformationTransaction/form';
 import { FormCommissionInformationResidential } from 'src/containers/TreeEO/CommissionInformationResidential/form';
 import { FormCommissionInformationCommercial } from 'src/containers/TreeEO/CommissionInformationCommercial/form';
 import { FormCommissionInformationOther } from 'src/containers/TreeEO/CommissionInformationOther/form';
-import { removePercentageSign } from 'src/utils';
+import { removePercentageSign, removeSignsFromNumbers } from 'src/utils';
+import { editCommissionInformationSchema } from 'src/helpers/validations';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -107,14 +105,32 @@ export function EditPageCommissionInformation({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch, state, intl } = useAppContext();
+  const { dispatch, state } = useAppContext();
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    values.grossCommission = removeSignsFromNumbers(values.grossCommission);
+    values.averageValue = removeSignsFromNumbers(values.averageValue);
     values.percentageTransactions = removePercentageSign(values.percentageTransactions);
-    values.farmRanch ?? 0;
-    values.auctioneering ?? 0;
-    values.mortageBrokerage ?? 0;
+    values.farmRanch = removeSignsFromNumbers(values.farmRanch);
+    values.auctioneering = removeSignsFromNumbers(values.auctioneering);
+    values.mortageBrokerage = removeSignsFromNumbers(values.mortageBrokerage);
+
+    values.residential = Object.keys(values.residential).reduce(
+      (res, key: string) => ({
+        ...res,
+        [key]: removeSignsFromNumbers(values.residential[key] ?? 0),
+      }),
+      {},
+    );
+    values.commercial = Object.keys(values.commercial).reduce(
+      (res, key: string) => ({
+        ...res,
+        [key]: removeSignsFromNumbers(values.commercial[key] ?? 0),
+      }),
+      {},
+    );
+
     const totalResidential = sumState(values.residential);
     const totalCommercial = sumState(values.commercial);
     const total =
@@ -181,7 +197,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
         alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={editCommissionInformationSchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"

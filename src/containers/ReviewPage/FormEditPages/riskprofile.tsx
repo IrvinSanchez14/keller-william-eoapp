@@ -1,23 +1,21 @@
 import ky from 'src/utils/ky';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/dist/client/router';
 import classnames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
-
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeRiskProfile } from 'src/store/actions/app';
-
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
-
-import { useState, useEffect } from 'react';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormRiskProfile } from 'src/containers/TreeEO/RiskProfile/form';
 import { FormRiskProfileBanck } from 'src/containers/TreeEO/RiskProfileBanck/form';
 import { FormRiskProfileReits } from 'src/containers/TreeEO/RiskProfieReits/form';
 import { FormRiskProfileFirm } from 'src/containers/TreeEO/RiskProfileFirm/form';
 import { FormRiskProfileTransaction } from 'src/containers/TreeEO/RiskProfileTransaction/form';
 import { removePercentageSign } from 'src/utils';
+import { editRiskProfileSchema } from 'src/helpers/validations';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -152,7 +150,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
         alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={editRiskProfileSchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"

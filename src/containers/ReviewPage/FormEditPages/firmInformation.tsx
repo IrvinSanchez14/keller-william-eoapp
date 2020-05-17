@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography } from '@material-ui/core';
+import { Typography, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 
@@ -16,6 +16,7 @@ import { FormFirmInformationBroker } from 'src/containers/TreeEO/FirmInformation
 import ky from 'src/utils/ky';
 import { useEffect, useState } from 'react';
 import Hr from 'src/components/Hr';
+import { editFirmInformationSchema } from 'src/helpers/validations';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -145,7 +146,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
         alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={editFirmInformationSchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"

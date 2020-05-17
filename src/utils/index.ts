@@ -23,7 +23,18 @@ export const percentageMask = (rawValue: string) =>
 export const numberMask = (rawValue: string) =>
   createNumberMask({
     prefix: '',
+  })(rawValue);
+
+export const integerMask = (rawValue: string) =>
+  createNumberMask({
+    prefix: '',
+    suffix: '',
     thousandsSeparatorSymbol: '',
+  })(rawValue);
+
+export const moneyMask = (rawValue: string) =>
+  createNumberMask({
+    prefix: '$',
   })(rawValue);
 
 export const fourDigitsMask = (rawValue: string) =>
@@ -34,4 +45,13 @@ export const fourDigitsMask = (rawValue: string) =>
   })(rawValue);
 
 export const removePercentageSign = (rawValue: string | number): number =>
-  isNaN(+rawValue) ? +(rawValue as string).replace('%', '') : Number(rawValue);
+  !rawValue ? 0 : isNaN(+rawValue) ? +(rawValue as string).replace('%', '') : Number(rawValue);
+
+export const removeSignsFromNumbers = (rawValue: string | number): number =>
+  !rawValue ? 0 : isNaN(+rawValue) ? +(rawValue as string).replace(/,|[$]/g, '') : Number(rawValue);
+
+export const parseNumberToThounsads = (rawValue: number | string): string =>
+  `${(rawValue ?? 0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+
+export const parseNumberToMoney = (rawValue: number | string): string =>
+  `$${parseNumberToThounsads(rawValue)}`;

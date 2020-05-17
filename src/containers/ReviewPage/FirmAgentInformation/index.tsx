@@ -1,9 +1,10 @@
+import { useCallback } from 'react';
 import Layout from '../Layout';
 import styled from 'styled-components';
 import FirmAgentInformationProps from './IFirmAgentInformation';
 import TextLight from 'src/components/TextLight';
 import TextBold from 'src/components/TextBold';
-import { useCallback } from 'react';
+import { parseNumberToThounsads } from 'src/utils';
 
 const labelInformation = {
   firmInformation: {
@@ -37,15 +38,17 @@ const labelInformation = {
 const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
   padding-bottom: 34px;
   ${({ firstPadding }) => firstPadding && `padding-bottom: 31px;`};
+  ${({ theme }) => theme.phone`
+  padding-bottom: 26px;
+`}
 `;
 
 const ContainerBackgroundShape = styled.div`
-  background: url(../../../static/img/reviewImgs/bg_right.svg) no-repeat;
+  background: url(../../../static/img/reviewImgs/bg_left.svg) no-repeat;
   background-size: 415px 90%;
   background-position: right;
   z-index: 1px;
   ${({ theme }) => theme.phone`
-    background-size: 0px 0px;
   `}
 `;
 
@@ -126,15 +129,19 @@ export default function FirmAgentInformation({
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgentsMoreCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsMoreCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgentLessCommission} />
+          <TextLight
+            text={parseNumberToThounsads(
+              labelInformation.agentInformation.numberAgentLessCommission,
+            )}
+          />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgentLessCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentLessCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
@@ -142,12 +149,15 @@ export default function FirmAgentInformation({
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgenteNoCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgenteNoCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.numberAgentSpecialDesignation} />
-          <TextBold customMargin text={data.agentInformation.numberAgentSpecialDesignation} />
+          <TextBold
+            customMargin
+            text={parseNumberToThounsads(data.agentInformation.numberAgentSpecialDesignation)}
+          />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.revokedLicense} />

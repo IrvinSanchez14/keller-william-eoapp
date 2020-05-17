@@ -6,6 +6,7 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -126,7 +127,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="farmRanch"
             name="farmRanch"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -134,6 +134,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
@@ -147,7 +149,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="auctioneering"
             name="auctioneering"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -155,6 +156,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
@@ -168,7 +171,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="mortageBrokerage"
             name="mortageBrokerage"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -176,6 +178,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>

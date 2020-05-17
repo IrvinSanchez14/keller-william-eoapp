@@ -1,19 +1,18 @@
+import ky from 'src/utils/ky';
+import { useEffect, useState } from 'react';
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 import { valdiatePolicySchema } from 'src/helpers/validations';
-
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeAllPolicy } from 'src/store/actions/app';
-
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormPolicyInformation } from 'src/containers/TreeEO/PolicyInformation/form';
 import { FormPolicyInformationClaims } from 'src/containers/TreeEO/PolicyInformationClaims/form';
-import { useEffect, useState } from 'react';
-import ky from 'src/utils/ky';
+import { removeSignsFromNumbers } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -106,10 +105,17 @@ export function EditPagePolicyInformation({ closeModal }: any) {
   const [isHaveInsurance, setIsHaveInsurance] = useState(
     state.app.data.policyInformation.isHaveInsurance,
   );
+  const [isHaveClaims, setIsHaveClaims] = useState(state.app.data.policyInformation.isHaveClaims);
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
     values.isHaveInsuranceField = isHaveInsurance;
+    values.isHaveClaims = isHaveClaims;
+
+    if (!values.isHaveClaims) {
+      values.claims = [];
+    }
+
     storeAllPolicy(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
@@ -122,16 +128,16 @@ export function EditPagePolicyInformation({ closeModal }: any) {
             isHaveInsurance: isHaveInsurance,
             insurance: {
               renewalDate: values.renewalDate,
-              deductible: values.deductible,
-              limits: values.limits,
-              yearCoverage: values.yearCoverage,
-              annualPremium: values.annualPremium,
+              deductible: removeSignsFromNumbers(values.deductible),
+              limits: removeSignsFromNumbers(values.limits),
+              yearCoverage: removeSignsFromNumbers(values.yearCoverage),
+              annualPremium: removeSignsFromNumbers(values.annualPremium),
             },
             isHaveClaims: values.isHaveClaims,
             claims: values.claims.map((item: any) => {
               return {
                 dateClaim: item.dateClaim,
-                amountClaim: item.amountClaim,
+                amountClaim: removeSignsFromNumbers(item.amountClaim),
               };
             }),
           },
@@ -143,6 +149,10 @@ export function EditPagePolicyInformation({ closeModal }: any) {
 
   const handleChange = (value: boolean) => {
     setIsHaveInsurance(value);
+  };
+
+  const claimsHandleChange = (value: boolean) => {
+    setIsHaveClaims(value);
   };
 
   useEffect(() => {
@@ -169,7 +179,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
-        validationSchema={valdiatePolicySchema(isHaveInsurance)}
+        validationSchema={valdiatePolicySchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"
@@ -196,7 +206,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
                   <Typography className={classnames(classes.titleForm)}>
                     {'Insurance information'}
                   </Typography>
-                  {FormPolicyInformationClaims(formikProps, state, dispatch)}
+                  {FormPolicyInformationClaims(formikProps, state, dispatch, claimsHandleChange)}
                 </Column>
               </Column>
             </>

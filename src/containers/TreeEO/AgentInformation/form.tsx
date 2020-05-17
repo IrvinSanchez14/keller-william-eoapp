@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 
 import { FielControlForm } from 'src/components/FieldControlForm';
@@ -35,7 +35,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgentsMoreCommission"
             name="numberAgentsMoreCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -43,6 +42,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>
@@ -56,7 +56,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgentLessCommission"
             name="numberAgentLessCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -64,6 +63,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>
@@ -77,7 +77,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgenteNoCommission"
             name="numberAgenteNoCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -85,6 +84,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>
