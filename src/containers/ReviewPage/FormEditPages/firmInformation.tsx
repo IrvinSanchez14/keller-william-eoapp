@@ -34,10 +34,12 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   rowContainer: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+    margin: '-38px 0px 74px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
+      width: '512px',
+      margin: '0px 0px',
     },
   },
   textFirm: {
@@ -52,10 +54,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   rowContainerDetail: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+    margin: '-38px 0px -18px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '84px',
+      width: 512,
+      margin: '0px 0px',
+    },
+  },
+  divTypo: {
+    [theme.breakpoints.down(768)]: {
+      margin: '-38px 0px 39px -44px',
     },
   },
 }));
@@ -123,6 +132,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
         hideButton={false}
       >
         {(formikProps) => {
+          console.log('props', formikProps);
           return (
             <>
               <Column className={classnames(classes.rowContainer)}>
@@ -143,11 +153,15 @@ export function EditPageFirmInformation({ closeModal }: any) {
                 </Typography>
                 {FormFirmInformationBroker(formikProps)}
               </Column>
-              <Column className={classnames(classes.rowContainerDetail)}>
+              <div className={classnames(classes.divTypo)}>
                 <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
                 <Typography className={classnames(classes.textFirm)}>
-                  {intl.get('app.head.form.firm.part.three')}
+                  {
+                    'Is your firm independently owned and not controlled, affiliated with, or owned by another entity?'
+                  }
                 </Typography>
+              </div>
+              <Column className={classnames(classes.rowContainerDetail)}>
                 {FormFirmInformationAffiliated(formikProps, handleChange)}
               </Column>
             </>

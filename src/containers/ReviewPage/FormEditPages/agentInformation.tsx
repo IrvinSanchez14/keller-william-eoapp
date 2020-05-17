@@ -33,10 +33,12 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   rowContainer: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+    margin: '-38px 0px 74px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
+      width: '512px',
+      margin: '0px 0px',
     },
   },
   titleSpecial: {
@@ -55,7 +57,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   textFirm: {
-    fontWeight: 'bold',
     fontSize: '16px',
     lineHeight: '21px',
     marginBottom: '16px',
@@ -66,10 +67,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   rowContainerDetail: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+    margin: '-38px 0px -18px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '84px',
+      width: '510px',
+      margin: '0px 0px',
+    },
+  },
+  divTypo: {
+    [theme.breakpoints.down(768)]: {
+      margin: '-38px 0px 39px -44px',
     },
   },
 }));
@@ -147,16 +155,18 @@ export function EditPageAgentInformation({ closeModal }: any) {
                 {FormAgentInformation(formikProps, isReview)}
               </Column>
               <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleSpecial)}>
+                <Typography className={classnames(classes.titleForm)}>
                   {'Special designations'}
                 </Typography>
                 {FormAgentInformationDesignation(formikProps)}
               </Column>
-              <Column className={classnames(classes.rowContainerDetail)}>
+              <div className={classnames(classes.divTypo)}>
                 <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
                 <Typography className={classnames(classes.textFirm)}>
                   {intl.get('app.head.form.agent.part.three')}
                 </Typography>
+              </div>
+              <Column className={classnames(classes.rowContainerDetail)}>
                 {FormAgentInformationRevoked(formikProps, handleChange)}
               </Column>
             </>
