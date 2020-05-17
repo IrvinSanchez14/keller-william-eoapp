@@ -1,10 +1,11 @@
+import { useCallback } from 'react';
 import Layout from '../Layout';
 import styled from 'styled-components';
 import TextBold from 'src/components/TextBold';
 import TextLight from 'src/components/TextLight';
 import PolicyCommissionInformationProps from './IPolicyCommissionInformation';
 import { formatAmount, formatPercentage } from 'src/helpers/formatData';
-import { useCallback } from 'react';
+import { parseNumberToThounsads } from 'src/utils';
 
 interface ContainerInformationProps {
   firstPadding?: boolean;
@@ -368,7 +369,9 @@ export default function PolicyCommissionInformation({
         </ContainerInformation>
         <ContainerInformation>
           <TextBold customMargin text={labelInformation.policyInformation.years} />
-          <TextLight text={data.policyInformation.insurance.yearCoverage} />
+          <TextLight
+            text={parseNumberToThounsads(data.policyInformation.insurance.yearCoverage ?? 0)}
+          />
         </ContainerInformation>
         <ContainerInformation>
           <TextBold customMargin text={labelInformation.policyInformation.annualPremium} />

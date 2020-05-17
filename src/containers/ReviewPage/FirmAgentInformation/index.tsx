@@ -1,9 +1,10 @@
+import { useCallback } from 'react';
 import Layout from '../Layout';
 import styled from 'styled-components';
 import FirmAgentInformationProps from './IFirmAgentInformation';
 import TextLight from 'src/components/TextLight';
 import TextBold from 'src/components/TextBold';
-import { useCallback } from 'react';
+import { parseNumberToThounsads } from 'src/utils';
 
 const labelInformation = {
   firmInformation: {
@@ -128,15 +129,19 @@ export default function FirmAgentInformation({
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgentsMoreCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsMoreCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgentLessCommission} />
+          <TextLight
+            text={parseNumberToThounsads(
+              labelInformation.agentInformation.numberAgentLessCommission,
+            )}
+          />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgentLessCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentLessCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
@@ -144,12 +149,15 @@ export default function FirmAgentInformation({
           <TextBold
             typeFormat="amount"
             customMargin
-            text={data.agentInformation.numberAgenteNoCommission}
+            text={parseNumberToThounsads(data.agentInformation.numberAgenteNoCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.numberAgentSpecialDesignation} />
-          <TextBold customMargin text={data.agentInformation.numberAgentSpecialDesignation} />
+          <TextBold
+            customMargin
+            text={parseNumberToThounsads(data.agentInformation.numberAgentSpecialDesignation)}
+          />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.agentInformation.revokedLicense} />

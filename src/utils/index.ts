@@ -49,3 +49,9 @@ export const removePercentageSign = (rawValue: string | number): number =>
 
 export const removeSignsFromNumbers = (rawValue: string | number): number =>
   isNaN(+rawValue) ? +(rawValue as string).replace(/,|[$]/g, '') : Number(rawValue);
+
+export const parseNumberToThounsads = (rawValue: number | string): string =>
+  `${rawValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+
+export const parseNumberToMoney = (rawValue: number | string): string =>
+  `$${parseNumberToThounsads(rawValue)}`;
