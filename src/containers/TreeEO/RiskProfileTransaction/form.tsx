@@ -38,7 +38,7 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"
-            label={'Percentage of transactions'}
+            label={isReview ? '' : 'Percentage of transactions'}
             setFieldTouched={formikProps.setFieldTouched}
             placeholder="%"
             errors={formikProps.errors}

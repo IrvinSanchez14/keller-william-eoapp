@@ -57,7 +57,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '-38px 0px -18px -44px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
-      marginBottom: '84px',
       width: 512,
       margin: '0px 0px',
     },
@@ -65,6 +64,14 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   divTypo: {
     [theme.breakpoints.down(768)]: {
       margin: '-38px 0px 39px -44px',
+    },
+  },
+  alignButton: {
+    width: '215px',
+    marginLeft: '-16px',
+    [theme.breakpoints.up(768)]: {
+      width: '226px',
+      marginLeft: '0px',
     },
   },
 }));
@@ -130,9 +137,9 @@ export function EditPageFirmInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
+        alignButton={classnames(classes.alignButton)}
       >
         {(formikProps) => {
-          console.log('props', formikProps);
           return (
             <>
               <Column className={classnames(classes.rowContainer)}>
