@@ -6,6 +6,7 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   subTitleForm: {
@@ -39,7 +40,6 @@ export const FormCommissionInformation = (formikProps: any) => {
           <FielControlForm
             data-test-id="grossCommission"
             name="grossCommission"
-            type="number"
             placeholder="$0"
             label={'Commission'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -48,6 +48,8 @@ export const FormCommissionInformation = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
@@ -59,7 +61,6 @@ export const FormCommissionInformation = (formikProps: any) => {
           <FielControlForm
             data-test-id="averageValue"
             name="averageValue"
-            type="number"
             placeholder="$0"
             label={'Average property value'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -68,6 +69,8 @@ export const FormCommissionInformation = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>

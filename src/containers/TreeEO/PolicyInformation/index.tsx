@@ -1,18 +1,17 @@
 import { Component } from 'react';
 import { FormikHelpers } from 'formik';
 import classnames from 'classnames';
-
 import { policyInforamtionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeInsurancePolicy, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
-
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormPolicyInformation } from './form';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -32,11 +31,18 @@ export class PolicyInformation extends Component<FullNameProps> {
   };
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
+    const parsedValues = {
+      ...values,
+      isHaveInsurance: this.state.isHaveInsurance,
+      deductible: removeSignsFromNumbers(values.deductible),
+      limits: removeSignsFromNumbers(values.limits),
+      yearCoverage: removeSignsFromNumbers(values.yearCoverage),
+      annualPremium: removeSignsFromNumbers(values.annualPremium),
+    };
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    values.isHaveInsuranceField = this.state.isHaveInsurance;
-    storeInsurancePolicy(dispatch, values); //TODO put state in localstorage
+    storeInsurancePolicy(dispatch, parsedValues); //TODO put state in localstorage
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 9, categoriesName.policyInformation);
@@ -67,13 +73,13 @@ export class PolicyInformation extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              currentCarrier: formData.app.data.policyInformation.currentCarrier || '',
+              currentCarrier: formData.app.data.policyInformation.currentCarrier,
               isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance,
-              renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
-              deductible: formData.app.data.policyInformation.insurance.deductible || 0,
-              limits: formData.app.data.policyInformation.insurance.limits || 0,
-              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || 0,
-              annualPremium: formData.app.data.policyInformation.insurance.annualPremium || 0,
+              renewalDate: formData.app.data.policyInformation.insurance.renewalDate,
+              deductible: formData.app.data.policyInformation.insurance.deductible,
+              limits: formData.app.data.policyInformation.insurance.limits,
+              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage,
+              annualPremium: formData.app.data.policyInformation.insurance.annualPremium,
             }}
             validationSchema={policyInforamtionValidateSchema(this.state.isHaveInsurance)}
             isInitValid

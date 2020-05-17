@@ -13,6 +13,7 @@ import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationOther } from './form';
 import { commissionOtherValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -29,13 +30,16 @@ export class CommissionInformationOther extends Component<FullNameProps> {
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
-    values.farmRanch = values.farmRanch === undefined ? 0 : values.farmRanch;
-    values.auctioneering = values.auctioneering === undefined ? 0 : values.auctioneering;
-    values.mortageBrokerage = values.mortageBrokerage === undefined ? 0 : values.mortageBrokerage;
+    const parsedValues = {
+      ...values,
+      farmRanch: removeSignsFromNumbers(values.farmRanch),
+      auctioneering: removeSignsFromNumbers(values.auctioneering),
+      mortageBrokerage: removeSignsFromNumbers(values.mortageBrokerage),
+    };
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
+    storeCommissionInformation(dispatch, parsedValues); //TODO put state in localstorage
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 16, categoriesName.commissionInformation);
