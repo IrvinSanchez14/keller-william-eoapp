@@ -30,13 +30,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       color: '#1D253C',
     },
   },
-  rowContainer: {
-    margin: '0px -30px',
-    marginBottom: '60px',
-    [theme.breakpoints.up(768)]: {
-      marginBottom: '121px',
-    },
-  },
+
   titleSpecial: {
     fontWeight: 'bold',
     fontSize: '20px',
@@ -63,11 +57,29 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '25px',
     },
   },
-  rowContainerDetail: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+  rowContainer: {
+    margin: '-38px 0px 74px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
-      marginBottom: '84px',
+      marginBottom: '121px',
+      width: '512px',
+      margin: '0px 0px',
+    },
+  },
+  rowContainerDetail: {
+    margin: '-38px 0px 0px -44px',
+    width: '275px',
+    [theme.breakpoints.up(768)]: {
+      width: '512px',
+      margin: '0px 0px',
+    },
+  },
+  alignButton: {
+    width: '215px',
+    marginLeft: '-16px',
+    [theme.breakpoints.up(768)]: {
+      width: '226px',
+      marginLeft: '0px',
     },
   },
 }));
@@ -160,6 +172,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
         validateOnChange={true}
+        alignButton={classnames(classes.alignButton)}
       >
         {(formikProps) => {
           return (
@@ -170,7 +183,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
                 </Typography>
                 {FormPolicyInformation(formikProps, handleChange)}
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
+              <Column className={classnames(classes.rowContainerDetail)}>
                 <Typography className={classnames(classes.titleForm)}>
                   {'Insurance information'}
                 </Typography>

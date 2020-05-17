@@ -95,6 +95,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       lineHeight: '48px',
     },
   },
+  rowContainerReview: {
+    display: 'flex',
+    margin: '0px 0px 0px -29px',
+    flexDirection: 'column',
+    [theme.breakpoints.up(768)]: {
+      fontSize: 22,
+      display: 'flex',
+      flexDirection: 'row',
+      margin: '0px 0px 0px -29px',
+    },
+  },
 }));
 
 export const FormCommissionInformationCommercial = (formikProps: any, isReview?: boolean) => {
@@ -121,7 +132,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
 
   return (
     <>
-      <Row className={classes.rowContainer} wrap="wrap">
+      <Row wrap={'wrap'} className={isReview ? classes.rowContainerReview : classes.rowContainer}>
         <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="realEstate"
