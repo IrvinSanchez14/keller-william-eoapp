@@ -13,9 +13,6 @@ const StyledButton = styled(ButtonPrimary)`
     height: 40px;
     overflow: hidden;
     margin-left: 22px;
-    i {
-      transform: translateY(-3px);
-    }
   `};
 `;
 
