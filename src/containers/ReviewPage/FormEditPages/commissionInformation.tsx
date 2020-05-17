@@ -19,25 +19,87 @@ import { editCommissionInformationSchema } from 'src/helpers/validations';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
-    fontWeight: 'bold',
+    fontSize: '16px',
+    lineHeight: '21px',
+    color: '#07293D',
+    [theme.breakpoints.up(768)]: {
+      fontWeight: 'bold',
+      fontFamily: 'Effra',
+      fontSize: '24px',
+      lineHeight: '32px',
+      letterSpacing: '-0.3px',
+      color: '#1D253C',
+    },
+  },
+  titleFormHead: {
     fontSize: '20px',
     lineHeight: '18px',
     color: '#07293D',
     marginBottom: '18px',
+    fontWeight: 'bold',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
       fontWeight: 'bold',
-      fontSize: '36px',
-      lineHeight: '40px',
-      letterSpacing: '-0.5px',
+      fontFamily: 'Effra',
+      fontSize: '24px',
+      lineHeight: '32px',
+      letterSpacing: '-0.3px',
+      color: '#1D253C',
+    },
+  },
+  titleFormHeadSub: {
+    fontSize: '16px',
+    lineHeight: '21px',
+    color: '#07293D',
+    marginBottom: '12px',
+    fontWeight: 'bold',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '30px',
+      fontWeight: 'bold',
+      fontFamily: 'Effra',
+      fontSize: '24px',
+      lineHeight: '32px',
+      letterSpacing: '-0.3px',
+      color: '#1D253C',
+    },
+  },
+  titleFormSubHead: {
+    fontSize: '16px',
+    lineHeight: '21px',
+    color: '#07293D',
+    fontWeight: 'bold',
+    [theme.breakpoints.up(768)]: {
+      fontWeight: 'bold',
+      fontFamily: 'Effra',
+      fontSize: '24px',
+      lineHeight: '32px',
+      letterSpacing: '-0.3px',
       color: '#1D253C',
     },
   },
   rowContainer: {
-    margin: '0px -30px',
-    marginBottom: '16px',
+    margin: '-38px 0px 74px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '40px',
+      width: '724px',
+      margin: '0px 0px',
+    },
+  },
+  rowContainerFinal: {
+    margin: '-38px 0px 0px -44px',
+    width: '275px',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '40px',
+      width: '724px',
+      margin: '0px 0px',
+    },
+  },
+  rowContainerWrap: {
+    margin: '-38px 0px 74px -44px',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '40px',
+      margin: '0px 0px',
     },
   },
   titleSpecial: {
@@ -78,16 +140,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     paddingRight: 74,
     maxWidth: '100%',
   },
-  alignButton: {
-    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-      flex: 2,
-      margin: '0px 74px 5px 74px',
-    },
-    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
-      width: 140,
-      margin: '0px 74px 0px 74px',
-    },
-  },
+  // my align buttom
+  // alignButton: {
+  //   [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+  //     flex: 2,
+  //     margin: '0px 74px 5px 74px',
+  //   },
+  //   [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+  //     width: 140,
+  //     margin: '0px 74px 0px 74px',
+  //   },
+  // },
   form: {
     position: 'relative',
     height: '100%',
@@ -99,14 +162,40 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     fontWeight: 500,
     fontFamily: 'Bold',
   },
+
+  divTypo: {
+    [theme.breakpoints.down(768)]: {
+      margin: '-38px 0px 39px -44px',
+    },
+  },
+  alignButton: {
+    width: '215px',
+    marginLeft: '-16px',
+    [theme.breakpoints.up(768)]: {
+      width: '226px',
+      marginLeft: '0px',
+    },
+  },
 }));
 
 export function EditPageCommissionInformation({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
+  const [width, setWidth] = useState(window.innerWidth);
   const [sessionId, setSessionId] = useState<string>();
   const { dispatch, state } = useAppContext();
   const classes = useStyles();
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const onSubmit = async (values: any, actions: any) => {
     values.grossCommission = removeSignsFromNumbers(values.grossCommission);
@@ -194,7 +283,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
           percentageTransactions: state.app.data.commissionInformation.percentageTransactions,
         }}
         className={classes.form}
-        alignButton={classes.alignButton}
+        // alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={editCommissionInformationSchema}
@@ -206,44 +295,48 @@ export function EditPageCommissionInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
+        alignButton={classnames(classes.alignButton)}
       >
         {(formikProps) => {
           return (
             <>
               <Column className={classnames(classes.containerForm)}>
                 <Column className={classnames(classes.rowContainer)}>
-                  <Typography className={classnames(classes.titleForm)}>
+                  <Typography className={classnames(classes.titleFormHead)}>
                     {'Commission details'}
+                  </Typography>
+                  <Typography className={classnames(classes.titleFormHeadSub)}>
+                    {'Gross commission and average value of properties sold'}
                   </Typography>
                   {FormCommissionInformation(formikProps)}
                 </Column>
-              </Column>
-              <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainer)}>
+                <div className={classnames(classes.divTypo)}>
                   <Typography className={classnames(classes.titleForm)}>
                     {'Percentage of transactions represented by both the buyer and seller'}
                   </Typography>
-                  {FormCommissionInformationTransaction(formikProps)}
-                </Column>
-              </Column>
-              <Column className={classnames(classes.containerForm)}>
+                </div>
                 <Column className={classnames(classes.rowContainer)}>
-                  <Typography className={classnames(classes.titleForm)}>
-                    {'Residential  commission'}
+                  {FormCommissionInformationTransaction(formikProps, isReview)}
+                </Column>
+                <Column
+                  style={{ width: width - 300 }}
+                  className={classnames(classes.rowContainerWrap)}
+                >
+                  <Typography className={classnames(classes.titleFormSubHead)}>
+                    {width <= 720 ? 'Residential' : 'Residential commission'}
                   </Typography>
                   {FormCommissionInformationResidential(formikProps, isReview)}
                 </Column>
-              </Column>
-              <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainer)}>
-                  <Typography className={classnames(classes.titleForm)}>
-                    {'Commercial commission'}
+                <Column
+                  style={{ width: width - 300 }}
+                  className={classnames(classes.rowContainerWrap)}
+                >
+                  <Typography className={classnames(classes.titleFormSubHead)}>
+                    {width <= 720 ? 'Commercial' : 'Commercial commission'}
                   </Typography>
                   {FormCommissionInformationCommercial(formikProps, isReview)}
                 </Column>
-              </Column>
-              <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainer)}>
+                <Column className={classnames(classes.rowContainerFinal)}>
                   {FormCommissionInformationOther(formikProps, isReview)}
                 </Column>
               </Column>

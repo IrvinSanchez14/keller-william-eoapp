@@ -26,15 +26,18 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export const FormCommissionInformationTransaction = (formikProps: any) => {
+export const FormCommissionInformationTransaction = (formikProps: any, isReview?: boolean) => {
   const { intl } = useAppContext();
   const classes = useStyles();
   return (
     <>
       <Row wrap="wrap" className={classes.rowContainer}>
-        <Typography className={classnames(classes.subTitleForm)}>
-          {intl.get('app.subtitle.form.commission.part.two')}
-        </Typography>
+        {isReview ? null : (
+          <Typography className={classnames(classes.subTitleForm)}>
+            {intl.get('app.subtitle.form.commission.part.two')}
+          </Typography>
+        )}
+
         <Column>
           <FielControlForm
             data-test-id="percentageTransactions"

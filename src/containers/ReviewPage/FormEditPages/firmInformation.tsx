@@ -38,8 +38,12 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '0px -30px',
     // marginLeft: 60,
     marginBottom: '60px',
+    // margin: '-38px 0px 74px -44px',
+    // width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
+      width: '512px',
+      margin: '0px 0px',
     },
   },
   textFirm: {
@@ -54,10 +58,24 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   rowContainerDetail: {
-    margin: '0px -30px',
-    marginBottom: '60px',
+    margin: '-38px 0px -18px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
-      marginBottom: '84px',
+      width: 512,
+      margin: '0px 0px',
+    },
+  },
+  divTypo: {
+    [theme.breakpoints.down(768)]: {
+      margin: '-38px 0px 39px -44px',
+    },
+  },
+  alignButton: {
+    width: '215px',
+    marginLeft: '-16px',
+    [theme.breakpoints.up(768)]: {
+      width: '226px',
+      marginLeft: '0px',
     },
   },
   containerForm: {
@@ -68,16 +86,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       maxWidth: 312,
     },
   },
-  alignButton: {
-    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-      flex: 2,
-      margin: '0px 74px 5px 74px',
-    },
-    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
-      width: 140,
-      margin: '0px 74px 0px 74px',
-    },
-  },
+  // Este era el align items que yo tenia
+  // alignButton: {
+  //   [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+  //     flex: 2,
+  //     margin: '0px 74px 5px 74px',
+  //   },
+  //   [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+  //     width: 140,
+  //     margin: '0px 74px 0px 74px',
+  //   },
+  // },
   form: {
     position: 'relative',
     height: '100%',
@@ -143,7 +162,6 @@ export function EditPageFirmInformation({ closeModal }: any) {
           isFirmOwned: state.app.data.firmInformation.isFirmOwned,
         }}
         className={classes.form}
-        alignButton={classes.alignButton}
         customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={editFirmInformationSchema}
@@ -155,6 +173,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
+        alignButton={classnames(classes.alignButton)}
       >
         {(formikProps) => {
           return (
@@ -187,13 +206,19 @@ export function EditPageFirmInformation({ closeModal }: any) {
               </Column>
               <Hr />
               <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainerDetail)}>
+                <div className={classnames(classes.divTypo)}>
                   <Typography className={classnames(classes.titleForm)}>
                     {'Firm details'}
                   </Typography>
                   <Typography className={classnames(classes.textFirm)}>
-                    {intl.get('app.head.form.firm.part.three')}
+                    {
+                      'Is your firm independently owned and not controlled, affiliated with, or owned by another entity?'
+                    }
                   </Typography>
+                </div>
+              </Column>
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainerDetail)}>
                   {FormFirmInformationAffiliated(formikProps, handleChange)}
                 </Column>
               </Column>

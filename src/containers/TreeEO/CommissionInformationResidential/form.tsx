@@ -35,6 +35,15 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   rowContainer: {
     display: 'flex',
   },
+  rowContainerReview: {
+    display: 'flex',
+    margin: '0px 0px 0px -29px',
+    [theme.breakpoints.up(768)]: {
+      fontSize: 22,
+      display: 'flex',
+      margin: '0px 0px 0px -29px',
+    },
+  },
   inputContainer: {
     padding: '0',
     paddingLeft: '30px',
@@ -121,7 +130,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
 
   return (
     <>
-      <Row wrap="wrap" className={classes.rowContainer}>
+      <Row wrap={'wrap'} className={isReview ? classes.rowContainerReview : classes.rowContainer}>
         <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="residential.realEstate"

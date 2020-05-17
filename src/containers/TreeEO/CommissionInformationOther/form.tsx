@@ -39,6 +39,19 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       lineHeight: '28px',
     },
   },
+  subTitleFormReview: {
+    fontSize: 16,
+    lineHeight: '21px',
+    width: '100%',
+    fontWeight: 'bold',
+    marginBottom: '10px',
+    [theme.breakpoints.up(768)]: {
+      fontSize: 22,
+      lineHeight: '28px',
+      fontWeight: 'bold',
+      marginBottom: '12px',
+    },
+  },
   containerOne: {
     padding: '0px 0px',
     [theme.breakpoints.up(768)]: {
@@ -119,7 +132,9 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
     <>
       <Row wrap="wrap" className={classes.rowContainer}>
         <Column className={classes.column}>
-          <Typography className={classnames(classes.subTitleForm)}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.one.commission.part.six.review')
               : intl.get('app.subtitle.one.commission.part.six')}
@@ -141,7 +156,9 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
       </Row>
       <Row wrap="wrap" className={classes.rowContainer}>
         <Column className={classes.column}>
-          <Typography className={classnames(classes.subTitleForm)}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.two.commission.part.six.review')
               : intl.get('app.subtitle.two.commission.part.six')}
@@ -161,9 +178,11 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowFinal)}>
+      <Row wrap="wrap" className={isReview ? '' : classnames(classes.rowFinal)}>
         <Column className={classes.column}>
-          <Typography className={classnames(classes.subTitleForm)}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.three.commission.part.six.review')
               : intl.get('app.subtitle.three.commission.part.six')}

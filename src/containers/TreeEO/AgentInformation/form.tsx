@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  rowContainerReviewPage: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: 10,
+  },
 }));
 
 export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
@@ -25,7 +30,10 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.one.form.agent.part.one.review')
@@ -46,7 +54,10 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.two.form.agent.part.one.review')
@@ -67,7 +78,10 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.tree.form.agent.part.one.review')
