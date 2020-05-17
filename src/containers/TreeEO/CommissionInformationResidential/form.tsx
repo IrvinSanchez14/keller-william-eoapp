@@ -7,7 +7,7 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
-import { moneyMask, removeSignsFromNumbers } from 'src/utils';
+import { moneyMask, removeSignsFromNumbers, parseNumberToMoney } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -245,7 +245,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
           <div className={classnames(classes.divContainerTotal)}>
             <Typography className={classnames(classes.textTotal)}>{'Residential total'}</Typography>
             <Typography className={classnames(classes.textNumberTotal)}>
-              ${sumState(residential)}
+              {parseNumberToMoney(sumState(residential))}
             </Typography>
           </div>
         </div>
