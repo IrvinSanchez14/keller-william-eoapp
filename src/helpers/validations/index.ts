@@ -67,42 +67,38 @@ export const editAgentInformationSchema = agentLicensedValidateSchema
   .concat(agentSpecialValidateSchema)
   .concat(agentRevokedValidateSchema);
 
-export const valdiatePolicySchema = (status: boolean) => {
-  if (status) {
-    return Yup.object().shape({
-      isHaveInsuranceField: Yup.boolean(),
-      isHaveClaims: Yup.boolean().required('Field is required'),
-      claims: Yup.array().when('isHaveClaims', {
-        is: true,
-        then: Yup.array().of(
-          Yup.object().shape({
-            dateClaim: Yup.string().required('Field is required'),
-            amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
-          }),
-        ),
+export const valdiatePolicySchema = Yup.object().shape({
+  isHaveInsuranceField: Yup.boolean().required('Field is required'),
+  currentCarrier: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  renewalDate: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  deductible: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  limits: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  yearCoverage: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  claims: Yup.array().when('isHaveClaims', {
+    is: true,
+    then: Yup.array().of(
+      Yup.object().shape({
+        dateClaim: Yup.string().required('Field is required'),
+        amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
       }),
-    });
-  } else {
-    return Yup.object().shape({
-      currentCarrier: Yup.string().required('Field is required'),
-      renewalDate: Yup.string().required('Field is required'),
-      deductible: Yup.number().parseMoney().required('Field is required'),
-      limits: Yup.number().parseMoney().required('Field is required'),
-      yearCoverage: Yup.number().parseMoney().required('Field is required'),
-      annualPremium: Yup.number().parseMoney().required('Field is required'),
-      isHaveClaims: Yup.boolean().required('Field is required'),
-      claims: Yup.array().when('isHaveClaims', {
-        is: true,
-        then: Yup.array().of(
-          Yup.object().shape({
-            dateClaim: Yup.string().required('Field is required'),
-            amountClaim: Yup.number().parseMoney().min(0).required('Field is required'),
-          }),
-        ),
-      }),
-    });
-  }
-};
+    ),
+  }),
+});
 
 export const isHaveClaimsValidateSchema = Yup.object().shape({
   isHaveClaims: Yup.boolean().required('Field is required'),
@@ -117,22 +113,29 @@ export const isHaveClaimsValidateSchema = Yup.object().shape({
   }),
 });
 
-export const policyInforamtionValidateSchema = (status: boolean) => {
-  if (status) {
-    return Yup.object().shape({
-      isHaveInsuranceField: Yup.boolean(),
-    });
-  } else {
-    return Yup.object().shape({
-      currentCarrier: Yup.string().required('Field is required'),
-      renewalDate: Yup.string().required('Field is required'),
-      deductible: Yup.number().parseMoney().required('Field is required'),
-      limits: Yup.number().parseMoney().required('Field is required'),
-      yearCoverage: Yup.number().parseMoney().required('Field is required'),
-      annualPremium: Yup.number().parseMoney().required('Field is required'),
-    });
-  }
-};
+export const policyInforamtionValidateSchema = Yup.object().shape({
+  isHaveInsuranceField: Yup.boolean().required('Field is required'),
+  currentCarrier: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  renewalDate: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  deductible: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  limits: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+  yearCoverage: Yup.string().when('isHaveInsuranceField', {
+    is: false,
+    then: Yup.string().required('Field is required'),
+  }),
+});
 
 export const commissionInformationValidateSchema = Yup.object().shape({
   grossCommission: Yup.number()
