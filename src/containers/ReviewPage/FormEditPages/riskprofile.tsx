@@ -75,6 +75,32 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '84px',
     },
   },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: '100%',
+  },
+  alignButton: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
+      margin: '0px 74px 0px 74px',
+    },
+  },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
+  },
 }));
 
 export function EditPageRiskProfile({ closeModal }: any) {
@@ -113,7 +139,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
   }, []);
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           isHomeWarranty: state.app.data.riskFactorInformation.isHomeWarranty,
@@ -122,6 +148,9 @@ export function EditPageRiskProfile({ closeModal }: any) {
           isRepresentCommission: state.app.data.riskFactorInformation.isRepresentCommission,
           percentageTransactions: state.app.data.riskFactorInformation.percentageTransactions,
         }}
+        className={classes.form}
+        alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={null}
         onSubmit={onSubmit}
@@ -136,42 +165,52 @@ export function EditPageRiskProfile({ closeModal }: any) {
         {(formikProps) => {
           return (
             <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Do you offer home warranty programs?'}
-                </Typography>
-                {FormRiskProfile(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Do you offer home warranty programs?'}
+                  </Typography>
+                  {FormRiskProfile(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Are you involved in mortgage banking, development, or construction?'}
-                </Typography>
-                {FormRiskProfileBanck(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Are you involved in mortgage banking, development, or construction?'}
+                  </Typography>
+                  {FormRiskProfileBanck(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Do you perform services for REITS  or property syndications?'}
-                </Typography>
-                {FormRiskProfileReits(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Do you perform services for REITS  or property syndications?'}
+                  </Typography>
+                  {FormRiskProfileReits(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Does any one client represent more than 25% of the firm’s annual commission?'}
-                </Typography>
-                {FormRiskProfileFirm(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Does any one client represent more than 25% of the firm’s annual commission?'}
+                  </Typography>
+                  {FormRiskProfileFirm(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {
-                    'Total percentage of your overall transactions that were derived from REOs/Foreclosures/Short Sales'
-                  }
-                </Typography>
-                {FormRiskProfileTransaction(formikProps, isReview)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {
+                      'Total percentage of your overall transactions that were derived from REOs/Foreclosures/Short Sales'
+                    }
+                  </Typography>
+                  {FormRiskProfileTransaction(formikProps, isReview)}
+                </Column>
               </Column>
             </>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }

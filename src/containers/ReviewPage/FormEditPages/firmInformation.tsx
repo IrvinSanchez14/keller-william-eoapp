@@ -9,12 +9,13 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeFirmConfirmation } from 'src/store/actions/app';
 
 import { FormFirmInformation } from 'src/containers/TreeEO/FirmInformation/form';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormFirmInformationEmail } from 'src/containers/TreeEO/FirmInformationEmail/form';
 import { FormFirmInformationAffiliated } from 'src/containers/TreeEO/FirmInformationAffiliated/form';
 import { FormFirmInformationBroker } from 'src/containers/TreeEO/FirmInformationBroker/form';
 import ky from 'src/utils/ky';
 import { useEffect, useState } from 'react';
+import Hr from 'src/components/Hr';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   rowContainer: {
     margin: '0px -30px',
+    // marginLeft: 60,
     marginBottom: '60px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
@@ -56,6 +58,35 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     [theme.breakpoints.up(768)]: {
       marginBottom: '84px',
     },
+  },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: 482,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 312,
+    },
+  },
+  alignButton: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
+      margin: '0px 74px 0px 74px',
+    },
+  },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
   },
 }));
 
@@ -94,7 +125,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
   }, []);
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           contactName: state.app.data.firmInformation.contactName,
@@ -110,6 +141,9 @@ export function EditPageFirmInformation({ closeModal }: any) {
           dateLicensedBroker: state.app.data.firmInformation.dateLicensedBroker,
           isFirmOwned: state.app.data.firmInformation.isFirmOwned,
         }}
+        className={classes.form}
+        alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={null}
         onSubmit={onSubmit}
@@ -123,36 +157,49 @@ export function EditPageFirmInformation({ closeModal }: any) {
       >
         {(formikProps) => {
           return (
-            <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Basic Information'}
-                </Typography>
-                {FormFirmInformation(formikProps)}
+            <div style={{ width: '100%' }}>
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Basic Information'}
+                  </Typography>
+                  {FormFirmInformation(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Contact information'}
-                </Typography>
-                {FormFirmInformationEmail(formikProps)}
+              <Hr />
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Contact information'}
+                  </Typography>
+                  {FormFirmInformationEmail(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Broker information'}
-                </Typography>
-                {FormFirmInformationBroker(formikProps)}
+              <Hr />
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Broker information'}
+                  </Typography>
+                  {FormFirmInformationBroker(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainerDetail)}>
-                <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
-                <Typography className={classnames(classes.textFirm)}>
-                  {intl.get('app.head.form.firm.part.three')}
-                </Typography>
-                {FormFirmInformationAffiliated(formikProps, handleChange)}
+              <Hr />
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainerDetail)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Firm details'}
+                  </Typography>
+                  <Typography className={classnames(classes.textFirm)}>
+                    {intl.get('app.head.form.firm.part.three')}
+                  </Typography>
+                  {FormFirmInformationAffiliated(formikProps, handleChange)}
+                </Column>
               </Column>
-            </>
+            </div>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }

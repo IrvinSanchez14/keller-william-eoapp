@@ -75,6 +75,32 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '84px',
     },
   },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: '100%',
+  },
+  alignButton: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
+      margin: '0px 74px 0px 74px',
+    },
+  },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
+  },
 }));
 
 export function EditPageCommissionInformation({ closeModal }: any) {
@@ -127,7 +153,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
   }, []);
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           grossCommission: state.app.data.commissionInformation.grossCommission,
@@ -151,6 +177,9 @@ export function EditPageCommissionInformation({ closeModal }: any) {
           },
           percentageTransactions: state.app.data.commissionInformation.percentageTransactions,
         }}
+        className={classes.form}
+        alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={null}
         onSubmit={onSubmit}
@@ -165,37 +194,47 @@ export function EditPageCommissionInformation({ closeModal }: any) {
         {(formikProps) => {
           return (
             <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Commission details'}
-                </Typography>
-                {FormCommissionInformation(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Commission details'}
+                  </Typography>
+                  {FormCommissionInformation(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Percentage of transactions represented by both the buyer and seller'}
-                </Typography>
-                {FormCommissionInformationTransaction(formikProps)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Percentage of transactions represented by both the buyer and seller'}
+                  </Typography>
+                  {FormCommissionInformationTransaction(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Residential  commission'}
-                </Typography>
-                {FormCommissionInformationResidential(formikProps, isReview)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Residential  commission'}
+                  </Typography>
+                  {FormCommissionInformationResidential(formikProps, isReview)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Commercial commission'}
-                </Typography>
-                {FormCommissionInformationCommercial(formikProps, isReview)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Commercial commission'}
+                  </Typography>
+                  {FormCommissionInformationCommercial(formikProps, isReview)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                {FormCommissionInformationOther(formikProps, isReview)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  {FormCommissionInformationOther(formikProps, isReview)}
+                </Column>
               </Column>
             </>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }

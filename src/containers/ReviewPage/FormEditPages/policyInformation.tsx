@@ -9,7 +9,7 @@ import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeAllPolicy } from 'src/store/actions/app';
 
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormPolicyInformation } from 'src/containers/TreeEO/PolicyInformation/form';
 import { FormPolicyInformationClaims } from 'src/containers/TreeEO/PolicyInformationClaims/form';
 import { useEffect, useState } from 'react';
@@ -71,6 +71,32 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '84px',
     },
   },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: '100%',
+  },
+  alignButton: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
+      margin: '0px 74px 0px 74px',
+    },
+  },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
+  },
 }));
 
 export function EditPagePolicyInformation({ closeModal }: any) {
@@ -126,7 +152,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
   }, []);
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           currentCarrier: state.app.data.policyInformation.currentCarrier,
@@ -139,6 +165,9 @@ export function EditPagePolicyInformation({ closeModal }: any) {
           isHaveClaims: state.app.data.policyInformation.isHaveClaims,
           claims: state.app.data.policyInformation.claims,
         }}
+        className={classes.form}
+        alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={valdiatePolicySchema(isHaveInsurance)}
         onSubmit={onSubmit}
@@ -154,22 +183,26 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         {(formikProps) => {
           return (
             <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Insurance information'}
-                </Typography>
-                {FormPolicyInformation(formikProps, handleChange)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Insurance information'}
+                  </Typography>
+                  {FormPolicyInformation(formikProps, handleChange)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Insurance information'}
-                </Typography>
-                {FormPolicyInformationClaims(formikProps, state, dispatch)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Insurance information'}
+                  </Typography>
+                  {FormPolicyInformationClaims(formikProps, state, dispatch)}
+                </Column>
               </Column>
             </>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }

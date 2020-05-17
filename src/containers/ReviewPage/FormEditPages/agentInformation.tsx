@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography, Divider } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 
@@ -8,12 +8,13 @@ import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeAgentInformation } from 'src/store/actions/app';
 
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormAgentInformation } from 'src/containers/TreeEO/AgentInformation/form';
 import { FormAgentInformationDesignation } from 'src/containers/TreeEO/AgentInformationDesignation/form';
 import { FormAgentInformationRevoked } from 'src/containers/TreeEO/AgentInformationRevoked/form';
 import { useState, useEffect } from 'react';
 import ky from 'src/utils/ky';
+import Hr from 'src/components/Hr';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -71,6 +72,35 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '84px',
     },
   },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: 1030,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: '100%',
+    },
+  },
+  alignButton: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      width: 140,
+      margin: '0px 74px 0px 74px',
+    },
+  },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
+  },
 }));
 
 export function EditPageAgentInformation({ closeModal }: any) {
@@ -108,7 +138,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
   };
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           numberAgentsMoreCommission: state.app.data.agentInformation.numberAgentsMoreCommission,
@@ -118,6 +148,9 @@ export function EditPageAgentInformation({ closeModal }: any) {
             state.app.data.agentInformation.numberAgentSpecialDesignation,
           revokedLicense: state.app.data.agentInformation.revokedLicense,
         }}
+        className={classes.form}
+        alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={null}
         onSubmit={onSubmit}
@@ -132,29 +165,39 @@ export function EditPageAgentInformation({ closeModal }: any) {
         {(formikProps) => {
           return (
             <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Total number of licensed agents'}
-                </Typography>
-                {FormAgentInformation(formikProps, isReview)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Total number of licensed agents'}
+                  </Typography>
+                  {FormAgentInformation(formikProps, isReview)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleSpecial)}>
-                  {'Special designations'}
-                </Typography>
-                {FormAgentInformationDesignation(formikProps)}
+              <Hr />
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleSpecial)}>
+                    {'Special designations'}
+                  </Typography>
+                  {FormAgentInformationDesignation(formikProps)}
+                </Column>
               </Column>
-              <Column className={classnames(classes.rowContainerDetail)}>
-                <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
-                <Typography className={classnames(classes.textFirm)}>
-                  {intl.get('app.head.form.agent.part.three')}
-                </Typography>
-                {FormAgentInformationRevoked(formikProps, handleChange)}
+              <Hr />
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainerDetail)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Firm details'}
+                  </Typography>
+                  <Typography className={classnames(classes.textFirm)}>
+                    {intl.get('app.head.form.agent.part.three')}
+                  </Typography>
+                  {FormAgentInformationRevoked(formikProps, handleChange)}
+                </Column>
               </Column>
             </>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }
