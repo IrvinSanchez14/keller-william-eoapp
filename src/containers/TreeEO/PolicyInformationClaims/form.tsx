@@ -1,17 +1,15 @@
 import classnames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { addClaimsPolicy, removeClaims, insertFirstClaims } from 'src/store/actions/app';
-
 import { TextFieldForm } from 'src/components/TextFieldForm';
-
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { dateMask } from 'src/utils';
 import { useState } from 'react';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   unitContainer: {
@@ -124,7 +122,8 @@ export const FormPolicyInformationClaims = (
         name: 'amountClaim',
         label: 'Amount of claim',
         numberMask: true,
-        type: 'number',
+        type: 'text',
+        setNumberMask: moneyMask,
       },
     ];
 
@@ -133,7 +132,7 @@ export const FormPolicyInformationClaims = (
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
             {residenceTimeFields.map(
-              ({ name, placeholder, label, mask, numberMask, type, values }: any) => {
+              ({ name, placeholder, label, mask, numberMask, type, setNumberMask }: any) => {
                 return (
                   <FielControlForm
                     key={`claims.${name}.${index}`}
@@ -157,6 +156,7 @@ export const FormPolicyInformationClaims = (
                             formikProps.errors[name] && formikProps.touched[name],
                         })}
                         customWidth={161}
+                        setNumberMask={setNumberMask}
                       />
                     )}
                   />

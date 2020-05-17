@@ -15,6 +15,7 @@ import { FormFirmInformationAffiliated } from 'src/containers/TreeEO/FirmInforma
 import { FormFirmInformationBroker } from 'src/containers/TreeEO/FirmInformationBroker/form';
 import ky from 'src/utils/ky';
 import { useEffect, useState } from 'react';
+import { editFirmInformationSchema } from 'src/helpers/validations';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -111,7 +112,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
           isFirmOwned: state.app.data.firmInformation.isFirmOwned,
         }}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={editFirmInformationSchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"

@@ -1,19 +1,19 @@
+import { useState, useEffect } from 'react';
+import ky from 'src/utils/ky';
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography, Divider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
-
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { storeAgentInformation } from 'src/store/actions/app';
-
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormAgentInformation } from 'src/containers/TreeEO/AgentInformation/form';
 import { FormAgentInformationDesignation } from 'src/containers/TreeEO/AgentInformationDesignation/form';
 import { FormAgentInformationRevoked } from 'src/containers/TreeEO/AgentInformationRevoked/form';
-import { useState, useEffect } from 'react';
-import ky from 'src/utils/ky';
+import { editAgentInformationSchema } from 'src/helpers/validations';
+import { removeSignsFromNumbers } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -81,6 +81,13 @@ export function EditPageAgentInformation({ closeModal }: any) {
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
+    const parsedValues = {
+      ...values,
+      numberAgentsMoreCommission: removeSignsFromNumbers(values.numberAgentsMoreCommission),
+      numberAgentLessCommission: removeSignsFromNumbers(values.numberAgentLessCommission),
+      numberAgenteNoCommission: removeSignsFromNumbers(values.numberAgenteNoCommission),
+      numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
+    };
     storeAgentInformation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
@@ -89,7 +96,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
           ...state.app.data,
           agentInformation: {
             ...state.app.data.agentInformation,
-            ...values,
+            ...parsedValues,
           },
         },
       },
@@ -119,7 +126,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
           revokedLicense: state.app.data.agentInformation.revokedLicense,
         }}
         isInitValid={false}
-        validationSchema={null}
+        validationSchema={editAgentInformationSchema}
         onSubmit={onSubmit}
         buttonLabel={'Save changes'}
         dataTestId="continueButton"
