@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  rowContainerReview: {
+  rowContainerReviewPage: {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: 10,
@@ -32,7 +32,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
     <>
       <Row
         wrap="wrap"
-        className={classnames(isReview ? classes.rowContainerReview : classes.rowContainer)}
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
       >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
@@ -56,7 +56,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
       </Row>
       <Row
         wrap="wrap"
-        className={classnames(isReview ? classes.rowContainerReview : classes.rowContainer)}
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
       >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
@@ -80,7 +80,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
       </Row>
       <Row
         wrap="wrap"
-        className={classnames(isReview ? classes.rowContainerReview : classes.rowContainer)}
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
       >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
