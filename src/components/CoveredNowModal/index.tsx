@@ -44,27 +44,22 @@ const ModalContainer = styled.div<ModalContainerProps>`
   box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
   margin-right: 4px;
   margin-bottom: 175px;
-  ${({ theme, screenWidth }) =>
+  ${({ theme }) =>
     theme &&
     theme.phone`
     margin-top: 300px;
     padding-bottom: 50px;
-    padding-left: 2px;
-    width: ${screenWidth - 1}px;
+    width: 95vw;
   `};
-  ${({ theme, screenWidth }) =>
+  ${({ theme }) =>
     theme &&
     theme.phone`
-    max-width: ${screenWidth};
-    padding-top: 10px;
     padding-vertical: 10px;
   `};
-  ${({ theme, screenWidth }) =>
+  ${({ theme }) =>
     theme &&
     theme.phoneSmall`
-    padding-top: 10px;
-    max-width: ${screenWidth};
-    padding-vertical: 10px;
+    padding-bottom: 10px;
   `};
 `;
 
