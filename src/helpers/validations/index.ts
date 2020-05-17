@@ -35,10 +35,6 @@ export const fullEmailValidateSchema = Yup.object().shape({
   email: Yup.string().email('Email address must be a valid email').required('Field is required'),
 });
 
-export const isFirmOwnedFirmSchema = Yup.object().shape({
-  isFirmOwned: Yup.boolean().required(),
-});
-
 export const dateBrokerValidateSchema = Yup.object().shape({
   dateLicensedBrokerAgent: Yup.string().required('Field is required'),
   dateLicensedBroker: Yup.string().required('Field is required'),
@@ -47,6 +43,11 @@ export const dateBrokerValidateSchema = Yup.object().shape({
 export const isFirmOwnedValidateSchema = Yup.object().shape({
   isFirmOwned: Yup.boolean().required('Field is required'),
 });
+
+export const editFirmInformationSchema = fullNameValidateSchema
+  .concat(fullEmailValidateSchema)
+  .concat(dateBrokerValidateSchema)
+  .concat(isFirmOwnedValidateSchema);
 
 export const agentLicensedValidateSchema = Yup.object().shape({
   numberAgentsMoreCommission: Yup.number().parseMoney().required('Field is required'),
@@ -61,6 +62,10 @@ export const agentSpecialValidateSchema = Yup.object().shape({
 export const agentRevokedValidateSchema = Yup.object().shape({
   revokedLicense: Yup.boolean().required('Field is required'),
 });
+
+export const editAgentInformationSchema = agentLicensedValidateSchema
+  .concat(agentSpecialValidateSchema)
+  .concat(agentRevokedValidateSchema);
 
 export const valdiatePolicySchema = (status: boolean) => {
   if (status) {
@@ -129,25 +134,6 @@ export const policyInforamtionValidateSchema = (status: boolean) => {
   }
 };
 
-export const policyInforamtionClaimsSchema = Yup.object().shape({
-  isHaveClaims: Yup.boolean().required(),
-  claims: Yup.array().when('isHaveClaims', {
-    is: true,
-    then: Yup.array()
-      .of(
-        Yup.object().shape({
-          dateClaim: Yup.string()
-            .matches(/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/)
-            .required(),
-          amountClaim: Yup.number().parseMoney().required().min(0),
-        }),
-      )
-      .min(1)
-      .required(),
-    otherwise: Yup.array(),
-  }),
-});
-
 export const commissionInformationValidateSchema = Yup.object().shape({
   grossCommission: Yup.number()
     .parseMoney()
@@ -193,6 +179,12 @@ export const commissionOtherValidateSchema = Yup.object().shape({
   mortageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
 });
 
+export const editCommissionInformationSchema = commissionInformationValidateSchema
+  .concat(commissionTransactionValidateSchema)
+  .concat(commissionResidentialValidateSchema)
+  .concat(commissionCommercialValidateSchema)
+  .concat(commissionOtherValidateSchema);
+
 export const riskProfileValidateSchema = Yup.object().shape({
   isHomeWarranty: Yup.boolean().required('Field is required'),
 });
@@ -216,3 +208,9 @@ export const riskProfileTransactionValidateSchema = Yup.object().shape({
     .max(100, 'Please enter a value between 0-100')
     .positive('The value must be positive'),
 });
+
+export const editRiskProfileSchema = riskProfileValidateSchema
+  .concat(riskProfileBanckValidateSchema)
+  .concat(riskProfileReitsValidateSchema)
+  .concat(riskProfileFirmValidateSchema)
+  .concat(riskProfileTransactionValidateSchema);
