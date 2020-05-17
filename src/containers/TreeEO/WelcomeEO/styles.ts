@@ -43,7 +43,6 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       lineHeight: '22px',
       color: '#07293D',
       marginTop: '1px',
-      marginLeft: '-9px',
     },
   },
   iconSize: {
@@ -51,9 +50,15 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     height: '100%',
   },
   content: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minHeight: '85px',
     marginTop: '34px',
     textAlign: 'center',
     [theme.breakpoints.up(750)]: {
+      justifyContent: 'flex-end',
       textAlign: 'center',
       marginTop: '56px',
     },
@@ -92,18 +97,18 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   labelAgent: {
     fontSize: '16px',
     lineHeight: '22px',
-    marginLeft: '-26px',
     fontWeight: 'bold',
+    alignSelf: 'flex-start',
     [theme.breakpoints.up('md')]: {
       lineHeight: '22px',
       color: '#07293D',
-      marginLeft: '-26px',
     },
   },
   labelComission: {
     lineHeight: '14px',
     fontSize: '16px',
     fontWeight: 'bold',
+    marginBottom: '4px',
     [theme.breakpoints.up('md')]: {
       lineHeight: '22px',
       color: '#07293D',
@@ -111,20 +116,16 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     },
   },
   contentCommission: {
-    marginTop: '27px',
     marginRight: '16px',
     [theme.breakpoints.up(750)]: {
       marginRight: '31px',
-      marginTop: '54px',
-      marginLeft: '5px',
     },
   },
   iconCommission: {
     width: '62px',
-    height: '62px',
+    marginBottom: '5px',
     [theme.breakpoints.up(750)]: {
       width: '62px',
-      height: '62px',
     },
   },
   contentPolicy: {
@@ -140,12 +141,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     marginTop: '22px',
     [theme.breakpoints.up(750)]: {
       marginTop: '56px',
-      marginLeft: '11px',
     },
   },
   iconPolicy: {
     width: '57px',
     height: '62px',
+    marginBottom: '5px',
     [theme.breakpoints.up(750)]: {
       width: '72px',
       height: '62px',
@@ -154,14 +155,14 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   labelPolicy: {
     fontSize: '16px',
     lineHeight: '22px',
-    marginLeft: '13px',
     fontWeight: 'bold',
+    alignSelf: 'flex-end',
     [theme.breakpoints.up('md')]: {
       lineHeight: '22px',
       color: '#07293D',
-      marginLeft: '13px',
       letterSpacing: '0px',
       marginTop: '-2px',
+      marginRight: '10px',
     },
   },
   iconRisk: {
@@ -170,12 +171,12 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(750)]: {
       width: '55px',
       height: '55px',
+      alignSelf: 'flex-start',
     },
   },
   labelRisk: {
     fontSize: '16px',
     lineHeight: '22px',
-    marginLeft: '13px',
     fontWeight: 'bold',
     [theme.breakpoints.up('md')]: {
       lineHeight: '22px',
@@ -196,13 +197,13 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   divSVG: {
     display: 'flex',
+    alignItems: 'flex-end',
     marginBottom: '46px',
     marginTop: '15px',
     [theme.breakpoints.down(1200)]: {
       flexWrap: 'wrap',
     },
     [theme.breakpoints.up(500)]: {
-      display: 'flex',
       marginBottom: '46px',
       marginTop: '-10px',
     },
