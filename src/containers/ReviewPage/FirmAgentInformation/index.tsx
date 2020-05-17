@@ -37,15 +37,17 @@ const labelInformation = {
 const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
   padding-bottom: 34px;
   ${({ firstPadding }) => firstPadding && `padding-bottom: 31px;`};
+  ${({ theme }) => theme.phone`
+  padding-bottom: 26px;
+`}
 `;
 
 const ContainerBackgroundShape = styled.div`
-  background: url(../../../static/img/reviewImgs/bg_right.svg) no-repeat;
+  background: url(../../../static/img/reviewImgs/bg_left.svg) no-repeat;
   background-size: 415px 90%;
   background-position: right;
   z-index: 1px;
   ${({ theme }) => theme.phone`
-    background-size: 0px 0px;
   `}
 `;
 

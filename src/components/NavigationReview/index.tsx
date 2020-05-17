@@ -37,10 +37,21 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
   display: flex;
   align-items: center;
   ${({ centerItem }) => centerItem && `justify-content: center;`};
-  ${({ rightItem }) => rightItem && `justify-content: flex-end;padding-right: 70px;`}
-  ${({ rightItem, isConfirmationPage }) =>
-    rightItem && isConfirmationPage && `justify-content: flex-end;padding-right: 89px;`}
-  ${({ isConfirmationPage, theme }) => isConfirmationPage && theme.phone`padding-right: 70px;`};
+  ${({ rightItem }) =>
+    rightItem &&
+    `
+justify-content: flex-end;
+padding-right: 70px;
+`}
+  ${({ theme }) => theme.phone`
+  ${({ rightItem }) =>
+    rightItem &&
+    `
+justify-content: flex-end;
+padding-right: 25px;
+`}
+  `}
+
   ${({ leftItem }) =>
     leftItem &&
     `padding-left: 100px;
@@ -54,18 +65,18 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
 const HeaderTextPage = styled.h1`
   flex-direction: row;
   display: flex;
-  font-style: 'Bold';
-  font-size: 15px;
+  font-weight: bold;
+  font-size: 14px;
   letter-spacing: 1.5px;
+  line-height: 17px;
 `;
 
 const HeaderTextP = styled.p`
   flex-direction: row;
   display: flex;
-  font-style: 'light';
   font-size: 14px;
   letter-spacing: 2px;
-  font-weight: 100;
+  line-height: 17px;
 `;
 
 const StyledSVG = styled(SVG)<StyledSVGProps>`
@@ -86,9 +97,7 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
     <Header isTablet={isTablet}>
       {!isTablet && (
         <HeaderContainer leftItem>
-          <HeaderTextPage>
-            <strong>E&O APPLICATION</strong>
-          </HeaderTextPage>
+          <HeaderTextPage>E&O APPLICATION</HeaderTextPage>
           <HeaderTextP>{sectionPage}</HeaderTextP>
         </HeaderContainer>
       )}
