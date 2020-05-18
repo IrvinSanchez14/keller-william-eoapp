@@ -357,21 +357,27 @@ const TableNameText = styled(P)<{ padding?: string }>`
     theme &&
     theme.phone`
     font-size: 14px;
-    line-height: 46px;
+    line-height: 26px;
     width: 70%;
   `};
 `;
 
 const TableValueText = styled(H1)`
   font-size: 16px;
-  font-style: 'Bold';
+  letter-spacing: 0;
+  line-height: 56px;
   width: 20%;
   text-align: right;
   right: 0;
   padding-right: 20px;
   padding-top: 1px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.darkGray};`};
-  ${({ theme }) => theme && theme.phone`font-size: 14px;`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 14px;
+    line-height: 46px;
+  `};
 `;
 
 const ContainerShape = styled.div`
@@ -471,8 +477,12 @@ export default function ConfirmationPage({
               <TableHeader>
                 <strong>{`RISK PROFILE`}</strong>
               </TableHeader>
-              <TableList>
-                <TableNameText>{`Total number of agents (including owners and managers)`}</TableNameText>
+              <TableList className="columHeader">
+                <TableNameText>
+                  {width <= 680
+                    ? `Total number of agents`
+                    : `Total number of agents (including owners and managers)`}
+                </TableNameText>
                 <TableValueText>{agentsNumber}</TableValueText>
               </TableList>
               <TableList>
