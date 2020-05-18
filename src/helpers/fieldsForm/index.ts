@@ -1,4 +1,4 @@
-import { phoneMask } from 'src/utils';
+import { phoneMask, fourDigitsMask } from 'src/utils';
 
 export const getFullNameFields = () => [
   {
@@ -28,6 +28,8 @@ export const getFullNameFields = () => [
     placeholder: '',
     label: 'Year established',
     customWidth: 94,
+    numberMask: true,
+    setNumberMask: fourDigitsMask,
   },
 ];
 

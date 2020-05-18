@@ -104,24 +104,36 @@ const LayoutHeaderText = styled.h1`
   font-size: 36px;
   letter-spacing: -0.5px;
   padding: 7px 90px 0 90px;
+  line-height: 40px;
+  font-weight: bold;
   ${({ theme }) => theme && `color: ${theme.colors.darkBlue};`}
   ${({ theme }) =>
     theme &&
     theme.tablet`
     padding: 30px 70px 0 70px;
     letter-spacing: 1px;
+    color: #1D253C;
+    font-weight: bold;
   `};
   ${({ theme }) =>
     theme &&
     theme.phone`
-      font-size: 22px;
       padding: 30px 25px 0 25px;
-      letter-spacing: 0.5px;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 29px;
+      color: #1D253C;
   `};
 `;
 
 const LayoutsInformation = styled.div`
-  padding-top: 60px;
+  padding-top: 26px;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+  padding-top: 18px;
+`};
 `;
 
 const Container = styled.div`

@@ -2,20 +2,22 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import theme from 'src/styles/MarketingEO/theme';
 import SVG from 'react-inlinesvg';
-import ButtonPrimary from 'src/components/Button/ButtonPrimary';
 import CoveredNowModal from '../CoveredNowModal';
 import NavigationReviewProps from './INavigationReview';
+import GetCoveredNowButton from '../GetCoveredNowButton';
 
 interface HeaderContainerProps {
   centerItem?: boolean;
   rightItem?: boolean;
   leftItem?: boolean;
   paddingLogo?: boolean;
+  isConfirmationPage?: boolean;
 }
 
 interface StyledSVGProps {
   width: string;
   height: string;
+  isConfirmationPage?: boolean;
 }
 
 const Header = styled.div<{ isTablet?: boolean }>`
@@ -35,7 +37,21 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
   display: flex;
   align-items: center;
   ${({ centerItem }) => centerItem && `justify-content: center;`};
-  ${({ rightItem }) => rightItem && `justify-content: flex-end;padding-right: 70px;`}
+  ${({ rightItem }) =>
+    rightItem &&
+    `
+justify-content: flex-end;
+padding-right: 70px;
+`}
+  ${({ theme }) => theme.phone`
+  ${({ rightItem }) =>
+    rightItem &&
+    `
+justify-content: flex-end;
+padding-right: 25px;
+`}
+  `}
+
   ${({ leftItem }) =>
     leftItem &&
     `padding-left: 100px;
@@ -49,46 +65,28 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
 const HeaderTextPage = styled.h1`
   flex-direction: row;
   display: flex;
-  font-style: 'Bold';
-  font-size: 15px;
+  font-weight: bold;
+  font-size: 14px;
   letter-spacing: 1.5px;
+  line-height: 17px;
 `;
 
 const HeaderTextP = styled.p`
   flex-direction: row;
   display: flex;
-  font-style: 'light';
   font-size: 14px;
   letter-spacing: 2px;
-  font-weight: 100;
+  line-height: 17px;
 `;
 
 const StyledSVG = styled(SVG)<StyledSVGProps>`
+  ${({ isConfirmationPage }) => isConfirmationPage && `padding-left: 5px;`}
   ${({ height }) => height && `height: ${height};`};
   ${({ width }) => width && `width: ${width};`};
 `;
 
-const StyledButton = styled(ButtonPrimary)`
-  ${({ theme }) => theme.phone`
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
-    margin-left: 22px;
-    i {
-      transform: translateY(-3px);
-    }
-  `};
-`;
-
-const StyledButtonCopy = styled.span`
-  margin-left: 11px;
-  i {
-    transform: translateY(-3px);
-  }
-`;
-
 export default function NavigationReview(Props: NavigationReviewProps): JSX.Element {
-  const { isTablet, isMobile, width, sectionPage } = Props;
+  const { isTablet, isMobile, sectionPage, isConfirmationPage } = Props;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {
@@ -99,26 +97,15 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
     <Header isTablet={isTablet}>
       {!isTablet && (
         <HeaderContainer leftItem>
-          <HeaderTextPage>
-            <strong>E&O APPLICATION</strong>
-          </HeaderTextPage>
+          <HeaderTextPage>E&O APPLICATION</HeaderTextPage>
           <HeaderTextP>{sectionPage}</HeaderTextP>
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
-        <StyledSVG height="120px" width="188px" src="/static/img/logoKW.svg" />
+        <StyledSVG isConfirmationPage height="120px" width="188px" src="/static/img/logoKW.svg" />
       </HeaderContainer>
-      <HeaderContainer rightItem>
-        <StyledButton onClick={() => toggleModal()} width="200px" color="dark">
-          {isMobile ? (
-            <i className="fas fa-phone" />
-          ) : (
-            <>
-              <i style={{ fontSize: 18, marginLeft: 12 }} className="fas fa-phone" />
-              <StyledButtonCopy>Get covered now</StyledButtonCopy>
-            </>
-          )}
-        </StyledButton>
+      <HeaderContainer isConfirmationPage rightItem>
+        <GetCoveredNowButton isConfirmationPage onClick={toggleModal} isMobile={isMobile} />
       </HeaderContainer>
       {isModalVisible && (
         <CoveredNowModal isModalOpen={isModalVisible} closeModal={() => toggleModal()} />

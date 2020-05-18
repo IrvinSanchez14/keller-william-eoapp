@@ -36,7 +36,7 @@ const ModalContainer = styled.div`
   background-position: left;
   z-index: 1px;
   ${({ theme }) => theme.phone`
-    background-size: 200px 90%;
+    background-size: 215px 100%;
   `}
 `;
 
@@ -112,7 +112,8 @@ const ModalForm = styled.div`
   margin-left: 90px;
   margin-right: 90px;
   margin-bottom: 80px;
-  padding: 63px 60px 80px 60px;
+  padding-top: 63px;
+  padding-bottom: 80px;
   display: flex;
   border-radius: 6px;
   background-color: white;

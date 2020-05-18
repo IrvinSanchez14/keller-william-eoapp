@@ -5,12 +5,21 @@ interface LayoutProps {
   textHeader: string;
   openEditPageModal?: () => void;
   children: React.ReactNode;
+  style?: any;
 }
 
-const LayoutContainer = styled.div`
+interface OuterWrapperProps {
+  padding?: any;
+}
+
+const LayoutContainer = styled.div<OuterWrapperProps>`
   margin: 0 90px 30px 90px;
   padding-top: 40px;
-  padding-bottom: 60px;
+  ${(props) =>
+    props.padding &&
+    `
+    padding-bottom: 68px;
+`};
   border-radius: 6px;
   background-color: white;
   position: relative;
@@ -39,7 +48,8 @@ const LayoutHeaderSection = styled.div`
   ${({ theme }) =>
     theme &&
     theme.phone`
-      padding: 0 47px 0 47px;
+      margin-top: -25px;
+      padding: 0 60px 0 47px;
   `};
   @media (min-width: 371px) and (max-width: 442px) {
     padding: 0 27px 0 27px;
@@ -52,7 +62,10 @@ const LayoutHeaderSection = styled.div`
 
 const LayoutEditBottom = styled(ButtonPrimary)`
   position: absolute;
-  margin-right: 130px;
+  margin-right: 40px;
+  margin-top: 2px;
+  font-size: 18px;
+  line-height: 22px;
   justify-content: center;
   font-style: 'Bold';
   width: 204px;
@@ -75,49 +88,50 @@ const LayoutEditBottom = styled(ButtonPrimary)`
   ${({ theme }) =>
     theme &&
     theme.phone`
-      width: 84px;
-      height: 50px;
-      margin-top: 10px;
+      width: 74px;
+      height: 40px;
+      font-size: 16px;
+      line-height: 8px;
       justify-content: center;
-      margin-right: 40px;
+      margin-right: 16px;
   `};
   ${({ theme }) => theme.phoneSmall`
-    width: 60px;
-    height: 50px;
+    width: 74px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 8px;
     justify-content: center;
-    margin-right: 40px;
+    margin-right: 16px;
   `}
 `;
 
 const LayoutHeaderText = styled.h1`
-  padding-top: 21px;
+  padding-top: 8px;
   font-size: 32px;
   letter-spacing: -0.44px;
   width: 100%;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`}
   ${({ theme }) => theme.phone`
+    font-size: 20px;
     padding-top: 11px;
   `}
   ${({ theme }) => theme.phoneSmall`
-    font-size: 22px;
+    font-size: 20px;
   `}
-  @media (min-width: 371px) and (max-width: 435px) {
-    font-size: 26px;
-  }
 `;
 
 const LayoutData = styled.div`
-  margin: 40px 60px 0px 60px;
+  margin: 27px 60px 0px 60px;
   ${({ theme }) =>
     theme &&
     theme.phone`
-      margin: 40px 47px 0 47px;
+      margin: 16px 47px 0 47px;
   `};
   @media (min-width: 371px) and (max-width: 442px) {
-    margin: 40px 27px 0 27px;
+    margin: 16px 27px 0 27px;
   }
   ${({ theme }) => theme.phoneSmall`
-    margin: 40px 27px 0 27px;
+    margin: 16px 27px 0 27px;
   `}
 `;
 
@@ -125,9 +139,10 @@ export default function Layout({
   textHeader,
   openEditPageModal,
   children,
+  style,
 }: LayoutProps): React.ReactElement {
   return (
-    <LayoutContainer>
+    <LayoutContainer padding={style}>
       <LayoutHeaderSection>
         <LayoutHeaderText>{textHeader}</LayoutHeaderText>
         {openEditPageModal && <LayoutEditBottom onClick={openEditPageModal}>Edit</LayoutEditBottom>}

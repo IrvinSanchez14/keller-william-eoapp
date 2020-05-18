@@ -8,6 +8,26 @@ import NavigationReview from 'src/components/NavigationReview';
 import ConfirmationPageProps from './IConfirmationPage';
 import { formatNumericalAbbreviation } from 'src/helpers/formatData';
 
+const P = styled.p`
+  @font-face {
+    font-family: 'Effra Regular';
+    src: url('/static/fonts/Effra_Std_Rg.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'Effra Regular';
+`;
+
+const H1 = styled.h1`
+  @font-face {
+    font-family: 'Effra Bold';
+    src: url('/static/fonts/Effra_Std_Bd.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  font-family: 'Effra Bold';
+`;
+
 const DogIconContainer = styled.div`
   padding-left: 81px;
   padding-top: 14px;
@@ -46,7 +66,7 @@ const StyleSVG = styled(SVG)<{ width?: string; height?: string }>`
   `};
 `;
 
-const DogWoofText = styled.h1`
+const DogWoofText = styled(H1)`
   font-size: 12px;
   padding-left: 15px;
   letter-spacing: 2px;
@@ -109,13 +129,14 @@ const ContentSection = styled.div<{ left?: boolean; right?: boolean }>`
   `};
 `;
 
-const WelcomeText = styled.h2<{ primaryColor?: boolean; normalMargin?: boolean }>`
+const WelcomeText = styled(H1)<{ primaryColor?: boolean; normalMargin?: boolean }>`
   font-size: 64px;
-  letter-spacing: -1.33px;
+  letter-spacing: -1.35px;
+  line-height: 66px;
   overflow: hidden;
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
   ${({ primaryColor, theme }) => primaryColor && `color: ${theme.colors.primary};`};
-  ${({ normalMargin }) => normalMargin && `margin-top: -25px;letter-spacing: -1.40px;`};
+  ${({ normalMargin }) => normalMargin && `letter-spacing: -1.40px;`};
   @media (min-width: 1252px) and (max-width: 1418px) {
     font-size: 55px;
   }
@@ -144,7 +165,7 @@ const FollowingInformation = styled.div`
   `};
 `;
 
-const FollowingText = styled.h1`
+const FollowingText = styled(H1)`
   font-size: 24px;
   ${({ theme }) =>
     theme &&
@@ -167,7 +188,8 @@ const CheckIcon = styled.i`
   height: 21px;
   width: 21px;
   border-radius: 50%;
-  justify-content: center;
+  padding-left: 4px;
+  padding-top: 5px;
   align-items: center;
   display: flex;
   margin-top: 27px;
@@ -181,7 +203,7 @@ const CheckIcon = styled.i`
 
 const CheckTextContainer = styled.div`
   margin-left: 11px;
-  margin-right: 80px;
+  margin-right: 140px;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -190,10 +212,10 @@ const CheckTextContainer = styled.div`
   `};
 `;
 
-const CheckText = styled.p`
+const CheckText = styled(P)`
   font-size: 22px;
   line-height: 31px;
-  margin-top: 23px;
+  margin-top: 22px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
@@ -204,7 +226,8 @@ const CheckText = styled.p`
 `;
 
 const Confirmation = styled.div`
-  margin-top: 36px;
+  margin-top: 22px;
+  padding-bottom: 8px;
   margin-left: 32px;
   margin-right: 60px;
   border-radius: 15px;
@@ -227,25 +250,61 @@ const Confirmation = styled.div`
 const ConfirmationHeader = styled.div`
   ${({ theme }) => theme && `border-bottom: 1px solid ${theme.colors.shadowGrayColor};`};
   height: 104px;
-  align-items: center;
   display: flex;
+  @media (min-width: 451px) {
+    align-items: center;
+  }
+  @media (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+  }
 `;
 
-const ConfirmationHeaderText = styled.p`
+const ConfirmationHeaderText = styled(P)`
   font-size: 22px;
+  line-height: 28px;
   padding-top: 9px;
-  padding-left: 51px;
+  padding-left: 50px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
     theme.phone`
     padding-left: 24px;
   `};
+  @media (min-width: 931px) and (max-width: 990px) {
+    padding-left: 15px;
+  }
+  @media (min-width: 901px) and (max-width: 930px) {
+    padding-left: 10px;
+  }
+  @media (max-width: 450px) {
+    padding-top: 23px;
+  }
 `;
 
-const ConfirmationSummaryText = styled.h1`
+const ConfirmationHeaderTextBold = styled(H1)`
   font-size: 22px;
-  padding: 30px 5px 37px 52px;
+  line-height: 28px;
+  padding-top: 9px;
+  padding-left: 3.5px;
+  display: flex;
+  ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    padding-left: 24px;
+  `};
+  @media (max-width: 450px) {
+    padding-top: 1px;
+  }
+`;
+
+const ConfirmationSummaryText = styled(H1)`
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: 28px;
+  padding: 31px 0 37px 52px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark};`};
   ${({ theme }) =>
     theme &&
@@ -286,23 +345,42 @@ const TableList = styled.div`
   ${({ theme }) => theme && `border-bottom: 1px solid ${theme.colors.lightestGray};`};
 `;
 
-const TableNameText = styled.p`
+const TableNameText = styled(P)<{ padding?: string }>`
   font-size: 16px;
+  letter-spacing: 0px;
+  line-height: 56px;
   width: 80%;
-  padding: 16px 0 15px 20px;
+  padding: 0px 0px 0px 21px;
+  ${({ padding }) => padding && `padding: ${padding};`};
   ${({ theme }) => theme && `color: ${theme.colors.primaryDark};`};
-  ${({ theme }) => theme && theme.phone`font-size: 14px;width: 70%;`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 14px;
+    line-height: 26px;
+    width: 70%;
+  `};
+  ${({ theme }) => theme.desktopSmall`
+    line-height: 36px;
+  `}
 `;
 
-const TableValueText = styled.h1`
+const TableValueText = styled(H1)`
   font-size: 16px;
-  font-style: 'Bold';
+  letter-spacing: 0;
+  line-height: 56px;
   width: 20%;
   text-align: right;
   right: 0;
-  padding-right: 15px;
+  padding-right: 20px;
+  padding-top: 1px;
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.darkGray};`};
-  ${({ theme }) => theme && theme.phone`font-size: 14px;`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    font-size: 14px;
+    line-height: 46px;
+  `};
 `;
 
 const ContainerShape = styled.div`
@@ -358,7 +436,7 @@ export default function ConfirmationPage({
 
   return (
     <ContainerShape>
-      <NavigationReview width={width} isTablet={isTablet} isMobile={isMobile} />
+      <NavigationReview isConfirmationPage width={width} isTablet={isTablet} isMobile={isMobile} />
       <DogIconContainer>
         <StyleSVG src="/static/img/dog-circle.svg" />
         <DogWoofText>{`WOOFTASTIC, YOU DID IT!`}</DogWoofText>
@@ -392,10 +470,8 @@ export default function ConfirmationPage({
         <ContentSection right>
           <Confirmation>
             <ConfirmationHeader>
-              <ConfirmationHeaderText>
-                {`Confirmation #: `}
-                <strong>{confirmationNumber}</strong>
-              </ConfirmationHeaderText>
+              <ConfirmationHeaderText>{`Confirmation #: `}</ConfirmationHeaderText>
+              <ConfirmationHeaderTextBold>{confirmationNumber}</ConfirmationHeaderTextBold>
             </ConfirmationHeader>
             <ConfirmationSummaryText>
               <strong>{`Your application summary`}</strong>
@@ -404,8 +480,12 @@ export default function ConfirmationPage({
               <TableHeader>
                 <strong>{`RISK PROFILE`}</strong>
               </TableHeader>
-              <TableList>
-                <TableNameText>{`Total number of agents (including owners and managers)`}</TableNameText>
+              <TableList className="columHeader">
+                <TableNameText>
+                  {width <= 680
+                    ? `Total number of agents`
+                    : `Total number of agents (including owners and managers)`}
+                </TableNameText>
                 <TableValueText>{agentsNumber}</TableValueText>
               </TableList>
               <TableList>
@@ -413,11 +493,11 @@ export default function ConfirmationPage({
                 <TableValueText>{claimsNumber}</TableValueText>
               </TableList>
               <TableList>
-                <TableNameText>{`Gross commission for the last 12 moths`}</TableNameText>
+                <TableNameText>{`Gross commission for the last 12 months`}</TableNameText>
                 <TableValueText>{formatNumericalAbbreviation(grossCommission)}</TableValueText>
               </TableList>
               <TableList>
-                <TableNameText>{`Average value of property sold`}</TableNameText>
+                <TableNameText padding="0px 0px 0px 22px">{`Average value of property sold`}</TableNameText>
                 <TableValueText>{formatNumericalAbbreviation(propertySoldValue)}</TableValueText>
               </TableList>
             </Table>

@@ -37,9 +37,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   containerFirst: {
-    [theme.breakpoints.up(768)]: {
-      marginBottom: '20px',
-    },
+    marginBottom: '24px',
   },
 }));
 

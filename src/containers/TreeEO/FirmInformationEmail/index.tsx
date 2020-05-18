@@ -31,7 +31,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
     try {
       await this.props.onSubmit?.();
-      changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+      changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
       setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
     } catch (err) {
       if (!isHttpError(err) || err.response.status !== 422) return;

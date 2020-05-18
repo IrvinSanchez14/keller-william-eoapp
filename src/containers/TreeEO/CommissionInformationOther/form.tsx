@@ -6,6 +6,7 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -23,14 +24,36 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       color: '#07293D',
     },
   },
+  rowContainer: {
+    marginBottom: '1.3em',
+  },
+  column: {
+    width: '100%',
+  },
   subTitleForm: {
     fontSize: 16,
     lineHeight: '21px',
-    width: '275px',
+    width: '100%',
     [theme.breakpoints.up(768)]: {
-      width: '100%',
       fontSize: 22,
       lineHeight: '28px',
+    },
+  },
+  subTitleFormReview: {
+    fontSize: 16,
+    lineHeight: '21px',
+    width: '100%',
+    fontWeight: 'bold',
+    fontFamily: 'Effra',
+    marginBottom: '10px',
+    color: '#07293D',
+    [theme.breakpoints.up(768)]: {
+      fontSize: 24,
+      lineHeight: '32px',
+      color: '#1D253C',
+      fontFamily: 'Effra',
+      fontWeight: 'bold',
+      marginBottom: '12px',
     },
   },
   containerOne: {
@@ -111,9 +134,11 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
-        <Column>
-          <Typography className={classnames(classes.subTitleForm)}>
+      <Row wrap="wrap" className={classes.rowContainer}>
+        <Column className={classes.column}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.one.commission.part.six.review')
               : intl.get('app.subtitle.one.commission.part.six')}
@@ -121,7 +146,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="farmRanch"
             name="farmRanch"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -129,12 +153,16 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
-        <Column>
-          <Typography className={classnames(classes.subTitleForm)}>
+      <Row wrap="wrap" className={classes.rowContainer}>
+        <Column className={classes.column}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.two.commission.part.six.review')
               : intl.get('app.subtitle.two.commission.part.six')}
@@ -142,7 +170,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="auctioneering"
             name="auctioneering"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -150,12 +177,16 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowFinal)}>
-        <Column>
-          <Typography className={classnames(classes.subTitleForm)}>
+      <Row wrap="wrap" className={isReview ? '' : classnames(classes.rowFinal)}>
+        <Column className={classes.column}>
+          <Typography
+            className={classnames(isReview ? classes.subTitleFormReview : classes.subTitleForm)}
+          >
             {isReview
               ? intl.get('app.subtitle.three.commission.part.six.review')
               : intl.get('app.subtitle.three.commission.part.six')}
@@ -163,7 +194,6 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
           <FielControlForm
             data-test-id="mortageBrokerage"
             name="mortageBrokerage"
-            type="number"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}
@@ -171,15 +201,11 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
             renderFastField
             customWidth={150}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };

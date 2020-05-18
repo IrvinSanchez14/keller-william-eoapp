@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 
 import { FielControlForm } from 'src/components/FieldControlForm';
@@ -18,6 +18,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  rowContainerReviewPage: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: 10,
+  },
 }));
 
 export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
@@ -25,7 +30,10 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.one.form.agent.part.one.review')
@@ -35,7 +43,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgentsMoreCommission"
             name="numberAgentsMoreCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -43,10 +50,14 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.two.form.agent.part.one.review')
@@ -56,7 +67,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgentLessCommission"
             name="numberAgentLessCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -64,10 +74,14 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>
-      <Row wrap="wrap" className={classnames(classes.rowContainer)}>
+      <Row
+        wrap="wrap"
+        className={classnames(isReview ? classes.rowContainerReviewPage : classes.rowContainer)}
+      >
         <Typography className={classnames(classes.subTitleForm)}>
           {isReview
             ? intl.get('app.subtitle.tree.form.agent.part.one.review')
@@ -77,7 +91,6 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
           <FielControlForm
             data-test-id="numberAgenteNoCommission"
             name="numberAgenteNoCommission"
-            type="number"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -85,6 +98,7 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
             shouldValidateOnMount
             renderFastField
             customWidth={94}
+            numberMask
           />
         </Column>
       </Row>

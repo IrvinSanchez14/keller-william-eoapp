@@ -19,22 +19,29 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       width: '100%',
     },
   },
+  rowContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '1.3em',
+  },
 }));
 
-export const FormCommissionInformationTransaction = (formikProps: any) => {
+export const FormCommissionInformationTransaction = (formikProps: any, isReview?: boolean) => {
   const { intl } = useAppContext();
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
-        <Typography className={classnames(classes.subTitleForm)}>
-          {intl.get('app.subtitle.form.commission.part.two')}
-        </Typography>
+      <Row wrap="wrap" className={classes.rowContainer}>
+        {isReview ? null : (
+          <Typography className={classnames(classes.subTitleForm)}>
+            {intl.get('app.subtitle.form.commission.part.two')}
+          </Typography>
+        )}
+
         <Column>
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"
-            type="number"
             label={'Percentage of transactions'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -43,15 +50,10 @@ export const FormCommissionInformationTransaction = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={100}
+            percentageMask
           />
         </Column>
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };

@@ -3,20 +3,17 @@ import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import Typography from '@material-ui/core/Typography';
 import isEmpty from 'lodash/isEmpty';
-
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import { agentSpecialValidateSchema } from 'src/helpers/validations';
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
-import { FielControlForm } from 'src/components/FieldControlForm';
-
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { categoriesName } from 'src/helpers/constants';
 import { FormAgentInformationDesignation } from './form';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -33,12 +30,16 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
   isButtonLoading = false;
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
+    const parsedValues = {
+      ...values,
+      numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
+    };
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    storeAgentInformation(dispatch, values); //TODO put state in localstorage
+    storeAgentInformation(dispatch, parsedValues); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
 

@@ -16,11 +16,16 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
     fontSize: 22,
     fontWeight: 'bold',
-    padding: theme.spacing(0, 2, 0, 2),
+    textIndent: 16,
     WebkitAppearance: 'none',
     margin: 0,
+    color: '#1D253C',
     '&::placeholder': {
       color: theme.palette.inputs.placeholder,
+      fontSize: 21,
+      [theme.breakpoints.down(768)]: {
+        fontSize: theme.fontSize.md - 3,
+      },
     },
     '&[type=number]': {
       MozAppearance: 'textfield',
@@ -31,6 +36,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
     [theme.breakpoints.down(768)]: {
       height: 41,
+      textIndent: 12,
       fontSize: theme.fontSize.md,
     },
   }),

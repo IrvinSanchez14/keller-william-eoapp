@@ -12,6 +12,7 @@ import { categoriesName } from 'src/helpers/constants';
 import { FormCommissionInformationTransaction } from './form';
 import { commissionTransactionValidateSchema } from 'src/helpers/validations';
 import { FormApp } from 'src/components/FormApp';
+import { removePercentageSign } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -31,9 +32,12 @@ export class CommissionInformationTransaction extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    storeCommissionInformation(dispatch, values); //TODO put state in localstorage
+    storeCommissionInformation(dispatch, {
+      ...values,
+      percentageTransactions: removePercentageSign(values.percentageTransactions),
+    }); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 12, categoriesName.commissionInformation);
   };
 

@@ -19,7 +19,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     [theme.breakpoints.up(768)]: {
       fontSize: '56px',
       lineHeight: '62px',
-      width: '550px',
+      maxWidth: '550px',
     },
   },
   label: {

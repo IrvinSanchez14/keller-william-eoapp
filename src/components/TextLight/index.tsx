@@ -12,6 +12,11 @@ const Text = styled.a<Pick<TextLightProps, 'customWidth'>>`
   width: 100%;
   letter-spacing: 0;
   line-height: 28px;
+  ${({ theme }) => theme.phone`
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 21px;
+`}
   ${({ theme }) => theme && `color: ${theme.colors.paragraph.dark}`};
   ${({ customWidth }) =>
     customWidth &&

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
-import { Divider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/styles';
-
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask, removeSignsFromNumbers, parseNumberToMoney } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -32,17 +32,21 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       padding: '0px 8px',
     },
   },
-  containerOne: {
-    padding: '0px 0px',
+  rowContainer: {
+    display: 'flex',
+  },
+  rowContainerReview: {
+    display: 'flex',
+    margin: '0px 0px 0px -29px',
     [theme.breakpoints.up(768)]: {
-      padding: '0px 8px',
+      fontSize: 22,
+      display: 'flex',
+      margin: '0px 0px 0px -29px',
     },
   },
-  containerTwo: {
-    padding: '0px 0px',
-    [theme.breakpoints.up(768)]: {
-      padding: '0px 30px',
-    },
+  inputContainer: {
+    padding: '0',
+    paddingLeft: '30px',
   },
   containerTotal: {
     marginTop: 20,
@@ -121,18 +125,16 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
     }));
   };
 
-  const sumState = (object: any) => {
-    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
-  };
+  const sumState = (object: any) =>
+    Object.keys(object).reduce((sum, key) => sum + removeSignsFromNumbers(object[key] ?? 0), 0);
 
   return (
     <>
-      <Row wrap="wrap">
-        <Column className={classnames(classes.containerOne)}>
+      <Row wrap={'wrap'} className={isReview ? classes.rowContainerReview : classes.rowContainer}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="residential.realEstate"
             name="residential.realEstate"
-            type="number"
             label={'Real Estate'}
             placeholder="$0"
             setFieldTouched={formikProps.setFieldTouched}
@@ -143,15 +145,19 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.realEstate', +e.target.value);
+              formikProps.setFieldValue(
+                'residential.realEstate',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="rawLand"
             name="residential.rawLand"
-            type="number"
             placeholder="$0"
             label={'Raw Land'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -162,16 +168,20 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.rawLand', +e.target.value);
+              formikProps.setFieldValue(
+                'residential.rawLand',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
 
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="appraisals"
             name="residential.appraisals"
-            type="number"
             placeholder="$0"
             label={'Appraisals'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -182,15 +192,19 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.appraisals', +e.target.value);
+              formikProps.setFieldValue(
+                'residential.appraisals',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="propertyMgmt"
             name="residential.propertyMgmt"
-            type="number"
             placeholder="$0"
             label={'Property Mgmt'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -201,15 +215,19 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.propertyMgmt', +e.target.value);
+              formikProps.setFieldValue(
+                'residential.propertyMgmt',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="ownedProperty"
             name="residential.ownedProperty"
-            type="number"
             placeholder="$0"
             label={'Owned Property'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -220,8 +238,13 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('residential.ownedProperty', +e.target.value);
+              formikProps.setFieldValue(
+                'residential.ownedProperty',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
@@ -231,7 +254,7 @@ export const FormCommissionInformationResidential = (formikProps: any, isReview?
           <div className={classnames(classes.divContainerTotal)}>
             <Typography className={classnames(classes.textTotal)}>{'Residential total'}</Typography>
             <Typography className={classnames(classes.textNumberTotal)}>
-              ${sumState(residential)}
+              {parseNumberToMoney(sumState(residential))}
             </Typography>
           </div>
         </div>

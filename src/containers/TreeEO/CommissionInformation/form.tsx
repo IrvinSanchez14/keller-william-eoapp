@@ -6,10 +6,12 @@ import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   subTitleForm: {
     fontSize: 16,
+    width: '100%',
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
     },
@@ -17,6 +19,10 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   rowContainer: {
     display: 'flex',
     flexDirection: 'column',
+    marginBottom: '1.3em',
+  },
+  column: {
+    width: '100%',
   },
 }));
 
@@ -26,15 +32,14 @@ export const FormCommissionInformation = (formikProps: any) => {
 
   return (
     <>
-      <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-        <Column padding="0px 8px">
+      <Row wrap="wrap" margin="0 -8px" className={classes.rowContainer}>
+        <Column className={classes.column} padding="0px 8px">
           <Typography className={classnames(classes.subTitleForm)}>
             {intl.get('app.subtitle.form.commission.part.one')}
           </Typography>
           <FielControlForm
             data-test-id="grossCommission"
             name="grossCommission"
-            type="number"
             placeholder="$0"
             label={'Commission'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -43,18 +48,19 @@ export const FormCommissionInformation = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
-      <Row wrap="wrap" margin="0 -8px" style={stylesComponent.rowContainer}>
-        <Column padding="0px 8px">
+      <Row wrap="wrap" margin="0 -8px" className={classes.rowContainer}>
+        <Column className={classes.column} padding="0px 8px">
           <Typography className={classnames(classes.subTitleForm)}>
             {intl.get('app.subtitle2.form.commission.part.one')}
           </Typography>
           <FielControlForm
             data-test-id="averageValue"
             name="averageValue"
-            type="number"
             placeholder="$0"
             label={'Average property value'}
             setFieldTouched={formikProps.setFieldTouched}
@@ -63,15 +69,11 @@ export const FormCommissionInformation = (formikProps: any) => {
             shouldValidateOnMount
             renderFastField
             customWidth={150}
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };

@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import isEmpty from 'lodash/isEmpty';
-import { Typography } from '@material-ui/core';
-
+import Typography from '@material-ui/core/Typography';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { setInformationPage } from 'src/store/actions/app';
 import StepWrapper from 'src/components/StepWrapper';
@@ -13,6 +12,7 @@ import { commissionResidentialValidateSchema } from 'src/helpers/validations';
 import { storeCommissionResidential, changeStatusProgressBar } from 'src/store/actions/app';
 import { FormApp } from 'src/components/FormApp';
 import { FormCommissionInformationResidential } from './form';
+import { removeSignsFromNumbers } from 'src/utils';
 
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
@@ -34,10 +34,10 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
   }
 
   nextStep = async (values: any, actions: any) => {
-    const numberValues: any = Object.keys(values.residential).reduce(
+    values.residential = Object.keys(values.residential).reduce(
       (res, key: string) => ({
         ...res,
-        [key]: Number(values[key]),
+        [key]: removeSignsFromNumbers(values.residential[key] ?? 0),
       }),
       {},
     );
@@ -47,13 +47,12 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     actions.setSubmitting(true);
     storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
-  sumState = (object: any) => {
-    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
-  };
+  sumState = (object: any) =>
+    Object.keys(object).reduce((sum, key) => sum + removeSignsFromNumbers(object[key] ?? 0), 0);
 
   render() {
     const isLoading = false;

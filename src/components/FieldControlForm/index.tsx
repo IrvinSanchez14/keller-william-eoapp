@@ -30,6 +30,8 @@ export type FieldControlProps = {
   containerStyles?: string;
   id?: string;
   onChange?: any;
+  setNumberMask?: (rawValue: string) => void;
+  percentageMask?: boolean;
 };
 
 export function FielControlForm(Props: FieldControlProps) {
@@ -54,6 +56,8 @@ export function FielControlForm(Props: FieldControlProps) {
     isErrorMessageHidden,
     textAlign,
     className,
+    setNumberMask,
+    percentageMask,
     ...rest
   } = Props;
   const isError = errors[name] && touched[name];
@@ -85,6 +89,8 @@ export function FielControlForm(Props: FieldControlProps) {
         customWidth={customWidth}
         validateForm={validateForm}
         className={classnames(classes.inputStyles, className)}
+        setNumberMask={setNumberMask}
+        percentageMask={percentageMask}
       />
     );
   };

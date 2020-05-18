@@ -2,11 +2,11 @@ import { FielControlForm } from 'src/components/FieldControlForm';
 import { CheckBoxForm } from 'src/components/CheckBoxForm';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/styles';
-
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { useState } from 'react';
 import { dateMask } from 'src/utils';
 import { useAppContext } from 'src/store';
+import { moneyMask, integerMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   customContainer: {
@@ -61,8 +61,9 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                   formikProps.setFieldValue('limits', '');
                   formikProps.setFieldValue('yearCoverage', '');
                   formikProps.setFieldValue('annualPremium', '');
-                  setIsHaveInsurance(!isHaveInsurance);
-                  handleChange(!isHaveInsurance);
+                  formikProps.setFieldValue('isHaveInsuranceField', e.target.checked);
+                  setIsHaveInsurance(e.target.checked);
+                  handleChange(e.target.checked);
                 }}
                 isChecked={isHaveInsurance}
                 hasHelper
@@ -95,7 +96,6 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               <FielControlForm
                 data-test-id="deductible"
                 name="deductible"
-                type="number"
                 label={'Deductible'}
                 placeholder="$"
                 setFieldTouched={formikProps.setFieldTouched}
@@ -104,6 +104,8 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                 shouldValidateOnMount
                 renderFastField
                 readOnly={isHaveInsurance}
+                numberMask
+                setNumberMask={moneyMask}
               />
             </Grid>
           </Grid>
@@ -112,7 +114,6 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               <FielControlForm
                 data-test-id="limits"
                 name="limits"
-                type="number"
                 label={'Limits'}
                 placeholder="$"
                 setFieldTouched={formikProps.setFieldTouched}
@@ -121,6 +122,8 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
                 shouldValidateOnMount
                 renderFastField
                 readOnly={isHaveInsurance}
+                numberMask
+                setNumberMask={moneyMask}
               />
             </Grid>
           </Grid>
@@ -131,7 +134,6 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             <FielControlForm
               data-test-id="yearCoverage"
               name="yearCoverage"
-              type="string"
               label={'Years of continuous coverage'}
               setFieldTouched={formikProps.setFieldTouched}
               errors={formikProps.errors}
@@ -141,6 +143,8 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               renderFastField
               customWidth={80}
               readOnly={isHaveInsurance}
+              numberMask
+              setNumberMask={integerMask}
             />
           </Grid>
         </Grid>
@@ -150,7 +154,6 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
             <FielControlForm
               data-test-id="annualPremium"
               name="annualPremium"
-              type="string"
               label={'Annual premium'}
               setFieldTouched={formikProps.setFieldTouched}
               errors={formikProps.errors}
@@ -160,6 +163,8 @@ export const FormPolicyInformation = (formikProps: any, handleChange?: any) => {
               fullWidth
               renderFastField
               readOnly={isHaveInsurance}
+              numberMask
+              setNumberMask={moneyMask}
             />
           </Grid>
         </Grid>

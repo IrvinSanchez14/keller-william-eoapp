@@ -32,7 +32,7 @@ export class CommissionInformationMenu extends Component<FullNameProps> {
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   };
 

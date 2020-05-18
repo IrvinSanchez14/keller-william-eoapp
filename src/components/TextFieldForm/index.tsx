@@ -4,13 +4,11 @@ import classnames from 'classnames';
 import MaskedInput from 'react-text-mask';
 import { InputProps } from '@material-ui/core/Input';
 import createAutoCorrectedDatePipe from 'text-mask-addons/dist/createAutoCorrectedDatePipe';
-import createNumberMask from 'text-mask-addons/dist/createNumberMask';
-
 import { WithStyles } from 'src/styles/FormStyle/css/withStyles';
 import { Column } from '../LayoutWrapper/Flex';
 import { LabelForm } from '../LabelForm';
-
 import { useStyles } from './styles';
+import { numberMask as createNumberMask, percentageMask as setPercentageMask } from 'src/utils';
 
 export type TextFieldProps = InputProps &
   WithStyles<typeof useStyles> & {
@@ -28,6 +26,7 @@ export type TextFieldProps = InputProps &
     iconClassName?: string;
     mask?: (string | RegExp)[] | boolean;
     numberMask?: boolean;
+    percentageMask?: boolean;
     onClick?: (e: React.MouseEvent<HTMLInputElement | SVGElement>) => void;
     autoCorrectDate?: string;
     readOnly?: boolean;
@@ -40,16 +39,8 @@ export type TextFieldProps = InputProps &
     resetForm?: () => void;
     shouldValidateOnMount?: boolean;
     containerStyles?: any;
+    setNumberMask?: (rawValue: string) => void;
   };
-
-const setNumberMask = (rawValue: string) => {
-  const numberMask = createNumberMask({
-    prefix: '',
-    thousandsSeparatorSymbol: '',
-  });
-  const mask = numberMask(rawValue);
-  return mask;
-};
 
 export function TextFieldForm(Props: TextFieldProps) {
   const {
@@ -65,6 +56,7 @@ export function TextFieldForm(Props: TextFieldProps) {
     onClick,
     mask,
     numberMask,
+    percentageMask,
     autoCorrectDate,
     readOnly,
     focused,
@@ -75,6 +67,7 @@ export function TextFieldForm(Props: TextFieldProps) {
     validateForm,
     containerStyles,
     shouldValidateOnMount = false,
+    setNumberMask,
     ...rest
   } = Props;
   const classes = useStyles({ fullWidth, customWidth });
@@ -134,13 +127,12 @@ export function TextFieldForm(Props: TextFieldProps) {
     }
     onChange(event);
   };
-
   const autoCorrectPipe = !!autoCorrectDate ? createAutoCorrectedDatePipe(autoCorrectDate) : null;
-
   const inputClasses = classnames(classes.inputStyles, className, {
     [classes.error]: !!errorText,
     [classes.readOnly]: readOnly,
   });
+
   return (
     <Column className={classnames(classes.container, containerStyles)}>
       <LabelForm label={label} errorLabel={!!errorText ? errorText : ''} />
@@ -167,7 +159,7 @@ export function TextFieldForm(Props: TextFieldProps) {
         {numberMask && (
           <MaskedInput
             {...rest}
-            mask={setNumberMask}
+            mask={setNumberMask || createNumberMask}
             keepCharPositions={false}
             placeholder={placeholder}
             onChange={onChange}
@@ -180,7 +172,23 @@ export function TextFieldForm(Props: TextFieldProps) {
             ref={inputRef}
           />
         )}
-        {!(mask || numberMask) && (
+        {percentageMask && (
+          <MaskedInput
+            {...rest}
+            mask={setPercentageMask}
+            keepCharPositions={false}
+            placeholder={placeholder}
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            type={type}
+            className={inputClasses}
+            guide={false}
+            disabled={readOnly}
+            ref={inputRef}
+          />
+        )}
+        {!(mask || numberMask || percentageMask) && (
           <input
             {...rest}
             placeholder={placeholder}

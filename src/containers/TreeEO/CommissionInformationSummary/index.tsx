@@ -37,7 +37,7 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
     const total = this.totalSummary();
     storeCommissionTotalSummary(dispatch, total); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 17, categoriesName.commissionInformation);
   };
 

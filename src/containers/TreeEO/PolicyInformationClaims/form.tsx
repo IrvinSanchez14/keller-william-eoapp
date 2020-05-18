@@ -1,17 +1,15 @@
 import classnames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { addClaimsPolicy, removeClaims, insertFirstClaims } from 'src/store/actions/app';
-
 import { TextFieldForm } from 'src/components/TextFieldForm';
-
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { dateMask } from 'src/utils';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   unitContainer: {
@@ -75,6 +73,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   periodContainer: {
     flexDirection: 'row',
     margin: '10px 0px 0px -8px',
+
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      flexDirection: 'column',
+    },
+
     '& > div': {
       [theme.breakpoints.down('md')]: {
         flex: 1,
@@ -108,6 +111,20 @@ export const FormPolicyInformationClaims = (
 ) => {
   const classes = useStyles();
   const [isHaveInsurance, setIsHaveInsurance] = useState(false);
+  const [isMobile, setIsMobile] = useState(0);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    setIsMobile(window.innerWidth);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
@@ -124,7 +141,8 @@ export const FormPolicyInformationClaims = (
         name: 'amountClaim',
         label: 'Amount of claim',
         numberMask: true,
-        type: 'number',
+        type: 'text',
+        setNumberMask: moneyMask,
       },
     ];
 
@@ -133,7 +151,7 @@ export const FormPolicyInformationClaims = (
         {formData.app.data.policyInformation.claims.map((e: any, index: number) => (
           <Column key={index} className={classes.periodContainer}>
             {residenceTimeFields.map(
-              ({ name, placeholder, label, mask, numberMask, type, values }: any) => {
+              ({ name, placeholder, label, mask, numberMask, type, setNumberMask }: any) => {
                 return (
                   <FielControlForm
                     key={`claims.${name}.${index}`}
@@ -152,11 +170,12 @@ export const FormPolicyInformationClaims = (
                         placeholder={placeholder}
                         setFieldTouched={formikProps.setFieldTouched}
                         mask={mask}
-                        className={classnames(classes.periodContainerInput, {
+                        className={classnames({
                           [classes.periodContainerInputInvalid]:
                             formikProps.errors[name] && formikProps.touched[name],
                         })}
                         customWidth={161}
+                        setNumberMask={setNumberMask}
                       />
                     )}
                   />
@@ -205,7 +224,7 @@ export const FormPolicyInformationClaims = (
               name="isHaveClaims"
               value={true}
               data-test-id="sameAddressButtonYes"
-              label={'Yes, I have claims'}
+              label={isMobile <= 768 ? 'Yes' : 'Yes, I have claims'}
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', true);
                 setIsHaveInsurance(true);
@@ -234,7 +253,7 @@ export const FormPolicyInformationClaims = (
               name="isHaveClaims"
               value={false}
               data-test-id="sameAddressButtonNo"
-              label={'No, I do not have any claims'}
+              label={isMobile <= 768 ? 'No' : 'No, I do not have any claims'}
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', false);
                 formikProps.setFieldValue('claims', []);

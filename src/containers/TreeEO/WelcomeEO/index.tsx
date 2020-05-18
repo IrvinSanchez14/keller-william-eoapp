@@ -60,7 +60,7 @@ export class WelcomeEO extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
   };
@@ -152,7 +152,12 @@ export class WelcomeEO extends Component<FullNameProps> {
                       </div>
                     </div>
                     <div>
-                      <div className={classnames(this.props.classes.contentCommission)}>
+                      <div
+                        className={classnames(
+                          this.props.classes.contentCommission,
+                          this.props.classes.content,
+                        )}
+                      >
                         <Icon
                           name="commissionWelcome"
                           className={classnames(this.props.classes.iconCommission)}
@@ -185,7 +190,12 @@ export class WelcomeEO extends Component<FullNameProps> {
                       </div>
                     </div>
                     <div>
-                      <div className={classnames(this.props.classes.contentRisk)}>
+                      <div
+                        className={classnames(
+                          this.props.classes.contentRisk,
+                          this.props.classes.content,
+                        )}
+                      >
                         <Icon
                           name="riskWelcome"
                           className={classnames(this.props.classes.iconRisk)}

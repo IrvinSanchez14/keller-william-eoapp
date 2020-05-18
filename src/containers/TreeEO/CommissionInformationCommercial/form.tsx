@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import classnames from 'classnames';
-import { Typography } from '@material-ui/core';
-import { Divider } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { makeStyles } from '@material-ui/styles';
 
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Row, Column } from 'src/components/LayoutWrapper/Flex';
 import { useAppContext } from 'src/store';
+import { moneyMask, removeSignsFromNumbers, parseNumberToMoney } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -32,17 +33,12 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       padding: '0px 8px',
     },
   },
-  containerOne: {
-    padding: '0px 0px',
-    [theme.breakpoints.up(768)]: {
-      padding: '0px 8px',
-    },
+  rowContainer: {
+    display: 'flex',
   },
-  containerTwo: {
-    padding: '0px 0px',
-    [theme.breakpoints.up(768)]: {
-      padding: '0px 30px',
-    },
+  inputContainer: {
+    padding: '0',
+    paddingLeft: '30px',
   },
   containerTotal: {
     marginTop: 20,
@@ -99,6 +95,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       lineHeight: '48px',
     },
   },
+  rowContainerReview: {
+    display: 'flex',
+    margin: '0px 0px 0px -29px',
+    flexDirection: 'column',
+    [theme.breakpoints.up(768)]: {
+      fontSize: 22,
+      display: 'flex',
+      flexDirection: 'row',
+      margin: '0px 0px 0px -29px',
+    },
+  },
 }));
 
 export const FormCommissionInformationCommercial = (formikProps: any, isReview?: boolean) => {
@@ -120,18 +127,16 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
     }));
   };
 
-  const sumState = (object: any) => {
-    return Object.keys(object).reduce((sum, key) => sum + parseFloat(object[key] || 0), 0);
-  };
+  const sumState = (object: any) =>
+    Object.keys(object).reduce((sum, key) => sum + removeSignsFromNumbers(object[key] ?? 0), 0);
 
   return (
     <>
-      <Row wrap="wrap">
-        <Column className={classnames(classes.containerOne)}>
+      <Row wrap={'wrap'} className={isReview ? classes.rowContainerReview : classes.rowContainer}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="realEstate"
             name="commercial.realEstate"
-            type="number"
             label={'Real Estate'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -141,16 +146,20 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('commercial.realEstate', +e.target.value);
+              formikProps.setFieldValue(
+                'commercial.realEstate',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="rawLand"
             name="commercial.rawLand"
-            type="number"
             label={'Raw Land'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -160,17 +169,21 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('commercial.rawLand', +e.target.value);
+              formikProps.setFieldValue(
+                'commercial.rawLand',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
 
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="appraisals"
             name="commercial.appraisals"
-            type="number"
             label={'Appraisals'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -180,16 +193,20 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('commercial.appraisals', +e.target.value);
+              formikProps.setFieldValue(
+                'commercial.appraisals',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerTwo)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="propertyMgmt"
             name="commercial.propertyMgmt"
-            type="number"
             label={'Property Mgmt'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -199,16 +216,20 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('commercial.propertyMgmt', +e.target.value);
+              formikProps.setFieldValue(
+                'commercial.propertyMgmt',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
-        <Column className={classnames(classes.containerOne)}>
+        <Column className={classnames(classes.inputContainer)}>
           <FielControlForm
             data-test-id="ownedProperty"
             name="commercial.ownedProperty"
-            type="number"
             label={'Owned Property'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -218,9 +239,14 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
             customWidth={165}
             onChange={(e: any) => {
               changeDataSum(e);
-              formikProps.setFieldValue('commercial.ownedProperty', +e.target.value);
+              formikProps.setFieldValue(
+                'commercial.ownedProperty',
+                removeSignsFromNumbers(e.target.value),
+              );
             }}
             placeholder="$0"
+            numberMask
+            setNumberMask={moneyMask}
           />
         </Column>
       </Row>
@@ -230,7 +256,7 @@ export const FormCommissionInformationCommercial = (formikProps: any, isReview?:
           <div className={classnames(classes.divContainerTotal)}>
             <Typography className={classnames(classes.textTotal)}>{'Commercial total'}</Typography>
             <Typography className={classnames(classes.textNumberTotal)}>
-              ${sumState(commercial)}
+              {parseNumberToMoney(sumState(commercial))}
             </Typography>
           </div>
         </div>

@@ -57,7 +57,7 @@ export function NavigationForm(Props: INavigationProps) {
   };
 
   const goBack = (e, isLabel: boolean) => {
-    changeStatusProgressBar(dispatch, state.app.metadata.progressBar - 4.8);
+    changeStatusProgressBar(dispatch, state.app.metadata.progressBar - 4.5);
     setPageLocation(dispatch, state.app.metadata.actualPage - 1);
   };
 
@@ -191,6 +191,7 @@ export function NavigationForm(Props: INavigationProps) {
               <ButtonForm
                 customIconName="faPhone"
                 customIconType="solid"
+                fontWeight="bold"
                 className={classnames(classes.ctaButtonDesktop, {
                   [classes.ctaButtonDesktopConfirmation]: isConfirmationPage,
                 })}

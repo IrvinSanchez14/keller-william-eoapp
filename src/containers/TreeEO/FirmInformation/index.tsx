@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -33,7 +33,7 @@ export class FirmInformation extends Component<FullNameProps> {
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.8);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   };
