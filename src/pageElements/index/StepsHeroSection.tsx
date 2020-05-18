@@ -46,15 +46,22 @@ const StyledLine = styled.div<{ padding?: string; directionContent?: boolean }>`
   ${({ directionContent }) => directionContent && `justify-content: flex-start`}
 `;
 
-const StyledStepsContainer = styled.div<{ padding?: string }>`
+const StyledStepsContainer = styled.div<{
+  padding?: string;
+  mobilePadding?: string;
+  tabletPadding?: string;
+}>`
   position: relative;
   flex-direction: row;
   display: flex;
   ${({ padding }) => padding && `padding: ${padding};`}
   ${({ theme }) => theme.tablet`flex-direction: column;`};
+
   ${({ theme }) => theme.phone`
     padding: 87px 51px 0 50px;
   `};
+  ${({ mobilePadding, theme }) => mobilePadding && theme.phone`padding: ${mobilePadding};`};
+  ${({ tabletPadding, theme }) => tabletPadding && theme.tablet`padding: ${tabletPadding};`};
 `;
 
 interface StyledStepSectionProps {
@@ -271,8 +278,11 @@ const StyledPartnersSuscription = styled.div`
   padding-top: 100px;
   padding-bottom: 10px;
   display: flex;
-  //
   align-items: center;
+  @media (max-width: 415px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 const StyledPartnerInformation = styled.div<{ paddingTop?: string }>`
@@ -502,6 +512,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       headerText: 'Fill out a standard application',
       descriptionStep: 'Get quotes from both of our partners.',
       padding: '50px 30px',
+      // mobilePadding: '10px 30px',
       width: '100%',
     },
     {
@@ -510,7 +521,7 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       descriptionStep:
         'Keller Covered has done the work for you and negotiated rates for you at no extra cost.',
       padding: '150px 30px',
-      mobilePadding: '100px 30px',
+      mobilePadding: '-100px 30px',
       width: '100%',
     },
     {
@@ -525,8 +536,8 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
   return (
     <StyledStepPresentBuilding
       width={steps[numberStep].width}
-      mobilePadding={steps[numberStep].mobilePadding}
-      padding={steps[numberStep].padding}
+      // mobilePadding={steps[numberStep].mobilePadding}
+      // padding={steps[numberStep].padding}
     >
       <StyledStepText>{steps[numberStep].numberStep}</StyledStepText>
       <StyledStepHeader insertBr={numberStep < 1}>{steps[numberStep].headerText}</StyledStepHeader>
@@ -580,7 +591,7 @@ const StepsHeroSection = (): JSX.Element => {
         </StyledLine>
         <StyledStepSection>{renderStepInformation(0)}</StyledStepSection>
       </StyledStepsContainer>
-      <StyledStepsContainer padding="0 90px 0 90px">
+      <StyledStepsContainer mobilePadding="0px 0px 10px 0px" padding="0 90px 0 90px">
         <StyledStepSection>
           <StyledPartnersSuscription>
             <StyledPartnerInformation>
@@ -625,7 +636,11 @@ const StepsHeroSection = (): JSX.Element => {
         </StyledLine>
         <StyledStepSection>{renderStepInformation(1)}</StyledStepSection>
       </StyledStepsContainer>
-      <StyledStepsContainer padding="0 90px 0 90px">
+      <StyledStepsContainer
+        tabletPadding="140px 0 0 0"
+        mobilePadding="140px 0px 0px 0px"
+        padding="0 90px 0 90px"
+      >
         <StyledStepSection>
           <StyledWrapper>
             <StyledConffetiSVG src="/static/img/stepsImgs/confetti.svg" />
