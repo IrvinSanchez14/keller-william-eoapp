@@ -15,7 +15,7 @@ const CONSTANTS_EDIT_PAGE = {
   FIRM_INFORMATION: 'Firm information',
   AGENT_INFORMATION: 'Agent information',
   POLICY_INFORMATION: 'Policy information',
-  COMMISSION: 'comission information',
+  COMMISSION: 'commission information',
   RISK_PROFILE: 'Risk profile',
 };
 
