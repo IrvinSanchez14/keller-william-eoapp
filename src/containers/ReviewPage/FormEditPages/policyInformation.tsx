@@ -21,13 +21,35 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '18px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
+      fontFamily: 'Effra',
       fontWeight: 'bold',
       fontSize: '36px',
       lineHeight: '40px',
       letterSpacing: '-0.5px',
       color: '#1D253C',
+    },
+  },
+  textFirm: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+    lineHeight: '21px',
+    marginBottom: '10px',
+    color: '#07293D',
+    letterSpacing: '0px',
+    width: '260px',
+    fontFamily: 'Effra',
+    [theme.breakpoints.up(768)]: {
+      fontSize: '24px',
+      lineHeight: '29px',
+      marginBottom: '25px',
+      fontWeight: 'bold',
+      letterSpacing: '-0.3px',
+      fontFamily: 'Effra',
+      color: '#07293D',
+      width: 'auto',
     },
   },
 
@@ -46,28 +68,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       color: '#1D253C',
     },
   },
-  textFirm: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-    lineHeight: '21px',
-    marginBottom: '16px',
-    [theme.breakpoints.up(768)]: {
-      fontSize: '24px',
-      lineHeight: '29px',
-      marginBottom: '25px',
-    },
-  },
   rowContainer: {
-    margin: '-38px 0px 74px -44px',
+    margin: '-38px 0px 67px -44px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
-      marginBottom: '121px',
+      marginBottom: '40px',
       width: '512px',
       margin: '0px 0px',
     },
   },
   rowContainerDetail: {
-    margin: '-38px 0px 0px -44px',
+    margin: '-38px 0px 10px -44px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
       width: '512px',
@@ -80,6 +91,43 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     [theme.breakpoints.up(768)]: {
       width: '226px',
       marginLeft: '0px',
+    },
+  },
+  containerForm: {
+    paddingLeft: 74,
+    paddingRight: 74,
+    maxWidth: '100%',
+  },
+  // my align
+  // alignButton: {
+  //   [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+  //     flex: 2,
+  //     margin: '0px 74px 5px 74px',
+  //   },
+  //   [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+  //     width: 140,
+  //     margin: '0px 74px 0px 74px',
+  //   },
+  // },
+  form: {
+    position: 'relative',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '6px 0px 0px 0px',
+  },
+  customButtonStyles: {
+    fontWeight: 500,
+    fontFamily: 'Bold',
+  },
+  alignButtonX: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      justifyContent: 'center',
+      width: '100%',
     },
   },
 }));
@@ -148,7 +196,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
   }, []);
 
   return (
-    <>
+    <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
           currentCarrier: state.app.data.policyInformation.currentCarrier,
@@ -161,6 +209,9 @@ export function EditPagePolicyInformation({ closeModal }: any) {
           isHaveClaims: state.app.data.policyInformation.isHaveClaims,
           claims: state.app.data.policyInformation.claims,
         }}
+        className={classes.form}
+        // alignButton={classes.alignButton}
+        customButtonStyles={classes.customButtonStyles}
         isInitValid={false}
         validationSchema={valdiatePolicySchema}
         onSubmit={onSubmit}
@@ -172,27 +223,29 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
         validateOnChange={true}
-        alignButton={classnames(classes.alignButton)}
+        alignButton={classnames(classes.alignButtonX)}
       >
         {(formikProps) => {
           return (
             <>
-              <Column className={classnames(classes.rowContainer)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Insurance information'}
-                </Typography>
-                {FormPolicyInformation(formikProps, handleChange)}
-              </Column>
-              <Column className={classnames(classes.rowContainerDetail)}>
-                <Typography className={classnames(classes.titleForm)}>
-                  {'Insurance information'}
-                </Typography>
-                {FormPolicyInformationClaims(formikProps, state, dispatch, claimsHandleChange)}
+              <Column className={classnames(classes.containerForm)}>
+                <Column className={classnames(classes.rowContainer)}>
+                  <Typography className={classnames(classes.titleForm)}>
+                    {'Insurance information'}
+                  </Typography>
+                  {FormPolicyInformation(formikProps, handleChange)}
+                </Column>
+                <Column className={classnames(classes.rowContainerDetail)}>
+                  <Typography className={classnames(classes.textFirm)}>
+                    {'Do you have any claims in the last 5 years?'}
+                  </Typography>
+                  {FormPolicyInformationClaims(formikProps, state, dispatch, claimsHandleChange)}
+                </Column>
               </Column>
             </>
           );
         }}
       </FormApp>
-    </>
+    </div>
   );
 }

@@ -8,7 +8,7 @@ import { TextFieldForm } from 'src/components/TextFieldForm';
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
 import { dateMask } from 'src/utils';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { moneyMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
@@ -111,6 +111,20 @@ export const FormPolicyInformationClaims = (
 ) => {
   const classes = useStyles();
   const [isHaveInsurance, setIsHaveInsurance] = useState(false);
+  const [isMobile, setIsMobile] = useState(0);
+
+  const handleResize = () => {
+    setIsMobile(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    setIsMobile(window.innerWidth);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
@@ -210,7 +224,7 @@ export const FormPolicyInformationClaims = (
               name="isHaveClaims"
               value={true}
               data-test-id="sameAddressButtonYes"
-              label={'Yes, I have claims'}
+              label={isMobile <= 768 ? 'Yes' : 'Yes, I have claims'}
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', true);
                 setIsHaveInsurance(true);
@@ -239,7 +253,7 @@ export const FormPolicyInformationClaims = (
               name="isHaveClaims"
               value={false}
               data-test-id="sameAddressButtonNo"
-              label={'No, I do not have any claims'}
+              label={isMobile <= 768 ? 'No' : 'No, I do not have any claims'}
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', false);
                 formikProps.setFieldValue('claims', []);
