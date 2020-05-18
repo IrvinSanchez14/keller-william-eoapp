@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
-      width: '512px',
+      width: '100%',
       margin: '0px 0px',
     },
   },
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
-      width: '512px',
+      width: '100%',
       margin: '0px 0px',
     },
   },

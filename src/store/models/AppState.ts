@@ -173,7 +173,7 @@ export default class AppState implements IAppState {
     completed: false,
     confirmationNumber: undefined,
     metadata: {
-      actualPage: 0,
+      actualPage: 8,
       categoryPage: 'firm information',
       progressBar: 0,
       finishProgressForm: false,
