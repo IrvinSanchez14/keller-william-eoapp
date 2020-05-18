@@ -397,7 +397,7 @@ export default function PolicyCommissionInformation({
       </Layout>
       <Layout
         textHeader="Commission"
-        openEditPageModal={openEditModal && onOpenModal('Comission')}
+        openEditPageModal={openEditModal && onOpenModal('comission information')}
         style={true}
       >
         <ContainerInformation firstPadding>
