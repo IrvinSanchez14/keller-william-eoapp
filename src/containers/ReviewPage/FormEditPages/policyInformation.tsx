@@ -21,13 +21,35 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '18px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
+      fontFamily: 'Effra',
       fontWeight: 'bold',
       fontSize: '36px',
       lineHeight: '40px',
       letterSpacing: '-0.5px',
       color: '#1D253C',
+    },
+  },
+  textFirm: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+    lineHeight: '21px',
+    marginBottom: '10px',
+    color: '#07293D',
+    letterSpacing: '0px',
+    width: '260px',
+    fontFamily: 'Effra',
+    [theme.breakpoints.up(768)]: {
+      fontSize: '24px',
+      lineHeight: '29px',
+      marginBottom: '25px',
+      fontWeight: 'bold',
+      letterSpacing: '-0.3px',
+      fontFamily: 'Effra',
+      color: '#07293D',
+      width: 'auto',
     },
   },
 
@@ -46,28 +68,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       color: '#1D253C',
     },
   },
-  textFirm: {
-    fontWeight: 'bold',
-    fontSize: '16px',
-    lineHeight: '21px',
-    marginBottom: '16px',
-    [theme.breakpoints.up(768)]: {
-      fontSize: '24px',
-      lineHeight: '29px',
-      marginBottom: '25px',
-    },
-  },
   rowContainer: {
-    margin: '-38px 0px 74px -44px',
+    margin: '-38px 0px 67px -44px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
-      marginBottom: '121px',
+      marginBottom: '40px',
       width: '512px',
       margin: '0px 0px',
     },
   },
   rowContainerDetail: {
-    margin: '-38px 0px 0px -44px',
+    margin: '-38px 0px 10px -44px',
     width: '275px',
     [theme.breakpoints.up(768)]: {
       width: '512px',
@@ -108,6 +119,16 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   customButtonStyles: {
     fontWeight: 500,
     fontFamily: 'Bold',
+  },
+  alignButtonX: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      justifyContent: 'center',
+      width: '100%',
+    },
   },
 }));
 
@@ -202,7 +223,7 @@ export function EditPagePolicyInformation({ closeModal }: any) {
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
         validateOnChange={true}
-        alignButton={classnames(classes.alignButton)}
+        alignButton={classnames(classes.alignButtonX)}
       >
         {(formikProps) => {
           return (
@@ -215,8 +236,8 @@ export function EditPagePolicyInformation({ closeModal }: any) {
                   {FormPolicyInformation(formikProps, handleChange)}
                 </Column>
                 <Column className={classnames(classes.rowContainerDetail)}>
-                  <Typography className={classnames(classes.titleForm)}>
-                    {'Insurance information'}
+                  <Typography className={classnames(classes.textFirm)}>
+                    {'Do you have any claims in the last 5 years?'}
                   </Typography>
                   {FormPolicyInformationClaims(formikProps, state, dispatch, claimsHandleChange)}
                 </Column>

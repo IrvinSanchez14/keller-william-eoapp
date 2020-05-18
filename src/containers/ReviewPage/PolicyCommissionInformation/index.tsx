@@ -44,7 +44,7 @@ const ContainerInformation = styled.div<ContainerInformationProps>`
     maxWidthMobile &&
     theme.phone`
         position: absolute;
-        top: 317px;
+        top: 325px;
         left: 0;
         width: 100%;
   `}

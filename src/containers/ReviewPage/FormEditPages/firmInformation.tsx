@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '18px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
       fontWeight: 'bold',
@@ -32,14 +33,37 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       lineHeight: '40px',
       letterSpacing: '-0.5px',
       color: '#1D253C',
+      fontFamily: 'Effra',
+    },
+  },
+  titleFormEspecial: {
+    fontWeight: 'bold',
+    fontSize: '16px',
+    lineHeight: '28px',
+    color: '#07293D',
+    marginBottom: '12px',
+    fontFamily: 'Effra',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '25px',
+      fontWeight: 'bold',
+      fontSize: '22px',
+      lineHeight: '28px',
+      color: '#1D253C',
+      fontFamily: 'Effra',
     },
   },
   rowContainer: {
-    margin: '0px -30px',
-    // marginLeft: 60,
-    marginBottom: '60px',
-    // margin: '-38px 0px 74px -44px',
-    // width: '275px',
+    margin: '-38px 0px 67px -44px',
+    width: '275px',
+    [theme.breakpoints.up(768)]: {
+      marginBottom: '121px',
+      width: '512px',
+      margin: '0px 0px',
+    },
+  },
+  rowContainerSecond: {
+    margin: '0px 0px 67px -44px',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '121px',
       width: '512px',
@@ -50,11 +74,19 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     fontWeight: 'bold',
     fontSize: '16px',
     lineHeight: '21px',
-    marginBottom: '16px',
+    marginBottom: '0px',
+    color: '#07293D',
+    letterSpacing: '0px',
+    width: '260px',
     [theme.breakpoints.up(768)]: {
       fontSize: '24px',
       lineHeight: '29px',
       marginBottom: '25px',
+      fontWeight: 'bold',
+      letterSpacing: '-0.3px',
+      fontFamily: 'Effra',
+      color: '#07293D',
+      width: 'auto',
     },
   },
   rowContainerDetail: {
@@ -66,8 +98,10 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     },
   },
   divTypo: {
-    [theme.breakpoints.down(768)]: {
-      margin: '-38px 0px 39px -44px',
+    margin: '0px 0px 55px 35px',
+    [theme.breakpoints.up(768)]: {
+      margin: '-25px 0px 39px 87px',
+      width: 'auto',
     },
   },
   alignButton: {
@@ -107,6 +141,16 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   customButtonStyles: {
     fontWeight: 500,
     fontFamily: 'Bold',
+  },
+  alignButtonX: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      justifyContent: 'center',
+      width: '100%',
+    },
   },
 }));
 
@@ -173,7 +217,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
-        alignButton={classnames(classes.alignButton)}
+        alignButton={classnames(classes.alignButtonX)}
       >
         {(formikProps) => {
           return (
@@ -183,12 +227,15 @@ export function EditPageFirmInformation({ closeModal }: any) {
                   <Typography className={classnames(classes.titleForm)}>
                     {'Basic Information'}
                   </Typography>
+                  <Typography className={classnames(classes.titleFormEspecial)}>
+                    {'Keller Williams Realty, Inc.'}
+                  </Typography>
                   {FormFirmInformation(formikProps)}
                 </Column>
               </Column>
               <Hr />
               <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainer)}>
+                <Column className={classnames(classes.rowContainerSecond)}>
                   <Typography className={classnames(classes.titleForm)}>
                     {'Contact information'}
                   </Typography>
@@ -197,7 +244,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
               </Column>
               <Hr />
               <Column className={classnames(classes.containerForm)}>
-                <Column className={classnames(classes.rowContainer)}>
+                <Column className={classnames(classes.rowContainerSecond)}>
                   <Typography className={classnames(classes.titleForm)}>
                     {'Broker information'}
                   </Typography>
@@ -205,18 +252,14 @@ export function EditPageFirmInformation({ closeModal }: any) {
                 </Column>
               </Column>
               <Hr />
-              <Column className={classnames(classes.containerForm)}>
-                <div className={classnames(classes.divTypo)}>
-                  <Typography className={classnames(classes.titleForm)}>
-                    {'Firm details'}
-                  </Typography>
-                  <Typography className={classnames(classes.textFirm)}>
-                    {
-                      'Is your firm independently owned and not controlled, affiliated with, or owned by another entity?'
-                    }
-                  </Typography>
-                </div>
-              </Column>
+              <div className={classnames(classes.divTypo)}>
+                <Typography className={classnames(classes.titleForm)}>{'Firm details'}</Typography>
+                <Typography className={classnames(classes.textFirm)}>
+                  {
+                    'Is your firm independently owned and not controlled, affiliated with, or owned by another entity?'
+                  }
+                </Typography>
+              </div>
               <Column className={classnames(classes.containerForm)}>
                 <Column className={classnames(classes.rowContainerDetail)}>
                   {FormFirmInformationAffiliated(formikProps, handleChange)}

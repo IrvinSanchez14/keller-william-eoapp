@@ -24,11 +24,15 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '21px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
+      fontFamily: 'Effra',
       fontWeight: 'bold',
       fontSize: '24px',
       lineHeight: '32px',
+      width: 'auto',
       letterSpacing: '-0.3px',
       color: '#1D253C',
     },
@@ -39,9 +43,11 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '18px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
     [theme.breakpoints.up(768)]: {
       marginBottom: '26px',
       fontWeight: 'bold',
+      fontFamily: 'Effra',
       fontSize: '36px',
       lineHeight: '40px',
       letterSpacing: '-0.5px',
@@ -54,13 +60,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     lineHeight: '21px',
     color: '#07293D',
     marginBottom: '18px',
+    fontFamily: 'Effra',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       marginBottom: '12px',
+      fontFamily: 'Effra',
       fontWeight: 'bold',
       fontSize: '24px',
       lineHeight: '32px',
       letterSpacing: '-0.3px',
       color: '#1D253C',
+      width: 'auto',
     },
   },
   rowContainer: {
@@ -155,6 +165,16 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginLeft: '0px',
     },
   },
+  alignButtonX: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      justifyContent: 'center',
+      width: '100%',
+    },
+  },
 }));
 
 export function EditPageRiskProfile({ closeModal }: any) {
@@ -215,7 +235,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
-        alignButton={classnames(classes.alignButton)}
+        alignButton={classnames(classes.alignButtonX)}
       >
         {(formikProps) => {
           return (

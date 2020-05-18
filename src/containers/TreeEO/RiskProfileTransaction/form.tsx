@@ -34,7 +34,7 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
           </Typography>
         )}
 
-        <Column padding="0px 8px">
+        <Column>
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"

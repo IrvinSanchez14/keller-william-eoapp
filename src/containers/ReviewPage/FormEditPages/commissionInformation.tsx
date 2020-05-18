@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     fontSize: '16px',
     lineHeight: '21px',
     color: '#07293D',
+    width: '275px',
     [theme.breakpoints.up(768)]: {
       fontWeight: 'bold',
       fontFamily: 'Effra',
@@ -29,6 +30,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       lineHeight: '32px',
       letterSpacing: '-0.3px',
       color: '#1D253C',
+      width: 'auto',
     },
   },
   titleFormHead: {
@@ -41,9 +43,9 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginBottom: '30px',
       fontWeight: 'bold',
       fontFamily: 'Effra',
-      fontSize: '24px',
-      lineHeight: '32px',
-      letterSpacing: '-0.3px',
+      fontSize: '36px',
+      lineHeight: '40px',
+      letterSpacing: '-0.5px',
       color: '#1D253C',
     },
   },
@@ -53,6 +55,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     color: '#07293D',
     marginBottom: '12px',
     fontWeight: 'bold',
+    fontFamily: 'Effra',
     [theme.breakpoints.up(768)]: {
       marginBottom: '30px',
       fontWeight: 'bold',
@@ -176,6 +179,16 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       marginLeft: '0px',
     },
   },
+  alignButtonX: {
+    [theme.breakpoints.up(theme.breakpoints.values.md)]: {
+      flex: 2,
+      margin: '0px 74px 5px 74px',
+    },
+    [theme.breakpoints.down(theme.breakpoints.values.md)]: {
+      justifyContent: 'center',
+      width: '100%',
+    },
+  },
 }));
 
 export function EditPageCommissionInformation({ closeModal }: any) {
@@ -295,7 +308,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
         dispatch={dispatch}
         progressBar={state.app.metadata.progressBar}
         hideButton={false}
-        alignButton={classnames(classes.alignButton)}
+        alignButton={classnames(classes.alignButtonX)}
       >
         {(formikProps) => {
           return (

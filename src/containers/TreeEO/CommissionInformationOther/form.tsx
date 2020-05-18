@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     width: '100%',
     fontWeight: 'bold',
     marginBottom: '10px',
+    color: '#07293D',
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
       lineHeight: '28px',
