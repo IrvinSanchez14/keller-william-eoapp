@@ -31,7 +31,7 @@ const labelInformation = {
     numberAgentSpecialDesignation:
       'Number of agents who have earned any type of special designation',
     revokedLicense:
-      'Have any licensees of the firm had their license cancelledor revoked in the last three years?',
+      'Have any licensees of the firm had their license cancelled or revoked in the last three years?',
   },
 };
 
