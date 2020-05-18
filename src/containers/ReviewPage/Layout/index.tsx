@@ -49,6 +49,7 @@ const LayoutHeaderSection = styled.div`
     theme &&
     theme.phone`
       margin-top: -25px;
+      padding: 0 60px 0 47px;
   `};
   @media (min-width: 371px) and (max-width: 442px) {
     padding: 0 27px 0 27px;
