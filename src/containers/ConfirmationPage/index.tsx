@@ -360,6 +360,9 @@ const TableNameText = styled(P)<{ padding?: string }>`
     line-height: 26px;
     width: 70%;
   `};
+  ${({ theme }) => theme.desktopSmall`
+    line-height: 36px;
+  `}
 `;
 
 const TableValueText = styled(H1)`
