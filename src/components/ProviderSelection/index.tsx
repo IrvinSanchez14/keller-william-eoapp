@@ -82,12 +82,12 @@ const ButtonContainer = styled.div`
   }
 
   @media (min-width: 640px) {
-    justify-content: end;
     max-width: 600px;
   }
 
   @media (min-width: 1260px) {
     max-width: 1260px;
+    justify-content: flex-end;
   }
 `;
 
