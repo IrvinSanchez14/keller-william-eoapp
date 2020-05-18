@@ -149,7 +149,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   customButtonStyles: {
     fontWeight: 500,
-    fontFamily: 'Bold',
   },
 
   divTypo: {

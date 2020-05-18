@@ -140,16 +140,17 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   customButtonStyles: {
     fontWeight: 500,
-    fontFamily: 'Bold',
   },
   alignButtonX: {
     [theme.breakpoints.up(theme.breakpoints.values.md)]: {
       flex: 2,
       margin: '0px 74px 5px 74px',
+      fontFamily: 'Effra',
     },
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       justifyContent: 'center',
       width: '100%',
+      fontFamily: 'Effra',
     },
   },
 }));

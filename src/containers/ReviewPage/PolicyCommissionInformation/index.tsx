@@ -28,7 +28,7 @@ const labelInformation = {
   commissionInformation: {
     grossCommission: 'Gross commission for the last 12 months',
     averageValue: 'Average value of properties sold',
-    percentageTransactions: 'Percentageof transactions representing both buyer and seller',
+    percentageTransactions: 'Percentage of transactions representing both buyer and seller',
   },
 };
 

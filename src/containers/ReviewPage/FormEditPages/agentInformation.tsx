@@ -134,7 +134,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   customButtonStyles: {
     fontWeight: 500,
-    fontFamily: 'Bold',
   },
   alignButtonX: {
     [theme.breakpoints.up(theme.breakpoints.values.md)]: {
