@@ -12,7 +12,7 @@ const navigationFooterItems = [
     link: 'https://intercom.help/keller-covered/en/collections/1487633-faq',
   },
   { label: 'Contact', link: 'https://kellercovered.com/contact' },
-  { label: 'Legal', link: 'https://kellercovered.com/legal/#privacy' },
+  { label: 'Legal', link: 'https://kellercovered.com/legal#privacy' },
 ];
 const navigationItems = ['About', 'FAQ', 'Contact', 'Legal'];
 
