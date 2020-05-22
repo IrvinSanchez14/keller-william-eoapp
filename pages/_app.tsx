@@ -7,6 +7,7 @@ import GlobalStyles from 'src/styles/MarketingEO/globalStyles';
 import globalTheme from 'src/styles/MarketingEO/theme';
 import { uiStoreInstance } from 'src/styles/FormStyle/UIStore';
 import { GlobalCssOverride as GlobalCss } from 'src/styles/FormStyle/css/globalCss';
+import { AppStateContextProvider } from 'src/store';
 
 export default class MyApp extends App {
   componentDidMount() {
@@ -23,7 +24,9 @@ export default class MyApp extends App {
             <GlobalStyles />
             <CssBaseline />
             <GlobalCss />
-            <Component {...pageProps} />
+            <AppStateContextProvider>
+              <Component {...pageProps} />
+            </AppStateContextProvider>
           </ThemeProvider>
         </MuiThemeProvider>
       </>
