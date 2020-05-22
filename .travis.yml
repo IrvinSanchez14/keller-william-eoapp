@@ -6,7 +6,6 @@ cache:
   directories:
     - '$HOME/google-cloud-sdk'
     - '~/.npm'
-    - '~/.cache'
 
 node_js:
   - '12.16.3'
@@ -57,9 +56,7 @@ jobs:
         - source $HOME/google-cloud-sdk/path.bash.inc
         - gcloud components update gsutil
         - '/home/travis/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file /home/travis/key-account.json'
-      install:
-        - rm -rf $HOME/build/KWXS/kc-frontend-eo/node_modules
-        - yarn --frozen-lockfile
+      install: yarn --frozen-lockfile
       script:
         - |
           if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
