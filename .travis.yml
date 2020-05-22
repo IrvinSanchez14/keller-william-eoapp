@@ -4,11 +4,9 @@ language: node_js
 
 cache:
   directories:
+    - '$HOME/google-cloud-sdk'
     - '~/.npm'
     - '~/.cache'
-    - '~/.yarn'
-    - '~/.yarn-cache'
-    - node_modules
 
 node_js:
   - '12.16.3'
