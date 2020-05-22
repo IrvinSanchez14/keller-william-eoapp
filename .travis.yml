@@ -33,7 +33,7 @@ jobs:
       if: type = pull_request
       name: specs
       before_install: npm i -g yarn
-      install: yarn --frozen-lockfile
+      install: yarn install
       script:
         - |
           if [[ $TRAVIS_BRANCH  == "develop" ]]; then
@@ -52,7 +52,7 @@ jobs:
         - source $HOME/google-cloud-sdk/path.bash.inc
         - gcloud components update gsutil
         - '/home/travis/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file /home/travis/key-account.json'
-      install: yarn --frozen-lockfile
+      install: yarn install
       script:
         - |
           if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
