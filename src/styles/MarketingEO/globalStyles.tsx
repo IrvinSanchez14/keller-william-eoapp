@@ -23,6 +23,12 @@ const GlobalStyles = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
    }
+   @font-face {
+     font-family: "Medium";
+     src: url('/static/fonts/Effra_Std_Md.ttf');
+     font-weight: normal;
+     font-style: normal;
+   }
 
   * { box-sizing: border-box; }
 
@@ -48,6 +54,10 @@ const GlobalStyles = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     font-family: "Bold";
+  }
+
+  .mediumFont {
+    font-family: "Medium";
   }
 `;
 

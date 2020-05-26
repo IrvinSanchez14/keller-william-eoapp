@@ -144,7 +144,7 @@ const StyledButtonCheckContainer = styled.div`
 `;
 
 const StyledStepButtonCheck = styled.div<{ margin?: string }>`
-  background-color: ${theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.redCheck};
   height: 35px;
   width: 37px;
   border-radius: 50%;
@@ -465,14 +465,17 @@ const StyledBlueHeaderText = styled.div`
   `}
 `;
 
-const StyledBlueInfoText = styled.div`
+const StyledBlueInfoText = styled.p`
   color: ${theme.colors.white};
-  font-family: 'Light';
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 26px;
   padding-top: 13px;
   ${({ theme }) => theme.phone`
-    font-size: 1.1rem;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20px;
   `}
 `;
 
@@ -482,14 +485,19 @@ const StyledBlueButton = styled.a`
   border-radius: 25px;
   background-color: ${theme.colors.primary};
   color: ${theme.colors.white};
-  font-size: 1.1rem;
-  font-family: 'Regular';
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 20px;
   margin-top: 57px;
   margin-bottom: 89px;
   justify-content: center;
   align-items: center;
   display: flex;
   text-decoration: none;
+  ${({ theme }) => theme.phone`
+    font-size: 16px;
+  `}
 `;
 
 const StyledOtherContainer = styled.div`
@@ -503,6 +511,108 @@ const StyledOtherContainer = styled.div`
   ${({ theme }) => theme.phoneSmall`
     padding: 20px 10px 20px 10px;
   `};
+`;
+
+const PersonsTestimony = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const PersonsTestimonyHeader = styled.p`
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 48px;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.darkBlue};
+  margin-top: 96px;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    max-width: 243px;
+    letter-spacing: -0.5px;
+    line-height: 28px;
+    font-size: 24px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+  `};
+`;
+
+const PersonsTestimonyContainer = styled.div`
+  flex: 1;
+  display: flex;
+  margin-top: 65px;
+  flex-direction: row;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+    flex-direction: column;
+    margin-top: 16px;
+  `}
+`;
+
+const PersonsTestimonySection = styled.div<{ isLeft?: boolean }>`
+  flex: 1;
+  display: flex;
+  ${({ isLeft }) =>
+    isLeft &&
+    `
+    justify-content: flex-end;
+    margin-right: 47px;
+  `};
+  ${({ theme }) => theme.tablet`
+    padding: 0 0 0 25px;
+  `}
+  ${({ theme, isLeft }) => theme.phone`
+    justify-content: center;
+    margin-top: ${isLeft ? '0px' : '36px'};
+    margin-right: 47px;
+  `}
+`;
+
+const QuotesImg = styled.img`
+  height: 18px;
+  width: 27px;
+  ${({ theme }) => theme.phone`
+    height: 15px;
+    width: 23px;
+  `};
+`;
+
+const PersonsTestimonyInformationContainer = styled.div<{ maxWidth?: string }>`
+  margin-left: 10px;
+  max-width: 488px;
+  ${({ maxWidth }) => maxWidth && `max-width: ${maxWidth};`};
+  color: ${({ theme }) => theme.colors.paragraph.darkGray};
+  ${({ theme }) => theme.phone`
+    width: 290px;
+  `}
+`;
+
+const PersonsTestimonyInformation = styled.p<{ maxWidth?: string }>`
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 26px;
+  color: ${({ theme }) => theme.colors.paragraph.darkGray};
+  ${({ theme }) => theme.phone`
+    font-family: Effra;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 20px;
+  `}
+`;
+
+const PersonName = styled.h1`
+  padding-top: 19px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  line-height: 14px;
+  color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
 const renderStepInformation = (numberStep: number): JSX.Element => {
@@ -527,18 +637,15 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
     {
       numberStep: 'STEP THREE',
       headerText: 'Get a policy in as little as 24 hours',
-      descriptionStep: 'Get expert support and choose the best coverage for your needs.',
+      descriptionStep:
+        'Your selected providers will reach out and finalize the best coverage for your needs.',
       padding: '10px 30px',
       mobilePadding: '40px 30px',
       width: '100%',
     },
   ];
   return (
-    <StyledStepPresentBuilding
-      width={steps[numberStep].width}
-      // mobilePadding={steps[numberStep].mobilePadding}
-      // padding={steps[numberStep].padding}
-    >
+    <StyledStepPresentBuilding width={steps[numberStep].width}>
       <StyledStepText>{steps[numberStep].numberStep}</StyledStepText>
       <StyledStepHeader insertBr={numberStep < 1}>{steps[numberStep].headerText}</StyledStepHeader>
       <StyledStepDescription>{steps[numberStep].descriptionStep}</StyledStepDescription>
@@ -605,8 +712,8 @@ const StepsHeroSection = (): JSX.Element => {
                 />
               </StyledPartnerBlock>
               <StyledPartnerBlock>
-                <StyledPartnerPrice>$843</StyledPartnerPrice>
-                <StyledPartnerMoth>/moth</StyledPartnerMoth>
+                <StyledPartnerPrice>$1,700</StyledPartnerPrice>
+                <StyledPartnerMoth>/mo</StyledPartnerMoth>
               </StyledPartnerBlock>
             </StyledPartnerInformation>
             <StyledPartnerInformation paddingTop="20px">
@@ -620,8 +727,8 @@ const StepsHeroSection = (): JSX.Element => {
                 />
               </StyledPartnerBlock>
               <StyledPartnerBlock>
-                <StyledPartnerPrice>$1,500</StyledPartnerPrice>
-                <StyledPartnerMoth>/moth</StyledPartnerMoth>
+                <StyledPartnerPrice>$1,700</StyledPartnerPrice>
+                <StyledPartnerMoth>/mo</StyledPartnerMoth>
               </StyledPartnerBlock>
               <StyledStepButtonCheck margin="29px -17px 0 0;">
                 <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
@@ -630,7 +737,7 @@ const StepsHeroSection = (): JSX.Element => {
           </StyledPartnersSuscription>
         </StyledStepSection>
         <StyledLine directionContent>
-          <StyledShapeLine height="150px" />
+          <StyledShapeLine height="43px" />
           <StyledShapeCircle />
           <StyledShapeLine height="400px" />
         </StyledLine>
@@ -650,7 +757,7 @@ const StepsHeroSection = (): JSX.Element => {
                 CONGRATS, YOU&apos;RE INSURE!
               </Span>
             </StyledTextContainer>
-            <PartnerTile price="$1,500" />
+            <PartnerTile price="$1,700" />
             <StyledImg alt="signature" src="/static/img/stepsImgs/signature.png" />
           </StyledWrapper>
         </StyledStepSection>
@@ -660,6 +767,31 @@ const StepsHeroSection = (): JSX.Element => {
         </StyledLine>
         <StyledStepSection>{renderStepInformation(2)}</StyledStepSection>
       </StyledStepsContainer>
+      <PersonsTestimony>
+        <div style={{ justifyContent: 'center', display: 'flex' }}>
+          <PersonsTestimonyHeader>{`What people are saying about E&O`}</PersonsTestimonyHeader>
+        </div>
+        <PersonsTestimonyContainer>
+          <PersonsTestimonySection isLeft>
+            <QuotesImg src="/static/img/quotes.png" />
+            <PersonsTestimonyInformationContainer>
+              <PersonsTestimonyInformation>
+                {`Keller Covered's partnership with top E&O providers has made the process of reviewing our insurance needs simpler than we ever thought possible. In addition to the ease of use, it is going to save my Market Center 15%. In business every dollar counts, I appreciate being partnered with people who continue to help me look after my bottom line."`}
+              </PersonsTestimonyInformation>
+              <PersonName>{`– MARC KING, OP CHESTERFIELD`}</PersonName>
+            </PersonsTestimonyInformationContainer>
+          </PersonsTestimonySection>
+          <PersonsTestimonySection>
+            <QuotesImg src="/static/img/quotes.png" />
+            <PersonsTestimonyInformationContainer maxWidth="497px">
+              <PersonsTestimonyInformation>
+                {`Being a multiple market center OP means having a lot of balls to juggle.  Keller Covered's E&O quoting system was very helpful to compare coverage.  The system made it easy to get quotes from multiple carriers, which is the key to finding the best coverage. At the end of the day, we can save 14% because of our partnership with Keller Williams."`}
+              </PersonsTestimonyInformation>
+              <PersonName>{`– LARRY ROBINSON, OP FAYETTEVILLE AND FT. SMITH`}</PersonName>
+            </PersonsTestimonyInformationContainer>
+          </PersonsTestimonySection>
+        </PersonsTestimonyContainer>
+      </PersonsTestimony>
       <StyledOtherContainer>
         <StyledT>
           <StyledSVG
@@ -676,7 +808,9 @@ const StepsHeroSection = (): JSX.Element => {
         <StyledBlueContainer>
           <StyledBlueHeaderText>Let&apos;s get you covered</StyledBlueHeaderText>
           <StyledBlueInfoText>A new way to shop for E&O Insurance!</StyledBlueInfoText>
-          <StyledBlueButton href="/eoapplication">Get started now</StyledBlueButton>
+          <StyledBlueButton className="mediumFont" href="/eoapplication">
+            Get started now
+          </StyledBlueButton>
         </StyledBlueContainer>
       </StyledOtherContainer>
     </>

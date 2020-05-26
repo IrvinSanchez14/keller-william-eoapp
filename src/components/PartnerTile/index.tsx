@@ -95,7 +95,7 @@ const PartnerTile = ({ name, price, isShadow, isCheckIcon }: IPartnerTile): JSX.
     <StyledSvg src="/static/img/PearlInsurance_Logo.svg" />
     <StyledPrice>
       {price}
-      <span>/moth</span>
+      <span>/mo</span>
     </StyledPrice>
   </StyledContainer>
 );
