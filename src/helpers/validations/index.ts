@@ -209,7 +209,7 @@ export const riskProfileTransactionValidateSchema = Yup.object().shape({
     .parsePercentage()
     .required('Field is required')
     .max(100, 'Please enter a value between 0-100')
-    .positive('The value must be positive'),
+    .min(0),
 });
 
 export const editRiskProfileSchema = riskProfileValidateSchema

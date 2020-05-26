@@ -39,3 +39,31 @@ export const categoriesName = {
   commissionInformation: 'commission',
   riskFactorInformation: 'risk profile',
 };
+
+export const getTypesCommission = [
+  {
+    id: 1,
+    icon: 'firmWelcome',
+    label: 'Firm',
+  },
+  {
+    id: 2,
+    icon: 'agentWelcome',
+    label: 'Agents',
+  },
+  {
+    id: 3,
+    icon: 'commissionWelcome',
+    label: 'Commission',
+  },
+  {
+    id: 4,
+    icon: 'policyWelcome',
+    label: 'Policy',
+  },
+  {
+    id: 5,
+    icon: 'riskWelcome',
+    label: 'Risk Profile',
+  },
+];
