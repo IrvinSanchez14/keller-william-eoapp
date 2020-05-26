@@ -57,6 +57,7 @@ const FooterLooksText = styled.h1`
 `;
 
 const FooterSubmitText = styled.p`
+  font-family: 'Effra Medium';
   font-style: 'Bold';
 `;
 
