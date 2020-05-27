@@ -1,0 +1,48 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+main:
+  docker:
+    registry:
+      url: "gcr.io/keller-covered/kc-frontend-eo"
+      username: ""
+      password: ""
+  dependencies:
+    postgres: true
+  labels:
+    app: kc-frontend-eo
+  selectorLabels:
+    app: kc-frontend-eo
+  deployment:
+    containerPort: 3000
+    replicaCount: 3
+    resources:
+      requests: {}
+    podSecurityContext: {}
+    securityContext: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    image:
+      repository: "gcr.io/keller-covered/kc-frontend-eo"
+      pullPolicy: Always
+    imagePullSecrets:
+      - name: kc-frontend-eo-docker-registry-secrets
+    envSecrets: []
+      # - name: "STAGE"
+      #   value: "development"
+  service:
+    type: ClusterIP
+    port: 3000
+  serviceAccount:
+    create: true
+  virtualService:
+    create: false
+    uriPrefix: "/kc-frontend-eo"
+    uriRewrite: "/"
+    hosts: 
+    - "bancus-dev.applaudostudios.com"
+    serviceHost: kc-frontend-eo
+    gateways:
+    - global-gateway

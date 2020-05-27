@@ -1,0 +1,11 @@
+--------------------------------------------------
+export CHART_NAME=myapp
+
+To check the rollout status of the deployment, run:
+
+kubectl rollout status deployment ${CHART_NAME}
+
+To see the application locally, run:
+
+kubectl port-forward deploy/${CHART_NAME} 3000:8080
+--------------------------------------------------
