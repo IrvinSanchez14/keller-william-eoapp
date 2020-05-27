@@ -164,6 +164,7 @@ interface StyledStepPresentBuildingProps {
   padding?: string;
   mobilePadding?: string;
   width?: string;
+  paddingTop?: number;
 }
 
 const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
@@ -171,6 +172,11 @@ const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
   display: flex;
   flex-direction: column;
   padding-top: 30px;
+  ${({ paddingTop }) =>
+    paddingTop &&
+    `
+    padding-top: ${paddingTop}px;
+  `}
   ${({ padding }) =>
     padding &&
     `
@@ -186,12 +192,14 @@ const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
     theme.tablet`
     text-align: center;
     width: 100%;
+    padding-top: 45px;
   `};
   ${({ theme }) =>
     theme &&
     theme.phone`
     text-align: center;
     width: 100%;
+    padding-top: 0px;
   `};
 `;
 
@@ -624,15 +632,17 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       padding: '50px 30px',
       // mobilePadding: '10px 30px',
       width: '100%',
+      paddingTop: 0,
     },
     {
       numberStep: 'STEP TWO',
       headerText: 'Enjoy exclusive benefits',
       descriptionStep:
         'Keller Covered has done the work for you and negotiated rates for you at no extra cost.',
-      padding: '150px 30px',
+      padding: '10px 30px',
       mobilePadding: '-100px 30px',
       width: '100%',
+      paddingTop: 155,
     },
     {
       numberStep: 'STEP THREE',
@@ -642,10 +652,14 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       padding: '10px 30px',
       mobilePadding: '40px 30px',
       width: '100%',
+      paddingTop: 0,
     },
   ];
   return (
-    <StyledStepPresentBuilding width={steps[numberStep].width}>
+    <StyledStepPresentBuilding
+      paddingTop={steps[numberStep].paddingTop}
+      width={steps[numberStep].width}
+    >
       <StyledStepText>{steps[numberStep].numberStep}</StyledStepText>
       <StyledStepHeader insertBr={numberStep < 1}>{steps[numberStep].headerText}</StyledStepHeader>
       <StyledStepDescription>{steps[numberStep].descriptionStep}</StyledStepDescription>
@@ -739,9 +753,9 @@ const StepsHeroSection = (): JSX.Element => {
           </StyledPartnersSuscription>
         </StyledStepSection>
         <StyledLine directionContent>
-          <StyledShapeLine height="43px" />
+          <StyledShapeLine height="170px" />
           <StyledShapeCircle />
-          <StyledShapeLine height="400px" />
+          <StyledShapeLine height="250px" />
         </StyledLine>
         <StyledStepSection>{renderStepInformation(1)}</StyledStepSection>
       </StyledStepsContainer>
