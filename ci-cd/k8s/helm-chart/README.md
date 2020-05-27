@@ -22,9 +22,9 @@ kubectl create ns ${NAMESPACE}
 ```
 
 ```
-helm upgrade --install ${REPOSITORY_NAME} k8s/helm-chart -f k8s/helm-chart/values-local.yaml  --debug -n ${NAMESPACE}
+helm upgrade --install ${REPOSITORY_NAME} ci-cd/k8s/helm-chart -f ci-cd/k8s/helm-chart/values-local.yaml -n ${NAMESPACE}
 
-kubectl rollout status deployment ${REPOSITORY_NAME}
+kubectl rollout status deployment ${REPOSITORY_NAME} -n ${NAMESPACE}
 ```
 
 ## Script to update the app version
@@ -55,7 +55,8 @@ kubectl label namespace ${NAMESPACE} istio-injection=enabled --overwrite
 
 In order to virtual service to work with Istio, you need to have  gateway alredy configurated. e.g.
 
-```yaml
+```
+cat << EOF | kubectl apply -f -
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -77,4 +78,5 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
+EOF
 ```
