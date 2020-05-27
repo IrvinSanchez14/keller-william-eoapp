@@ -31,7 +31,3 @@ gcloud config config-helper 1>/dev/null
 
 echo "Configure docker"
 gcloud -q auth configure-docker
-
-echo "CHECK DOCKER IMAGE"
-# gcloud container clusters get-credentials k8s-cluster-development --zone us-central1-a
-ct kubectl config get-contexts
