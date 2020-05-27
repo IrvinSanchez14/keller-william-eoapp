@@ -2,6 +2,8 @@
 
 set -e
 
+export KUBECONFIG=$HOME/kubeconfig
+
 source $HOME/google-cloud-sdk/path.bash.inc
 
 TAG=latest

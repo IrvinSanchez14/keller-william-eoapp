@@ -3,7 +3,7 @@
 echo "Installing dependencies..."
 
 yarn config set "@fortawesome:registry" https://npm.fontawesome.com/
-yarn config set "//npm.fontawesome.com/:_authToken" $NPM_TOKEN
+yarn config set "//npm.fontawesome.com/:_authToken" ${NPM_TOKEN}
 
 
 if [[  "${APP_ENV}" == "production" ]]; then

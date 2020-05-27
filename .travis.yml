@@ -10,7 +10,7 @@ cache:
     - "$HOME/google-cloud-sdk/"
     - "$HOME/docker_images/"
 
-before_install:
+before_script:
 - docker load -i $HOME/docker_images/images.tar || true
 
 before_cache:
@@ -26,15 +26,15 @@ env:
     - CLOUDSDK_CORE_DISABLE_PROMPTS=1
 
 stages:
-  - test
+  # - test
   - deploy
 
 jobs:
   include:
-    # - stage: test
-    #   install: npm install
-    #   script:
-    #     - npm test
+    - stage: test
+      install: yarn install
+      script:
+        - yarn test
 
     - stage: Deploy
       if: (branch IN (k8s-deployment-dev) OR tag IS present) AND type NOT IN (pull_request, cron)
