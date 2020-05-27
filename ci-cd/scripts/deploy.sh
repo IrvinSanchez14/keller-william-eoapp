@@ -59,9 +59,10 @@ if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER_NAME" ]]; then
   echo "Deploying to kubernetes"
   gcloud container clusters get-credentials $K8S_CLUSTER_NAME --zone $K8S_CLUSTER_ZONE
   sudo chmod 755 $KUBECONFIG
-  ct kubectl config get-contexts
-  ct kubectl get nodes
-  ct kubectl cluster-info
+  kubectl config get-contexts
+  kubectl get nodes
+  kubectl cluster-info
+  helm list --all-namespaces
   # echo "Context: $K8S_CONTEXT"
   # export KUBECONFIG=$HOME/kubeconfig
   # kubectl config use-context $K8S_CONTEXT;
