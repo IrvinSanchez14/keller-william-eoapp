@@ -3,17 +3,17 @@ import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import Typography from '@material-ui/core/Typography';
 
+import { FormApp } from 'src/components/FormApp';
+import StepWrapper from 'src/components/StepWrapper';
+import { FormFirmInformation } from './form';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
-import { FormApp } from 'src/components/FormApp';
 import { fullNameValidateSchema } from 'src/helpers/validations';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { FormFirmInformation } from './form';
 
 type FullNameProps = IAppStoreProps;
 
@@ -26,38 +26,40 @@ type FormFields = {
 
 @withStyles(styles)
 export class FirmInformation extends Component<FullNameProps> {
-  isButtonLoading = false;
-  isInitValid = false;
+  state = {
+    isButtonLoading: false,
+    isInitValid: false,
+  };
 
-  nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
-    this.isButtonLoading = true;
+  componentDidMount() {
+    const { dispatch } = this.props;
+    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
+  }
+
+  nextStep = (values: any, actions: FormikHelpers<FormFields>) => {
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    this.setState({ isButtonLoading: true });
+    storeFirmConfirmation(dispatch, values);
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
   };
 
-  async componentDidMount() {
-    const { dispatch } = this.props;
-    setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
-  }
-
   render() {
     const isLoading = false;
-    const { classes, formData, dispatch } = this.props;
+    const { classes, formData, dispatch, intl } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
-          heading={this.props.intl.get('app.head.form.firm.part.one')}
-          subHeading={['', this.props.intl.get('app.subhead.form.firm.part.one')]}
-          bottomContent={this.props.intl.getHTML('app.link.condition.firm.part.one')}
+          avatarText={intl.get('app.avatar.text.firm.part.one')}
+          heading={intl.get('app.head.form.firm.part.one')}
+          subHeading={['', intl.get('app.subhead.form.firm.part.one')]}
+          bottomContent={intl.getHTML('app.link.condition.firm.part.one')}
           classHeader={classnames(classes.stepHeader)}
           classBottom={classnames(classes.stepBottom)}
         >
           <Typography className={classnames(classes.titleForm)}>
-            {this.props.intl.get('app.title.form.firm.part.one')}
+            {intl.get('app.title.form.firm.part.one')}
           </Typography>
           <FormApp
             initialValues={{
@@ -71,7 +73,7 @@ export class FirmInformation extends Component<FullNameProps> {
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}

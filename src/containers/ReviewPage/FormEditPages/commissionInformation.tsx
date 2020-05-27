@@ -162,7 +162,8 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '6px 0px 0px 0px',
   },
   customButtonStyles: {
-    fontWeight: 500,
+    fontWeight: 'normal',
+    fontFamily: 'Effra Medium',
   },
 
   divTypo: {

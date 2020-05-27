@@ -3,7 +3,6 @@ import NavigationReview from 'src/components/NavigationReview';
 import FooterReview from 'src/components/FooterReview';
 import Layout from 'src/components/LayoutInformationReview';
 import AppState from 'src/store/models/AppState';
-import { AppStateContextProvider, useAppContext } from 'src/store';
 
 const getWidth = (): number =>
   process.browser
@@ -36,16 +35,14 @@ const ReviewPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
 
   return (
     <>
-      <AppStateContextProvider>
-        <NavigationReview
-          sectionPage=":REVIEW"
-          width={width}
-          isTablet={isTablet}
-          isMobile={isMobile}
-        />
-        <Layout textHeader="Please review your application before submitting" stateServer={state} />
-        <FooterReview sessionId={state.id} />
-      </AppStateContextProvider>
+      <NavigationReview
+        sectionPage=":REVIEW"
+        width={width}
+        isTablet={isTablet}
+        isMobile={isMobile}
+      />
+      <Layout textHeader="Please review your application before submitting" stateServer={state} />
+      <FooterReview sessionId={state.id} />
     </>
   );
 };

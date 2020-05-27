@@ -26,15 +26,22 @@ type FormFields = {
 
 @withStyles(styles)
 export class AgentInformationDesignation extends Component<FullNameProps> {
-  isInitValid = false;
-  isButtonLoading = false;
+  state = {
+    isInitValid: false,
+    isButtonLoading: false,
+  };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    setInformationPage(dispatch, 6, categoriesName.agentInformation);
+  }
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     const parsedValues = {
       ...values,
       numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
     };
-    this.isButtonLoading = true;
+    this.setState({ isButtonLoading: true });
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
     storeAgentInformation(dispatch, parsedValues); //TODO put state in localstorage
@@ -42,18 +49,6 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 7, categoriesName.agentInformation);
   };
-
-  async componentDidMount() {
-    const { dispatch } = this.props;
-    const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-      this.isInitValid = await agentSpecialValidateSchema.isValid({
-        numberAgentSpecialDesignation:
-          formData.app.data.agentInformation.numberAgentSpecialDesignation,
-      });
-    }
-    setInformationPage(dispatch, 6, categoriesName.agentInformation);
-  }
 
   render() {
     const isLoading = false;
@@ -73,12 +68,12 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
               numberAgentSpecialDesignation:
                 formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
             }}
-            isInitValid={this.isInitValid}
+            isInitValid
             validationSchema={agentSpecialValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
