@@ -17,15 +17,15 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
-    "@zeit/next-css": "^1.0.1",
     "ky": "^0.19.1",
     "ky-universal": "^0.6.0",
     "next": "^9.4.2",
-    "next-images": "^1.4.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-intl-universal": "^2.2.5",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "next-images": "^1.4.0",
+    "@zeit/next-css": "^1.0.1"
   },
   "resolutions": {
     "jss": "^10.1.1"
@@ -51,8 +51,8 @@
     "@material-ui/core": "^4.9.12",
     "@types/classnames": "^2.2.10",
     "@types/lodash": "^4.14.150",
-    "@types/node": "^14.0.5",
-    "@types/react": "^16.9.35",
+    "@types/node": "^13.13.2",
+    "@types/react": "^16.9.34",
     "@types/react-modal": "^3.10.5",
     "@types/styled-components": "^5.1.0",
     "@typescript-eslint/eslint-plugin": "^2.29.0",
@@ -81,7 +81,7 @@
     "styled-reset": "^4.1.4",
     "text-mask-addons": "^3.8.0",
     "ts-loader": "^7.0.1",
-    "typescript": "^3.9.3",
+    "typescript": "^3.8.3",
     "yup": "^0.28.5"
   },
   "husky": {
