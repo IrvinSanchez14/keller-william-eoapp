@@ -1,0 +1,14 @@
+version: '3.4'
+services: 
+  web:
+    build:
+      context: .
+      target: base
+      dockerfile: ci-cd/docker/Dockerfile
+      args:
+        NPM_TOKEN: ${NPM_TOKEN}
+        NODE_ENV: ${NODE_ENV}
+    volumes:
+      - "./:/workspace"
+    ports:
+      - "3000:3000"

@@ -7,13 +7,13 @@
     "node": "^12.16.3"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node_modules/.bin/next dev",
+    "build": "node_modules/.bin/next build",
+    "start": "node_modules/.bin/next start -p 3000",
     "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet",
-    "export": "npm run build && next export",
+    "export": "yarn build && next export",
     "format": "prettier --no-editorconfig \"**/*.+(js|jsx|json|yml|yaml|md|vue)\" --list-different && echo 'Prettier complete.'",
-    "export:sitemap": "npm run build && next export && node next-sitemap-generator.js"
+    "export:sitemap": "yarn build && next export && node next-sitemap-generator.js"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
