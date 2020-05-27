@@ -12,8 +12,9 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 
 echo "Install helm"
 HELM_VERSION="v3.1.2"
-wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > /usr/local/bin/helm && \
- chmod +x /usr/local/bin/helm
+wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > helm && \
+sudo chmod +x ./helm && \
+sudo mv ./helm /usr/local/bin/helm
 
 echo "Setup gcloud sdk"
 if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
