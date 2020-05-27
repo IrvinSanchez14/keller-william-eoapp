@@ -145,8 +145,8 @@ const StyledButtonCheckContainer = styled.div`
 
 const StyledStepButtonCheck = styled.div<{ margin?: string }>`
   background-color: ${({ theme }) => theme.colors.redCheck};
-  height: 35px;
-  width: 37px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -519,7 +519,7 @@ const PersonsTestimony = styled.div`
   flex-direction: column;
 `;
 
-const PersonsTestimonyHeader = styled.p`
+const PersonsTestimonyHeader = styled.h1`
   font-size: 48px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -661,7 +661,7 @@ const StepsHeroSection = (): JSX.Element => {
           <StyledStepPresentItem showShadow width="270px">
             <StyledButtonCheckContainer>
               <StyledStepButtonCheck margin="-14px 7px 0 0">
-                <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
+                <i style={{ color: theme.colors.white, fontSize: 18 }} className="fas fa-check" />
               </StyledStepButtonCheck>
             </StyledButtonCheckContainer>
             <StyledStepPresentDogIcon>
@@ -730,9 +730,11 @@ const StepsHeroSection = (): JSX.Element => {
                 <StyledPartnerPrice>$1,700</StyledPartnerPrice>
                 <StyledPartnerMoth>/mo</StyledPartnerMoth>
               </StyledPartnerBlock>
-              <StyledStepButtonCheck margin="29px -17px 0 0;">
-                <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
-              </StyledStepButtonCheck>
+              <div>
+                <StyledStepButtonCheck margin="25px -17px 0 0;">
+                  <i style={{ color: theme.colors.white, fontSize: 18 }} className="fas fa-check" />
+                </StyledStepButtonCheck>
+              </div>
             </StyledPartnerInformation>
           </StyledPartnersSuscription>
         </StyledStepSection>
