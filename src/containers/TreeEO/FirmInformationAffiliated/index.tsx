@@ -1,47 +1,26 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 
+import { FormApp } from 'src/components/FormApp';
+import StepWrapper from 'src/components/StepWrapper';
+import { FormFirmInformationAffiliated } from './form';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import StepWrapper from 'src/components/StepWrapper';
 import { isFirmOwnedValidateSchema } from 'src/helpers/validations';
-import { FormApp } from 'src/components/FormApp';
 import { categoriesName } from 'src/helpers/constants';
-import { FormFirmInformationAffiliated } from './form';
+
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
+import { FormikProps } from 'formik';
 
-type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
-
-export const propertyUsageFields = [
-  {
-    id: 1,
-    name: 'isFirmOwned',
-    value: true,
-    text: 'YES',
-  },
-  {
-    id: 2,
-    name: 'isFirmOwned',
-    value: false,
-    text: 'NO',
-  },
-];
+type FirmInformationProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
-export class FirmInformationAffiliated extends Component<FullNameProps> {
-  isInitValid = false;
+export class FirmInformationAffiliated extends Component<FirmInformationProps> {
   state = {
     isFirmOwned: this.props.formData.app.data.firmInformation.isFirmOwned,
-  };
-
-  nextStep = async (values: any, actions: any) => {
-    const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
-    await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
-    setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
+    isButtonLoading: false,
   };
 
   async componentDidMount() {
@@ -49,18 +28,27 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
     setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   }
 
-  handleChange = (value: boolean, formikProps: any) => {
+  nextStep = async (values: any, actions: any) => {
+    const { dispatch, formData } = this.props;
+    this.setState({ isButtonLoading: true });
+    storeFirmConfirmation(dispatch, values);
+    await this.props.onSubmit?.();
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
+    setInformationPage(dispatch, 5, categoriesName.firmConfirmation);
+  };
+
+  handleChange = (value: boolean, formikProps: FormikProps<any>) => {
     formikProps.setFieldValue('isFirmOwned', value);
   };
 
   render() {
     const isLoading = false;
-    const { formData, classes } = this.props;
+    const { formData, classes, intl } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.four')}
-          heading={this.props.intl.get('app.head.form.firm.part.four')}
+          avatarText={intl.get('app.avatar.text.firm.part.four')}
+          heading={intl.get('app.head.form.firm.part.four')}
           classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
@@ -72,7 +60,7 @@ export class FirmInformationAffiliated extends Component<FullNameProps> {
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={false}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={this.props.dispatch}
             progressBar={formData.app.metadata.progressBar}

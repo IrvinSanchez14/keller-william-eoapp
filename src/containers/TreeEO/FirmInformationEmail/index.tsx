@@ -1,34 +1,38 @@
 import { Component } from 'react';
 import classnames from 'classnames';
+import { FormikHelpers } from 'formik';
 
-import isEmpty from 'lodash/isEmpty';
-
+import StepWrapper from 'src/components/StepWrapper';
+import { FormApp } from 'src/components/FormApp';
+import { FormFirmInformationEmail } from './form';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
 import { fullEmailValidateSchema } from 'src/helpers/validations';
-
-import StepWrapper from 'src/components/StepWrapper';
-import { FormApp } from 'src/components/FormApp';
+import { isHttpError } from 'src/helpers/typeGuards';
+import { categoriesName } from 'src/helpers/constants';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
-import { categoriesName } from 'src/helpers/constants';
-import { FormFirmInformationEmail } from './form';
-import { FormikHelpers } from 'formik';
-import { isHttpError } from 'src/helpers/typeGuards';
 
-type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
+type FirmInformationProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 @withStyles(styles)
-export class FirmInformationEmail extends Component<FullNameProps> {
-  isInitValid = false;
+export class FirmInformationEmail extends Component<FirmInformationProps> {
+  state = {
+    isButtonLoading: false,
+  };
+
+  componentDidMount() {
+    const { dispatch, formData } = this.props;
+    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
+  }
 
   nextStep = async (values: any, actions: FormikHelpers<any>) => {
-    actions.setSubmitting(true);
-    values.suite = values.suite === '' ? null : values.suite;
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    this.setState({ isButtonLoading: true });
+    values.suite = values.suite === '' ? null : values.suite;
+    storeFirmConfirmation(dispatch, values);
     try {
       await this.props.onSubmit?.();
       changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
@@ -42,28 +46,14 @@ export class FirmInformationEmail extends Component<FullNameProps> {
     }
   };
 
-  async componentDidMount() {
-    const { dispatch, formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-      this.isInitValid = await fullEmailValidateSchema.isValid({
-        streetAddress: formData.app.data.firmInformation.streetAddress,
-        suite: formData.app.data.firmInformation.suite,
-        phoneNumber: formData.app.data.firmInformation.phoneNumber,
-        faxNumber: formData.app.data.firmInformation.faxNumber,
-        email: formData.app.data.firmInformation.email,
-      });
-    }
-    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
-  }
-
   render() {
     const isLoading = false;
-    const { formData, dispatch, classes } = this.props;
+    const { formData, dispatch, classes, intl } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.one')}
-          heading={this.props.intl.get('app.head.form.firm.part.two')}
+          avatarText={intl.get('app.avatar.text.firm.part.one')}
+          heading={intl.get('app.head.form.firm.part.two')}
         >
           <FormApp
             initialValues={{
@@ -78,7 +68,7 @@ export class FirmInformationEmail extends Component<FullNameProps> {
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={false}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}

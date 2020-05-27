@@ -15,44 +15,43 @@ import { styles } from './styles';
 import { categoriesName } from 'src/helpers/constants';
 import { FormFirmInformationBroker } from './form';
 
-type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
+type FirmInformationProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
-  contactName: string;
-  brokerName: string;
-  kwMarketCenterName: string;
-  yearEstablished: number;
+  dateLicensedBrokerAgent: string;
+  dateLicensedBroker: string;
 };
 
 @withStyles(styles)
-export class FirmInformationBroker extends Component<FullNameProps> {
-  isInitValid = false;
-  isButtonLoading = false;
+export class FirmInformationBroker extends Component<FirmInformationProps> {
+  state = {
+    isButtonLoading: false,
+    isInitValid: false,
+  };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
+  }
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
-    this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
+    this.setState({ isButtonLoading: true });
     actions.setSubmitting(true);
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    storeFirmConfirmation(dispatch, values);
     await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 4, categoriesName.firmConfirmation);
   };
 
-  async componentDidMount() {
-    const { dispatch } = this.props;
-    const { formData } = this.props;
-    setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
-  }
-
   render() {
     const isLoading = false;
-    const { classes, formData, dispatch } = this.props;
+    const { classes, formData, dispatch, intl } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text.firm.part.three')}
-          heading={this.props.intl.get('app.head.form.firm.part.three')}
+          avatarText={intl.get('app.avatar.text.firm.part.three')}
+          heading={intl.get('app.head.form.firm.part.three')}
           classHeader={classnames(classes.stepHeader)}
         >
           <FormApp
@@ -61,12 +60,12 @@ export class FirmInformationBroker extends Component<FullNameProps> {
                 formData.app.data.firmInformation.dateLicensedBrokerAgent || '',
               dateLicensedBroker: formData.app.data.firmInformation.dateLicensedBroker || '',
             }}
-            isInitValid={this.isInitValid}
+            isInitValid={this.state.isInitValid}
             validationSchema={dateBrokerValidateSchema}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}

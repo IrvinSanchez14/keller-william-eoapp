@@ -1,10 +1,11 @@
+import { FormikProps } from 'formik';
 import { Typography } from '@material-ui/core';
 import classnames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
-import { Row, Column } from 'src/components/LayoutWrapper/Flex';
+import { Column } from 'src/components/LayoutWrapper/Flex';
 import { dateMask } from 'src/utils';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-export const FormFirmInformationBroker = (formikProps: any) => {
+export const FormFirmInformationBroker = (formikProps: FormikProps<any>) => {
   const classes = useStyles();
   return (
     <>
