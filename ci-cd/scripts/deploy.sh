@@ -6,7 +6,7 @@ source $HOME/google-cloud-sdk/path.bash.inc
 
 export KUBECONFIG=$HOME/kubeconfig
 
-sudo touch $KUBECONFIG && sudo chmod 755 $KUBECONFIG
+sudo touch $KUBECONFIG
 
 
 TAG=latest
@@ -58,6 +58,7 @@ esac
 if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER_NAME" ]]; then
   echo "Deploying to kubernetes"
   gcloud container clusters get-credentials $K8S_CLUSTER_NAME --zone $K8S_CLUSTER_ZONE
+  sudo chmod 755 $KUBECONFIG
   ct kubectl config get-contexts
   ct kubectl get nodes
   ct kubectl cluster-info
