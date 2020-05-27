@@ -145,8 +145,8 @@ const StyledButtonCheckContainer = styled.div`
 
 const StyledStepButtonCheck = styled.div<{ margin?: string }>`
   background-color: ${({ theme }) => theme.colors.redCheck};
-  height: 35px;
-  width: 37px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -164,6 +164,7 @@ interface StyledStepPresentBuildingProps {
   padding?: string;
   mobilePadding?: string;
   width?: string;
+  paddingTop?: number;
 }
 
 const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
@@ -171,6 +172,11 @@ const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
   display: flex;
   flex-direction: column;
   padding-top: 30px;
+  ${({ paddingTop }) =>
+    paddingTop &&
+    `
+    padding-top: ${paddingTop}px;
+  `}
   ${({ padding }) =>
     padding &&
     `
@@ -186,12 +192,14 @@ const StyledStepPresentBuilding = styled.div<StyledStepPresentBuildingProps>`
     theme.tablet`
     text-align: center;
     width: 100%;
+    padding-top: 45px;
   `};
   ${({ theme }) =>
     theme &&
     theme.phone`
     text-align: center;
     width: 100%;
+    padding-top: 0px;
   `};
 `;
 
@@ -519,7 +527,7 @@ const PersonsTestimony = styled.div`
   flex-direction: column;
 `;
 
-const PersonsTestimonyHeader = styled.p`
+const PersonsTestimonyHeader = styled.h1`
   font-size: 48px;
   font-weight: bold;
   letter-spacing: -1px;
@@ -624,15 +632,17 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       padding: '50px 30px',
       // mobilePadding: '10px 30px',
       width: '100%',
+      paddingTop: 0,
     },
     {
       numberStep: 'STEP TWO',
       headerText: 'Enjoy exclusive benefits',
       descriptionStep:
         'Keller Covered has done the work for you and negotiated rates for you at no extra cost.',
-      padding: '150px 30px',
+      padding: '10px 30px',
       mobilePadding: '-100px 30px',
       width: '100%',
+      paddingTop: 155,
     },
     {
       numberStep: 'STEP THREE',
@@ -642,10 +652,14 @@ const renderStepInformation = (numberStep: number): JSX.Element => {
       padding: '10px 30px',
       mobilePadding: '40px 30px',
       width: '100%',
+      paddingTop: 0,
     },
   ];
   return (
-    <StyledStepPresentBuilding width={steps[numberStep].width}>
+    <StyledStepPresentBuilding
+      paddingTop={steps[numberStep].paddingTop}
+      width={steps[numberStep].width}
+    >
       <StyledStepText>{steps[numberStep].numberStep}</StyledStepText>
       <StyledStepHeader insertBr={numberStep < 1}>{steps[numberStep].headerText}</StyledStepHeader>
       <StyledStepDescription>{steps[numberStep].descriptionStep}</StyledStepDescription>
@@ -661,7 +675,7 @@ const StepsHeroSection = (): JSX.Element => {
           <StyledStepPresentItem showShadow width="270px">
             <StyledButtonCheckContainer>
               <StyledStepButtonCheck margin="-14px 7px 0 0">
-                <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
+                <i style={{ color: theme.colors.white, fontSize: 18 }} className="fas fa-check" />
               </StyledStepButtonCheck>
             </StyledButtonCheckContainer>
             <StyledStepPresentDogIcon>
@@ -730,16 +744,18 @@ const StepsHeroSection = (): JSX.Element => {
                 <StyledPartnerPrice>$1,700</StyledPartnerPrice>
                 <StyledPartnerMoth>/mo</StyledPartnerMoth>
               </StyledPartnerBlock>
-              <StyledStepButtonCheck margin="29px -17px 0 0;">
-                <i style={{ color: theme.colors.white, fontSize: 20 }} className="fas fa-check" />
-              </StyledStepButtonCheck>
+              <div>
+                <StyledStepButtonCheck margin="25px -17px 0 0;">
+                  <i style={{ color: theme.colors.white, fontSize: 18 }} className="fas fa-check" />
+                </StyledStepButtonCheck>
+              </div>
             </StyledPartnerInformation>
           </StyledPartnersSuscription>
         </StyledStepSection>
         <StyledLine directionContent>
-          <StyledShapeLine height="43px" />
+          <StyledShapeLine height="170px" />
           <StyledShapeCircle />
-          <StyledShapeLine height="400px" />
+          <StyledShapeLine height="250px" />
         </StyledLine>
         <StyledStepSection>{renderStepInformation(1)}</StyledStepSection>
       </StyledStepsContainer>
