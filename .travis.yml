@@ -5,16 +5,16 @@ language: node_js
 node_js:
   - '12.16.2'
   
-cache:
-  directories:
-    - "$HOME/google-cloud-sdk/"
-    - "$HOME/docker_images/"
+# cache:
+#   directories:
+#     - "$HOME/google-cloud-sdk/"
+#     - "$HOME/docker_images/"
 
-before_script:
-- docker load -i $HOME/docker_images/images.tar || true
+# before_script:
+# - docker load -i $HOME/docker_images/images.tar || true
 
-before_cache:
-- docker save -o $HOME/docker_images/images.tar $(docker images -a -q)
+# before_cache:
+# - docker save -o $HOME/docker_images/images.tar $(docker images -a -q)
 
 services:
   - docker

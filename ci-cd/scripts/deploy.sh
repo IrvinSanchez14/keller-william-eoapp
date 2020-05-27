@@ -2,9 +2,12 @@
 
 set -e
 
+source $HOME/google-cloud-sdk/path.bash.inc
+
 export KUBECONFIG=$HOME/kubeconfig
 
-source $HOME/google-cloud-sdk/path.bash.inc
+sudo touch $KUBECONFIG && sudo chmod 755 $KUBECONFIG
+
 
 TAG=latest
 
@@ -28,33 +31,33 @@ docker push gcr.io/keller-covered/$DOCKER_IMAGE_NAME:$TAG;
 
 echo "CHECK clusters"
 
-K8S_CLUSTER=""
+K8S_CLUSTER_NAME=""
+K8S_CLUSTER_ZONE="us-central1-a"
 
 case $TRAVIS_BRANCH in
   "k8s-deployment-dev")
-    K8S_CLUSTER="k8s-cluster-development"
+    K8S_CLUSTER_NAME="k8s-cluster-development"
     ;;
   # "deployment")
-  #   K8S_CLUSTER="gke_keller-covered_us-central1-a_kellercovered-dev"
+  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_kellercovered-dev"
   #   ;;
   # "staging")
-  #   K8S_CLUSTER="gke_keller-covered_us-central1-a_staging"
+  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_staging"
   #   ;;
   # "master")
-  #   K8S_CLUSTER="gke_keller-covered_us-central1-a_gke-cluster-prod"
+  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_gke-cluster-prod"
   #   ;;
   # "v"*)
-  #   K8S_CLUSTER="gke_keller-covered_us-central1-a_staging"
+  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_staging"
   #   ;;
   # *)
-  #   K8S_CLUSTER="no-context"
+  #   K8S_CLUSTER_NAME="no-context"
   #   ;;
 esac
 
-if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER" ]]; then
+if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER_NAME" ]]; then
   echo "Deploying to kubernetes"
-  gcloud container clusters get-credentials $K8S_CLUSTER --zone us-central1-a
-  sudo chmod 755 $HOME/kubeconfig
+  gcloud container clusters get-credentials $K8S_CLUSTER_NAME --zone $K8S_CLUSTER_ZONE
   ct kubectl config get-contexts
   ct kubectl get nodes
   ct kubectl cluster-info
