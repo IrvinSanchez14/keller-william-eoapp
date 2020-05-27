@@ -133,11 +133,6 @@ export class FormApp extends Component<CustomFormProps> {
             customWidthMobile: 'auto',
             customWidthDesktop: 225,
           };
-
-          const x = notDisabled
-            ? false
-            : disabled || isLoading || !isValid || isCustomValid === false || isSubmitting;
-
           return (
             <Form className={classnames(classes.form, className, { [classes.row]: isRowForm })}>
               {children({

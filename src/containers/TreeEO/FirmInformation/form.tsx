@@ -1,7 +1,9 @@
+import { FormikProps } from 'formik';
+
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { getFullNameFields } from 'src/helpers/fieldsForm';
 
-export const FormFirmInformation = (formikProps: any) => {
+export const FormFirmInformation = (formikProps: FormikProps<any>) => {
   return getFullNameFields().map(
     ({ name, type, customWidth, label, numberMask, setNumberMask }) => (
       <FielControlForm
