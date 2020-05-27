@@ -53,6 +53,8 @@ if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER" ]]; then
   echo "Deploying to kubernetes"
   gcloud container clusters get-credentials $K8S_CLUSTER --zone us-central1-a
   ct kubectl config get-contexts
+  ct kubectl get nodes
+  ct kubectl cluster-info
   # echo "Context: $K8S_CONTEXT"
   # export KUBECONFIG=$HOME/kubeconfig
   # kubectl config use-context $K8S_CONTEXT;
