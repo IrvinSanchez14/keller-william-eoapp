@@ -19,6 +19,7 @@ export default {
   colors: {
     white: '#fff',
     mortgageRed: '#b3060f',
+    redCheck: '#ce011f',
     primaryDark: '#343342',
     darkGray: '#4d4d4f',
     gray: '#676672',

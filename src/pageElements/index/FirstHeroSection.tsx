@@ -321,7 +321,7 @@ export default function FirstHeroSection(): React.ReactElement {
           <FetchDiscountedText>quotes exclusive to Keller </FetchDiscountedText>
           <FetchDiscountedText>Williams Market Centers </FetchDiscountedText>
           <FetchDiscountedText>
-            in <PrimaryColor>&nbsp;less than 1 hour.</PrimaryColor>
+            in <PrimaryColor>&nbsp;less than 1 hour</PrimaryColor>.
           </FetchDiscountedText>
         </FetchDiscountedContainer>
         <ButtonQuoteContainer>
