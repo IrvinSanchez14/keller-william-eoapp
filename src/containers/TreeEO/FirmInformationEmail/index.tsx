@@ -39,8 +39,9 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
       setInformationPage(dispatch, 3, categoriesName.firmConfirmation);
     } catch (err) {
       if (!isHttpError(err) || err.response.status !== 422) return;
-      actions.setFieldError('email', 'This email aready exists');
+      actions.setFieldError('email', 'This email already exists');
       actions.setFieldTouched('email', true, false);
+      this.setState({ isButtonLoading: false });
     } finally {
       actions.setSubmitting(false);
     }
