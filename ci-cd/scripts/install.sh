@@ -9,6 +9,7 @@ echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
 CI_BIN_PATH=$HOME/ci-tools/bin
 
 if [ ! -d "$CI_BIN_PATH" ]; then
+
   mkdir -p "$CI_BIN_PATH"
 
   docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/semver /workspace

@@ -8,7 +8,7 @@ node_js:
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
-    - "$HOME/ci-tools/bin/"
+    - "$HOME/ci-tools/"
 #     - "$HOME/docker_images/"
 
 # before_script:
