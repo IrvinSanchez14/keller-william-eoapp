@@ -71,6 +71,7 @@ interface StyledStepSectionProps {
   justifyContent?: string;
   alignItems?: string;
   padding?: string;
+  mobileMargin?: string;
 }
 
 const StyledStepSection = styled.div<StyledStepSectionProps>`
@@ -85,7 +86,7 @@ const StyledStepSection = styled.div<StyledStepSectionProps>`
   ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`};
   ${({ justifyContent }) => justifyContent && `justify-content: ${justifyContent}`};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
-  // ${({ padding }) => padding && `padding: ${padding}`};
+  ${({ theme, mobileMargin }) => mobileMargin && theme.phone`margin: ${mobileMargin}`};
 `;
 
 interface StyledStepPresentItemProps {
@@ -97,12 +98,13 @@ interface StyledStepPresentItemProps {
 
 const StyledStepPresentItem = styled.div<StyledStepPresentItemProps>`
   min-width: 180px;
-  max-width: 370px;
+  max-width: 370px
   min-height: 90px;
   max-height: 300px;
   flex-direction: row;
   border-radius: 5px;
   background-color: ${theme.colors.white};
+  justify-content: space-around;
   ${({ showShadow }) =>
     showShadow &&
     `
@@ -113,16 +115,9 @@ const StyledStepPresentItem = styled.div<StyledStepPresentItemProps>`
   ${({ display }) => display && `display: flex;`};
   ${({ width }) => width && `width: ${width}`};
   ${({ flexDirection }) => flexDirection && `flex-direction: ${flexDirection}`}
-  justify-content: space-around;
   ${({ theme }) => theme.tablet`
     width: 100%;
-    max-height: 380px;
-    height: 380px;
-  `};
-  ${({ theme }) => theme.tablet`
-    width: 100%;
-    max-height: 350px;
-    height: 350px;
+    max-width: 274px;
   `};
 `;
 
@@ -259,6 +254,10 @@ const StyledStepHeader = styled.h1<{ insertBr?: boolean }>`
     theme.tablet`
     max-width: 420px;
   `};
+  ${({ theme }) =>
+    theme.tablet`
+    max-width: 490px;
+  `};
   ${({ insertBr, theme }) =>
     insertBr &&
     theme.phone`
@@ -272,6 +271,10 @@ const StyledStepDescription = styled.span`
   font-size: 18px;
   line-height: 26px;
   color: ${({ theme }) => theme.colors.paragraph.darkGray};
+  ${({ theme }) =>
+    theme.tablet`
+    max-width: 355px;
+  `};
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -317,9 +320,10 @@ const StyledPartnerBlock = styled.div`
   display: flex;
 `;
 
-const StyledPartnerPrice = styled.h3`
-  font-size: 21px;
-  line-height: 23px;
+const StyledPartnerPrice = styled.p`
+  font-size: 21.57px;
+  line-height: 23.23px;
+  letter-spacing: 0;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -333,8 +337,9 @@ const StyledPartnerPrice = styled.h3`
 `;
 
 const StyledPartnerMoth = styled.p`
-  font-size: 11px;
-  line-height: 9px;
+  font-size: 11.61px;
+  line-height: 9.12px;
+  letter-spacing: 0;
   ${({ theme }) =>
     theme &&
     theme.phone`
@@ -623,6 +628,13 @@ const PersonName = styled.h1`
   color: ${({ theme }) => theme.colors.darkBlue};
 `;
 
+const CardHeroHelpImage = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 26px;
+`;
+
 const renderStepInformation = (numberStep: number): JSX.Element => {
   const steps = [
     {
@@ -672,7 +684,7 @@ const StepsHeroSection = (): JSX.Element => {
     <>
       <StyledStepsContainer padding="60px 90px 0 90px">
         <StyledStepSection>
-          <StyledStepPresentItem showShadow width="270px">
+          <StyledStepPresentItem showShadow width="274px">
             <StyledButtonCheckContainer>
               <StyledStepButtonCheck margin="-14px 7px 0 0">
                 <i style={{ color: theme.colors.white, fontSize: 18 }} className="fas fa-check" />
@@ -688,12 +700,11 @@ const StepsHeroSection = (): JSX.Element => {
               />
               <Span margin="13px 10px 0 10px">I'M HERE TO HELP</Span>
             </StyledStepPresentDogIcon>
-            <StyledStepPresentBuilding>
-              <StyledImgGroup
-                padding="0 28px 0 28px"
-                height="110px"
-                width="175px"
-                alt="group"
+            <CardHeroHelpImage>
+              <img
+                width={118.19}
+                height={108.1}
+                style={{ marginTop: 30.22 }}
                 src="/static/img/Group.png"
               />
               <StyledStepPresentBuildingText
@@ -703,14 +714,14 @@ const StepsHeroSection = (): JSX.Element => {
               >
                 Commercial
               </StyledStepPresentBuildingText>
-            </StyledStepPresentBuilding>
+            </CardHeroHelpImage>
           </StyledStepPresentItem>
         </StyledStepSection>
         <StyledLine>
           <StyledShapeCircle />
-          <StyledShapeLine height="150px" />
+          <StyledShapeLine height="175px" />
         </StyledLine>
-        <StyledStepSection>{renderStepInformation(0)}</StyledStepSection>
+        <StyledStepSection mobileMargin="45px 0 0 0">{renderStepInformation(0)}</StyledStepSection>
       </StyledStepsContainer>
       <StyledStepsContainer mobilePadding="0px 0px 10px 0px" padding="0 90px 0 90px">
         <StyledStepSection>
@@ -757,7 +768,7 @@ const StepsHeroSection = (): JSX.Element => {
           <StyledShapeCircle />
           <StyledShapeLine height="250px" />
         </StyledLine>
-        <StyledStepSection>{renderStepInformation(1)}</StyledStepSection>
+        <StyledStepSection mobileMargin="45px 0 0 0">{renderStepInformation(1)}</StyledStepSection>
       </StyledStepsContainer>
       <StyledStepsContainer
         tabletPadding="140px 0 0 0"
@@ -770,7 +781,7 @@ const StepsHeroSection = (): JSX.Element => {
             <StyledTextContainer>
               <DogIcon size="40px" mobileSize="34px" />
               <Span margin="10px 0 0 0" color="white" letterSpacing="1px">
-                CONGRATS, YOU&apos;RE INSURE!
+                CONGRATS, YOU&apos;RE INSURED!
               </Span>
             </StyledTextContainer>
             <PartnerTile price="$1,700" />
@@ -781,7 +792,7 @@ const StepsHeroSection = (): JSX.Element => {
           <StyledShapeLine height="210px" />
           <StyledShapeCircle />
         </StyledLine>
-        <StyledStepSection>{renderStepInformation(2)}</StyledStepSection>
+        <StyledStepSection mobileMargin="45px 0 0 0">{renderStepInformation(2)}</StyledStepSection>
       </StyledStepsContainer>
       <PersonsTestimony>
         <div style={{ justifyContent: 'center', display: 'flex' }}>
@@ -824,7 +835,10 @@ const StepsHeroSection = (): JSX.Element => {
         <StyledBlueContainer>
           <StyledBlueHeaderText>Let&apos;s get you covered</StyledBlueHeaderText>
           <StyledBlueInfoText>A new way to shop for E&O Insurance!</StyledBlueInfoText>
-          <StyledBlueButton className="mediumFont" href="/eoapplication">
+          <StyledBlueButton
+            className="mediumFont"
+            href="https://eo.kellercovered.com/eoapplication"
+          >
             Get started now
           </StyledBlueButton>
         </StyledBlueContainer>
