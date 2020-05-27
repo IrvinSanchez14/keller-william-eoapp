@@ -9,11 +9,6 @@ sudo mv ./ci-cd/scripts/ct.sh /usr/local/bin/ct
 echo "Pull Request=$TRAVIS_PULL_REQUEST"
 echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
 
-echo "Install kubectl"
-curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
-
 echo "Setup gcloud sdk"
 if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then
   rm -rf $HOME/google-cloud-sdk;
