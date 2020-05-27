@@ -54,6 +54,7 @@ esac
 if [[ $TRAVIS_PULL_REQUEST == "false" && ! -z "$K8S_CLUSTER" ]]; then
   echo "Deploying to kubernetes"
   gcloud container clusters get-credentials $K8S_CLUSTER --zone us-central1-a
+  sudo chmod 755 $HOME/kubeconfig
   ct kubectl config get-contexts
   ct kubectl get nodes
   ct kubectl cluster-info
