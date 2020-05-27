@@ -4,7 +4,7 @@ set -e
 
 export KUBECONFIG=$HOME/kubeconfig
 
-alias ct="docker run -t -v \"$KUBECONFIG:$KUBECONFIG\" -e KUBECONFIG=\"$KUBECONFIG\" emilioforrer/ci-tools:0.3.0 "
+sudo mv ./ci-cd/scripts/ct.sh /usr/local/bin/ct
 
 echo "Pull Request=$TRAVIS_PULL_REQUEST"
 echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
@@ -32,7 +32,7 @@ cp .kube/config $HOME/kubeconfig
 echo "Activate account"
 gcloud auth activate-service-account --key-file $HOME/key-account.json
 gcloud config set project keller-covered
-gcloud config config-helper
+gcloud config config-helper 1>/dev/null
 
 echo "Configure docker"
 gcloud -q auth configure-docker
