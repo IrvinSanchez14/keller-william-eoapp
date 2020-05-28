@@ -21,16 +21,6 @@ fi
 
 sudo cp -r $CI_BIN_PATH/* /usr/local/bin
 
-# echo "Install kubectl"
-# curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-# chmod +x ./kubectl
-# sudo mv ./kubectl /usr/local/bin/kubectl
-
-# echo "Install helm"
-# HELM_VERSION="v3.1.2"
-# wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - | tar -xzO linux-amd64/helm > helm && \
-# sudo chmod +x ./helm && \
-# sudo mv ./helm /usr/local/bin/helm
 
 echo "Setup gcloud sdk"
 if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then

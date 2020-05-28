@@ -15,6 +15,27 @@ docker tag ${DOCKER_IMAGE_NAME} ${DOCKER_IMAGE_NAME}:$DOCKER_IMAGE_TAG;
 docker push ${DOCKER_IMAGE_NAME}:$DOCKER_IMAGE_TAG;
 ```
 
+### Create secret for CI
+
+```bash
+
+kubectl create secret generic ci-cd-secrets -n $NAMESPACE --from-file=values_yaml=ci-cd/k8s/helm-chart/values-local.yaml
+
+# OR
+
+cat << EOF | kubectl apply -f -
+apiVersion: v1
+data:
+  values_yaml: "$(cat ci-cd/k8s/helm-chart/values-local.yaml | base64 -w 0)"
+kind: Secret
+metadata:
+  name: ci-cd-secrets
+  namespace: "${NAMESPACE}"
+type: Opaque
+EOF
+
+```
+
 ## Instalation
 
 ```bash
@@ -40,6 +61,7 @@ sed -i "/appVersion/c\appVersion: $VERSION" k8s/helm-chart/Chart.yaml
 ```bash
 helm uninstall ${REPOSITORY_NAME}
 ```
+
 
 ## Istio
 
