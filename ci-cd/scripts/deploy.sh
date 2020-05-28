@@ -25,25 +25,21 @@ K8S_CLUSTER_ZONE="us-central1-a"
 case ${TRAVIS_BRANCH} in
   "k8s-deployment-dev")
     K8S_CLUSTER_NAME="k8s-cluster-development"
-    TAG=semver inc minor ${TAG}
-    TAG=semver set prerelease  ${TAG} alpha
-    TAG=semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}"
+    TAG=$(semver inc minor ${TAG})
+    TAG=$(semver set prerelease  ${TAG} alpha)
+    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
     ;;
-  # "deployment")
-  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_kellercovered-dev"
-  #   ;;
-  # "staging")
-  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_staging"
-  #   ;;
-  # "master")
-  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_gke-cluster-prod"
-  #   ;;
-  # "v"*)
-  #   K8S_CLUSTER_NAME="gke_keller-covered_us-central1-a_staging"
-  #   ;;
-  # *)
-  #   K8S_CLUSTER_NAME="no-context"
-  #   ;;
+  "k8s-deployment-staging")
+    K8S_CLUSTER_NAME="k8s-cluster-staging"
+    TAG=$(semver inc minor ${TAG})
+    TAG=$(semver set prerelease  ${TAG} beta)
+    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
+    ;;
+  "k8s-deployment-prod")
+    K8S_CLUSTER_NAME="k8s-cluster-production"
+    TAG=$(semver inc minor ${TAG})
+    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
+    ;;
 esac
 
 echo "Push docker image"
@@ -55,7 +51,7 @@ if [[ ${TRAVIS_PULL_REQUEST} == "false" && ! -z "${K8S_CLUSTER_NAME}" ]]; then
   gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone ${K8S_CLUSTER_ZONE}
 
   sudo chmod 755 ${KUBECONFIG}
-  
+
   kubectl get secret ci-cd-secrets -n ${CHART_NAMESPACE} -o json | jq -r '.data.values_yaml' > ci-cd/k8s/helm-chart/values-local.yaml
 
   echo "Upgrading Helm chart";
