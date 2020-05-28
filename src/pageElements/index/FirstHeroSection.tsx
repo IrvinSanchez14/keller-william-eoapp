@@ -255,8 +255,8 @@ const DogPersonImage = styled(SVG)`
 
 const OurStory = styled.div`
   padding-top: 42px;
-  padding-left: 120px;
-  padding-right: 120px;
+  padding-left: 97px;
+  padding-right: 97px;
   ${({ theme }) =>
     theme &&
     theme.tablet`
@@ -317,7 +317,7 @@ export default function FirstHeroSection(): React.ReactElement {
           <KaceyTopText>{`MEET KACEY, HE WILL:`}</KaceyTopText>
         </ContainerDog>
         <FetchDiscountedContainer>
-          <FetchDiscountedText>Fetch discounted E&O </FetchDiscountedText>
+          <FetchDiscountedText>Apply for discounted E&O </FetchDiscountedText>
           <FetchDiscountedText>quotes exclusive to Keller </FetchDiscountedText>
           <FetchDiscountedText>Williams Market Centers </FetchDiscountedText>
           <FetchDiscountedText>
@@ -347,7 +347,7 @@ export default function FirstHeroSection(): React.ReactElement {
               multiple quotes in less than 1 hour.
             </OurStoryDescription>
             <OurStoryDescription secondSection>
-              Quotes are provided at additional costs to you as we have eliminated any middle-man
+              Quotes are provided at no additional costs to you as we have eliminated any middle-man
               fees associated with the process. We are extremely proud to provide the best purchase
               experience in the industry!
             </OurStoryDescription>
