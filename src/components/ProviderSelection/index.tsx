@@ -17,7 +17,7 @@ import { setAppState } from 'src/store/actions/app';
 import { useRouter } from 'next/dist/client/router';
 
 const CardBody = styled.section`
-  padding: 2rem 4rem;
+  padding: 2rem 3.5rem;
   min-height: 450px;
   display: flex;
   flex-direction: column;
