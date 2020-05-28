@@ -53,7 +53,7 @@ if [[ ${TRAVIS_PULL_REQUEST} == "false" && ! -z "${K8S_CLUSTER_NAME}" ]]; then
 
   echo "Upgrading Helm chart";
 
-  sed -i "/appVersion/c\\appVersion: ${VERSION}" ci-cd/k8s/helm-chart/Chart.yaml
+  sed -i "/appVersion/c\\appVersion: ${TAG}" ci-cd/k8s/helm-chart/Chart.yaml
 
   helm upgrade --install ${CHART_NAME} ci-cd/k8s/helm-chart \
                -f ci-cd/k8s/helm-chart/values-local.yaml \
