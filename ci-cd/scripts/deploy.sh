@@ -26,19 +26,16 @@ case ${TRAVIS_BRANCH} in
   "k8s-deployment-dev")
     K8S_CLUSTER_NAME="k8s-cluster-development"
     TAG=$(semver inc minor ${TAG})
-    TAG=$(semver set prerelease  ${TAG} alpha)
-    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
+    TAG=$(semver set prerelease  ${TAG} "alpha.${TRAVIS_BUILD_ID}")
     ;;
   "k8s-deployment-staging")
     K8S_CLUSTER_NAME="k8s-cluster-staging"
     TAG=$(semver inc minor ${TAG})
-    TAG=$(semver set prerelease  ${TAG} beta)
-    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
+    TAG=$(semver set prerelease  ${TAG} "beta.${TRAVIS_BUILD_ID}")
     ;;
   "k8s-deployment-prod")
     K8S_CLUSTER_NAME="k8s-cluster-production"
     TAG=$(semver inc minor ${TAG})
-    TAG=$(semver set metadata    ${TAG} "${TRAVIS_BUILD_ID}-${TRAVIS_COMMIT}")
     ;;
 esac
 
