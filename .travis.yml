@@ -33,10 +33,10 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      install: yarn install
-      script:
-        - yarn test
+    # - stage: test
+    #   install: yarn install
+    #   script:
+    #     - yarn test
 
     - stage: Deploy
       if: (branch IN (k8s-deployment-dev) OR tag IS present) AND type NOT IN (pull_request, cron)
