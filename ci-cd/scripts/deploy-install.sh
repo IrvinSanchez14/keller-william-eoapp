@@ -33,7 +33,7 @@ export VAULT_UUID=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.vault_uu
 
 eval $(echo ${MASTER_KEY} | op signin ${SIGN_IN_ADDRESS} ${EMAIL_ADDRESS} ${SECRET_KEY})
 
-op get document --vault $VAULT_UUID "gcloud-key-account-json" > ${HOME}/key-account.json
+op get document --vault "${VAULT_UUID}" "gcloud-key-account-json" > ${HOME}/key-account.json
 
 
 echo "Setup gcloud sdk"

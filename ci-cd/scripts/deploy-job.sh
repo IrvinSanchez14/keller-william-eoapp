@@ -51,7 +51,9 @@ if [[ ${TRAVIS_PULL_REQUEST} == "false" && ! -z "${K8S_CLUSTER_NAME}" ]]; then
   sudo chown ${USER} ${KUBECONFIG}
   sudo chmod 655 ${KUBECONFIG}
 
-  op get document --vault ${VAULT_UUID} "${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml" > ci-cd/k8s/helm-chart/values-local.yaml
+  echo "${VAULT_UUID} ---- ${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml"
+
+  op get document --vault "${VAULT_UUID}" "${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml" > ci-cd/k8s/helm-chart/values-local.yaml
 
   echo "Upgrading Helm chart";
 
