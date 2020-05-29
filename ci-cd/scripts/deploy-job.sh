@@ -6,7 +6,7 @@ source ${HOME}/google-cloud-sdk/path.bash.inc
 
 export KUBECONFIG=${HOME}/kubeconfig
 
-sudo touch ${KUBECONFIG}
+touch ${KUBECONFIG}
 
 
 TAG=$(git tag -l | tail -n 1)
