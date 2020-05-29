@@ -2,9 +2,9 @@
 
 set -e
 
-source $HOME/google-cloud-sdk/path.bash.inc
+source ${HOME}/google-cloud-sdk/path.bash.inc
 
-export KUBECONFIG=$HOME/kubeconfig
+export KUBECONFIG=${HOME}/kubeconfig
 
 sudo touch ${KUBECONFIG}
 
@@ -47,10 +47,9 @@ docker push gcr.io/keller-covered/${DOCKER_IMAGE_NAME}:${TAG};
 if [[ ${TRAVIS_PULL_REQUEST} == "false" && ! -z "${K8S_CLUSTER_NAME}" ]]; then
   echo "Deploying to kubernetes"
   gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone ${K8S_CLUSTER_ZONE}
-
-  sudo chmod 755 ${KUBECONFIG}
-
-  # kubectl get secret ci-cd-secrets -n ${CHART_NAMESPACE} -o json | jq -r '.data.values_yaml' | base64 --decode > ci-cd/k8s/helm-chart/values-local.yaml
+  
+  sudo chown ${USER} ${KUBECONFIG}
+  sudo chmod 655 ${KUBECONFIG}
 
   op get document --vault ${VAULT_UUID} "${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml" > ci-cd/k8s/helm-chart/values-local.yaml
 

@@ -45,15 +45,8 @@ source $HOME/google-cloud-sdk/path.bash.inc
 gcloud components update kubectl
 gcloud version
 
-# echo "Decrypt secrets"
-# openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv -in secrets.tar.enc -out secrets.tar -d
-# tar xvf secrets.tar
-# cp key-account.json $HOME
-# cp .kube/config $HOME/kubeconfig
-# sudo chmod 755 $HOME/kubeconfig
-
 echo "Activate account"
-gcloud auth activate-service-account --key-file $HOME/key-account.json
+gcloud auth activate-service-account --key-file ${HOME}/key-account.json
 gcloud config set project keller-covered
 
 echo "Configure docker"
