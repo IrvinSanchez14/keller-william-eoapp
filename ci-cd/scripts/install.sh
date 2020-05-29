@@ -5,7 +5,6 @@ set -e
 echo "Pull Request=$TRAVIS_PULL_REQUEST"
 echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
 
-
 CI_BIN_PATH=$HOME/ci-tools/bin
 
 if [ ! -d "$CI_BIN_PATH" ]; then
@@ -17,9 +16,24 @@ if [ ! -d "$CI_BIN_PATH" ]; then
   docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/helm /workspace
 
   docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/kubectl /workspace
+
+  docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/op /workspace
+  
 fi
 
 sudo cp -r $CI_BIN_PATH/* /usr/local/bin
+
+echo "Get secrets"
+
+export SIGN_IN_ADDRESS=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.signin_address')
+export EMAIL_ADDRESS=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.email_address')
+export MASTER_KEY=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.master_key')
+export SECRET_KEY=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.secret_key')
+export VAULT_UUID=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.vault_uuid')
+
+eval $(echo $PASSWORD | op signin ${SIGN_IN_ADDRESS} ${EMAIL_ADDRESS} ${SECRET_KEY})
+
+op get document --vault $VAULT_UUID "gcloud-key-account-json" > ${HOME}/key-account.json
 
 
 echo "Setup gcloud sdk"
@@ -31,12 +45,12 @@ source $HOME/google-cloud-sdk/path.bash.inc
 gcloud components update kubectl
 gcloud version
 
-echo "Decrypt secrets"
-openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv -in secrets.tar.enc -out secrets.tar -d
-tar xvf secrets.tar
-cp key-account.json $HOME
-cp .kube/config $HOME/kubeconfig
-sudo chmod 755 $HOME/kubeconfig
+# echo "Decrypt secrets"
+# openssl aes-256-cbc -K $encrypted_3b9f0b9d36d1_key -iv $encrypted_3b9f0b9d36d1_iv -in secrets.tar.enc -out secrets.tar -d
+# tar xvf secrets.tar
+# cp key-account.json $HOME
+# cp .kube/config $HOME/kubeconfig
+# sudo chmod 755 $HOME/kubeconfig
 
 echo "Activate account"
 gcloud auth activate-service-account --key-file $HOME/key-account.json

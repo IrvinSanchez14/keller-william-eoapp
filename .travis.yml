@@ -8,8 +8,8 @@ node_js:
 cache:
   directories:
     - "$HOME/google-cloud-sdk/"
-    - "$HOME/ci-tools/"
-#     - "$HOME/docker_images/"
+#    - "$HOME/ci-tools/"
+#    - "$HOME/docker_images/"
 
 # before_script:
 # - docker load -i $HOME/docker_images/images.tar || true

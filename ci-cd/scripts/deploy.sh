@@ -8,6 +8,7 @@ export KUBECONFIG=$HOME/kubeconfig
 
 sudo touch ${KUBECONFIG}
 
+
 TAG=$(git tag -l | tail -n 1)
 
 [[ -z "${TAG}" ]]  && TAG="v0.1.0"
