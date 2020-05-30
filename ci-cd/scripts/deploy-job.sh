@@ -3,17 +3,13 @@
 set -e
 
 source ${HOME}/google-cloud-sdk/path.bash.inc
+source ci-cd/scripts/functions.bash.inc
 
 export KUBECONFIG=${HOME}/kubeconfig
-export SIGN_IN_ADDRESS=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.signin_address')
-export EMAIL_ADDRESS=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.email_address')
-export MASTER_KEY=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.master_key')
-export SECRET_KEY=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.secret_key')
-export VAULT_UUID=$(echo -n "${OP_ACCOUNT}" | base64 --decode | jq -r '.vault_uuid')
-
-eval $(echo ${MASTER_KEY} | op signin ${SIGN_IN_ADDRESS} ${EMAIL_ADDRESS} ${SECRET_KEY})
 
 touch ${KUBECONFIG}
+sudo chown ${USER} ${KUBECONFIG}
+sudo chmod 655 ${KUBECONFIG}
 
 
 TAG=$(git tag -l | tail -n 1)
@@ -23,6 +19,7 @@ TAG=$(git tag -l | tail -n 1)
 echo "DOCKER_IMAGE=${DOCKER_IMAGE_NAME}, TAG=${TAG}"
 
 echo "Build docker image"
+
 docker build -f ci-cd/docker/Dockerfile \
              --build-arg APP_ENV=production \
              -t $DOCKER_IMAGE_NAME .
@@ -48,25 +45,29 @@ case ${TRAVIS_BRANCH} in
 esac
 
 echo "Push docker image"
-docker tag $DOCKER_IMAGE_NAME gcr.io/keller-covered/${DOCKER_IMAGE_NAME}:${TAG};
-docker push gcr.io/keller-covered/${DOCKER_IMAGE_NAME}:${TAG};
+
+docker tag $DOCKER_IMAGE_NAME gcr.io/keller-covered/${DOCKER_IMAGE_NAME}:${TAG}
+
+docker push gcr.io/keller-covered/${DOCKER_IMAGE_NAME}:${TAG}
 
 if [[ ${TRAVIS_PULL_REQUEST} == "false" && ! -z "${K8S_CLUSTER_NAME}" ]]; then
+  # Sign in to 1Password
+  op_signin
+
   echo "Deploying to kubernetes"
+
   gcloud container clusters get-credentials ${K8S_CLUSTER_NAME} --zone ${K8S_CLUSTER_ZONE}
-  
-  sudo chown ${USER} ${KUBECONFIG}
-  sudo chmod 655 ${KUBECONFIG}
-
-  echo "${VAULT_UUID} ---- ${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml"
-
-  op get document --vault "${VAULT_UUID}" "${K8S_CLUSTER_NAME}-${CHART_NAME}-values-yaml" > ci-cd/k8s/helm-chart/values-local.yaml
 
   echo "Upgrading Helm chart";
+
+  op_get_values_yaml > ci-cd/k8s/helm-chart/values-local.yaml
 
   sed -i "/appVersion/c\\appVersion: ${TAG}" ci-cd/k8s/helm-chart/Chart.yaml
 
   helm upgrade --install ${CHART_NAME} ci-cd/k8s/helm-chart \
                -f ci-cd/k8s/helm-chart/values-local.yaml \
                -n ${CHART_NAMESPACE}
+
+  # Sign out of 1Password and clean up
+  op_signout
 fi
