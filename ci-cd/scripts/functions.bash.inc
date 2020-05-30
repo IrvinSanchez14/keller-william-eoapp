@@ -29,22 +29,23 @@ op_get_gcloud_key_account () {
   op get document --vault "${VAULT_UUID}" "gcloud-key-account-json"
 }
 
+extract_binaries_from_ci_tools () {
+  docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/semver /workspace
+
+  docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/helm /workspace
+
+  docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/kubectl /workspace
+
+  docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/op /workspace
+}
+
 
 setup_ci_tools_binaries () {
   CI_BIN_PATH=$HOME/ci-tools/bin
 
   if [ ! -d "$CI_BIN_PATH" ]; then
-
     mkdir -p "$CI_BIN_PATH"
-
-    docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/semver /workspace
-
-    docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/helm /workspace
-
-    docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/kubectl /workspace
-
-    docker run --rm  -v "$CI_BIN_PATH/:/workspace" emilioforrer/ci-tools:0.3.0 sudo cp /usr/local/bin/op /workspace
-    
+    extract_binaries_from_ci_tools
   fi
 
   sudo cp -r $CI_BIN_PATH/* /usr/local/bin
