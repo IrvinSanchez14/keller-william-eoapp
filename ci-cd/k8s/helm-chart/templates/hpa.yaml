@@ -15,12 +15,8 @@ spec:
   - type: Resource
     resource:
       name: cpu
-      target:
-        type: Utilization
-        averageUtilization: {{ .Values.main.hpa.cpuAverageUtilization }}
+      targetAverageUtilization: {{ .Values.main.hpa.cpuAverageUtilization }}
   - type: Resource
     resource:
       name: memory
-      target:
-        type: Utilization
-        averageUtilization: {{ .Values.main.hpa.memoryAverageUtilization }}
+      targetAverageUtilization: {{ .Values.main.hpa.memoryAverageUtilization }}
