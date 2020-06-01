@@ -1,4 +1,5 @@
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v1
+# apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: "{{ include "helpers.fullname" $ }}"
@@ -11,12 +12,14 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: "{{ include "helpers.fullname" $ }}"
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      targetAverageUtilization: {{ .Values.main.hpa.cpuAverageUtilization }}
-  - type: Resource
-    resource:
-      name: memory
-      targetAverageUtilization: {{ .Values.main.hpa.memoryAverageUtilization }}
+  targetCPUUtilizationPercentage: {{ .Values.main.hpa.cpuAverageUtilization }}
+  # -------- Only if for api version autoscaling/v2beta1 ----------
+  # metrics:
+  # - type: Resource
+  #   resource:
+  #     name: cpu
+  #     targetAverageUtilization: {{ .Values.main.hpa.cpuAverageUtilization }}
+  # - type: Resource
+  #   resource:
+  #     name: memory
+  #     targetAverageUtilization: {{ .Values.main.hpa.memoryAverageUtilization }}

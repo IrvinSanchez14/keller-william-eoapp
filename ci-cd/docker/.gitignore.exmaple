@@ -30,4 +30,3 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 ci-cd/k8s/helm-chart/values-*.yaml
-ci-cd/.travis.yml

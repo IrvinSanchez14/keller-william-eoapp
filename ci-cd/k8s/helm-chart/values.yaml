@@ -24,11 +24,11 @@ main:
     replicaCount: 3
     resources:
       requests:
-        cpu: 5m # Idle 4m
-        memory: 130mi # Idle 100mi
+        cpu: "5m" # Idle 4m
+        memory: "130mi" # Idle 100mi
       limits:
-        cpu: 7m
-        memory: 300mi
+        cpu: "7m"
+        memory: "300mi"
     podSecurityContext: {}
     securityContext: {}
     nodeSelector: {}

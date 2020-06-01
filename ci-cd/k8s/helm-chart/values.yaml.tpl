@@ -14,11 +14,21 @@ main:
     app: ${CHART_NAME}
   selectorLabels:
     app: ${CHART_NAME}
+  hpa:
+    maxReplicas: 10
+    minReplicas: 3
+    cpuAverageUtilization: 70
+    memoryAverageUtilization: 70
   deployment:
     containerPort: 80
     replicaCount: 3
     resources:
-      requests: {}
+      requests:
+        cpu: "5m" # Idle 4m
+        memory: "130mi" # Idle 100mi
+      limits:
+        cpu: "7m"
+        memory: "300mi"
     podSecurityContext: {}
     securityContext: {}
     nodeSelector: {}
