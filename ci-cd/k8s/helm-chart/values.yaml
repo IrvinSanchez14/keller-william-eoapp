@@ -6,7 +6,7 @@ main:
   docker:
     registry:
       url: "gcr.io/keller-covered/kc-frontend-eo"
-      username: ""
+      username: "_json_key"
       password: ""
   dependencies:
     postgres: true
@@ -52,7 +52,7 @@ main:
     uriPrefix: "/kc-frontend-eo"
     uriRewrite: "/"
     hosts: 
-    - "bancus-dev.applaudostudios.com"
+    - ""
     serviceHost: kc-frontend-eo
     gateways:
     - global-gateway

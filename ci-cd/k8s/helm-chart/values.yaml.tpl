@@ -20,7 +20,7 @@ main:
     cpuAverageUtilization: 70
     memoryAverageUtilization: 70
   deployment:
-    containerPort: 80
+    containerPort: 3000
     replicaCount: 3
     resources:
       requests:
@@ -35,7 +35,7 @@ main:
     tolerations: []
     affinity: {}
     image:
-      repository: "nexus-docker-dev.applaudostudios.com/${CHART_NAMESPACE}/${CHART_NAME}"
+      repository: "${DOCKER_REGISTRY_URL}"
       pullPolicy: Always
     imagePullSecrets:
       - name: ${CHART_NAME}-docker-registry-secrets
@@ -49,7 +49,7 @@ main:
     create: true
   virtualService:
     create: false
-    uriPrefix: "/${CHART_NAME}/"
+    uriPrefix: "/${CHART_NAME}"
     uriRewrite: "/"
     hosts: 
     - "${VS_HOST}"

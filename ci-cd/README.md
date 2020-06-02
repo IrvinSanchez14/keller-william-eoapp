@@ -1,29 +1,17 @@
 # Next Js - Deployment
 
-## Replace templates variables
+## Copy and replace templates variables
 
 Set this env variables
 
 ```bash
 export CHART_NAME=my-project
 export CHART_NAMESPACE=my-project-namespace
-export DOCKER_REGISTRY_URL=gcr.io
+export DOCKER_REGISTRY_URL=gcr.io/keller-covered/${CHART_NAME}
 export DOCKER_REGISTRY_USERNAME=_json_key
 export DOCKER_REGISTRY_PASSWORD="" # leave this is in blank to not commit in the repo
 
-cat ci-cd/.travis.yml.tpl | \
-sed -e "/    - CHART_NAME=/c\\    - CHART_NAME=${CHART_NAME}" | \
-sed -e "/    - CHART_NAMESPACE=/c\\    - CHART_NAMESPACE=${CHART_NAMESPACE}" \
- > .travis.yml
-```
-
-## Copy files to the project's root directory
-
-```bash
-cp ci-cd/docker/.env.example ./.env
-cp ci-cd/docker/.dockerignore.example ./.dockerignore
-cp ci-cd/docker/.gitignore.example ./.gitignore
-cp ci-cd/docker/.travis.example ./.travis
+./ci-cd/initial-setup.sh
 ```
 
 
