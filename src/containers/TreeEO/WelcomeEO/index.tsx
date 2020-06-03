@@ -1,108 +1,60 @@
 import { Component } from 'react';
 import classnames from 'classnames';
-import { FormikHelpers } from 'formik';
 import { Typography } from '@material-ui/core';
 
+import { FormApp } from 'src/components/FormApp';
+import { Icon } from 'src/components/Icon';
+import StepWrapper from 'src/components/StepWrapper';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
-import StepWrapper from 'src/components/StepWrapper';
 import { categoriesName } from 'src/helpers/constants';
-import { FormApp } from 'src/components/FormApp';
-import { Icon } from 'src/components/Icon';
 
 import { withStyles } from 'src/styles/FormStyle/css/withStyles';
 import { styles } from './styles';
 
-type FullNameProps = IAppStoreProps;
-
-type FormFields = {
-  contactName: string;
-  brokerName: string;
-  kwMarketCenterName: string;
-  yearEstablished: number;
-};
-
-const getTypesCommission = [
-  {
-    id: 1,
-    icon: 'firmWelcome',
-    label: 'Firm',
-  },
-  {
-    id: 2,
-    icon: 'agentWelcome',
-    label: 'Agents',
-  },
-  {
-    id: 3,
-    icon: 'commissionWelcome',
-    label: 'Commission',
-  },
-  {
-    id: 4,
-    icon: 'policyWelcome',
-    label: 'Policy',
-  },
-  {
-    id: 5,
-    icon: 'riskWelcome',
-    label: 'Risk Profile',
-  },
-];
-
 @withStyles(styles)
-export class WelcomeEO extends Component<FullNameProps> {
-  isButtonLoading = false;
-  isInitValid = false;
+export class WelcomeEO extends Component<IAppStoreProps> {
+  state = {
+    isButtonLoading: false,
+    isInitValid: false,
+  };
 
-  nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
-    this.isButtonLoading = true;
+  componentDidMount() {
+    const { dispatch } = this.props;
+    setInformationPage(dispatch, 0, categoriesName.intro);
+  }
+
+  nextStep = (values: any, actions: any) => {
     const { dispatch, formData } = this.props;
-    storeFirmConfirmation(dispatch, values); //TODO put state in localstorage
+    this.setState({ isButtonLoading: true });
+    storeFirmConfirmation(dispatch, values);
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     actions.setSubmitting(true);
     setInformationPage(dispatch, 1, categoriesName.firmConfirmation);
   };
 
-  async componentDidMount() {
-    const { dispatch } = this.props;
-    setInformationPage(dispatch, 0, categoriesName.intro);
-  }
-
-  renderChildrenCommissionTypes = () =>
-    getTypesCommission.map((item) => (
-      <div key={item.id} className={classnames(this.props.classes.card)}>
-        <div className={classnames(this.props.classes.content)}>
-          <Icon name={item.icon} className={classnames(this.props.classes.iconSize)} />
-          <Typography variant="body1" className={classnames(this.props.classes.label)}>
-            {item.label}
-          </Typography>
-        </div>
-      </div>
-    ));
-
   render() {
     const isLoading = false;
-    const { classes, formData, dispatch } = this.props;
+    const { classes, formData, dispatch, intl } = this.props;
     return (
       !isLoading && (
         <StepWrapper
-          avatarText={this.props.intl.get('app.avatar.text,welcome')}
-          heading={this.props.intl.get('app.head.welcome')}
-          bottomContent={this.props.intl.getHTML('app.link.welcome')}
+          avatarText={intl.get('app.avatar.text,welcome')}
+          heading={intl.get('app.head.welcome')}
+          bottomContent={intl.getHTML('app.link.welcome')}
           classHeader={classnames(classes.stepHeader)}
           classBottom={classnames(classes.bottomHeader)}
         >
           <Typography className={classnames(classes.titleForm)}>
-            {this.props.intl.get('app.title.welcome')}
+            {intl.get('app.title.welcome')}
           </Typography>
           <FormApp
             initialValues={{}}
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={this.isButtonLoading}
+            isLoading={this.state.isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
@@ -112,108 +64,56 @@ export class WelcomeEO extends Component<FullNameProps> {
             {() => {
               return (
                 <>
-                  <div className={classnames(this.props.classes.divSVG)}>
+                  <div className={classnames(classes.divSVG)}>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentFirm,
-                          this.props.classes.content,
-                        )}
-                      >
-                        <Icon
-                          name="firmWelcome"
-                          className={classnames(this.props.classes.iconFirm)}
-                        />
-                        <Typography
-                          className={classnames(this.props.classes.labelFirm)}
-                          variant="body1"
-                        >
+                      <div className={classnames(classes.contentFirm, classes.content)}>
+                        <Icon name="firmWelcome" className={classnames(classes.iconFirm)} />
+                        <Typography className={classnames(classes.labelFirm)} variant="body1">
                           Firm
                         </Typography>
                       </div>
                     </div>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentAgent,
-                          this.props.classes.content,
-                        )}
-                      >
-                        <Icon
-                          name="agentWelcome"
-                          className={classnames(this.props.classes.iconAgent)}
-                        />
-                        <Typography
-                          variant="body1"
-                          className={classnames(this.props.classes.labelAgent)}
-                        >
+                      <div className={classnames(classes.contentAgent, classes.content)}>
+                        <Icon name="agentWelcome" className={classnames(classes.iconAgent)} />
+                        <Typography variant="body1" className={classnames(classes.labelAgent)}>
                           Agents
                         </Typography>
                       </div>
                     </div>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentCommission,
-                          this.props.classes.content,
-                        )}
-                      >
+                      <div className={classnames(classes.contentCommission, classes.content)}>
                         <Icon
                           name="commissionWelcome"
-                          className={classnames(this.props.classes.iconCommission)}
+                          className={classnames(classes.iconCommission)}
                         />
-                        <Typography
-                          variant="body1"
-                          className={classnames(this.props.classes.labelComission)}
-                        >
+                        <Typography variant="body1" className={classnames(classes.labelComission)}>
                           Commission
                         </Typography>
                       </div>
                     </div>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentPolicy,
-                          this.props.classes.content,
-                        )}
-                      >
-                        <Icon
-                          name="policyWelcome"
-                          className={classnames(this.props.classes.iconPolicy)}
-                        />
-                        <Typography
-                          variant="body1"
-                          className={classnames(this.props.classes.labelPolicy)}
-                        >
+                      <div className={classnames(classes.contentPolicy, classes.content)}>
+                        <Icon name="policyWelcome" className={classnames(classes.iconPolicy)} />
+                        <Typography variant="body1" className={classnames(classes.labelPolicy)}>
                           Policy
                         </Typography>
                       </div>
                     </div>
                     <div>
-                      <div
-                        className={classnames(
-                          this.props.classes.contentRisk,
-                          this.props.classes.content,
-                        )}
-                      >
-                        <Icon
-                          name="riskWelcome"
-                          className={classnames(this.props.classes.iconRisk)}
-                        />
-                        <Typography
-                          variant="body1"
-                          className={classnames(this.props.classes.labelRisk)}
-                        >
+                      <div className={classnames(classes.contentRisk, classes.content)}>
+                        <Icon name="riskWelcome" className={classnames(classes.iconRisk)} />
+                        <Typography variant="body1" className={classnames(classes.labelRisk)}>
                           Risk Profile
                         </Typography>
                       </div>
                     </div>
                   </div>
-                  <Typography className={classnames(this.props.classes.textContent)}>
-                    {this.props.intl.getHTML('app.text.welcome')}
+                  <Typography className={classnames(classes.textContent)}>
+                    {intl.getHTML('app.text.welcome')}
                   </Typography>
-                  <Typography className={classnames(this.props.classes.textContentFinal)}>
-                    {this.props.intl.getHTML('app.text.welcome.two')}
+                  <Typography className={classnames(classes.textContentFinal)}>
+                    {intl.getHTML('app.text.welcome.two')}
                   </Typography>
                 </>
               );

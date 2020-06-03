@@ -26,6 +26,7 @@ declare module 'styled-components' {
     colors: {
       white: string;
       mortgageRed: string;
+      redCheck: string;
       primaryDark: string;
       darkGray: string;
       gray: string;

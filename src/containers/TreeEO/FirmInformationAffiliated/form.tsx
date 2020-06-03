@@ -1,3 +1,5 @@
+import { FormikProps } from 'formik';
+
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { RadioField } from 'src/components/RadioForm';
 import { useAppContext } from 'src/store';
@@ -20,7 +22,10 @@ export const propertyUsageFields = [
   },
 ];
 
-export const FormFirmInformationAffiliated = (formikProps: any, handleChange: any) => {
+export const FormFirmInformationAffiliated = (
+  formikProps: FormikProps<any>,
+  handleChange: (value: boolean, formikProps: FormikProps<any>) => void,
+) => {
   const { intl } = useAppContext();
   const [isMobile, setIsMobile] = useState(0);
 

@@ -25,7 +25,7 @@ const secondBenefitList: Array<BenefitList> = [
   },
   {
     label:
-      '5% to 10% discount  on premiums with Preferred premium credit exclusive for Keller Williams with interest-free financing',
+      'Exclusive Preferred premium discount for Keller Williams with a no interest payment plan available for premiums greater than $5,000',
   },
   {
     label:
@@ -84,9 +84,17 @@ interface StyleBenefitHeaderProps {
 const StyleBenefitHeader = styled.div<StyleBenefitHeaderProps>`
   left: 0;
   padding-left: 42px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   ${({ showRightLine, theme }) =>
     showRightLine && `border-right: 1px solid ${theme.colors.lightGray};`}
   ${({ paddingLeft }) => paddingLeft && `padding-left: 78px;margin-top: -36px;`}
+  ${({ theme, paddingLeft }) => theme.tablet`
+    border-right: 0;padding-left: 0;
+    align-items: flex-start;
+    padding-top: ${({ paddingLeft }) => (paddingLeft ? '76px' : '0px')};
+  `};
   ${({ theme }) =>
     theme.phone`border-right: 0;padding-left: 0;` &&
     theme.tablet`border-right: 0;padding-left: 0;`};
@@ -121,21 +129,29 @@ const StyledSVG = styled(SVG)`
   margin-bottom: 43px;
 `;
 
-const StyledCircle = styled.div<{ custom?: string }>`
+const StyledCircle = styled.div<{ custom?: string; customMobile?: string }>`
   width: 23px;
   height: 23px;
-  // padding: 7px 20px 3px 3px;
   margin-top: 7px;
   margin-left: 7px;
   border-radius: 50%;
-  border: 2px solid ${({ theme }) => theme.colors.primary};
+  border: 2px solid ${({ theme }) => theme.colors.redCheck};
   justify-content: center;
   align-items: center;
   display: flex;
   ${({ custom }) => custom && `margin: ${custom};`};
+  ${({ theme, customMobile }) =>
+    customMobile &&
+    theme.phone`
+      margin: ${customMobile};
+  `};
 `;
 
-const StyledBenefitText = styled.h1<{ customPadding?: string; customWidth?: boolean }>`
+const StyledBenefitText = styled.h1<{
+  customPadding?: string;
+  customWidth?: boolean;
+  customMobile?: string;
+}>`
   padding: ${({ customPadding }) => customPadding};
   font-size: 24px;
   letter-spacing: -0.43px;
@@ -150,12 +166,17 @@ const StyledBenefitText = styled.h1<{ customPadding?: string; customWidth?: bool
     padding: 0 0 0 10px;
   `};
   ${({ customWidth }) => customWidth && `width: 470px;`};
+  ${({ theme, customMobile }) =>
+    customMobile &&
+    theme.phone`
+    padding: ${customMobile};
+  `};
 `;
 
 const Shape = styled.div`
   background: url(../../../static/img/stepsImgs/backgroundShape.svg) no-repeat 100%;
-  background-size: 250px 1200px;
-  background-position: 0 220px;
+  background-size: 255px 1200px;
+  background-position: 0 290px;
   @media (min-width: 901px) and (max-width: 1050px) {
     background-size: 200px 1200px;
     background-position: 0 220px;
@@ -172,6 +193,13 @@ const Shape = styled.div`
   `};
 `;
 
+const PartnerImageContainer = styled.div<{ marginRight: string }>`
+  margin-right: ${({ marginRight }) => marginRight};
+  ${({ theme }) => theme.tablet`
+    margin-right: 0px;
+  `};
+`;
+
 export default function SecondHeroSection(): React.ReactElement {
   return (
     <>
@@ -182,37 +210,39 @@ export default function SecondHeroSection(): React.ReactElement {
         <StyledBenefitsContainer>
           <StyleBenefitSection>
             <StyleBenefitHeader showRightLine>
-              <StyledSVG
-                key="first_benefit"
-                src="/static/img/AmWins_Logo.svg"
-                width="212px"
-                height="45px"
-                mobileWidth="200px"
-              />
+              <PartnerImageContainer marginRight="160px">
+                <StyledSVG
+                  key="first_benefit"
+                  src="/static/img/AmWins_Logo.svg"
+                  width="212px"
+                  height="45px"
+                  mobileWidth="200px"
+                />
+              </PartnerImageContainer>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle>
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle customMobile="3px 0 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
-                <StyledBenefitText customPadding={'3px 20px'}>
+                <StyledBenefitText customPadding="3px 20px">
                   {firstBenefitList[0].label}
                 </StyledBenefitText>
               </StyledBenefitItem>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="33px 7px">
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle custom="33px 7px" customMobile="20px 0 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
-                <StyledBenefitText customPadding={'27px 13px'}>
+                <StyledBenefitText customPadding="27px 13px" customMobile="20px 13px">
                   {firstBenefitList[1].label}
                 </StyledBenefitText>
               </StyledBenefitItem>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="9px 7px">
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle custom="9px 7px" customMobile="3px 0 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
                 <StyledBenefitText customPadding="4px 13px">
@@ -223,17 +253,19 @@ export default function SecondHeroSection(): React.ReactElement {
           </StyleBenefitSection>
           <StyleBenefitSection>
             <StyleBenefitHeader paddingLeft>
-              <StyledSVG
-                key="second_benefit"
-                src="/static/img/PearlInsurance_Logo.svg"
-                width="290px"
-                height="70px"
-                mobileWidth="250px"
-              />
+              <PartnerImageContainer marginRight="135px">
+                <StyledSVG
+                  key="second_benefit"
+                  src="/static/img/PearlInsurance_Logo.svg"
+                  width="290px"
+                  height="70px"
+                  mobileWidth="250px"
+                />
+              </PartnerImageContainer>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="18px 5px">
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle custom="18px 5px" customMobile="1px 5px 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
                 <StyledBenefitText customPadding={'14px 15px'}>
@@ -242,21 +274,21 @@ export default function SecondHeroSection(): React.ReactElement {
               </StyledBenefitItem>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="22px 5px">
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle custom="22px 5px" customMobile="3px 5px 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
-                <StyledBenefitText customWidth customPadding={'18px 14px'}>
+                <StyledBenefitText customWidth customPadding="18px 14px">
                   {secondBenefitList[1].label}
                 </StyledBenefitText>
               </StyledBenefitItem>
               <StyledBenefitItem>
                 <div>
-                  <StyledCircle custom="4px 7px">
-                    <i style={{ color: '#0093E9', fontSize: 13 }} className="fas fa-check" />
+                  <StyledCircle custom="4px 7px" customMobile="20px 8px 0 0">
+                    <i style={{ color: '#CE011F', fontSize: 13 }} className="fas fa-check" />
                   </StyledCircle>
                 </div>
-                <StyledBenefitText customPadding="0 11px">
+                <StyledBenefitText customPadding="0 11px" customMobile="20px 0 0 7px">
                   {secondBenefitList[2].label}
                 </StyledBenefitText>
               </StyledBenefitItem>
