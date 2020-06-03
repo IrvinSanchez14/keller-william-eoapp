@@ -1,3 +1,4 @@
 deployment.yml
 .next
 out
+ci-cd/
