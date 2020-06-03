@@ -3,7 +3,7 @@ dist: xenial
 
 language: node_js
 node_js:
-  - '12.16.2'
+  - '12.16.3'
   
 cache:
   directories:
