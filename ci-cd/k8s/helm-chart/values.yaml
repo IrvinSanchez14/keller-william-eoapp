@@ -24,8 +24,8 @@ main:
     replicaCount: 3
     resources:
       requests:
-        cpu: "90m" # Idle 4m
-        memory: "140Mi" # Idle 100mi
+        cpu: "100m" # Idle 4m
+        memory: "130Mi" # Idle 100mi
       limits:
         cpu: "200m"
         memory: "300Mi"
