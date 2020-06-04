@@ -9,6 +9,7 @@ cache:
   directories:
     - "${HOME}/google-cloud-sdk/"
     - "${HOME}/ci-tools/"
+    - node_modules # The specified paths are relative to the build directory.
 #    - "${HOME}/docker_images/"
 
 # before_script:
