@@ -17,6 +17,7 @@ read -p 'Do you wish to continue? [Y/n] '  YN
 echo -e "\e[0m"
 
 if [[ ${YN} == "y" || ${YN} == "Y" || ${YN} == "" ]] ; then
+  WORKING_DIR=$(pwd)
   echo "Installing scripts..."
   echo ""
   cp ${WORKING_DIR}/ci-cd/docker/.env.example ./.env
@@ -24,7 +25,6 @@ if [[ ${YN} == "y" || ${YN} == "Y" || ${YN} == "" ]] ; then
   cp ${WORKING_DIR}/ci-cd/docker/.gitignore.example ./.gitignore
   echo "Replacing templates..."
   echo ""
-  WORKING_DIR=$(pwd)
   cat ${WORKING_DIR}/ci-cd/.travis.yml.tpl | \
   sed -e "/    - DOCKER_IMAGE_NAME=/c\\    - DOCKER_IMAGE_NAME=${CHART_NAME}" | \
   sed -e "/    - CHART_NAME=/c\\    - CHART_NAME=${CHART_NAME}" | \

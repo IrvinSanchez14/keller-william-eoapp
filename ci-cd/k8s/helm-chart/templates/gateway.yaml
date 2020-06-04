@@ -1,19 +1,17 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: global-gateway  # "{{ include "helpers.fullname" . }}-gateway"
+  name: "{{ include "helpers.fullname" . }}-gateway"
 spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts: # {{ .Values.main.virtualService.hosts }}
-    - '*'
+  - hosts: {{ .Values.main.virtualService.hosts }}
     port:
       name: http
       number: 80
       protocol: HTTP
-  - hosts:  # {{ .Values.main.virtualService.hosts }}
-    - '*'
+  - hosts:  {{ .Values.main.virtualService.hosts }}
     port:
       name: https
       number: 443

@@ -55,4 +55,4 @@ main:
     - "${VS_HOST}"
     serviceHost: ${CHART_NAME}
     gateways:
-    - global-gateway
+    - "${CHART_NAME}-gateway"
