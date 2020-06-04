@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import ReviewPage from 'src/containers/ReviewPage';
 import AppState from 'src/store/models/AppState';
 import Error from 'next/error';

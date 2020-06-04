@@ -17,13 +17,11 @@ const StyledParagraph = styled.p<StyledParagraphProps>`
   font-size: 22px;
   line-height: 28px;
   ${({ margin }) => margin && `margin: ${margin};`};
-
   ${({ theme, mobileMargin }) => theme.phone`
     font-size: 18px;
     line-height: 24px;
     ${mobileMargin && `margin: ${mobileMargin}`};
   `};
-
   ${({ isSmall, theme, color }) =>
     isSmall &&
     css`
