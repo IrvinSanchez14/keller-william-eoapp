@@ -40,7 +40,7 @@ jobs:
       script: ./ci-cd/scripts/test-job.sh
 
     - stage: Deploy
-      if: (branch IN (k8s-deployment-dev) OR tag IS present) AND type NOT IN (pull_request, cron)
+      if: (branch IN (k8s-deployment-dev k8s-deployment-staging k8s-deployment-prod) OR tag IS present) AND type NOT IN (pull_request, cron)
       name: "Deployment"
       install: ./ci-cd/scripts/deploy-install.sh
       script: ./ci-cd/scripts/deploy-job.sh
