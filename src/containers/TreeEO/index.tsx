@@ -53,6 +53,12 @@ function useSessionSaver(state: AppState) {
 }
 
 function AppEO() {
+  const [componentKey, setComponentKey] = useState(1);
+  const fixMe = () => {
+    if (componentKey < 2) {
+      setComponentKey(componentKey + 1);
+    }
+  };
   const router = useRouter();
   const { dispatch, intl, state } = useAppContext();
   const { onSubmit, sessionId, isOpen, setIsOpen } = useSessionSaver(state);
@@ -79,9 +85,15 @@ function AppEO() {
 
   return (
     <>
-      <SessionModal onClose={() => setIsOpen(false)} isOpen={isOpen} />
-      <FormRouter dispatch={dispatch} intl={intl} formData={state} onSubmit={onSubmit}>
-        <WelcomeEO />
+      <SessionModal key={componentKey} onClose={() => setIsOpen(false)} isOpen={isOpen} />
+      <FormRouter
+        key={componentKey}
+        dispatch={dispatch}
+        intl={intl}
+        formData={state}
+        onSubmit={onSubmit}
+      >
+        <WelcomeEO fixMe={fixMe} key={componentKey} _key={componentKey} />
         <FirmInformation />
         <FirmInformationEmail />
         <FirmInformationBroker />

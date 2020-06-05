@@ -21,7 +21,8 @@ export class WelcomeEO extends Component<IAppStoreProps> {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, fixMe } = this.props;
+    fixMe();
     setInformationPage(dispatch, 0, categoriesName.intro);
   }
 
@@ -36,10 +37,11 @@ export class WelcomeEO extends Component<IAppStoreProps> {
 
   render() {
     const isLoading = false;
-    const { classes, formData, dispatch, intl } = this.props;
+    const { classes, formData, dispatch, intl, _key } = this.props;
     return (
       !isLoading && (
         <StepWrapper
+          key={_key}
           avatarText={intl.get('app.avatar.text,welcome')}
           heading={intl.get('app.head.welcome')}
           bottomContent={intl.getHTML('app.link.welcome')}
