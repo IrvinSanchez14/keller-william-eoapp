@@ -40,7 +40,8 @@ helm.sh/chart: {{ include "helpers.chart" . }}
 {{- range $key, $value := .Values.main.labels }}
 {{ $key  }}: {{ $value | quote }}
 {{- end }}
-{{ include "helpers.selectorLabels" . }}
+app.kubernetes.io/name: {{ include "helpers.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -53,9 +54,9 @@ Selector labels
 {{- define "helpers.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "helpers.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-# {{- range $key, $value := .Values.main.selectorLabels }}
-# {{ $key | quote }}: {{ $value | quote }}
-# {{- end }}
+{{- range $key, $value := .Values.main.selectorLabels }}
+{{ $key | quote }}: {{ $value | quote }}
+{{- end }}
 {{- end -}}
 
 {{/*
