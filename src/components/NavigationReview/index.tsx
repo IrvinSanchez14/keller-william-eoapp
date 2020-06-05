@@ -102,7 +102,7 @@ export default function NavigationReview(Props: NavigationReviewProps): JSX.Elem
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
-        <StyledSVG isConfirmationPage height="120px" width="188px" src="/static/img/logoKW.svg" />
+        <StyledSVG isConfirmationPage height="120px" width="188px" src="/img/logoKW.svg" />
       </HeaderContainer>
       <HeaderContainer isConfirmationPage rightItem>
         <GetCoveredNowButton isConfirmationPage onClick={toggleModal} isMobile={isMobile} />

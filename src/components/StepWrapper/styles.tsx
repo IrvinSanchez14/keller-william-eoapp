@@ -1,6 +1,6 @@
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { fonts } from 'assets/fonts';
+import { fonts } from 'public/fonts';
 
 export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => ({
   stepContainer: {

@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core';
 import { MuiThemeOptions } from './IMuiThemeOptions';
-import { fonts } from '../../../../static/fonts/fontForm';
+import { fonts } from 'public/fonts/fontForm';
 
 const defaultTheme = createMuiTheme();
 

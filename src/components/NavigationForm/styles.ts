@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { fonts } from 'assets/fonts';
+import { fonts } from 'public/fonts';
 
 export default makeStyles((theme: MuiTheme) => ({
   wrapper: {

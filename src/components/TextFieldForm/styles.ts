@@ -1,4 +1,4 @@
-import { fonts } from 'assets/fonts';
+import { fonts } from 'public/fonts';
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 

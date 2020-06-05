@@ -230,7 +230,7 @@ function Footer(Props: FooterProps) {
       <StyledIconsContainer>
         {icons.map((el) => (
           <a target="_blank" rel="noopener noreferrer" key={el.icon} href={el.href}>
-            <SVG src={`/static/img/${el.icon}.svg`} />
+            <SVG src={`/img/${el.icon}.svg`} />
           </a>
         ))}
       </StyledIconsContainer>
@@ -243,7 +243,7 @@ function Footer(Props: FooterProps) {
         <LinksContainer>
           <LogoContainer>
             <Link href="/">
-              <SVG src="/static/img/logoKW.svg" preProcessor={(code) => updateSvgStyle(code)} />
+              <SVG src="/img/logoKW.svg" preProcessor={(code) => updateSvgStyle(code)} />
             </Link>
             <StyledFooterText small tabletMarginTop="74px">
               Copyright &copy; 2018-
@@ -255,7 +255,7 @@ function Footer(Props: FooterProps) {
           {renderIcons()}
         </LinksContainer>
         <TextContainer>
-          <SVG src="/static/img/labsLogoFooter.svg" />
+          <SVG src="/img/labsLogoFooter.svg" />
           <StyledFooterText isLabsText marginTop="16px" mobileMarginTop="19px">
             Labs is a journey. We can&apos;t guarantee the number of quotes that a buyer will
             receive (if any) due to variations in consumer, property and climate coverages by our
@@ -266,7 +266,7 @@ function Footer(Props: FooterProps) {
           </StyledFooterText>
         </TextContainer>
         <SubContainer>
-          <SVG src="/static/img/footerKW.svg" />
+          <SVG src="/img/footerKW.svg" />
           <StyledFooterText marginTop="10px" mobileMarginTop="14px">
             Visit us at:
             <StyledLink href="https://www.kw.com/" target="_blank" rel="noopener noreferrer">

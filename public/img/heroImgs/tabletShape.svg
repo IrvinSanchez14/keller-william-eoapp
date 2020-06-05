@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="315px" height="629px" viewBox="0 0 315 629" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>F063738A-4733-4CEB-9D0D-328806517642</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="57.0052075%" y1="110.059216%" x2="44.6168223%" y2="-1.75318399%" id="linearGradient-1">
+            <stop stop-color="#0093E9" offset="0%"></stop>
+            <stop stop-color="#80D0C7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KW-home-mobile" transform="translate(-60.000000, -349.000000)" fill="url(#linearGradient-1)">
+            <path d="M407.446738,288 C380.675796,361.669786 314.446812,431.079496 208.759787,496.22913 C50.2292502,593.953581 60.7048364,628.223215 60.0064639,677.974832 C59.3080915,727.726448 115.387396,797.446401 136.932185,814.36872 C158.476974,831.291038 333.768449,911.84187 387.193938,993.745594 C422.810931,1048.34808 465.746285,1083.09955 516,1098 L516,288 L407.446738,288 Z" id="shape-1"></path>
+        </g>
+    </g>
+</svg>

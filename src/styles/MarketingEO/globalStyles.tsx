@@ -7,25 +7,25 @@ const GlobalStyles = createGlobalStyle`
 
   @font-face {
     font-family: "Regular";
-    src: url('/static/fonts/Effra_Std_Rg.ttf');
+    src: url('/fonts/Effra_Std_Rg.ttf');
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
     font-family: "Bold";
-    src: url('/static/fonts/Effra_Std_Bd.ttf');
+    src: url('/fonts/Effra_Std_Bd.ttf');
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
     font-family: "Light";
-    src: url('/static/fonts/Effra_Std_Lt.ttf');
+    src: url('/fonts/Effra_Std_Lt.ttf');
     font-weight: normal;
     font-style: normal;
    }
    @font-face {
      font-family: "Medium";
-     src: url('/static/fonts/Effra_Std_Md.ttf');
+     src: url('/fonts/Effra_Std_Md.ttf');
      font-weight: normal;
      font-style: normal;
    }

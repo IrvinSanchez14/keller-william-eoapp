@@ -66,7 +66,7 @@ export default function FooterReview({ sessionId }: { sessionId: string }): JSX.
   return (
     <FooterContainer>
       <FooterSection hideDogIcon>
-        <FooterDogIcon width="100px" height="55px" src="/static/img/dog-circle.svg" />
+        <FooterDogIcon width="100px" height="55px" src="/img/dog-circle.svg" />
         <FooterLooksText>Looks great. Woof woof!</FooterLooksText>
       </FooterSection>
       <FooterSection alignRight>

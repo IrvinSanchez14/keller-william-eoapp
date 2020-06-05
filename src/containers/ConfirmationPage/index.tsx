@@ -11,7 +11,7 @@ import { formatNumericalAbbreviation } from 'src/helpers/formatData';
 const P = styled.p`
   @font-face {
     font-family: 'Effra Regular';
-    src: url('/static/fonts/Effra_Std_Rg.ttf');
+    src: url('/fonts/Effra_Std_Rg.ttf');
     font-weight: normal;
     font-style: normal;
   }
@@ -21,7 +21,7 @@ const P = styled.p`
 const H1 = styled.h1`
   @font-face {
     font-family: 'Effra Bold';
-    src: url('/static/fonts/Effra_Std_Bd.ttf');
+    src: url('/fonts/Effra_Std_Bd.ttf');
     font-weight: normal;
     font-style: normal;
   }
@@ -87,7 +87,7 @@ const Content = styled.div`
   margin-top: 48px;
   padding-bottom: 321px;
   display: flex;
-  background: url(../../../static/img/confirmation.svg) no-repeat;
+  background: url(../../../img/confirmation.svg) no-repeat;
   background-size: 100% 300px;
   background-position: bottom left;
   ${({ theme }) =>
@@ -101,7 +101,7 @@ const Content = styled.div`
     theme.phone`
     padding-bottom: 135px;
     flex-direction: column;
-    background: url(../../../static/img/confirmation_mobile.svg) no-repeat;
+    background: url(../../../img/confirmation_mobile.svg) no-repeat;
     background-size: contain;
     background-position: right bottom;
   `};
@@ -386,7 +386,7 @@ const TableValueText = styled(H1)`
 const ContainerShape = styled.div`
   width: 100%;
   height: 100%;
-  background: url(../../../static/img/reviewImgs/bg_right.svg) no-repeat;
+  background: url(../../../img/reviewImgs/bg_right.svg) no-repeat;
   background-size: 340px 100%;
   background-position: right top;
   ${({ theme }) =>
@@ -400,7 +400,7 @@ const ContainerShape = styled.div`
     theme &&
     theme.phone`
     flex-direction: column;
-    background: url(../../../static/img/reviewImgs/bg_right.svg) no-repeat 100% 90%;
+    background: url(../../../img/reviewImgs/bg_right.svg) no-repeat 100% 90%;
     background-size: 162px 781px;
   `};
 `;
@@ -438,7 +438,7 @@ export default function ConfirmationPage({
     <ContainerShape>
       <NavigationReview isConfirmationPage width={width} isTablet={isTablet} isMobile={isMobile} />
       <DogIconContainer>
-        <StyleSVG src="/static/img/dog-circle.svg" />
+        <StyleSVG src="/img/dog-circle.svg" />
         <DogWoofText>{`WOOFTASTIC, YOU DID IT!`}</DogWoofText>
       </DogIconContainer>
       <Content>

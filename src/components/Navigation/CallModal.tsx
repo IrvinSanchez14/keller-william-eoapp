@@ -91,7 +91,7 @@ function CallModal(Props: CallModalProps) {
         <StyledIconWrapper onClick={closeModal}>
           <i className="far fa-2x fa-times" />
         </StyledIconWrapper>
-        <StyledImg src="/static/img/stepsImgs/insuramatchBig.svg" />
+        <StyledImg src="/img/stepsImgs/insuramatchBig.svg" />
         <P>
           By calling this number, you’ll be connected to a licensed InsuraMatch agent. Don’t worry,
           they’ve got you covered!

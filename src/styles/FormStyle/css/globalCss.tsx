@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from './withStyles';
-import { fonts } from 'assets/fonts';
+import { fonts } from 'public/fonts';
 
 const GlobalCss = withStyles({
   '@global': {
