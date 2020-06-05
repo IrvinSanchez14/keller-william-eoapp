@@ -1,10 +1,5 @@
-import Head from 'next/head';
-import HomePageEO from 'src/containers/HomePageEO';
+import App from 'src';
 
 export default function Home(): JSX.Element {
-  return (
-    <div className="container">
-      <HomePageEO />
-    </div>
-  );
+  return <App />;
 }
