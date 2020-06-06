@@ -51,7 +51,7 @@ const ContainerInformation = styled.div<ContainerInformationProps>`
 `;
 
 const ContainerBackgroundShape = styled.div`
-  background: url(../../../static/img/reviewImgs/bg_left.svg) no-repeat;
+  background: url(../../../img/reviewImgs/bg_left.svg) no-repeat;
   background-size: 415px 90%;
   background-position: left;
   z-index: 1px;

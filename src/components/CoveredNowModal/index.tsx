@@ -148,7 +148,7 @@ const ModalPartnersContainer = styled.div`
 
 const ModalScheduleText = styled.a<ModalScheduleTextProps>`
   font-size: 22px;
-  font-style: 'Regular';
+  font-style: 'Effra';
   padding-top: 5px;
   ${({ firstText }) => firstText && `padding-top: 18px;`};
   ${({ left }) => left && `padding-left: 46px;`};
@@ -216,10 +216,7 @@ export default function CoveredNowModal(Props: CallModalProps) {
     <StyledModal onRequestClose={closeModal} style={customStyles} isOpen={isModalOpen}>
       <ModalContainer screenWidth={width}>
         <ModalHeader>
-          <StyledSVG
-            preProcessor={(code: string) => updateSvgStyle(code)}
-            src="/static/img/logoKW.svg"
-          />
+          <StyledSVG preProcessor={(code: string) => updateSvgStyle(code)} src="/img/logoKW.svg" />
           <ModalCloseContainer>
             <ModalCloseIcon onClick={closeModal} className="fas fa-times" />
           </ModalCloseContainer>
@@ -227,7 +224,7 @@ export default function CoveredNowModal(Props: CallModalProps) {
         <ModalQuestionText>Questions? Give us a call!</ModalQuestionText>
         <ModalPartnersContainer>
           <ModalPartnerSection>
-            <StyledWinsIcon src="/static/img/AmWins_Logo2.svg" />
+            <StyledWinsIcon src="/img/AmWins_Logo2.svg" />
             <ModalSheduleContainer>
               <ModalScheduleText firstText left>
                 8am - 5pm CST, Mon-Fri
@@ -238,7 +235,7 @@ export default function CoveredNowModal(Props: CallModalProps) {
             </ModalSheduleContainer>
           </ModalPartnerSection>
           <ModalPartnerSection>
-            <StyledPearlIcon src="/static/img/PearlInsurance_Logo.svg" />
+            <StyledPearlIcon src="/img/PearlInsurance_Logo.svg" />
             <ModalSheduleContainer>
               <ModalScheduleText firstText right>
                 7am - 6pm CST, Mon-Fri

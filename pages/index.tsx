@@ -1,5 +1,5 @@
-import App from 'src';
+import AppEO from 'src/containers/TreeEO';
 
 export default function Home(): JSX.Element {
-  return <App />;
+  return <AppEO />;
 }

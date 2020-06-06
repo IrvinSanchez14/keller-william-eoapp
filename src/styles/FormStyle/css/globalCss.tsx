@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from './withStyles';
-import { fonts } from 'assets/fonts';
 
 const GlobalCss = withStyles({
   '@global': {
@@ -18,7 +17,7 @@ const GlobalCss = withStyles({
       backgroundColor: '#FFFFFF',
       minHeight: '100%',
       overflowY: 'auto',
-      fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
+      fontFamily: `"Effra", "Arial", "sans-serif"`,
     },
     '#__rootDOMNode__': {
       height: '100%',
