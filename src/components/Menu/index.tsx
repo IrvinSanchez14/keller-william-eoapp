@@ -39,7 +39,7 @@ const basicStyles = css`
   line-height: 42px;
   ${({ theme }) => theme.phone`
     color: ${theme.colors.dark};
-    font-family: 'Bold';
+    font-family: 'Effra Bold';
     font-size: 26px;
     line-height: 50px;
   `};

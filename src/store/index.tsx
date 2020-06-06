@@ -4,7 +4,7 @@ import reactIntlUniversal from 'react-intl-universal';
 import AppState from './models/AppState';
 import { Actions } from './reducers';
 
-import enUS from 'assets/i18n/en-US.json';
+import enUS from 'src/utils/i18n/en-US.json';
 
 const server: string = 'prod';
 

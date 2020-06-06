@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { fonts } from 'assets/fonts';
 
 export default makeStyles((theme: MuiTheme) => ({
   wrapper: {
@@ -224,7 +223,7 @@ export default makeStyles((theme: MuiTheme) => ({
     },
   },
   saveProgressButton: {
-    fontFamily: `"${fonts.Effra}","Arial", "sans-serif"`,
+    fontFamily: `"Effra", "Arial", "sans-serif"`,
     color: theme.palette.main.blue,
     fontSize: theme.fontSize.xs,
     fontWeight: 400,

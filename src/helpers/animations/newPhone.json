@@ -12,7 +12,7 @@
       "id": "image_0",
       "w": 354,
       "h": 72,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_0.png",
       "e": 0
     },
@@ -20,7 +20,7 @@
       "id": "image_1",
       "w": 580,
       "h": 1262,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_1.png",
       "e": 0
     },
@@ -28,7 +28,7 @@
       "id": "image_2",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_2.png",
       "e": 0
     },
@@ -36,7 +36,7 @@
       "id": "image_3",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_3.png",
       "e": 0
     },
@@ -44,7 +44,7 @@
       "id": "image_4",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_4.png",
       "e": 0
     },
@@ -52,7 +52,7 @@
       "id": "image_5",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_5.png",
       "e": 0
     },
@@ -60,7 +60,7 @@
       "id": "image_6",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_6.png",
       "e": 0
     },
@@ -68,7 +68,7 @@
       "id": "image_7",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_7.png",
       "e": 0
     },
@@ -76,7 +76,7 @@
       "id": "image_8",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_8.png",
       "e": 0
     },
@@ -84,7 +84,7 @@
       "id": "image_9",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_9.png",
       "e": 0
     },
@@ -92,7 +92,7 @@
       "id": "image_10",
       "w": 562,
       "h": 162,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_10.png",
       "e": 0
     },
@@ -100,7 +100,7 @@
       "id": "image_11",
       "w": 580,
       "h": 338,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_11.png",
       "e": 0
     },
@@ -108,7 +108,7 @@
       "id": "image_12",
       "w": 5000,
       "h": 1076,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_12.png",
       "e": 0
     },
@@ -116,7 +116,7 @@
       "id": "image_13",
       "w": 286,
       "h": 62,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_13.png",
       "e": 0
     },
@@ -124,7 +124,7 @@
       "id": "image_14",
       "w": 830,
       "h": 1514,
-      "u": "static/img/phoneAnimation/",
+      "u": "img/imgphoneAnimation/",
       "p": "img_14.png",
       "e": 0
     },

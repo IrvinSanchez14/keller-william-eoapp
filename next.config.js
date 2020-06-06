@@ -1,8 +1,8 @@
 const withImages = require('next-images');
-const withCSS = require('@zeit/next-css');
+const withFonts = require('next-fonts');
 
 module.exports = withImages(
-  withCSS({
+  withFonts({
     webpack(cfg) {
       const originalEntry = cfg.entry;
       originalEntry.entry = async () => {

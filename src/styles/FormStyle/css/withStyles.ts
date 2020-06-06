@@ -1,5 +1,4 @@
 import originalWithStyles, {
-  ClassNameMap,
   StyleRules,
   WithStylesOptions,
 } from '@material-ui/core/styles/withStyles'; // tslint:disable-line

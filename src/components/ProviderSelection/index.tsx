@@ -139,7 +139,7 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
           <CardContainer>
             <ProviderCard>
               <ProviderCardHeader
-                logo="/static/img/AmWins_Logo_White.svg"
+                logo="/img/AmWins_Logo_White.svg"
                 logoDescription="Am WINS Logo"
               />
               <CardBody>
@@ -160,7 +160,7 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
             </ProviderCard>
             <ProviderCard>
               <ProviderCardHeader
-                logo="/static/img/PearlInsurance_Logo_White.svg"
+                logo="/img/PearlInsurance_Logo_White.svg"
                 logoDescription="Pearl Insurance Logo"
               />
               <CardBody>

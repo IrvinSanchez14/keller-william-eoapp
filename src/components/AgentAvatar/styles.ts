@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { fonts } from 'assets/fonts';
 
 export const useStyles = makeStyles((theme: MuiTheme) => ({
   wrapper: ({ isInline }: { isInline: boolean }) => ({
@@ -96,7 +95,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
       borderRadius: '50%',
       fontSize: 10,
       letterSpacing: -1,
-      fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
+      fontFamily: `"Effra", "Arial", "sans-serif"`,
       color: theme.palette.common.white,
       ...(!!avatar && {
         fontSize: responsiveSizes[0] * 0.2,

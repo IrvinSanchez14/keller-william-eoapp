@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { fonts } from 'assets/fonts';
 
 export const useStyles = makeStyles((theme: MuiTheme) => ({
   default: ({
@@ -14,7 +13,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     customWidthDesktop,
     asLink,
   }: any) => ({
-    fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
+    fontFamily: `"Effra", "Arial", "sans-serif"`,
     fontWeight: fontWeight || 600,
     height: 50,
     width: '201px',

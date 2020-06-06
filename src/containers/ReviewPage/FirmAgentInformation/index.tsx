@@ -44,12 +44,15 @@ const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
 `;
 
 const ContainerBackgroundShape = styled.div`
-  background: url(../../../static/img/reviewImgs/bg_left.svg) no-repeat;
-  background-size: 415px 90%;
+  background: url(../../../img/reviewImgs/bg_right.svg) no-repeat;
+  background-size: 415px 100%;
   background-position: right;
   z-index: 1px;
   ${({ theme }) => theme.phone`
-  `}
+    background: url(../../../img/reviewImgs/bg_left.svg) no-repeat;
+    background-size: 415px 100%;
+    background-position: -40px 160px;
+  `};
 `;
 
 export default function FirmAgentInformation({

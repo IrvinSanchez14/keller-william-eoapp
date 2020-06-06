@@ -47,7 +47,7 @@ const FooterDogIcon = styled(SVG)<{ width: string; height: string }>`
 
 const FooterLooksText = styled.h1`
   font-size: 30px;
-  font-style: 'Regular';
+  font-style: 'Effra';
   font-weight: 200;
   letter-spacing: -0.54px;
   @media (max-width: 850px) {
@@ -66,7 +66,7 @@ export default function FooterReview({ sessionId }: { sessionId: string }): JSX.
   return (
     <FooterContainer>
       <FooterSection hideDogIcon>
-        <FooterDogIcon width="100px" height="55px" src="/static/img/dog-circle.svg" />
+        <FooterDogIcon width="100px" height="55px" src="/img/dog-circle.svg" />
         <FooterLooksText>Looks great. Woof woof!</FooterLooksText>
       </FooterSection>
       <FooterSection alignRight>

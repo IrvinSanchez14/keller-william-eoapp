@@ -22,7 +22,7 @@ const DogIcon = ({ size, tabletSize, mobileSize }: IDogIcon): JSX.Element => (
     size={size}
     tabletSize={tabletSize || mobileSize}
     mobileSize={mobileSize}
-    src="/static/img/dog-circle.svg"
+    src="/img/dog-circle.svg"
   />
 );
 
