@@ -9,22 +9,10 @@ import ConfirmationPageProps from './IConfirmationPage';
 import { formatNumericalAbbreviation } from 'src/helpers/formatData';
 
 const P = styled.p`
-  @font-face {
-    font-family: 'Effra Regular';
-    src: url('/fonts/Effra_Std_Rg.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
-  font-family: 'Effra Regular';
+  font-family: 'Effra';
 `;
 
 const H1 = styled.h1`
-  @font-face {
-    font-family: 'Effra Bold';
-    src: url('/fonts/Effra_Std_Bd.ttf');
-    font-weight: normal;
-    font-style: normal;
-  }
   font-family: 'Effra Bold';
 `;
 

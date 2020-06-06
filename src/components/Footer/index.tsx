@@ -72,7 +72,7 @@ const SubContainer = styled.div`
 `;
 
 const StyledLink = styled.a`
-  font-family: 'Light';
+  font-family: 'Effra Light';
   text-decoration: none;
   color: ${({ theme }) => theme.colors.white};
 `;
@@ -86,7 +86,7 @@ interface StyledFooterTextProps {
 }
 
 const StyledFooterText = styled.p<StyledFooterTextProps>`
-  font-family: 'Light';
+  font-family: 'Effra Light';
   color: ${({ theme }) => theme.colors.white};
   font-size: 12px;
   line-height: 16px;
@@ -147,7 +147,7 @@ const ListWrapper = styled.ul`
 `;
 
 const StyledTextLink = styled.p`
-  font-family: 'Light';
+  font-family: 'Effra Light';
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
   font-size: 14px;

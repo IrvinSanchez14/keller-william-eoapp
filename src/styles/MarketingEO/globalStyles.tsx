@@ -6,25 +6,25 @@ const GlobalStyles = createGlobalStyle`
   ${reset}
 
   @font-face {
-    font-family: "Regular";
+    font-family: "Effra";
     src: url('/fonts/Effra_Std_Rg.ttf');
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
-    font-family: "Bold";
+    font-family: "Effra Bold";
     src: url('/fonts/Effra_Std_Bd.ttf');
     font-weight: normal;
     font-style: normal;
   }
   @font-face {
-    font-family: "Light";
+    font-family: "Effra Light";
     src: url('/fonts/Effra_Std_Lt.ttf');
     font-weight: normal;
     font-style: normal;
    }
    @font-face {
-     font-family: "Medium";
+     font-family: "Effra Medium";
      src: url('/fonts/Effra_Std_Md.ttf');
      font-weight: normal;
      font-style: normal;
@@ -41,7 +41,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     overflow: hidden;
     position: relative;
-    font-family: "Regular";
+    font-family: "Effra";
   }
 
   html {
@@ -49,15 +49,15 @@ const GlobalStyles = createGlobalStyle`
   }
 
   a, button, p {
-    font-family: "Regular";
+    font-family: "Effra";
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: "Bold";
+    font-family: "Effra Bold";
   }
 
   .mediumFont {
-    font-family: "Medium";
+    font-family: "Effra Medium";
   }
 `;
 

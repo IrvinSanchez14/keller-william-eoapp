@@ -224,7 +224,7 @@ export default makeStyles((theme: MuiTheme) => ({
     },
   },
   saveProgressButton: {
-    fontFamily: `"${fonts.Effra}","Arial", "sans-serif"`,
+    fontFamily: `"Effra", "Arial", "sans-serif"`,
     color: theme.palette.main.blue,
     fontSize: theme.fontSize.xs,
     fontWeight: 400,

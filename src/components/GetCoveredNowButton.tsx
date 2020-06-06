@@ -3,7 +3,7 @@ import ButtonPrimary from 'src/components/Button/ButtonPrimary';
 
 const StyledButton = styled(ButtonPrimary)`
   width: 201px;
-  font-family: Bold;
+  font-family: 'Effra Bold';
   display: flex;
   justify-content: center;
   align-items: center;

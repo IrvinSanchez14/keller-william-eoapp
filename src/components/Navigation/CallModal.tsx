@@ -69,7 +69,7 @@ const StyledIconWrapper = styled.button`
 `;
 
 const StyledLink = styled.a`
-  font-family: 'Bold';
+  font-family: 'Effra Bold';
   display: block;
   color: ${({ theme }) => theme.colors.primary};
   margin-top: 2px;

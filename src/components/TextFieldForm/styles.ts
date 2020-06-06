@@ -1,4 +1,3 @@
-import { fonts } from 'public/fonts';
 import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 
@@ -13,7 +12,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     borderRadius: 12,
     boxShadow: 'none',
     width: customWidth || '100%',
-    fontFamily: `"${fonts.Effra}", "Arial", "sans-serif"`,
+    fontFamily: `"Effra", "Arial", "sans-serif"`,
     fontSize: 22,
     fontWeight: 'bold',
     textIndent: 16,

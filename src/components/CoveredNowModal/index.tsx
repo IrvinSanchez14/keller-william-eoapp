@@ -148,7 +148,7 @@ const ModalPartnersContainer = styled.div`
 
 const ModalScheduleText = styled.a<ModalScheduleTextProps>`
   font-size: 22px;
-  font-style: 'Regular';
+  font-style: 'Effra';
   padding-top: 5px;
   ${({ firstText }) => firstText && `padding-top: 18px;`};
   ${({ left }) => left && `padding-left: 46px;`};

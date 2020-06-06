@@ -1,6 +1,5 @@
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
-import { fonts } from 'public/fonts';
 
 export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => ({
   stepContainer: {
@@ -52,7 +51,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     marginBottom: '0.4em',
     lineHeight: '62px',
     whiteSpace: 'pre-wrap',
-    fontFamily: fonts.Effra,
+    fontFamily: 'Effra',
     fontWeight: 'bold',
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       fontSize: 24, // send fontSize via props?
@@ -69,7 +68,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   subHeading: {
     fontSize: 54,
     lineHeight: '62px',
-    fontFamily: fonts.Effra,
+    fontFamily: 'Effra',
     fontWeight: 'bold',
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       fontSize: 20,
@@ -80,7 +79,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   description: {
     lineHeight: '28px',
     fontSize: '22px',
-    fontFamily: fonts.Effra,
+    fontFamily: 'Effra',
     fontWeight: 'bold',
     [theme.breakpoints.down(theme.breakpoints.values.md)]: {
       fontSize: '16px',
