@@ -18,8 +18,6 @@ export interface IAppStoreProps {
   classes?: any;
   formData?: any;
   sessionId?: any;
-  fixMe?: () => void;
-  _key?: number;
 }
 
 export type FormikProps = {

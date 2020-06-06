@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import FormRouter from 'src/components/FormRouter';
 import SessionModal from 'src/components/SessionModal';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
@@ -53,12 +53,6 @@ function useSessionSaver(state: AppState) {
 }
 
 function AppEO() {
-  const [componentKey, setComponentKey] = useState(1);
-  const fixMe = () => {
-    if (componentKey < 2) {
-      setComponentKey(componentKey + 1);
-    }
-  };
   const router = useRouter();
   const { dispatch, intl, state } = useAppContext();
   const { onSubmit, sessionId, isOpen, setIsOpen } = useSessionSaver(state);
@@ -85,15 +79,9 @@ function AppEO() {
 
   return (
     <>
-      <SessionModal key={componentKey} onClose={() => setIsOpen(false)} isOpen={isOpen} />
-      <FormRouter
-        key={componentKey}
-        dispatch={dispatch}
-        intl={intl}
-        formData={state}
-        onSubmit={onSubmit}
-      >
-        <WelcomeEO fixMe={fixMe} key={componentKey} _key={componentKey} />
+      <SessionModal onClose={() => setIsOpen(false)} isOpen={isOpen} />
+      <FormRouter dispatch={dispatch} intl={intl} formData={state} onSubmit={onSubmit}>
+        <WelcomeEO />
         <FirmInformation />
         <FirmInformationEmail />
         <FirmInformationBroker />

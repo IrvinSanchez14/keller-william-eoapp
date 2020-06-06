@@ -21,8 +21,7 @@ export class WelcomeEO extends Component<IAppStoreProps> {
   };
 
   componentDidMount() {
-    const { dispatch, fixMe } = this.props;
-    fixMe();
+    const { dispatch } = this.props;
     setInformationPage(dispatch, 0, categoriesName.intro);
   }
 
