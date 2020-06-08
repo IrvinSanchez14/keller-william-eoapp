@@ -20,7 +20,7 @@ module.exports = withImages(
     cssModules: true,
     exportTrailingSlash: true,
     env: {
-      ENVIRONMENT: process.env.ENV || 'production',
+      ENVIRONMENT: process.env.APP_ENV || 'production',
     },
   }),
 );
