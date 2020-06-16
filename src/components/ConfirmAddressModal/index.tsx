@@ -46,9 +46,9 @@ const ConfirmAddressModal = ({ showModal, closeModal }: Props) => {
     <Dialog fullWidth maxWidth="xl" aria-labelledby="max-width-dialog-title" open={showModal}>
       <div className={classes.container}>
         <DialogTitle className={classes.header}>
-          <Icon onClick={closeModal} className={classes.dogIcon} name="dog" />
+          <Icon className={classes.dogIcon} name="dog" />
           <Typography className={classes.text}>{'RUH ROH!'}</Typography>
-          <i className={classnames('fas fa-times', classes.closeIcon)} />
+          <i onClick={closeModal} className={classnames('fas fa-times', classes.closeIcon)} />
         </DialogTitle>
         <DialogContent className={classes.content}>
           <Container className={classes.contentInformation}>
