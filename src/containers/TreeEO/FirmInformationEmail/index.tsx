@@ -1,9 +1,11 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
+import { geocodeByAddress } from 'react-places-autocomplete';
 
 import StepWrapper from 'src/components/StepWrapper';
 import { FormApp } from 'src/components/FormApp';
+import ConfirmAddressModal from 'src/components/ConfirmAddressModal';
 import { FormFirmInformationEmail } from './form';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeFirmConfirmation, changeStatusProgressBar } from 'src/store/actions/app';
@@ -21,11 +23,11 @@ type FirmInformationProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 export class FirmInformationEmail extends Component<FirmInformationProps> {
   state = {
     isButtonLoading: false,
+    showModal: false,
   };
 
   componentDidMount() {
-    const { dispatch, formData } = this.props;
-    setInformationPage(dispatch, 2, categoriesName.firmConfirmation);
+    setInformationPage(this.props.dispatch, 2, categoriesName.firmConfirmation);
   }
 
   nextStep = async (values: any, actions: FormikHelpers<any>) => {
@@ -33,6 +35,17 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
     this.setState({ isButtonLoading: true });
     values.suite = values.suite === '' ? null : values.suite;
     storeFirmConfirmation(dispatch, values);
+    if (formData.app.metadata.actualPage === 2 && !this.state.showModal) {
+      console.log(formData);
+      const { streetAddress } = values;
+      const address = await geocodeByAddress(streetAddress)
+        .then((result) => result)
+        .catch((error) => error);
+      if (typeof address === 'string') {
+        this.setState({ isButtonLoading: false, showModal: true });
+        return false;
+      }
+    }
     try {
       await this.props.onSubmit?.();
       changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
@@ -49,6 +62,7 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
 
   render() {
     const isLoading = false;
+    const { showModal, isButtonLoading } = this.state;
     const { formData, dispatch, classes, intl } = this.props;
     return (
       !isLoading && (
@@ -69,7 +83,7 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
             onSubmit={this.nextStep}
             buttonLabel={'Continue'}
             dataTestId="continueButton"
-            isLoading={this.state.isButtonLoading}
+            isLoading={isButtonLoading}
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
@@ -77,7 +91,15 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
             alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
-              return FormFirmInformationEmail(formikProps);
+              return (
+                <>
+                  {FormFirmInformationEmail(formikProps)}
+                  <ConfirmAddressModal
+                    showModal={showModal}
+                    closeModal={() => this.setState({ showModal: false })}
+                  />
+                </>
+              );
             }}
           </FormApp>
         </StepWrapper>

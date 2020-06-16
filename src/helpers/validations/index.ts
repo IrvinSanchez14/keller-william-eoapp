@@ -217,3 +217,17 @@ export const editRiskProfileSchema = riskProfileValidateSchema
   .concat(riskProfileReitsValidateSchema)
   .concat(riskProfileFirmValidateSchema)
   .concat(riskProfileTransactionValidateSchema);
+
+export const confirmAddressModalShema = Yup.object({
+  street: Yup.string()
+    .min(5, 'Field is required')
+    .required('Field is required')
+    .test(
+      'is-valid-address',
+      'Please enter a valid street',
+      (value: string) => value !== undefined && /\s/.test(value.toLowerCase()),
+    ),
+  city: Yup.string().required('Field is required'),
+  state: Yup.string().required('Field is required'),
+  postalCode: Yup.string().min(5, 'Please enter a valid ZIP code').required('Field is required'),
+});
