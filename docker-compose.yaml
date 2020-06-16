@@ -1,5 +1,5 @@
 version: '3.4'
-services: 
+services:
   web:
     build:
       context: .
@@ -8,7 +8,6 @@ services:
       args:
         NPM_TOKEN: ${NPM_TOKEN}
         NODE_ENV: ${NODE_ENV}
-        APP_ENV: ${APP_ENV}
     volumes:
       - "./pages:/workspace/pages"
       - "./static:/workspace/static"

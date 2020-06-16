@@ -21,7 +21,7 @@ echo "DOCKER_IMAGE=${DOCKER_IMAGE_NAME}, TAG=${TAG}"
 echo "Build docker image"
 
 docker build -f ci-cd/docker/Dockerfile \
-             --build-arg APP_ENV=production \
+             --build-arg NODE_ENV=production \
              -t $DOCKER_IMAGE_NAME .
 
 K8S_CLUSTER_NAME=""

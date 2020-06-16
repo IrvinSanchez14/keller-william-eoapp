@@ -1,9 +1,9 @@
 #!/bin/sh
 
-echo "----APP ENV----"
-echo ${APP_ENV}
+echo "----NODE ENV----"
+echo ${NODE_ENV}
 
-if [[  "${APP_ENV}" == "production" ]]; then
+if [[  "${NODE_ENV}" == "production" ]]; then
   yarn start
 else
   yarn dev

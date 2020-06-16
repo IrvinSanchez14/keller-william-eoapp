@@ -6,7 +6,7 @@ yarn config set "@fortawesome:registry" https://npm.fontawesome.com/
 yarn config set "//npm.fontawesome.com/:_authToken" ${NPM_TOKEN}
 
 
-if [[  "${APP_ENV}" == "production" ]]; then
+if [[  "${NODE_ENV}" == "production" ]]; then
   yarn install --non-interactive --frozen-lockfile --ignore-optional  # --production
   yarn build
 else
@@ -15,4 +15,3 @@ fi
 
 # yarn export
 # yarn cache clean --force
-
