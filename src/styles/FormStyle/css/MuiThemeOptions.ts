@@ -1,6 +1,5 @@
 import { createMuiTheme } from '@material-ui/core';
 import { MuiThemeOptions } from './IMuiThemeOptions';
-import { fonts } from '../../../../static/fonts/fontForm';
 
 const defaultTheme = createMuiTheme();
 
@@ -85,7 +84,7 @@ const muiPalette = {
 };
 
 const muiTypography: MuiThemeOptions['typography'] = {
-  fontFamily: `"${fonts.Effra}",Arial", "sans-serif"`,
+  fontFamily: `"Effra", Arial", "sans-serif"`,
   h1: {
     fontSize: 24,
     lineHeight: '28px',

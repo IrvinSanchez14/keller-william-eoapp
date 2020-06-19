@@ -137,10 +137,10 @@ function Navigation(Props: NavigationProps) {
           />
           <Link href="/">
             <StyledLogoContainer>
-              <StyledImg src="/static/img/logoKW.svg" alt="KWlogo" data-test-id="logo" />
+              <StyledImg src="/img/logoKW.svg" alt="KWlogo" data-test-id="logo" />
               <StyledSvg
                 isWhiteNav={isWhiteNav && !isMobile}
-                src="/static/img/logoKW.svg"
+                src="/img/logoKW.svg"
                 data-test-id="logo"
               />
             </StyledLogoContainer>

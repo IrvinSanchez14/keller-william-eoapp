@@ -31,7 +31,7 @@ const ModalContainer = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  background: url(../../../static/img/reviewImgs/bg_left.svg) no-repeat;
+  background: url(../../../img/reviewImgs/bg_left.svg) no-repeat;
   background-size: 415px 90%;
   background-position: left;
   z-index: 1px;
@@ -99,6 +99,7 @@ const ModalHeaderCloseContainer = styled.div`
 const ModalHeaderCloseIcon = styled.i`
   font-size: 28px;
   display: flex;
+  cursor: pointer;
   ${({ theme }) => theme && `color: ${theme.colors.primary};`};
 `;
 

@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 
 import { Row, Column } from '../LayoutWrapper/Flex';
 import { AwesomeFontIcon } from '../AwesomeFontIcon';
-import kwLogoRed from 'assets/images/logos/KWLogoRed.png';
+import kwLogoRed from 'img/logos/KWLogoRed.png';
 
 import { useStyles } from './styles';
 

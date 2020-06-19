@@ -80,7 +80,7 @@ export default function NavigationPdf(Props: NavigationPdfProps): React.ReactEle
         </HeaderContainer>
       )}
       <HeaderContainer paddingLogo centerItem>
-        <StyledSVG height="120px" width="188px" src="/static/img/logoKW.svg" />
+        <StyledSVG height="120px" width="188px" src="/img/logoKW.svg" />
       </HeaderContainer>
       <HeaderContainer rightItem></HeaderContainer>
     </Header>
