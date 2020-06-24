@@ -1,7 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 import { ServerStyleSheets as MaterialUiServerStyleSheets } from '@material-ui/core/styles';
-import { GOOGLE_MAPS_API_KEY } from 'src/utils/constants';
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
@@ -50,7 +49,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
           <script src="https://kit.fontawesome.com/0f6ae094e0.js" crossOrigin="anonymous" defer />
           <script
-            src={`https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places&language=en`}
+            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places&language=en`}
           />
           <link
             href="https://kit-pro.fontawesome.com/releases/latest/css/pro-v4-shims.min.css"
