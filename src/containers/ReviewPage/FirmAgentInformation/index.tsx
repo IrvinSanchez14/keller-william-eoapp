@@ -24,7 +24,7 @@ const labelInformation = {
   },
   agentInformation: {
     numberAgentsMoreCommission:
-      'Total number of agents earning ore than $20,000 in commission per year',
+      'Total number of agents earning more than $20,000 in commission per year',
     numberAgentLessCommission:
       'Total number of agents earning less than $20,000 in commission per year',
     numberAgenteNoCommission: 'Total number  of agents earning no commission',
