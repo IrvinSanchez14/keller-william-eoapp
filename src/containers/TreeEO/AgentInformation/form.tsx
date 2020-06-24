@@ -10,6 +10,8 @@ import { useAppContext } from 'src/store';
 const useStyles = makeStyles((theme: MuiTheme) => ({
   subTitleForm: {
     fontSize: 16,
+    width: '100%',
+    maxWidth: 478,
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
     },
