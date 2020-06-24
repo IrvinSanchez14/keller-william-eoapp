@@ -28,18 +28,17 @@ interface AddressProps {
 
 const ConfirmAddressModal = ({ showModal, closeModal }: Props) => {
   const classes = useStyles();
-  const field = useField('streetAddress');
+  const streetAddressField = useField('streetAddress');
   const { submitForm } = useFormikContext();
 
   async function verifyAddress({ street, city, state, postalCode }: AddressProps) {
-    field[2].setValue(`${street}, ${city}, ${state} ${postalCode}`);
+    streetAddressField[2].setValue(`${street}, ${city}, ${state} ${postalCode}`);
     closeModal();
     submitForm();
   }
 
   function getErrorLabel(formik: FormikProps<any>, field: string): any {
-    const test = formik.getFieldMeta(field).touched ? formik.errors[field] : '';
-    return test;
+    return formik.getFieldMeta(field).touched ? formik.errors[field] : '';
   }
 
   return (
@@ -110,7 +109,6 @@ const ConfirmAddressModal = ({ showModal, closeModal }: Props) => {
                           classes.select,
                           formik.values.state === '' ? classes.selectDefaultValue : {},
                         )}
-                        placeholder={'Ostras'}
                         labelId="demo-customized-select-label"
                         id="demo-customized-select"
                         value={formik.values.state}
