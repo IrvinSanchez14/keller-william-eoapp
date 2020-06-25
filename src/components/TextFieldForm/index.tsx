@@ -9,6 +9,7 @@ import { Column } from '../LayoutWrapper/Flex';
 import { LabelForm } from '../LabelForm';
 import { useStyles } from './styles';
 import { numberMask as createNumberMask, percentageMask as setPercentageMask } from 'src/utils';
+import TextFieldAddress from '../TextFieldAddress';
 
 export type TextFieldProps = InputProps &
   WithStyles<typeof useStyles> & {
@@ -80,7 +81,7 @@ export function TextFieldForm(Props: TextFieldProps) {
       validateForm();
     }
 
-    if (!!inputRef.current.addEventListener) {
+    if (Props.name !== 'streetAddress' && !!inputRef.current.addEventListener) {
       const handleWheel = (event: React.FocusEvent<HTMLInputElement>) => event.preventDefault();
       inputRef.current.addEventListener('wheel', handleWheel);
 
@@ -132,6 +133,8 @@ export function TextFieldForm(Props: TextFieldProps) {
     [classes.error]: !!errorText,
     [classes.readOnly]: readOnly,
   });
+
+  const isAddress = Props.name === 'streetAddress';
 
   return (
     <Column className={classnames(classes.container, containerStyles)}>
@@ -188,17 +191,31 @@ export function TextFieldForm(Props: TextFieldProps) {
             ref={inputRef}
           />
         )}
-        {!(mask || numberMask || percentageMask) && (
-          <input
+        {!(mask || numberMask || percentageMask) && !isAddress && (
+          <>
+            <input
+              {...rest}
+              placeholder={placeholder}
+              onChange={handleChange}
+              onBlur={onBlur}
+              value={value}
+              type={type}
+              disabled={readOnly}
+              className={inputClasses}
+              ref={inputRef}
+            />
+          </>
+        )}
+        {isAddress && (
+          <TextFieldAddress
             {...rest}
             placeholder={placeholder}
-            onChange={handleChange}
             onBlur={onBlur}
-            value={value}
+            value={value.toString()}
             type={type}
             disabled={readOnly}
             className={inputClasses}
-            ref={inputRef}
+            searchTypes={['address']}
           />
         )}
       </div>
