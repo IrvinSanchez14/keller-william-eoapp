@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       width: '100%',
     },
   },
+  rowContainer: {
+    marginBottom: '1.3rem',
+  },
+  column: {
+    width: '100%',
+    maxWidth: '100%',
+  },
 }));
 
 export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean) => {
@@ -27,14 +34,14 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
   const classes = useStyles();
   return (
     <>
-      <Row wrap="wrap" style={stylesComponent.rowContainer}>
+      <Row wrap="wrap" className={classes.rowContainer}>
         {isReview ? null : (
           <Typography className={classnames(classes.subTitleForm)}>
             {intl.get('app.title.form.risk.part.five')}
           </Typography>
         )}
 
-        <Column>
+        <Column className={classes.column}>
           <FielControlForm
             data-test-id="percentageTransactions"
             name="percentageTransactions"
@@ -52,10 +59,4 @@ export const FormRiskProfileTransaction = (formikProps: any, isReview?: boolean)
       </Row>
     </>
   );
-};
-
-const stylesComponent = {
-  rowContainer: {
-    marginBottom: '1.3em',
-  },
 };
