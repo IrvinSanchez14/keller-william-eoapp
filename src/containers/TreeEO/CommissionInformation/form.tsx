@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '1.3em',
+    maxWidth: 410,
   },
   column: {
     width: '100%',

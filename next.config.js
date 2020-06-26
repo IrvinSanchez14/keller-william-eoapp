@@ -21,6 +21,7 @@ module.exports = withImages(
     exportTrailingSlash: true,
     env: {
       ENVIRONMENT: process.env.ENV || 'production',
+      GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
     },
   }),
 );
