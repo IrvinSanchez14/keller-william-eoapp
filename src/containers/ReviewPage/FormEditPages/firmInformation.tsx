@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useRouter } from 'next/dist/client/router';
-import { Typography, Divider } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FormApp } from 'src/components/FormApp';
 
@@ -120,17 +120,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
       maxWidth: 312,
     },
   },
-  // Este era el align items que yo tenia
-  // alignButton: {
-  //   [theme.breakpoints.up(theme.breakpoints.values.md)]: {
-  //     flex: 2,
-  //     margin: '0px 74px 5px 74px',
-  //   },
-  //   [theme.breakpoints.down(theme.breakpoints.values.md)]: {
-  //     width: 140,
-  //     margin: '0px 74px 0px 74px',
-  //   },
-  // },
   form: {
     position: 'relative',
     height: '100%',
@@ -197,6 +186,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
           contactName: state.app.data.firmInformation.contactName,
           brokerName: state.app.data.firmInformation.brokerName,
           kwMarketCenterName: state.app.data.firmInformation.kwMarketCenterName,
+          kwMarketCenterNumber: state.app.data.firmInformation.kwMarketCenterNumber,
           yearEstablished: state.app.data.firmInformation.yearEstablished,
           streetAddress: state.app.data.firmInformation.streetAddress,
           suite: state.app.data.firmInformation.suite || null,
@@ -232,7 +222,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
                   <Typography className={classnames(classes.titleFormEspecial)}>
                     {'Keller Williams Realty, Inc.'}
                   </Typography>
-                  {FormFirmInformation(formikProps)}
+                  {FormFirmInformation(formikProps, false)}
                 </Column>
               </Column>
               <Hr />

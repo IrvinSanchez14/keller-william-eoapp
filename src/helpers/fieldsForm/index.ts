@@ -23,6 +23,13 @@ export const getFullNameFields = () => [
     customWidth: 0,
   },
   {
+    name: 'kwMarketCenterNumber',
+    type: 'string',
+    placeholder: '',
+    label: 'KW Market Center number',
+    customWidth: 186,
+  },
+  {
     name: 'yearEstablished',
     type: 'number',
     placeholder: '',
