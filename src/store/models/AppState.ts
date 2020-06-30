@@ -102,6 +102,7 @@ export default class AppState implements IAppState {
         contactName: '',
         brokerName: '',
         kwMarketCenterName: '',
+        kwMarketCenterNumber: '',
         yearEstablished: 0,
         streetAddress: '',
         suite: null,
