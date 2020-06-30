@@ -21,7 +21,7 @@ type FormFields = {
   contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
-  kwMarketCenterNumber: number;
+  kwMarketCenterNumber: string;
   yearEstablished: number;
 };
 
