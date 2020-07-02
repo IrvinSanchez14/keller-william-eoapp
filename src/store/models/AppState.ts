@@ -53,6 +53,7 @@ export interface FirmInformationProps {
   contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
+  kwMarketCenterNumber: string;
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
@@ -101,6 +102,7 @@ export default class AppState implements IAppState {
         contactName: '',
         brokerName: '',
         kwMarketCenterName: '',
+        kwMarketCenterNumber: '',
         yearEstablished: 0,
         streetAddress: '',
         suite: null,
