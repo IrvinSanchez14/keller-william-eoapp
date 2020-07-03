@@ -21,6 +21,7 @@ type FormFields = {
   contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
+  kwMarketCenterNumber: string;
   yearEstablished: number;
 };
 
@@ -66,6 +67,7 @@ export class FirmInformation extends Component<FullNameProps> {
               contactName: formData.app.data.firmInformation.contactName || '',
               brokerName: formData.app.data.firmInformation.brokerName || '',
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
+              kwMarketCenterNumber: formData.app.data.firmInformation.kwMarketCenterNumber || '',
               yearEstablished: formData.app.data.firmInformation.yearEstablished || '',
             }}
             isInitValid
