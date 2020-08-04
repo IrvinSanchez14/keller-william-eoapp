@@ -222,7 +222,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
                   <Typography className={classnames(classes.titleFormEspecial)}>
                     {'Keller Williams Realty, Inc.'}
                   </Typography>
-                  {FormFirmInformation(formikProps, false)}
+                  {FormFirmInformation(formikProps, true)}
                 </Column>
               </Column>
               <Hr />

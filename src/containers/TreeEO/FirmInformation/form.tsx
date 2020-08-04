@@ -9,6 +9,8 @@ export const FormFirmInformation = (
 ) => {
   return getFullNameFields().map(
     ({ name, type, customWidth, label, numberMask, setNumberMask }) => {
+      console.log('naem', name);
+      console.log('showMarketCenterNumber', showMarketCenterNumber);
       if (name === 'kwMarketCenterNumber' && !showMarketCenterNumber) return null;
       return (
         <FielControlForm
