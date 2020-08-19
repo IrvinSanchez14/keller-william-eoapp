@@ -2,6 +2,7 @@ interface FirmInformationProps {
   contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
+  kwMarketCenterNumber: string;
   yearEstablished: number;
   streetAddress: string;
   suite?: number;

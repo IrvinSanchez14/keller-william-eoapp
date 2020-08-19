@@ -11,6 +11,7 @@ const labelInformation = {
     contactName: 'Contact name',
     brokerName: 'Broker/owner name',
     kwMarketCenterName: 'KW Market Center name',
+    kwMarketCenterNumber: 'KW Market Center Number',
     yearEstablished: 'Year established',
     streetAddress: 'Street Address',
     suite: 'Suite/Unit #',
@@ -85,6 +86,10 @@ export default function FirmAgentInformation({
         <ContainerInformation>
           <TextLight text={labelInformation.firmInformation.kwMarketCenterName} />
           <TextBold customMargin text={data.firmInformation.kwMarketCenterName} />
+        </ContainerInformation>
+        <ContainerInformation>
+          <TextLight text={labelInformation.firmInformation.kwMarketCenterNumber} />
+          <TextBold customMargin text={data.firmInformation.kwMarketCenterNumber} />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.firmInformation.yearEstablished} />
