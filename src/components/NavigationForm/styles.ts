@@ -49,13 +49,13 @@ export default makeStyles((theme: MuiTheme) => ({
     flex: 1,
   },
   logo: {
-    height: 28,
+    height: 40,
     alignSelf: 'flex-start',
     [theme.breakpoints.up('md')]: {
       alignSelf: 'center',
     },
     [theme.breakpoints.up('lg')]: {
-      height: 38,
+      height: 55,
     },
   },
   logoConfirmation: {
