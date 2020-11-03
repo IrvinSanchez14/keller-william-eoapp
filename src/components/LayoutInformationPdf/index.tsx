@@ -29,9 +29,9 @@ const data = {
   },
   agentInformation: {
     numberAgentsMoreCommission: 1200,
-    numberAgentsLessCommission: 1200,
-    numberAgentsNoCommission: 1200,
-    numberAgentsSpecialDesignation: 54,
+    numberAgentLessCommission: 1200,
+    numberAgenteNoCommission: 1200,
+    numberAgentSpecialDesignation: 54,
     revokedLicense: true,
   },
 };
@@ -79,15 +79,15 @@ const dataPC = {
     },
     farmRanch: 100000,
     auctioneering: 100000,
-    mortgageBrokerage: 2000000,
-    totalCommission: 160000000,
+    mortageBrokerage: 2000000,
+    totalCommision: 160000000,
   },
 };
 
 const dataRisk = {
   riskFactorInformation: {
     isHomeWarranty: true,
-    isMortgageBanking: true,
+    isMortageBanking: true,
     isPerformServices: true,
     isRepresentCommission: true,
     percentageTransactions: 47,

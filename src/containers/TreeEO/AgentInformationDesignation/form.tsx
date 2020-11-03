@@ -13,8 +13,8 @@ export const FormAgentInformationDesignation = (formikProps: any) => {
       <Row wrap="wrap" margin="0 -8px">
         <Column padding="0px 8px" style={styles.column}>
           <FielControlForm
-            data-test-id="numberAgentsSpecialDesignation"
-            name="numberAgentsSpecialDesignation"
+            data-test-id="numberAgentSpecialDesignation"
+            name="numberAgentSpecialDesignation"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}

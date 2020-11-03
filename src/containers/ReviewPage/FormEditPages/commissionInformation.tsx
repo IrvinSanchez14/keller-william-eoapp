@@ -216,7 +216,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
     values.percentageTransactions = removePercentageSign(values.percentageTransactions);
     values.farmRanch = removeSignsFromNumbers(values.farmRanch);
     values.auctioneering = removeSignsFromNumbers(values.auctioneering);
-    values.mortgageBrokerage = removeSignsFromNumbers(values.mortgageBrokerage);
+    values.mortageBrokerage = removeSignsFromNumbers(values.mortageBrokerage);
 
     values.residential = Object.keys(values.residential).reduce(
       (res, key: string) => ({
@@ -240,10 +240,10 @@ export function EditPageCommissionInformation({ closeModal }: any) {
       totalCommercial +
       values.farmRanch +
       values.auctioneering +
-      values.mortgageBrokerage;
+      values.mortageBrokerage;
     values.residential.total = totalResidential;
     values.commercial.total = totalCommercial;
-    values.totalCommission = total;
+    values.totalCommision = total;
     storeCommissionAll(dispatch, values);
     await ky.put(`session/${sessionId}`, {
       json: {
@@ -277,21 +277,21 @@ export function EditPageCommissionInformation({ closeModal }: any) {
           grossCommission: state.app.data.commissionInformation.grossCommission,
           averageValue: state.app.data.commissionInformation.averageValue,
           commercial: {
-            realEstate: state.app.data.commissionInformation.commercialCommission.realEstate,
-            rawLand: state.app.data.commissionInformation.commercialCommission.rawLand,
-            appraisals: state.app.data.commissionInformation.commercialCommission.appraisals,
-            propertyMgmt: state.app.data.commissionInformation.commercialCommission.propertyMgmt,
-            ownedProperty: state.app.data.commissionInformation.commercialCommission.ownedProperty,
+            realEstate: state.app.data.commissionInformation.commercial.realEstate,
+            rawLand: state.app.data.commissionInformation.commercial.rawLand,
+            appraisals: state.app.data.commissionInformation.commercial.appraisals,
+            propertyMgmt: state.app.data.commissionInformation.commercial.propertyMgmt,
+            ownedProperty: state.app.data.commissionInformation.commercial.ownedProperty,
           },
           farmRanch: state.app.data.commissionInformation.farmRanch,
           auctioneering: state.app.data.commissionInformation.auctioneering,
-          mortgageBrokerage: state.app.data.commissionInformation.mortgageBrokerage,
+          mortageBrokerage: state.app.data.commissionInformation.mortageBrokerage,
           residential: {
-            realEstate: state.app.data.commissionInformation.residentialCommission.realEstate,
-            rawLand: state.app.data.commissionInformation.residentialCommission.rawLand,
-            appraisals: state.app.data.commissionInformation.residentialCommission.appraisals,
-            propertyMgmt: state.app.data.commissionInformation.residentialCommission.propertyMgmt,
-            ownedProperty: state.app.data.commissionInformation.residentialCommission.ownedProperty,
+            realEstate: state.app.data.commissionInformation.residential.realEstate,
+            rawLand: state.app.data.commissionInformation.residential.rawLand,
+            appraisals: state.app.data.commissionInformation.residential.appraisals,
+            propertyMgmt: state.app.data.commissionInformation.residential.propertyMgmt,
+            ownedProperty: state.app.data.commissionInformation.residential.ownedProperty,
           },
           percentageTransactions: state.app.data.commissionInformation.percentageTransactions,
         }}

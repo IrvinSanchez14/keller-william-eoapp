@@ -1,6 +1,6 @@
 interface RiskProfileDataProps {
   isHomeWarranty: boolean;
-  isMortgageBanking: boolean;
+  isMortageBanking: boolean;
   isPerformServices: boolean;
   isRepresentCommission: boolean;
   percentageTransactions: number;

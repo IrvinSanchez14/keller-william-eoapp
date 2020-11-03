@@ -39,7 +39,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     const parsedValues = {
       ...values,
-      numberAgentsSpecialDesignation: removeSignsFromNumbers(values.numberAgentsSpecialDesignation),
+      numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
     };
     this.setState({ isButtonLoading: true });
     const { dispatch, formData } = this.props;
@@ -65,8 +65,8 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           </Typography>
           <FormApp
             initialValues={{
-              numberAgentsSpecialDesignation:
-                formData.app.data.agentInformation.numberAgentsSpecialDesignation || '',
+              numberAgentSpecialDesignation:
+                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
             }}
             isInitValid
             validationSchema={agentSpecialValidateSchema}
