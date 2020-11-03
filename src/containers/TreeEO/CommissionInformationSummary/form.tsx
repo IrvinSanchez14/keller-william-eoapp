@@ -28,7 +28,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
   isInitValid = false;
   isButtonLoading = false;
   state = {
-    totalCommision: 0,
+    totalCommission: 0,
   };
 
   renderFormChildren = ({ errors, touched, setFieldTouched }: FormikProps) =>
@@ -55,12 +55,12 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
       {
         key: 1,
         title: 'Residential',
-        value: formData.app.data.commissionInformation.residential.total || 0,
+        value: formData.app.data.commissionInformation.residentialCommission.total || 0,
       },
       {
         key: 2,
         title: 'Commercial',
-        value: formData.app.data.commissionInformation.commercial.total || 0,
+        value: formData.app.data.commissionInformation.commercialCommission.total || 0,
       },
       {
         key: 3,
@@ -75,7 +75,7 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
       {
         key: 5,
         title: 'Mortgage',
-        value: formData.app.data.commissionInformation.mortageBrokerage || 0,
+        value: formData.app.data.commissionInformation.mortgageBrokerage || 0,
       },
     );
     return children.map((item: any) => {
@@ -96,11 +96,11 @@ export class FormCommissionInformationSummary extends Component<IFormFirmInforma
   totalSummary = () => {
     const { formData } = this.props;
     const total =
-      formData.app.data.commissionInformation.residential.total +
-      formData.app.data.commissionInformation.commercial.total +
+      formData.app.data.commissionInformation.residentialCommission.total +
+      formData.app.data.commissionInformation.commercialCommission.total +
       formData.app.data.commissionInformation.farmRanch +
       formData.app.data.commissionInformation.auctioneering +
-      formData.app.data.commissionInformation.mortageBrokerage;
+      formData.app.data.commissionInformation.mortgageBrokerage;
     return total || 0;
   };
 

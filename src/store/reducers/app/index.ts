@@ -65,6 +65,7 @@ export const appActions: any = {
             currentCarrier: action.payload.currentCarrier,
             isHaveInsurance: action.payload.isHaveInsuranceField,
             insurance: {
+              insuranceId: action.payload.insuranceId,
               renewalDate: action.payload.renewalDate,
               deductible: action.payload.deductible,
               limits: action.payload.limits,
@@ -115,7 +116,7 @@ export const appActions: any = {
           ...state.app.data,
           commissionInformation: {
             ...state.app.data.commissionInformation,
-            totalCommision: action.payload,
+            totalCommission: action.payload,
           },
         },
       },
@@ -130,7 +131,7 @@ export const appActions: any = {
           ...state.app.data,
           commissionInformation: {
             ...state.app.data.commissionInformation,
-            residential: {
+            residentialCommission: {
               ...action.payload.commissionForm.residential,
               total: action.payload.total,
             },
@@ -148,7 +149,7 @@ export const appActions: any = {
           ...state.app.data,
           commissionInformation: {
             ...state.app.data.commissionInformation,
-            commercial: {
+            commercialCommission: {
               ...action.payload.commissionForm.commercial,
               total: action.payload.total,
             },
@@ -224,7 +225,7 @@ export const appActions: any = {
     };
   },
   ADD_CLAIMS_POLICY_INFORMATION: (state: any, action: any) => {
-    const addArray = [{}];
+    const addArray = [];
     return {
       ...state,
       app: {
