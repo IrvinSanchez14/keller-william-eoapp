@@ -47,7 +47,7 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
     actions.setSubmitting(true);
     storeCommissionResidential(dispatch, values, totalResidential); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, parseFloat(formData.app.metadata.progressBar) + 4.5);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   };
 
@@ -70,15 +70,11 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               residential: {
-                realEstate:
-                  formData.app.data.commissionInformation.residentialCommission.realEstate,
-                rawLand: formData.app.data.commissionInformation.residentialCommission.rawLand,
-                appraisals:
-                  formData.app.data.commissionInformation.residentialCommission.appraisals,
-                propertyMgmt:
-                  formData.app.data.commissionInformation.residentialCommission.propertyMgmt,
-                ownedProperty:
-                  formData.app.data.commissionInformation.residentialCommission.ownedProperty,
+                realEstate: formData.app.data.commissionInformation.residential.realEstate,
+                rawLand: formData.app.data.commissionInformation.residential.rawLand,
+                appraisals: formData.app.data.commissionInformation.residential.appraisals,
+                propertyMgmt: formData.app.data.commissionInformation.residential.propertyMgmt,
+                ownedProperty: formData.app.data.commissionInformation.residential.ownedProperty,
               },
             }}
             isInitValid

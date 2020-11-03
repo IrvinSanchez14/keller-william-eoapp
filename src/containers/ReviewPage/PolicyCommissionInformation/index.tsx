@@ -196,103 +196,103 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
         {
           name: 'Residential real estate',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.residentialCommission.realEstate,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.realEstate,
           ),
         },
         {
           name: 'Residential raw land',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.residentialCommission.rawLand,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.rawLand,
           ),
         },
         {
           name: 'Residential appraisals',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.residentialCommission.appraisals,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.appraisals,
           ),
         },
         {
           name: 'Residential property management',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.residentialCommission.propertyMgmt,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.propertyMgmt,
           ),
         },
         {
           name: 'Residential owned property',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.residentialCommission.ownedProperty,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.residential.ownedProperty,
           ),
         },
         {
           name: 'Commercial real estate',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.commercialCommission.realEstate,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.realEstate,
           ),
         },
         {
           name: 'Commercial raw land',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.commercialCommission.rawLand,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.rawLand,
           ),
         },
         {
           name: 'Commercial appraisals',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.commercialCommission.appraisals,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.appraisals,
           ),
         },
         {
           name: 'Commercial property management',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.commercialCommission.propertyMgmt,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.propertyMgmt,
           ),
         },
         {
           name: 'Commercial property',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.commercialCommission.ownedProperty,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.commercial.ownedProperty,
           ),
         },
         {
           name: 'Farm/Ranch',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
+            data.commissionInformation.totalCommision,
             data.commissionInformation.farmRanch,
           ),
         },
         {
           name: 'Auctioneering',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
+            data.commissionInformation.totalCommision,
             data.commissionInformation.auctioneering,
           ),
         },
         {
           name: 'Mortgage',
           value: calcCommission(
-            data.commissionInformation.totalCommission,
-            data.commissionInformation.mortgageBrokerage,
+            data.commissionInformation.totalCommision,
+            data.commissionInformation.mortageBrokerage,
           ),
         },
       ]
     : [
         {
           name: 'Residential',
-          value: formatAmount(data.commissionInformation.residentialCommission.total, true),
+          value: formatAmount(data.commissionInformation.residential.total, true),
         },
         {
           name: 'Commercial',
-          value: formatAmount(data.commissionInformation.commercialCommission.total, true),
+          value: formatAmount(data.commissionInformation.commercial.total, true),
         },
         {
           name: 'Farm/Ranch',
@@ -304,7 +304,7 @@ function getTableInfo(data: PolicyCommissionInformationProps['data'], isPdf: boo
         },
         {
           name: 'Mortgage',
-          value: formatAmount(data.commissionInformation.mortgageBrokerage, true),
+          value: formatAmount(data.commissionInformation.mortageBrokerage, true),
         },
       ];
   let total: number | undefined;
@@ -438,7 +438,7 @@ export default function PolicyCommissionInformation({
               <ComissionTotalValueText>
                 {isPdf
                   ? formatPercentage(total)
-                  : formatAmount(data.commissionInformation.totalCommission, true)}
+                  : formatAmount(data.commissionInformation.totalCommision, true)}
               </ComissionTotalValueText>
             </TableList>
           </Table>

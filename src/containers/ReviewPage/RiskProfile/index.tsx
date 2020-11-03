@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 
 const labelInformation = {
   isHomeWarranty: 'Do you offer home warranty programs',
-  isMortgageBanking: 'Are you involved in mortgage banking  development, or construction',
+  isMortageBanking: 'Are you involved in mortgage banking  development, or construction',
   isPerformServices: 'Do you perform services for REITS or property syndications',
   isRepresentCommission: '',
   percentageTransactions:
@@ -40,11 +40,11 @@ export default function RiskProfile({ data, openEditModal }: RiskProfileProps): 
         />
       </ContainerInformation>
       <ContainerInformation>
-        <TextLight text={labelInformation.isMortgageBanking} />
+        <TextLight text={labelInformation.isMortageBanking} />
         <TextBold
           typeFormat="boolean"
           customMargin
-          text={data.riskFactorInformation.isMortgageBanking}
+          text={data.riskFactorInformation.isMortageBanking}
         />
       </ContainerInformation>
       <ContainerInformation>

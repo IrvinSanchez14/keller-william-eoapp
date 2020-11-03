@@ -8,13 +8,11 @@ import { FormApp } from 'src/components/FormApp';
 import { valdiatePolicySchema } from 'src/helpers/validations';
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { setAppState, storeAllPolicy } from 'src/store/actions/app';
+import { storeAllPolicy } from 'src/store/actions/app';
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormPolicyInformation } from 'src/containers/TreeEO/PolicyInformation/form';
 import { FormPolicyInformationClaims } from 'src/containers/TreeEO/PolicyInformationClaims/form';
 import { removeSignsFromNumbers } from 'src/utils';
-import { SessionState } from 'http2';
-import AppState from 'src/store/models/AppState';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
   titleForm: {
@@ -134,8 +132,6 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
   },
 }));
 
-type SessionResponse = AppState['app'];
-
 export function EditPagePolicyInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
@@ -154,38 +150,34 @@ export function EditPagePolicyInformation({ closeModal }: any) {
       values.claims = [];
     }
 
-    const response = await ky
-      .put(`session/${sessionId}`, {
-        json: {
-          ...state.app,
-          data: {
-            ...state.app.data,
-            policyInformation: {
-              ...state.app.data.policyInformation,
-              currentCarrier: values.currentCarrier,
-              isHaveInsurance: isHaveInsurance,
-              insurance: {
-                insuranceId: state.app.data.policyInformation.insurance.insuranceId,
-                renewalDate: values.renewalDate,
-                deductible: removeSignsFromNumbers(values.deductible),
-                limits: removeSignsFromNumbers(values.limits),
-                yearCoverage: removeSignsFromNumbers(values.yearCoverage),
-                annualPremium: removeSignsFromNumbers(values.annualPremium),
-              },
-              isHaveClaims: values.isHaveClaims,
-              claims: values.claims.map((item: any) => {
-                return {
-                  claimId: item.claimId,
-                  dateClaim: item.dateClaim,
-                  amountClaim: removeSignsFromNumbers(item.amountClaim),
-                };
-              }),
+    storeAllPolicy(dispatch, values);
+    await ky.put(`session/${sessionId}`, {
+      json: {
+        ...state.app,
+        data: {
+          ...state.app.data,
+          policyInformation: {
+            ...state.app.data.policyInformation,
+            currentCarrier: values.currentCarrier,
+            isHaveInsurance: isHaveInsurance,
+            insurance: {
+              renewalDate: values.renewalDate,
+              deductible: removeSignsFromNumbers(values.deductible),
+              limits: removeSignsFromNumbers(values.limits),
+              yearCoverage: removeSignsFromNumbers(values.yearCoverage),
+              annualPremium: removeSignsFromNumbers(values.annualPremium),
             },
+            isHaveClaims: values.isHaveClaims,
+            claims: values.claims.map((item: any) => {
+              return {
+                dateClaim: item.dateClaim,
+                amountClaim: removeSignsFromNumbers(item.amountClaim),
+              };
+            }),
           },
         },
-      })
-      .json<SessionResponse>();
-    setAppState(dispatch, { app: response });
+      },
+    });
     closeModal(false);
   };
 

@@ -34,7 +34,7 @@ export class CommissionInformationOther extends Component<FullNameProps> {
       ...values,
       farmRanch: removeSignsFromNumbers(values.farmRanch),
       auctioneering: removeSignsFromNumbers(values.auctioneering),
-      mortgageBrokerage: removeSignsFromNumbers(values.mortgageBrokerage),
+      mortageBrokerage: removeSignsFromNumbers(values.mortageBrokerage),
     };
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
@@ -66,7 +66,7 @@ export class CommissionInformationOther extends Component<FullNameProps> {
             initialValues={{
               farmRanch: formData.app.data.commissionInformation.farmRanch,
               auctioneering: formData.app.data.commissionInformation.auctioneering,
-              mortgageBrokerage: formData.app.data.commissionInformation.mortgageBrokerage,
+              mortageBrokerage: formData.app.data.commissionInformation.mortageBrokerage,
             }}
             isInitValid={this.isInitValid}
             validationSchema={commissionOtherValidateSchema}

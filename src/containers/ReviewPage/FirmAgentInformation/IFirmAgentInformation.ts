@@ -16,9 +16,9 @@ interface FirmInformationProps {
 
 interface AgentInformationProps {
   numberAgentsMoreCommission: number;
-  numberAgentsLessCommission: number;
-  numberAgentsNoCommission: number;
-  numberAgentsSpecialDesignation: number;
+  numberAgentLessCommission: number;
+  numberAgenteNoCommission: number;
+  numberAgentSpecialDesignation: number;
   revokedLicense: boolean | null;
 }
 

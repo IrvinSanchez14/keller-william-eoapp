@@ -108,7 +108,7 @@ type SessionFinishResponse = AppState['app'] & {
 };
 
 const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app }) => {
-  const sessionId = app.eoSessionId;
+  const sessionId = app.id;
   const router = useRouter();
   const { intl, state, dispatch } = useAppContext();
   useEffect(() => {
