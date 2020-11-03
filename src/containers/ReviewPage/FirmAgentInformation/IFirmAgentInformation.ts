@@ -2,6 +2,7 @@ interface FirmInformationProps {
   contactName: string;
   brokerName: string;
   kwMarketCenterName: string;
+  kwMarketCenterNumber: string;
   yearEstablished: number;
   streetAddress: string;
   suite?: number;
@@ -15,9 +16,9 @@ interface FirmInformationProps {
 
 interface AgentInformationProps {
   numberAgentsMoreCommission: number;
-  numberAgentLessCommission: number;
-  numberAgenteNoCommission: number;
-  numberAgentSpecialDesignation: number;
+  numberAgentsLessCommission: number;
+  numberAgentsNoCommission: number;
+  numberAgentsSpecialDesignation: number;
   revokedLicense: boolean | null;
 }
 

@@ -11,6 +11,7 @@ const labelInformation = {
     contactName: 'Contact name',
     brokerName: 'Broker/owner name',
     kwMarketCenterName: 'KW Market Center name',
+    kwMarketCenterNumber: 'KW Market Center Number',
     yearEstablished: 'Year established',
     streetAddress: 'Street Address',
     suite: 'Suite/Unit #',
@@ -24,11 +25,11 @@ const labelInformation = {
   },
   agentInformation: {
     numberAgentsMoreCommission:
-      'Total number of agents earning ore than $20,000 in commission per year',
-    numberAgentLessCommission:
+      'Total number of agents earning more than $20,000 in commission per year',
+    numberAgentsLessCommission:
       'Total number of agents earning less than $20,000 in commission per year',
-    numberAgenteNoCommission: 'Total number  of agents earning no commission',
-    numberAgentSpecialDesignation:
+    numberAgentsNoCommission: 'Total number  of agents earning no commission',
+    numberAgentsSpecialDesignation:
       'Number of agents who have earned any type of special designation',
     revokedLicense:
       'Have any licensees of the firm had their license cancelled or revoked in the last three years?',
@@ -87,6 +88,10 @@ export default function FirmAgentInformation({
           <TextBold customMargin text={data.firmInformation.kwMarketCenterName} />
         </ContainerInformation>
         <ContainerInformation>
+          <TextLight text={labelInformation.firmInformation.kwMarketCenterNumber} />
+          <TextBold customMargin text={data.firmInformation.kwMarketCenterNumber} />
+        </ContainerInformation>
+        <ContainerInformation>
           <TextLight text={labelInformation.firmInformation.yearEstablished} />
           <TextBold customMargin text={data.firmInformation.yearEstablished} />
         </ContainerInformation>
@@ -138,28 +143,28 @@ export default function FirmAgentInformation({
         <ContainerInformation>
           <TextLight
             text={parseNumberToThounsads(
-              labelInformation.agentInformation.numberAgentLessCommission,
+              labelInformation.agentInformation.numberAgentsLessCommission,
             )}
           />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgentLessCommission)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsLessCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgenteNoCommission} />
+          <TextLight text={labelInformation.agentInformation.numberAgentsNoCommission} />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgenteNoCommission)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsNoCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgentSpecialDesignation} />
+          <TextLight text={labelInformation.agentInformation.numberAgentsSpecialDesignation} />
           <TextBold
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgentSpecialDesignation)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsSpecialDesignation)}
           />
         </ContainerInformation>
         <ContainerInformation>

@@ -99,6 +99,7 @@ const ModalHeaderCloseContainer = styled.div`
 const ModalHeaderCloseIcon = styled.i`
   font-size: 28px;
   display: flex;
+  cursor: pointer;
   ${({ theme }) => theme && `color: ${theme.colors.primary};`};
 `;
 

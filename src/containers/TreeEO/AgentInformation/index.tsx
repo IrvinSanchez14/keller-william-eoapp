@@ -33,8 +33,8 @@ export class AgentInformation extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<any>) => {
     const parsedValues = {
       ...values,
-      numberAgentLessCommission: removeSignsFromNumbers(values.numberAgentLessCommission),
-      numberAgenteNoCommission: removeSignsFromNumbers(values.numberAgenteNoCommission),
+      numberAgentsLessCommission: removeSignsFromNumbers(values.numberAgentsLessCommission),
+      numberAgentsNoCommission: removeSignsFromNumbers(values.numberAgentsNoCommission),
       numberAgentsMoreCommission: removeSignsFromNumbers(values.numberAgentsMoreCommission),
     };
     this.setState({ isButtonLoading: true });
@@ -65,10 +65,10 @@ export class AgentInformation extends Component<FullNameProps> {
             initialValues={{
               numberAgentsMoreCommission:
                 formData.app.data.agentInformation.numberAgentsMoreCommission || '',
-              numberAgentLessCommission:
-                formData.app.data.agentInformation.numberAgentLessCommission || '',
-              numberAgenteNoCommission:
-                formData.app.data.agentInformation.numberAgenteNoCommission || '',
+              numberAgentsLessCommission:
+                formData.app.data.agentInformation.numberAgentsLessCommission || '',
+              numberAgentsNoCommission:
+                formData.app.data.agentInformation.numberAgentsNoCommission || '',
             }}
             isInitValid
             validationSchema={agentLicensedValidateSchema}

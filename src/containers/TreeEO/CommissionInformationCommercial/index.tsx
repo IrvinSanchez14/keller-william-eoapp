@@ -66,11 +66,13 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               commercial: {
-                realEstate: formData.app.data.commissionInformation.commercial.realEstate,
-                rawLand: formData.app.data.commissionInformation.commercial.rawLand,
-                appraisals: formData.app.data.commissionInformation.commercial.appraisals,
-                propertyMgmt: formData.app.data.commissionInformation.commercial.propertyMgmt,
-                ownedProperty: formData.app.data.commissionInformation.commercial.ownedProperty,
+                realEstate: formData.app.data.commissionInformation.commercialCommission.realEstate,
+                rawLand: formData.app.data.commissionInformation.commercialCommission.rawLand,
+                appraisals: formData.app.data.commissionInformation.commercialCommission.appraisals,
+                propertyMgmt:
+                  formData.app.data.commissionInformation.commercialCommission.propertyMgmt,
+                ownedProperty:
+                  formData.app.data.commissionInformation.commercialCommission.ownedProperty,
               },
             }}
             isInitValid={this.isInitValid}

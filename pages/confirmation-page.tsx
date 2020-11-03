@@ -18,8 +18,8 @@ const MyApp: React.FC = () => {
         <ConfirmationPage
           confirmationNumber={data.confirmationNumber}
           agentsNumber={
-            data.data.agentInformation.numberAgenteNoCommission +
-            data.data.agentInformation.numberAgentLessCommission +
+            data.data.agentInformation.numberAgentsNoCommission +
+            data.data.agentInformation.numberAgentsLessCommission +
             data.data.agentInformation.numberAgentsMoreCommission
           }
           grossCommission={data.data.commissionInformation.grossCommission}

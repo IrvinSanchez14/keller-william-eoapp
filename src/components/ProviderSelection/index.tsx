@@ -55,6 +55,10 @@ const KaceyHeader = styled.div`
     font-size: 2rem;
   }
 
+  @media (max-width: 767px) {
+    margin-top: 60px;
+  }
+
   & > svg {
     margin-right: 1rem;
     margin-left: 1rem;
@@ -65,6 +69,7 @@ const StyledProviderSelection = styled(Form)`
   & > * {
     margin-bottom: 1rem;
   }
+  z-index: 10px;
 `;
 
 const ButtonContainer = styled.div`
@@ -91,6 +96,11 @@ const ButtonContainer = styled.div`
   }
 `;
 
+const HeaderContainer = styled.div`
+  position: relative;
+  z-index: 2;
+`;
+
 type SessionFinishResponse = AppState['app'] & {
   id: string;
   completed: boolean;
@@ -98,7 +108,7 @@ type SessionFinishResponse = AppState['app'] & {
 };
 
 const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app }) => {
-  const sessionId = app.id;
+  const sessionId = app.eoSessionId;
   const router = useRouter();
   const { intl, state, dispatch } = useAppContext();
   useEffect(() => {
@@ -131,11 +141,13 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
         }}
       >
         <StyledProviderSelection>
-          <NavigationForm hideBackButton withBackButton showStep={false} />
-          <KaceyHeader>
-            <DogIcon size="55px" mobileSize="55px" />
-            <strong>{intl.get('app.providerSelection.kacey')}</strong>
-          </KaceyHeader>
+          <HeaderContainer>
+            <NavigationForm hideBackButton withBackButton showStep={false} />
+            <KaceyHeader>
+              <DogIcon size="55px" mobileSize="55px" />
+              <strong>{intl.get('app.providerSelection.kacey')}</strong>
+            </KaceyHeader>
+          </HeaderContainer>
           <CardContainer>
             <ProviderCard>
               <ProviderCardHeader

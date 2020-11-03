@@ -15,7 +15,7 @@ export function LabelForm(Props: LabelProps) {
   const { label, errorLabel, className, textAlign = 'right' } = Props;
   const classes = useStyles({
     textAlign,
-    longError: errorLabel.length > 40,
+    longError: errorLabel?.length > 40,
     errorWithLabel: !!label,
   });
 

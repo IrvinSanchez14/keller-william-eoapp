@@ -17,6 +17,7 @@ export const fullNameValidateSchema = Yup.object().shape({
   contactName: Yup.string().required('Field is required'),
   brokerName: Yup.string().required('Field is required'),
   kwMarketCenterName: Yup.string().required('Field is required'),
+  kwMarketCenterNumber: Yup.string().required('Field is required'),
   yearEstablished: Yup.number()
     .moreThan(1899, 'Year established must be greater or equal than 1900')
     .lessThan(
@@ -51,12 +52,12 @@ export const editFirmInformationSchema = fullNameValidateSchema
 
 export const agentLicensedValidateSchema = Yup.object().shape({
   numberAgentsMoreCommission: Yup.number().parseMoney().required('Field is required'),
-  numberAgentLessCommission: Yup.number().parseMoney().required('Field is required'),
-  numberAgenteNoCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsLessCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsNoCommission: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentSpecialValidateSchema = Yup.object().shape({
-  numberAgentSpecialDesignation: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsSpecialDesignation: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentRevokedValidateSchema = Yup.object().shape({
@@ -179,7 +180,7 @@ export const commissionCommercialValidateSchema = Yup.object().shape({
 export const commissionOtherValidateSchema = Yup.object().shape({
   farmRanch: Yup.number().parseMoney().min(0, 'The value must be positive'),
   auctioneering: Yup.number().parseMoney().min(0, 'The value must be positive'),
-  mortageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
+  mortgageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
 });
 
 export const editCommissionInformationSchema = commissionInformationValidateSchema
@@ -193,7 +194,7 @@ export const riskProfileValidateSchema = Yup.object().shape({
 });
 
 export const riskProfileBanckValidateSchema = Yup.object().shape({
-  isMortageBanking: Yup.boolean().required('Field is required'),
+  isMortgageBanking: Yup.boolean().required('Field is required'),
 });
 
 export const riskProfileReitsValidateSchema = Yup.object().shape({
@@ -217,3 +218,17 @@ export const editRiskProfileSchema = riskProfileValidateSchema
   .concat(riskProfileReitsValidateSchema)
   .concat(riskProfileFirmValidateSchema)
   .concat(riskProfileTransactionValidateSchema);
+
+export const confirmAddressModalShema = Yup.object({
+  street: Yup.string()
+    .min(5, 'Field is required')
+    .required('Field is required')
+    .test(
+      'is-valid-address',
+      'Please enter a valid street',
+      (value: string) => value !== undefined && /\s/.test(value.toLowerCase()),
+    ),
+  city: Yup.string().required('Field is required'),
+  state: Yup.string().required('Field is required'),
+  postalCode: Yup.string().min(5, 'Please enter a valid ZIP code').required('Field is required'),
+});

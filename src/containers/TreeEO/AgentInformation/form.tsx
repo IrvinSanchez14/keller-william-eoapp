@@ -10,6 +10,8 @@ import { useAppContext } from 'src/store';
 const useStyles = makeStyles((theme: MuiTheme) => ({
   subTitleForm: {
     fontSize: 16,
+    width: '100%',
+    maxWidth: 478,
     [theme.breakpoints.up(768)]: {
       fontSize: 22,
     },
@@ -65,8 +67,8 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
         </Typography>
         <Column>
           <FielControlForm
-            data-test-id="numberAgentLessCommission"
-            name="numberAgentLessCommission"
+            data-test-id="numberAgentsLessCommission"
+            name="numberAgentsLessCommission"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -89,8 +91,8 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
         </Typography>
         <Column>
           <FielControlForm
-            data-test-id="numberAgenteNoCommission"
-            name="numberAgenteNoCommission"
+            data-test-id="numberAgentsNoCommission"
+            name="numberAgentsNoCommission"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}

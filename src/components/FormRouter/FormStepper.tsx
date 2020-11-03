@@ -48,7 +48,12 @@ function FormStepper(Props: any) {
 
   return (
     <LayoutWrapper withTreesAndHouseImage withGrayShapeRight>
-      <NavigationForm backClick={prevStep} customCTAHandler={customCTAHandler} withBackButton />
+      <NavigationForm
+        logoLink="https://kellercovered.com/eo"
+        backClick={prevStep}
+        customCTAHandler={customCTAHandler}
+        withBackButton
+      />
       {steps}
     </LayoutWrapper>
   );
