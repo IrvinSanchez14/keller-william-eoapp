@@ -36,7 +36,6 @@ export class CommissionInformationOther extends Component<FullNameProps> {
       auctioneering: removeSignsFromNumbers(values.auctioneering),
       mortgageBrokerage: removeSignsFromNumbers(values.mortgageBrokerage),
     };
-    console.log('parsedValues', parsedValues);
     this.isButtonLoading = true;
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);

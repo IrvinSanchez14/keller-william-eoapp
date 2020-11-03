@@ -136,8 +136,6 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
           if (values.pearlInsurance) providers.push('pearl');
           const body = { ...state.app, providers };
           const response = await onSubmit(body);
-          console.log('response', response);
-          console.log('body', body);
           setAppState(dispatch, { app: { ...body, ...response } });
           router.push(`/confirmation-page?sessionId=${sessionId}`);
         }}

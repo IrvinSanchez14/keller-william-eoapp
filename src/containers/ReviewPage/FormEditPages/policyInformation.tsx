@@ -154,8 +154,6 @@ export function EditPagePolicyInformation({ closeModal }: any) {
       values.claims = [];
     }
 
-    console.log('values', values);
-
     const response = await ky
       .put(`session/${sessionId}`, {
         json: {

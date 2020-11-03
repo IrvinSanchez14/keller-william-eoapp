@@ -95,7 +95,6 @@ export class PolicyInformation extends Component<FullNameProps> {
             alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
-              console.log('formikProps', formikProps);
               return FormPolicyInformation(formikProps, this.handleChange);
             }}
           </FormApp>

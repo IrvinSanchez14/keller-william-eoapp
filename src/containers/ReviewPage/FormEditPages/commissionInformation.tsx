@@ -270,8 +270,6 @@ export function EditPageCommissionInformation({ closeModal }: any) {
     setSessionId(sessionId);
   }, []);
 
-  console.log('state', state);
-
   return (
     <div style={{ width: '100%' }}>
       <FormApp
