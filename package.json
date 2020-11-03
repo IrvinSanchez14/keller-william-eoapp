@@ -7,13 +7,13 @@
     "node": "^12.16.3"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.js",
     "lint": "tsc -v && tsc --noEmit && eslint */**/*.{js,ts,tsx} --ignore-path .gitignore --quiet",
-    "export": "npm run build && next export",
+    "export": "yarn build && next export",
     "format": "prettier --no-editorconfig \"**/*.+(js|jsx|json|yml|yaml|md|vue)\" --list-different && echo 'Prettier complete.'",
-    "export:sitemap": "npm run build && next export && node next-sitemap-generator.js"
+    "export:sitemap": "yarn build && next export && node next-sitemap-generator.js"
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
@@ -74,7 +74,6 @@
     "husky": "^4.2.5",
     "js-levenshtein": "^1.1.6",
     "lodash": "^4.17.15",
-    "next-images": "^1.4.0",
     "nextjs-sitemap-generator": "^1.0.0",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",

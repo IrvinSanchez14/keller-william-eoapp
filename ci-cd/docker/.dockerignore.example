@@ -1,0 +1,12 @@
+.next
+.vscode
+.env
+.git
+node_modules/
+README.md
+LICENSE
+Dockerfile*
+docker-compose*
+.dockerignore
+npm-debug.log
+.DS_Store
