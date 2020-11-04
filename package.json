@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@types/googlemaps": "^3.39.6",
     "@types/react-places-autocomplete": "^7.2.6",
+    "express": "^4.17.1",
     "ky": "^0.19.1",
     "ky-universal": "^0.6.0",
     "next": "^9.4.2",

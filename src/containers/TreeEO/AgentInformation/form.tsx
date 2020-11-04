@@ -67,8 +67,8 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
         </Typography>
         <Column>
           <FielControlForm
-            data-test-id="numberAgentLessCommission"
-            name="numberAgentLessCommission"
+            data-test-id="numberAgentsLessCommission"
+            name="numberAgentsLessCommission"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
@@ -91,8 +91,8 @@ export const FormAgentInformation = (formikProps: any, isReview?: boolean) => {
         </Typography>
         <Column>
           <FielControlForm
-            data-test-id="numberAgenteNoCommission"
-            name="numberAgenteNoCommission"
+            data-test-id="numberAgentsNoCommission"
+            name="numberAgentsNoCommission"
             label={'Number of agents'}
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}

@@ -26,10 +26,10 @@ const labelInformation = {
   agentInformation: {
     numberAgentsMoreCommission:
       'Total number of agents earning more than $20,000 in commission per year',
-    numberAgentLessCommission:
+    numberAgentsLessCommission:
       'Total number of agents earning less than $20,000 in commission per year',
-    numberAgenteNoCommission: 'Total number  of agents earning no commission',
-    numberAgentSpecialDesignation:
+    numberAgentsNoCommission: 'Total number  of agents earning no commission',
+    numberAgentsSpecialDesignation:
       'Number of agents who have earned any type of special designation',
     revokedLicense:
       'Have any licensees of the firm had their license cancelled or revoked in the last three years?',
@@ -143,28 +143,28 @@ export default function FirmAgentInformation({
         <ContainerInformation>
           <TextLight
             text={parseNumberToThounsads(
-              labelInformation.agentInformation.numberAgentLessCommission,
+              labelInformation.agentInformation.numberAgentsLessCommission,
             )}
           />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgentLessCommission)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsLessCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgenteNoCommission} />
+          <TextLight text={labelInformation.agentInformation.numberAgentsNoCommission} />
           <TextBold
             typeFormat="amount"
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgenteNoCommission)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsNoCommission)}
           />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.agentInformation.numberAgentSpecialDesignation} />
+          <TextLight text={labelInformation.agentInformation.numberAgentsSpecialDesignation} />
           <TextBold
             customMargin
-            text={parseNumberToThounsads(data.agentInformation.numberAgentSpecialDesignation)}
+            text={parseNumberToThounsads(data.agentInformation.numberAgentsSpecialDesignation)}
           />
         </ContainerInformation>
         <ContainerInformation>

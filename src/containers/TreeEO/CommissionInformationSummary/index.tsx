@@ -27,7 +27,7 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
   isInitValid = false;
   isButtonLoading = false;
   state = {
-    totalCommision: 0,
+    totalCommission: 0,
   };
 
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
@@ -49,11 +49,11 @@ export class CommissionInformationSummary extends Component<FullNameProps> {
   totalSummary = () => {
     const { formData } = this.props;
     const total =
-      formData.app.data.commissionInformation.residential.total +
-      formData.app.data.commissionInformation.commercial.total +
+      formData.app.data.commissionInformation.residentialCommission.total +
+      formData.app.data.commissionInformation.commercialCommission.total +
       formData.app.data.commissionInformation.farmRanch +
       formData.app.data.commissionInformation.auctioneering +
-      formData.app.data.commissionInformation.mortageBrokerage;
+      formData.app.data.commissionInformation.mortgageBrokerage;
     return total;
   };
 

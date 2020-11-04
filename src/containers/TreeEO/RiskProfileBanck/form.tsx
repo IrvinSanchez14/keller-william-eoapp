@@ -11,13 +11,13 @@ import { useAppContext } from 'src/store';
 export const propertyUsageFields = [
   {
     id: 1,
-    name: 'isMortageBanking',
+    name: 'isMortgageBanking',
     value: true,
     text: 'Yes',
   },
   {
     id: 2,
-    name: 'isMortageBanking',
+    name: 'isMortgageBanking',
     value: false,
     text: 'No',
   },
@@ -44,32 +44,32 @@ export const FormRiskProfileBanck = (formikProps: any) => {
     <>
       <div>
         <FielControlForm
-          name="isMortageBanking"
+          name="isMortgageBanking"
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
-              name="isMortageBanking"
-              value="isMortageBanking"
+              name="isMortgageBanking"
+              value="isMortgageBanking"
               data-test-id="sameAddressButtonNo"
               label={isMobile <= 768 ? 'Yes' : intl.get('app.text.checkbox.yes.risk.part.two')}
-              onChange={() => formikProps.setFieldValue('isMortageBanking', true)}
-              checked={formikProps.values.isMortageBanking === true}
+              onChange={() => formikProps.setFieldValue('isMortgageBanking', true)}
+              checked={formikProps.values.isMortgageBanking === true}
             />
           )}
         />
       </div>
       <div>
         <FielControlForm
-          name="isMortageBanking"
+          name="isMortgageBanking"
           renderCustomField={({ field }) => (
             <RadioField
               {...field}
-              name="isMortageBanking"
-              value="isMortageBanking"
+              name="isMortgageBanking"
+              value="isMortgageBanking"
               data-test-id="sameAddressButtonNo"
               label={isMobile <= 768 ? 'No' : intl.get('app.text.checkbox.no.risk.part.two')}
-              onChange={() => formikProps.setFieldValue('isMortageBanking', false)}
-              checked={formikProps.values.isMortageBanking === false}
+              onChange={() => formikProps.setFieldValue('isMortgageBanking', false)}
+              checked={formikProps.values.isMortgageBanking === false}
             />
           )}
         />

@@ -52,12 +52,12 @@ export const editFirmInformationSchema = fullNameValidateSchema
 
 export const agentLicensedValidateSchema = Yup.object().shape({
   numberAgentsMoreCommission: Yup.number().parseMoney().required('Field is required'),
-  numberAgentLessCommission: Yup.number().parseMoney().required('Field is required'),
-  numberAgenteNoCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsLessCommission: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsNoCommission: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentSpecialValidateSchema = Yup.object().shape({
-  numberAgentSpecialDesignation: Yup.number().parseMoney().required('Field is required'),
+  numberAgentsSpecialDesignation: Yup.number().parseMoney().required('Field is required'),
 });
 
 export const agentRevokedValidateSchema = Yup.object().shape({
@@ -180,7 +180,7 @@ export const commissionCommercialValidateSchema = Yup.object().shape({
 export const commissionOtherValidateSchema = Yup.object().shape({
   farmRanch: Yup.number().parseMoney().min(0, 'The value must be positive'),
   auctioneering: Yup.number().parseMoney().min(0, 'The value must be positive'),
-  mortageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
+  mortgageBrokerage: Yup.number().parseMoney().min(0, 'The value must be positive'),
 });
 
 export const editCommissionInformationSchema = commissionInformationValidateSchema
@@ -194,7 +194,7 @@ export const riskProfileValidateSchema = Yup.object().shape({
 });
 
 export const riskProfileBanckValidateSchema = Yup.object().shape({
-  isMortageBanking: Yup.boolean().required('Field is required'),
+  isMortgageBanking: Yup.boolean().required('Field is required'),
 });
 
 export const riskProfileReitsValidateSchema = Yup.object().shape({
