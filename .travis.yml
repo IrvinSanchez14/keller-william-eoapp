@@ -43,7 +43,7 @@ jobs:
         - yarn format
         - yarn build
     - stage: deploy
-      if: branch IN (develop, master) AND type = push
+      if: branch IN (k8s-deployment-dev, k8s-deployment-staging) AND type = push
       name: deploy
       cache: yarn
       before_install:
@@ -52,12 +52,12 @@ jobs:
       install: yarn --frozen-lockfile
       script:
         - |
-          if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "k8s-deployment-dev" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
             ENVIRONMENT=development yarn export:sitemap
             export S3_BUCKET="new-eo-dev.kellercovered.io"
           fi
-          if [[ $TRAVIS_BRANCH  == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "k8s-deployment-staging" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
             ENVIRONMENT=production yarn export:sitemap
             export S3_BUCKET="new-eo-stg.kellercovered.io"
