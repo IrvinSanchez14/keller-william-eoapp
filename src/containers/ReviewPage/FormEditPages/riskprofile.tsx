@@ -218,7 +218,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
         initialValues={{
           isHomeWarranty: state.app.data.riskFactorInformation.isHomeWarranty,
           isPerformServices: state.app.data.riskFactorInformation.isPerformServices,
-          isMortageBanking: state.app.data.riskFactorInformation.isMortageBanking,
+          isMortgageBanking: state.app.data.riskFactorInformation.isMortgageBanking,
           isRepresentCommission: state.app.data.riskFactorInformation.isRepresentCommission,
           percentageTransactions: state.app.data.riskFactorInformation.percentageTransactions,
         }}

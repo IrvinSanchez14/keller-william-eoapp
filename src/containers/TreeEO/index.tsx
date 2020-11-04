@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import FormRouter from 'src/components/FormRouter';
 import SessionModal from 'src/components/SessionModal';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
@@ -38,18 +38,20 @@ function isLastPage(state: AppState) {
 function useSessionSaver(state: AppState) {
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState<string>();
+  const { dispatch } = useAppContext();
 
   const onSubmit = useCallback(async () => {
-    if (sessionId || state.app.id)
+    if (sessionId || state.app.eoSessionId)
       return ky
-        .put(`session/${sessionId || state.app.id}`, { json: state.app })
+        .put(`session/${sessionId || state.app.eoSessionId}`, { json: state.app })
         .json<SessionResponse>();
     const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
     setIsOpen(true);
-    setSessionId(response.id);
+    setAppState(dispatch, { app: response });
+    setSessionId(response.eoSessionId);
     return response;
   }, [sessionId, state]);
-  return { sessionId: sessionId || state.app.id, isOpen, setIsOpen, onSubmit };
+  return { sessionId: sessionId || state.app.eoSessionId, isOpen, setIsOpen, onSubmit };
 }
 
 function AppEO() {
