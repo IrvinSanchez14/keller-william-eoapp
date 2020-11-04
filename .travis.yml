@@ -65,7 +65,7 @@ jobs:
       deploy:
         on:
           branch:
-            - k8s-deployment-prod
+            - k8s-deployment-dev
             - k8s-deployment-staging
         provider: s3
         access_key_id: $AWS_ACCESS_KEY_ID
