@@ -126,13 +126,6 @@ export const FormPolicyInformationClaims = (
     };
   }, []);
 
-  const addFirstArray = () => {
-    const addArray = [{}];
-    addClaimsPolicy(dispatch, {
-      claims: [...formikProps.values.claims, addArray],
-    });
-  };
-
   const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
       {
@@ -194,7 +187,10 @@ export const FormPolicyInformationClaims = (
         <div
           className={classes.containerAddButton}
           onClick={() => {
-            addFirstArray();
+            const addArray = [{}];
+            addClaimsPolicy(dispatch, {
+              claims: [...formikProps.values.claims, addArray],
+            });
           }}
         >
           <div>
@@ -233,9 +229,6 @@ export const FormPolicyInformationClaims = (
                 formikProps.setFieldValue('isHaveClaims', true);
                 setIsHaveInsurance(true);
                 handleChange(true);
-                addClaimsPolicy(dispatch, {
-                  claims: [{}],
-                });
               }}
               checked={formikProps.values.isHaveClaims === true}
             />
@@ -264,9 +257,6 @@ export const FormPolicyInformationClaims = (
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', false);
                 formikProps.setFieldValue('claims', []);
-                addClaimsPolicy(dispatch, {
-                  claims: [],
-                });
                 setIsHaveInsurance(false);
                 handleChange(false);
                 removeClaims(dispatch);

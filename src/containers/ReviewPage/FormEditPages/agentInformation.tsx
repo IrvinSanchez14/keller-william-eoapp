@@ -159,9 +159,9 @@ export function EditPageAgentInformation({ closeModal }: any) {
     const parsedValues = {
       ...values,
       numberAgentsMoreCommission: removeSignsFromNumbers(values.numberAgentsMoreCommission),
-      numberAgentsLessCommission: removeSignsFromNumbers(values.numberAgentsLessCommission),
-      numberAgentsNoCommission: removeSignsFromNumbers(values.numberAgentsNoCommission),
-      numberAgentsSpecialDesignation: removeSignsFromNumbers(values.numberAgentsSpecialDesignation),
+      numberAgentLessCommission: removeSignsFromNumbers(values.numberAgentLessCommission),
+      numberAgenteNoCommission: removeSignsFromNumbers(values.numberAgenteNoCommission),
+      numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
     };
     storeAgentInformation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
@@ -194,10 +194,10 @@ export function EditPageAgentInformation({ closeModal }: any) {
       <FormApp
         initialValues={{
           numberAgentsMoreCommission: state.app.data.agentInformation.numberAgentsMoreCommission,
-          numberAgentsLessCommission: state.app.data.agentInformation.numberAgentsLessCommission,
-          numberAgentsNoCommission: state.app.data.agentInformation.numberAgentsNoCommission,
-          numberAgentsSpecialDesignation:
-            state.app.data.agentInformation.numberAgentsSpecialDesignation,
+          numberAgentLessCommission: state.app.data.agentInformation.numberAgentLessCommission,
+          numberAgenteNoCommission: state.app.data.agentInformation.numberAgenteNoCommission,
+          numberAgentSpecialDesignation:
+            state.app.data.agentInformation.numberAgentSpecialDesignation,
           revokedLicense: state.app.data.agentInformation.revokedLicense,
         }}
         className={classes.form}

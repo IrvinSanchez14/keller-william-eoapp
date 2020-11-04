@@ -192,8 +192,8 @@ export const FormCommissionInformationOther = (formikProps: any, isReview?: bool
               : intl.get('app.subtitle.three.commission.part.six')}
           </Typography>
           <FielControlForm
-            data-test-id="mortgageBrokerage"
-            name="mortgageBrokerage"
+            data-test-id="mortageBrokerage"
+            name="mortageBrokerage"
             setFieldTouched={formikProps.setFieldTouched}
             errors={formikProps.errors}
             touched={formikProps.touched}

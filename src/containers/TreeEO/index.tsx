@@ -38,20 +38,18 @@ function isLastPage(state: AppState) {
 function useSessionSaver(state: AppState) {
   const [isOpen, setIsOpen] = useState(false);
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch } = useAppContext();
 
   const onSubmit = useCallback(async () => {
-    if (sessionId || state.app.eoSessionId)
+    if (sessionId || state.app.id)
       return ky
-        .put(`session/${sessionId || state.app.eoSessionId}`, { json: state.app })
+        .put(`session/${sessionId || state.app.id}`, { json: state.app })
         .json<SessionResponse>();
     const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
     setIsOpen(true);
-    setAppState(dispatch, { app: response });
-    setSessionId(response.eoSessionId);
+    setSessionId(response.id);
     return response;
   }, [sessionId, state]);
-  return { sessionId: sessionId || state.app.eoSessionId, isOpen, setIsOpen, onSubmit };
+  return { sessionId: sessionId || state.app.id, isOpen, setIsOpen, onSubmit };
 }
 
 function AppEO() {
