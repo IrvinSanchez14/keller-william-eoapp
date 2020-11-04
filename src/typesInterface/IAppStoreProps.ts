@@ -6,6 +6,7 @@ export type IntlProps = {
 };
 
 export interface IAppStoreProps {
+  _key?: any;
   intl?: IntlProps;
   ui?: UIStore;
   session?: any;
