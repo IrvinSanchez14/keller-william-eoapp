@@ -72,9 +72,12 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (state.app.confirmationNumber) {
+    /*if (state.app.confirmationNumber) {
       router.push(`/reviewpdf?sessionId=${sessionId}`);
-    } else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    } else */ if (
+      isLastPage(state)
+    )
+      router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
