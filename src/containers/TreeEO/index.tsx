@@ -41,15 +41,20 @@ function useSessionSaver(state: AppState) {
   const { dispatch } = useAppContext();
 
   const onSubmit = useCallback(async () => {
-    if (sessionId || state.app.eoSessionId)
-      return ky
+    if (sessionId || state.app.eoSessionId) {
+      const response = await ky
         .put(`session/${sessionId || state.app.eoSessionId}`, { json: state.app })
         .json<SessionResponse>();
-    const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
-    setIsOpen(true);
-    setAppState(dispatch, { app: response });
-    setSessionId(response.eoSessionId);
-    return response;
+
+      console.log('response', response);
+      return response;
+    } else {
+      const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
+      setIsOpen(true);
+      setAppState(dispatch, { app: response });
+      setSessionId(response.eoSessionId);
+      return response;
+    }
   }, [sessionId, state]);
   return { sessionId: sessionId || state.app.eoSessionId, isOpen, setIsOpen, onSubmit };
 }
@@ -69,7 +74,7 @@ function AppEO() {
   );
 
   useEffect(() => {
-    //if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
