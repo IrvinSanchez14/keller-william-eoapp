@@ -83,6 +83,7 @@ export class FirmInformation extends Component<FullNameProps> {
             alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {
+              console.log('formikProps', formikProps);
               return FormFirmInformation(formikProps);
             }}
           </FormApp>
