@@ -4,7 +4,7 @@ import FormRouter from 'src/components/FormRouter';
 import SessionModal from 'src/components/SessionModal';
 import { FirmInformation } from 'src/containers/TreeEO/FirmInformation';
 import { useAppContext } from 'src/store';
-import { setAppState } from 'src/store/actions/app';
+import { finishForm, setAppState } from 'src/store/actions/app';
 import AppState from 'src/store/models/AppState';
 import ky from '../../utils/ky';
 import { AgentInformation } from './AgentInformation';
@@ -45,8 +45,6 @@ function useSessionSaver(state: AppState) {
       const response = await ky
         .put(`session/${sessionId || state.app.eoSessionId}`, { json: state.app })
         .json<SessionResponse>();
-
-      console.log('response', response);
       return response;
     } else {
       const response = await ky.post('session', { json: state.app }).json<SessionResponse>();

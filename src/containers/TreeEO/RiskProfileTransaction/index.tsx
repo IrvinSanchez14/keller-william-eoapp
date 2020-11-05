@@ -36,10 +36,10 @@ export class RiskProfileTransaction extends Component<FullNameProps> {
       ...values,
       percentageTransactions: removePercentageSign(values.percentageTransactions),
     }); //TODO put state in localstorage
-    finishForm(dispatch);
     actions.setSubmitting(true);
-    await this.props.onSubmit?.();
     changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 5.5);
+    finishForm(dispatch);
+    await this.props.onSubmit?.();
   };
 
   async componentDidMount() {
