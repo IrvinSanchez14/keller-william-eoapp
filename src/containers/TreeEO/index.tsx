@@ -72,8 +72,6 @@ function AppEO() {
   );
 
   useEffect(() => {
-    console.log('state.app.confirmationNumber', state.app.confirmationNumber);
-
     if (state.app.confirmationNumber) {
       router.push(`/reviewpdf?sessionId=${sessionId}`);
     } else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
