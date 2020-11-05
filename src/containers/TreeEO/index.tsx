@@ -69,7 +69,7 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
+    //if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
 
   useEffect(() => {
