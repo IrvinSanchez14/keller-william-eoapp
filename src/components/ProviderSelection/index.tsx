@@ -137,7 +137,7 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
           const body = { ...state.app, providers };
           const response = await onSubmit(body);
           setAppState(dispatch, { app: { ...body, ...response } });
-          router.push(`/confirmation-page?sessionId=${sessionId}`);
+          router.push(`/confirmation-page?sessionId=${sessionId}&complete=true`);
         }}
       >
         <StyledProviderSelection>

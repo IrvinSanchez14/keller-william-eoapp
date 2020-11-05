@@ -72,7 +72,11 @@ function AppEO() {
   );
 
   useEffect(() => {
-    if (state.app.confirmationNumber) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('complete');
+    if (state.app.confirmationNumber && myParam) {
+      router.push(`/confirmation-page?sessionId=${sessionId}&complete=true`);
+    } else if (state.app.confirmationNumber) {
       router.push(`/reviewpdf?sessionId=${sessionId}`);
     } else if (isLastPage(state)) router.push(`/review?sessionId=${sessionId}`);
   }, [state, sessionId, router]);
