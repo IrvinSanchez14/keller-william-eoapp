@@ -36,7 +36,6 @@ export class FirmInformationEmail extends Component<FirmInformationProps> {
     values.suite = values.suite === '' ? null : values.suite;
     storeFirmConfirmation(dispatch, values);
     if (formData.app.metadata.actualPage === 2 && !this.state.showModal) {
-      console.log(formData);
       const { streetAddress } = values;
       const address = await geocodeByAddress(streetAddress)
         .then((result) => result)
