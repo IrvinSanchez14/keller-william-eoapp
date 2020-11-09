@@ -75,11 +75,11 @@ export class PolicyInformation extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               currentCarrier: formData.app.data.policyInformation.currentCarrier,
-              isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance,
-              renewalDate: formData.app.data.policyInformation.insurance.renewalDate,
-              deductible: formData.app.data.policyInformation.insurance.deductible,
-              limits: formData.app.data.policyInformation.insurance.limits,
-              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage,
+              isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance || false,
+              renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
+              deductible: formData.app.data.policyInformation.insurance.deductible || '',
+              limits: formData.app.data.policyInformation.insurance.limits || '',
+              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || '',
               annualPremium: formData.app.data.policyInformation.insurance.annualPremium,
             }}
             validationSchema={policyInforamtionValidateSchema}

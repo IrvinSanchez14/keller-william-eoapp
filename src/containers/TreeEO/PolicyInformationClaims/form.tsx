@@ -49,8 +49,8 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '21px 0px -8px -5px',
   },
   pAddButton: {
-    margin: '6px 0px 0px 10px',
-    fontSize: '16px',
+    margin: '10px 0px 0px 10px',
+    fontSize: '18px',
     lineHeight: '12px',
     fontWeight: 600,
   },
@@ -203,7 +203,7 @@ export const FormPolicyInformationClaims = (
               type="light"
               dataTestId="backButton"
               className={classes.iconPlus}
-              size="10x"
+              size="2x"
             />
           </div>
           <div className={classes.pAddButton}>
