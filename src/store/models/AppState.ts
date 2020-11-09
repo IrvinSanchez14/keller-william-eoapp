@@ -129,7 +129,7 @@ export default class AppState implements IAppState {
       },
       policyInformation: {
         currentCarrier: '',
-        isHaveInsurance: null,
+        isHaveInsurance: false,
         insurance: {
           renewalDate: undefined,
           deductible: undefined,
