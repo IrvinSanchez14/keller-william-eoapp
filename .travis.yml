@@ -59,7 +59,7 @@ jobs:
           fi
           if [[ $TRAVIS_BRANCH  == "k8s-deployment-staging" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
-            ENVIRONMENT=production yarn export:sitemap
+            ENVIRONMENT=staging yarn export:sitemap
             export S3_BUCKET="new-eo-stg.kellercovered.io"
           fi
       deploy:
