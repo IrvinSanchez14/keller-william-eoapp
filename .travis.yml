@@ -10,6 +10,9 @@ cache:
 node_js:
   - '12.16.3'
 
+addons:
+  sonarcloud: true
+
 branches:
   only:
     - master
@@ -35,6 +38,10 @@ jobs:
       script:
         - yarn format
         - yarn build
+    - stage: sonarQube
+      if: branch IN (develop, master)
+      name: 'SonarQube Scan'
+      script: sonar-scanner -D sonar.host.url=$SONAR_HOST_URL -D sonar.login=$SONAR_TOKEN -X
     - stage: deploy
       if: branch IN (develop, master) AND type = push
       name: deploy
