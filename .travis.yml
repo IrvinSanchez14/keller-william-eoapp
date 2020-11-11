@@ -62,11 +62,17 @@ jobs:
             ENVIRONMENT=staging yarn export:sitemap
             export S3_BUCKET="new-eo-stg.kellercovered.io"
           fi
+          if [[ $TRAVIS_BRANCH  == "k8s-deployment-prod" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+            yarn format
+            ENVIRONMENT=production yarn export:sitemap
+            export S3_BUCKET="new-eo.kellercovered.com"
+          fi
       deploy:
         on:
           branch:
             - k8s-deployment-dev
             - k8s-deployment-staging
+            - k8s-deployment-prod
         provider: s3
         access_key_id: $AWS_ACCESS_KEY_ID
         secret_access_key: $AWS_SECRET_ACCESS_KEY
