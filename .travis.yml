@@ -43,7 +43,7 @@ jobs:
         - yarn format
         - yarn build
     - stage: deploy
-      if: branch IN (k8s-deployment-dev, k8s-deployment-staging) AND type = push
+      if: branch IN (k8s-deployment-dev, k8s-deployment-staging, k8s-deployment-prod) AND type = push
       name: deploy
       cache: yarn
       before_install:
