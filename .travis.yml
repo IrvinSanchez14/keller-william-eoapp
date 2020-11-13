@@ -21,6 +21,16 @@ cache:
 services:
   - docker
 
+addons:
+  sonarcloud: true
+
+branches:
+  only:
+    - master
+    - staging
+    - develop
+    - "/^v\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
+
 env:
   global:
     - COMMIT=${TRAVIS_COMMIT::8}
@@ -42,6 +52,10 @@ jobs:
       script:
         - yarn format
         - yarn build
+    - stage: sonarQube
+      if: branch IN (develop, master)
+      name: 'SonarQube Scan'
+      script: sonar-scanner -D sonar.host.url=$SONAR_HOST_URL -D sonar.login=$SONAR_TOKEN -X
     - stage: deploy
       if: branch IN (k8s-deployment-dev, k8s-deployment-staging, k8s-deployment-prod) AND type = push
       name: deploy
