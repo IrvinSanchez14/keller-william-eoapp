@@ -57,7 +57,7 @@ jobs:
       name: 'SonarQube Scan'
       script: sonar-scanner -D sonar.host.url=$SONAR_HOST_URL -D sonar.login=$SONAR_TOKEN -X
     - stage: deploy
-      if: branch IN (k8s-deployment-dev, k8s-deployment-staging, k8s-deployment-prod) AND type = push
+      if: branch IN (develop, staging, master) AND type = push
       name: deploy
       cache: yarn
       before_install:
@@ -66,17 +66,17 @@ jobs:
       install: yarn --frozen-lockfile
       script:
         - |
-          if [[ $TRAVIS_BRANCH  == "k8s-deployment-dev" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "develop" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
             ENVIRONMENT=development yarn export:sitemap
             export S3_BUCKET="new-eo-dev.kellercovered.io"
           fi
-          if [[ $TRAVIS_BRANCH  == "k8s-deployment-staging" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "staging" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
             ENVIRONMENT=staging yarn export:sitemap
             export S3_BUCKET="new-eo-stg.kellercovered.io"
           fi
-          if [[ $TRAVIS_BRANCH  == "k8s-deployment-prod" && $TRAVIS_PULL_REQUEST == "false" ]]; then
+          if [[ $TRAVIS_BRANCH  == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
             yarn format
             ENVIRONMENT=production yarn export:sitemap
             export S3_BUCKET="eo.kellercovered.com"
@@ -84,9 +84,9 @@ jobs:
       deploy:
         on:
           branch:
-            - k8s-deployment-dev
-            - k8s-deployment-staging
-            - k8s-deployment-prod
+            - develop
+            - staging
+            - master
         provider: s3
         access_key_id: $AWS_ACCESS_KEY_ID
         secret_access_key: $AWS_SECRET_ACCESS_KEY
