@@ -8,18 +8,18 @@ import enUS from 'src/utils/i18n/en-US.json';
 
 const server: string = 'prod';
 
-const reducer = (state: any, action: any) => {
+const reducer = (stateApp: any, action: any) => {
   const getAction = Actions[action.type];
-  const updateAction = getAction && getAction(state, action);
+  const updateAction = getAction && getAction(stateApp, action);
   if (server === 'dev') {
     console.group('Dispatch Action: ' + action.type);
     console.info('Prev State');
-    console.table(state, 'background: #222; color: #bada55');
+    console.table(stateApp, 'background: #222; color: #bada55');
     console.debug('New State');
-    console.table({ ...state, ...updateAction });
+    console.table({ ...stateApp, ...updateAction });
     console.groupEnd();
   }
-  return { ...state, ...updateAction };
+  return { ...stateApp, ...updateAction };
 };
 
 const state = new AppState();
