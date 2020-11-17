@@ -13,11 +13,11 @@ export function useKyGet<T>(
   const [error, setError] = useState<HTTPError>();
 
   const kyGet = useCallback(
-    async (url: string) => {
+    async (urlKey: string) => {
       if (options.pause) return;
       setState('fetching');
       try {
-        const response = await ky.get(url).json<T>();
+        const response = await ky.get(urlKey).json<T>();
         setData(response);
         setState('success');
       } catch (err) {
