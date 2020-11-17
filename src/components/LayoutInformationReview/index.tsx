@@ -163,19 +163,19 @@ export default function LayoutInformationReview({
       <LayoutsInformation>
         <FirmAgentInformation
           data={state.app.data as FirmAgentInformationProps['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormFirm: any) => openModal(nameFormFirm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <PolicyCommissionInformation
           data={state.app.data as IPolicyCommissionInformation['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormPolicy: any) => openModal(nameFormPolicy)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <RiskProfile
           data={state.app.data as RiskPRofileProps['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormRisk: any) => openModal(nameFormRisk)}
         />
       </LayoutsInformation>
       <EditPageModal

@@ -44,21 +44,21 @@ const ModalContainer = styled.div<ModalContainerProps>`
   box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
   margin-right: 4px;
   margin-bottom: 175px;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeModal: any) =>
+    themeModal &&
+    themeModal.phone`
     margin-top: 300px;
     padding-bottom: 50px;
     width: 95vw;
   `};
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeModalPhone: any) =>
+    themeModalPhone &&
+    themeModalPhone.phone`
     padding-vertical: 10px;
   `};
-  ${({ theme }) =>
-    theme &&
-    theme.phoneSmall`
+  ${(themeModalPhoneSmall: any) =>
+    themeModalPhoneSmall &&
+    themeModalPhoneSmall.phoneSmall`
     padding-bottom: 10px;
   `};
 `;
@@ -93,9 +93,9 @@ const StyledWinsIcon = styled(SVG)`
   height: 33px;
   margin-left: 44px;
   margin-top: 51px;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeSVG: any) =>
+    themeSVG &&
+    themeSVG.phone`
     margin: 51px 0 15px 0;
   `};
 `;
@@ -105,9 +105,9 @@ const StyledPearlIcon = styled(SVG)`
   height: 55px;
   padding-right: 34px;
   margin-top: 35px;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themePear: any) =>
+    themePear &&
+    themePear.phone`
     margin: 35px 0 15px 0;
     padding: 0 0 0 0;
   `};
@@ -138,9 +138,9 @@ const ModalPartnersContainer = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themePartners: any) =>
+    themePartners &&
+    themePartners.phone`
     flex-direction: column;
     flex: 1;
   `};
@@ -159,9 +159,9 @@ const ModalScheduleText = styled.a<ModalScheduleTextProps>`
     isPhone &&
     right &&
     `text-decoration: none; color: ${theme.colors.primary};padding-right: 34px;`};
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeModalText: any) =>
+    themeModalText &&
+    themeModalText.phone`
     padding: 5px 0 0 0;
   `};
 `;
@@ -172,9 +172,9 @@ const ModalPartnerSection = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeModalPartner: any) =>
+    themeModalPartner &&
+    themeModalPartner.phone`
     width: 100%;
   `};
 `;
@@ -183,9 +183,9 @@ const ModalSheduleContainer = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeModalContainer: any) =>
+    themeModalContainer &&
+    themeModalContainer.phone`
     width: 100%;
   `};
   flex-direction: column;
