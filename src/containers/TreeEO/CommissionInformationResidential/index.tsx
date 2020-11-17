@@ -27,9 +27,6 @@ export class CommissionInformationResidential extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-    }
     setInformationPage(dispatch, 13, categoriesName.commissionInformation);
   }
 

@@ -62,9 +62,9 @@ function AppEO() {
   const { dispatch, intl, state } = useAppContext();
   const { onSubmit, sessionId, isOpen, setIsOpen } = useSessionSaver(state);
   const getSession = useCallback(
-    async (sessionId: string) => {
+    async (sessionIdCall: string) => {
       try {
-        const response = await ky.get(`session/${sessionId}`).json<SessionResponse>();
+        const response = await ky.get(`session/${sessionIdCall}`).json<SessionResponse>();
         setAppState(dispatch, { app: response });
       } catch {}
     },
@@ -82,9 +82,9 @@ function AppEO() {
   }, [state, sessionId, router]);
 
   useEffect(() => {
-    const sessionId = router.query.sessionId;
-    if (typeof sessionId !== 'string') return;
-    getSession(sessionId);
+    const sessionIdUse = router.query.sessionId;
+    if (typeof sessionIdUse !== 'string') return;
+    getSession(sessionIdUse);
   }, [getSession, router.query.sessionId]);
 
   return (

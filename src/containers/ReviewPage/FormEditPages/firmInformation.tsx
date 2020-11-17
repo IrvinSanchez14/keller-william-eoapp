@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 export function EditPageFirmInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch, state, intl } = useAppContext();
+  const { dispatch, state } = useAppContext();
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
@@ -174,9 +174,9 @@ export function EditPageFirmInformation({ closeModal }: any) {
   };
 
   useEffect(() => {
-    const sessionId = router.query.sessionId;
-    if (typeof sessionId !== 'string') return;
-    setSessionId(sessionId);
+    const sessionIdUse = router.query.sessionId;
+    if (typeof sessionIdUse !== 'string') return;
+    setSessionId(sessionIdUse);
   }, []);
 
   return (
