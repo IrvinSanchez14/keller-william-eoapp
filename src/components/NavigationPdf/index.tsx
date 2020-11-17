@@ -67,7 +67,7 @@ const StyledSVG = styled(SVG)<StyledSVGProps>`
 `;
 
 export default function NavigationPdf(Props: NavigationPdfProps): React.ReactElement {
-  const { isTablet, isMobile } = Props;
+  const { isTablet } = Props;
 
   return (
     <Header isTablet={isTablet}>
