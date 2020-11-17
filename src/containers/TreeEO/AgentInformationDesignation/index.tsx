@@ -2,7 +2,6 @@ import { Component } from 'react';
 import classnames from 'classnames';
 import { FormikHelpers } from 'formik';
 import Typography from '@material-ui/core/Typography';
-import isEmpty from 'lodash/isEmpty';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { storeAgentInformation, changeStatusProgressBar } from 'src/store/actions/app';
 import { setInformationPage } from 'src/store/actions/app';
@@ -39,7 +38,7 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     const parsedValues = {
       ...values,
-      numberAgentSpecialDesignation: removeSignsFromNumbers(values.numberAgentSpecialDesignation),
+      numberAgentsSpecialDesignation: removeSignsFromNumbers(values.numberAgentsSpecialDesignation),
     };
     this.setState({ isButtonLoading: true });
     const { dispatch, formData } = this.props;
@@ -65,8 +64,8 @@ export class AgentInformationDesignation extends Component<FullNameProps> {
           </Typography>
           <FormApp
             initialValues={{
-              numberAgentSpecialDesignation:
-                formData.app.data.agentInformation.numberAgentSpecialDesignation || '',
+              numberAgentsSpecialDesignation:
+                formData.app.data.agentInformation.numberAgentsSpecialDesignation || '',
             }}
             isInitValid
             validationSchema={agentSpecialValidateSchema}

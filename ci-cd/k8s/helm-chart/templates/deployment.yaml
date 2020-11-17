@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include "helpers.fullname" $ }}"
+  annotations:
+    rollme: {{ randAlphaNum 10 | quote }}
+  labels:
+    {{- include "helpers.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.main.deployment.replicaCount }}
+  revisionHistoryLimit: {{ .Values.main.deployment.revisionHistoryLimit | default 2 }}
+  selector:
+    matchLabels:
+      {{- include "helpers.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        rollme: {{ randAlphaNum 10 | quote }}
+      labels:
+        {{- include "helpers.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.main.deployment.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      securityContext:
+        {{- toYaml .Values.main.deployment.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.main.deployment.securityContext | nindent 12 }}
+          image: "{{ .Values.main.deployment.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.main.deployment.image.pullPolicy }}
+          env:
+            {{- range .Values.main.deployment.envSecrets }}
+              - name: {{ .name | quote }}
+                valueFrom:
+                  secretKeyRef:
+                    name: "{{ include "helpers.fullname" $ }}-env-secret"
+                    key: {{ .name | quote }}
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.main.deployment.containerPort }}
+          livenessProbe:
+            initialDelaySeconds: 20
+            periodSeconds: 60
+            httpGet:
+              path: /
+              port: http
+          # readinessProbe:
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 60
+          #   httpGet:
+          #     path: /
+          #     port: http
+          resources:
+            {{- toYaml .Values.main.deployment.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.main.deployment.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.main.deployment.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

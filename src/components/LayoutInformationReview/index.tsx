@@ -35,9 +35,9 @@ const data = {
   },
   agentInformation: {
     numberAgentsMoreCommission: 1200,
-    numberAgentLessCommission: 1200,
-    numberAgenteNoCommission: 1200,
-    numberAgentSpecialDesignation: 54,
+    numberAgentsLessCommission: 1200,
+    numberAgentsNoCommission: 1200,
+    numberAgentsSpecialDesignation: 54,
     revokedLicense: true,
   },
 };
@@ -85,15 +85,15 @@ const dataPC = {
     },
     farmRanch: 100000,
     auctioneering: 100000,
-    mortageBrokerage: 2000000,
-    totalCommision: 160000000,
+    mortgageBrokerage: 2000000,
+    totalCommission: 160000000,
   },
 };
 
 const dataRisk = {
   riskFactorInformation: {
     isHomeWarranty: true,
-    isMortageBanking: true,
+    isMortgageBanking: true,
     isPerformServices: true,
     isRepresentCommission: true,
     percentageTransactions: 47,
@@ -163,19 +163,19 @@ export default function LayoutInformationReview({
       <LayoutsInformation>
         <FirmAgentInformation
           data={state.app.data as FirmAgentInformationProps['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormFirm: any) => openModal(nameFormFirm)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <PolicyCommissionInformation
           data={state.app.data as IPolicyCommissionInformation['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormPolicy: any) => openModal(nameFormPolicy)}
         />
       </LayoutsInformation>
       <LayoutsInformation>
         <RiskProfile
           data={state.app.data as RiskPRofileProps['data']}
-          openEditModal={(nameForm) => openModal(nameForm)}
+          openEditModal={(nameFormRisk: any) => openModal(nameFormRisk)}
         />
       </LayoutsInformation>
       <EditPageModal

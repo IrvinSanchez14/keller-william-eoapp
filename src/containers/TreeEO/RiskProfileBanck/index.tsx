@@ -52,7 +52,7 @@ export class RiskProfileBanck extends Component<FullNameProps> {
         >
           <FormApp
             initialValues={{
-              isMortageBanking: formData.app.data.riskFactorInformation.isMortageBanking,
+              isMortgageBanking: formData.app.data.riskFactorInformation.isMortgageBanking,
             }}
             isInitValid
             validationSchema={riskProfileBanckValidateSchema}

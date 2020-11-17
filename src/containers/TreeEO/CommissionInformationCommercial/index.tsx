@@ -42,8 +42,6 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
   async componentDidMount() {
     const { dispatch } = this.props;
     const { formData } = this.props;
-    if (!isEmpty(formData.app.data)) {
-    }
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   }
 
@@ -66,11 +64,13 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               commercial: {
-                realEstate: formData.app.data.commissionInformation.commercial.realEstate,
-                rawLand: formData.app.data.commissionInformation.commercial.rawLand,
-                appraisals: formData.app.data.commissionInformation.commercial.appraisals,
-                propertyMgmt: formData.app.data.commissionInformation.commercial.propertyMgmt,
-                ownedProperty: formData.app.data.commissionInformation.commercial.ownedProperty,
+                realEstate: formData.app.data.commissionInformation.commercialCommission.realEstate,
+                rawLand: formData.app.data.commissionInformation.commercialCommission.rawLand,
+                appraisals: formData.app.data.commissionInformation.commercialCommission.appraisals,
+                propertyMgmt:
+                  formData.app.data.commissionInformation.commercialCommission.propertyMgmt,
+                ownedProperty:
+                  formData.app.data.commissionInformation.commercialCommission.ownedProperty,
               },
             }}
             isInitValid={this.isInitValid}

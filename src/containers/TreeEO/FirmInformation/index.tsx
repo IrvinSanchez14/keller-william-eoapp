@@ -79,7 +79,6 @@ export class FirmInformation extends Component<FullNameProps> {
             isInQuestionnaire
             dispatch={dispatch}
             progressBar={formData.app.metadata.progressBar}
-            hideButton={false}
             alignButton={classnames(classes.alignButton)}
           >
             {(formikProps) => {

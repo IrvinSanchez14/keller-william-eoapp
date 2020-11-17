@@ -108,7 +108,7 @@ type SessionFinishResponse = AppState['app'] & {
 };
 
 const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app }) => {
-  const sessionId = app.id;
+  const sessionId = app.eoSessionId;
   const router = useRouter();
   const { intl, state, dispatch } = useAppContext();
   useEffect(() => {
@@ -137,7 +137,7 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
           const body = { ...state.app, providers };
           const response = await onSubmit(body);
           setAppState(dispatch, { app: { ...body, ...response } });
-          router.push(`/confirmation-page?sessionId=${sessionId}`);
+          router.push(`/confirmation-page?sessionId=${sessionId}&complete=true`);
         }}
       >
         <StyledProviderSelection>

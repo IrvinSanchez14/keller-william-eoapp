@@ -33,6 +33,7 @@ export class PolicyInformation extends Component<FullNameProps> {
   nextStep = async (values: any, actions: FormikHelpers<FormFields>) => {
     const parsedValues = {
       ...values,
+      insuranceId: this.props.formData.app.data.policyInformation.insurance.insuranceId,
       isHaveInsurance: this.state.isHaveInsurance,
       deductible: removeSignsFromNumbers(values.deductible),
       limits: removeSignsFromNumbers(values.limits),
@@ -44,13 +45,12 @@ export class PolicyInformation extends Component<FullNameProps> {
     actions.setSubmitting(true);
     storeInsurancePolicy(dispatch, parsedValues); //TODO put state in localstorage
     await this.props.onSubmit?.();
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
+    changeStatusProgressBar(dispatch, parseFloat(formData.app.metadata.progressBar) + 4.5);
     setInformationPage(dispatch, 9, categoriesName.policyInformation);
   };
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    const { formData } = this.props;
     setInformationPage(dispatch, 8, categoriesName.policyInformation);
   }
 
@@ -74,11 +74,11 @@ export class PolicyInformation extends Component<FullNameProps> {
           <FormApp
             initialValues={{
               currentCarrier: formData.app.data.policyInformation.currentCarrier,
-              isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance,
-              renewalDate: formData.app.data.policyInformation.insurance.renewalDate,
-              deductible: formData.app.data.policyInformation.insurance.deductible,
-              limits: formData.app.data.policyInformation.insurance.limits,
-              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage,
+              isHaveInsuranceField: formData.app.data.policyInformation.isHaveInsurance || false,
+              renewalDate: formData.app.data.policyInformation.insurance.renewalDate || '',
+              deductible: formData.app.data.policyInformation.insurance.deductible || '',
+              limits: formData.app.data.policyInformation.insurance.limits || '',
+              yearCoverage: formData.app.data.policyInformation.insurance.yearCoverage || '',
               annualPremium: formData.app.data.policyInformation.insurance.annualPremium,
             }}
             validationSchema={policyInforamtionValidateSchema}

@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 
 const labelInformation = {
   isHomeWarranty: 'Do you offer home warranty programs',
-  isMortageBanking: 'Are you involved in mortgage banking  development, or construction',
+  isMortgageBanking: 'Are you involved in mortgage banking  development, or construction',
   isPerformServices: 'Do you perform services for REITS or property syndications',
   isRepresentCommission: '',
   percentageTransactions:
@@ -22,7 +22,7 @@ const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
 export default function RiskProfile({ data, openEditModal }: RiskProfileProps): JSX.Element {
   const onOpenModal = useCallback(
     (nameForm: string) => () => {
-      openEditModal?.(nameForm);
+      openEditModal(nameForm);
     },
     [openEditModal],
   );
@@ -40,11 +40,11 @@ export default function RiskProfile({ data, openEditModal }: RiskProfileProps): 
         />
       </ContainerInformation>
       <ContainerInformation>
-        <TextLight text={labelInformation.isMortageBanking} />
+        <TextLight text={labelInformation.isMortgageBanking} />
         <TextBold
           typeFormat="boolean"
           customMargin
-          text={data.riskFactorInformation.isMortageBanking}
+          text={data.riskFactorInformation.isMortgageBanking}
         />
       </ContainerInformation>
       <ContainerInformation>

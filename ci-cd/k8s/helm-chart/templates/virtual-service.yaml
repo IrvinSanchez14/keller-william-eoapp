@@ -1,0 +1,25 @@
+{{- if .Values.main.virtualService.create -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "helpers.fullname" . }}
+spec:
+  hosts: {{ .Values.main.virtualService.hosts }}
+  gateways: {{ .Values.main.virtualService.gateways }}
+  http:
+  - name: "{{ include "helpers.fullname" . }}-route"
+    match:
+    {{ if (ne .Values.main.virtualService.uriPrefix  "/") }}
+    - uri:
+        prefix: "{{ .Values.main.virtualService.uriPrefix }}/"
+    {{ end }}
+    - uri:
+        prefix: "{{ .Values.main.virtualService.uriPrefix }}"
+    rewrite:
+      uri: {{ .Values.main.virtualService.uriRewrite }}
+    route:
+    - destination:
+        host: {{ .Values.main.virtualService.serviceHost }}
+        port:
+          number: {{ .Values.main.service.port }}
+{{- end -}}

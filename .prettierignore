@@ -1,3 +1,6 @@
 deployment.yml
 .next
 out
+ci-cd/
+Dockerfile
+docker-compose.yaml

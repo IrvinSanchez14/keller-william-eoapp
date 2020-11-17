@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
-import { addClaimsPolicy, removeClaims, insertFirstClaims } from 'src/store/actions/app';
+import { addClaimsPolicy, removeClaims } from 'src/store/actions/app';
 import { TextFieldForm } from 'src/components/TextFieldForm';
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
@@ -49,8 +49,8 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
     margin: '21px 0px -8px -5px',
   },
   pAddButton: {
-    margin: '6px 0px 0px 10px',
-    fontSize: '16px',
+    margin: '10px 0px 0px 10px',
+    fontSize: '18px',
     lineHeight: '12px',
     fontWeight: 600,
   },
@@ -126,6 +126,13 @@ export const FormPolicyInformationClaims = (
     };
   }, []);
 
+  const addFirstArray = () => {
+    const addArray = [{}];
+    addClaimsPolicy(dispatch, {
+      claims: [...formikProps.values.claims, addArray],
+    });
+  };
+
   const renderResidenceTimeForm = () => {
     const residenceTimeFields = [
       {
@@ -187,10 +194,7 @@ export const FormPolicyInformationClaims = (
         <div
           className={classes.containerAddButton}
           onClick={() => {
-            const addArray = [{}];
-            addClaimsPolicy(dispatch, {
-              claims: [...formikProps.values.claims, addArray],
-            });
+            addFirstArray();
           }}
         >
           <div>
@@ -199,7 +203,7 @@ export const FormPolicyInformationClaims = (
               type="light"
               dataTestId="backButton"
               className={classes.iconPlus}
-              size="10x"
+              size="2x"
             />
           </div>
           <div className={classes.pAddButton}>
@@ -229,6 +233,9 @@ export const FormPolicyInformationClaims = (
                 formikProps.setFieldValue('isHaveClaims', true);
                 setIsHaveInsurance(true);
                 handleChange(true);
+                addClaimsPolicy(dispatch, {
+                  claims: [{}],
+                });
               }}
               checked={formikProps.values.isHaveClaims === true}
             />
@@ -257,6 +264,9 @@ export const FormPolicyInformationClaims = (
               onChange={() => {
                 formikProps.setFieldValue('isHaveClaims', false);
                 formikProps.setFieldValue('claims', []);
+                addClaimsPolicy(dispatch, {
+                  claims: [],
+                });
                 setIsHaveInsurance(false);
                 handleChange(false);
                 removeClaims(dispatch);

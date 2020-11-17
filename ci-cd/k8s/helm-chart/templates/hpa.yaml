@@ -1,0 +1,25 @@
+apiVersion: autoscaling/v1
+# apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: "{{ include "helpers.fullname" $ }}"
+  annotations:
+    rollme: {{ randAlphaNum 10 | quote }}
+spec:
+  maxReplicas:  {{ .Values.main.hpa.maxReplicas }}
+  minReplicas: {{ .Values.main.hpa.minReplicas }}
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: "{{ include "helpers.fullname" $ }}"
+  targetCPUUtilizationPercentage: {{ .Values.main.hpa.cpuAverageUtilization }}
+  # -------- Only if for api version autoscaling/v2beta1 ----------
+  # metrics:
+  # - type: Resource
+  #   resource:
+  #     name: cpu
+  #     targetAverageUtilization: {{ .Values.main.hpa.cpuAverageUtilization }}
+  # - type: Resource
+  #   resource:
+  #     name: memory
+  #     targetAverageUtilization: {{ .Values.main.hpa.memoryAverageUtilization }}
