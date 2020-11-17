@@ -22,7 +22,7 @@ const ContainerInformation = styled.div<{ firstPadding?: boolean }>`
 export default function RiskProfile({ data, openEditModal }: RiskProfileProps): JSX.Element {
   const onOpenModal = useCallback(
     (nameForm: string) => () => {
-      openEditModal?.(nameForm);
+      openEditModal(nameForm);
     },
     [openEditModal],
   );

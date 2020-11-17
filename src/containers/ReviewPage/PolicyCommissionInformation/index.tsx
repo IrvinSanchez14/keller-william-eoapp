@@ -339,7 +339,7 @@ export default function PolicyCommissionInformation({
 }: PolicyCommissionInformationProps): JSX.Element {
   const onOpenModal = useCallback(
     (nameForm: string) => () => {
-      openEditModal?.(nameForm);
+      openEditModal(nameForm);
     },
     [openEditModal],
   );

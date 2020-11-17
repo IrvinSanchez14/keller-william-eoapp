@@ -62,7 +62,7 @@ export default function FirmAgentInformation({
 }: FirmAgentInformationProps): React.ReactElement {
   const onOpenModal = useCallback(
     (nameform: string) => () => {
-      openEditModal?.(nameform);
+      openEditModal(nameform);
     },
     [openEditModal],
   );
