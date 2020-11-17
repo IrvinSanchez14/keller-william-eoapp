@@ -1,8 +1,6 @@
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { styles } from './styles';
 
 export const propertyUsageFields = [
   {

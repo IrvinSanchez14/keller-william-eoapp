@@ -51,7 +51,6 @@ export class PolicyInformation extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    const { formData } = this.props;
     setInformationPage(dispatch, 8, categoriesName.policyInformation);
   }
 
