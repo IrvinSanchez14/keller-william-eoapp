@@ -116,9 +116,11 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
   }, [app, dispatch]);
 
   const onSubmit = useCallback(
-    (state: AppState['app']) => {
+    (stateCall: AppState['app']) => {
       if (!sessionId) return;
-      return ky.post(`session/${sessionId}/finish`, { json: state }).json<SessionFinishResponse>();
+      return ky
+        .post(`session/${sessionId}/finish`, { json: stateCall })
+        .json<SessionFinishResponse>();
     },
     [sessionId],
   );
