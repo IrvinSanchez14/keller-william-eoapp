@@ -3,9 +3,6 @@ import { useState, useEffect } from 'react';
 import { FielControlForm } from 'src/components/FieldControlForm';
 
 import { RadioField } from 'src/components/RadioForm';
-
-import { withStyles } from 'src/styles/FormStyle/css/withStyles';
-import { styles } from './styles';
 import { useAppContext } from 'src/store';
 
 export const propertyUsageFields = [

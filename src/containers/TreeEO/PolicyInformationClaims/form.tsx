@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
 import { FielControlForm } from 'src/components/FieldControlForm';
 import { Column } from 'src/components/LayoutWrapper/Flex';
-import { addClaimsPolicy, removeClaims, insertFirstClaims } from 'src/store/actions/app';
+import { addClaimsPolicy, removeClaims } from 'src/store/actions/app';
 import { TextFieldForm } from 'src/components/TextFieldForm';
 import { RadioField } from 'src/components/RadioForm';
 import { AwesomeFontIcon } from 'src/components/AwesomeFontIcon';
