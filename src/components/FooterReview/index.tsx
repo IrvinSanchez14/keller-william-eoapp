@@ -16,7 +16,7 @@ const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }
   width: 70%;
   display: flex;
   align-items: center;
-  ${({ hideDogIcon, theme }) => hideDogIcon && theme && theme.phone`display: none;`}
+  ${(themeSec: any) => themeSec && themeSec.phone`display: none;`}
   ${({ alignRight }) =>
     alignRight &&
     `
@@ -27,9 +27,9 @@ const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }
       margin-right: 40px;
     }}
   `};
-  ${({ theme }) =>
-    theme &&
-    theme.phone`
+  ${(themeFooter: any) =>
+    themeFooter &&
+    themeFooter.phone`
     width: 100%;
     justify-content: center;
     margin: 0 0 0 0;
