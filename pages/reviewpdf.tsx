@@ -4,7 +4,7 @@ import Error from 'next/error';
 import { useRouter } from 'next/dist/client/router';
 import { useKyGet } from 'src/utils/use-ky';
 
-const MyApp: React.FC = () => {
+const reviewPDF: React.FC = () => {
   const router = useRouter();
   const { data, state } = useKyGet<AppState['app']>(`session/${router.query.sessionId}`, {
     pause: typeof router.query.sessionId !== 'string',
@@ -13,4 +13,4 @@ const MyApp: React.FC = () => {
   return <div>{data && <ReviewPdfPage state={data} />}</div>;
 };
 
-export default MyApp;
+export default reviewPDF;
