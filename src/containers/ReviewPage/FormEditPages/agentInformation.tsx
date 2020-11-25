@@ -165,6 +165,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
     };
     storeAgentInformation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {
