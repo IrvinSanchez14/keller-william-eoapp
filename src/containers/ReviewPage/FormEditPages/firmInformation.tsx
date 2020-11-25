@@ -155,6 +155,7 @@ export function EditPageFirmInformation({ closeModal }: any) {
     values.suite = values.suite === '' ? null : values.suite;
     storeFirmConfirmation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {

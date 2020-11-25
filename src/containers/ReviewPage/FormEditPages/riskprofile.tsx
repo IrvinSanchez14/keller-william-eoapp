@@ -191,6 +191,7 @@ export function EditPageRiskProfile({ closeModal }: any) {
     };
     storeRiskProfile(dispatch, parsedValues);
     await ky.put(`session/${sessionId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {

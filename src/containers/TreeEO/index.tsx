@@ -43,15 +43,22 @@ function useSessionSaver(state: AppState) {
   const onSubmit = useCallback(async () => {
     if (sessionId || state.app.eoSessionId) {
       const response = await ky
-        .put(`session/${sessionId || state.app.eoSessionId}`, { json: state.app })
+        .put(`session/${sessionId || state.app.eoSessionId}`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          json: state.app,
+        })
         .json<SessionResponse>();
       return response;
     } else {
-      const response = await ky.post('session', { json: state.app }).json<SessionResponse>();
-      setIsOpen(true);
-      setAppState(dispatch, { app: response });
-      setSessionId(response.eoSessionId);
-      return response;
+      return await ky
+        .post('session', { json: state.app })
+        .json<SessionResponse>()
+        .then((response: any) => {
+          setIsOpen(true);
+          setAppState(dispatch, { app: response });
+          setSessionId(response.eoSessionId);
+          localStorage.setItem('token', response.accessToken);
+        });
     }
   }, [sessionId, state]);
   return { sessionId: sessionId || state.app.eoSessionId, isOpen, setIsOpen, onSubmit };
@@ -63,9 +70,32 @@ function AppEO() {
   const { onSubmit, sessionId, isOpen, setIsOpen } = useSessionSaver(state);
   const getSession = useCallback(
     async (sessionIdCall: string) => {
+      const updateURLSession = `session/${sessionIdCall}`;
       try {
-        const response = await ky.get(`session/${sessionIdCall}`).json<SessionResponse>();
-        setAppState(dispatch, { app: response });
+        await ky
+          .get(updateURLSession, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          })
+          .json<SessionResponse>()
+          .then((response: any) => {
+            setAppState(dispatch, { app: response });
+          })
+          .catch((err: any) => {
+            if (err.response.status === 401) {
+              ky.post(`tokens/refresh`, { json: { eoSessionId: sessionIdCall } })
+                .json()
+                .then((responseTok: any) => {
+                  localStorage.setItem('token', responseTok.accessToken);
+                  ky.get(updateURLSession, {
+                    headers: { Authorization: `Bearer ${responseTok.accessToken}` },
+                  })
+                    .json<SessionResponse>()
+                    .then((responseA: any) => {
+                      setAppState(dispatch, { app: responseA });
+                    });
+                });
+            }
+          });
       } catch {}
     },
     [dispatch],

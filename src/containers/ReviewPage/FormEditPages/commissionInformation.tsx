@@ -246,6 +246,7 @@ export function EditPageCommissionInformation({ closeModal }: any) {
     values.totalCommission = total;
     storeCommissionAll(dispatch, values);
     await ky.put(`session/${sessionId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {

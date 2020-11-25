@@ -55,3 +55,11 @@ export const parseNumberToThounsads = (rawValue: number | string): string =>
 
 export const parseNumberToMoney = (rawValue: number | string): string =>
   `$${parseNumberToThounsads(rawValue)}`;
+
+export const getStorageSync = (key: string) => {
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem(key);
+  } else {
+    return;
+  }
+};
