@@ -43,7 +43,7 @@ const HeaderContainer = styled.div<HeaderContainerProps>`
 justify-content: flex-end;
 padding-right: 70px;
 `}
-  ${(themeHeader: any) => themeHeader.phone`
+  ${({ theme }) => theme.phone`
   ${({ rightItem }) =>
     rightItem &&
     `
