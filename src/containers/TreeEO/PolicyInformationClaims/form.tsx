@@ -120,7 +120,7 @@ export const FormPolicyInformationClaims = (
   useEffect(() => {
     window.addEventListener('resize', handleResize);
     setIsMobile(window.innerWidth);
-    console.log(isHaveInsurance);
+
     return () => {
       window.removeEventListener('resize', handleResize);
     };

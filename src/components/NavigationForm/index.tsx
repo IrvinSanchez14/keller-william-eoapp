@@ -77,8 +77,7 @@ export function NavigationForm(Props: INavigationProps) {
   };
 
   const stepType =
-    state.app.metadata &&
-    STEP_TYPES.find((stepMap: any) => stepMap.type === state.app.metadata.categoryPage);
+    state.app.metadata && STEP_TYPES.find((step) => step.type === state.app.metadata.categoryPage);
   const stepTypeValue = intl.get('app.name.form').toUpperCase(); //title app
   const step = state.app.metadata && stepType ? state.app.metadata.categoryPage.toUpperCase() : ''; // category form
 

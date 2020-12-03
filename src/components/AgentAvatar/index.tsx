@@ -1,3 +1,12 @@
+import classnames from 'classnames';
+import { Typography } from '@material-ui/core';
+
+import { Row, Column } from '../LayoutWrapper/Flex';
+import { AwesomeFontIcon } from '../AwesomeFontIcon';
+import kwLogoRed from 'img/logos/KWLogoRed.png';
+
+import { useStyles } from './styles';
+
 interface AgentAvatarProps {
   responsiveSizes?: Array<number>;
   isConfirmation?: boolean;

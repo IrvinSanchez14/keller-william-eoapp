@@ -6,7 +6,6 @@ type States = 'idle' | 'fetching' | 'error' | 'success';
 
 export function useKyGet<T>(
   url: string,
-  id: any,
   options: { pause?: boolean } = { pause: false },
 ): { state: States; error?: HTTPError; data?: T } {
   const [state, setState] = useState<States>('idle');
@@ -18,29 +17,9 @@ export function useKyGet<T>(
       if (options.pause) return;
       setState('fetching');
       try {
-        await ky
-          .get(urlKey, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
-          .json<T>()
-          .then((response: any) => {
-            setData(response);
-            setState('success');
-          })
-          .catch((err) => {
-            if (err.response.status === 401) {
-              ky.post(`tokens/refresh`, { json: { eoSessionId: id } })
-                .json()
-                .then((responseTok: any) => {
-                  localStorage.setItem('token', responseTok.accessToken);
-                  ky.get(url, {
-                    headers: { Authorization: `Bearer ${responseTok.accessToken}` },
-                  })
-                    .json<T>()
-                    .then((responseA: any) => {
-                      setData(responseA);
-                    });
-                });
-            }
-          });
+        const response = await ky.get(urlKey).json<T>();
+        setData(response);
+        setState('success');
       } catch (err) {
         setError(err);
         setState('error');

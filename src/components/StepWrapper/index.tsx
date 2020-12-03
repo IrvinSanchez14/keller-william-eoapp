@@ -35,7 +35,9 @@ export class StepWrapper extends Component<IStepWrapper> {
       content,
       bottomContent,
       children,
+      property,
       contentIcon,
+      stepper,
       classHeader,
       classBottom,
     } = this.props;
@@ -68,14 +70,14 @@ export class StepWrapper extends Component<IStepWrapper> {
               {heading}
             </Typography>
             {subHeading?.length &&
-              subHeading.map((headingMap, index) => (
+              subHeading.map((heading, index) => (
                 <Typography
                   key={index}
                   className={classnames(classes.stepInfoHeader, classes.subHeading)}
                   gutterBottom
                   data-test-id="subheader"
                 >
-                  {headingMap}
+                  {heading}
                 </Typography>
               ))}
             {description?.length &&

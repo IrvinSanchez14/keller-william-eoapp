@@ -172,7 +172,7 @@ export default class AppState implements IAppState {
         percentageTransactions: undefined,
       },
     },
-    eoSessionId: '',
+    eoSessionId: undefined,
     providers: [],
     completed: false,
     confirmationNumber: undefined,

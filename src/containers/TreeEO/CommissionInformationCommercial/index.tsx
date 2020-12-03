@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import classnames from 'classnames';
+import isEmpty from 'lodash/isEmpty';
 import Typography from '@material-ui/core/Typography';
 import { IAppStoreProps } from 'src/typesInterface/IAppStoreProps';
 import { setInformationPage } from 'src/store/actions/app';
@@ -40,6 +41,7 @@ export class CommissionInformationCommercial extends Component<FullNameProps> {
 
   async componentDidMount() {
     const { dispatch } = this.props;
+    const { formData } = this.props;
     setInformationPage(dispatch, 14, categoriesName.commissionInformation);
   }
 

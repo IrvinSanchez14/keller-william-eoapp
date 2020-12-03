@@ -4,17 +4,13 @@ import Error from 'next/error';
 import { useKyGet } from 'src/utils/use-ky';
 import { useRouter } from 'next/dist/client/router';
 
-const review: React.FC = () => {
+const MyApp: React.FC = () => {
   const router = useRouter();
-  const { data, state } = useKyGet<AppState['app']>(
-    `session/${router.query.sessionId}`,
-    router.query.sessionId,
-    {
-      pause: typeof router.query.sessionId !== 'string',
-    },
-  );
+  const { data, state } = useKyGet<AppState['app']>(`session/${router.query.sessionId}`, {
+    pause: typeof router.query.sessionId !== 'string',
+  });
   if (state === 'error') return <Error statusCode={404} />;
   return <div>{data && <ReviewPage state={data} />}</div>;
 };
 
-export default review;
+export default MyApp;

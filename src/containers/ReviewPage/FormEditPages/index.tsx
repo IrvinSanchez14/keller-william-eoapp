@@ -3,6 +3,7 @@ import { EditPageAgentInformation } from './agentInformation';
 import { EditPagePolicyInformation } from './policyInformation';
 import { EditPageCommissionInformation } from './commissionInformation';
 import { EditPageRiskProfile } from './riskprofile';
+import { useEffect, useState } from 'react';
 
 interface IFormEditPages {
   nameForm: string;
@@ -19,7 +20,7 @@ const CONSTANTS_EDIT_PAGE = {
 };
 
 export function FormsEditPage(Props: IFormEditPages) {
-  const { nameForm, setShowModal } = Props;
+  const { nameForm, isOpen, setShowModal } = Props;
 
   const close = () => {
     setShowModal(false);

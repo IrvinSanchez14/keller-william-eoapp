@@ -111,7 +111,6 @@ function Navigation(Props: NavigationProps) {
     window.addEventListener('resize', handleResize);
     setIsMobile(window.innerWidth < 690);
     setWidth(window.innerWidth);
-    console.log(width);
     return () => {
       window.removeEventListener('click', handleClicking);
       window.removeEventListener('resize', handleResize);

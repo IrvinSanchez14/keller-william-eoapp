@@ -16,7 +16,7 @@ const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }
   width: 70%;
   display: flex;
   align-items: center;
-  ${({ theme }) => theme && theme.phone`display: none;`}
+  ${({ hideDogIcon, theme }) => hideDogIcon && theme && theme.phone`display: none;`}
   ${({ alignRight }) =>
     alignRight &&
     `

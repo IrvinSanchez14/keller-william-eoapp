@@ -1,18 +1,16 @@
+import Head from 'next/head';
+
 import ConfirmationPage from 'src/containers/ConfirmationPage';
 import AppState from 'src/store/models/AppState';
 import Error from 'next/error';
 import { useRouter } from 'next/dist/client/router';
 import { useKyGet } from 'src/utils/use-ky';
 
-const confirmationPage: React.FC = () => {
+const MyApp: React.FC = () => {
   const router = useRouter();
-  const { data, state } = useKyGet<AppState['app']>(
-    `session/${router.query.sessionId}`,
-    router.query.sessionId,
-    {
-      pause: typeof router.query.sessionId !== 'string',
-    },
-  );
+  const { data, state } = useKyGet<AppState['app']>(`session/${router.query.sessionId}`, {
+    pause: typeof router.query.sessionId !== 'string',
+  });
   if (state === 'error' || (data && !data.confirmationNumber)) return <Error statusCode={404} />;
   return (
     <div>
@@ -33,4 +31,4 @@ const confirmationPage: React.FC = () => {
   );
 };
 
-export default confirmationPage;
+export default MyApp;

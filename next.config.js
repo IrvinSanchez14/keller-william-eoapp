@@ -19,10 +19,8 @@ module.exports = withImages(
     },
     cssModules: true,
     env: {
-      ENVIRONMENT: process.env.ENVIRONMENT || 'production',
+      ENVIRONMENT: process.env.ENV || 'production',
       GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY,
-      USER_CLIENT: process.env.USER_CLIENT,
-      USER_PASSWORD: process.env.USER_PASSWORD,
     },
   }),
 );

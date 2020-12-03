@@ -148,14 +148,13 @@ const useStyles = makeStyles((theme: MuiTheme) => ({
 export function EditPageFirmInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch, state } = useAppContext();
+  const { dispatch, state, intl } = useAppContext();
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
     values.suite = values.suite === '' ? null : values.suite;
     storeFirmConfirmation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {
@@ -175,9 +174,9 @@ export function EditPageFirmInformation({ closeModal }: any) {
   };
 
   useEffect(() => {
-    const sessionIdUse = router.query.sessionId;
-    if (typeof sessionIdUse !== 'string') return;
-    setSessionId(sessionIdUse);
+    const sessionId = router.query.sessionId;
+    if (typeof sessionId !== 'string') return;
+    setSessionId(sessionId);
   }, []);
 
   return (
