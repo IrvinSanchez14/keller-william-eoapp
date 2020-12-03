@@ -116,9 +116,26 @@ const ProviderSelection: React.FC<{ state: AppState['app'] }> = ({ state: app })
   }, [app, dispatch]);
 
   const onSubmit = useCallback(
-    (state: AppState['app']) => {
+    (stateCall: AppState['app']) => {
       if (!sessionId) return;
-      return ky.post(`session/${sessionId}/finish`, { json: state }).json<SessionFinishResponse>();
+      return ky
+        .post(`session/${sessionId}/finish`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+          json: stateCall,
+        })
+        .json<SessionFinishResponse>()
+        .catch((err) => {
+          if (err.response.status === 401) {
+            ky.post(`tokens/refresh`, { json: { eoSessionId: sessionId } })
+              .json()
+              .then((responseTok: any) => {
+                localStorage.setItem('token', responseTok.accessToken);
+                ky.get(`session/${sessionId}/finish`, {
+                  headers: { Authorization: `Bearer ${responseTok.accessToken}` },
+                }).json<SessionFinishResponse>();
+              });
+          }
+        });
     },
     [sessionId],
   );

@@ -152,7 +152,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
   const router = useRouter();
   const [isReview] = useState(true);
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch, state, intl } = useAppContext();
+  const { dispatch, state } = useAppContext();
   const classes = useStyles();
 
   const onSubmit = async (values: any, actions: any) => {
@@ -165,6 +165,7 @@ export function EditPageAgentInformation({ closeModal }: any) {
     };
     storeAgentInformation(dispatch, values);
     await ky.put(`session/${sessionId}`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       json: {
         ...state.app,
         data: {
@@ -180,9 +181,9 @@ export function EditPageAgentInformation({ closeModal }: any) {
   };
 
   useEffect(() => {
-    const sessionId = router.query.sessionId;
-    if (typeof sessionId !== 'string') return;
-    setSessionId(sessionId);
+    const sessionIdUse = router.query.sessionId;
+    if (typeof sessionIdUse !== 'string') return;
+    setSessionId(sessionIdUse);
   }, []);
 
   const handleChange = (value: boolean, formikProps: any) => {

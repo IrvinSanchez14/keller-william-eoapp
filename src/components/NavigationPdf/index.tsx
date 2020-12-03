@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import theme from 'src/styles/MarketingEO/theme';
 import SVG from 'react-inlinesvg';
-import ButtonPrimary from 'src/components/Button/ButtonPrimary';
 import NavigationPdfProps from './INavigationPdf';
 
 interface HeaderContainerProps {
@@ -67,7 +66,7 @@ const StyledSVG = styled(SVG)<StyledSVGProps>`
 `;
 
 export default function NavigationPdf(Props: NavigationPdfProps): React.ReactElement {
-  const { isTablet, isMobile } = Props;
+  const { isTablet } = Props;
 
   return (
     <Header isTablet={isTablet}>

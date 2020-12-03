@@ -8,12 +8,11 @@ import { FormApp } from 'src/components/FormApp';
 import { valdiatePolicySchema } from 'src/helpers/validations';
 import { useAppContext } from 'src/store';
 import { MuiTheme } from 'src/styles/FormStyle/css/IMuiThemeOptions';
-import { setAppState, storeAllPolicy } from 'src/store/actions/app';
+import { setAppState } from 'src/store/actions/app';
 import { Column } from 'src/components/LayoutWrapper/Flex';
 import { FormPolicyInformation } from 'src/containers/TreeEO/PolicyInformation/form';
 import { FormPolicyInformationClaims } from 'src/containers/TreeEO/PolicyInformationClaims/form';
 import { removeSignsFromNumbers } from 'src/utils';
-import { SessionState } from 'http2';
 import AppState from 'src/store/models/AppState';
 
 const useStyles = makeStyles((theme: MuiTheme) => ({
@@ -139,7 +138,7 @@ type SessionResponse = AppState['app'];
 export function EditPagePolicyInformation({ closeModal }: any) {
   const router = useRouter();
   const [sessionId, setSessionId] = useState<string>();
-  const { dispatch, state, intl } = useAppContext();
+  const { dispatch, state } = useAppContext();
   const [isHaveInsurance, setIsHaveInsurance] = useState(
     state.app.data.policyInformation.isHaveInsurance,
   );
@@ -198,9 +197,9 @@ export function EditPagePolicyInformation({ closeModal }: any) {
   };
 
   useEffect(() => {
-    const sessionId = router.query.sessionId;
-    if (typeof sessionId !== 'string') return;
-    setSessionId(sessionId);
+    const sessionIdUse = router.query.sessionId;
+    if (typeof sessionIdUse !== 'string') return;
+    setSessionId(sessionIdUse);
   }, []);
 
   return (
