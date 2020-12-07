@@ -6,7 +6,7 @@ import RiskProfile from 'src/containers/ReviewPage/RiskProfile';
 import { useState, useEffect } from 'react';
 import EditPageModal from '../EditPageModal';
 import { FormsEditPage } from 'src/containers/ReviewPage/FormEditPages';
-import AppState, { PolicyInformationProps, RiskProfileProps } from 'src/store/models/AppState';
+import AppState from 'src/store/models/AppState';
 import FirmAgentInformationProps from 'src/containers/ReviewPage/FirmAgentInformation/IFirmAgentInformation';
 import IPolicyCommissionInformation from 'src/containers/ReviewPage/PolicyCommissionInformation/IPolicyCommissionInformation';
 import RiskPRofileProps from 'src/containers/ReviewPage/RiskProfile/IRiskProfile';

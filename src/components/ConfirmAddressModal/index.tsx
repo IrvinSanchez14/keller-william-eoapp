@@ -13,6 +13,7 @@ import { Formik, Form, useField, useFormikContext, FormikProps } from 'formik';
 import { confirmAddressModalShema } from 'src/helpers/validations';
 import { LabelForm } from '../LabelForm';
 import { states } from 'src/helpers/constants';
+import { useTheme } from '@material-ui/core';
 
 interface Props {
   showModal: boolean;
@@ -27,7 +28,8 @@ interface AddressProps {
 }
 
 const ConfirmAddressModal = ({ showModal, closeModal }: Props) => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const classes = useStyles(theme);
   const streetAddressField = useField('streetAddress');
   const { submitForm } = useFormikContext();
 

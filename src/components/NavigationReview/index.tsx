@@ -86,7 +86,7 @@ const StyledSVG = styled(SVG)<StyledSVGProps>`
 `;
 
 export default function NavigationReview(Props: NavigationReviewProps): JSX.Element {
-  const { isTablet, isMobile, sectionPage, isConfirmationPage } = Props;
+  const { isTablet, isMobile, sectionPage } = Props;
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const toggleModal = () => {

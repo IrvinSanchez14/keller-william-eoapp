@@ -400,7 +400,7 @@ export default function ConfirmationPage({
   claimsNumber,
   propertySoldValue,
 }: ConfirmationPageProps): JSX.Element {
-  const { dispatch, intl, state } = useAppContext();
+  const { dispatch } = useAppContext();
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [width, setWidth] = useState(1024);
