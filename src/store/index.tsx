@@ -14,7 +14,6 @@ const reducer = (stateApp: any, action: any) => {
   if (server === 'dev') {
     console.group('Dispatch Action: ' + action.type);
     console.info('Prev State');
-    console.table(stateApp, 'background: #222; color: #bada55');
     console.debug('New State');
     console.table({ ...stateApp, ...updateAction });
     console.groupEnd();
