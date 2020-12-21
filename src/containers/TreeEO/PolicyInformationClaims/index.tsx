@@ -34,18 +34,18 @@ export class PolicyInformationClaims extends Component<CurrentAddressProps> {
   nextStep = async (values: any, actions: any) => {
     const parsedValues = {
       ...values,
-      claims: values.claims.map((c) => ({
+      claims: values.claims.map((c: any) => ({
         ...c,
         amountClaim: removeSignsFromNumbers(c.amountClaim),
       })),
     };
     const { dispatch, formData } = this.props;
     actions.setSubmitting(true);
-    await this.props.onSubmit?.();
     this.isButtonLoading = true;
-    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     storeClaimsPolicy(dispatch, parsedValues);
+    changeStatusProgressBar(dispatch, formData.app.metadata.progressBar + 4.5);
     setInformationPage(dispatch, 10, categoriesName.commissionInformation);
+    await this.props.onSubmit?.();
   };
 
   handleChange = (response: boolean) => {
