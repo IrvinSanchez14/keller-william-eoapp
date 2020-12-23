@@ -28,17 +28,17 @@ K8S_CLUSTER_NAME=""
 K8S_CLUSTER_ZONE="us-central1-a"
 
 case ${TRAVIS_BRANCH} in
-  "k8s-deployment-dev")
+  "develop")
     K8S_CLUSTER_NAME="k8s-cluster-development"
     TAG=$(semver inc minor ${TAG})
     TAG=$(semver set prerelease  ${TAG} "alpha.${TRAVIS_BUILD_ID}")
     ;;
-  "k8s-deployment-staging")
+  "staging")
     K8S_CLUSTER_NAME="k8s-cluster-staging"
     TAG=$(semver inc minor ${TAG})
     TAG=$(semver set prerelease  ${TAG} "beta.${TRAVIS_BUILD_ID}")
     ;;
-  "k8s-deployment-prod")
+  "master")
     K8S_CLUSTER_NAME="k8s-cluster-production"
     TAG=$(semver inc minor ${TAG})
     ;;
