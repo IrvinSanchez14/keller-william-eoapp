@@ -41,7 +41,7 @@ const ReviewPage: React.FC<{ state: AppState['app'] }> = ({ state }) => {
         isTablet={isTablet}
         isMobile={isMobile}
       />
-      <Layout textHeader="Please review your application before submitting" stateServer={state} />
+      <Layout textHeader="Please review your application and submit" stateServer={state} />
       <FooterReview sessionId={state.eoSessionId} />
     </>
   );

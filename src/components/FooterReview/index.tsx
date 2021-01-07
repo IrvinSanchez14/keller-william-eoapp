@@ -10,6 +10,7 @@ const FooterContainer = styled.footer`
   background-color: ${theme.colors.darkBlue};
   bottom: 0;
   width: 100%;
+  position: fixed;
 `;
 
 const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }>`
@@ -61,6 +62,12 @@ const FooterSubmitText = styled.p`
   font-style: 'Bold';
 `;
 
+const LinkLearnMore = styled.a`
+  color: #fff;
+  font-size: 18px;
+  margin-right: 15px;
+`;
+
 export default function FooterReview({ sessionId }: { sessionId: string }): JSX.Element {
   const router = useRouter();
   return (
@@ -70,8 +77,11 @@ export default function FooterReview({ sessionId }: { sessionId: string }): JSX.
         <FooterLooksText>Looks great. Woof woof!</FooterLooksText>
       </FooterSection>
       <FooterSection alignRight>
+        <LinkLearnMore href="https://zoom.us/webinar/register/WN_Y9iOAo0hRqGu9ryGuqBZEg">
+          Learn more
+        </LinkLearnMore>
         <ButtonPrimary onClick={() => router.push(`/provider-selection?sessionId=${sessionId}`)}>
-          <FooterSubmitText>Submit application</FooterSubmitText>
+          <FooterSubmitText>Submit</FooterSubmitText>
         </ButtonPrimary>
       </FooterSection>
     </FooterContainer>
