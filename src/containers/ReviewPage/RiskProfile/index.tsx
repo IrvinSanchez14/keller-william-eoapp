@@ -30,6 +30,7 @@ export default function RiskProfile({ data, openEditModal }: RiskProfileProps): 
     <Layout
       textHeader="Risk profile"
       openEditPageModal={openEditModal && onOpenModal('Risk profile')}
+      style={{ height: 562 }}
     >
       <ContainerInformation firstPadding>
         <TextLight text={labelInformation.isHomeWarranty} />
