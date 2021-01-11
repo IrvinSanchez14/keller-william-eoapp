@@ -197,15 +197,16 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   },
   divSVG: {
     display: 'flex',
-    alignItems: 'flex-end',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
     marginBottom: '46px',
     marginTop: '15px',
     [theme.breakpoints.down(1200)]: {
       flexWrap: 'wrap',
     },
     [theme.breakpoints.up(500)]: {
-      marginBottom: '46px',
-      marginTop: '-10px',
+      marginBottom: '42px',
+      marginTop: '38px',
     },
   },
   textContent: {
@@ -249,5 +250,40 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
       margin: '0px 0px 0px 4px',
       marginTop: 0,
     },
+  },
+  circleFormat: {
+    [theme.breakpoints.up(750)]: {
+      width: 31,
+      height: 31,
+    },
+    width: 26,
+    height: 26,
+    borderRadius: '50%',
+    border: '1px solid',
+    backgroundColor: '#1D253C',
+    marginBottom: 10,
+  },
+  textCircle: {
+    display: 'flex',
+    justifyContent: 'center',
+    color: '#fff',
+    fontWeight: 900,
+    [theme.breakpoints.up(750)]: {
+      fontSize: 20,
+    },
+    [theme.breakpoints.down(750)]: {
+      marginTop: 1,
+    },
+    fontSize: 14,
+  },
+  containerCircle: {
+    display: 'flex',
+  },
+  textContainerCircle: {
+    [theme.breakpoints.up(750)]: {
+      fontSize: 20,
+    },
+    fontSize: 14,
+    marginLeft: 15,
   },
 });

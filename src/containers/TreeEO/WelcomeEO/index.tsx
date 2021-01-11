@@ -66,48 +66,37 @@ export class WelcomeEO extends Component<IAppStoreProps> {
               return (
                 <>
                   <div className={classnames(classes.divSVG)}>
-                    <div>
-                      <div className={classnames(classes.contentFirm, classes.content)}>
-                        <Icon name="firmWelcome" className={classnames(classes.iconFirm)} />
-                        <Typography className={classnames(classes.labelFirm)} variant="body1">
-                          Firm
-                        </Typography>
+                    <div className={classnames(classes.containerCircle)}>
+                      <div className={classnames(classes.circleFormat)}>
+                        <span className={classnames(classes.textCircle)}>1</span>
                       </div>
+                      <span className={classnames(classes.textContainerCircle)}>
+                        Market Center Financials
+                      </span>
                     </div>
-                    <div>
-                      <div className={classnames(classes.contentAgent, classes.content)}>
-                        <Icon name="agentWelcome" className={classnames(classes.iconAgent)} />
-                        <Typography variant="body1" className={classnames(classes.labelAgent)}>
-                          Agents
-                        </Typography>
+                    <div className={classnames(classes.containerCircle)}>
+                      <div className={classnames(classes.circleFormat)}>
+                        <span className={classnames(classes.textCircle)}>2</span>
                       </div>
+                      <span className={classnames(classes.textContainerCircle)}>
+                        Agent Production Breakdown
+                      </span>
                     </div>
-                    <div>
-                      <div className={classnames(classes.contentCommission, classes.content)}>
-                        <Icon
-                          name="commissionWelcome"
-                          className={classnames(classes.iconCommission)}
-                        />
-                        <Typography variant="body1" className={classnames(classes.labelComission)}>
-                          Commission
-                        </Typography>
+                    <div className={classnames(classes.containerCircle)}>
+                      <div className={classnames(classes.circleFormat)}>
+                        <span className={classnames(classes.textCircle)}>3</span>
                       </div>
+                      <span className={classnames(classes.textContainerCircle)}>
+                        Current E&O Policy
+                      </span>
                     </div>
-                    <div>
-                      <div className={classnames(classes.contentPolicy, classes.content)}>
-                        <Icon name="policyWelcome" className={classnames(classes.iconPolicy)} />
-                        <Typography variant="body1" className={classnames(classes.labelPolicy)}>
-                          Policy
-                        </Typography>
+                    <div className={classnames(classes.containerCircle)}>
+                      <div className={classnames(classes.circleFormat)}>
+                        <span className={classnames(classes.textCircle)}>4</span>
                       </div>
-                    </div>
-                    <div>
-                      <div className={classnames(classes.contentRisk, classes.content)}>
-                        <Icon name="riskWelcome" className={classnames(classes.iconRisk)} />
-                        <Typography variant="body1" className={classnames(classes.labelRisk)}>
-                          Risk Profile
-                        </Typography>
-                      </div>
+                      <span className={classnames(classes.textContainerCircle)}>
+                        Loss-run statement for last 5 years
+                      </span>
                     </div>
                   </div>
                   <Typography className={classnames(classes.textContent)}>
