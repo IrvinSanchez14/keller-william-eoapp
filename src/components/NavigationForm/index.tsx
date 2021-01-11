@@ -197,7 +197,7 @@ export function NavigationForm(Props: INavigationProps) {
                   [classes.ctaButtonDesktopConfirmation]: isConfirmationPage,
                 })}
                 onClick={() => openCallToActionDialog()}
-                label={'Get covered now'}
+                label={'Questions?'}
                 isDark
                 withLabelClass={classnames(classes.labelButton)}
               />
