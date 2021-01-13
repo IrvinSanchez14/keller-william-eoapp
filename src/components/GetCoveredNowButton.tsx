@@ -41,9 +41,7 @@ const GetCoveredNowButton: React.FC<Props> = ({ onClick, isMobile, isConfirmatio
             style={{ fontSize: 16, marginRight: isConfirmationPage ? 8 : 0 }}
             className="fas fa-phone"
           />
-          <StyledButtonCopy isConfirmationPage={isConfirmationPage}>
-            Get covered now
-          </StyledButtonCopy>
+          <StyledButtonCopy isConfirmationPage={isConfirmationPage}>Questions?</StyledButtonCopy>
         </>
       )}
     </StyledButton>
