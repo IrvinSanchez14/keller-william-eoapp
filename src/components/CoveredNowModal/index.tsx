@@ -44,21 +44,21 @@ const ModalContainer = styled.div<ModalContainerProps>`
   box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.15);
   margin-right: 4px;
   margin-bottom: 175px;
-  ${(themeModal: any) =>
-    themeModal &&
-    themeModal.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     margin-top: 300px;
     padding-bottom: 50px;
     width: 95vw;
   `};
-  ${(themeModalPhone: any) =>
-    themeModalPhone &&
-    themeModalPhone.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     padding-vertical: 10px;
   `};
-  ${(themeModalPhoneSmall: any) =>
-    themeModalPhoneSmall &&
-    themeModalPhoneSmall.phoneSmall`
+  ${({ theme }) =>
+    theme &&
+    theme.phoneSmall`
     padding-bottom: 10px;
   `};
 `;
@@ -93,9 +93,9 @@ const StyledWinsIcon = styled(SVG)`
   height: 33px;
   margin-left: 44px;
   margin-top: 51px;
-  ${(themeSVG: any) =>
-    themeSVG &&
-    themeSVG.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     margin: 51px 0 15px 0;
   `};
 `;
@@ -105,9 +105,9 @@ const StyledPearlIcon = styled(SVG)`
   height: 55px;
   padding-right: 34px;
   margin-top: 35px;
-  ${(themePear: any) =>
-    themePear &&
-    themePear.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     margin: 35px 0 15px 0;
     padding: 0 0 0 0;
   `};
@@ -138,9 +138,9 @@ const ModalPartnersContainer = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  ${(themePartners: any) =>
-    themePartners &&
-    themePartners.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     flex-direction: column;
     flex: 1;
   `};
@@ -159,9 +159,9 @@ const ModalScheduleText = styled.a<ModalScheduleTextProps>`
     isPhone &&
     right &&
     `text-decoration: none; color: ${theme.colors.primary};padding-right: 34px;`};
-  ${(themeModalText: any) =>
-    themeModalText &&
-    themeModalText.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     padding: 5px 0 0 0;
   `};
 `;
@@ -172,9 +172,9 @@ const ModalPartnerSection = styled.div`
   display: flex;
   width: 50%;
   flex-direction: column;
-  ${(themeModalPartner: any) =>
-    themeModalPartner &&
-    themeModalPartner.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     width: 100%;
   `};
 `;
@@ -183,9 +183,9 @@ const ModalSheduleContainer = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
-  ${(themeModalContainer: any) =>
-    themeModalContainer &&
-    themeModalContainer.phone`
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
     width: 100%;
   `};
   flex-direction: column;
@@ -229,8 +229,8 @@ export default function CoveredNowModal(Props: CallModalProps) {
               <ModalScheduleText firstText left>
                 8am - 5pm CST, Mon-Fri
               </ModalScheduleText>
-              <ModalScheduleText isPhone href="tel:1 (404) 978-6029" left>
-                <strong>1 (404) 978-6029</strong>
+              <ModalScheduleText isPhone href="tel:1 (404) 721-4158" left>
+                <strong>1 (404) 721-4158</strong>
               </ModalScheduleText>
             </ModalSheduleContainer>
           </ModalPartnerSection>
