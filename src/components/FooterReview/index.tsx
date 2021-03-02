@@ -13,7 +13,7 @@ const FooterContainer = styled.footer`
   position: fixed;
 `;
 
-const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }>`
+const FooterSection = styled.div<{ alignRight?: boolean }>`
   width: 70%;
   display: flex;
   align-items: center;
@@ -34,7 +34,33 @@ const FooterSection = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }
     width: 100%;
     justify-content: center;
     margin: 0 0 0 0;
+    display: flex;
+    flex-direction: column-reverse;
   `}
+`;
+
+const FooterSectionFirst = styled.div<{ hideDogIcon?: boolean; alignRight?: boolean }>`
+  width: 70%;
+  display: flex;
+  align-items: center;
+  ${({ theme }) => theme && theme.phone`display: none;`}
+  ${({ alignRight }) =>
+    alignRight &&
+    `
+  justify-content: flex-end;
+  margin-right: 100px;
+  width: 30%;
+  @media (max-width: 900px) {
+    margin-right: 40px;
+  }}
+`};
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+  width: 100%;
+  justify-content: center;
+  margin: 0 0 0 0;
+`}
 `;
 
 const FooterDogIcon = styled(SVG)<{ width: string; height: string }>`
@@ -66,16 +92,21 @@ const LinkLearnMore = styled.a`
   color: #fff;
   font-size: 18px;
   margin-right: 15px;
+  ${({ theme }) =>
+    theme &&
+    theme.phone`
+  margin-top: 10px;
+`}
 `;
 
 export default function FooterReview({ sessionId }: { sessionId: string }): JSX.Element {
   const router = useRouter();
   return (
     <FooterContainer>
-      <FooterSection hideDogIcon>
+      <FooterSectionFirst hideDogIcon>
         <FooterDogIcon width="100px" height="55px" src="/img/dog-circle.svg" />
         <FooterLooksText>Looks great. Woof woof!</FooterLooksText>
-      </FooterSection>
+      </FooterSectionFirst>
       <FooterSection alignRight>
         <LinkLearnMore href="https://zoom.us/webinar/register/WN_Y9iOAo0hRqGu9ryGuqBZEg">
           Learn more
