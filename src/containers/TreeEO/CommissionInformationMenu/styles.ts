@@ -48,6 +48,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
+    marginTop: theme.spacing(1),
     padding: theme.spacing(),
     [theme.breakpoints.up('sm')]: {
       padding: theme.spacing(1.5),
@@ -63,13 +64,10 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
     height: 100,
     marginRight: theme.spacing(0.8),
     marginBottom: theme.spacing(0.8),
+    marginLeft: theme.spacing(2),
     [theme.breakpoints.up(340)]: {
       marginRight: theme.spacing(),
       marginBottom: theme.spacing(),
-    },
-    [theme.breakpoints.up(408)]: {
-      height: 128,
-      width: 128,
     },
     [theme.breakpoints.up(436)]: {
       marginRight: theme.spacing(2),
