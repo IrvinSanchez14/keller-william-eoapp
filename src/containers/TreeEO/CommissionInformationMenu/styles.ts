@@ -25,7 +25,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   label: {
     color: '#082a3e',
     fontWeight: 'bold',
-    fontSize: theme.fontSize.xxs,
+    fontSize: 11,
     textAlign: 'center',
     lineHeight: '14px',
     marginTop: theme.spacing(),
@@ -60,7 +60,7 @@ export const styles = (theme: MuiTheme): { [style: string]: CSSProperties } => (
   card: {
     padding: 0,
     outline: 'none',
-    width: 100,
+    width: 103,
     height: 100,
     marginRight: theme.spacing(0.8),
     marginBottom: theme.spacing(0.8),
