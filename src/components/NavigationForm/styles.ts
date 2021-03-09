@@ -71,7 +71,7 @@ export default makeStyles((theme: MuiTheme) => ({
       position: 'static',
     },
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'row-reverse',
+      flexDirection: 'row',
       width: '100%',
       justifyContent: 'space-between',
       padding: theme.spacing(0, 2),
@@ -102,7 +102,7 @@ export default makeStyles((theme: MuiTheme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    marginRight: '1px',
+    marginRight: '10px',
     [theme.breakpoints.up('lg')]: {
       marginRight: theme.spacing(3),
       width: 34,
