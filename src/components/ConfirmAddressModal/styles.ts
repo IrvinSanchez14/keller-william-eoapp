@@ -92,7 +92,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     fontFamily: `"Effra", "Arial", "sans-serif"`,
     fontSize: 22,
     fontWeight: 'bold',
-    textIndent: 16,
+    textIndent: 3,
     WebkitAppearance: 'none',
     color: '#1D253C',
     '&::placeholder': {
@@ -111,7 +111,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     },
     [theme.breakpoints.down(768)]: {
       height: 41,
-      textIndent: 12,
+      textIndent: 3,
       fontSize: theme.fontSize.md,
     },
   }),
