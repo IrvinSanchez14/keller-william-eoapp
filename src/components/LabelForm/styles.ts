@@ -17,16 +17,16 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
   },
   labelWrapper: {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'space-between',
     border: 'none !important',
-    alignItems: 'flex-end',
+    alignItems: 'flex-start',
   },
   error: (props: { [prop: string]: any }) => ({
     fontSize: '13px',
     fontWeight: 400,
     color: theme.palette.error.main,
     textAlign: props.textAlign,
-    paddingLeft: 10,
     ...(props.errorWithLabel && {
       marginBottom: 4,
       [theme.breakpoints.down(768)]: {
