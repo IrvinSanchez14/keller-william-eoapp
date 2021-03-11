@@ -20,7 +20,8 @@ interface LayoutInformationReviewProps {
 
 const data = {
   firmInformation: {
-    contactName: 'Stephen Smalls',
+    contactFirstName: 'Stephen',
+    contactLastName: 'Smalls',
     brokerName: 'Stephen Smalls',
     kwMarketCenterName: 'Southwest Market Center',
     yearEstablished: 1986,
