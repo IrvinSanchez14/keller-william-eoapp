@@ -15,7 +15,7 @@ export const useStyles = makeStyles((theme: MuiTheme) => ({
     fontFamily: `"Effra", "Arial", "sans-serif"`,
     fontSize: 22,
     fontWeight: 'bold',
-    textIndent: 3,
+    textIndent: 13,
     WebkitAppearance: 'none',
     margin: 0,
     color: '#1D253C',
