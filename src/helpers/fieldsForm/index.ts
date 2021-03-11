@@ -2,10 +2,17 @@ import { phoneMask, fourDigitsMask } from 'src/utils';
 
 export const getFullNameFields = () => [
   {
-    name: 'contactName',
+    name: 'contactFirstName',
     type: 'text',
     placeholder: '',
-    label: 'Contact Name',
+    label: 'Contact First Name',
+    customWidth: 0,
+  },
+  {
+    name: 'contactLastName',
+    type: 'text',
+    placeholder: '',
+    label: 'Contact Last Name',
     customWidth: 0,
   },
   {
