@@ -18,7 +18,8 @@ import { removePercentageSign } from 'src/utils';
 type FullNameProps = IAppStoreProps & { onSubmit?: () => Promise<void> };
 
 type FormFields = {
-  contactName: string;
+  contactFirstName: string;
+  contactLastName: string;
   brokerName: string;
   kwMarketCenterName: string;
   yearEstablished: number;
