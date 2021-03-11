@@ -18,7 +18,8 @@ import { styles } from './styles';
 type FullNameProps = IAppStoreProps;
 
 type FormFields = {
-  contactName: string;
+  contactFirstName: string;
+  contactLastName: string;
   brokerName: string;
   kwMarketCenterName: string;
   kwMarketCenterNumber: string;
@@ -64,7 +65,8 @@ export class FirmInformation extends Component<FullNameProps> {
           </Typography>
           <FormApp
             initialValues={{
-              contactName: formData.app.data.firmInformation.contactName || '',
+              contactFirstName: formData.app.data.firmInformation.contactFirstName || '',
+              contactLastName: formData.app.data.firmInformation.contactLastName || '',
               brokerName: formData.app.data.firmInformation.brokerName || '',
               kwMarketCenterName: formData.app.data.firmInformation.kwMarketCenterName || '',
               kwMarketCenterNumber: formData.app.data.firmInformation.kwMarketCenterNumber || '',
