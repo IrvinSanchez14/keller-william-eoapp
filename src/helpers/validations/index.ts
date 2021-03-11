@@ -14,7 +14,8 @@ Yup.addMethod(Yup.number, 'parseMoney', function () {
 });
 
 export const fullNameValidateSchema = Yup.object().shape({
-  contactName: Yup.string().required('Field is required'),
+  contactFirstName: Yup.string().required('Field is required'),
+  contactLastName: Yup.string().required('Field is required'),
   brokerName: Yup.string().required('Field is required'),
   kwMarketCenterName: Yup.string().required('Field is required'),
   kwMarketCenterNumber: Yup.string().required('Field is required'),
