@@ -1,5 +1,6 @@
 interface FirmInformationProps {
-  contactName: string;
+  contactFirstName: string;
+  contactLastName: string;
   brokerName: string;
   kwMarketCenterName: string;
   kwMarketCenterNumber: string;
