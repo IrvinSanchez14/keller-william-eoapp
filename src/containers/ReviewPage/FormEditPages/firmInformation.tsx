@@ -184,7 +184,8 @@ export function EditPageFirmInformation({ closeModal }: any) {
     <div style={{ width: '100%' }}>
       <FormApp
         initialValues={{
-          contactName: state.app.data.firmInformation.contactName,
+          contactFirstName: state.app.data.firmInformation.contactFirstName,
+          contactLastName: state.app.data.firmInformation.contactLastName,
           brokerName: state.app.data.firmInformation.brokerName,
           kwMarketCenterName: state.app.data.firmInformation.kwMarketCenterName,
           kwMarketCenterNumber: state.app.data.firmInformation.kwMarketCenterNumber,
