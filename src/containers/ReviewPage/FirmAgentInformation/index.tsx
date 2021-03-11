@@ -8,7 +8,8 @@ import { parseNumberToThounsads } from 'src/utils';
 
 const labelInformation = {
   firmInformation: {
-    contactName: 'Contact name',
+    contactFirstName: 'Contact First Name',
+    contactLastName: 'Contact Last Name',
     brokerName: 'Broker/owner name',
     kwMarketCenterName: 'KW Market Center name',
     kwMarketCenterNumber: 'KW Market Center Number',
@@ -76,8 +77,12 @@ export default function FirmAgentInformation({
           <TextBold text="Keller Williams Realty, Inc." />
         </ContainerInformation>
         <ContainerInformation>
-          <TextLight text={labelInformation.firmInformation.contactName} />
-          <TextBold customMargin text={data.firmInformation.contactName} />
+          <TextLight text={labelInformation.firmInformation.contactFirstName} />
+          <TextBold customMargin text={data.firmInformation.contactFirstName} />
+        </ContainerInformation>
+        <ContainerInformation>
+          <TextLight text={labelInformation.firmInformation.contactLastName} />
+          <TextBold customMargin text={data.firmInformation.contactLastName} />
         </ContainerInformation>
         <ContainerInformation>
           <TextLight text={labelInformation.firmInformation.brokerName} />
